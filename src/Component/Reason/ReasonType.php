@@ -7,6 +7,9 @@ namespace Persona\Hris\Component\Reason;
  */
 final class ReasonType
 {
-    const ABSENT = 'a';
-    const LEAVE = 'l';
+    const ABSENT_CODE = 'a';
+    const LEAVE_CODE = 'l';
+
+    const ABSENT_TEXT = 'ABSENSI';
+    const LEAVE_STRING = 'CUTI';
 }

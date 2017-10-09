@@ -1,4 +1,95 @@
 easy_admin:
+    formats:
+        date:     'd-m-Y'
+        time:     'H:i'
+        datetime: 'd-m-Y H:i:s'
+    list:
+        max_results: 17
+        actions:
+            - { name: 'show', icon: 'search', label: false }
+            - { name: 'new', icon: 'plus-circle', 'css_class': 'btn btn-danger action-new', label: false }
+            - { name: 'edit', icon: 'pencil', label: false }
+            - { name: 'delete', icon: 'close', label: false }
+    design:
+        menu:
+            - label: 'Keahlian'
+              icon: 'graduation-cap'
+              children:
+                  - { entity: 'SkillGroup', label: 'Grup Keahlian', icon: 'group', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'Skill', label: 'Keahlian', icon: 'graduation-cap', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Absensi'
+              icon: 'clock-o'
+              children:
+                  - { entity: 'Reason', label: 'Alasan Ketidakhadiran', icon: 'envelope-open-o', params: { sortField: 'name', sortDirection: 'ASC' } }
     entities:
-        - Persona\Hris\Entity\SkillGroup
-        - Persona\Hris\Entity\Skill
+        SkillGroup:
+            class: 'Persona\Hris\Entity\SkillGroup'
+            new:
+                title: 'Grup Keahlian'
+            edit:
+                title: 'Edit Grup Keahlian'
+            search:
+                fields: ['name']
+            form:
+                fields:
+                    - { property: 'parent', label: 'Grup Induk', type: 'easyadmin_autocomplete' }
+                    - { property: 'name', label: 'Grup Keahlian' }
+            show:
+                title: 'Detil Grup Keahlian'
+                fields:
+                    - { property: 'parent', label: 'GrupInduk' }
+                    - { property: 'name', label: 'Grup Keahlian' }
+            list:
+                title: 'Grup Keahlian'
+                fields:
+                    - { property: 'parent', label: 'Grup Induk' }
+                    - { property: 'name', label: 'Grup Keahlian' }
+
+        Skill:
+            class: 'Persona\Hris\Entity\Skill'
+            new:
+                title: 'Keahlian'
+            edit:
+                title: 'Edit Keahlian'
+            search:
+                fields: ['skillGroup', 'name']
+            form:
+                fields:
+                    - { property: 'skillGroup', label: 'Grup Keahlian', type: 'easyadmin_autocomplete' }
+                    - { property: 'name', label: 'Keahlian' }
+            show:
+                title: 'Detil Keahlian'
+                fields:
+                    - { property: 'skillGroup', label: 'Grup Keahlian' }
+                    - { property: 'name', label: 'Keahlian' }
+            list:
+                title: 'Keahlian'
+                fields:
+                    - { property: 'skillGroup', label: 'Grup Keahlian' }
+                    - { property: 'name', label: 'Keahlian' }
+
+        Reason:
+            class: 'Persona\Hris\Entity\Reason'
+            new:
+                title: 'Alasan Ketidakhadiran'
+            edit:
+                title: 'Edit Alasan Ketidakhadiran'
+            search:
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { choices: { 'label.form.empty_value' :'', 'ABSENSI': 'a', CUTI: 'l' } } }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            show:
+                title: 'Detil Alasan Ketidakhadiran'
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            list:
+                title: 'Alasan Ketidakhadiran'
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }

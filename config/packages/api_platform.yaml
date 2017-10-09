@@ -3,6 +3,11 @@ api_platform:
         paths: ['%kernel.project_dir%/src/Entity']
 
 services:
+    api_platform.filters.code_search:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { code: 'partial' } ]
+        tags:      [ { name: 'api_platform.filter', id: 'code.search' } ]
+
     api_platform.filters.name_search:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { name: 'partial' } ]

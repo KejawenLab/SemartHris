@@ -6,6 +6,7 @@
         "api-platform/api-pack": "^1.0",
         "javiereguiluz/easyadmin-bundle": "^1.17",
         "symfony/framework-bundle": "^3.3",
+        "symfony/profiler-pack": "^1.0",
         "symfony/web-server-bundle": "^3.3",
         "symfony/yaml": "^3.3"
     },

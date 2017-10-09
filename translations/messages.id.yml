@@ -1,0 +1,9 @@
+action:
+    search: 'Cari'
+    cancel: 'Batal'
+    list: 'Kembali ke list'
+    save: 'Simpan'
+    delete: 'Hapus'
+label:
+    form:
+        empty_value: '---PILIH OPSI---'

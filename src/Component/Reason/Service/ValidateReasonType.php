@@ -17,8 +17,23 @@ class ValidateReasonType
      */
     public static function isValidType(string $type): bool
     {
+        $type = StringUtil::lowercase($type);
+        if (!in_array($type, [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return bool
+     */
+    public static function isValidTypeText(string $type): bool
+    {
         $type = StringUtil::uppercase($type);
-        if (!in_array($type, [ReasonType::ABSENT_TEXT, ReasonType::LEAVE_STRING])) {
+        if (!in_array($type, [ReasonType::ABSENT_TEXT, ReasonType::LEAVE_TEXT])) {
             return false;
         }
 
@@ -32,7 +47,7 @@ class ValidateReasonType
      */
     public static function convertToText(string $type): string
     {
-        $types = [ReasonType::LEAVE_CODE => ReasonType::LEAVE_STRING, ReasonType::ABSENT_CODE => ReasonType::ABSENT_TEXT];
+        $types = [ReasonType::LEAVE_CODE => ReasonType::LEAVE_TEXT, ReasonType::ABSENT_CODE => ReasonType::ABSENT_TEXT];
 
         if (array_key_exists($type, $types)) {
             return $types[$type];

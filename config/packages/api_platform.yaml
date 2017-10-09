@@ -23,6 +23,11 @@ services:
         arguments: [ { code: 'partial' } ]
         tags:      [ { name: 'api_platform.filter', id: 'code.search' } ]
 
+    api_platform.filters.short_name_search:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { shortName: 'partial' } ]
+        tags:      [ { name: 'api_platform.filter', id: 'short_name.search' } ]
+
     api_platform.filters.name_search:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { name: 'partial' } ]

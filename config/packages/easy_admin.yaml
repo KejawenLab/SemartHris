@@ -82,9 +82,9 @@ easy_admin:
         LeaveReason:
             class: 'Persona\Hris\Entity\Reason'
             new:
-                title: 'Alasan Ketidakhadiran'
+                title: 'Alasan Cuti'
             edit:
-                title: 'Edit Alasan Ketidakhadiran'
+                title: 'Edit Cuti'
             search:
                 fields: ['code', 'name']
             form:
@@ -93,13 +93,14 @@ easy_admin:
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
             show:
-                title: 'Detil Alasan Ketidakhadiran'
+                title: 'Detil Cuti'
                 fields:
                     - { property: 'type', label: 'Jenis Alasan' }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
             list:
-                title: 'Alasan Ketidakhadiran'
+                title: 'Alasan Cuti'
+                dql_filter: "entity.type = 'l'"
                 fields:
                     - { property: 'type', label: 'Jenis Alasan' }
                     - { property: 'code', label: 'Kode Alasan' }
@@ -126,6 +127,7 @@ easy_admin:
                     - { property: 'name', label: 'Alasan' }
             list:
                 title: 'Alasan Ketidakhadiran'
+                dql_filter: "entity.type = 'a'"
                 fields:
                     - { property: 'type', label: 'Jenis Alasan' }
                     - { property: 'code', label: 'Kode Alasan' }

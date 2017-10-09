@@ -11,5 +11,5 @@ final class ReasonType
     const LEAVE_CODE = 'l';
 
     const ABSENT_TEXT = 'ABSENSI';
-    const LEAVE_STRING = 'CUTI';
+    const LEAVE_TEXT = 'CUTI';
 }

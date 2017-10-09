@@ -90,6 +90,10 @@ class Reason implements ReasonInterface
      */
     public function setType(string $type)
     {
+        if (!ValidateReasonType::isValidType($type)) {
+            throw new \InvalidArgumentException(sprintf('%s is not valid type.', $type));
+        }
+
         $this->type = $type;
     }
 
@@ -141,7 +145,7 @@ class Reason implements ReasonInterface
      */
     public function validate(ExecutionContextInterface $context, $payload)
     {
-        if (!ValidateReasonType::isValidType($this->getType())) {
+        if (!ValidateReasonType::isValidTypeText($this->getType())) {
             $context->buildViolation('reason_type_not_valid')
                 ->atPath('type')
                 ->addViolation()

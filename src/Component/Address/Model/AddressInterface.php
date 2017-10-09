@@ -15,16 +15,6 @@ interface AddressInterface
     /**
      * @return string
      */
-    public function getOwner(): string;
-
-    /**
-     * @param AddressOwnerInterface $owner
-     */
-    public function setOwner(AddressOwnerInterface $owner): void;
-
-    /**
-     * @return string
-     */
     public function getAddress(): string;
 
     /**
@@ -36,6 +26,16 @@ interface AddressInterface
      * @param CityInterface|null $city
      */
     public function setCity(CityInterface $city = null): void;
+
+    /**
+     * @return null|RegionInterface
+     */
+    public function getRegion(): ? RegionInterface;
+
+    /**
+     * @param RegionInterface|null $region
+     */
+    public function setRegion(RegionInterface $region = null): void;
 
     /**
      * @return string
@@ -51,9 +51,4 @@ interface AddressInterface
      * @return string
      */
     public function getPostalCode(): string;
-
-    /**
-     * @return bool
-     */
-    public function isDefault(): bool;
 }

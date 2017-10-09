@@ -3,21 +3,20 @@
 namespace Persona\Hris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use Persona\Hris\Component\Skill\Model\SkillGroupInterface;
-use Persona\Hris\Component\Skill\Model\SkillInterface;
+use Persona\Hris\Component\Address\Model\RegionInterface;
 use Persona\Hris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="skills", indexes={@ORM\Index(name="skills_idx", columns={"name"})})
+ * @ORM\Table(name="regions", indexes={@ORM\Index(name="regions_idx", columns={"code", "name"})})
  *
  * @ApiResource(
  *     attributes={
  *         "filters"={
+ *             "code.search",
  *             "name.search"
  *         },
  *         "normalization_context"={"groups"={"read"}},
@@ -27,7 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>
  */
-class Skill implements SkillInterface
+class Region implements RegionInterface
 {
     /**
      * @Groups({"read", "write"})
@@ -40,15 +39,14 @@ class Skill implements SkillInterface
     private $id;
 
     /**
-     * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\SkillGroup", fetch="EAGER")
-     * @ORM\JoinColumn(name="skill_group_id", referencedColumnName="id")
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=7)
+     * @Assert\Length(max=7)
      * @Assert\NotBlank()
-     * @ApiSubresource()
      *
-     * @var SkillGroupInterface
+     * @var string
      */
-    private $skillGroup;
+    private $code;
 
     /**
      * @Groups({"read", "write"})
@@ -68,19 +66,19 @@ class Skill implements SkillInterface
     }
 
     /**
-     * @return SkillGroupInterface
+     * @return string
      */
-    public function getSkillGroup(): ? SkillGroupInterface
+    public function getCode(): string
     {
-        return $this->skillGroup;
+        return (string) $this->code;
     }
 
     /**
-     * @param SkillGroupInterface $skillGroup
+     * @param string $code
      */
-    public function setSkillGroup(SkillGroupInterface $skillGroup = null): void
+    public function setCode(string $code): void
     {
-        $this->skillGroup = $skillGroup;
+        $this->code = StringUtil::uppercase($code);
     }
 
     /**
@@ -104,6 +102,6 @@ class Skill implements SkillInterface
      */
     public function __toString(): string
     {
-        return $this->getName();
+        return sprintf('%s - %s', $this->getCode(), $this->getName());
     }
 }

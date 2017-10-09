@@ -15,6 +15,16 @@ interface AddressInterface
     /**
      * @return string
      */
+    public function getOwner(): string;
+
+    /**
+     * @param AddressOwnerInterface $owner
+     */
+    public function setOwner(AddressOwnerInterface $owner): void;
+
+    /**
+     * @return string
+     */
     public function getAddress(): string;
 
     /**

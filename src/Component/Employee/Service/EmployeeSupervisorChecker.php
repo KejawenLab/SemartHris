@@ -42,7 +42,7 @@ class EmployeeSupervisorChecker
             return false;
         }
 
-        return $this->checkSupervisor($employee, $supervisor);
+        return $this->canSupervise($employee, $supervisor);
     }
 
     /**
@@ -51,7 +51,7 @@ class EmployeeSupervisorChecker
      *
      * @return bool
      */
-    private function checkSupervisor(EmployeeInterface $employee, EmployeeInterface $supervisor): bool
+    private function canSupervise(EmployeeInterface $employee, EmployeeInterface $supervisor): bool
     {
         $allow = false;
 
@@ -60,7 +60,7 @@ class EmployeeSupervisorChecker
             if ($employeeSupervisor->getId() === $supervisor->getId()) {
                 $allow = true;
             } else {
-                $this->checkSupervisor($employeeSupervisor, $supervisor);
+                $this->canSupervise($employeeSupervisor, $supervisor);
             }
         }
 

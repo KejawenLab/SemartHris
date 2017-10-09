@@ -1,4 +1,19 @@
 api_platform:
+    title: 'HRPersona API'
+    description: 'HRPersona API End Point'
+    version: '0.0.0-dev'
+    collection:
+        order: 'DESC'
+        order_parameter_name: 'o'
+        pagination:
+            enabled: true
+            client_enabled: true
+            client_items_per_page: true
+            items_per_page: 27
+            maximum_items_per_page: 99
+            page_parameter_name: 'p'
+            enabled_parameter_name: 'ep'
+            items_per_page_parameter_name: 'i'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
 

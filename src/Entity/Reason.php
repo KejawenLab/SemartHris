@@ -5,7 +5,6 @@ namespace Persona\Hris\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Persona\Hris\Component\Reason\Model\ReasonInterface;
-use Persona\Hris\Component\Reason\ReasonType;
 use Persona\Hris\Component\Reason\Service\ValidateReasonType;
 use Persona\Hris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -127,6 +126,14 @@ class Reason implements ReasonInterface
     }
 
     /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
+
+    /**
      * @Assert\Callback()
      *
      * @param ExecutionContextInterface $context
@@ -137,7 +144,8 @@ class Reason implements ReasonInterface
         if (!ValidateReasonType::isValidType($this->getType())) {
             $context->buildViolation('reason_type_not_valid')
                 ->atPath('type')
-                ->addViolation();
+                ->addViolation()
+            ;
         }
     }
 }

@@ -17,8 +17,8 @@ class ValidateReasonType
      */
     public static function isValidType(string $type): bool
     {
-        $type = StringUtil::lowercase($type);
-        if (!in_array($type, [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE])) {
+        $type = StringUtil::uppercase($type);
+        if (!in_array($type, [ReasonType::ABSENT_TEXT, ReasonType::LEAVE_STRING])) {
             return false;
         }
 

@@ -1,4 +1,5 @@
 easy_admin:
+    site_name: 'HRPersona'
     formats:
         date:     'd-m-Y'
         time:     'H:i'
@@ -11,6 +12,7 @@ easy_admin:
             - { name: 'edit', icon: 'pencil', label: false }
             - { name: 'delete', icon: 'close', label: false }
     design:
+        brand_color: '#ac2925'
         menu:
             - label: 'Keahlian'
               icon: 'graduation-cap'
@@ -20,7 +22,16 @@ easy_admin:
             - label: 'Absensi'
               icon: 'clock-o'
               children:
-                  - { entity: 'Reason', label: 'Alasan Ketidakhadiran', icon: 'envelope-open-o', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'AbsentReason', label: 'Alasan Ketidakhadiran', icon: 'envelope-open-o', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Cuti'
+              icon: 'envelope-o'
+              children:
+                  - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'envelope-o', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Alamat'
+              icon: 'id-card-o'
+              children:
+                  - { entity: 'Region', label: 'Propinsi', icon: 'university', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'City', label: 'Kota', icon: 'building-o', params: { sortField: 'name', sortDirection: 'ASC' } }
     entities:
         SkillGroup:
             class: 'Persona\Hris\Entity\SkillGroup'
@@ -68,7 +79,7 @@ easy_admin:
                     - { property: 'skillGroup', label: 'Grup Keahlian' }
                     - { property: 'name', label: 'Keahlian' }
 
-        Reason:
+        LeaveReason:
             class: 'Persona\Hris\Entity\Reason'
             new:
                 title: 'Alasan Ketidakhadiran'
@@ -78,7 +89,7 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
-                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { choices: { 'label.form.empty_value' :'', 'ABSENSI': 'a', CUTI: 'l' } } }
+                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'l', choices: { 'CUTI': 'l' } } }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
             show:
@@ -93,3 +104,78 @@ easy_admin:
                     - { property: 'type', label: 'Jenis Alasan' }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
+
+        AbsentReason:
+            class: 'Persona\Hris\Entity\Reason'
+            new:
+                title: 'Alasan Ketidakhadiran'
+            edit:
+                title: 'Edit Alasan Ketidakhadiran'
+            search:
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'a', choices: { 'ABSENSI': 'a' } } }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            show:
+                title: 'Detil Alasan Ketidakhadiran'
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            list:
+                title: 'Alasan Ketidakhadiran'
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+
+        Region:
+            class: 'Persona\Hris\Entity\Region'
+            new:
+                title: 'Propinsi'
+            edit:
+                title: 'Edit Propinsi'
+            search:
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'code', label: 'Kode Propinsi' }
+                    - { property: 'name', label: 'Nama Propinsi' }
+            show:
+                title: 'Detil Propinsi'
+                fields:
+                    - { property: 'code', label: 'Kode Propinsi' }
+                    - { property: 'name', label: 'Nama Propinsi' }
+            list:
+                title: 'Propinsi'
+                fields:
+                    - { property: 'code', label: 'Kode Propinsi' }
+                    - { property: 'name', label: 'Nama Propinsi' }
+
+        City:
+            class: 'Persona\Hris\Entity\City'
+            new:
+                title: 'Kota'
+            edit:
+                title: 'Edit Kota'
+            search:
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'region', label: 'Pripinsi', type: 'easyadmin_autocomplete' }
+                    - { property: 'code', label: 'Kode Kota' }
+                    - { property: 'name', label: 'Nama Kota' }
+            show:
+                title: 'Detil Kota'
+                fields:
+                    - { property: 'region', label: 'Pripinsi' }
+                    - { property: 'code', label: 'Kode Kota' }
+                    - { property: 'name', label: 'Nama Kota' }
+            list:
+                title: 'Kota'
+                fields:
+                    - { property: 'region', label: 'Pripinsi' }
+                    - { property: 'code', label: 'Kode Kota' }
+                    - { property: 'name', label: 'Nama Kota' }

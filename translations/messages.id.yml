@@ -1,6 +1,7 @@
 action:
     search: 'Cari'
     cancel: 'Batal'
+    edit: 'Simpan'
     list: 'Kembali ke list'
     save: 'Simpan'
     delete: 'Hapus'

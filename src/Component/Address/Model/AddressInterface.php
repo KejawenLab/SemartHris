@@ -28,16 +28,6 @@ interface AddressInterface
     public function setCity(CityInterface $city = null): void;
 
     /**
-     * @return null|RegionInterface
-     */
-    public function getRegion(): ? RegionInterface;
-
-    /**
-     * @param RegionInterface|null $region
-     */
-    public function setRegion(RegionInterface $region = null): void;
-
-    /**
      * @return string
      */
     public function getPhoneNumber(): string;
@@ -51,4 +41,9 @@ interface AddressInterface
      * @return string
      */
     public function getPostalCode(): string;
+
+    /**
+     * @return bool
+     */
+    public function isDefault(): bool;
 }

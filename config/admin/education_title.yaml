@@ -1,0 +1,25 @@
+easy_admin:
+    entities:
+        EducationTitle:
+            class: 'Persona\Hris\Entity\EducationTitle'
+            new:
+                title: 'Gelar Pendidikan'
+            edit:
+                title: 'Edit Gelar Pendidikan'
+            search:
+                title: 'Gelar Pendidikan'
+                fields: ['shortName', 'name']
+            form:
+                fields:
+                    - { property: 'shortName', label: 'Gelar' }
+                    - { property: 'name', label: 'Nama Gelar' }
+            show:
+                title: 'Detil Gelar Pendidikan'
+                fields:
+                    - { property: 'shortName', label: 'Gelar' }
+                    - { property: 'name', label: 'Nama Gelar' }
+            list:
+                title: 'Gelar Pendidikan'
+                fields:
+                    - { property: 'shortName', label: 'Gelar' }
+                    - { property: 'name', label: 'Nama Gelar' }

@@ -1,0 +1,22 @@
+easy_admin:
+    entities:
+        EducationalInstitute:
+            class: 'Persona\Hris\Entity\EducationalInstitute'
+            new:
+                title: 'Lembaga Pendidikan'
+            edit:
+                title: 'Edit Lembaga Pendidikan'
+            search:
+                title: 'Lembaga Pendidikan'
+                fields: ['name']
+            form:
+                fields:
+                    - { property: 'name', label: 'Nama Lembaga' }
+            show:
+                title: 'Detil Lembaga Pendidikan'
+                fields:
+                    - { property: 'name', label: 'Nama Lembaga' }
+            list:
+                title: 'Lembaga Pendidikan'
+                fields:
+                    - { property: 'name', label: 'Nama Lembaga' }

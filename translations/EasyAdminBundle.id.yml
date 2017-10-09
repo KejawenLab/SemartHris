@@ -4,3 +4,5 @@ form:
     are_you_sure: 'Anda Yakin?'
 search:
     no_results: 'Tidak ada data yang ditampilkan'
+label:
+    null: 'NULL'

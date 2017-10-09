@@ -1,0 +1,26 @@
+easy_admin:
+    design:
+        menu:
+            - label: 'Pendidikan'
+              icon: 'book'
+              children:
+                  - { entity: 'EducationalInstitute', label: 'Lembaga Pendidikan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'EducationTitle', label: 'Gelar Pendidikan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Keahlian'
+              icon: 'graduation-cap'
+              children:
+                  - { entity: 'SkillGroup', label: 'Grup Keahlian', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'Skill', label: 'Keahlian', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Absensi'
+              icon: 'clock-o'
+              children:
+                  - { entity: 'AbsentReason', label: 'Alasan Ketidakhadiran', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Cuti'
+              icon: 'envelope-o'
+              children:
+                  - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Alamat'
+              icon: 'id-card-o'
+              children:
+                  - { entity: 'Region', label: 'Propinsi', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'City', label: 'Kota', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }

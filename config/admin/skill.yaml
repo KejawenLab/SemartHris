@@ -1,0 +1,26 @@
+easy_admin:
+    entities:
+        Skill:
+            class: 'Persona\Hris\Entity\Skill'
+            controller: 'Persona\Hris\Controller\Admin\SkillController'
+            new:
+                title: 'Keahlian'
+            edit:
+                title: 'Edit Keahlian'
+            search:
+                title: 'Keahlian'
+                fields: ['name']
+            form:
+                fields:
+                    - { property: 'skillGroup', label: 'Grup Keahlian', type: 'easyadmin_autocomplete' }
+                    - { property: 'name', label: 'Keahlian' }
+            show:
+                title: 'Detil Keahlian'
+                fields:
+                    - { property: 'skillGroup', label: 'Grup Keahlian' }
+                    - { property: 'name', label: 'Keahlian' }
+            list:
+                title: 'Keahlian'
+                fields:
+                    - { property: 'skillGroup', label: 'Grup Keahlian' }
+                    - { property: 'name', label: 'Keahlian' }

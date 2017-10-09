@@ -1,0 +1,57 @@
+easy_admin:
+    entities:
+        LeaveReason:
+            class: 'Persona\Hris\Entity\Reason'
+            new:
+                title: 'Alasan Cuti'
+            edit:
+                title: 'Edit Cuti'
+            search:
+                title: 'Alasan Cuti'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'l', choices: { 'CUTI': 'l' } } }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            show:
+                title: 'Detil Cuti'
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            list:
+                title: 'Alasan Cuti'
+                dql_filter: "entity.type = 'l'"
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+
+        AbsentReason:
+            class: 'Persona\Hris\Entity\Reason'
+            new:
+                title: 'Alasan Ketidakhadiran'
+            edit:
+                title: 'Edit Alasan Ketidakhadiran'
+            search:
+                title: 'Alasan Ketidakhadiran'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'a', choices: { 'ABSENSI': 'a' } } }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            show:
+                title: 'Detil Alasan Ketidakhadiran'
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }
+            list:
+                title: 'Alasan Ketidakhadiran'
+                dql_filter: "entity.type = 'a'"
+                fields:
+                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'code', label: 'Kode Alasan' }
+                    - { property: 'name', label: 'Alasan' }

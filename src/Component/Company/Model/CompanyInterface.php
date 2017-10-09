@@ -2,8 +2,6 @@
 
 namespace Persona\Hris\Component\Company\Model;
 
-use Persona\Hris\Component\Address\Model\AddressInterface;
-
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
  */
@@ -30,19 +28,14 @@ interface CompanyInterface
     public function getCode(): string;
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getBirthDay(): \DateTime;
+    public function getBirthDay(): ? \DateTimeInterface;
 
     /**
      * @return string
      */
     public function getName(): string;
-
-    /**
-     * @return AddressInterface[]
-     */
-    public function getAddresses(): array;
 
     /**
      * @return string

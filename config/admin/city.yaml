@@ -1,0 +1,29 @@
+easy_admin:
+    entities:
+        City:
+            class: 'Persona\Hris\Entity\City'
+            controller: 'Persona\Hris\Controller\Admin\CityController'
+            new:
+                title: 'Kota'
+            edit:
+                title: 'Edit Kota'
+            search:
+                title: 'Kota'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'region', label: 'Pripinsi', type: 'easyadmin_autocomplete' }
+                    - { property: 'code', label: 'Kode Kota' }
+                    - { property: 'name', label: 'Nama Kota' }
+            show:
+                title: 'Detil Kota'
+                fields:
+                    - { property: 'region', label: 'Pripinsi' }
+                    - { property: 'code', label: 'Kode Kota' }
+                    - { property: 'name', label: 'Nama Kota' }
+            list:
+                title: 'Kota'
+                fields:
+                    - { property: 'region', label: 'Pripinsi' }
+                    - { property: 'code', label: 'Kode Kota' }
+                    - { property: 'name', label: 'Nama Kota' }

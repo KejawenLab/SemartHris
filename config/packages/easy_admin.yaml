@@ -1,0 +1,4 @@
+easy_admin:
+    entities:
+        - Persona\Hris\Entity\SkillGroup
+        - Persona\Hris\Entity\Skill

@@ -1,0 +1,69 @@
+<?php
+
+namespace Persona\Hris\Component\Employee\Service;
+
+use Persona\Hris\Component\Employee\Model\EmployeeInterface;
+use Persona\Hris\Component\Employee\Repository\SupervisorRepositoryInterface;
+
+/**
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ */
+class EmployeeSupervisorChecker
+{
+    /**
+     * @var SupervisorRepositoryInterface
+     */
+    private $supervisorRepository;
+
+    /**
+     * @param SupervisorRepositoryInterface $supervisorRepository
+     */
+    public function __construct(SupervisorRepositoryInterface $supervisorRepository)
+    {
+        $this->supervisorRepository = $supervisorRepository;
+    }
+
+    /**
+     * @param EmployeeInterface $employee
+     * @param EmployeeInterface $supervisor
+     *
+     * @return bool
+     */
+    public function isAllowToSupervise(EmployeeInterface $employee, EmployeeInterface $supervisor): bool
+    {
+        $employeeJobTitle = $employee->getJobTitle();
+        $supervisorJobTitle = $supervisor->getJobTitle();
+
+        if (!$employeeJobTitle || !$supervisorJobTitle) {
+            return false;
+        }
+
+        if ($employeeJobTitle->getJobLevel()->getId() === $supervisorJobTitle->getJobLevel()->getId()) {
+            return false;
+        }
+
+        return $this->checkSupervisor($employee, $supervisor);
+    }
+
+    /**
+     * @param EmployeeInterface $employee
+     * @param EmployeeInterface $supervisor
+     *
+     * @return bool
+     */
+    private function checkSupervisor(EmployeeInterface $employee, EmployeeInterface $supervisor): bool
+    {
+        $allow = false;
+
+        $employeeSupervisor = $this->supervisorRepository->findByEmployee($employee);
+        if ($employeeSupervisor) {
+            if ($employeeSupervisor->getId() === $supervisor->getId()) {
+                $allow = true;
+            } else {
+                $this->checkSupervisor($employeeSupervisor, $supervisor);
+            }
+        }
+
+        return $allow;
+    }
+}

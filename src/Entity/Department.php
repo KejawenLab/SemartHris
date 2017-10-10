@@ -3,16 +3,17 @@
 namespace Persona\Hris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use Persona\Hris\Component\Reason\Model\ReasonInterface;
-use Persona\Hris\Component\Reason\Service\ValidateReasonType;
+use Persona\Hris\Component\Company\Model\CompanyInterface;
+use Persona\Hris\Component\Company\Model\DepartmentInterface;
 use Persona\Hris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="absent_reasons", indexes={@ORM\Index(name="absent_reasons_idx", columns={"code", "name"})})
+ * @ORM\Table(name="departments", indexes={@ORM\Index(name="departments_idx", columns={"code", "name"})})
  *
  * @ApiResource(
  *     attributes={
@@ -27,7 +28,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>
  */
-class Reason implements ReasonInterface
+class Department implements DepartmentInterface
 {
     /**
      * @Groups({"read", "write"})
@@ -40,15 +41,14 @@ class Reason implements ReasonInterface
     private $id;
 
     /**
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=1)
-     * @Assert\Length(max=1)
-     * @Assert\NotBlank()
-     * @Assert\Choice(callback="getReasonTypes")
+     * @Groups({"write", "read"})
+     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Department", fetch="EAGER")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     * @ApiSubresource()
      *
-     * @var string
+     * @var DepartmentInterface
      */
-    private $type;
+    private $parent;
 
     /**
      * @Groups({"read", "write"})
@@ -78,23 +78,19 @@ class Reason implements ReasonInterface
     }
 
     /**
-     * @return string
+     * @return DepartmentInterface
      */
-    public function getType(): string
+    public function getParent(): ? DepartmentInterface
     {
-        return ValidateReasonType::convertToText((string) $this->type);
+        return $this->parent;
     }
 
     /**
-     * @param string $type
+     * @param DepartmentInterface $parent
      */
-    public function setType(string $type)
+    public function setParent(DepartmentInterface $parent = null): void
     {
-        if (!ValidateReasonType::isValidType($type)) {
-            throw new \InvalidArgumentException(sprintf('%s is not valid type.', $type));
-        }
-
-        $this->type = $type;
+        $this->parent = $parent;
     }
 
     /**
@@ -134,14 +130,6 @@ class Reason implements ReasonInterface
      */
     public function __toString(): string
     {
-        return $this->getName();
-    }
-
-    /**
-     * @return array
-     */
-    public function getReasonTypes(): array
-    {
-        return ValidateReasonType::getReasonTypes();
+        return sprintf('%s - %s', $this->getCode(), $this->getName());
     }
 }

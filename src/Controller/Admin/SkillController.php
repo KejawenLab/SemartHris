@@ -12,10 +12,6 @@ class SkillController extends AdminController
 {
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this
-            ->container
-            ->get(SkillRepository::class)
-            ->createQueryBuilderForSearch($this->getDoctrine(), $searchQuery, $searchableFields, $sortField, $sortDirection, $dqlFilter)
-        ;
+        return SkillRepository::createQueryBuilderForSearch($this->getDoctrine(), $searchQuery, $searchableFields, $sortField, $sortDirection, $dqlFilter);
     }
 }

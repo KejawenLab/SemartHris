@@ -13,3 +13,4 @@ easy_admin:
             - { name: 'delete', icon: 'close', label: false }
     design:
         brand_color: '#ac2925'
+        form_theme: 'vertical'

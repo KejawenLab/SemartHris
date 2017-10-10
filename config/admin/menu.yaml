@@ -1,6 +1,11 @@
 easy_admin:
     design:
         menu:
+            - label: 'Perusahaan'
+              icon: 'building'
+              children:
+                  - { entity: 'Company', label: 'Perusahaan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'Department', label: 'Departemen', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
             - label: 'Pendidikan'
               icon: 'book'
               children:

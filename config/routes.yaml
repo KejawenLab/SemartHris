@@ -3,6 +3,7 @@
 #    defaults: { _controller: 'App\Controller\DefaultController::index' }
 
 # first, run composer req annotations
-#controllers:
-#    resource: ../src/Controller/
-#    type: annotation
+controllers:
+    resource: ../src/Controller/Admin
+    prefix: /admin
+    type: annotation

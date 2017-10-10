@@ -3,7 +3,7 @@ easy_admin:
         EducationalInstitute:
             class: 'Persona\Hris\Entity\EducationalInstitute'
             new:
-                title: 'Lembaga Pendidikan'
+                title: 'Tambah Lembaga Pendidikan'
             edit:
                 title: 'Edit Lembaga Pendidikan'
             search:

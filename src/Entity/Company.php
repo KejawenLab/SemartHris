@@ -199,4 +199,12 @@ class Company implements CompanyInterface
     {
         $this->taxNumber = $taxNumber;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return sprintf('%s - %s', $this->getCode(), $this->getName());
+    }
 }

@@ -1,0 +1,61 @@
+easy_admin:
+    entities:
+        Company:
+            class: 'Persona\Hris\Entity\Company'
+            new:
+                title: 'Tambah Perusahaan'
+            edit:
+                title: 'Edit Perusahaan'
+            search:
+                title: 'Perusahaan'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { property: 'parent', label: 'Perusahaan Induk', type: 'easyadmin_autocomplete' }
+                    - { property: 'code', label: 'Kode Perusahaan' }
+                    - { property: 'name', label: 'Nama Perusahaan' }
+                    - { property: 'birthDay', label: 'Tanggal Berdiri' }
+                    - { property: 'email', label: 'Alamat Email' }
+                    - { property: 'taxNumber', label: 'NPWP' }
+            show:
+                title: 'Detil Perusahaan'
+                fields:
+                    - { property: 'parent', label: 'Perusahaan Induk' }
+                    - { property: 'code', label: 'Kode Perusahaan' }
+                    - { property: 'name', label: 'Nama Perusahaan' }
+                    - { property: 'birthDay', label: 'Tanggal Berdiri' }
+                    - { property: 'email', label: 'Alamat Email' }
+                    - { property: 'taxNumber', label: 'NPWP' }
+            list:
+                title: 'Perusahaan'
+                actions:
+                    - { name: 'company_address', type: 'route', icon: 'university', label: false }
+                fields:
+                    - { property: 'parent', label: 'Perusahaan Induk' }
+                    - { property: 'code', label: 'Kode Perusahaan' }
+                    - { property: 'name', label: 'Nama Perusahaan' }
+
+        CompanyDepartment:
+            class: 'Persona\Hris\Entity\CompanyDepartment'
+            controller: 'Persona\Hris\Controller\Admin\CompanyController'
+            disabled_actions: ['search']
+            new:
+                title: 'Tambah Departemen Perusahaan'
+            edit:
+                title: 'Edit Departemen Perusahaan'
+            search:
+                title: 'Departemen Perusahaan'
+            form:
+                fields:
+                    - { property: 'company', label: 'Perusahaan', type: 'text', type_options: { attr: { read_only: true } } }
+                    - { property: 'department', label: 'Departemen', type: 'easyadmin_autocomplete' }
+            show:
+                title: 'Detil Departemen Perusahaan'
+                fields:
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'department', label: 'Departemen' }
+            list:
+                title: 'Departemen Perusahaan'
+                fields:
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'department', label: 'Departemen' }

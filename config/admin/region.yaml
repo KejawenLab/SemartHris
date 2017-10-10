@@ -3,7 +3,7 @@ easy_admin:
         Region:
             class: 'Persona\Hris\Entity\Region'
             new:
-                title: 'Propinsi'
+                title: 'Tambah Propinsi'
             edit:
                 title: 'Edit Propinsi'
             search:

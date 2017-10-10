@@ -3,7 +3,7 @@ easy_admin:
         SkillGroup:
             class: 'Persona\Hris\Entity\SkillGroup'
             new:
-                title: 'Grup Keahlian'
+                title: 'Tambah Grup Keahlian'
             edit:
                 title: 'Edit Grup Keahlian'
             search:

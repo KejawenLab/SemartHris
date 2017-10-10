@@ -4,7 +4,7 @@ easy_admin:
             class: 'Persona\Hris\Entity\Skill'
             controller: 'Persona\Hris\Controller\Admin\SkillController'
             new:
-                title: 'Keahlian'
+                title: 'Tambah Keahlian'
             edit:
                 title: 'Edit Keahlian'
             search:

@@ -4,7 +4,7 @@ easy_admin:
             class: 'Persona\Hris\Entity\City'
             controller: 'Persona\Hris\Controller\Admin\CityController'
             new:
-                title: 'Kota'
+                title: 'Tambah Kota'
             edit:
                 title: 'Edit Kota'
             search:

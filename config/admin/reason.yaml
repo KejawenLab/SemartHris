@@ -3,7 +3,7 @@ easy_admin:
         LeaveReason:
             class: 'Persona\Hris\Entity\Reason'
             new:
-                title: 'Alasan Cuti'
+                title: 'Tambah Alasan Cuti'
             edit:
                 title: 'Edit Cuti'
             search:
@@ -31,7 +31,7 @@ easy_admin:
         AbsentReason:
             class: 'Persona\Hris\Entity\Reason'
             new:
-                title: 'Alasan Ketidakhadiran'
+                title: 'Tambah Alasan Ketidakhadiran'
             edit:
                 title: 'Edit Alasan Ketidakhadiran'
             search:

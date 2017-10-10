@@ -13,14 +13,14 @@ interface DepartmentInterface
     public function getId(): string;
 
     /**
-     * @return null|CompanyInterface
+     * @return null|DepartmentInterface
      */
-    public function getCompany(): ? CompanyInterface;
+    public function getParent(): ? DepartmentInterface;
 
     /**
-     * @param CompanyInterface|null $company
+     * @param DepartmentInterface|null $department
      */
-    public function setCompany(CompanyInterface $company = null): void;
+    public function setParent(DepartmentInterface $department = null): void;
 
     /**
      * @return string

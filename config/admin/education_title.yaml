@@ -3,7 +3,7 @@ easy_admin:
         EducationTitle:
             class: 'Persona\Hris\Entity\EducationTitle'
             new:
-                title: 'Gelar Pendidikan'
+                title: 'Tambah Gelar Pendidikan'
             edit:
                 title: 'Edit Gelar Pendidikan'
             search:

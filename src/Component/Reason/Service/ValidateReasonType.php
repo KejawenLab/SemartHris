@@ -26,18 +26,11 @@ class ValidateReasonType
     }
 
     /**
-     * @param string $type
-     *
-     * @return bool
+     * @return array
      */
-    public static function isValidTypeText(string $type): bool
+    public static function getReasonTypes()
     {
-        $type = StringUtil::uppercase($type);
-        if (!in_array($type, [ReasonType::ABSENT_TEXT, ReasonType::LEAVE_TEXT])) {
-            return false;
-        }
-
-        return true;
+        return [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE];
     }
 
     /**

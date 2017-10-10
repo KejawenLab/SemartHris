@@ -12,7 +12,7 @@ use Persona\Hris\Entity\Skill;
  */
 class SkillRepository
 {
-    public function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    public static function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(Skill::class);
@@ -21,6 +21,7 @@ class SkillRepository
             ->select('entity')
             ->from(Skill::class, 'entity')
             ->join('entity.skillGroup', 'skillGroup')
+            ->orWhere('LOWER(entity.name) LIKE :query')
             ->orWhere('LOWER(skillGroup.name) LIKE :query')
             ->setParameter('query', '%'.strtolower($searchQuery).'%')
         ;

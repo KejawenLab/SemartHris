@@ -105,7 +105,7 @@ class Company implements CompanyInterface
     }
 
     /**
-     * @return CompanyInterface
+     * @return null|CompanyInterface
      */
     public function getParent(): ? CompanyInterface
     {
@@ -113,7 +113,7 @@ class Company implements CompanyInterface
     }
 
     /**
-     * @param CompanyInterface $parent
+     * @param CompanyInterface|null $parent
      */
     public function setParent(CompanyInterface $parent = null): void
     {
@@ -131,7 +131,7 @@ class Company implements CompanyInterface
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode(string $code): void
     {
         $this->code = StringUtil::uppercase($code);
     }
@@ -147,7 +147,7 @@ class Company implements CompanyInterface
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = StringUtil::uppercase($name);
     }
@@ -163,7 +163,7 @@ class Company implements CompanyInterface
     /**
      * @param \DateTimeInterface $birthDay
      */
-    public function setBirthDay(\DateTimeInterface $birthDay)
+    public function setBirthDay(\DateTimeInterface $birthDay): void
     {
         $this->birthDay = $birthDay;
     }
@@ -179,7 +179,7 @@ class Company implements CompanyInterface
     /**
      * @param string $email
      */
-    public function setEmail(string $email)
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
@@ -195,7 +195,7 @@ class Company implements CompanyInterface
     /**
      * @param string $taxNumber
      */
-    public function setTaxNumber(string $taxNumber)
+    public function setTaxNumber(string $taxNumber): void
     {
         $this->taxNumber = $taxNumber;
     }

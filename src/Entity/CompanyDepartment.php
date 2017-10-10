@@ -67,7 +67,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
     }
 
     /**
-     * @return DepartmentInterface
+     * @return null|DepartmentInterface
      */
     public function getDepartment(): ? DepartmentInterface
     {
@@ -83,7 +83,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
     }
 
     /**
-     * @return CompanyInterface
+     * @return null|CompanyInterface
      */
     public function getCompany(): ? CompanyInterface
     {

@@ -88,7 +88,7 @@ class Reason implements ReasonInterface
     /**
      * @param string $type
      */
-    public function setType(string $type)
+    public function setType(string $type): void
     {
         if (!ValidateReasonType::isValidType($type)) {
             throw new \InvalidArgumentException(sprintf('%s is not valid type.', $type));
@@ -134,7 +134,7 @@ class Reason implements ReasonInterface
      */
     public function __toString(): string
     {
-        return $this->getName();
+        return sprintf('%s: %s - %s', $this->getType(), $this->getCode(), $this->getName());
     }
 
     /**

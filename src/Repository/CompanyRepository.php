@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Persona\Hris\Component\Company\Model\CompanyInterface;
 use Persona\Hris\Entity\Company;
+use Persona\Hris\Entity\CompanyAddress;
 use Persona\Hris\Entity\CompanyDepartment;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -27,8 +28,7 @@ class CompanyRepository
 
     /**
      * @param EntityManagerInterface $entityManager
-     *
-     * @param SessionInterface $session
+     * @param SessionInterface       $session
      */
     public function initialize(EntityManagerInterface $entityManager, SessionInterface $session)
     {
@@ -50,16 +50,48 @@ class CompanyRepository
      * @param ManagerRegistry $managerRegistry
      * @param $searchQuery
      * @param array $searchableFields
-     * @param null $sortField
-     * @param null $sortDirection
-     * @param null $dqlFilter
+     * @param null  $sortField
+     * @param null  $sortDirection
+     * @param null  $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    public function createCompanyDepartmentQueryBuilder(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(CompanyDepartment::class);
+
+        return $this->buildSearch($entityManager, $sortField, $sortDirection, $dqlFilter);
+    }
+
+    /**
+     * @param ManagerRegistry $managerRegistry
+     * @param $searchQuery
+     * @param array $searchableFields
+     * @param null  $sortField
+     * @param null  $sortDirection
+     * @param null  $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    public function createCompanyAddressQueryBuilder(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    {
+        /* @var EntityManagerInterface $entityManager */
+        $entityManager = $managerRegistry->getManagerForClass(CompanyAddress::class);
+
+        return $this->buildSearch($entityManager, $sortField, $sortDirection, $dqlFilter);
+    }
+
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param null                   $sortField
+     * @param null                   $sortDirection
+     * @param null                   $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    private function buildSearch(EntityManagerInterface $entityManager, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    {
         /* @var QueryBuilder $queryBuilder */
         $queryBuilder = $entityManager->createQueryBuilder()
             ->select('entity')

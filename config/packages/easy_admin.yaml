@@ -8,7 +8,7 @@ easy_admin:
         max_results: 17
         actions:
             - { name: 'show', icon: 'search', label: false }
-            - { name: 'new', icon: 'plus-circle', 'css_class': 'btn btn-danger action-new', label: false }
+            - { name: 'new', icon: 'plus-circle', 'css_class': 'btn btn-success action-new', label: false }
             - { name: 'edit', icon: 'pencil', label: false }
             - { name: 'delete', icon: 'close', label: false }
     design:

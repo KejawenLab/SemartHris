@@ -4,13 +4,9 @@ namespace Persona\Hris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Util\LegacyFormHelper;
 use Persona\Hris\Component\Company\Model\CompanyDepartmentInterface;
-use Persona\Hris\Component\Company\Model\CompanyInterface;
 use Persona\Hris\DataTransformer\CompanyTransformer;
 use Persona\Hris\Entity\CompanyDepartment;
-use Persona\Hris\Entity\Department;
 use Persona\Hris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,7 +19,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
  *
  * @Route(path="/admin")
  */
-class CompanyController extends AdminController
+class CompanyAddressController extends AdminController
 {
     /**
      * @Route(path = "/company/address", name = "company_address")
@@ -32,7 +28,7 @@ class CompanyController extends AdminController
      *
      * @return Response
      */
-    public function companyAddressAction(Request $request)
+    public function addressPerCompanyAction(Request $request)
     {
         $company = $this->container->get(CompanyRepository::class)->find($request->query->get('id'));
         if (!$company) {
@@ -44,9 +40,9 @@ class CompanyController extends AdminController
 
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'list',
-            'sortField' => 'department',
+            'sortField' => 'default',
             'sortDirection' => 'DESC',
-            'entity' => 'CompanyDepartment',
+            'entity' => 'CompanyAddress',
         ));
     }
 
@@ -75,13 +71,14 @@ class CompanyController extends AdminController
     {
         $builder = $this->createFormBuilder($entity);
         $builder->add('company', TextType::class, ['attr' => ['readonly' => true]]);
-        $builder->add('department', EasyAdminAutocompleteType::class, ['class' => Department::class]);
+        //TODO
 
-        $company= $builder->get('company');
+        $company = $builder->get('company');
         $company->addModelTransformer($this->container->get(CompanyTransformer::class));
 
         return $builder;
     }
+
     /**
      * @param string $entityClass
      * @param string $searchQuery
@@ -94,6 +91,6 @@ class CompanyController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createQueryBuilderForSearch($this->getDoctrine(), $searchQuery, $searchableFields, $sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($this->getDoctrine(), $searchQuery, $searchableFields, $sortField, $sortDirection, $dqlFilter);
     }
 }

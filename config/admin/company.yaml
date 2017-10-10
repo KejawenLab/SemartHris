@@ -29,7 +29,8 @@ easy_admin:
             list:
                 title: 'Perusahaan'
                 actions:
-                    - { name: 'company_address', type: 'route', icon: 'university', label: false }
+                    - { name: 'company_department', type: 'route', icon: 'university', label: false }
+                    - { name: 'company_address', type: 'route', icon: 'book', label: false }
                 fields:
                     - { property: 'parent', label: 'Perusahaan Induk' }
                     - { property: 'code', label: 'Kode Perusahaan' }
@@ -37,18 +38,12 @@ easy_admin:
 
         CompanyDepartment:
             class: 'Persona\Hris\Entity\CompanyDepartment'
-            controller: 'Persona\Hris\Controller\Admin\CompanyController'
+            controller: 'Persona\Hris\Controller\Admin\CompanyDepartmentController'
             disabled_actions: ['search']
             new:
                 title: 'Tambah Departemen Perusahaan'
             edit:
                 title: 'Edit Departemen Perusahaan'
-            search:
-                title: 'Departemen Perusahaan'
-            form:
-                fields:
-                    - { property: 'company', label: 'Perusahaan', type: 'text', type_options: { attr: { read_only: true } } }
-                    - { property: 'department', label: 'Departemen', type: 'easyadmin_autocomplete' }
             show:
                 title: 'Detil Departemen Perusahaan'
                 fields:
@@ -59,3 +54,30 @@ easy_admin:
                 fields:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
+
+        CompanyAddress:
+            class: 'Persona\Hris\Entity\CompanyAddress'
+            controller: 'Persona\Hris\Controller\Admin\CompanyAddressController'
+            disabled_actions: ['search']
+            new:
+                title: 'Tambah Alamat Perusahaan'
+            edit:
+                title: 'Edit Alamat Perusahaan'
+            show:
+                title: 'Detil Alamat Perusahaan'
+                fields:
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'address', label: 'Alamat' }
+                    - { property: 'city', label: 'Kota' }
+                    - { property: 'region', label: 'Propinsi' }
+                    - { property: 'postalCode', label: 'Kode Pos' }
+                    - { property: 'phoneNumber', label: 'No. Telpon' }
+                    - { property: 'faxNumber', label: 'No. Fax' }
+            list:
+                title: 'Alamat Perusahaan'
+                fields:
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'address', label: 'Alamat' }
+                    - { property: 'city', label: 'Kota' }
+                    - { property: 'region', label: 'Propinsi' }
+                    - { property: 'postalCode', label: 'Kode Pos' }

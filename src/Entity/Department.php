@@ -5,7 +5,6 @@ namespace Persona\Hris\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use Persona\Hris\Component\Company\Model\CompanyInterface;
 use Persona\Hris\Component\Company\Model\DepartmentInterface;
 use Persona\Hris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -78,7 +77,7 @@ class Department implements DepartmentInterface
     }
 
     /**
-     * @return DepartmentInterface
+     * @return null|DepartmentInterface
      */
     public function getParent(): ? DepartmentInterface
     {

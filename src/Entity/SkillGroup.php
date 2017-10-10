@@ -105,6 +105,10 @@ class SkillGroup implements SkillGroupInterface
      */
     public function __toString(): string
     {
+        if ($this->getParent()) {
+            return sprintf('%s => %s', $this->getParent()->getName(), $this->getName());
+        }
+
         return $this->getName();
     }
 }

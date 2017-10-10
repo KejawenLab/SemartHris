@@ -104,6 +104,10 @@ class Skill implements SkillInterface
      */
     public function __toString(): string
     {
+        if ($this->getSkillGroup()) {
+            return sprintf('%s - %s', $this->getSkillGroup()->getName(), $this->getName());
+        }
+
         return $this->getName();
     }
 }

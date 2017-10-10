@@ -27,6 +27,7 @@ final class CompanyTransformer implements DataTransformerInterface
 
     /**
      * @param object $company
+     *
      * @return string
      */
     public function transform($company): string

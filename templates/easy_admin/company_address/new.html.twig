@@ -1,0 +1,46 @@
+{% extends '@EasyAdmin/default/new.html.twig' %}
+
+{% set _select2_locales = ['ar', 'az', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'is', 'it', 'ja', 'km', 'ko', 'lt', 'lv', 'mk', 'ms', 'nb', 'nl', 'pl', 'pt-BR', 'pt', 'ro', 'ru', 'sk', 'sr-Cyrl', 'sr', 'sv', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW'] %}
+{% set _app_language = app.request.locale|split('-')|first|split('_')|first %}
+{% set _select2_locale = app.request.locale in _select2_locales
+    ? app.request.locale
+    : _app_language in _select2_locales ? _app_language : 'en'
+%}
+
+{% block body_javascript %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(function() {
+            $(document).on('change', '.region-select', function () {
+                var citySelect = $('.city-select');
+                $.ajax({
+                    url: '/admin/region/' + $(this).val() + '/cities',
+                    type: 'GET',
+                    data: {},
+                    beforeSend: function () {},
+                    success: function (dataResponse) {
+                        var options = '<option value="">{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}</option>';
+
+                        $.each(dataResponse['cities'], function (idx, val) {
+                            options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                        });
+
+                        citySelect.html(options);
+                        citySelect.select2({
+                            theme: 'bootstrap',
+                            language: '{{ _select2_locale }}'
+                        });
+                    },
+                    error: function () {
+                        console.log('KO');
+                    }
+                });
+            });
+
+            $(document).on('change', '.city-select', function () {
+                $('.city-id').val($(this).val());
+            });
+        });
+    </script>
+{% endblock %}

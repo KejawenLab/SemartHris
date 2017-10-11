@@ -5,6 +5,7 @@ namespace Persona\Hris\Controller\Admin;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use Persona\Hris\Component\Company\Model\CompanyDepartmentInterface;
+use Persona\Hris\Component\Company\Model\CompanyInterface;
 use Persona\Hris\DataTransformer\CompanyTransformer;
 use Persona\Hris\Entity\CompanyDepartment;
 use Persona\Hris\Repository\CompanyRepository;
@@ -72,9 +73,12 @@ class CompanyDepartmentController extends AdminController
 
         $company = $builder->get('company');
         $company->addModelTransformer($this->container->get(CompanyTransformer::class));
-        $company->setData($entity->getCompany()->getId());
+        /** @var CompanyInterface $companyEntity */
+        if ($companyEntity = $entity->getCompany()) {
+            $company->setData($companyEntity->getId());
 
-        $builder->get('company_text')->setData($entity->getCompany());
+            $builder->get('company_text')->setData($companyEntity);
+        }
 
         return $builder;
     }

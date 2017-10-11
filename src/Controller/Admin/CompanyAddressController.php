@@ -4,11 +4,16 @@ namespace Persona\Hris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
+use Persona\Hris\Component\Address\Model\CityInterface;
 use Persona\Hris\Component\Company\Model\CompanyAddressInterface;
+use Persona\Hris\Component\Company\Model\CompanyInterface;
+use Persona\Hris\DataTransformer\CityTransformer;
 use Persona\Hris\DataTransformer\CompanyTransformer;
 use Persona\Hris\Entity\CompanyAddress;
 use Persona\Hris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -39,7 +44,7 @@ class CompanyAddressController extends AdminController
 
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'list',
-            'sortField' => 'default',
+            'sortField' => 'defaultAddress',
             'sortDirection' => 'DESC',
             'entity' => 'CompanyAddress',
         ));
@@ -72,9 +77,26 @@ class CompanyAddressController extends AdminController
 
         $company = $builder->get('company');
         $company->addModelTransformer($this->container->get(CompanyTransformer::class));
-        $company->setData($entity->getCompany()->getId());
+        /** @var CompanyInterface $companyEntity */
+        if ($companyEntity = $entity->getCompany()) {
+            $company->setData($companyEntity->getId());
 
-        $builder->get('company_text')->setData($entity->getCompany());
+            $builder->get('company_text')->setData($companyEntity);
+        }
+
+        $city = $builder->get('city');
+        $city->addModelTransformer($this->container->get(CityTransformer::class));
+        /** @var CityInterface $cityEntity */
+        if ($cityEntity = $entity->getCity()) {
+            $city->setData($cityEntity->getId());
+        }
+
+        $builder->addEventListener(FormEvents::PRE_SUBMIT,
+        function (FormEvent $event) {
+            $form = $event->getForm();
+            $form->remove('city_text');
+        }
+    );
 
         return $builder;
     }

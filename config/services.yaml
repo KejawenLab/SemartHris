@@ -8,6 +8,14 @@ services:
         calls:
             - [initialize, ['@Doctrine\ORM\EntityManagerInterface', '@session']]
 
+    Persona\Hris\Repository\CityRepository:
+        calls:
+            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', 'Persona\Hris\Entity\City']]
+
     Persona\Hris\DataTransformer\CompanyTransformer:
         arguments:
             - '@Persona\Hris\Repository\CompanyRepository'
+
+    Persona\Hris\DataTransformer\CityTransformer:
+        arguments:
+            - '@Persona\Hris\Repository\CityRepository'

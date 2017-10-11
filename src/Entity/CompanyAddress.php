@@ -10,7 +10,6 @@ use Persona\Hris\Component\Address\Model\RegionInterface;
 use Persona\Hris\Component\Company\Model\CompanyAddressInterface;
 use Persona\Hris\Component\Company\Model\CompanyInterface;
 use Persona\Hris\Util\StringUtil;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -24,10 +23,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "denormalization_context"={"groups"={"write"}}
  *     }
  * )
- *
- * @UniqueEntity({"company", "postalCode"})
- * @UniqueEntity({"company", "phoneNumber"})
- * @UniqueEntity({"company", "faxNumber"})
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>
  */
@@ -47,6 +42,7 @@ class CompanyAddress implements CompanyAddressInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      * @ApiSubresource()
      *
      * @var CompanyInterface
@@ -120,11 +116,11 @@ class CompanyAddress implements CompanyAddressInterface
      *
      * @var bool
      */
-    private $default;
+    private $defaultAddress;
 
     public function __construct()
     {
-        $this->default = true;
+        $this->defaultAddress = true;
     }
 
     /**
@@ -250,16 +246,16 @@ class CompanyAddress implements CompanyAddressInterface
     /**
      * @return bool
      */
-    public function isDefault(): bool
+    public function isDefaultAddress(): bool
     {
-        return $this->default;
+        return $this->defaultAddress;
     }
 
     /**
-     * @param bool $default
+     * @param bool $defaultAddress
      */
-    public function setDefault(bool $default): void
+    public function setDefaultAddress(bool $defaultAddress): void
     {
-        $this->default = $default;
+        $this->defaultAddress = $defaultAddress;
     }
 }

@@ -6,3 +6,5 @@ search:
     no_results: 'Tidak ada data yang ditampilkan'
 label:
     null: 'NULL'
+    true: 'ON'
+    false: 'OFF'

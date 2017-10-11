@@ -31,7 +31,12 @@ final class AddressRepositoryFactory
      */
     public function getRepositoryForClass(AddressInterface $address): AddressRepositoryInterface
     {
-        //TODO
+        $entityClass = get_class($address);
+        if (!$repository = $this->repositories[$entityClass]) {
+            throw new \InvalidArgumentException(sprintf('Repository for %s not found.', $entityClass));
+        }
+
+        return $repository;
     }
 
     /**

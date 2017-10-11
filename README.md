@@ -11,7 +11,8 @@ HRPersona adalah Human Resources Information System (HRIS) yang dapat digunakan 
 - [X] Master Propinsi dan Kota
 - [X] Master Keahlian dan Group Keahlian
 - [X] Master Perusahaan dan Department
-- [ ] Master Alamat Perusahaan
+- [X] Master Alamat Perusahaan
+- [ ] Remove Default Address When Default Address Submitted
 - [ ] Master Jabatan dan Level Jabatan
 - [ ] Menejemen Pengguna
 - [ ] Menejemen Karyawan

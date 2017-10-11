@@ -55,5 +55,5 @@ interface AddressInterface
     /**
      * @return bool
      */
-    public function isDefault(): bool;
+    public function isDefaultAddress(): bool;
 }

@@ -64,6 +64,9 @@ easy_admin:
             class: 'Persona\Hris\Entity\CompanyAddress'
             controller: 'Persona\Hris\Controller\Admin\CompanyAddressController'
             disabled_actions: ['search']
+            templates:
+                new: '/easy_admin/company_address/new.html.twig'
+                edit: '/easy_admin/company_address/new.html.twig'
             new:
                 title: 'Tambah Alamat Perusahaan'
             edit:
@@ -71,13 +74,15 @@ easy_admin:
             form:
                 fields:
                     - { property: 'company', type: 'hidden' }
-                    - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } }  }
+                    - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'address', label: 'Alamat' }
-                    - { property: 'region', label: 'Propinsi', type: 'easyadmin_autocomplete' }
-                    - { property: 'city', label: 'Kota', type: 'easyadmin_autocomplete' }
+                    - { property: 'region', label: 'Propinsi', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
+                    - { property: 'city', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
+                    - { property: 'city_text', label: 'Kota', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'postalCode', label: 'Kode Pos' }
                     - { property: 'phoneNumber', label: 'No. Telpon' }
                     - { property: 'faxNumber', label: 'No. Fax' }
+                    - { property: 'defaultAddress', label: 'Set Default' }
             show:
                 title: 'Detil Alamat Perusahaan'
                 fields:
@@ -88,6 +93,7 @@ easy_admin:
                     - { property: 'postalCode', label: 'Kode Pos' }
                     - { property: 'phoneNumber', label: 'No. Telpon' }
                     - { property: 'faxNumber', label: 'No. Fax' }
+                    - { property: 'defaultAddress', label: 'Set Default' }
             list:
                 title: 'Alamat Perusahaan'
                 fields:
@@ -96,3 +102,4 @@ easy_admin:
                     - { property: 'city', label: 'Kota' }
                     - { property: 'region', label: 'Propinsi' }
                     - { property: 'postalCode', label: 'Kode Pos' }
+                    - { property: 'defaultAddress', label: 'Default' }

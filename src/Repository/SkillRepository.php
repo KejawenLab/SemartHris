@@ -12,6 +12,16 @@ use Persona\Hris\Entity\Skill;
  */
 class SkillRepository
 {
+    /**
+     * @param ManagerRegistry $managerRegistry
+     * @param $searchQuery
+     * @param array $searchableFields
+     * @param null  $sortField
+     * @param null  $sortDirection
+     * @param null  $dqlFilter
+     *
+     * @return QueryBuilder
+     */
     public static function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
         /* @var EntityManagerInterface $entityManager */

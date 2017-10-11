@@ -10,6 +10,7 @@ use Persona\Hris\Component\Company\Model\CompanyInterface;
 use Persona\Hris\Component\Company\Model\DepartmentInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -42,6 +43,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      * @ApiSubresource()
      *
      * @var DepartmentInterface
@@ -52,6 +54,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * @
      * @ApiSubresource()
      *
      * @var CompanyInterface

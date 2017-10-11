@@ -44,6 +44,11 @@ easy_admin:
                 title: 'Tambah Departemen Perusahaan'
             edit:
                 title: 'Edit Departemen Perusahaan'
+            form:
+                fields:
+                    - { property: 'company', type: 'hidden' }
+                    - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } }  }
+                    - { property: 'department', label: 'Departemen' }
             show:
                 title: 'Detil Departemen Perusahaan'
                 fields:
@@ -63,6 +68,16 @@ easy_admin:
                 title: 'Tambah Alamat Perusahaan'
             edit:
                 title: 'Edit Alamat Perusahaan'
+            form:
+                fields:
+                    - { property: 'company', type: 'hidden' }
+                    - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } }  }
+                    - { property: 'address', label: 'Alamat' }
+                    - { property: 'region', label: 'Propinsi', type: 'easyadmin_autocomplete' }
+                    - { property: 'city', label: 'Kota', type: 'easyadmin_autocomplete' }
+                    - { property: 'postalCode', label: 'Kode Pos' }
+                    - { property: 'phoneNumber', label: 'No. Telpon' }
+                    - { property: 'faxNumber', label: 'No. Fax' }
             show:
                 title: 'Detil Alamat Perusahaan'
                 fields:

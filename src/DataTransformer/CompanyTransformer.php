@@ -36,7 +36,7 @@ final class CompanyTransformer implements DataTransformerInterface
             return '';
         }
 
-        return $company;
+        return $company->getId();
     }
 
     /**

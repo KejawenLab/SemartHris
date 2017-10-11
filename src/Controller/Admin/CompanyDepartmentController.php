@@ -4,14 +4,11 @@ namespace Persona\Hris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType;
 use Persona\Hris\Component\Company\Model\CompanyDepartmentInterface;
 use Persona\Hris\DataTransformer\CompanyTransformer;
 use Persona\Hris\Entity\CompanyDepartment;
-use Persona\Hris\Entity\Department;
 use Persona\Hris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -71,12 +68,13 @@ class CompanyDepartmentController extends AdminController
      */
     protected function createEntityFormBuilder($entity, $view)
     {
-        $builder = $this->createFormBuilder($entity);
-        $builder->add('company', TextType::class, ['attr' => ['readonly' => true]]);
-        $builder->add('department', EasyAdminAutocompleteType::class, ['class' => Department::class]);
+        $builder = parent::createEntityFormBuilder($entity, $view);
 
         $company = $builder->get('company');
         $company->addModelTransformer($this->container->get(CompanyTransformer::class));
+        $company->setData($entity->getCompany()->getId());
+
+        $builder->get('company_text')->setData($entity->getCompany());
 
         return $builder;
     }

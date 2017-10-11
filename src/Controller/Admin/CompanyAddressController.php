@@ -4,12 +4,11 @@ namespace Persona\Hris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use Persona\Hris\Component\Company\Model\CompanyDepartmentInterface;
+use Persona\Hris\Component\Company\Model\CompanyAddressInterface;
 use Persona\Hris\DataTransformer\CompanyTransformer;
-use Persona\Hris\Entity\CompanyDepartment;
+use Persona\Hris\Entity\CompanyAddress;
 use Persona\Hris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -47,15 +46,15 @@ class CompanyAddressController extends AdminController
     }
 
     /**
-     * @return CompanyDepartmentInterface
+     * @return CompanyAddressInterface
      */
-    protected function createNewEntity(): CompanyDepartmentInterface
+    protected function createNewEntity(): CompanyAddressInterface
     {
         if (!$companyId = $this->get('session')->get('companyId')) {
             throw new AccessDeniedHttpException();
         }
 
-        $entity = new CompanyDepartment();
+        $entity = new CompanyAddress();
         $entity->setCompany($this->container->get(CompanyRepository::class)->find($companyId));
 
         return $entity;
@@ -69,12 +68,13 @@ class CompanyAddressController extends AdminController
      */
     protected function createEntityFormBuilder($entity, $view)
     {
-        $builder = $this->createFormBuilder($entity);
-        $builder->add('company', TextType::class, ['attr' => ['readonly' => true]]);
-        //TODO
+        $builder = parent::createEntityFormBuilder($entity, $view);
 
         $company = $builder->get('company');
         $company->addModelTransformer($this->container->get(CompanyTransformer::class));
+        $company->setData($entity->getCompany()->getId());
+
+        $builder->get('company_text')->setData($entity->getCompany());
 
         return $builder;
     }

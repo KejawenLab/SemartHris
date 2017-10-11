@@ -66,6 +66,7 @@ class CompanyAddress implements CompanyAddressInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      * @ApiSubresource()
      *
      * @var RegionInterface
@@ -76,6 +77,7 @@ class CompanyAddress implements CompanyAddressInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\City", fetch="EAGER")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      * @ApiSubresource()
      *
      * @var CityInterface

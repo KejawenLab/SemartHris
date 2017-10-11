@@ -1,6 +1,6 @@
-# HRPersona
+# SemarHris
 
-HRPersona adalah Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
+SemarHris adalah Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
 
 ## Heavy Development
 

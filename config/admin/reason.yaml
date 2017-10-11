@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         LeaveReason:
-            class: 'Persona\Hris\Entity\Reason'
+            class: 'KejawenLab\Application\SemarHris\Entity\Reason'
             new:
                 title: 'Tambah Alasan Cuti'
             edit:
@@ -29,7 +29,7 @@ easy_admin:
                     - { property: 'name', label: 'Alasan' }
 
         AbsentReason:
-            class: 'Persona\Hris\Entity\Reason'
+            class: 'KejawenLab\Application\SemarHris\Entity\Reason'
             new:
                 title: 'Tambah Alasan Ketidakhadiran'
             edit:

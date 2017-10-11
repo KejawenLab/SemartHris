@@ -1,10 +1,10 @@
 <?php
 
-namespace Persona\Hris\Component\Job\Model;
+namespace KejawenLab\Application\SemarHris\Component\Job\Model;
 
-use Persona\Hris\Component\Company\Model\CompanyInterface;
-use Persona\Hris\Component\Company\Model\DepartmentInterface;
-use Persona\Hris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

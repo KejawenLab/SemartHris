@@ -1,9 +1,9 @@
 <?php
 
-namespace Persona\Hris\Controller\Admin;
+namespace KejawenLab\Application\SemarHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use Persona\Hris\Repository\SkillRepository;
+use KejawenLab\Application\SemarHris\Repository\SkillRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

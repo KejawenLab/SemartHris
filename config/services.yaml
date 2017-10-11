@@ -4,18 +4,18 @@ parameters:
     locale: 'id'
 
 services:
-    Persona\Hris\Repository\CompanyRepository:
+    KejawenLab\Application\SemarHris\Repository\CompanyRepository:
         calls:
             - [initialize, ['@Doctrine\ORM\EntityManagerInterface', '@session']]
 
-    Persona\Hris\Repository\CityRepository:
+    KejawenLab\Application\SemarHris\Repository\CityRepository:
         calls:
-            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', 'Persona\Hris\Entity\City']]
+            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemarHris\Entity\City']]
 
-    Persona\Hris\DataTransformer\CompanyTransformer:
+    KejawenLab\Application\SemarHris\DataTransformer\CompanyTransformer:
         arguments:
-            - '@Persona\Hris\Repository\CompanyRepository'
+            - '@KejawenLab\Application\SemarHris\Repository\CompanyRepository'
 
-    Persona\Hris\DataTransformer\CityTransformer:
+    KejawenLab\Application\SemarHris\DataTransformer\CityTransformer:
         arguments:
-            - '@Persona\Hris\Repository\CityRepository'
+            - '@KejawenLab\Application\SemarHris\Repository\CityRepository'

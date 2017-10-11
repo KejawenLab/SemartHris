@@ -1,14 +1,14 @@
 <?php
 
-namespace Persona\Hris\Controller\Admin;
+namespace KejawenLab\Application\SemarHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use Persona\Hris\Component\Company\Model\CompanyDepartmentInterface;
-use Persona\Hris\Component\Company\Model\CompanyInterface;
-use Persona\Hris\DataTransformer\CompanyTransformer;
-use Persona\Hris\Entity\CompanyDepartment;
-use Persona\Hris\Repository\CompanyRepository;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyDepartmentInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemarHris\DataTransformer\CompanyTransformer;
+use KejawenLab\Application\SemarHris\Entity\CompanyDepartment;
+use KejawenLab\Application\SemarHris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

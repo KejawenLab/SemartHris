@@ -1,6 +1,6 @@
 <?php
 
-namespace Persona\Hris\Component\Skill;
+namespace KejawenLab\Application\SemarHris\Component\Skill;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

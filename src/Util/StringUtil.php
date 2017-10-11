@@ -1,6 +1,6 @@
 <?php
 
-namespace Persona\Hris\Util;
+namespace KejawenLab\Application\SemarHris\Util;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>

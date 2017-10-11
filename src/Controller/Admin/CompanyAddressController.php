@@ -1,16 +1,16 @@
 <?php
 
-namespace Persona\Hris\Controller\Admin;
+namespace KejawenLab\Application\SemarHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use Persona\Hris\Component\Address\Model\CityInterface;
-use Persona\Hris\Component\Company\Model\CompanyAddressInterface;
-use Persona\Hris\Component\Company\Model\CompanyInterface;
-use Persona\Hris\DataTransformer\CityTransformer;
-use Persona\Hris\DataTransformer\CompanyTransformer;
-use Persona\Hris\Entity\CompanyAddress;
-use Persona\Hris\Repository\CompanyRepository;
+use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyAddressInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemarHris\DataTransformer\CityTransformer;
+use KejawenLab\Application\SemarHris\DataTransformer\CompanyTransformer;
+use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
+use KejawenLab\Application\SemarHris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;

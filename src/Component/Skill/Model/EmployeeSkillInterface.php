@@ -1,9 +1,9 @@
 <?php
 
-namespace Persona\Hris\Component\Skill\Model;
+namespace KejawenLab\Application\SemarHris\Component\Skill\Model;
 
-use Persona\Hris\Component\Employee\Model\EmployeeInterface;
-use Persona\Hris\Component\Skill\SkillLevel;
+use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemarHris\Component\Skill\SkillLevel;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

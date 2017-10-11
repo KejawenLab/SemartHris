@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         SkillGroup:
-            class: 'Persona\Hris\Entity\SkillGroup'
+            class: 'KejawenLab\Application\SemarHris\Entity\SkillGroup'
             new:
                 title: 'Tambah Grup Keahlian'
             edit:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Persona\Hris;
+namespace KejawenLab\Application\SemarHris;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;

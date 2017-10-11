@@ -1,8 +1,8 @@
 easy_admin:
     entities:
         Skill:
-            class: 'Persona\Hris\Entity\Skill'
-            controller: 'Persona\Hris\Controller\Admin\SkillController'
+            class: 'KejawenLab\Application\SemarHris\Entity\Skill'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\SkillController'
             new:
                 title: 'Tambah Keahlian'
             edit:

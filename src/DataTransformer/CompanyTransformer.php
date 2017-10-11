@@ -1,9 +1,9 @@
 <?php
 
-namespace Persona\Hris\DataTransformer;
+namespace KejawenLab\Application\SemarHris\DataTransformer;
 
-use Persona\Hris\Component\Company\Model\CompanyInterface;
-use Persona\Hris\Repository\CompanyRepository;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemarHris\Repository\CompanyRepository;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 

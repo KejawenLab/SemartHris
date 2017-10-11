@@ -1,13 +1,13 @@
 <?php
 
-namespace Persona\Hris\Entity;
+namespace KejawenLab\Application\SemarHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use Persona\Hris\Component\Skill\Model\SkillGroupInterface;
-use Persona\Hris\Component\Skill\Model\SkillInterface;
-use Persona\Hris\Util\StringUtil;
+use KejawenLab\Application\SemarHris\Component\Skill\Model\SkillGroupInterface;
+use KejawenLab\Application\SemarHris\Component\Skill\Model\SkillInterface;
+use KejawenLab\Application\SemarHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -41,7 +41,7 @@ class Skill implements SkillInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\SkillGroup", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\SkillGroup", fetch="EAGER")
      * @ORM\JoinColumn(name="skill_group_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()

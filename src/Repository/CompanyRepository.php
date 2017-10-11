@@ -1,14 +1,14 @@
 <?php
 
-namespace Persona\Hris\Repository;
+namespace KejawenLab\Application\SemarHris\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
-use Persona\Hris\Component\Company\Model\CompanyInterface;
-use Persona\Hris\Entity\Company;
-use Persona\Hris\Entity\CompanyAddress;
-use Persona\Hris\Entity\CompanyDepartment;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemarHris\Entity\Company;
+use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
+use KejawenLab\Application\SemarHris\Entity\CompanyDepartment;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**

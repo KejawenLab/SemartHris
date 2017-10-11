@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Company:
-            class: 'Persona\Hris\Entity\Company'
+            class: 'KejawenLab\Application\SemarHris\Entity\Company'
             new:
                 title: 'Tambah Perusahaan'
             edit:
@@ -37,8 +37,8 @@ easy_admin:
                     - { property: 'name', label: 'Nama Perusahaan' }
 
         CompanyDepartment:
-            class: 'Persona\Hris\Entity\CompanyDepartment'
-            controller: 'Persona\Hris\Controller\Admin\CompanyDepartmentController'
+            class: 'KejawenLab\Application\SemarHris\Entity\CompanyDepartment'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyDepartmentController'
             disabled_actions: ['search']
             new:
                 title: 'Tambah Departemen Perusahaan'
@@ -61,8 +61,8 @@ easy_admin:
                     - { property: 'department', label: 'Departemen' }
 
         CompanyAddress:
-            class: 'Persona\Hris\Entity\CompanyAddress'
-            controller: 'Persona\Hris\Controller\Admin\CompanyAddressController'
+            class: 'KejawenLab\Application\SemarHris\Entity\CompanyAddress'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyAddressController'
             disabled_actions: ['search']
             templates:
                 new: '/easy_admin/company_address/new.html.twig'

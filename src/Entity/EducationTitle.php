@@ -1,11 +1,11 @@
 <?php
 
-namespace Persona\Hris\Entity;
+namespace KejawenLab\Application\SemarHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Persona\Hris\Component\Education\Model\EducationTitleInterface;
-use Persona\Hris\Util\StringUtil;
+use KejawenLab\Application\SemarHris\Component\Education\Model\EducationTitleInterface;
+use KejawenLab\Application\SemarHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 

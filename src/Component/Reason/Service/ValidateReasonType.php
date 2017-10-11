@@ -1,9 +1,9 @@
 <?php
 
-namespace Persona\Hris\Component\Reason\Service;
+namespace KejawenLab\Application\SemarHris\Component\Reason\Service;
 
-use Persona\Hris\Component\Reason\ReasonType;
-use Persona\Hris\Util\StringUtil;
+use KejawenLab\Application\SemarHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemarHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

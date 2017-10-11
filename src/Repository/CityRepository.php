@@ -1,14 +1,14 @@
 <?php
 
-namespace Persona\Hris\Repository;
+namespace KejawenLab\Application\SemarHris\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Persona\Hris\Component\Address\Model\CityInterface;
-use Persona\Hris\Component\Address\Repository\CityRepositoryInterface;
-use Persona\Hris\Entity\City;
+use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemarHris\Component\Address\Repository\CityRepositoryInterface;
+use KejawenLab\Application\SemarHris\Entity\City;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

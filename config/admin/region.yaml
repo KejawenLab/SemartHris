@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Region:
-            class: 'Persona\Hris\Entity\Region'
+            class: 'KejawenLab\Application\SemarHris\Entity\Region'
             new:
                 title: 'Tambah Propinsi'
             edit:

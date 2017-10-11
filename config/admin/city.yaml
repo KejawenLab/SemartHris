@@ -1,8 +1,8 @@
 easy_admin:
     entities:
         City:
-            class: 'Persona\Hris\Entity\City'
-            controller: 'Persona\Hris\Controller\Admin\CityController'
+            class: 'KejawenLab\Application\SemarHris\Entity\City'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CityController'
             new:
                 title: 'Tambah Kota'
             edit:

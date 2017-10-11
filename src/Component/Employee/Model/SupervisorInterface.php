@@ -1,6 +1,6 @@
 <?php
 
-namespace Persona\Hris\Component\Employee\Model;
+namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

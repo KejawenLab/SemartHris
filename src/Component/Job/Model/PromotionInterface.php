@@ -1,8 +1,8 @@
 <?php
 
-namespace Persona\Hris\Component\Job\Model;
+namespace KejawenLab\Application\SemarHris\Component\Job\Model;
 
-use Persona\Hris\Component\Job\MutationType;
+use KejawenLab\Application\SemarHris\Component\Job\MutationType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

@@ -6,9 +6,9 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
-            Persona\Hris:
+            KejawenLab\Application\SemarHris:
                 is_bundle: false
                 type: annotation
                 dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'Persona\Hris\Entity\'
-                alias: Persona\Hris
+                prefix: 'KejawenLab\Application\SemarHris\Entity\'
+                alias: KejawenLab\Application\SemarHris

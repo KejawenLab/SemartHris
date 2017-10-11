@@ -1,8 +1,8 @@
 <?php
 
-namespace Persona\Hris\Component\Employee\Repository;
+namespace KejawenLab\Application\SemarHris\Component\Employee\Repository;
 
-use Persona\Hris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

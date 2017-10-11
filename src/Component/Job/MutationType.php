@@ -1,6 +1,6 @@
 <?php
 
-namespace Persona\Hris\Component\Job;
+namespace KejawenLab\Application\SemarHris\Component\Job;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

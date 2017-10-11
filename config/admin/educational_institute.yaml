@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         EducationalInstitute:
-            class: 'Persona\Hris\Entity\EducationalInstitute'
+            class: 'KejawenLab\Application\SemarHris\Entity\EducationalInstitute'
             new:
                 title: 'Tambah Lembaga Pendidikan'
             edit:

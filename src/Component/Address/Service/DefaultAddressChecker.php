@@ -1,9 +1,9 @@
 <?php
 
-namespace Persona\Hris\Component\Address\Service;
+namespace KejawenLab\Application\SemarHris\Component\Address\Service;
 
-use Persona\Hris\Component\Address\Model\AddressInterface;
-use Persona\Hris\Component\Address\Repository\AddressRepositoryFactory;
+use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
+use KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

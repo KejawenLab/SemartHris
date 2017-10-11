@@ -1,15 +1,15 @@
 <?php
 
-namespace Persona\Hris\Entity;
+namespace KejawenLab\Application\SemarHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use Persona\Hris\Component\Address\Model\CityInterface;
-use Persona\Hris\Component\Address\Model\RegionInterface;
-use Persona\Hris\Component\Company\Model\CompanyAddressInterface;
-use Persona\Hris\Component\Company\Model\CompanyInterface;
-use Persona\Hris\Util\StringUtil;
+use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemarHris\Component\Address\Model\RegionInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyAddressInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemarHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -40,7 +40,7 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Company", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -60,7 +60,7 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Region", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -71,7 +71,7 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\City", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\City", fetch="EAGER")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()

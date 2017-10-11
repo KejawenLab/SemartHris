@@ -1,8 +1,8 @@
 <?php
 
-namespace Persona\Hris\Component\Employee\Model;
+namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
 
-use Persona\Hris\Component\Employee\ContractType;
+use KejawenLab\Application\SemarHris\Component\Employee\ContractType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

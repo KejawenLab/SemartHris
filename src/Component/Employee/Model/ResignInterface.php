@@ -1,8 +1,8 @@
 <?php
 
-namespace Persona\Hris\Component\Employee\Model;
+namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
 
-use Persona\Hris\Component\Reason\Model\ReasonInterface;
+use KejawenLab\Application\SemarHris\Component\Reason\Model\ReasonInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

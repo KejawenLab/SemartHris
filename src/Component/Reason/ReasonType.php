@@ -1,6 +1,6 @@
 <?php
 
-namespace Persona\Hris\Component\Reason;
+namespace KejawenLab\Application\SemarHris\Component\Reason;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

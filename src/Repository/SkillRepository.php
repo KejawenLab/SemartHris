@@ -1,11 +1,11 @@
 <?php
 
-namespace Persona\Hris\Repository;
+namespace KejawenLab\Application\SemarHris\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
-use Persona\Hris\Entity\Skill;
+use KejawenLab\Application\SemarHris\Entity\Skill;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

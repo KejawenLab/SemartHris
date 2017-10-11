@@ -1,11 +1,11 @@
 <?php
 
-namespace Persona\Hris\Component\Employee\Model;
+namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
 
-use Persona\Hris\Component\Address\Model\CityInterface;
-use Persona\Hris\Component\Education\Model\EducationalInstituteInterface;
-use Persona\Hris\Component\Education\Model\EducationTitleInterface;
-use Persona\Hris\Component\Employee\FamilyRelation;
+use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemarHris\Component\Education\Model\EducationalInstituteInterface;
+use KejawenLab\Application\SemarHris\Component\Education\Model\EducationTitleInterface;
+use KejawenLab\Application\SemarHris\Component\Employee\FamilyRelation;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>

@@ -1,10 +1,10 @@
 <?php
 
-namespace Persona\Hris\Controller\Admin;
+namespace KejawenLab\Application\SemarHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use Persona\Hris\Repository\CityRepository;
+use KejawenLab\Application\SemarHris\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

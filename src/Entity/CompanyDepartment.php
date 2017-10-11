@@ -1,13 +1,13 @@
 <?php
 
-namespace Persona\Hris\Entity;
+namespace KejawenLab\Application\SemarHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use Persona\Hris\Component\Company\Model\CompanyDepartmentInterface;
-use Persona\Hris\Component\Company\Model\CompanyInterface;
-use Persona\Hris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyDepartmentInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -41,7 +41,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Department", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -52,7 +52,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="Persona\Hris\Entity\Company", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      * @
      * @ApiSubresource()

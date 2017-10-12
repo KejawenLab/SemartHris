@@ -12,6 +12,7 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
+                    - { type: 'group', label: 'Informasi Kota', icon: 'book', css_class: 'col-sm-12' }
                     - { property: 'region', label: 'Pripinsi', type: 'easyadmin_autocomplete' }
                     - { property: 'code', label: 'Kode Kota' }
                     - { property: 'name', label: 'Nama Kota' }
@@ -27,3 +28,28 @@ easy_admin:
                     - { property: 'region', label: 'Pripinsi' }
                     - { property: 'code', label: 'Kode Kota' }
                     - { property: 'name', label: 'Nama Kota' }
+
+        Region:
+            class: 'KejawenLab\Application\SemarHris\Entity\Region'
+            new:
+                title: 'Tambah Propinsi'
+            edit:
+                title: 'Edit Propinsi'
+            search:
+                title: 'Propinsi'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { type: 'group', label: 'Informasi Propinsi', icon: 'book', css_class: 'col-sm-12' }
+                    - { property: 'code', label: 'Kode Propinsi' }
+                    - { property: 'name', label: 'Nama Propinsi' }
+            show:
+                title: 'Detil Propinsi'
+                fields:
+                    - { property: 'code', label: 'Kode Propinsi' }
+                    - { property: 'name', label: 'Nama Propinsi' }
+            list:
+                title: 'Propinsi'
+                fields:
+                    - { property: 'code', label: 'Kode Propinsi' }
+                    - { property: 'name', label: 'Nama Propinsi' }

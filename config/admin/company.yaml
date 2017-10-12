@@ -11,10 +11,12 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
+                    - { type: 'group', label: '', css_class: 'col-sm-6' }
                     - { property: 'parent', label: 'Perusahaan Induk', type: 'easyadmin_autocomplete' }
                     - { property: 'code', label: 'Kode Perusahaan' }
                     - { property: 'name', label: 'Nama Perusahaan' }
-                    - { property: 'birthDay', label: 'Tanggal Berdiri' }
+                    - { type: 'group', label: '', css_class: 'col-sm-6' }
+                    - { property: 'birthDay', label: 'Tanggal Berdiri', type_options: { placeholder: { year: 'Tahun', month: 'Bulan', day: 'Tanggal' } } }
                     - { property: 'email', label: 'Alamat Email' }
                     - { property: 'taxNumber', label: 'NPWP' }
             show:
@@ -36,6 +38,34 @@ easy_admin:
                     - { property: 'code', label: 'Kode Perusahaan' }
                     - { property: 'name', label: 'Nama Perusahaan' }
 
+        Department:
+            class: 'KejawenLab\Application\SemarHris\Entity\Department'
+            new:
+                title: 'Tambah Departemen'
+            edit:
+                title: 'Edit Departemen'
+            search:
+                title: 'Departemen'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { type: 'group', label: 'Informasi Departemen', icon: 'book', css_class: 'col-sm-12' }
+                    - { property: 'parent', label: 'Departemen Induk', type: 'easyadmin_autocomplete' }
+                    - { property: 'code', label: 'Kode Departemen' }
+                    - { property: 'name', label: 'Nama Departemen' }
+            show:
+                title: 'Detil Departemen'
+                fields:
+                    - { property: 'parent', label: 'Departemen Induk' }
+                    - { property: 'code', label: 'Kode Departemen' }
+                    - { property: 'name', label: 'Nama Departemen' }
+            list:
+                title: 'Departemen'
+                fields:
+                    - { property: 'parent', label: 'Departemen Induk' }
+                    - { property: 'code', label: 'Kode Departemen' }
+                    - { property: 'name', label: 'Nama Departemen' }
+
         CompanyDepartment:
             class: 'KejawenLab\Application\SemarHris\Entity\CompanyDepartment'
             controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyDepartmentController'
@@ -46,6 +76,7 @@ easy_admin:
                 title: 'Edit Departemen Perusahaan'
             form:
                 fields:
+                    - { type: 'group', label: 'Informasi Departemen Perusahaan', icon: 'book', css_class: 'col-sm-12' }
                     - { property: 'company', type: 'hidden' }
                     - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } }  }
                     - { property: 'department', label: 'Departemen' }
@@ -73,6 +104,7 @@ easy_admin:
                 title: 'Edit Alamat Perusahaan'
             form:
                 fields:
+                    - { type: 'group', label: 'Informasi Alamat Perusahaan', icon: 'book', css_class: 'col-sm-6' }
                     - { property: 'company', type: 'hidden' }
                     - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'address', label: 'Alamat' }
@@ -80,9 +112,10 @@ easy_admin:
                     - { property: 'city', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
                     - { property: 'city_text', label: 'Kota', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'postalCode', label: 'Kode Pos' }
+                    - { property: 'defaultAddress', label: 'Set Default' }
+                    - { type: 'group', label: 'Informasi Kontak Perusahaan', icon: 'phone', css_class: 'col-sm-6' }
                     - { property: 'phoneNumber', label: 'No. Telpon' }
                     - { property: 'faxNumber', label: 'No. Fax' }
-                    - { property: 'defaultAddress', label: 'Set Default' }
             show:
                 title: 'Detil Alamat Perusahaan'
                 fields:

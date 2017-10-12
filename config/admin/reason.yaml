@@ -5,12 +5,13 @@ easy_admin:
             new:
                 title: 'Tambah Alasan Cuti'
             edit:
-                title: 'Edit Cuti'
+                title: 'Edit Alasan Cuti'
             search:
                 title: 'Alasan Cuti'
                 fields: ['code', 'name']
             form:
                 fields:
+                    - { type: 'group', label: 'Informasi Alasan Cuti', icon: 'book', css_class: 'col-sm-12' }
                     - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'l', choices: { CUTI: 'l' } } }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
@@ -39,6 +40,7 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
+                    - { type: 'group', label: 'Informasi Alasan Ketidakhadiran', icon: 'book', css_class: 'col-sm-12' }
                     - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'a', choices: { ABSENSI: 'a' } } }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }

@@ -1,14 +1,14 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Reason\Service;
+namespace KejawenLab\Application\SemarHris\Component\Employee\Service;
 
-use KejawenLab\Application\SemarHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemarHris\Component\Employee\MaritalStatus;
 use KejawenLab\Application\SemarHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateReasonType
+class ValidateMaritalStatus
 {
     /**
      * @param string $type
@@ -18,7 +18,11 @@ class ValidateReasonType
     public static function isValidType(string $type): bool
     {
         $type = StringUtil::lowercase($type);
-        if (!in_array($type, [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE])) {
+        if (!in_array($type, [
+            MaritalStatus::DISVORCE,
+            MaritalStatus::MARRIED,
+            MaritalStatus::SINGLE,
+        ])) {
             return false;
         }
 
@@ -30,7 +34,11 @@ class ValidateReasonType
      */
     public static function getReasonTypes()
     {
-        return [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE];
+        return [
+            MaritalStatus::DISVORCE,
+            MaritalStatus::MARRIED,
+            MaritalStatus::SINGLE,
+        ];
     }
 
     /**
@@ -40,7 +48,11 @@ class ValidateReasonType
      */
     public static function convertToText(string $type): string
     {
-        $types = [ReasonType::LEAVE_CODE => ReasonType::LEAVE_TEXT, ReasonType::ABSENT_CODE => ReasonType::ABSENT_TEXT];
+        $types = [
+            MaritalStatus::SINGLE => MaritalStatus::SINGLE_TEXT,
+            MaritalStatus::MARRIED => MaritalStatus::MARRIED_TEXT,
+            MaritalStatus::DISVORCE => MaritalStatus::DISVORCE_TEXT,
+        ];
 
         if (self::isValidType($type)) {
             return $types[$type];

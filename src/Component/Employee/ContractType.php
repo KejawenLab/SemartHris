@@ -11,4 +11,9 @@ final class ContractType
     const TEMPORARY = 't';
     const OUTSOURCE = 'o';
     const INTERSHIP = 'i';
+
+    const PERMANENT_TEXT = 'KARYAWAN TETAP';
+    const TEMPORARY_TEXT = 'KARYAWAN KONTRAK';
+    const OUTSOURCE_TEXT = 'KARYAWAN OUTSOURCE';
+    const INTERSHIP_TEXT = 'KARYAWAN MAGANG';
 }

@@ -12,6 +12,7 @@ easy_admin:
                 fields: ['name']
             form:
                 fields:
+                    - { type: 'group', label: 'Informasi Keahlian', icon: 'book', css_class: 'col-sm-12' }
                     - { property: 'skillGroup', label: 'Grup Keahlian', type: 'easyadmin_autocomplete' }
                     - { property: 'name', label: 'Keahlian' }
             show:
@@ -24,3 +25,28 @@ easy_admin:
                 fields:
                     - { property: 'skillGroup', label: 'Grup Keahlian' }
                     - { property: 'name', label: 'Keahlian' }
+
+        SkillGroup:
+            class: 'KejawenLab\Application\SemarHris\Entity\SkillGroup'
+            new:
+                title: 'Tambah Grup Keahlian'
+            edit:
+                title: 'Edit Grup Keahlian'
+            search:
+                title: 'Grup Keahlian'
+                fields: ['name']
+            form:
+                fields:
+                    - { type: 'group', label: 'Informasi Grup Keahlian', icon: 'book', css_class: 'col-sm-12' }
+                    - { property: 'parent', label: 'Grup Induk', type: 'easyadmin_autocomplete' }
+                    - { property: 'name', label: 'Grup Keahlian' }
+            show:
+                title: 'Detil Grup Keahlian'
+                fields:
+                    - { property: 'parent', label: 'GrupInduk' }
+                    - { property: 'name', label: 'Grup Keahlian' }
+            list:
+                title: 'Grup Keahlian'
+                fields:
+                    - { property: 'parent', label: 'Grup Induk' }
+                    - { property: 'name', label: 'Grup Keahlian' }

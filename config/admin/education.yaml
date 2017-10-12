@@ -1,0 +1,48 @@
+easy_admin:
+    entities:
+        EducationTitle:
+            class: 'KejawenLab\Application\SemarHris\Entity\EducationTitle'
+            new:
+                title: 'Tambah Gelar Pendidikan'
+            edit:
+                title: 'Edit Gelar Pendidikan'
+            search:
+                title: 'Gelar Pendidikan'
+                fields: ['shortName', 'name']
+            form:
+                fields:
+                    - { type: 'group', label: 'Informasi Gelar Pendidikan', icon: 'book', css_class: 'col-sm-12' }
+                    - { property: 'shortName', label: 'Gelar' }
+                    - { property: 'name', label: 'Nama Gelar' }
+            show:
+                title: 'Detil Gelar Pendidikan'
+                fields:
+                    - { property: 'shortName', label: 'Gelar' }
+                    - { property: 'name', label: 'Nama Gelar' }
+            list:
+                title: 'Gelar Pendidikan'
+                fields:
+                    - { property: 'shortName', label: 'Gelar' }
+                    - { property: 'name', label: 'Nama Gelar' }
+
+        EducationalInstitute:
+            class: 'KejawenLab\Application\SemarHris\Entity\EducationalInstitute'
+            new:
+                title: 'Tambah Lembaga Pendidikan'
+            edit:
+                title: 'Edit Lembaga Pendidikan'
+            search:
+                title: 'Lembaga Pendidikan'
+                fields: ['name']
+            form:
+                fields:
+                    - { type: 'group', label: 'Informasi Lembaga Pendidikan', icon: 'book', css_class: 'col-sm-12' }
+                    - { property: 'name', label: 'Nama Lembaga' }
+            show:
+                title: 'Detil Lembaga Pendidikan'
+                fields:
+                    - { property: 'name', label: 'Nama Lembaga' }
+            list:
+                title: 'Lembaga Pendidikan'
+                fields:
+                    - { property: 'name', label: 'Nama Lembaga' }

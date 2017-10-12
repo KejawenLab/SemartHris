@@ -1,14 +1,14 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Reason\Service;
+namespace KejawenLab\Application\SemarHris\Component\Employee\Service;
 
-use KejawenLab\Application\SemarHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemarHris\Component\Employee\IdentityType;
 use KejawenLab\Application\SemarHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateReasonType
+class ValidateIdentityType
 {
     /**
      * @param string $type
@@ -18,7 +18,11 @@ class ValidateReasonType
     public static function isValidType(string $type): bool
     {
         $type = StringUtil::lowercase($type);
-        if (!in_array($type, [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE])) {
+        if (!in_array($type, [
+            IdentityType::DRIVER_LISENCE,
+            IdentityType::ID_CARD,
+            IdentityType::PASSPORT,
+        ])) {
             return false;
         }
 
@@ -30,7 +34,11 @@ class ValidateReasonType
      */
     public static function getReasonTypes()
     {
-        return [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE];
+        return [
+            IdentityType::DRIVER_LISENCE,
+            IdentityType::ID_CARD,
+            IdentityType::PASSPORT,
+        ];
     }
 
     /**
@@ -40,7 +48,11 @@ class ValidateReasonType
      */
     public static function convertToText(string $type): string
     {
-        $types = [ReasonType::LEAVE_CODE => ReasonType::LEAVE_TEXT, ReasonType::ABSENT_CODE => ReasonType::ABSENT_TEXT];
+        $types = [
+            IdentityType::DRIVER_LISENCE => IdentityType::DRIVER_LISENCE_TEXT,
+            IdentityType::PASSPORT => IdentityType::PASSPORT_TEXT,
+            IdentityType::ID_CARD => IdentityType::ID_CARD_TEXT,
+        ];
 
         if (self::isValidType($type)) {
             return $types[$type];

@@ -57,7 +57,7 @@ class CompanyRepository implements AddressRepositoryInterface
      */
     public function createCompanyDepartmentQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->buildSearch($sortField, $sortDirection, $dqlFilter);
+        return $this->buildSearch(CompanyDepartment::class, $sortField, $sortDirection, $dqlFilter);
     }
 
     /**
@@ -69,23 +69,24 @@ class CompanyRepository implements AddressRepositoryInterface
      */
     public function createCompanyAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->buildSearch($sortField, $sortDirection, $dqlFilter);
+        return $this->buildSearch(CompanyAddress::class, $sortField, $sortDirection, $dqlFilter);
     }
 
     /**
-     * @param null $sortField
-     * @param null $sortDirection
-     * @param null $dqlFilter
+     * @param string $entityClass
+     * @param null   $sortField
+     * @param null   $sortDirection
+     * @param null   $dqlFilter
      *
      * @return QueryBuilder
      */
-    private function buildSearch($sortField = null, $sortDirection = null, $dqlFilter = null)
+    private function buildSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
         /* @var QueryBuilder $queryBuilder */
         $queryBuilder = $this->entityManager->createQueryBuilder()
             ->select('entity')
-            ->from(CompanyDepartment::class, 'entity')
-            ->andWhere('LOWER(entity.company) = :query')
+            ->from($entityClass, 'entity')
+            ->andWhere('entity.company = :query')
             ->setParameter('query', $this->find($this->session->get('companyId')))
         ;
 

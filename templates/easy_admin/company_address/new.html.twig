@@ -20,10 +20,15 @@
                     data: {},
                     beforeSend: function () {},
                     success: function (dataResponse) {
+                        var cityId = $('.city-id').val();
                         var options = '<option value="">{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}</option>';
 
                         $.each(dataResponse['cities'], function (idx, val) {
-                            options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                            if (cityId === val.id) {
+                                options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
+                            } else {
+                                options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                            }
                         });
 
                         citySelect.html(options);
@@ -37,6 +42,8 @@
                     }
                 });
             });
+
+            $('.region-select').change();
 
             $(document).on('change', '.city-select', function () {
                 $('.city-id').val($(this).val());

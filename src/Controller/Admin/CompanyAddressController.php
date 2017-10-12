@@ -56,7 +56,7 @@ class CompanyAddressController extends AdminController
     protected function listAction()
     {
         $session = $this->get('session');
-        if (!$session->get('company')) {
+        if (!$session->get('companyId')) {
             return $this->redirectToRoute('easyadmin', array(
                 'action' => 'list',
                 'sortField' => 'name',

@@ -12,6 +12,7 @@ use KejawenLab\Application\SemarHris\Entity\Company;
 use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
 use KejawenLab\Application\SemarHris\Entity\CompanyDepartment;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -64,12 +65,13 @@ class CompanyRepository implements AddressRepositoryInterface
      * @param null $sortField
      * @param null $sortDirection
      * @param null $dqlFilter
+     * @param bool $useCompanyFilter
      *
      * @return QueryBuilder
      */
-    public function createCompanyAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null)
+    public function createCompanyAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
     {
-        return $this->buildSearch(CompanyAddress::class, $sortField, $sortDirection, $dqlFilter);
+        return $this->buildSearch(CompanyAddress::class, $sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
     }
 
     /**
@@ -77,18 +79,21 @@ class CompanyRepository implements AddressRepositoryInterface
      * @param null   $sortField
      * @param null   $sortDirection
      * @param null   $dqlFilter
+     * @param bool   $useCompanyFilter
      *
      * @return QueryBuilder
      */
-    private function buildSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    private function buildSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
     {
         /* @var QueryBuilder $queryBuilder */
         $queryBuilder = $this->entityManager->createQueryBuilder()
             ->select('entity')
             ->from($entityClass, 'entity')
-            ->andWhere('entity.company = :query')
-            ->setParameter('query', $this->find($this->session->get('companyId')))
         ;
+
+        if ($useCompanyFilter && $companyId = $this->session->get('companyId')) {
+            $queryBuilder->orWhere('entity.company = :query')->setParameter('query', $this->find($companyId));
+        }
 
         if (!empty($dqlFilter)) {
             $queryBuilder->andWhere($dqlFilter);
@@ -115,6 +120,19 @@ class CompanyRepository implements AddressRepositoryInterface
         $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
 
         $queryBuilder->getQuery()->execute();
+    }
+
+    public function setRandomDefault(): void
+    {
+        /** @var AddressInterface $other */
+        $other = $this->entityManager->getRepository($this->getEntityClass())->findOneBy(['defaultAddress' => false]);
+        if (!$other) {
+            throw new NotFoundHttpException();
+        }
+
+        $other->setDefaultAddress(true);
+        $this->entityManager->persist($other);
+        $this->entityManager->flush();
     }
 
     /**

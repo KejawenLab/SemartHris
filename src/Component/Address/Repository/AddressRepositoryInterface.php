@@ -14,6 +14,8 @@ interface AddressRepositoryInterface
      */
     public function unsetDefaultExcept(AddressInterface $address): void;
 
+    public function setRandomDefault(): void;
+
     /**
      * @return string
      */

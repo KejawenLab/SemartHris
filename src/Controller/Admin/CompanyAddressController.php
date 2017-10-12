@@ -9,14 +9,16 @@ use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyAddressInter
 use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemarHris\DataTransformer\CityTransformer;
 use KejawenLab\Application\SemarHris\DataTransformer\CompanyTransformer;
+use KejawenLab\Application\SemarHris\Entity\Company;
 use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
+use KejawenLab\Application\SemarHris\Repository\CityRepository;
 use KejawenLab\Application\SemarHris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -26,7 +28,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class CompanyAddressController extends AdminController
 {
     /**
-     * @Route(path = "/company/address", name = "company_address")
+     * @Route(path="/company/address", name="company_address")
      *
      * @param Request $request
      *
@@ -35,12 +37,10 @@ class CompanyAddressController extends AdminController
     public function addressPerCompanyAction(Request $request)
     {
         $company = $this->container->get(CompanyRepository::class)->find($request->query->get('id'));
-        if (!$company) {
-            throw new AccessDeniedHttpException();
+        if ($company) {
+            $session = $this->get('session');
+            $session->set('companyId', $company->getId());
         }
-
-        $session = $this->get('session');
-        $session->set('companyId', $company->getId());
 
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'list',
@@ -51,34 +51,14 @@ class CompanyAddressController extends AdminController
     }
 
     /**
-     * @return Response
-     */
-    protected function listAction()
-    {
-        $session = $this->get('session');
-        if (!$session->get('companyId')) {
-            return $this->redirectToRoute('easyadmin', array(
-                'action' => 'list',
-                'sortField' => 'name',
-                'sortDirection' => 'DESC',
-                'entity' => 'Company',
-            ));
-        }
-
-        return parent::listAction();
-    }
-
-    /**
      * @return CompanyAddressInterface
      */
     protected function createNewEntity(): CompanyAddressInterface
     {
-        if (!$companyId = $this->get('session')->get('companyId')) {
-            throw new AccessDeniedHttpException();
-        }
-
         $entity = new CompanyAddress();
-        $entity->setCompany($this->container->get(CompanyRepository::class)->find($companyId));
+        if ($companyId = $this->get('session')->get('companyId')) {
+            $entity->setCompany($this->container->get(CompanyRepository::class)->find($companyId));
+        }
 
         return $entity;
     }
@@ -92,14 +72,19 @@ class CompanyAddressController extends AdminController
     protected function createEntityFormBuilder($entity, $view)
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
-
-        $company = $builder->get('company');
-        $company->addModelTransformer($this->container->get(CompanyTransformer::class));
         /** @var CompanyInterface $companyEntity */
         if ($companyEntity = $entity->getCompany()) {
+            $builder->remove('company');
+
+            $builder->add('company', HiddenType::class);
+
+            $company = $builder->get('company');
+            $company->addModelTransformer($this->container->get(CompanyTransformer::class));
             $company->setData($companyEntity->getId());
 
             $builder->get('company_text')->setData($companyEntity);
+        } else {
+            $builder->remove('company_text');
         }
 
         $city = $builder->get('city');
@@ -109,12 +94,15 @@ class CompanyAddressController extends AdminController
             $city->setData($cityEntity->getId());
         }
 
-        $builder->addEventListener(FormEvents::PRE_SUBMIT,
-        function (FormEvent $event) {
+        $cityRepository = $this->container->get(CityRepository::class);
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) use ($cityRepository) {
             $form = $event->getForm();
-            $form->remove('city_text');
-        }
-    );
+            $data = $event->getData();
+
+            if ($cityRepository->find($data['city'])) {
+                $form->remove('city_text');
+            }
+        });
 
         return $builder;
     }
@@ -129,7 +117,7 @@ class CompanyAddressController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('companyId'));
     }
 
     /**
@@ -144,6 +132,21 @@ class CompanyAddressController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter);
+        $queryBuilder = $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('companyId'));
+
+        $queryBuilder->leftJoin('entity.region', 'region');
+        $queryBuilder->orWhere('region.code LIKE :query');
+        $queryBuilder->orWhere('region.name LIKE :query');
+        $queryBuilder->leftJoin('entity.city', 'city');
+        $queryBuilder->orWhere('city.code LIKE :query');
+        $queryBuilder->orWhere('city.name LIKE :query');
+        $queryBuilder->orWhere('entity.address LIKE :query');
+        $queryBuilder->orWhere('entity.postalCode LIKE :query');
+        $queryBuilder->orWhere('entity.phoneNumber LIKE :query');
+        $queryBuilder->orWhere('entity.faxNumber LIKE :query');
+
+        $queryBuilder->setParameter('query', sprintf('%%%s%%', $searchQuery));
+
+        return $queryBuilder;
     }
 }

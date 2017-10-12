@@ -29,3 +29,4 @@ easy_admin:
               children:
                   - { entity: 'Region', label: 'Propinsi', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
                   - { entity: 'City', label: 'Kota', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'CompanyAddress', label: 'Alamat Perusahaan', icon: 'hand-o-right', params: { sortField: 'defaultAddress', sortDirection: 'DESC' } }

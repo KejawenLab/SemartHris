@@ -11,6 +11,8 @@ services:
             - { name: 'semarhris.service_compiler' }
 
     KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory:
+        arguments:
+            - ['@KejawenLab\Application\SemarHris\Repository\CompanyRepository']
 
     KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker:
         arguments:

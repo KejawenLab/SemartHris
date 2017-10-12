@@ -1,0 +1,6 @@
+#services:
+#    KejawenLab\Application\SemarHris\EventListener\DefaultAddressCheckerSubscriber:
+#        arguments:
+#            - '@KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker'
+#        tags:
+#            - { name: 'doctrine.event_subscriber' }

@@ -16,7 +16,7 @@ SemarHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemban
 - [X] Master Alamat Perusahaan
 - [ ] Remove Default Address When Default Address Submitted
 - [X] Master Jabatan dan Level Jabatan
+- [ ] Master Shift Kerja
 - [ ] Menejemen Pengguna
 - [ ] Menejemen Karyawan
-- [ ] Master Shift Kerja
 - [ ] Menejemen Absensi

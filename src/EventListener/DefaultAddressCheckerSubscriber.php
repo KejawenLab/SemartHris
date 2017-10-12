@@ -2,14 +2,16 @@
 
 namespace KejawenLab\Application\SemarHris\EventListener;
 
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker;
-use Symfony\Component\EventDispatcher\GenericEvent;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class DefaultAddressCheckerSubscriber
+final class DefaultAddressCheckerSubscriber implements EventSubscriber
 {
     /**
      * @var DefaultAddressChecker
@@ -25,12 +27,43 @@ final class DefaultAddressCheckerSubscriber
     }
 
     /**
-     * @param GenericEvent $genericEvent
+     * @param LifecycleEventArgs $eventArgs
      */
-    public function checkDefaultAddress(GenericEvent $genericEvent): void
+    public function prePersist(LifecycleEventArgs $eventArgs): void
     {
-        if ($genericEvent->getSubject() instanceof AddressInterface) {
-            $this->addressChecker->unsetDefaultExcept($genericEvent->getSubject());
+        $entity = $eventArgs->getEntity();
+        if ($entity instanceof AddressInterface) {
+            $this->addressChecker->unsetDefaultExcept($entity);
         }
+    }
+
+    /**
+     * @param LifecycleEventArgs $eventArgs
+     */
+    public function preUpdate(LifecycleEventArgs $eventArgs): void
+    {
+        $entity = $eventArgs->getEntity();
+        if ($entity instanceof AddressInterface) {
+            $this->addressChecker->unsetDefaultExcept($entity);
+        }
+    }
+
+    /**
+     * @param LifecycleEventArgs $eventArgs
+     */
+    public function preRemove(LifecycleEventArgs $eventArgs): void
+    {
+        $entity = $eventArgs->getEntity();
+        if ($entity instanceof AddressInterface && $entity->isDefaultAddress()) {
+            $this->addressChecker->setRandomDefault($entity);
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubscribedEvents()
+    {
+        return [Events::prePersist, Events::preUpdate, Events::preRemove];
     }
 }

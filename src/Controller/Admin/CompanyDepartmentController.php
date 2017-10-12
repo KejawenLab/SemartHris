@@ -22,7 +22,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class CompanyDepartmentController extends AdminController
 {
     /**
-     * @Route(path = "/company/department", name = "company_department")
+     * @Route(path="/company/department", name="company_department")
      *
      * @param Request $request
      *

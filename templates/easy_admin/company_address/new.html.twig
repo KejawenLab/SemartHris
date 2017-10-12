@@ -10,12 +10,20 @@
 {% block body_javascript %}
     {{ parent() }}
 
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
     <script type="text/javascript">
         $(function() {
             $(document).on('change', '.region-select', function () {
+                var regionId = $(this).val();
+                if ('' === regionId || null === regionId) {
+                    return;
+                }
+
                 var citySelect = $('.city-select');
                 $.ajax({
-                    url: '/admin/region/' + $(this).val() + '/cities',
+                    url: Routing.generate('city_by_region', { id: regionId }),
                     type: 'GET',
                     data: {},
                     beforeSend: function () {},

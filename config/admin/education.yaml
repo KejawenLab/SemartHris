@@ -11,8 +11,9 @@ easy_admin:
                 fields: ['shortName', 'name']
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Gelar Pendidikan', icon: 'book', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'shortName', label: 'Gelar' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Nama Gelar' }
             show:
                 title: 'Detil Gelar Pendidikan'
@@ -36,7 +37,7 @@ easy_admin:
                 fields: ['name']
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Lembaga Pendidikan', icon: 'book', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'name', label: 'Nama Lembaga' }
             show:
                 title: 'Detil Lembaga Pendidikan'

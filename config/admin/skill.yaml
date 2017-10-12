@@ -18,7 +18,9 @@ easy_admin:
             show:
                 title: 'Detil Keahlian'
                 fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'skillGroup', label: 'Grup Keahlian' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Keahlian' }
             list:
                 title: 'Keahlian'
@@ -37,8 +39,9 @@ easy_admin:
                 fields: ['name']
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Grup Keahlian', icon: 'book', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'parent', label: 'Grup Induk', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Grup Keahlian' }
             show:
                 title: 'Detil Grup Keahlian'

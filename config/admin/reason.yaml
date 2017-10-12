@@ -11,9 +11,11 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Alasan Cuti', icon: 'book', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'l', choices: { CUTI: 'l' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Alasan' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Alasan' }
             show:
                 title: 'Detil Cuti'
@@ -40,9 +42,11 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Alasan Ketidakhadiran', icon: 'book', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'a', choices: { ABSENSI: 'a' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Alasan' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Alasan' }
             show:
                 title: 'Detil Alasan Ketidakhadiran'

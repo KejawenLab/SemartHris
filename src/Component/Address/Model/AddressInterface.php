@@ -56,4 +56,9 @@ interface AddressInterface
      * @return bool
      */
     public function isDefaultAddress(): bool;
+
+    /**
+     * @param bool $default
+     */
+    public function setDefaultAddress(bool $default): void;
 }

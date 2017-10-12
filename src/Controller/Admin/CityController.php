@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CityController extends AdminController
 {
     /**
-     * @Route(path = "/region/{id}/cities", name = "city_by_region")
+     * @Route(path="/region/{id}/cities", name="city_by_region", options={"expose"=true})
      *
      * @param string $id
      *

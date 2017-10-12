@@ -34,4 +34,12 @@ final class DefaultAddressChecker
 
         $this->addressRepositoryFactory->getRepositoryForClass($address)->unsetDefaultExcept($address);
     }
+
+    /**
+     * @param AddressInterface $address
+     */
+    public function setRandomDefault(AddressInterface $address): void
+    {
+        $this->addressRepositoryFactory->getRepositoryForClass($address)->setRandomDefault();
+    }
 }

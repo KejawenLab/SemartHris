@@ -11,13 +11,17 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
-                    - { type: 'group', label: '', css_class: 'col-sm-6' }
+                    - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'parent', label: 'Perusahaan Induk', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Perusahaan' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Nama Perusahaan' }
-                    - { type: 'group', label: '', css_class: 'col-sm-6' }
-                    - { property: 'birthDay', label: 'Tanggal Berdiri', type_options: { placeholder: { year: 'Tahun', month: 'Bulan', day: 'Tanggal' } } }
+                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { property: 'birthDay', label: 'Tanggal Berdiri', type: 'birthday', type_options: { placeholder: { year: 'Tahun', month: 'Bulan', day: 'Tanggal' } } }
+                    - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'email', label: 'Alamat Email' }
+                    - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'taxNumber', label: 'NPWP' }
             show:
                 title: 'Detil Perusahaan'
@@ -49,9 +53,11 @@ easy_admin:
                 fields: ['code', 'name']
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Departemen', icon: 'book', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'parent', label: 'Departemen Induk', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Departemen' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Nama Departemen' }
             show:
                 title: 'Detil Departemen'
@@ -76,9 +82,10 @@ easy_admin:
                 title: 'Edit Departemen Perusahaan'
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Departemen Perusahaan', icon: 'book', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'company', type: 'hidden' }
                     - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } }  }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'department', label: 'Departemen' }
             show:
                 title: 'Detil Departemen Perusahaan'
@@ -94,7 +101,6 @@ easy_admin:
         CompanyAddress:
             class: 'KejawenLab\Application\SemarHris\Entity\CompanyAddress'
             controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyAddressController'
-            disabled_actions: ['search']
             templates:
                 new: '/easy_admin/company_address/new.html.twig'
                 edit: '/easy_admin/company_address/new.html.twig'
@@ -104,17 +110,21 @@ easy_admin:
                 title: 'Edit Alamat Perusahaan'
             form:
                 fields:
-                    - { type: 'group', label: 'Informasi Alamat Perusahaan', icon: 'book', css_class: 'col-sm-6' }
-                    - { property: 'company', type: 'hidden' }
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete' }
                     - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'address', label: 'Alamat' }
+                    - { property: 'defaultAddress', label: 'Set Default' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'region', label: 'Propinsi', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'city', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
                     - { property: 'city_text', label: 'Kota', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'postalCode', label: 'Kode Pos' }
-                    - { property: 'defaultAddress', label: 'Set Default' }
-                    - { type: 'group', label: 'Informasi Kontak Perusahaan', icon: 'phone', css_class: 'col-sm-6' }
+                    - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'phoneNumber', label: 'No. Telpon' }
+                    - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'faxNumber', label: 'No. Fax' }
             show:
                 title: 'Detil Alamat Perusahaan'

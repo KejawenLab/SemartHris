@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemarHris\Component\Education\Model;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface EducationTitleInterface
 {

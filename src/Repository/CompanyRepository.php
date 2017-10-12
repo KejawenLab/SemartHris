@@ -2,9 +2,11 @@
 
 namespace KejawenLab\Application\SemarHris\Repository;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
+use KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemarHris\Entity\Company;
 use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
@@ -12,9 +14,9 @@ use KejawenLab\Application\SemarHris\Entity\CompanyDepartment;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CompanyRepository
+class CompanyRepository implements AddressRepositoryInterface
 {
     /**
      * @var EntityManagerInterface
@@ -47,53 +49,40 @@ class CompanyRepository
     }
 
     /**
-     * @param ManagerRegistry $managerRegistry
-     * @param $searchQuery
-     * @param array $searchableFields
-     * @param null  $sortField
-     * @param null  $sortDirection
-     * @param null  $dqlFilter
+     * @param null $sortField
+     * @param null $sortDirection
+     * @param null $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createCompanyDepartmentQueryBuilder(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    public function createCompanyDepartmentQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        /* @var EntityManagerInterface $entityManager */
-        $entityManager = $managerRegistry->getManagerForClass(CompanyDepartment::class);
-
-        return $this->buildSearch($entityManager, $sortField, $sortDirection, $dqlFilter);
+        return $this->buildSearch($sortField, $sortDirection, $dqlFilter);
     }
 
     /**
-     * @param ManagerRegistry $managerRegistry
-     * @param $searchQuery
-     * @param array $searchableFields
-     * @param null  $sortField
-     * @param null  $sortDirection
-     * @param null  $dqlFilter
+     * @param null $sortField
+     * @param null $sortDirection
+     * @param null $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createCompanyAddressQueryBuilder(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    public function createCompanyAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        /* @var EntityManagerInterface $entityManager */
-        $entityManager = $managerRegistry->getManagerForClass(CompanyAddress::class);
-
-        return $this->buildSearch($entityManager, $sortField, $sortDirection, $dqlFilter);
+        return $this->buildSearch($sortField, $sortDirection, $dqlFilter);
     }
 
     /**
-     * @param EntityManagerInterface $entityManager
-     * @param null                   $sortField
-     * @param null                   $sortDirection
-     * @param null                   $dqlFilter
+     * @param null $sortField
+     * @param null $sortDirection
+     * @param null $dqlFilter
      *
      * @return QueryBuilder
      */
-    private function buildSearch(EntityManagerInterface $entityManager, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    private function buildSearch($sortField = null, $sortDirection = null, $dqlFilter = null)
     {
         /* @var QueryBuilder $queryBuilder */
-        $queryBuilder = $entityManager->createQueryBuilder()
+        $queryBuilder = $this->entityManager->createQueryBuilder()
             ->select('entity')
             ->from(CompanyDepartment::class, 'entity')
             ->andWhere('LOWER(entity.company) = :query')
@@ -109,5 +98,29 @@ class CompanyRepository
         }
 
         return $queryBuilder;
+    }
+
+    /**
+     * @param AddressInterface $address
+     */
+    public function unsetDefaultExcept(AddressInterface $address): void
+    {
+        /** @var EntityRepository $repository */
+        $repository = $this->entityManager->getRepository($this->getEntityClass());
+
+        $queryBuilder = $repository->createQueryBuilder('o');
+        $queryBuilder->update();
+        $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));
+        $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
+
+        $queryBuilder->getQuery()->execute();
+    }
+
+    /**
+     * @return string
+     */
+    public function getEntityClass(): string
+    {
+        return CompanyAddress::class;
     }
 }

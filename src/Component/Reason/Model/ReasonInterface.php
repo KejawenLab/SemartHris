@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemarHris\Component\Reason\Model;
 use KejawenLab\Application\SemarHris\Component\Reason\ReasonType;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface ReasonInterface
 {

@@ -6,7 +6,7 @@ use KejawenLab\Application\SemarHris\Component\Reason\ReasonType;
 use KejawenLab\Application\SemarHris\Util\StringUtil;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class ValidateReasonType
 {

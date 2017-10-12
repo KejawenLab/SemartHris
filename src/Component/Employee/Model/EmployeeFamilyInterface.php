@@ -8,7 +8,7 @@ use KejawenLab\Application\SemarHris\Component\Education\Model\EducationTitleInt
 use KejawenLab\Application\SemarHris\Component\Employee\FamilyRelation;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface EmployeeFamilyInterface
 {

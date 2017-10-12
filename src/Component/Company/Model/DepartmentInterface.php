@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemarHris\Component\Company\Model;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface DepartmentInterface
 {

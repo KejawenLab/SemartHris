@@ -11,7 +11,7 @@ use KejawenLab\Application\SemarHris\Component\Address\Repository\CityRepository
 use KejawenLab\Application\SemarHris\Entity\City;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class CityRepository implements CityRepositoryInterface
 {

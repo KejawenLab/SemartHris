@@ -7,7 +7,7 @@ use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface
 use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface JobAllocationInterface
 {

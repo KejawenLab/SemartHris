@@ -6,7 +6,7 @@ use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 final class DefaultAddressChecker
 {
@@ -28,6 +28,10 @@ final class DefaultAddressChecker
      */
     public function unsetDefaultExcept(AddressInterface $address): void
     {
+        if (!$address->isDefaultAddress()) {
+            return;
+        }
+
         $this->addressRepositoryFactory->getRepositoryForClass($address)->unsetDefaultExcept($address);
     }
 }

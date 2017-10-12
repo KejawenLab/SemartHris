@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  *
  * @Route(path="/admin")
  */
@@ -48,6 +48,24 @@ class CompanyAddressController extends AdminController
             'sortDirection' => 'DESC',
             'entity' => 'CompanyAddress',
         ));
+    }
+
+    /**
+     * @return Response
+     */
+    protected function listAction()
+    {
+        $session = $this->get('session');
+        if (!$session->get('company')) {
+            return $this->redirectToRoute('easyadmin', array(
+                'action' => 'list',
+                'sortField' => 'name',
+                'sortDirection' => 'DESC',
+                'entity' => 'Company',
+            ));
+        }
+
+        return parent::listAction();
     }
 
     /**
@@ -103,6 +121,19 @@ class CompanyAddressController extends AdminController
 
     /**
      * @param string $entityClass
+     * @param string $sortDirection
+     * @param null   $sortField
+     * @param null   $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
+    {
+        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter);
+    }
+
+    /**
+     * @param string $entityClass
      * @param string $searchQuery
      * @param array  $searchableFields
      * @param null   $sortField
@@ -113,6 +144,6 @@ class CompanyAddressController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($this->getDoctrine(), $searchQuery, $searchableFields, $sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter);
     }
 }

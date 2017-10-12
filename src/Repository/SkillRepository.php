@@ -8,7 +8,7 @@ use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemarHris\Entity\Skill;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class SkillRepository
 {

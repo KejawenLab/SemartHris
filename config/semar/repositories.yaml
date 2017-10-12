@@ -1,0 +1,10 @@
+services:
+    KejawenLab\Application\SemarHris\Repository\CompanyRepository:
+        calls:
+            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', '@session']]
+        tags:
+            { name: 'semarhris.address_repository' }
+
+    KejawenLab\Application\SemarHris\Repository\CityRepository:
+        calls:
+            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemarHris\Entity\City']]

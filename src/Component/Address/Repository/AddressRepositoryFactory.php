@@ -5,10 +5,12 @@ namespace KejawenLab\Application\SemarHris\Component\Address\Repository;
 use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 final class AddressRepositoryFactory
 {
+    const ADDRESS_REPOSITORY_SERVICE_TAG = 'semarhris.address_repository';
+
     /**
      * @var AddressRepositoryInterface[]
      */

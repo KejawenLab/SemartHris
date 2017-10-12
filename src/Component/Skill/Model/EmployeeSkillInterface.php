@@ -6,7 +6,7 @@ use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemarHris\Component\Skill\SkillLevel;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface EmployeeSkillInterface
 {

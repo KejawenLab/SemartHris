@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemarHris\Component\Job\Model;
 use KejawenLab\Application\SemarHris\Component\Job\MutationType;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface PromotionInterface extends MutationInterface
 {

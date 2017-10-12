@@ -6,7 +6,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemarHris\Repository\SkillRepository;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class SkillController extends AdminController
 {

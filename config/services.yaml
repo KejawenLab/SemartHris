@@ -4,13 +4,17 @@ parameters:
     locale: 'id'
 
 services:
-    KejawenLab\Application\SemarHris\Repository\CompanyRepository:
-        calls:
-            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', '@session']]
+    KejawenLab\Application\SemarHris\CompilerPass\ServiceCompilerPassFactory:
 
-    KejawenLab\Application\SemarHris\Repository\CityRepository:
-        calls:
-            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemarHris\Entity\City']]
+    KejawenLab\Application\SemarHris\CompilerPass\AddressFactoryPass:
+        tags:
+            - { name: 'semarhris.service_compiler' }
+
+    KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory:
+
+    KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker:
+        arguments:
+            - '@KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory'
 
     KejawenLab\Application\SemarHris\DataTransformer\CompanyTransformer:
         arguments:

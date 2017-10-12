@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemarHris\Component\Company\Model;
 use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@personahris.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 interface CompanyAddressInterface extends AddressInterface
 {

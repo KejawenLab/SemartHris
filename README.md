@@ -2,7 +2,9 @@
 
 SemarHris adalah Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
 
-## Heavy Development
+## Tahap Pengembangan
+
+SemarHris belum dapat digunakan untuk produksi dan sedang dalam proses pengembangan.
 
 ## TODO LIST
 
@@ -13,7 +15,7 @@ SemarHris adalah Human Resources Information System (HRIS) yang dapat digunakan 
 - [X] Master Perusahaan dan Department
 - [X] Master Alamat Perusahaan
 - [ ] Remove Default Address When Default Address Submitted
-- [ ] Master Jabatan dan Level Jabatan
+- [X] Master Jabatan dan Level Jabatan
 - [ ] Menejemen Pengguna
 - [ ] Menejemen Karyawan
 - [ ] Master Shift Kerja

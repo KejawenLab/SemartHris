@@ -2,6 +2,7 @@ easy_admin:
     entities:
         Company:
             class: 'KejawenLab\Application\SemarHris\Entity\Company'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyController'
             new:
                 title: 'Tambah Perusahaan'
             edit:
@@ -44,6 +45,7 @@ easy_admin:
 
         Department:
             class: 'KejawenLab\Application\SemarHris\Entity\Department'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\DepartmentController'
             new:
                 title: 'Tambah Departemen'
             edit:
@@ -102,9 +104,9 @@ easy_admin:
             class: 'KejawenLab\Application\SemarHris\Entity\CompanyAddress'
             controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyAddressController'
             templates:
-                new: '/easy_admin/company_address/new.html.twig'
-                edit: '/easy_admin/company_address/new.html.twig'
-                list: '/easy_admin/company_address/list.html.twig'
+                new: '/app/company_address/new.html.twig'
+                edit: '/app/company_address/new.html.twig'
+                list: '/app/company_address/list.html.twig'
             new:
                 title: 'Tambah Alamat Perusahaan'
             edit:

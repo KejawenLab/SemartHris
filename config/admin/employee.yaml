@@ -1,0 +1,32 @@
+easy_admin:
+    entities:
+        Employee:
+            class: 'KejawenLab\Application\SemarHris\Entity\Employee'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\EmployeeController'
+            new:
+                title: 'Tambah Karyawan'
+            edit:
+                title: 'Edit Karyawan'
+            search:
+                title: 'Karyawan'
+                fields: ['code', 'fullName']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'code', label: 'Kode Karyawan' }
+                    - { property: 'fullName', label: 'Nama Karyawan' }
+            show:
+                title: 'Detil Karyawan'
+                fields:
+                    - { property: 'code', label: 'Kode Karyawan' }
+                    - { property: 'fullName', label: 'Nama Karyawan' }
+            list:
+                title: 'Karyawan'
+                fields:
+                    - { property: 'code', label: 'Kode Karyawan' }
+                    - { property: 'fullName', label: 'Nama Karyawan' }
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'jobTitle', label: 'Jabatan' }
+                    - { property: 'joinDate', label: 'Tanggal Masuk' }
+                    - { property: 'employeeStatus', label: 'Status' }
+                    - { property: 'supervisor', label: 'Atasan' }

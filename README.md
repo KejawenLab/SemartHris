@@ -17,8 +17,9 @@ SemarHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemban
 - [X] Remove Default From Address When Default Address is Submitted
 - [X] Set Random Default When Default Address is Deleted
 - [ ] Delete Session Notification
+- [ ] Refactor Menu
 - [X] Master Jabatan dan Level Jabatan
-- [ ] Master Shift Kerja
+- [X] Master Shift Kerja
 - [ ] Menejemen Pengguna
 - [ ] Menejemen Karyawan
 - [ ] Menejemen Absensi

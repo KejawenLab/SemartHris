@@ -12,3 +12,6 @@ delete_modal:
     action: 'Hapus'
     title: 'PERINGATAN'
     content: 'Anda yakin akan menghapus data ini?'
+user:
+    anonymous: 'Belum Login'
+    logged_in_as: 'Masuk sebagai'

@@ -16,6 +16,10 @@ easy_admin:
               children:
                   - { entity: 'SkillGroup', label: 'Grup Keahlian', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
                   - { entity: 'Skill', label: 'Keahlian', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+            - label: 'Karyawan'
+              icon: 'user-md'
+              children:
+                  - { entity: 'Employee', label: 'Profil', icon: 'hand-o-right', params: { sortField: 'fullName', sortDirection: 'ASC' } }
             - label: 'Absensi'
               icon: 'clock-o'
               children:

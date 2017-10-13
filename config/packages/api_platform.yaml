@@ -32,3 +32,8 @@ services:
         parent:    'api_platform.doctrine.orm.search_filter'
         arguments: [ { name: 'partial' } ]
         tags:      [ { name: 'api_platform.filter', id: 'name.search' } ]
+
+    api_platform.filters.full_name_search:
+        parent:    'api_platform.doctrine.orm.search_filter'
+        arguments: [ { fullName: 'partial' } ]
+        tags:      [ { name: 'api_platform.filter', id: 'full_name.search' } ]

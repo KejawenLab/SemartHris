@@ -2,6 +2,7 @@ easy_admin:
     entities:
         Shiftment:
             class: 'KejawenLab\Application\SemarHris\Entity\Shiftment'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\ShiftmentController'
             new:
                 title: 'Tambah Shift Kerja'
             edit:

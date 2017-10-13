@@ -3,8 +3,10 @@
 namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
 
 use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemarHris\Component\Address\Model\RegionInterface;
 use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemarHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemarHris\Component\Job\Model\JobTitleInterface;
 
 /**
@@ -18,9 +20,9 @@ interface EmployeeInterface
     public function getId(): string;
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getJoinDate(): \DateTime;
+    public function getJoinDate(): ? \DateTimeInterface;
 
     /**
      * @return string
@@ -38,34 +40,14 @@ interface EmployeeInterface
     public function setLetterNumber(string $letterNumber): void;
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getContractEndDate(): ? \DateTime;
+    public function getContractEndDate(): ? \DateTimeInterface;
 
     /**
-     * @param \DateTime $dateTime
+     * @param \DateTimeInterface $dateTime
      */
-    public function setContractEndDate(\DateTime $dateTime): void;
-
-    /**
-     * @return null|JobTitleInterface
-     */
-    public function getJobTitle(): ? JobTitleInterface;
-
-    /**
-     * @param JobTitleInterface $jobTitle
-     */
-    public function setJobTitle(JobTitleInterface $jobTitle = null): void;
-
-    /**
-     * @return null|EmployeeInterface
-     */
-    public function getSupervisor(): ? EmployeeInterface;
-
-    /**
-     * @param EmployeeInterface|null $employee
-     */
-    public function setSupervisor(EmployeeInterface $employee = null): void;
+    public function setContractEndDate(\DateTimeInterface $dateTime): void;
 
     /**
      * @return null|CompanyInterface
@@ -88,6 +70,36 @@ interface EmployeeInterface
     public function setDepartment(DepartmentInterface $department = null): void;
 
     /**
+     * @return JobLevelInterface|null
+     */
+    public function getJobLevel(): ? JobLevelInterface;
+
+    /**
+     * @param JobLevelInterface|null $jobLevel
+     */
+    public function setJobLevel(JobLevelInterface $jobLevel = null): void;
+
+    /**
+     * @return null|JobTitleInterface
+     */
+    public function getJobTitle(): ? JobTitleInterface;
+
+    /**
+     * @param JobTitleInterface $jobTitle
+     */
+    public function setJobTitle(JobTitleInterface $jobTitle = null): void;
+
+    /**
+     * @return null|EmployeeInterface
+     */
+    public function getSupervisor(): ? EmployeeInterface;
+
+    /**
+     * @param EmployeeInterface|null $employee
+     */
+    public function setSupervisor(EmployeeInterface $employee = null): void;
+
+    /**
      * @return string
      */
     public function getCode(): string;
@@ -98,19 +110,29 @@ interface EmployeeInterface
     public function getFullName(): string;
 
     /**
+     * @return null|RegionInterface
+     */
+    public function getRegionOfBirth(): ? RegionInterface;
+
+    /**
+     * @param RegionInterface $region
+     */
+    public function setRegionOfBirth(RegionInterface $region = null): void;
+
+    /**
      * @return null|CityInterface
      */
-    public function getPlaceOfBirth(): ? CityInterface;
+    public function getCityOfBirth(): ? CityInterface;
 
     /**
      * @param CityInterface $city
      */
-    public function setPlaceOfBirth(CityInterface $city = null): void;
+    public function setCityOfBirth(CityInterface $city = null): void;
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getDateOfBirth(): \DateTime;
+    public function getDateOfBirth(): ? \DateTimeInterface;
 
     /**
      * @return string

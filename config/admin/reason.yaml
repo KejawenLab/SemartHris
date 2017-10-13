@@ -2,6 +2,7 @@ easy_admin:
     entities:
         LeaveReason:
             class: 'KejawenLab\Application\SemarHris\Entity\Reason'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\ReasonController'
             new:
                 title: 'Tambah Alasan Cuti'
             edit:
@@ -33,6 +34,7 @@ easy_admin:
 
         AbsentReason:
             class: 'KejawenLab\Application\SemarHris\Entity\Reason'
+            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\ReasonController'
             new:
                 title: 'Tambah Alasan Ketidakhadiran'
             edit:

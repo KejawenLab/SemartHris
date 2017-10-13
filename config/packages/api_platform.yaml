@@ -1,6 +1,6 @@
 api_platform:
-    title: 'HRPersona API'
-    description: 'HRPersona API End Point'
+    title: 'SemarHRIS API'
+    description: 'SemarHRIS API End Point'
     version: '0.0.0-dev'
     collection:
         order: 'DESC'

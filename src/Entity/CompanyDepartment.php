@@ -25,7 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueEntity({"department", "company"})
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class CompanyDepartment implements CompanyDepartmentInterface
 {

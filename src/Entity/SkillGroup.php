@@ -27,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueEntity("name")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class SkillGroup implements SkillGroupInterface
 {

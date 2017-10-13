@@ -22,3 +22,5 @@ SemarHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemban
 - [ ] Menejemen Pengguna
 - [ ] Menejemen Karyawan
 - [ ] Menejemen Absensi
+
+![SemarHris Preview](preview.png)

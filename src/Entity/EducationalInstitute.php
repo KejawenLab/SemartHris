@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class EducationalInstitute implements EducationalInstituteInterface
 {

@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemarHris\Util;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@hrpersona.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 final class StringUtil
 {

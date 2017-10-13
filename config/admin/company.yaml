@@ -104,6 +104,7 @@ easy_admin:
             templates:
                 new: '/easy_admin/company_address/new.html.twig'
                 edit: '/easy_admin/company_address/new.html.twig'
+                list: '/easy_admin/company_address/list.html.twig'
             new:
                 title: 'Tambah Alamat Perusahaan'
             edit:

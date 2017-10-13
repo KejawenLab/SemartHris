@@ -32,7 +32,7 @@ final class DefaultAddressChecker
             return;
         }
 
-        $this->addressRepositoryFactory->getRepositoryForClass($address)->unsetDefaultExcept($address);
+        $this->addressRepositoryFactory->getRepositoryFor($address)->unsetDefaultExcept($address);
     }
 
     /**
@@ -40,6 +40,6 @@ final class DefaultAddressChecker
      */
     public function setRandomDefault(AddressInterface $address): void
     {
-        $this->addressRepositoryFactory->getRepositoryForClass($address)->setRandomDefault();
+        $this->addressRepositoryFactory->getRepositoryFor($address)->setRandomDefault();
     }
 }

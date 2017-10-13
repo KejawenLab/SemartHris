@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemarHris\Controller\Admin;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker;
 use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyAddressInterface;
 use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemarHris\DataTransformer\CityTransformer;
@@ -48,6 +49,34 @@ class CompanyAddressController extends AdminController
             'sortDirection' => 'DESC',
             'entity' => 'CompanyAddress',
         ));
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    protected function editAction()
+    {
+        $response = parent::editAction();
+
+        $companyAddress = $this->container->get(CompanyRepository::class)->findCompanyAddress($this->request->query->get('id'));
+        if ($companyAddress) {
+            $this->container->get(DefaultAddressChecker::class)->unsetDefaultExcept($companyAddress);
+        }
+
+        return $response;
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    protected function deleteAction()
+    {
+        $companyAddress = $this->container->get(CompanyRepository::class)->findCompanyAddress($this->request->query->get('id'));
+        if ($companyAddress && 'DELETE' === $this->request->getMethod()) {
+            $this->container->get(DefaultAddressChecker::class)->setRandomDefault($companyAddress);
+        }
+
+        return parent::deleteAction();
     }
 
     /**
@@ -102,6 +131,11 @@ class CompanyAddressController extends AdminController
             if ($cityRepository->find($data['city'])) {
                 $form->remove('city_text');
             }
+        });
+
+        $defaultAddressChecker = $this->container->get(DefaultAddressChecker::class);
+        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) use ($defaultAddressChecker) {
+            $defaultAddressChecker->unsetDefaultExcept($event->getData());
         });
 
         return $builder;

@@ -31,7 +31,7 @@ final class AddressRepositoryFactory
      *
      * @return AddressRepositoryInterface
      */
-    public function getRepositoryForClass(AddressInterface $address): AddressRepositoryInterface
+    public function getRepositoryFor(AddressInterface $address): AddressRepositoryInterface
     {
         $entityClass = get_class($address);
         if (!$repository = $this->repositories[$entityClass]) {

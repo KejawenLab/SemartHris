@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryInterface;
+use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyAddressInterface;
 use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemarHris\Entity\Company;
 use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
@@ -47,6 +48,16 @@ class CompanyRepository implements AddressRepositoryInterface
     public function find(string $id): ? CompanyInterface
     {
         return $this->entityManager->getRepository(Company::class)->find($id);
+    }
+
+    /**
+     * @param string $companyAddressId
+     *
+     * @return CompanyAddressInterface|null
+     */
+    public function findCompanyAddress(string $companyAddressId): ? CompanyAddressInterface
+    {
+        return $this->entityManager->getRepository($this->getEntityClass())->find($companyAddressId);
     }
 
     /**

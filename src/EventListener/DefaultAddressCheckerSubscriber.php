@@ -2,16 +2,17 @@
 
 namespace KejawenLab\Application\SemarHris\EventListener;
 
-use Doctrine\Common\EventSubscriber;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Events;
+use ApiPlatform\Core\EventListener\EventPriorities;
 use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class DefaultAddressCheckerSubscriber implements EventSubscriber
+final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
 {
     /**
      * @var DefaultAddressChecker
@@ -27,43 +28,30 @@ final class DefaultAddressCheckerSubscriber implements EventSubscriber
     }
 
     /**
-     * @param LifecycleEventArgs $eventArgs
+     * @param GetResponseForControllerResultEvent $event
      */
-    public function prePersist(LifecycleEventArgs $eventArgs): void
+    public function checkDefaultAddress(GetResponseForControllerResultEvent $event)
     {
-        $entity = $eventArgs->getEntity();
-        if ($entity instanceof AddressInterface) {
-            $this->addressChecker->unsetDefaultExcept($entity);
-        }
-    }
+        $data = $event->getControllerResult();
+        if ($data instanceof AddressInterface && $data->isDefaultAddress()) {
+            $request = $event->getRequest();
+            if (in_array($request->getMethod(), ['POST', 'PUT'])) {
+                $this->addressChecker->unsetDefaultExcept($data);
+            }
 
-    /**
-     * @param LifecycleEventArgs $eventArgs
-     */
-    public function preUpdate(LifecycleEventArgs $eventArgs): void
-    {
-        $entity = $eventArgs->getEntity();
-        if ($entity instanceof AddressInterface) {
-            $this->addressChecker->unsetDefaultExcept($entity);
-        }
-    }
-
-    /**
-     * @param LifecycleEventArgs $eventArgs
-     */
-    public function preRemove(LifecycleEventArgs $eventArgs): void
-    {
-        $entity = $eventArgs->getEntity();
-        if ($entity instanceof AddressInterface && $entity->isDefaultAddress()) {
-            $this->addressChecker->setRandomDefault($entity);
+            if ('DELETE' === $request->getMethod()) {
+                $this->addressChecker->setRandomDefault($data);
+            }
         }
     }
 
     /**
      * @return array
      */
-    public function getSubscribedEvents()
+    public static function getSubscribedEvents()
     {
-        return [Events::prePersist, Events::preUpdate, Events::preRemove];
+        return [
+            KernelEvents::VIEW => ['checkDefaultAddress', EventPriorities::POST_WRITE],
+        ];
     }
 }

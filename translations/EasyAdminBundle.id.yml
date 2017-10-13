@@ -8,3 +8,7 @@ label:
     null: 'NULL'
     true: 'ON'
     false: 'OFF'
+delete_modal:
+    action: 'Hapus'
+    title: 'PERINGATAN'
+    content: 'Anda yakin akan menghapus data ini?'

@@ -1,5 +1,5 @@
 easy_admin:
-    site_name: 'SemarHRIS'
+    site_name: 'SemartHRIS'
     formats:
         date:     'd-m-Y'
         time:     'H:i'

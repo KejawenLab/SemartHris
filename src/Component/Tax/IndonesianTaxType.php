@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Tax;
+namespace KejawenLab\Application\SemartHris\Component\Tax;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

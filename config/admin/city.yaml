@@ -1,8 +1,8 @@
 easy_admin:
     entities:
         City:
-            class: 'KejawenLab\Application\SemarHris\Entity\City'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CityController'
+            class: 'KejawenLab\Application\SemartHris\Entity\City'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CityController'
             new:
                 title: 'Tambah Kota'
             edit:
@@ -32,8 +32,8 @@ easy_admin:
                     - { property: 'name', label: 'Nama Kota' }
 
         Region:
-            class: 'KejawenLab\Application\SemarHris\Entity\Region'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\RegionController'
+            class: 'KejawenLab\Application\SemartHris\Entity\Region'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\RegionController'
             new:
                 title: 'Tambah Propinsi'
             edit:

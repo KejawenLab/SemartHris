@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Util;
+namespace KejawenLab\Application\SemartHris\Util;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>

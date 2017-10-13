@@ -1,6 +1,6 @@
 services:
-    KejawenLab\Application\SemarHris\EventListener\DefaultAddressCheckerSubscriber:
+    KejawenLab\Application\SemartHris\EventListener\DefaultAddressCheckerSubscriber:
         arguments:
-            - '@KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker'
+            - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
         tags:
             - { name: 'kernel.event_subscriber' }

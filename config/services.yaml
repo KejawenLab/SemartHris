@@ -4,24 +4,16 @@ parameters:
     locale: 'id'
 
 services:
-    KejawenLab\Application\SemarHris\CompilerPass\ServiceCompilerPassFactory:
+    KejawenLab\Application\SemartHris\CompilerPass\ServiceCompilerPassFactory:
 
-    KejawenLab\Application\SemarHris\CompilerPass\AddressFactoryPass:
+    KejawenLab\Application\SemartHris\CompilerPass\AddressFactoryPass:
         tags:
             - { name: 'semarhris.service_compiler' }
 
-    KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory:
+    KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
         arguments:
-            - ['@KejawenLab\Application\SemarHris\Repository\CompanyRepository']
+            - ['@KejawenLab\Application\SemartHris\Repository\CompanyRepository']
 
-    KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker:
+    KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker:
         arguments:
-            - '@KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory'
-
-    KejawenLab\Application\SemarHris\DataTransformer\CompanyTransformer:
-        arguments:
-            - '@KejawenLab\Application\SemarHris\Repository\CompanyRepository'
-
-    KejawenLab\Application\SemarHris\DataTransformer\CityTransformer:
-        arguments:
-            - '@KejawenLab\Application\SemarHris\Repository\CityRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory'

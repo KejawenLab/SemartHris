@@ -1,8 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Address\Repository;
+namespace KejawenLab\Application\SemartHris\Component\Address\Repository;
 
-use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

@@ -1,8 +1,8 @@
 easy_admin:
     entities:
         LeaveReason:
-            class: 'KejawenLab\Application\SemarHris\Entity\Reason'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\ReasonController'
+            class: 'KejawenLab\Application\SemartHris\Entity\Reason'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ReasonController'
             new:
                 title: 'Tambah Alasan Cuti'
             edit:
@@ -33,8 +33,8 @@ easy_admin:
                     - { property: 'name', label: 'Alasan' }
 
         AbsentReason:
-            class: 'KejawenLab\Application\SemarHris\Entity\Reason'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\ReasonController'
+            class: 'KejawenLab\Application\SemartHris\Entity\Reason'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ReasonController'
             new:
                 title: 'Tambah Alasan Ketidakhadiran'
             edit:

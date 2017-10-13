@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Controller\Admin;
+namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 

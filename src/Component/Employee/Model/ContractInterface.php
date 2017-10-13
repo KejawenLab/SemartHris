@@ -1,8 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
+namespace KejawenLab\Application\SemartHris\Component\Employee\Model;
 
-use KejawenLab\Application\SemarHris\Component\Employee\ContractType;
+use KejawenLab\Application\SemartHris\Component\Employee\ContractType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

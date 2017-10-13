@@ -1,9 +1,9 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Tax\Service;
+namespace KejawenLab\Application\SemartHris\Component\Tax\Service;
 
-use KejawenLab\Application\SemarHris\Component\Tax\IndonesianTaxType;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Tax\IndonesianTaxType;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

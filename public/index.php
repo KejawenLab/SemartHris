@@ -1,6 +1,6 @@
 <?php
 
-use KejawenLab\Application\SemarHris\Kernel;
+use KejawenLab\Application\SemartHris\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;

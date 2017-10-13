@@ -12,50 +12,14 @@
 
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/semart.js') }}"></script>
 
     <script type="text/javascript">
         $(function() {
-            $(document).on('change', '.region-select', function () {
-                var regionId = $(this).val();
-                if ('' === regionId || null === regionId) {
-                    return;
-                }
+            var locale = '{{ _select2_locale }}';
+            var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
 
-                var citySelect = $('.city-select');
-                $.ajax({
-                    url: Routing.generate('city_by_region', { id: regionId }),
-                    type: 'GET',
-                    data: {},
-                    beforeSend: function () {},
-                    success: function (dataResponse) {
-                        var cityId = $('.city-id').val();
-                        var options = '<option value="">{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}</option>';
-
-                        $.each(dataResponse['cities'], function (idx, val) {
-                            if (cityId === val.id) {
-                                options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
-                            } else {
-                                options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
-                            }
-                        });
-
-                        citySelect.html(options);
-                        citySelect.select2({
-                            theme: 'bootstrap',
-                            language: '{{ _select2_locale }}'
-                        });
-                    },
-                    error: function () {
-                        console.log('KO');
-                    }
-                });
-            });
-
-            $('.region-select').change();
-
-            $(document).on('change', '.city-select', function () {
-                $('.city-id').val($(this).val());
-            });
+            city_autocomplete(locale, emptyText);
         });
     </script>
 {% endblock %}

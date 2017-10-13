@@ -1,18 +1,18 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
-use KejawenLab\Application\SemarHris\Component\Address\Model\RegionInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface;
-use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
-use KejawenLab\Application\SemarHris\Component\Job\Model\JobLevelInterface;
-use KejawenLab\Application\SemarHris\Component\Job\Model\JobTitleInterface;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -74,8 +74,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"read", "write"})
-     * @ORM\Column(type="date")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTimeInterface
      */
@@ -83,7 +82,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Company", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -94,7 +93,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Department", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -105,7 +104,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\JobLevel", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
      * @ORM\JoinColumn(name="joblevel_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -116,7 +115,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\JobTitle", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobTitle", fetch="EAGER")
      * @ORM\JoinColumn(name="jobtitle_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -127,7 +126,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Employee", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -156,7 +155,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Region", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_of_birth_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -167,7 +166,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\City", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\City", fetch="EAGER")
      * @ORM\JoinColumn(name="city_of_birth_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
@@ -223,8 +222,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"read"})
-     * @ORM\Column(type="float", scale=27, precision=2)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="float", scale=27, precision=2, nullable=true)
      *
      * @var float
      */
@@ -232,8 +230,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"read"})
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="integer", nullable=true)
      *
      * @var int
      */
@@ -259,7 +256,6 @@ class Employee implements EmployeeInterface
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank()
      *
      * @var bool
      */

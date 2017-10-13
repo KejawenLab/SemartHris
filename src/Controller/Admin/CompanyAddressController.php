@@ -1,23 +1,15 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Controller\Admin;
+namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
-use KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker;
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyAddressInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemarHris\DataTransformer\CityTransformer;
-use KejawenLab\Application\SemarHris\DataTransformer\CompanyTransformer;
-use KejawenLab\Application\SemarHris\Entity\Company;
-use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
-use KejawenLab\Application\SemarHris\Repository\CityRepository;
-use KejawenLab\Application\SemarHris\Repository\CompanyRepository;
+use KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
+use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
+use KejawenLab\Application\SemartHris\FormManipulator\CompanyAddressFormManipulator;
+use KejawenLab\Application\SemartHris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -101,44 +93,8 @@ class CompanyAddressController extends AdminController
     protected function createEntityFormBuilder($entity, $view)
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
-        /** @var CompanyInterface $companyEntity */
-        if ($companyEntity = $entity->getCompany()) {
-            $builder->remove('company');
 
-            $builder->add('company', HiddenType::class);
-
-            $company = $builder->get('company');
-            $company->addModelTransformer($this->container->get(CompanyTransformer::class));
-            $company->setData($companyEntity->getId());
-
-            $builder->get('company_text')->setData($companyEntity);
-        } else {
-            $builder->remove('company_text');
-        }
-
-        $city = $builder->get('city');
-        $city->addModelTransformer($this->container->get(CityTransformer::class));
-        /** @var CityInterface $cityEntity */
-        if ($cityEntity = $entity->getCity()) {
-            $city->setData($cityEntity->getId());
-        }
-
-        $cityRepository = $this->container->get(CityRepository::class);
-        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) use ($cityRepository) {
-            $form = $event->getForm();
-            $data = $event->getData();
-
-            if ($cityRepository->find($data['city'])) {
-                $form->remove('city_text');
-            }
-        });
-
-        $defaultAddressChecker = $this->container->get(DefaultAddressChecker::class);
-        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) use ($defaultAddressChecker) {
-            $defaultAddressChecker->unsetDefaultExcept($event->getData());
-        });
-
-        return $builder;
+        return $this->container->get(CompanyAddressFormManipulator::class)->manipulate($builder, $entity);
     }
 
     /**
@@ -166,21 +122,6 @@ class CompanyAddressController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        $queryBuilder = $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('companyId'));
-
-        $queryBuilder->leftJoin('entity.region', 'region');
-        $queryBuilder->orWhere('region.code LIKE :query');
-        $queryBuilder->orWhere('region.name LIKE :query');
-        $queryBuilder->leftJoin('entity.city', 'city');
-        $queryBuilder->orWhere('city.code LIKE :query');
-        $queryBuilder->orWhere('city.name LIKE :query');
-        $queryBuilder->orWhere('entity.address LIKE :query');
-        $queryBuilder->orWhere('entity.postalCode LIKE :query');
-        $queryBuilder->orWhere('entity.phoneNumber LIKE :query');
-        $queryBuilder->orWhere('entity.faxNumber LIKE :query');
-
-        $queryBuilder->setParameter('query', sprintf('%%%s%%', $searchQuery));
-
-        return $queryBuilder;
+        return $this->container->get(CompanyRepository::class)->createSearchCompanyAddressQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('companyId'));
     }
 }

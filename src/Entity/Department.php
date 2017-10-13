@@ -1,12 +1,12 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -41,7 +41,7 @@ class Department implements DepartmentInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Department", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * @ApiSubresource()
      *
@@ -129,6 +129,10 @@ class Department implements DepartmentInterface
      */
     public function __toString(): string
     {
+        if ($parent = $this->getParent()) {
+            return sprintf('%s -> %s - %s', $parent, $this->getCode(), $this->getName());
+        }
+
         return sprintf('%s - %s', $this->getCode(), $this->getName());
     }
 }

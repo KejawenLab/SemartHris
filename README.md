@@ -1,10 +1,19 @@
-# SemarHris
+# SemartHris
 
-SemarHris adalah Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
+SemartHris adalah Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
 
 ## Tahap Pengembangan
 
-SemarHris belum dapat digunakan untuk produksi dan sedang dalam proses pengembangan.
+SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengembangan.
+
+## Fitur
+
+- [X] Menejemen Perusahaan
+- [X] Suport Multi Perusahaan
+- [X] Menejemen Jabatan
+- [X] Menejemen Shift Kerja
+- [X] Support Multi Alamat
+- [X] Backend Site and API Sekaligus
 
 ## TODO LIST
 
@@ -17,13 +26,14 @@ SemarHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemban
 - [X] Remove Default From Address When Default Address is Submitted
 - [X] Set Random Default When Default Address is Deleted
 - [ ] Delete Session Notification
-- [ ] Refactor Menu
+- [ ] Data Transformer untuk Karyawan
+- [X] Refactor Menu
 - [X] Master Jabatan dan Level Jabatan
 - [X] Master Shift Kerja
 - [ ] Menejemen Pengguna
 - [ ] Menejemen Karyawan
 - [ ] Menejemen Absensi
 
-![SemarHris Preview](preview.png)
+![SemartHris Preview](preview.png)
 
-![SemarHris API Preview](api-preview.png)
+![SemartHris API Preview](api-preview.png)

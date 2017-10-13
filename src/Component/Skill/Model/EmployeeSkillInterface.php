@@ -1,9 +1,9 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Skill\Model;
+namespace KejawenLab\Application\SemartHris\Component\Skill\Model;
 
-use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
-use KejawenLab\Application\SemarHris\Component\Skill\SkillLevel;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Skill\SkillLevel;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

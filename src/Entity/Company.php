@@ -1,12 +1,12 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -41,7 +41,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Company", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * @ApiSubresource()
      *

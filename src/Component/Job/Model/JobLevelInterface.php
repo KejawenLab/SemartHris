@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Job\Model;
+namespace KejawenLab\Application\SemartHris\Component\Job\Model;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -25,10 +25,10 @@ interface JobLevelInterface
     /**
      * @return null|JobLevelInterface
      */
-    public function getSuperviseLevel(): ? JobLevelInterface;
+    public function getParent(): ? JobLevelInterface;
 
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setSuperviseLevel(JobLevelInterface $jobLevel = null): void;
+    public function setParent(JobLevelInterface $jobLevel = null): void;
 }

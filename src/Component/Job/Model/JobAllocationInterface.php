@@ -1,10 +1,10 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Job\Model;
+namespace KejawenLab\Application\SemartHris\Component\Job\Model;
 
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface;
-use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

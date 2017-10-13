@@ -1,8 +1,12 @@
 easy_admin:
     entities:
         Employee:
-            class: 'KejawenLab\Application\SemarHris\Entity\Employee'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\EmployeeController'
+            class: 'KejawenLab\Application\SemartHris\Entity\Employee'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeController'
+            templates:
+                new: '/app/employee/new.html.twig'
+                edit: '/app/employee/new.html.twig'
+                list: '/app/employee/list.html.twig'
             new:
                 title: 'Tambah Karyawan'
             edit:
@@ -12,9 +16,33 @@ easy_admin:
                 fields: ['code', 'fullName']
             form:
                 fields:
-                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { type: 'group', icon: 'user-md', label: 'Data Pribadi', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
+                    - { property: 'regionOfBirth', label: 'Propinsi Kelahiran', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
+                    - { property: 'cityOfBirth', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
+                    - { property: 'city_text', label: 'Kota Kelahiran', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'dateOfBirth', label: 'Tanggal Lahir', type: 'birthday' }
+                    - { property: 'identityType', label: 'Jenis Identitas' }
+                    - { property: 'identityNumber', label: 'No. Identitas' }
+                    - { property: 'maritalStatus', label: 'Status Perkawinan' }
+                    - { property: 'email', label: 'Alamat Email' }
+                    - { property: 'taxGroup', label: 'Kode Pajak' }
+                    - { property: 'haveOvertimeBenefit', label: 'Berhak Lembur?', type_options: { required: false } }
+                    - { type: 'group', icon: 'id-card-o', label: 'Informasi Kontrak', css_class: 'col-sm-6' }
+                    - { property: 'joinDate', label: 'Tanggal Masuk' }
+                    - { property: 'employeeStatus', label: 'Status Karyawan' }
+                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'contractEndDate', label: 'Tanggal Akhir Kontrak' }
+                    - { type: 'group', icon: 'building', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
+                    - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
+                    - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
+                    - { property: 'department_text', label: 'Department', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
+                    - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
+                    - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
+                    - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
             show:
                 title: 'Detil Karyawan'
                 fields:
@@ -30,3 +58,4 @@ easy_admin:
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
                     - { property: 'employeeStatus', label: 'Status' }
                     - { property: 'supervisor', label: 'Atasan' }
+                    - { property: 'resign', label: 'Resign?' }

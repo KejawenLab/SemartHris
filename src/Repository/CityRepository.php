@@ -1,40 +1,20 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Repository;
+namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
-use KejawenLab\Application\SemarHris\Component\Address\Repository\CityRepositoryInterface;
-use KejawenLab\Application\SemarHris\Entity\City;
+use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Repository\CityRepositoryInterface;
+use KejawenLab\Application\SemartHris\Entity\City;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CityRepository implements CityRepositoryInterface
+class CityRepository extends Repository implements CityRepositoryInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
-     * @var string
-     */
-    private $entityClass;
-
-    /**
-     * @param EntityManagerInterface $entityManager
-     * @param string                 $entityClass
-     */
-    public function initialize(EntityManagerInterface $entityManager, string $entityClass)
-    {
-        $this->entityManager = $entityManager;
-        $this->entityClass = $entityClass;
-    }
-
     /**
      * @param ManagerRegistry $managerRegistry
      * @param $searchQuery

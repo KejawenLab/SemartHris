@@ -1,13 +1,13 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
+namespace KejawenLab\Application\SemartHris\Component\Employee\Model;
 
-use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
-use KejawenLab\Application\SemarHris\Component\Address\Model\RegionInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\DepartmentInterface;
-use KejawenLab\Application\SemarHris\Component\Job\Model\JobLevelInterface;
-use KejawenLab\Application\SemarHris\Component\Job\Model\JobTitleInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

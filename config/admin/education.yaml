@@ -1,8 +1,8 @@
 easy_admin:
     entities:
         EducationTitle:
-            class: 'KejawenLab\Application\SemarHris\Entity\EducationTitle'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\EducationTitleController'
+            class: 'KejawenLab\Application\SemartHris\Entity\EducationTitle'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EducationTitleController'
             new:
                 title: 'Tambah Gelar Pendidikan'
             edit:
@@ -28,8 +28,8 @@ easy_admin:
                     - { property: 'name', label: 'Nama Gelar' }
 
         EducationalInstitute:
-            class: 'KejawenLab\Application\SemarHris\Entity\EducationalInstitute'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\EducationalInstituteController'
+            class: 'KejawenLab\Application\SemartHris\Entity\EducationalInstitute'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EducationalInstituteController'
             new:
                 title: 'Tambah Lembaga Pendidikan'
             edit:

@@ -1,10 +1,10 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\EventListener;
+namespace KejawenLab\Application\SemartHris\EventListener;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
-use KejawenLab\Application\SemarHris\Component\Address\Service\DefaultAddressChecker;
+use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;

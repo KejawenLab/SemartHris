@@ -1,11 +1,11 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Repository;
+namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
-use KejawenLab\Application\SemarHris\Entity\Skill;
+use KejawenLab\Application\SemartHris\Entity\Skill;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

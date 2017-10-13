@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Skill\Model;
+namespace KejawenLab\Application\SemartHris\Component\Skill\Model;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

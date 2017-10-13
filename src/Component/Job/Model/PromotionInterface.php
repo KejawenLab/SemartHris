@@ -1,8 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Job\Model;
+namespace KejawenLab\Application\SemartHris\Component\Job\Model;
 
-use KejawenLab\Application\SemarHris\Component\Job\MutationType;
+use KejawenLab\Application\SemartHris\Component\Job\MutationType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

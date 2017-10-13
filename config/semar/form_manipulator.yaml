@@ -1,0 +1,7 @@
+services:
+    KejawenLab\Application\SemartHris\FormManipulator\CompanyAddressFormManipulator:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\DataTransformer\CompanyTransformer'
+            - '@KejawenLab\Application\SemartHris\DataTransformer\CityTransformer'
+            - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
+            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'

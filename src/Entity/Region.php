@@ -1,11 +1,11 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Address\Model\RegionInterface;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 

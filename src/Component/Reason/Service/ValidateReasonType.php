@@ -1,9 +1,9 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Reason\Service;
+namespace KejawenLab\Application\SemartHris\Component\Reason\Service;
 
-use KejawenLab\Application\SemarHris\Component\Reason\ReasonType;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

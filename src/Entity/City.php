@@ -1,13 +1,13 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
-use KejawenLab\Application\SemarHris\Component\Address\Model\RegionInterface;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -42,7 +42,7 @@ class City implements CityInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\Region", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()

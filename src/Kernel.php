@@ -1,8 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris;
+namespace KejawenLab\Application\SemartHris;
 
-use KejawenLab\Application\SemarHris\CompilerPass\ServiceCompilerPassFactory;
+use KejawenLab\Application\SemartHris\CompilerPass\ServiceCompilerPassFactory;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

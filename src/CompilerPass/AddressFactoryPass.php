@@ -1,8 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\CompilerPass;
+namespace KejawenLab\Application\SemartHris\CompilerPass;
 
-use KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryFactory;
+use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

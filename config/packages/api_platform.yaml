@@ -1,6 +1,6 @@
 api_platform:
-    title: 'SemarHRIS API'
-    description: 'SemarHRIS API End Point'
+    title: 'SemartHRIS API'
+    description: 'SemartHRIS API End Point'
     version: '0.0.0-dev'
     collection:
         order: 'DESC'

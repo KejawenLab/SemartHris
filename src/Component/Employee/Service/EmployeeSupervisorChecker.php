@@ -1,28 +1,14 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Employee\Service;
+namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
 
-use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
-use KejawenLab\Application\SemarHris\Component\Employee\Repository\SupervisorRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class EmployeeSupervisorChecker
 {
-    /**
-     * @var SupervisorRepositoryInterface
-     */
-    private $supervisorRepository;
-
-    /**
-     * @param SupervisorRepositoryInterface $supervisorRepository
-     */
-    public function __construct(SupervisorRepositoryInterface $supervisorRepository)
-    {
-        $this->supervisorRepository = $supervisorRepository;
-    }
-
     /**
      * @param EmployeeInterface $employee
      * @param EmployeeInterface $supervisor
@@ -55,8 +41,7 @@ class EmployeeSupervisorChecker
     {
         $allow = false;
 
-        $employeeSupervisor = $this->supervisorRepository->findByEmployee($employee);
-        if ($employeeSupervisor) {
+        if ($employeeSupervisor = $employee->getSupervisor()) {
             if ($employeeSupervisor->getId() === $supervisor->getId()) {
                 $allow = true;
             } else {

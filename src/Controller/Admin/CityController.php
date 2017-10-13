@@ -1,10 +1,10 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Controller\Admin;
+namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use KejawenLab\Application\SemarHris\Repository\CityRepository;
+use KejawenLab\Application\SemartHris\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +21,7 @@ class CityController extends AdminController
      *
      * @return Response
      */
-    public function findCityByRegionAction(string $id)
+    public function findByRegionAction(string $id)
     {
         $cities = $this->container->get(CityRepository::class)->findCityByRegion($id);
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Job\Model\JobLevelInterface;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -41,13 +41,13 @@ class JobLevel implements JobLevelInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\JobLevel", fetch="EAGER")
-     * @ORM\JoinColumn(name="supervise_level_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * @ApiSubresource()
      *
      * @var JobLevelInterface
      */
-    private $superviseLevel;
+    private $parent;
 
     /**
      * @Groups({"read", "write"})
@@ -79,17 +79,17 @@ class JobLevel implements JobLevelInterface
     /**
      * @return JobLevelInterface|null
      */
-    public function getSuperviseLevel(): ? JobLevelInterface
+    public function getParent(): ? JobLevelInterface
     {
-        return $this->superviseLevel;
+        return $this->parent;
     }
 
     /**
-     * @param JobLevelInterface|null $superviseLevel
+     * @param JobLevelInterface|null $parent
      */
-    public function setSuperviseLevel(JobLevelInterface $superviseLevel = null): void
+    public function setParent(JobLevelInterface $parent = null): void
     {
-        $this->superviseLevel = $superviseLevel;
+        $this->parent = $parent;
     }
 
     /**

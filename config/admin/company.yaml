@@ -1,8 +1,8 @@
 easy_admin:
     entities:
         Company:
-            class: 'KejawenLab\Application\SemarHris\Entity\Company'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyController'
+            class: 'KejawenLab\Application\SemartHris\Entity\Company'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyController'
             new:
                 title: 'Tambah Perusahaan'
             edit:
@@ -44,8 +44,8 @@ easy_admin:
                     - { property: 'name', label: 'Nama Perusahaan' }
 
         Department:
-            class: 'KejawenLab\Application\SemarHris\Entity\Department'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\DepartmentController'
+            class: 'KejawenLab\Application\SemartHris\Entity\Department'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\DepartmentController'
             new:
                 title: 'Tambah Departemen'
             edit:
@@ -75,8 +75,8 @@ easy_admin:
                     - { property: 'name', label: 'Nama Departemen' }
 
         CompanyDepartment:
-            class: 'KejawenLab\Application\SemarHris\Entity\CompanyDepartment'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyDepartmentController'
+            class: 'KejawenLab\Application\SemartHris\Entity\CompanyDepartment'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyDepartmentController'
             disabled_actions: ['search']
             new:
                 title: 'Tambah Departemen Perusahaan'
@@ -101,8 +101,8 @@ easy_admin:
                     - { property: 'department', label: 'Departemen' }
 
         CompanyAddress:
-            class: 'KejawenLab\Application\SemarHris\Entity\CompanyAddress'
-            controller: 'KejawenLab\Application\SemarHris\Controller\Admin\CompanyAddressController'
+            class: 'KejawenLab\Application\SemartHris\Entity\CompanyAddress'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyAddressController'
             templates:
                 new: '/app/company_address/new.html.twig'
                 edit: '/app/company_address/new.html.twig'

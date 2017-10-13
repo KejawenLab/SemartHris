@@ -1,8 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Employee\Repository;
-
-use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
+namespace KejawenLab\Application\SemartHris\Component\Employee\Repository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -10,9 +8,9 @@ use KejawenLab\Application\SemarHris\Component\Employee\Model\EmployeeInterface;
 interface SupervisorRepositoryInterface
 {
     /**
-     * @param EmployeeInterface $employee
+     * @param string $jobLevelId
      *
-     * @return null|EmployeeInterface
+     * @return array
      */
-    public function findByEmployee(EmployeeInterface $employee): ? EmployeeInterface;
+    public function findSupervisorByJobLevel(string $jobLevelId): array;
 }

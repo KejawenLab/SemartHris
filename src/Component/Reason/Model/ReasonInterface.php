@@ -1,8 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Reason\Model;
+namespace KejawenLab\Application\SemartHris\Component\Reason\Model;
 
-use KejawenLab\Application\SemarHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemartHris\Component\Reason\ReasonType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

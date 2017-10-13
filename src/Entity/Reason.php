@@ -1,12 +1,12 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Reason\Model\ReasonInterface;
-use KejawenLab\Application\SemarHris\Component\Reason\Service\ValidateReasonType;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
+use KejawenLab\Application\SemartHris\Component\Reason\Service\ValidateReasonType;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 

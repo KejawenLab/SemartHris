@@ -1,13 +1,13 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Entity;
+namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
-use KejawenLab\Application\SemarHris\Component\Job\Model\JobLevelInterface;
-use KejawenLab\Application\SemarHris\Component\Job\Model\JobTitleInterface;
-use KejawenLab\Application\SemarHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -42,7 +42,7 @@ class JobTitle implements JobTitleInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemarHris\Entity\JobLevel", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
      * @ORM\JoinColumn(name="job_level_id", referencedColumnName="id")
      * @ApiSubresource()
      *
@@ -52,8 +52,8 @@ class JobTitle implements JobTitleInterface
 
     /**
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=7)
-     * @Assert\Length(max=7)
+     * @ORM\Column(type="string", length=9)
+     * @Assert\Length(max=9)
      * @Assert\NotBlank()
      *
      * @var string

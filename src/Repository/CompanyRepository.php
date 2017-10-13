@@ -1,17 +1,17 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Repository;
+namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use KejawenLab\Application\SemarHris\Component\Address\Model\AddressInterface;
-use KejawenLab\Application\SemarHris\Component\Address\Repository\AddressRepositoryInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyAddressInterface;
-use KejawenLab\Application\SemarHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemarHris\Entity\Company;
-use KejawenLab\Application\SemarHris\Entity\CompanyAddress;
-use KejawenLab\Application\SemarHris\Entity\CompanyDepartment;
+use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
+use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemartHris\Entity\Company;
+use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
+use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -53,7 +53,7 @@ class CompanyRepository implements AddressRepositoryInterface
     /**
      * @param string $companyAddressId
      *
-     * @return CompanyAddressInterface|null
+     * @return null|CompanyAddressInterface
      */
     public function findCompanyAddress(string $companyAddressId): ? CompanyAddressInterface
     {
@@ -83,6 +83,35 @@ class CompanyRepository implements AddressRepositoryInterface
     public function createCompanyAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
     {
         return $this->buildSearch(CompanyAddress::class, $sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
+    }
+
+    /**
+     * @param string $searchQuery
+     * @param null   $sortField
+     * @param null   $sortDirection
+     * @param null   $dqlFilter
+     * @param bool   $useCompanyFilter
+     *
+     * @return QueryBuilder
+     */
+    public function createSearchCompanyAddressQueryBuilder($searchQuery, $sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
+    {
+        $queryBuilder = $this->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
+
+        $queryBuilder->leftJoin('entity.region', 'region');
+        $queryBuilder->orWhere('region.code LIKE :query');
+        $queryBuilder->orWhere('region.name LIKE :query');
+        $queryBuilder->leftJoin('entity.city', 'city');
+        $queryBuilder->orWhere('city.code LIKE :query');
+        $queryBuilder->orWhere('city.name LIKE :query');
+        $queryBuilder->orWhere('entity.address LIKE :query');
+        $queryBuilder->orWhere('entity.postalCode LIKE :query');
+        $queryBuilder->orWhere('entity.phoneNumber LIKE :query');
+        $queryBuilder->orWhere('entity.faxNumber LIKE :query');
+
+        $queryBuilder->setParameter('query', sprintf('%%%s%%', $searchQuery));
+
+        return $queryBuilder;
     }
 
     /**

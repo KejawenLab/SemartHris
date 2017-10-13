@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\CompilerPass;
+namespace KejawenLab\Application\SemartHris\CompilerPass;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

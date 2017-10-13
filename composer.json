@@ -1,5 +1,5 @@
 {
-    "name": "kejawenlab/semar-hris",
+    "name": "kejawenlab/semart-hris",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "KejawenLab\\Application\\SemarHris\\": "src/"
+            "KejawenLab\\Application\\SemartHris\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\KejawenLab\\Application\\SemarHris\\": "tests/"
+            "Tests\\KejawenLab\\Application\\SemartHris\\": "tests/"
         }
     },
     "scripts": {

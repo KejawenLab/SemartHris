@@ -1,0 +1,59 @@
+easy_admin:
+    entities:
+        JobLevel:
+            class: 'KejawenLab\Application\SemartHris\Entity\JobLevel'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\JobLevelController'
+            new:
+                title: 'Tambah Level Jabatan'
+            edit:
+                title: 'Edit Level Jabatan'
+            search:
+                title: 'Level Jabatan'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'parent', label: 'Atasan', type: 'easyadmin_autocomplete' }
+                    - { property: 'code', label: 'Kode Level Jabatan' }
+                    - { property: 'name', label: 'Nama Level Jabatan' }
+            show:
+                title: 'Detil Level Jabatan'
+                fields:
+                    - { property: 'parent', label: 'Atasan' }
+                    - { property: 'code', label: 'Kode Level Jabatan' }
+                    - { property: 'name', label: 'Nama Level Jabatan' }
+            list:
+                title: 'Level Jabatan'
+                fields:
+                    - { property: 'parent', label: 'Atasan' }
+                    - { property: 'code', label: 'Kode Level Jabatan' }
+                    - { property: 'name', label: 'Nama Level Jabatan' }
+
+        JobTitle:
+            class: 'KejawenLab\Application\SemartHris\Entity\JobTitle'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\JobTitleController'
+            new:
+                title: 'Tambah Jabatan'
+            edit:
+                title: 'Edit Jabatan'
+            search:
+                title: 'Jabatan'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete' }
+                    - { property: 'code', label: 'Kode Jabatan' }
+                    - { property: 'name', label: 'Nama Jabatan' }
+            show:
+                title: 'Detil Jabatan'
+                fields:
+                    - { property: 'jobLevel', label: 'Level Jabatan' }
+                    - { property: 'code', label: 'Kode Jabatan' }
+                    - { property: 'name', label: 'Nama Jabatan' }
+            list:
+                title: 'Jabatan'
+                fields:
+                    - { property: 'jobLevel', label: 'Level Jabatan' }
+                    - { property: 'code', label: 'Kode Jabatan' }
+                    - { property: 'name', label: 'Nama Jabatan' }

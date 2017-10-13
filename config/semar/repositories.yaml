@@ -1,10 +1,22 @@
 services:
-    KejawenLab\Application\SemarHris\Repository\CompanyRepository:
+    KejawenLab\Application\SemartHris\Repository\CompanyRepository:
         calls:
-            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', '@session']]
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', '@session']]
         tags:
             { name: 'semarhris.address_repository' }
 
-    KejawenLab\Application\SemarHris\Repository\CityRepository:
+    KejawenLab\Application\SemartHris\Repository\CityRepository:
         calls:
-            - [initialize, ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemarHris\Entity\City']]
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\City']]
+
+    KejawenLab\Application\SemartHris\Repository\DepartmentRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Department']]
+
+    KejawenLab\Application\SemartHris\Repository\JobTitleRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\JobTitle']]
+
+    KejawenLab\Application\SemartHris\Repository\EmployeeRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Employee']]

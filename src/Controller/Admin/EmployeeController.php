@@ -1,12 +1,29 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Controller\Admin;
+namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
+use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class EmployeeController extends AdminController
 {
+    /**
+     * @Route(path="/joblevel/{id}/supervisors", name="supervisor_by_joblevel", options={"expose"=true})
+     *
+     * @param string $id
+     *
+     * @return Response
+     */
+    public function findByJobLevelAction(string $id)
+    {
+        $employees = $this->container->get(EmployeeRepository::class)->findSupervisorByJobLevel($id);
+
+        return new JsonResponse(['employees' => $employees]);
+    }
 }

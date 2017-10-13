@@ -1,11 +1,11 @@
 <?php
 
-namespace KejawenLab\Application\SemarHris\Component\Employee\Model;
+namespace KejawenLab\Application\SemartHris\Component\Employee\Model;
 
-use KejawenLab\Application\SemarHris\Component\Address\Model\CityInterface;
-use KejawenLab\Application\SemarHris\Component\Education\Model\EducationalInstituteInterface;
-use KejawenLab\Application\SemarHris\Component\Education\Model\EducationTitleInterface;
-use KejawenLab\Application\SemarHris\Component\Employee\FamilyRelation;
+use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
+use KejawenLab\Application\SemartHris\Component\Education\Model\EducationalInstituteInterface;
+use KejawenLab\Application\SemartHris\Component\Education\Model\EducationTitleInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\FamilyRelation;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

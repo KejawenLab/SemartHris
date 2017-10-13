@@ -24,3 +24,5 @@ SemarHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemban
 - [ ] Menejemen Absensi
 
 ![SemarHris Preview](preview.png)
+
+![SemarHris API Preview](api-preview.png)

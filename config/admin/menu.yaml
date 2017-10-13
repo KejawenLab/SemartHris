@@ -20,6 +20,7 @@ easy_admin:
               icon: 'clock-o'
               children:
                   - { entity: 'AbsentReason', label: 'Alasan Ketidakhadiran', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'Shiftment', label: 'Shift Kerja', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
             - label: 'Cuti'
               icon: 'envelope-o'
               children:

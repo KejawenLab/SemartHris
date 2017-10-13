@@ -23,22 +23,12 @@ interface ShiftmentInterface
     public function getName(): string;
 
     /**
-     * @return string
+     * @return \DateTimeInterface
      */
-    public function getStartHour(): string;
+    public function getStartHour(): ? \DateTimeInterface;
 
     /**
-     * @return string
+     * @return \DateTimeInterface
      */
-    public function getStartMinute(): string;
-
-    /**
-     * @return string
-     */
-    public function getEndHour(): string;
-
-    /**
-     * @return string
-     */
-    public function getEndMinute(): string;
+    public function getEndHour(): ? \DateTimeInterface;
 }

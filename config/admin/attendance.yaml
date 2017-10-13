@@ -1,0 +1,34 @@
+easy_admin:
+    entities:
+        Shiftment:
+            class: 'KejawenLab\Application\SemarHris\Entity\Shiftment'
+            new:
+                title: 'Tambah Shift Kerja'
+            edit:
+                title: 'Edit Shift Kerja'
+            search:
+                title: 'Shift Kerja'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'code', label: 'Kode Shift' }
+                    - { property: 'name', label: 'Nama Shift' }
+                    - { type: 'group', css_class: 'col-sm-3' }
+                    - { property: 'startHour', label: 'Jam Masuk' }
+                    - { type: 'group', css_class: 'col-sm-3' }
+                    - { property: 'endHour', label: 'Jam Pulang' }
+            show:
+                title: 'Detil Shift Kerja'
+                fields:
+                    - { property: 'code', label: 'Kode Shift' }
+                    - { property: 'name', label: 'Nama Shift' }
+                    - { property: 'startHour', label: 'Kode Shift' }
+                    - { property: 'endHour', label: 'Nama Shift' }
+            list:
+                title: 'Shift Kerja'
+                fields:
+                    - { property: 'code', label: 'Kode Shift' }
+                    - { property: 'name', label: 'Nama Shift' }
+                    - { property: 'startHour', label: 'Kode Shift' }
+                    - { property: 'endHour', label: 'Nama Shift' }

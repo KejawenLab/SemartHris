@@ -86,7 +86,7 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'company', type: 'hidden' }
-                    - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } }  }
+                    - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } }  }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'department', label: 'Departemen' }
             show:
@@ -115,7 +115,7 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete' }
-                    - { property: 'company_text', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'address', label: 'Alamat' }
                     - { property: 'defaultAddress', label: 'Set Default' }
                     - { type: 'group', css_class: 'col-sm-6' }

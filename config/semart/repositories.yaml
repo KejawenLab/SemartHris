@@ -3,7 +3,7 @@ services:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', '@session']]
         tags:
-            { name: 'semarhris.address_repository' }
+            { name: 'semarthris.address_repository' }
 
     KejawenLab\Application\SemartHris\Repository\CityRepository:
         calls:

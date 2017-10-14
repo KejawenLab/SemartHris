@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 final class ServiceCompilerPassFactory
 {
-    const SERVICE_COMPILER_PASS_TAG = 'semarhris.service_compiler';
+    const SERVICE_COMPILER_PASS_TAG = 'semarthris.service_compiler';
 
     /**
      * @var CompilerPassInterface[]

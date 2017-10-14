@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
  */
 final class AddressRepositoryFactory
 {
-    const ADDRESS_REPOSITORY_SERVICE_TAG = 'semarhris.address_repository';
+    const ADDRESS_REPOSITORY_SERVICE_TAG = 'semarthris.address_repository';
 
     /**
      * @var AddressRepositoryInterface[]

@@ -9,6 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Repository\CompanyRepositoryInterface;
 use KejawenLab\Application\SemartHris\Entity\Company;
 use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
@@ -18,7 +19,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CompanyRepository implements AddressRepositoryInterface
+class CompanyRepository implements CompanyRepositoryInterface, AddressRepositoryInterface
 {
     /**
      * @var EntityManagerInterface

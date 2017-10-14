@@ -5,9 +5,8 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyDepartmentInterface;
-use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemartHris\DataTransformer\CompanyTransformer;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
+use KejawenLab\Application\SemartHris\FormManipulator\CompanyDepartmentManipulator;
 use KejawenLab\Application\SemartHris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -89,16 +88,7 @@ class CompanyDepartmentController extends AdminController
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
 
-        $company = $builder->get('company');
-        $company->addModelTransformer($this->container->get(CompanyTransformer::class));
-        /** @var CompanyInterface $companyEntity */
-        if ($companyEntity = $entity->getCompany()) {
-            $company->setData($companyEntity->getId());
-
-            $builder->get('company_text')->setData($companyEntity);
-        }
-
-        return $builder;
+        return $this->container->get(CompanyDepartmentManipulator::class)->manipulate($builder, $entity);
     }
 
     /**

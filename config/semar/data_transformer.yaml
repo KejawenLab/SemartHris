@@ -1,8 +1,0 @@
-services:
-    KejawenLab\Application\SemartHris\DataTransformer\CompanyTransformer:
-        arguments:
-            - '@KejawenLab\Application\SemartHris\Repository\CompanyRepository'
-
-    KejawenLab\Application\SemartHris\DataTransformer\CityTransformer:
-        arguments:
-            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'

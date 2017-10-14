@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\DataTransformer;
 
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
-use KejawenLab\Application\SemartHris\Repository\CompanyRepository;
+use KejawenLab\Application\SemartHris\Component\Company\Repository\CompanyRepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
@@ -13,14 +13,14 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 final class CompanyTransformer implements DataTransformerInterface
 {
     /**
-     * @var CompanyRepository
+     * @var CompanyRepositoryInterface
      */
     private $companyRepository;
 
     /**
-     * @param CompanyRepository $companyRepository
+     * @param CompanyRepositoryInterface $companyRepository
      */
-    public function __construct(CompanyRepository $companyRepository)
+    public function __construct(CompanyRepositoryInterface $companyRepository)
     {
         $this->companyRepository = $companyRepository;
     }

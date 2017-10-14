@@ -36,12 +36,17 @@ easy_admin:
                     - { property: 'contractEndDate', label: 'Tanggal Akhir Kontrak' }
                     - { type: 'group', icon: 'building', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
+                    - { property: 'company_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
+                    - { property: 'department_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'department_text', label: 'Department', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
+                    - { property: 'joblevel_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
+                    - { property: 'jobtitle_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
+                    - { property: 'supervisor_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
             show:
                 title: 'Detil Karyawan'

@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CompanyAddressFormManipulator implements FormManipulatorInterface
+class CompanyAddressManipulator implements FormManipulatorInterface
 {
     /**
      * @var DataTransformerInterface
@@ -73,9 +73,9 @@ class CompanyAddressFormManipulator implements FormManipulatorInterface
             $company->addModelTransformer($this->companyTransformer);
             $company->setData($companyEntity->getId());
 
-            $formBuilder->get('company_text')->setData($companyEntity);
+            $formBuilder->get('company_readonly')->setData($companyEntity);
         } else {
-            $formBuilder->remove('company_text');
+            $formBuilder->remove('company_readonly');
         }
 
         $city = $formBuilder->get('city');

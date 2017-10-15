@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\DataTransformer;
+namespace KejawenLab\Application\SemartHris\Form\DataTransformer;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;

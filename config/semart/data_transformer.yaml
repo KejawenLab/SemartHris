@@ -1,24 +1,20 @@
 services:
-    KejawenLab\Application\SemartHris\DataTransformer\CompanyTransformer:
+    KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CompanyRepository'
 
-    KejawenLab\Application\SemartHris\DataTransformer\DepartmentTransformer:
+    KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
 
-    KejawenLab\Application\SemartHris\DataTransformer\CityTransformer:
+    KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
 
-    KejawenLab\Application\SemartHris\DataTransformer\JobTitleTransformer:
+    KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\JobTitleRepository'
 
-    KejawenLab\Application\SemartHris\DataTransformer\JobLevelTransformer:
-        arguments:
-            - '@KejawenLab\Application\SemartHris\Repository\JobLevelRepository'
-
-    KejawenLab\Application\SemartHris\DataTransformer\EmployeeTransformer:
+    KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'

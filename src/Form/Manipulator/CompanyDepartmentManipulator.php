@@ -1,29 +1,15 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\FormManipulator;
+namespace KejawenLab\Application\SemartHris\Form\Manipulator;
 
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
-use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CompanyDepartmentManipulator implements FormManipulatorInterface
+final class CompanyDepartmentManipulator extends FormManipulator implements FormManipulatorInterface
 {
-    /**
-     * @var DataTransformerInterface
-     */
-    private $companyTransformer;
-
-    /**
-     * @param DataTransformerInterface $companyTransformer
-     */
-    public function __construct(DataTransformerInterface $companyTransformer)
-    {
-        $this->companyTransformer = $companyTransformer;
-    }
-
     /**
      * @param FormBuilderInterface $formBuilder
      * @param mixed                $entity
@@ -32,12 +18,11 @@ class CompanyDepartmentManipulator implements FormManipulatorInterface
      */
     public function manipulate(FormBuilderInterface $formBuilder, $entity): FormBuilderInterface
     {
-        $company = $formBuilder->get('company');
-        $company->addModelTransformer($this->companyTransformer);
+        $formBuilder = parent::manipulate($formBuilder, $entity);
+
         /** @var CompanyInterface $companyEntity */
         if ($companyEntity = $entity->getCompany()) {
-            $company->setData($companyEntity->getId());
-
+            $formBuilder->get('company')->setData($companyEntity->getId());
             $formBuilder->get('company_readonly')->setData($companyEntity);
         }
 

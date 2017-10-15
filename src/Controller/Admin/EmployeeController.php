@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use KejawenLab\Application\SemartHris\FormManipulator\EmployeeManipulator;
+use KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeManipulator;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;

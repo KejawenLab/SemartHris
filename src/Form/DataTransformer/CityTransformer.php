@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\DataTransformer;
+namespace KejawenLab\Application\SemartHris\Form\DataTransformer;
 
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\CityRepositoryInterface;

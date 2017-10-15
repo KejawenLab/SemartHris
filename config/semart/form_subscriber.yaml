@@ -1,0 +1,16 @@
+services:
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityTextFieldSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
+
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityOfBirthTextFieldSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
+
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveDepartmentTextFieldSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
+
+    KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'

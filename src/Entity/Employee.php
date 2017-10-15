@@ -340,7 +340,7 @@ class Employee implements EmployeeInterface
     /**
      * @param \DateTimeInterface $contractEndDate
      */
-    public function setContractEndDate(\DateTimeInterface $contractEndDate): void
+    public function setContractEndDate(\DateTimeInterface $contractEndDate = null): void
     {
         $this->contractEndDate = $contractEndDate;
     }

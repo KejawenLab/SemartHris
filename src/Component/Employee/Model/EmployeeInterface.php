@@ -47,7 +47,7 @@ interface EmployeeInterface
     /**
      * @param \DateTimeInterface $dateTime
      */
-    public function setContractEndDate(\DateTimeInterface $dateTime): void;
+    public function setContractEndDate(\DateTimeInterface $dateTime = null): void;
 
     /**
      * @return null|CompanyInterface

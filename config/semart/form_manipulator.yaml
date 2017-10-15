@@ -1,22 +1,14 @@
 services:
-    KejawenLab\Application\SemartHris\FormManipulator\CompanyAddressManipulator:
+    KejawenLab\Application\SemartHris\Form\Manipulator\CompanyAddressManipulator:
         arguments:
-            - '@KejawenLab\Application\SemartHris\DataTransformer\CompanyTransformer'
-            - '@KejawenLab\Application\SemartHris\DataTransformer\CityTransformer'
-            - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
-            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
+            - { company: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer', city: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber' ]
 
-    KejawenLab\Application\SemartHris\FormManipulator\CompanyDepartmentManipulator:
+    KejawenLab\Application\SemartHris\Form\Manipulator\CompanyDepartmentManipulator:
         arguments:
-            - '@KejawenLab\Application\SemartHris\DataTransformer\CompanyTransformer'
+            - { company: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer' }
 
-    KejawenLab\Application\SemartHris\FormManipulator\EmployeeManipulator:
+    KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeManipulator:
         arguments:
-            - '@KejawenLab\Application\SemartHris\DataTransformer\DepartmentTransformer'
-            - '@KejawenLab\Application\SemartHris\DataTransformer\JobLevelTransformer'
-            - '@KejawenLab\Application\SemartHris\DataTransformer\JobTitleTransformer'
-            - '@KejawenLab\Application\SemartHris\DataTransformer\EmployeeTransformer'
-            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
-            - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
-            - '@KejawenLab\Application\SemartHris\Repository\JobTitleRepository'
-            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+            - { cityOfBirth: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer', department: '@KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer', jobTitle: '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer', supervisor: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityOfBirthTextFieldSubscriber' ]

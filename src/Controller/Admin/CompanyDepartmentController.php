@@ -6,7 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyDepartmentInterface;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
-use KejawenLab\Application\SemartHris\FormManipulator\CompanyDepartmentManipulator;
+use KejawenLab\Application\SemartHris\Form\Manipulator\CompanyDepartmentManipulator;
 use KejawenLab\Application\SemartHris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;

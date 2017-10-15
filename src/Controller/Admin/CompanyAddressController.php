@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
 use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
-use KejawenLab\Application\SemartHris\FormManipulator\CompanyAddressManipulator;
+use KejawenLab\Application\SemartHris\Form\Manipulator\CompanyAddressManipulator;
 use KejawenLab\Application\SemartHris\Repository\CompanyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;

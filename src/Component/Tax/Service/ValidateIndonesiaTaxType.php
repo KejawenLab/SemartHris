@@ -41,7 +41,7 @@ class ValidateIndonesiaTaxType
     /**
      * @return array
      */
-    public static function getReasonTypes()
+    public static function getTaxGroups()
     {
         return [
             IndonesianTaxType::TAX_TK_3,

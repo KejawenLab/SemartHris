@@ -32,7 +32,7 @@ class ValidateIdentityType
     /**
      * @return array
      */
-    public static function getReasonTypes()
+    public static function getIdentityTypes()
     {
         return [
             IdentityType::DRIVER_LISENCE,

@@ -32,7 +32,7 @@ class ValidateFamilyRelation
     /**
      * @return array
      */
-    public static function getReasonTypes()
+    public static function getFamilyRelations()
     {
         return [
             FamilyRelation::COUPLE,

@@ -32,7 +32,7 @@ class ValidateMaritalStatus
     /**
      * @return array
      */
-    public static function getReasonTypes()
+    public static function getMaritalStatus()
     {
         return [
             MaritalStatus::DISVORCE,

@@ -11,8 +11,11 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContractType;
+use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentityType;
+use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateMaritalStatus;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
+use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -199,6 +202,7 @@ class Employee implements EmployeeInterface
      * @Groups({"read", "write"})
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
+     * @Assert\Choice(callback="getIdentityTypeChoices")
      *
      * @var string
      */
@@ -208,6 +212,7 @@ class Employee implements EmployeeInterface
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=1)
      * @Assert\NotBlank()
+     * @Assert\Choice(callback="getMaritalStatusChoices")
      *
      * @var string
      */
@@ -667,5 +672,29 @@ class Employee implements EmployeeInterface
     public function getEmployeeStatusChoices(): array
     {
         return ValidateContractType::getContractTypes();
+    }
+
+    /**
+     * @return array
+     */
+    public function getMaritalStatusChoices(): array
+    {
+        return ValidateMaritalStatus::getMaritalStatus();
+    }
+
+    /**
+     * @return array
+     */
+    public function getIdentityTypeChoices(): array
+    {
+        return ValidateIdentityType::getIdentityTypes();
+    }
+
+    /**
+     * @return array
+     */
+    public function getTaxGroupChoices(): array
+    {
+        return ValidateIndonesiaTaxType::getTaxGroups();
     }
 }

@@ -26,8 +26,9 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Remove Default From Address When Default Address is Submitted
 - [X] Set Random Default When Default Address is Deleted
 - [ ] Delete Session Notification
-- [ ] Repository yang dibutuhkan untuk Karyawan
-- [ ] Data Transformer untuk Karyawan
+- [X] Repository yang dibutuhkan untuk Karyawan
+- [X] Data Transformer untuk Karyawan
+- [X] Improvisasi Form Karyawan
 - [ ] Form Manipulator untuk Karyawan
 - [X] Refactor Menu
 - [X] Master Jabatan dan Level Jabatan

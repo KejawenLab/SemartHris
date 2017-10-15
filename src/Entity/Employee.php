@@ -10,6 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -58,6 +59,7 @@ class Employee implements EmployeeInterface
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=1)
      * @Assert\NotBlank()
+     * @Assert\Choice(callback="getEmployeeStatusChoices")
      *
      * @var string
      */
@@ -657,5 +659,13 @@ class Employee implements EmployeeInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return array
+     */
+    public function getEmployeeStatusChoices(): array
+    {
+        return ValidateContractType::getContractTypes();
     }
 }

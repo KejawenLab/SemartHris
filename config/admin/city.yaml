@@ -33,7 +33,7 @@ easy_admin:
 
         Region:
             class: 'KejawenLab\Application\SemartHris\Entity\Region'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\RegionController'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
             new:
                 title: 'Tambah Propinsi'
             edit:

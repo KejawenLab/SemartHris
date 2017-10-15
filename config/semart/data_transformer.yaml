@@ -15,6 +15,10 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\JobTitleRepository'
 
+    KejawenLab\Application\SemartHris\DataTransformer\JobLevelTransformer:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\JobLevelRepository'
+
     KejawenLab\Application\SemartHris\DataTransformer\EmployeeTransformer:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'

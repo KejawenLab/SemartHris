@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Company\Repository;
+namespace KejawenLab\Application\SemartHris\Component\Employee\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 

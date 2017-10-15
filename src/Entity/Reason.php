@@ -44,7 +44,7 @@ class Reason implements ReasonInterface
      * @ORM\Column(type="string", length=1)
      * @Assert\Length(max=1)
      * @Assert\NotBlank()
-     * @Assert\Choice(callback="getReasonTypes")
+     * @Assert\Choice(callback="getTypeChoices")
      *
      * @var string
      */
@@ -140,7 +140,7 @@ class Reason implements ReasonInterface
     /**
      * @return array
      */
-    public function getReasonTypes(): array
+    public function getTypeChoices(): array
     {
         return ValidateReasonType::getReasonTypes();
     }

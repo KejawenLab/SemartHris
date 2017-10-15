@@ -30,7 +30,7 @@ easy_admin:
 
         SkillGroup:
             class: 'KejawenLab\Application\SemartHris\Entity\SkillGroup'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SkillGroupController'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
             new:
                 title: 'Tambah Grup Keahlian'
             edit:

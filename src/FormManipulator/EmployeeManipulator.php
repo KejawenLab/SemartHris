@@ -3,9 +3,9 @@
 namespace KejawenLab\Application\SemartHris\FormManipulator;
 
 use KejawenLab\Application\SemartHris\Component\Address\Repository\CityRepositoryInterface;
-use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Repository\DepartmentRepositoryInterface;
-use KejawenLab\Application\SemartHris\Component\Company\Repository\EmployeeRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Repository\JobTitleRepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -55,6 +55,16 @@ class EmployeeManipulator implements FormManipulatorInterface
      */
     private $employeeRepository;
 
+    /**
+     * @param DataTransformerInterface      $departmentTransformer
+     * @param DataTransformerInterface      $jobLevelTransformer
+     * @param DataTransformerInterface      $jobTitleTransformer
+     * @param DataTransformerInterface      $employeeTransformer
+     * @param CityRepositoryInterface       $cityRepository
+     * @param DepartmentRepositoryInterface $departmentRepository
+     * @param JobTitleRepositoryInterface   $jobTitleRepository
+     * @param EmployeeRepositoryInterface   $employeeRepository
+     */
     public function __construct(
         DataTransformerInterface $departmentTransformer,
         DataTransformerInterface $jobLevelTransformer,
@@ -82,10 +92,25 @@ class EmployeeManipulator implements FormManipulatorInterface
      * @return FormBuilderInterface
      */
     public function manipulate(FormBuilderInterface $formBuilder, $entity): FormBuilderInterface
-    {
-        /** @var CompanyInterface $companyEntity */
+    {/** @var EmployeeInterface $entity */
         if (!$companyEntity = $entity->getCompany()) {
             $formBuilder->remove('company_readonly');
+        }
+
+        if (!$departmentEntity = $entity->getDepartment()) {
+            $formBuilder->remove('department_readonly');
+        }
+
+        if (!$jobLevelEntity = $entity->getJobLevel()) {
+            $formBuilder->remove('joblevel_readonly');
+        }
+
+        if (!$jobTitleEntity = $entity->getJobTitle()) {
+            $formBuilder->remove('jobtitle_readonly');
+        }
+
+        if (!$supervisorEntity = $entity->getSupervisor()) {
+            $formBuilder->remove('supervisor_readonly');
         }
 
         return $formBuilder;

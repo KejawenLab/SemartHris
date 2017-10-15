@@ -33,7 +33,7 @@ class ValidateContractType
     /**
      * @return array
      */
-    public static function getReasonTypes()
+    public static function getContractTypes()
     {
         return [
             ContractType::INTERSHIP,

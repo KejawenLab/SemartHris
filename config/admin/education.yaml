@@ -2,7 +2,7 @@ easy_admin:
     entities:
         EducationTitle:
             class: 'KejawenLab\Application\SemartHris\Entity\EducationTitle'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EducationTitleController'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
             new:
                 title: 'Tambah Gelar Pendidikan'
             edit:
@@ -29,7 +29,7 @@ easy_admin:
 
         EducationalInstitute:
             class: 'KejawenLab\Application\SemartHris\Entity\EducationalInstitute'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EducationalInstituteController'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
             new:
                 title: 'Tambah Lembaga Pendidikan'
             edit:

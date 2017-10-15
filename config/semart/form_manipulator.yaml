@@ -9,3 +9,14 @@ services:
     KejawenLab\Application\SemartHris\FormManipulator\CompanyDepartmentManipulator:
         arguments:
             - '@KejawenLab\Application\SemartHris\DataTransformer\CompanyTransformer'
+
+    KejawenLab\Application\SemartHris\FormManipulator\EmployeeManipulator:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\DataTransformer\DepartmentTransformer'
+            - '@KejawenLab\Application\SemartHris\DataTransformer\JobLevelTransformer'
+            - '@KejawenLab\Application\SemartHris\DataTransformer\JobTitleTransformer'
+            - '@KejawenLab\Application\SemartHris\DataTransformer\EmployeeTransformer'
+            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\JobTitleRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'

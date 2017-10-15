@@ -2,8 +2,8 @@
 
 namespace KejawenLab\Application\SemartHris\DataTransformer;
 
-use KejawenLab\Application\SemartHris\Component\Company\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 

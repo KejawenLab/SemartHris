@@ -17,6 +17,10 @@ services:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\JobTitle']]
 
+    KejawenLab\Application\SemartHris\Repository\JobLevelRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\JobLevel']]
+
     KejawenLab\Application\SemartHris\Repository\EmployeeRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Employee']]

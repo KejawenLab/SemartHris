@@ -19,6 +19,8 @@
             var locale = '{{ _select2_locale }}';
             var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
 
+            change_static_select(locale);
+
             city_autocomplete(locale, emptyText);
             department_autocomplete(locale, emptyText);
             jobtitle_autocomplete(locale, emptyText);

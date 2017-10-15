@@ -2,7 +2,7 @@ easy_admin:
     entities:
         JobLevel:
             class: 'KejawenLab\Application\SemartHris\Entity\JobLevel'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\JobLevelController'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
             new:
                 title: 'Tambah Level Jabatan'
             edit:

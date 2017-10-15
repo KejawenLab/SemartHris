@@ -31,7 +31,7 @@ easy_admin:
                     - { property: 'haveOvertimeBenefit', label: 'Berhak Lembur?', type_options: { required: false } }
                     - { type: 'group', icon: 'id-card-o', label: 'Informasi Kontrak', css_class: 'col-sm-6' }
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
-                    - { property: 'employeeStatus', label: 'Status Karyawan' }
+                    - { property: 'employeeStatus', label: 'Status Karyawan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KARYAWAN TETAP': 'p', 'KARYAWAN KONTRAK': 't', 'KARYAWAN OUTSOURCE': 'o', 'KARYAWAN MAGANG': 'i',  } } }
                     - { property: 'letterNumber', label: 'No. Kontrak' }
                     - { property: 'contractEndDate', label: 'Tanggal Akhir Kontrak' }
                     - { type: 'group', icon: 'building', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }

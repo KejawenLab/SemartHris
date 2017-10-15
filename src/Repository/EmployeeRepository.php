@@ -3,8 +3,8 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use KejawenLab\Application\SemartHris\Component\Company\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\SupervisorRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Entity\JobLevel;

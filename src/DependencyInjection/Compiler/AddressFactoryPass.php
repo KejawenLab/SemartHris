@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\CompilerPass;
+namespace KejawenLab\Application\SemartHris\DependencyInjection\Compiler;
 
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

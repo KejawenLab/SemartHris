@@ -4,11 +4,7 @@ parameters:
     locale: 'id'
 
 services:
-    KejawenLab\Application\SemartHris\CompilerPass\ServiceCompilerPassFactory:
-
-    KejawenLab\Application\SemartHris\CompilerPass\AddressFactoryPass:
-        tags:
-            - { name: 'semarthris.service_compiler' }
+    KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AddressFactoryPass:
 
     KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
         arguments:

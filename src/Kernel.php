@@ -2,12 +2,10 @@
 
 namespace KejawenLab\Application\SemartHris;
 
-use KejawenLab\Application\SemartHris\CompilerPass\ServiceCompilerPassFactory;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
@@ -80,16 +78,6 @@ class Kernel extends BaseKernel implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if ($container->hasDefinition(ServiceCompilerPassFactory::class)) {
-            $services = $container->findTaggedServiceIds(ServiceCompilerPassFactory::SERVICE_COMPILER_PASS_TAG);
-            $serviceCompilers = [];
-            foreach ($services as $serviceId => $tags) {
-                $serviceCompilers[] = new Reference($serviceId);
-            }
-
-            $container->getDefinition(ServiceCompilerPassFactory::class)->addArgument($serviceCompilers);
-
-            $container->getDefinition(ServiceCompilerPassFactory::class)->addMethodCall('compile', [$container]);
-        }
+        //TODO: waiting for stable release
     }
 }

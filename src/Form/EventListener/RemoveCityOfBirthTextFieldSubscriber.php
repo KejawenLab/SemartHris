@@ -33,7 +33,7 @@ final class RemoveCityOfBirthTextFieldSubscriber implements EventSubscriberInter
         $form = $event->getForm();
         $data = $event->getData();
 
-        if ($city = $this->cityRepository->find($data['cityOfBirth'])) {
+        if ($this->cityRepository->find($data['cityOfBirth'])) {
             $form->remove('city_text');
         }
     }

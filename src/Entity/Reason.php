@@ -82,7 +82,15 @@ class Reason implements ReasonInterface
      */
     public function getType(): string
     {
-        return ValidateReasonType::convertToText((string) $this->type);
+        return (string) $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeText(): string
+    {
+        return ValidateReasonType::convertToText($this->type);
     }
 
     /**

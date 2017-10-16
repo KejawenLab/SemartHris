@@ -27,7 +27,6 @@ final class CompanyAddressManipulator extends FormManipulator implements FormMan
             $formBuilder->remove('company');
 
             $formBuilder->add('company', HiddenType::class);
-
             $company = $formBuilder->get('company');
             $company->addModelTransformer($this->getDataTransformerForField('company'));
             $company->setData($companyEntity->getId());

@@ -316,6 +316,14 @@ class Employee implements EmployeeInterface
     }
 
     /**
+     * @return string
+     */
+    public function getEmployeeStatusText(): string
+    {
+        return ValidateContractType::convertToText($this->employeeStatus);
+    }
+
+    /**
      * @param string $employeeStatus
      */
     public function setEmployeeStatus(string $employeeStatus): void
@@ -477,6 +485,14 @@ class Employee implements EmployeeInterface
     public function getGender(): string
     {
         return (string) $this->gender;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGenderText(): string
+    {
+        return ValidateGender::convertToText($this->gender);
     }
 
     /**

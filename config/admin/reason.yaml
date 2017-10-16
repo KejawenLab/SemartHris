@@ -28,7 +28,7 @@ easy_admin:
                 title: 'Alasan Cuti'
                 dql_filter: "entity.type = 'l'"
                 fields:
-                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'type_text', label: 'Jenis Alasan' }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
 
@@ -60,6 +60,6 @@ easy_admin:
                 title: 'Alasan Ketidakhadiran'
                 dql_filter: "entity.type = 'a'"
                 fields:
-                    - { property: 'type', label: 'Jenis Alasan' }
+                    - { property: 'type_text', label: 'Jenis Alasan' }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }

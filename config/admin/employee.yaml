@@ -5,7 +5,7 @@ easy_admin:
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeController'
             templates:
                 new: '/app/employee/new.html.twig'
-                edit: '/app/employee/new.html.twig'
+                edit: '/app/employee/edit.html.twig'
                 list: '/app/employee/list.html.twig'
             new:
                 title: 'Tambah Karyawan'
@@ -37,18 +37,19 @@ easy_admin:
                     - { property: 'contractEndDate', label: 'Tanggal Akhir Kontrak' }
                     - { type: 'group', icon: 'building', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
-                    - { property: 'company_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
-                    - { property: 'department_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'department_readonly', label: 'Department', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'department_text', label: 'Department', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
-                    - { property: 'joblevel_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'joblevel_readonly', label: 'Level Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
-                    - { property: 'jobtitle_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'jobtitle_readonly', label: 'Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
-                    - { property: 'supervisor_readonly', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'supervisor_readonly', label: 'Atasan Langsung', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'supervisor_empty', label: 'Atasan Langsung', type: 'text', type_options: { attr: { readonly: true }, mapped: false } }
             show:
                 title: 'Detil Karyawan'
                 fields:
@@ -59,9 +60,10 @@ easy_admin:
                 fields:
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
+                    - { property: 'gender_text', label: 'Jenis Kelamin' }
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
-                    - { property: 'employeeStatus', label: 'Status' }
+                    - { property: 'employee_status_text', label: 'Status' }
                     - { property: 'supervisor', label: 'Atasan' }
                     - { property: 'resign', label: 'Resign?' }

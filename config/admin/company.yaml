@@ -14,11 +14,11 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'parent', label: 'Perusahaan Induk', type: 'easyadmin_autocomplete' }
-                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
                     - { property: 'code', label: 'Kode Perusahaan' }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Nama Perusahaan' }
-                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { type: 'group', css_class: 'col-sm-4 new-row' }
                     - { property: 'birthDay', label: 'Tanggal Berdiri', type: 'birthday', type_options: { placeholder: { year: 'Tahun', month: 'Bulan', day: 'Tanggal' } } }
                     - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'email', label: 'Alamat Email' }
@@ -57,7 +57,7 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'parent', label: 'Departemen Induk', type: 'easyadmin_autocomplete' }
-                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
                     - { property: 'code', label: 'Kode Departemen' }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Nama Departemen' }
@@ -105,7 +105,7 @@ easy_admin:
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyAddressController'
             templates:
                 new: '/app/company_address/new.html.twig'
-                edit: '/app/company_address/new.html.twig'
+                edit: '/app/company_address/edit.html.twig'
                 list: '/app/company_address/list.html.twig'
             new:
                 title: 'Tambah Alamat Perusahaan'
@@ -118,12 +118,12 @@ easy_admin:
                     - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'address', label: 'Alamat' }
                     - { property: 'defaultAddress', label: 'Set Default' }
-                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
                     - { property: 'region', label: 'Propinsi', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'city', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
                     - { property: 'city_text', label: 'Kota', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
-                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { type: 'group', css_class: 'col-sm-4 new-row' }
                     - { property: 'postalCode', label: 'Kode Pos' }
                     - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'phoneNumber', label: 'No. Telpon' }

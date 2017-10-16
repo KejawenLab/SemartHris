@@ -39,8 +39,6 @@ class CompanyDepartmentController extends AdminController
 
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'list',
-            'sortField' => 'department',
-            'sortDirection' => 'DESC',
             'entity' => 'CompanyDepartment',
         ));
     }

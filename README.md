@@ -12,6 +12,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Suport Multi Perusahaan
 - [X] Menejemen Jabatan
 - [X] Menejemen Shift Kerja
+- [X] Menejemen Karyawan
 - [X] Support Multi Alamat
 - [X] Backend Site and API Sekaligus
 
@@ -25,7 +26,6 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Master Alamat Perusahaan
 - [X] Remove Default From Address When Default Address is Submitted
 - [X] Set Random Default When Default Address is Deleted
-- [ ] Delete Session Notification
 - [X] Repository yang dibutuhkan untuk Karyawan
 - [X] Data Transformer untuk Karyawan
 - [X] Improvisasi Form Karyawan
@@ -41,6 +41,8 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [ ] Change Password
 - [ ] Change Role
 - [ ] Menejemen Absensi
+- [ ] Login Page
+- [ ] Delete Session Notification
 
 ![SemartHris Preview](preview.png)
 

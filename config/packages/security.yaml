@@ -3,6 +3,9 @@ security:
         KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface: bcrypt
 #            algorithm: 'argon2i' #change to argon2i encoder after stable release
 
+    access_decision_manager:
+        strategy: unanimous
+
     role_hierarchy:
         ROLE_EMPLOYEE: ROLE_EMPLOYEE
         ROLE_HRSTAFF: ROLE_HRSTAFF, ROLE_EMPLOYEE]

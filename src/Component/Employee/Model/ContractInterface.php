@@ -47,6 +47,16 @@ interface ContractInterface
     public function getType(): string;
 
     /**
+     * @return null|string
+     */
+    public function getDescription(): ? string;
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void;
+
+    /**
      * @return bool
      */
     public function isActive(): bool;

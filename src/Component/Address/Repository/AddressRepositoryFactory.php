@@ -2,8 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Address\Repository;
 
-use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
-
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
@@ -27,15 +25,14 @@ final class AddressRepositoryFactory
     }
 
     /**
-     * @param AddressInterface $address
+     * @param string $addressClasss
      *
      * @return AddressRepositoryInterface
      */
-    public function getRepositoryFor(AddressInterface $address): AddressRepositoryInterface
+    public function getRepositoryFor(string $addressClasss): AddressRepositoryInterface
     {
-        $entityClass = get_class($address);
-        if (!$repository = $this->repositories[$entityClass]) {
-            throw new \InvalidArgumentException(sprintf('Repository for %s not found.', $entityClass));
+        if (!$repository = $this->repositories[$addressClasss]) {
+            throw new \InvalidArgumentException(sprintf('Repository for class "%s" not found.', $addressClasss));
         }
 
         return $repository;

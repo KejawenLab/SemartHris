@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Address\Repository;
 
+use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 
 /**
@@ -13,6 +14,11 @@ interface AddressRepositoryInterface
      * @param AddressInterface $address
      */
     public function unsetDefaultExcept(AddressInterface $address): void;
+
+    /**
+     * @param Addressable $address
+     */
+    public function saveAddress(Addressable $address): void;
 
     public function setRandomDefault(): void;
 

@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
@@ -173,6 +174,28 @@ class CompanyRepository implements CompanyRepositoryInterface, AddressRepository
 
         $other->setDefaultAddress(true);
         $this->entityManager->persist($other);
+        $this->entityManager->flush();
+    }
+
+    /**
+     * @param Addressable $address
+     */
+    public function saveAddress(Addressable $address): void
+    {/** @var CompanyInterface $address */
+        $class = $this->getEntityClass();
+
+        /** @var CompanyAddressInterface $new */
+        $new = new $class();
+        $new->setCompany($address);
+        $new->setAddress($address->getAddress());
+        $new->setRegion($address->getRegion());
+        $new->setCity($address->getCity());
+        $new->setPostalCode($address->getPostalCode());
+        $new->setPhoneNumber($address->getPhoneNumber());
+        $new->setFaxNumber($address->getFaxNumber());
+        $new->setDefaultAddress(true);
+
+        $this->entityManager->persist($new);
         $this->entityManager->flush();
     }
 

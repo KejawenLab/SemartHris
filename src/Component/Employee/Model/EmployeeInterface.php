@@ -2,17 +2,23 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Employee\Model;
 
+use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\ContractType;
+use KejawenLab\Application\SemartHris\Component\Employee\Gender;
+use KejawenLab\Application\SemartHris\Component\Employee\IdentityType;
+use KejawenLab\Application\SemartHris\Component\Employee\MaritalStatus;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
+use KejawenLab\Application\SemartHris\Component\Tax\IndonesianTaxType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-interface EmployeeInterface
+interface EmployeeInterface extends Addressable
 {
     /**
      * @return string
@@ -26,6 +32,8 @@ interface EmployeeInterface
 
     /**
      * @return string
+     *
+     * @see ContractType
      */
     public function getEmployeeStatus(): string;
 
@@ -111,6 +119,8 @@ interface EmployeeInterface
 
     /**
      * @return string
+     *
+     * @see Gender
      */
     public function getGender(): string;
 
@@ -146,11 +156,15 @@ interface EmployeeInterface
 
     /**
      * @return string
+     *
+     * @see IdentityType
      */
     public function getIdentityType(): string;
 
     /**
      * @return string
+     *
+     * @see MaritalStatus
      */
     public function getMaritalStatus(): string;
 
@@ -186,6 +200,8 @@ interface EmployeeInterface
 
     /**
      * @return string
+     *
+     * @see IndonesianTaxType
      */
     public function getTaxGroup(): string;
 

@@ -37,6 +37,10 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Create Username Generator Service
 - [X] Implement User Model and Repository
 - [X] Add Listener to Generate Username, Role and Applying Default Password
+- [ ] Create Company Address When Creating New Company
+- [ ] Create Employee Address When Creating New Employee
+- [ ] Create Contract When Creating New Employee
+- [ ] Create Job Allocation When Creating New Employee
 - [ ] Soft Delete and Blameable
 - [ ] Change Password
 - [ ] Change Role

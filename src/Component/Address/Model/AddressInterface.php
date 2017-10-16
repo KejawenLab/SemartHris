@@ -18,6 +18,11 @@ interface AddressInterface
     public function getAddress(): string;
 
     /**
+     * @param string $address
+     */
+    public function setAddress(string $address): void;
+
+    /**
      * @return null|RegionInterface
      */
     public function getRegion(): ? RegionInterface;
@@ -43,14 +48,29 @@ interface AddressInterface
     public function getPostalCode(): string;
 
     /**
+     * @param string $postalCode
+     */
+    public function setPostalCode(string $postalCode): void;
+
+    /**
      * @return string
      */
     public function getPhoneNumber(): string;
 
     /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber): void;
+
+    /**
      * @return string
      */
     public function getFaxNumber(): string;
+
+    /**
+     * @param string $faxNumber
+     */
+    public function setFaxNumber(string $faxNumber): void;
 
     /**
      * @return bool

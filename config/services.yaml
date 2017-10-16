@@ -27,3 +27,7 @@ services:
     KejawenLab\Application\SemartHris\Security\UserProvider:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+
+    KejawenLab\Application\SemartHris\Component\Address\Service\CreateAddressFromAddressable:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory'

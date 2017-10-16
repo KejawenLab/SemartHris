@@ -1,7 +1,7 @@
 api_platform:
-    title: 'SemartHRIS API'
-    description: 'SemartHRIS API End Point'
-    version: '0.0.0-dev'
+    title: '%env(APP_NAME)%'
+    description: '%env(APP_API_DESCRIPTION)%'
+    version: '%env(APP_API_VERSION)%'
     collection:
         order: 'DESC'
         order_parameter_name: 'o'

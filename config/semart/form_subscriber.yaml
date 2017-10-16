@@ -11,6 +11,14 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
 
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveJobTitleTextFieldSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\JobTitleRepository'
+
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveSupervisorTextFieldSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+
     KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'

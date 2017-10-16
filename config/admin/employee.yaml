@@ -19,6 +19,7 @@ easy_admin:
                     - { type: 'group', icon: 'user-md', label: 'Data Pribadi', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
+                    - { property: 'gender', label: 'Jenis Kelamin', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', PRIA: 'm', WANITA: 'f' } } }
                     - { property: 'regionOfBirth', label: 'Propinsi Kelahiran', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
                     - { property: 'cityOfBirth', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
                     - { property: 'city_text', label: 'Kota Kelahiran', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }

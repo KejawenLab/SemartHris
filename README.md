@@ -29,7 +29,8 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Repository yang dibutuhkan untuk Karyawan
 - [X] Data Transformer untuk Karyawan
 - [X] Improvisasi Form Karyawan
-- [ ] Form Manipulator untuk Karyawan
+- [X] Form Manipulator untuk Karyawan
+- [ ] Perancangan Form Edit Karyawan
 - [X] Refactor Menu
 - [X] Master Jabatan dan Level Jabatan
 - [X] Master Shift Kerja

@@ -110,6 +110,11 @@ interface EmployeeInterface
     public function getFullName(): string;
 
     /**
+     * @return string
+     */
+    public function getGender(): string;
+
+    /**
      * @return null|RegionInterface
      */
     public function getRegionOfBirth(): ? RegionInterface;

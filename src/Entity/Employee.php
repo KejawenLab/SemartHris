@@ -11,6 +11,7 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContractType;
+use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateGender;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentityType;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateMaritalStatus;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
@@ -133,7 +134,6 @@ class Employee implements EmployeeInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id")
-     * @Assert\NotBlank()
      * @ApiSubresource()
      *
      * @var EmployeeInterface
@@ -157,6 +157,16 @@ class Employee implements EmployeeInterface
      * @var string
      */
     private $fullName;
+
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=1)
+     * @Assert\NotBlank()
+     * @Assert\Choice(callback="getGenderChoices")
+     *
+     * @var string
+     */
+    private $gender;
 
     /**
      * @Groups({"write", "read"})
@@ -310,6 +320,10 @@ class Employee implements EmployeeInterface
      */
     public function setEmployeeStatus(string $employeeStatus): void
     {
+        if (!ValidateContractType::isValidType($employeeStatus)) {
+            throw new \InvalidArgumentException(sprintf('%s is not valid contract type.', $employeeStatus));
+        }
+
         $this->employeeStatus = $employeeStatus;
     }
 
@@ -458,6 +472,26 @@ class Employee implements EmployeeInterface
     }
 
     /**
+     * @return string
+     */
+    public function getGender(): string
+    {
+        return (string) $this->gender;
+    }
+
+    /**
+     * @param string $gender
+     */
+    public function setGender(string $gender)
+    {
+        if (!ValidateGender::isValidType($gender)) {
+            throw new \InvalidArgumentException(sprintf('%s is not valid gender.', $gender));
+        }
+
+        $this->gender = $gender;
+    }
+
+    /**
      * @return RegionInterface|null
      */
     public function getRegionOfBirth(): ? RegionInterface
@@ -534,6 +568,10 @@ class Employee implements EmployeeInterface
      */
     public function setIdentityType(string $identityType): void
     {
+        if (!ValidateIdentityType::isValidType($identityType)) {
+            throw new \InvalidArgumentException(sprintf('%s is not valid identity type.', $identityType));
+        }
+
         $this->identityType = $identityType;
     }
 
@@ -550,6 +588,10 @@ class Employee implements EmployeeInterface
      */
     public function setMaritalStatus(string $maritalStatus): void
     {
+        if (!ValidateMaritalStatus::isValidType($maritalStatus)) {
+            throw new \InvalidArgumentException(sprintf('%s is not valid marital status.', $maritalStatus));
+        }
+
         $this->maritalStatus = $maritalStatus;
     }
 
@@ -614,6 +656,10 @@ class Employee implements EmployeeInterface
      */
     public function setTaxGroup(string $taxGroup): void
     {
+        if (!ValidateIndonesiaTaxType::isValidType($taxGroup)) {
+            throw new \InvalidArgumentException(sprintf('%s is not valid tax type.', $taxGroup));
+        }
+
         $this->taxGroup = $taxGroup;
     }
 
@@ -672,6 +718,14 @@ class Employee implements EmployeeInterface
     public function getEmployeeStatusChoices(): array
     {
         return ValidateContractType::getContractTypes();
+    }
+
+    /**
+     * @return array
+     */
+    public function getGenderChoices(): array
+    {
+        return ValidateGender::getGenders();
     }
 
     /**

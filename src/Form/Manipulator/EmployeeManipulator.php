@@ -18,6 +18,8 @@ final class EmployeeManipulator extends FormManipulator implements FormManipulat
      */
     public function manipulate(FormBuilderInterface $formBuilder, $entity): FormBuilderInterface
     {/* @var EmployeeInterface $entity */
+        $formBuilder = parent::manipulate($formBuilder, $entity);
+
         if (!$companyEntity = $entity->getCompany()) {
             $formBuilder->remove('company_readonly');
         }

@@ -10,5 +10,7 @@ services:
 
     KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeManipulator:
         arguments:
-            - { company: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer', cityOfBirth: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer', department: '@KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer', jobLevel: '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobLevelTransformer', jobTitle: '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer', supervisor: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer' }
+            - '@KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer'
+            - '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobLevelTransformer'
+            - { cityOfBirth: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer', department: '@KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer', jobTitle: '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer', supervisor: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityOfBirthTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveDepartmentTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveJobTitleTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveSupervisorTextFieldSubscriber' ]

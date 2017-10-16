@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Service\ValidateReasonType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -24,6 +25,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "denormalization_context"={"groups"={"write"}}
  *     }
  * )
+ *
+ * @UniqueEntity("code")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -99,7 +102,7 @@ class Reason implements ReasonInterface
     public function setType(string $type): void
     {
         if (!ValidateReasonType::isValidType($type)) {
-            throw new \InvalidArgumentException(sprintf('%s is not valid type.', $type));
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid type.', $type));
         }
 
         $this->type = $type;

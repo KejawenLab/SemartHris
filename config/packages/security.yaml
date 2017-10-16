@@ -1,18 +1,24 @@
 security:
-    # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface: bcrypt
+#            algorithm: 'argon2i' #change to argon2i encoder after stable release
+
+    role_hierarchy:
+        ROLE_EMPLOYEE: ROLE_EMPLOYEE
+        ROLE_HRSTAFF: ROLE_HRSTAFF, ROLE_EMPLOYEE]
+        ROLE_SUPER_ADMIN: [ROLE_EMPLOYEE]
+
     providers:
-        in_memory: { memory: ~ }
+        semarthris:
+            id: KejawenLab\Application\SemartHris\Security\UserProvider
+
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         main:
-            anonymous: ~
+            pattern: ^/
+            form_login:
+                provider: semarthris
+                csrf_token_generator: security.csrf.token_manager
+            logout:       true
+            anonymous:    true
 
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # https://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:

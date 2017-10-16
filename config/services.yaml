@@ -23,3 +23,7 @@ services:
     KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator:
         arguments:
             - '@KejawenLab\Library\PetrukUsername\UsernameFactory'
+
+    KejawenLab\Application\SemartHris\Security\UserProvider:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'

@@ -52,7 +52,7 @@ final class CityTransformer implements DataTransformerInterface
 
         $city = $this->cityRepository->find($cityId);
         if (null === $city) {
-            throw new TransformationFailedException(sprintf('City with id %s is not exist.', $cityId));
+            throw new TransformationFailedException(sprintf('City with id "%s" is not exist.', $cityId));
         }
 
         return $city;

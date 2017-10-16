@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Form\Manipulator;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -11,6 +12,29 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 final class EmployeeManipulator extends FormManipulator implements FormManipulatorInterface
 {
+    /**
+     * @var DataTransformerInterface
+     */
+    private $companyTransformer;
+
+    /**
+     * @var DataTransformerInterface
+     */
+    private $jobLevelTransformer;
+
+    /**
+     * @param DataTransformerInterface $companyTransformer
+     * @param DataTransformerInterface $jobLevelTransformer
+     * @param array                    $dataTransformers
+     * @param array                    $eventSubscribers
+     */
+    public function __construct(DataTransformerInterface $companyTransformer, DataTransformerInterface $jobLevelTransformer, $dataTransformers = [], $eventSubscribers = [])
+    {
+        parent::__construct($dataTransformers, $eventSubscribers);
+        $this->companyTransformer = $companyTransformer;
+        $this->jobLevelTransformer = $jobLevelTransformer;
+    }
+
     /**
      * @param FormBuilderInterface $formBuilder
      * @param mixed                $entity
@@ -29,7 +53,7 @@ final class EmployeeManipulator extends FormManipulator implements FormManipulat
 
                 $formBuilder->add('company', HiddenType::class);
                 $company = $formBuilder->get('company');
-                $company->addModelTransformer($this->getDataTransformerForField('company'));
+                $company->addModelTransformer($this->companyTransformer);
                 $company->setData($companyEntity->getId());
 
                 $formBuilder->get('company_readonly')->setData($companyEntity);
@@ -51,7 +75,7 @@ final class EmployeeManipulator extends FormManipulator implements FormManipulat
 
                 $formBuilder->add('jobLevel', HiddenType::class);
                 $company = $formBuilder->get('jobLevel');
-                $company->addModelTransformer($this->getDataTransformerForField('jobLevel'));
+                $company->addModelTransformer($this->jobLevelTransformer);
                 $company->setData($jobLevelEntity->getId());
 
                 $formBuilder->get('joblevel_readonly')->setData($jobLevelEntity);

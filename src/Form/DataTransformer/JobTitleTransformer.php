@@ -52,7 +52,7 @@ final class JobTitleTransformer implements DataTransformerInterface
 
         $jobTitle = $this->jobTitleRepository->find($jobTitleId);
         if (null === $jobTitle) {
-            throw new TransformationFailedException(sprintf('Job title with id %s is not exist.', $jobTitleId));
+            throw new TransformationFailedException(sprintf('Job title with id "%s" is not exist.', $jobTitleId));
         }
 
         return $jobTitle;

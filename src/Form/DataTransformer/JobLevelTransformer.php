@@ -52,7 +52,7 @@ final class JobLevelTransformer implements DataTransformerInterface
 
         $jobLevel = $this->jobLevelRepository->find($jobLevelId);
         if (null === $jobLevel) {
-            throw new TransformationFailedException(sprintf('Job level with id %s is not exist.', $jobLevelId));
+            throw new TransformationFailedException(sprintf('Job level with id "%s" is not exist.', $jobLevelId));
         }
 
         return $jobLevel;

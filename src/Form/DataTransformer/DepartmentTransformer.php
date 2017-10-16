@@ -52,7 +52,7 @@ final class DepartmentTransformer implements DataTransformerInterface
 
         $department = $this->departmentRepository->find($departmentId);
         if (null === $department) {
-            throw new TransformationFailedException(sprintf('Department with id %s is not exist.', $departmentId));
+            throw new TransformationFailedException(sprintf('Department with id "%s" is not exist.', $departmentId));
         }
 
         return $department;

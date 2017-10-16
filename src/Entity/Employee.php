@@ -21,10 +21,11 @@ use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTax
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="employees", indexes={@ORM\Index(name="employees_idx", columns={"code", "full_name"})})
+ * @ORM\Table(name="employees", indexes={@ORM\Index(name="employees_idx", columns={"code", "full_name", "username"})})
  *
  * @ApiResource(
  *     attributes={
@@ -37,9 +38,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
+ * @UniqueEntity("letterNumber")
+ * @UniqueEntity("code")
+ * @UniqueEntity("identityNumber")
+ * @UniqueEntity("email")
+ * @UniqueEntity("username")
+ *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Employee implements EmployeeInterface, UserInterface
+class Employee implements EmployeeInterface, UserInterface, \Serializable
 {
     /**
      * @Groups({"read"})
@@ -354,7 +361,7 @@ class Employee implements EmployeeInterface, UserInterface
     public function setEmployeeStatus(string $employeeStatus): void
     {
         if (!ValidateContractType::isValidType($employeeStatus)) {
-            throw new \InvalidArgumentException(sprintf('%s is not valid contract type.', $employeeStatus));
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid contract type.', $employeeStatus));
         }
 
         $this->employeeStatus = $employeeStatus;
@@ -526,7 +533,7 @@ class Employee implements EmployeeInterface, UserInterface
     public function setGender(string $gender)
     {
         if (!ValidateGender::isValidType($gender)) {
-            throw new \InvalidArgumentException(sprintf('%s is not valid gender.', $gender));
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid gender.', $gender));
         }
 
         $this->gender = $gender;
@@ -610,7 +617,7 @@ class Employee implements EmployeeInterface, UserInterface
     public function setIdentityType(string $identityType): void
     {
         if (!ValidateIdentityType::isValidType($identityType)) {
-            throw new \InvalidArgumentException(sprintf('%s is not valid identity type.', $identityType));
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid identity type.', $identityType));
         }
 
         $this->identityType = $identityType;
@@ -630,7 +637,7 @@ class Employee implements EmployeeInterface, UserInterface
     public function setMaritalStatus(string $maritalStatus): void
     {
         if (!ValidateMaritalStatus::isValidType($maritalStatus)) {
-            throw new \InvalidArgumentException(sprintf('%s is not valid marital status.', $maritalStatus));
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid marital status.', $maritalStatus));
         }
 
         $this->maritalStatus = $maritalStatus;
@@ -698,7 +705,7 @@ class Employee implements EmployeeInterface, UserInterface
     public function setTaxGroup(string $taxGroup): void
     {
         if (!ValidateIndonesiaTaxType::isValidType($taxGroup)) {
-            throw new \InvalidArgumentException(sprintf('%s is not valid tax type.', $taxGroup));
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid tax type.', $taxGroup));
         }
 
         $this->taxGroup = $taxGroup;
@@ -781,7 +788,7 @@ class Employee implements EmployeeInterface, UserInterface
      */
     public function addRole(string $role): void
     {
-        if (!strpos($role, 'ROLE_')) {
+        if (false === strpos($role, 'ROLE_')) {
             $role = sprintf('ROLE_%s', $role);
         }
 
@@ -875,5 +882,25 @@ class Employee implements EmployeeInterface, UserInterface
      */
     public function eraseCredentials(): void
     {
+    }
+
+    /**
+     * @return string
+     */
+    public function serialize(): string
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+        ]);
+    }
+
+    /**
+     * @param string $serialized
+     */
+    public function unserialize($serialized)
+    {
+        list($this->id, $this->username, $this->password) = unserialize($serialized);
     }
 }

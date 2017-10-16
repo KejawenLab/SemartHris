@@ -52,7 +52,7 @@ final class EmployeeTransformer implements DataTransformerInterface
 
         $employee = $this->employeeRepository->find($employeeId);
         if (null === $employee) {
-            throw new TransformationFailedException(sprintf('Employee with id %s is not exist.', $employeeId));
+            throw new TransformationFailedException(sprintf('Employee with id "%s" is not exist.', $employeeId));
         }
 
         return $employee;

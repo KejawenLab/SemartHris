@@ -37,8 +37,9 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Create Username Generator Service
 - [X] Implement User Model and Repository
 - [X] Add Listener to Generate Username, Role and Applying Default Password
-- [ ] Soft Delete and User Log (CreatedBy and UpdatedBy)
-- [ ] Menejemen Karyawan
+- [ ] Soft Delete and Blameable
+- [ ] Change Password
+- [ ] Change Role
 - [ ] Menejemen Absensi
 
 ![SemartHris Preview](preview.png)

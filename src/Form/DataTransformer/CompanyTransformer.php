@@ -52,7 +52,7 @@ final class CompanyTransformer implements DataTransformerInterface
 
         $company = $this->companyRepository->find($companyId);
         if (null === $company) {
-            throw new TransformationFailedException(sprintf('Company with id %s is not exist.', $companyId));
+            throw new TransformationFailedException(sprintf('Company with id "%s" is not exist.', $companyId));
         }
 
         return $company;

@@ -4,3 +4,11 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
         tags:
             - { name: 'kernel.event_subscriber' }
+
+    KejawenLab\Application\SemartHris\EventListener\GenerateUsernameSubscriber:
+        arguments:
+            - '@security.password_encoder'
+            - '@KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator'
+            - '%env(APP_DEFAULT_PASSWORD)%'
+        tags:
+            - { name: 'kernel.event_subscriber' }

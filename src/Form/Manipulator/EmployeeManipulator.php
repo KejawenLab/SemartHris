@@ -24,14 +24,16 @@ final class EmployeeManipulator extends FormManipulator implements FormManipulat
         if (!$companyEntity = $entity->getCompany()) {
             $formBuilder->remove('company_readonly');
         } else {
-            $formBuilder->remove('company');
+            if ($entity->getId()) {
+                $formBuilder->remove('company');
 
-            $formBuilder->add('company', HiddenType::class);
-            $company = $formBuilder->get('company');
-            $company->addModelTransformer($this->getDataTransformerForField('company'));
-            $company->setData($companyEntity->getId());
+                $formBuilder->add('company', HiddenType::class);
+                $company = $formBuilder->get('company');
+                $company->addModelTransformer($this->getDataTransformerForField('company'));
+                $company->setData($companyEntity->getId());
 
-            $formBuilder->get('company_readonly')->setData($companyEntity);
+                $formBuilder->get('company_readonly')->setData($companyEntity);
+            }
         }
 
         if (!$departmentEntity = $entity->getDepartment()) {
@@ -44,14 +46,16 @@ final class EmployeeManipulator extends FormManipulator implements FormManipulat
         if (!$jobLevelEntity = $entity->getJobLevel()) {
             $formBuilder->remove('joblevel_readonly');
         } else {
-            $formBuilder->remove('jobLevel');
+            if ($entity->getId()) {
+                $formBuilder->remove('jobLevel');
 
-            $formBuilder->add('jobLevel', HiddenType::class);
-            $company = $formBuilder->get('jobLevel');
-            $company->addModelTransformer($this->getDataTransformerForField('jobLevel'));
-            $company->setData($jobLevelEntity->getId());
+                $formBuilder->add('jobLevel', HiddenType::class);
+                $company = $formBuilder->get('jobLevel');
+                $company->addModelTransformer($this->getDataTransformerForField('jobLevel'));
+                $company->setData($jobLevelEntity->getId());
 
-            $formBuilder->get('joblevel_readonly')->setData($jobLevelEntity);
+                $formBuilder->get('joblevel_readonly')->setData($jobLevelEntity);
+            }
         }
 
         if (!$jobTitleEntity = $entity->getJobTitle()) {

@@ -13,3 +13,13 @@ services:
     KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory'
+
+    KejawenLab\Library\PetrukUsername\UsernameFactory:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+            - ''
+            - false
+
+    KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator:
+        arguments:
+            - '@KejawenLab\Library\PetrukUsername\UsernameFactory'

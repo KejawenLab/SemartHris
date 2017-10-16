@@ -28,7 +28,7 @@ final class RemoveDepartmentTextFieldSubscriber implements EventSubscriberInterf
     /**
      * @param FormEvent $event
      */
-    public function removeDepartmentText(FormEvent $event)
+    public function removeDepartmentText(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -41,7 +41,7 @@ final class RemoveDepartmentTextFieldSubscriber implements EventSubscriberInterf
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [FormEvents::PRE_SUBMIT => 'removeDepartmentText'];
     }

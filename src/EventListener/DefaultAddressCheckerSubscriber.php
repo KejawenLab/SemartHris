@@ -30,7 +30,7 @@ final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
     /**
      * @param GetResponseForControllerResultEvent $event
      */
-    public function checkDefaultAddress(GetResponseForControllerResultEvent $event)
+    public function checkDefaultAddress(GetResponseForControllerResultEvent $event): void
     {
         $data = $event->getControllerResult();
         if ($data instanceof AddressInterface && $data->isDefaultAddress()) {
@@ -48,7 +48,7 @@ final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             KernelEvents::VIEW => ['checkDefaultAddress', EventPriorities::POST_WRITE],

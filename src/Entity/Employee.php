@@ -16,6 +16,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentit
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateMaritalStatus;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
+use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -38,7 +39,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Employee implements EmployeeInterface
+class Employee implements EmployeeInterface, UserInterface
 {
     /**
      * @Groups({"read"})
@@ -210,7 +211,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=1)
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getIdentityTypeChoices")
      *
@@ -255,7 +256,7 @@ class Employee implements EmployeeInterface
 
     /**
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=3)
      * @Assert\NotBlank()
      *
      * @var string
@@ -277,6 +278,30 @@ class Employee implements EmployeeInterface
      * @var bool
      */
     private $haveOvertimeBenefit;
+
+    /**
+     * @Groups({"read"})
+     * @ORM\Column(type="string")
+     *
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string")
+     *
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="array")
+     *
+     * @var array
+     */
+    private $roles;
 
     public function __construct()
     {
@@ -472,9 +497,9 @@ class Employee implements EmployeeInterface
     }
 
     /**
-     * @param mixed $fullName
+     * @param string $fullName
      */
-    public function setFullName($fullName): void
+    public function setFullName(string $fullName): void
     {
         $this->fullName = StringUtil::uppercase($fullName);
     }
@@ -542,9 +567,9 @@ class Employee implements EmployeeInterface
     /**
      * @return \DateTimeInterface
      */
-    public function getDateOfBirth(): ? \DateTimeInterface
+    public function getDateOfBirth(): \DateTimeInterface
     {
-        return $this->dateOfBirth;
+        return $this->dateOfBirth ?: new \DateTime();
     }
 
     /**
@@ -712,6 +737,68 @@ class Employee implements EmployeeInterface
     }
 
     /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->username;
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles(): array
+    {
+        return $this->roles ?: ['ROLE_USER'];
+    }
+
+    /**
+     * @param string $role
+     */
+    public function addRole(string $role): void
+    {
+        if (!strpos($role, 'ROLE_')) {
+            $role = sprintf('ROLE_%s', $role);
+        }
+
+        $this->roles[] = $role;
+    }
+
+    /**
+     * @param array $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        foreach ($roles as $role) {
+            $this->addRole($role);
+        }
+    }
+
+    /**
      * @return bool
      */
     public function isResign(): bool
@@ -766,5 +853,27 @@ class Employee implements EmployeeInterface
     public function getTaxGroupChoices(): array
     {
         return ValidateIndonesiaTaxType::getTaxGroups();
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt(): ? string
+    {
+        return '';
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials(): void
+    {
     }
 }

@@ -28,7 +28,7 @@ final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
     /**
      * @param FormEvent $event
      */
-    public function unsetDefaultExcept(FormEvent $event)
+    public function unsetDefaultExcept(FormEvent $event): void
     {
         $this->defaultAddressChecker->unsetDefaultExcept($event->getData());
     }
@@ -36,7 +36,7 @@ final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [FormEvents::POST_SUBMIT => 'unsetDefaultExcept'];
     }

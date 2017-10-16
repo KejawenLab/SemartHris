@@ -30,11 +30,14 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Data Transformer untuk Karyawan
 - [X] Improvisasi Form Karyawan
 - [X] Form Manipulator untuk Karyawan
-- [ ] Perancangan Form Edit Karyawan
+- [X] Perancangan Form Edit Karyawan
 - [X] Refactor Menu
 - [X] Master Jabatan dan Level Jabatan
 - [X] Master Shift Kerja
-- [ ] Menejemen Pengguna
+- [X] Create Username Generator Service
+- [X] Implement User Model and Repository
+- [X] Add Listener to Generate Username, Role and Applying Default Password
+- [ ] Soft Delete and User Log (CreatedBy and UpdatedBy)
 - [ ] Menejemen Karyawan
 - [ ] Menejemen Absensi
 

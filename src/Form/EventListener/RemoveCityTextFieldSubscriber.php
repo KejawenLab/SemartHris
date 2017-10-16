@@ -28,7 +28,7 @@ final class RemoveCityTextFieldSubscriber implements EventSubscriberInterface
     /**
      * @param FormEvent $event
      */
-    public function removeCityText(FormEvent $event)
+    public function removeCityText(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -41,7 +41,7 @@ final class RemoveCityTextFieldSubscriber implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [FormEvents::PRE_SUBMIT => 'removeCityText'];
     }

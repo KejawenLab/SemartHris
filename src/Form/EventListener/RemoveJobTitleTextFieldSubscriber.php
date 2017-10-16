@@ -28,7 +28,7 @@ final class RemoveJobTitleTextFieldSubscriber implements EventSubscriberInterfac
     /**
      * @param FormEvent $event
      */
-    public function removeJobTitleText(FormEvent $event)
+    public function removeJobTitleText(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -41,7 +41,7 @@ final class RemoveJobTitleTextFieldSubscriber implements EventSubscriberInterfac
     /**
      * @return array
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [FormEvents::PRE_SUBMIT => 'removeJobTitleText'];
     }

@@ -18,9 +18,12 @@ interface AddressRepositoryInterface
     /**
      * @param Addressable $address
      */
-    public function saveAddress(Addressable $address): void;
+    public function apply(Addressable $address): void;
 
-    public function setRandomDefault(): void;
+    /**
+     * @return AddressInterface
+     */
+    public function setRandomDefault(): AddressInterface;
 
     /**
      * @return string

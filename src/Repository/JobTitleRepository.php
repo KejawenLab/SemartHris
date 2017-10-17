@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Repository;
 
-use Doctrine\ORM\EntityRepository;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Repository\JobTitleRepositoryInterface;
 
@@ -18,14 +17,13 @@ class JobTitleRepository extends Repository implements JobTitleRepositoryInterfa
      */
     public function findByJobLevel(string $jobLevelId): array
     {
-        /** @var EntityRepository $repository */
-        $repository = $this->entityManager->getRepository($this->entityClass);
-
-        $queryBuilder = $repository->createQueryBuilder('jt');
-        $queryBuilder->addSelect('jt.id');
-        $queryBuilder->addSelect('jt.code');
-        $queryBuilder->addSelect('jt.name');
-        $queryBuilder->andWhere($queryBuilder->expr()->eq('jt.jobLevel', $queryBuilder->expr()->literal($jobLevelId)));
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('o');
+        $queryBuilder->from($this->entityClass, 'o');
+        $queryBuilder->addSelect('o.id');
+        $queryBuilder->addSelect('o.code');
+        $queryBuilder->addSelect('o.name');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('o.jobLevel', $queryBuilder->expr()->literal($jobLevelId)));
 
         return $queryBuilder->getQuery()->getResult();
     }

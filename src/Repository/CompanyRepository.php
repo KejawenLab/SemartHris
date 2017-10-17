@@ -3,10 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
-use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
@@ -15,18 +12,12 @@ use KejawenLab\Application\SemartHris\Entity\Company;
 use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CompanyRepository implements CompanyRepositoryInterface, AddressRepositoryInterface
+class CompanyRepository extends AddressRepository implements CompanyRepositoryInterface, AddressRepositoryInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
     /**
      * @var SessionInterface
      */
@@ -36,10 +27,11 @@ class CompanyRepository implements CompanyRepositoryInterface, AddressRepository
      * @param EntityManagerInterface $entityManager
      * @param SessionInterface       $session
      */
-    public function initialize(EntityManagerInterface $entityManager, SessionInterface $session)
+    public function __construct(EntityManagerInterface $entityManager, SessionInterface $session)
     {
         $this->entityManager = $entityManager;
         $this->session = $session;
+        $this->initialize($this->entityManager, Company::class);
     }
 
     /**
@@ -49,7 +41,7 @@ class CompanyRepository implements CompanyRepositoryInterface, AddressRepository
      */
     public function find(string $id): ? CompanyInterface
     {
-        return $this->entityManager->getRepository(Company::class)->find($id);
+        return $this->entityManager->getRepository($this->entityClass)->find($id);
     }
 
     /**
@@ -84,7 +76,7 @@ class CompanyRepository implements CompanyRepositoryInterface, AddressRepository
      */
     public function createCompanyAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
     {
-        return $this->buildSearch(CompanyAddress::class, $sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
+        return $this->buildSearch($this->getEntityClass(), $sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
     }
 
     /**
@@ -100,20 +92,7 @@ class CompanyRepository implements CompanyRepositoryInterface, AddressRepository
     {
         $queryBuilder = $this->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
 
-        $queryBuilder->leftJoin('entity.region', 'region');
-        $queryBuilder->orWhere('region.code LIKE :query');
-        $queryBuilder->orWhere('region.name LIKE :query');
-        $queryBuilder->leftJoin('entity.city', 'city');
-        $queryBuilder->orWhere('city.code LIKE :query');
-        $queryBuilder->orWhere('city.name LIKE :query');
-        $queryBuilder->orWhere('entity.address LIKE :query');
-        $queryBuilder->orWhere('entity.postalCode LIKE :query');
-        $queryBuilder->orWhere('entity.phoneNumber LIKE :query');
-        $queryBuilder->orWhere('entity.faxNumber LIKE :query');
-
-        $queryBuilder->setParameter('query', sprintf('%%%s%%', $searchQuery));
-
-        return $queryBuilder;
+        return $this->createSearchAddressQueryBuilder($queryBuilder, $searchQuery);
     }
 
     /**
@@ -127,11 +106,9 @@ class CompanyRepository implements CompanyRepositoryInterface, AddressRepository
      */
     private function buildSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
     {
-        /* @var QueryBuilder $queryBuilder */
-        $queryBuilder = $this->entityManager->createQueryBuilder()
-            ->select('entity')
-            ->from($entityClass, 'entity')
-        ;
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('entity');
+        $queryBuilder->from($entityClass, 'entity');
 
         if ($useCompanyFilter && $companyId = $this->session->get('companyId')) {
             $queryBuilder->orWhere('entity.company = :query')->setParameter('query', $this->find($companyId));
@@ -146,57 +123,6 @@ class CompanyRepository implements CompanyRepositoryInterface, AddressRepository
         }
 
         return $queryBuilder;
-    }
-
-    /**
-     * @param AddressInterface $address
-     */
-    public function unsetDefaultExcept(AddressInterface $address): void
-    {
-        /** @var EntityRepository $repository */
-        $repository = $this->entityManager->getRepository($this->getEntityClass());
-
-        $queryBuilder = $repository->createQueryBuilder('o');
-        $queryBuilder->update();
-        $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));
-        $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
-
-        $queryBuilder->getQuery()->execute();
-    }
-
-    public function setRandomDefault(): void
-    {
-        /** @var AddressInterface $other */
-        $other = $this->entityManager->getRepository($this->getEntityClass())->findOneBy(['defaultAddress' => false]);
-        if (!$other) {
-            throw new NotFoundHttpException();
-        }
-
-        $other->setDefaultAddress(true);
-        $this->entityManager->persist($other);
-        $this->entityManager->flush();
-    }
-
-    /**
-     * @param Addressable $address
-     */
-    public function saveAddress(Addressable $address): void
-    {/** @var CompanyInterface $address */
-        $class = $this->getEntityClass();
-
-        /** @var CompanyAddressInterface $new */
-        $new = new $class();
-        $new->setCompany($address);
-        $new->setAddress($address->getAddress());
-        $new->setRegion($address->getRegion());
-        $new->setCity($address->getCity());
-        $new->setPostalCode($address->getPostalCode());
-        $new->setPhoneNumber($address->getPhoneNumber());
-        $new->setFaxNumber($address->getFaxNumber());
-        $new->setDefaultAddress(true);
-
-        $this->entityManager->persist($new);
-        $this->entityManager->flush();
     }
 
     /**

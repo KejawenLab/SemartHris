@@ -1,7 +1,8 @@
 services:
     KejawenLab\Application\SemartHris\Repository\CompanyRepository:
-        calls:
-            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', '@session']]
+        arguments:
+            - '@Doctrine\ORM\EntityManagerInterface'
+            - '@Symfony\Component\HttpFoundation\Session\SessionInterface'
         tags:
             { name: 'semarthris.address_repository' }
 
@@ -22,5 +23,8 @@ services:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\JobLevel']]
 
     KejawenLab\Application\SemartHris\Repository\EmployeeRepository:
-        calls:
-            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Employee']]
+        arguments:
+            - '@Doctrine\ORM\EntityManagerInterface'
+            - '@Symfony\Component\HttpFoundation\Session\SessionInterface'
+        tags:
+            { name: 'semarthris.address_repository' }

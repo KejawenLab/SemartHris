@@ -12,9 +12,3 @@ services:
             - '%env(APP_DEFAULT_PASSWORD)%'
         tags:
             - { name: 'kernel.event_subscriber' }
-
-    KejawenLab\Application\SemartHris\EventListener\CreateAddressSubscriber:
-        arguments:
-            - '@KejawenLab\Application\SemartHris\Component\Address\Service\CreateAddressFromAddressable'
-        tags:
-            - { name: 'kernel.event_subscriber' }

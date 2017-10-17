@@ -8,15 +8,15 @@ use Doctrine\ORM\Mapping as ORM;
 use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
-use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
-use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeAddressInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="company_addresses")
+ * @ORM\Table(name="employee_addresses")
  *
  * @ApiResource(
  *     attributes={
@@ -27,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class CompanyAddress implements CompanyAddressInterface
+class EmployeeAddress implements EmployeeAddressInterface
 {
     /**
      * @Groups({"read", "write"})
@@ -41,14 +41,14 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"write", "read"})
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
+     * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      * @Assert\NotBlank()
      * @ApiSubresource()
      *
-     * @var CompanyInterface
+     * @var EmployeeInterface
      */
-    private $company;
+    private $employee;
 
     /**
      * @Groups({"read", "write"})
@@ -133,19 +133,19 @@ class CompanyAddress implements CompanyAddressInterface
     }
 
     /**
-     * @return null|CompanyInterface
+     * @return null|EmployeeInterface
      */
-    public function getCompany(): ? CompanyInterface
+    public function getEmployee(): ? EmployeeInterface
     {
-        return $this->company;
+        return $this->employee;
     }
 
     /**
-     * @param CompanyInterface|null $company
+     * @param EmployeeInterface|null $employee
      */
-    public function setCompany(CompanyInterface $company = null): void
+    public function setEmployee(EmployeeInterface $employee = null): void
     {
-        $this->company = $company;
+        $this->employee = $employee;
     }
 
     /**
@@ -265,6 +265,6 @@ class CompanyAddress implements CompanyAddressInterface
      */
     public function getAddressable(): Addressable
     {
-        return $this->getCompany();
+        return $this->getEmployee();
     }
 }

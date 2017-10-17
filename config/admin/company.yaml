@@ -21,7 +21,7 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-4 new-row' }
                     - { property: 'birthDay', label: 'Tanggal Berdiri', type: 'birthday', type_options: { placeholder: { year: 'Tahun', month: 'Bulan', day: 'Tanggal' } } }
                     - { type: 'group', css_class: 'col-sm-4' }
-                    - { property: 'email', label: 'Alamat Email' }
+                    - { property: 'email', label: 'Email' }
                     - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'taxNumber', label: 'NPWP' }
             show:
@@ -31,7 +31,13 @@ easy_admin:
                     - { property: 'code', label: 'Kode Perusahaan' }
                     - { property: 'name', label: 'Nama Perusahaan' }
                     - { property: 'birthDay', label: 'Tanggal Berdiri' }
-                    - { property: 'email', label: 'Alamat Email' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'address.address', label: 'Alamat'}
+                    - { property: 'address.city', label: 'Kota'}
+                    - { property: 'address.region', label: 'Propinsi'}
+                    - { property: 'address.postalCode', label: 'Kode Pos'}
+                    - { property: 'address.phoneNumber', label: 'No. Telpon'}
+                    - { property: 'address.faxNumber', label: 'No. Fax'}
                     - { property: 'taxNumber', label: 'NPWP' }
             list:
                 title: 'Perusahaan'
@@ -104,9 +110,9 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\CompanyAddress'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyAddressController'
             templates:
-                new: '/app/company_address/new.html.twig'
-                edit: '/app/company_address/edit.html.twig'
-                list: '/app/company_address/list.html.twig'
+                new: '/app/address/new.html.twig'
+                edit: '/app/address/edit.html.twig'
+                list: '/app/address/list.html.twig'
             new:
                 title: 'Tambah Alamat Perusahaan'
             edit:

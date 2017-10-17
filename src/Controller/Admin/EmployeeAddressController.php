@@ -5,10 +5,10 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker;
-use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
-use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
-use KejawenLab\Application\SemartHris\Form\Manipulator\CompanyAddressManipulator;
-use KejawenLab\Application\SemartHris\Repository\CompanyRepository;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeAddressInterface;
+use KejawenLab\Application\SemartHris\Entity\EmployeeAddress;
+use KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeAddressManipulator;
+use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,28 +16,28 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CompanyAddressController extends AdminController
+class EmployeeAddressController extends AdminController
 {
     /**
-     * @Route(path="/company/address", name="company_address")
+     * @Route(path="/employee/address", name="employee_address")
      *
      * @param Request $request
      *
      * @return Response
      */
-    public function addressPerCompanyAction(Request $request)
+    public function addressPerEmployeeAction(Request $request)
     {
-        $company = $this->container->get(CompanyRepository::class)->find($request->query->get('id'));
-        if ($company) {
+        $employee = $this->container->get(EmployeeRepository::class)->find($request->query->get('id'));
+        if ($employee) {
             $session = $this->get('session');
-            $session->set('companyId', $company->getId());
+            $session->set('employeeId', $employee->getId());
         }
 
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'list',
             'sortField' => 'defaultAddress',
             'sortDirection' => 'DESC',
-            'entity' => 'CompanyAddress',
+            'entity' => 'EmployeeAddress',
         ));
     }
 
@@ -48,9 +48,9 @@ class CompanyAddressController extends AdminController
     {
         $response = parent::editAction();
 
-        $companyAddress = $this->container->get(CompanyRepository::class)->findCompanyAddress($this->request->query->get('id'));
-        if ($companyAddress) {
-            $this->container->get(DefaultAddressChecker::class)->unsetDefaultExcept($companyAddress);
+        $employeeAddress = $this->container->get(EmployeeRepository::class)->findEmployeeAddress($this->request->query->get('id'));
+        if ($employeeAddress) {
+            $this->container->get(DefaultAddressChecker::class)->unsetDefaultExcept($employeeAddress);
         }
 
         return $response;
@@ -61,22 +61,22 @@ class CompanyAddressController extends AdminController
      */
     protected function deleteAction()
     {
-        $companyAddress = $this->container->get(CompanyRepository::class)->findCompanyAddress($this->request->query->get('id'));
-        if ($companyAddress && 'DELETE' === $this->request->getMethod()) {
-            $this->container->get(DefaultAddressChecker::class)->setRandomDefault($companyAddress);
+        $employeeAddress = $this->container->get(EmployeeRepository::class)->findEmployeeAddress($this->request->query->get('id'));
+        if ($employeeAddress && 'DELETE' === $this->request->getMethod()) {
+            $this->container->get(DefaultAddressChecker::class)->setRandomDefault($employeeAddress);
         }
 
         return parent::deleteAction();
     }
 
     /**
-     * @return CompanyAddressInterface
+     * @return EmployeeAddressInterface
      */
-    protected function createNewEntity(): CompanyAddressInterface
+    protected function createNewEntity(): EmployeeAddressInterface
     {
-        $entity = new CompanyAddress();
-        if ($companyId = $this->get('session')->get('companyId')) {
-            $entity->setCompany($this->container->get(CompanyRepository::class)->find($companyId));
+        $entity = new EmployeeAddress();
+        if ($employeeId = $this->get('session')->get('employeeId')) {
+            $entity->setEmployee($this->container->get(EmployeeRepository::class)->find($employeeId));
         }
 
         return $entity;
@@ -92,7 +92,7 @@ class CompanyAddressController extends AdminController
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
 
-        return $this->container->get(CompanyAddressManipulator::class)->manipulate($builder, $entity);
+        return $this->container->get(EmployeeAddressManipulator::class)->manipulate($builder, $entity);
     }
 
     /**
@@ -105,7 +105,7 @@ class CompanyAddressController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createCompanyAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('companyId'));
+        return $this->container->get(EmployeeRepository::class)->createEmployeeAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('employeeId'));
     }
 
     /**
@@ -120,6 +120,6 @@ class CompanyAddressController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createSearchCompanyAddressQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('companyId'));
+        return $this->container->get(EmployeeRepository::class)->createSearchEmployeeAddressQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('employeeId'));
     }
 }

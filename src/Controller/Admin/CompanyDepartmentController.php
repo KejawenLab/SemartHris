@@ -15,8 +15,6 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
- *
- * @Route(path="/admin")
  */
 class CompanyDepartmentController extends AdminController
 {

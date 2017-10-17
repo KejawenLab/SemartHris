@@ -8,7 +8,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
         arguments:
-            - ['@KejawenLab\Application\SemartHris\Repository\CompanyRepository']
+            - ['@KejawenLab\Application\SemartHris\Repository\CompanyRepository', '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository']
 
     KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker:
         arguments:
@@ -27,7 +27,3 @@ services:
     KejawenLab\Application\SemartHris\Security\UserProvider:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
-
-    KejawenLab\Application\SemartHris\Component\Address\Service\CreateAddressFromAddressable:
-        arguments:
-            - '@KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory'

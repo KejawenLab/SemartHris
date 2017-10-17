@@ -8,34 +8,14 @@ namespace KejawenLab\Application\SemartHris\Component\Address\Model;
 interface Addressable
 {
     /**
-     * @return string
+     * @return AddressInterface|null
      */
-    public function getAddress(): string;
+    public function getAddress(): ? AddressInterface;
 
     /**
-     * @return null|RegionInterface
+     * @param AddressInterface|null $address
      */
-    public function getRegion(): ? RegionInterface;
-
-    /**
-     * @return null|CityInterface
-     */
-    public function getCity(): ? CityInterface;
-
-    /**
-     * @return string
-     */
-    public function getPostalCode(): string;
-
-    /**
-     * @return string
-     */
-    public function getPhoneNumber(): string;
-
-    /**
-     * @return string
-     */
-    public function getFaxNumber(): string;
+    public function setAddress(AddressInterface $address = null): void;
 
     /**
      * @return string

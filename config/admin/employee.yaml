@@ -55,8 +55,35 @@ easy_admin:
                 fields:
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
+                    - { property: 'joinDate', label: 'Tanggal Masuk' }
+                    - { property: 'employee_status_text', label: 'Status Karyawan' }
+                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'contractEndDate', label: 'Tanggal Akhir Kontrak' }
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'department', label: 'Department' }
+                    - { property: 'jobLevel', label: 'Level Jabatan' }
+                    - { property: 'jobTitle', label: 'Jabatan' }
+                    - { property: 'supervisor', label: 'Atasan Langsung' }
+                    - { property: 'haveOvertimeBenefit', label: 'Berhak Lembur?' }
+                    - { property: 'tax_group_text', label: 'Kode Pajak' }
+                    - { property: 'gender_text', label: 'Jenis Kelamin' }
+                    - { property: 'marital_status_text', label: 'Status Perkawinan' }
+                    - { property: 'identity_type_text', label: 'Jenis Identitas' }
+                    - { property: 'identityNumber', label: 'No. Identitas' }
+                    - { property: 'regionOfBirth', label: 'Propinsi Kelahiran' }
+                    - { property: 'cityOfBirth', label: 'Kota Kelahiran' }
+                    - { property: 'dateOfBirth', label: 'Tanggal Lahir' }
+                    - { property: 'address.address', label: 'Alamat'}
+                    - { property: 'address.city', label: 'Kota'}
+                    - { property: 'address.region', label: 'Propinsi'}
+                    - { property: 'address.postalCode', label: 'Kode Pos'}
+                    - { property: 'address.phoneNumber', label: 'No. Telpon'}
+                    - { property: 'address.faxNumber', label: 'No. Fax'}
+                    - { property: 'email', label: 'Alamat Email' }
             list:
                 title: 'Karyawan'
+                actions:
+                    - { name: 'employee_address', type: 'route', icon: 'book', label: false }
                 fields:
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
@@ -66,4 +93,55 @@ easy_admin:
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
                     - { property: 'employee_status_text', label: 'Status' }
                     - { property: 'supervisor', label: 'Atasan' }
-                    - { property: 'resign', label: 'Resign?' }
+                    - { property: 'resign', label: 'Resign?', type: 'boolean' }
+                    - { property: 'haveOvertimeBenefit', label: 'Hak Lembur?', type: 'boolean' }
+
+        EmployeeAddress:
+            class: 'KejawenLab\Application\SemartHris\Entity\EmployeeAddress'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeAddressController'
+            templates:
+                new: '/app/address/new.html.twig'
+                edit: '/app/address/edit.html.twig'
+                list: '/app/address/list.html.twig'
+            new:
+                title: 'Tambah Alamat Karyawan'
+            edit:
+                title: 'Edit Alamat Karyawan'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { property: 'employee_readonly', label: 'Karyawan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'address', label: 'Alamat' }
+                    - { property: 'defaultAddress', label: 'Set Default' }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
+                    - { property: 'region', label: 'Propinsi', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'city', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
+                    - { property: 'city_text', label: 'Kota', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-4 new-row' }
+                    - { property: 'postalCode', label: 'Kode Pos' }
+                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { property: 'phoneNumber', label: 'No. Telpon' }
+                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { property: 'faxNumber', label: 'No. Fax' }
+            show:
+                title: 'Detil Alamat Karyawan'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'address', label: 'Alamat' }
+                    - { property: 'city', label: 'Kota' }
+                    - { property: 'region', label: 'Propinsi' }
+                    - { property: 'postalCode', label: 'Kode Pos' }
+                    - { property: 'phoneNumber', label: 'No. Telpon' }
+                    - { property: 'faxNumber', label: 'No. Fax' }
+                    - { property: 'defaultAddress', label: 'Set Default' }
+            list:
+                title: 'Alamat Karyawan'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'address', label: 'Alamat' }
+                    - { property: 'city', label: 'Kota' }
+                    - { property: 'region', label: 'Propinsi' }
+                    - { property: 'postalCode', label: 'Kode Pos' }
+                    - { property: 'defaultAddress', label: 'Default' }

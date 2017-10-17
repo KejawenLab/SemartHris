@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeManipulator;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
@@ -39,5 +40,33 @@ class EmployeeController extends AdminController
         $builder = parent::createEntityFormBuilder($entity, $view);
 
         return $this->container->get(EmployeeManipulator::class)->manipulate($builder, $entity);
+    }
+
+    /**
+     * @param string $entityClass
+     * @param string $sortDirection
+     * @param null   $sortField
+     * @param null   $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
+    {
+        return $this->container->get(EmployeeRepository::class)->createEmployeeQueryBuilder($sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('employeeId'));
+    }
+
+    /**
+     * @param string $entityClass
+     * @param string $searchQuery
+     * @param array  $searchableFields
+     * @param null   $sortField
+     * @param null   $sortDirection
+     * @param null   $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    {
+        return $this->container->get(EmployeeRepository::class)->createSearchEmployeeQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('employeeId'));
     }
 }

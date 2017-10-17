@@ -5,7 +5,7 @@ form:
 search:
     no_results: 'Tidak ada data yang ditampilkan'
 label:
-    null: 'NULL'
+    null: 'TIDAK ADA'
     true: 'ON'
     false: 'OFF'
     nullable_field: 'Munculkan/Sembunyikan'

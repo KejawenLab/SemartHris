@@ -10,6 +10,7 @@ easy_admin:
                   - { entity: 'Skill', label: 'Keahlian', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
                   - { entity: 'Region', label: 'Propinsi', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
                   - { entity: 'City', label: 'Kota', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'Contract', label: 'Kontrak', icon: 'archive', params: { sortField: 'type', sortDirection: 'ASC' } }
             - label: 'Perusahaan'
               icon: 'building'
               children:

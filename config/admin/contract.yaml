@@ -1,0 +1,42 @@
+easy_admin:
+    entities:
+        Contract:
+            class: 'KejawenLab\Application\SemartHris\Entity\Contract'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            templates:
+                new: '/app/contract/new.html.twig'
+                edit: '/app/contract/edit.html.twig'
+                list: '/app/contract/list.html.twig'
+            new:
+                title: 'Tambah Kontrak'
+            edit:
+                title: 'Edit Kontrak'
+            search:
+                title: 'Kontrak'
+                fields: ['letterNumber', 'tags']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'type', label: 'Tipe Kontrak' }
+                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'subject', label: 'Subyek' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'startDate', label: 'Tanggal Awal' }
+                    - { property: 'endDate', label: 'Tanggal Akhir' }
+                    - { property: 'signedDate', label: 'Tanggal Tanda Tangan' }
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'description', label: 'Description' }
+                    - { property: 'tags', type: 'hidden', type_options: { attr: { class: 'tags-id' } } }
+                    - { property: 'tags_text', label: 'Penanda', type: 'choice', type_options: { attr: { class: 'tags-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+            show:
+                title: 'Detil Kontrak'
+                fields:
+                    - { property: 'type', label: 'Kode Shift' }
+                    - { property: 'letterNumber', label: 'Nama Shift' }
+                    - { property: 'startDate', label: 'Nama Shift' }
+            list:
+                title: 'Kontrak'
+                fields:
+                    - { property: 'type', label: 'Kode Shift' }
+                    - { property: 'letterNumber', label: 'Nama Shift' }
+                    - { property: 'startDate', label: 'Nama Shift' }

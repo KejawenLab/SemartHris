@@ -55,6 +55,15 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     *
+     * @var string
+     */
+    private $subject;
+
+    /**
+     * @Groups({"read", "write"})
      * @ORM\Column(type="string", nullable=true)
      *
      * @var string
@@ -105,7 +114,7 @@ class Contract implements ContractInterface
      */
     public function getId(): string
     {
-        return $this->id;
+        return (string) $this->id;
     }
 
     /**
@@ -113,7 +122,7 @@ class Contract implements ContractInterface
      */
     public function getType(): string
     {
-        return $this->type;
+        return (string) $this->type;
     }
 
     /**
@@ -129,7 +138,7 @@ class Contract implements ContractInterface
      */
     public function getLetterNumber(): string
     {
-        return $this->letterNumber;
+        return (string) $this->letterNumber;
     }
 
     /**
@@ -138,6 +147,22 @@ class Contract implements ContractInterface
     public function setLetterNumber(string $letterNumber): void
     {
         $this->letterNumber = $letterNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject(): string
+    {
+        return (string) $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject(string $subject): void
+    {
+        $this->subject = $subject;
     }
 
     /**
@@ -161,7 +186,7 @@ class Contract implements ContractInterface
      */
     public function getStartDate(): \DateTimeInterface
     {
-        return $this->startDate;
+        return $this->startDate ?: new \DateTime();
     }
 
     /**
@@ -193,7 +218,7 @@ class Contract implements ContractInterface
      */
     public function getSignedDate(): \DateTimeInterface
     {
-        return $this->signedDate;
+        return $this->signedDate ?: new \DateTime();
     }
 
     /**

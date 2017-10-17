@@ -27,6 +27,11 @@ interface ContractInterface
     public function getLetterNumber(): string;
 
     /**
+     * @return string
+     */
+    public function getSubject(): string;
+
+    /**
      * @return null|string
      */
     public function getDescription(): ? string;

@@ -198,6 +198,15 @@ function supervisor_autocomplete(locale, emptyText) {
     });
 }
 
+function tags_autocomplete(locale, emptyText) {
+    var tagsSelect = $('.tags-select');
+
+    tagsSelect.select2({
+        theme: 'bootstrap',
+        language: locale
+    });
+}
+
 function change_static_select(locale) {
     $('.static-select').select2({
         theme: 'bootstrap',

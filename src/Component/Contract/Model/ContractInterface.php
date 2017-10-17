@@ -2,6 +2,8 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Contract\Model;
 
+use KejawenLab\Application\SemartHris\Component\Contract\ContractType;
+
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
@@ -13,6 +15,8 @@ interface ContractInterface
     public function getId(): string;
 
     /**
+     * @see ContractType
+     *
      * @return string
      */
     public function getType(): string;
@@ -23,9 +27,9 @@ interface ContractInterface
     public function getLetterNumber(): string;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getDescription(): string;
+    public function getDescription(): ? string;
 
     /**
      * @return \DateTimeInterface
@@ -38,14 +42,14 @@ interface ContractInterface
     public function getEndDate(): ? \DateTimeInterface;
 
     /**
+     * @return \DateTimeInterface
+     */
+    public function getSignedDate(): \DateTimeInterface;
+
+    /**
      * Useful for quick search.
      *
      * @return array
      */
     public function getTags(): array;
-
-    /**
-     * @return Contractable
-     */
-    public function getContractable(): Contractable;
 }

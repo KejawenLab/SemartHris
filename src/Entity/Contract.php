@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -162,7 +163,7 @@ class Contract implements ContractInterface
      */
     public function setSubject(string $subject): void
     {
-        $this->subject = $subject;
+        $this->subject = StringUtil::uppercase($subject);
     }
 
     /**

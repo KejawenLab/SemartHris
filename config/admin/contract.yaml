@@ -2,11 +2,10 @@ easy_admin:
     entities:
         Contract:
             class: 'KejawenLab\Application\SemartHris\Entity\Contract'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ContractController'
             templates:
                 new: '/app/contract/new.html.twig'
                 edit: '/app/contract/edit.html.twig'
-                list: '/app/contract/list.html.twig'
             new:
                 title: 'Tambah Kontrak'
             edit:
@@ -27,16 +26,24 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'description', label: 'Description' }
                     - { property: 'tags', type: 'hidden', type_options: { attr: { class: 'tags-id' } } }
-                    - { property: 'tags_text', label: 'Penanda', type: 'choice', type_options: { attr: { class: 'tags-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'tags_text', label: 'Penanda', help: 'Tekan Enter untuk menambahkan tag', type: 'choice', type_options: { attr: { class: 'tags-select', multiple: 'multiple' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
             show:
                 title: 'Detil Kontrak'
                 fields:
-                    - { property: 'type', label: 'Kode Shift' }
-                    - { property: 'letterNumber', label: 'Nama Shift' }
-                    - { property: 'startDate', label: 'Nama Shift' }
+                    - { property: 'type', label: 'Tipe Kontrak' }
+                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'subject', label: 'Subyek' }
+                    - { property: 'startDate', label: 'Tanggal Awal' }
+                    - { property: 'endDate', label: 'Tanggal Akhir' }
+                    - { property: 'signedDate', label: 'Tanggal Tanda Tangan' }
+                    - { property: 'description', label: 'Description' }
+                    - { property: 'tags', label: 'Penanda', template: '/app/default/field_array.html.twig' }
             list:
                 title: 'Kontrak'
                 fields:
-                    - { property: 'type', label: 'Kode Shift' }
-                    - { property: 'letterNumber', label: 'Nama Shift' }
-                    - { property: 'startDate', label: 'Nama Shift' }
+                    - { property: 'type', label: 'Tipe Kontrak' }
+                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'subject', label: 'Subyek' }
+                    - { property: 'startDate', label: 'Tanggal Awal' }
+                    - { property: 'endDate', label: 'Tanggal Akhir' }
+                    - { property: 'signedDate', label: 'Tanggal Tanda Tangan' }

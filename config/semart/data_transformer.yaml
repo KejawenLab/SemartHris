@@ -22,3 +22,5 @@ services:
     KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+
+    KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer:

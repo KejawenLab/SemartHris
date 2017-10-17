@@ -200,10 +200,41 @@ function supervisor_autocomplete(locale, emptyText) {
 
 function tags_autocomplete(locale, emptyText) {
     var tagsSelect = $('.tags-select');
+    var tagsId = $('.tags-id');
+    var tags = tagsId.val().split(',');
 
-    tagsSelect.select2({
-        theme: 'bootstrap',
-        language: locale
+    $.ajax({
+        url: Routing.generate('contract_tags'),
+        type: 'GET',
+        data: {},
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var options = '<option value="">' + emptyText + '</option>';
+            $.each(dataResponse['tags'], function (idx, val) {
+                options += '<option value="' + val + '">' + val + '</option>';
+            });
+
+            tagsSelect.html(options);
+            tagsSelect.select2({
+                tags: true,
+                theme: 'bootstrap',
+                language: locale
+            });
+
+            if (0 < tags.length) {
+                tagsSelect.val(tags);
+                tagsSelect.change();
+            }
+        },
+        error: function () {
+            console.log('KO');
+        }
+    });
+
+    tagsSelect.change();
+
+    $(document).on('change', '.tags-select', function () {
+        tagsId.val($(this).val());
     });
 }
 

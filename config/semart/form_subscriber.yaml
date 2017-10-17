@@ -22,3 +22,5 @@ services:
     KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
+
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveTagsTextFieldSubscriber:

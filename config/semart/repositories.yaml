@@ -28,3 +28,7 @@ services:
             - '@Symfony\Component\HttpFoundation\Session\SessionInterface'
         tags:
             { name: 'semarthris.address_repository' }
+
+    KejawenLab\Application\SemartHris\Repository\ContractRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Contract']]

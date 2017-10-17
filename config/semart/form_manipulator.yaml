@@ -19,3 +19,8 @@ services:
         arguments:
             - { employee: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer', city: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber' ]
+
+    KejawenLab\Application\SemartHris\Form\Manipulator\ContractManipulator:
+        arguments:
+            - { tags: '@KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveTagsTextFieldSubscriber' ]

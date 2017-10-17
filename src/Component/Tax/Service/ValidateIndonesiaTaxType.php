@@ -3,12 +3,13 @@
 namespace KejawenLab\Application\SemartHris\Component\Tax\Service;
 
 use KejawenLab\Application\SemartHris\Component\Tax\IndonesianTaxType;
+use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateIndonesiaTaxType
+class ValidateIndonesiaTaxType implements ValidateTypeInterface
 {
     /**
      * @param string $type
@@ -41,7 +42,7 @@ class ValidateIndonesiaTaxType
     /**
      * @return array
      */
-    public static function getTaxGroups()
+    public static function getTypes(): array
     {
         return [
             IndonesianTaxType::TAX_TK_3,

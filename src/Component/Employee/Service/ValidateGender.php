@@ -3,12 +3,13 @@
 namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Gender;
+use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateGender
+class ValidateGender implements ValidateTypeInterface
 {
     /**
      * @param string $type
@@ -31,7 +32,7 @@ class ValidateGender
     /**
      * @return array
      */
-    public static function getGenders()
+    public static function getTypes(): array
     {
         return [
             Gender::MALE,

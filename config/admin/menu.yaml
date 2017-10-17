@@ -34,3 +34,4 @@ easy_admin:
               icon: 'id-card-o'
               children:
                   - { entity: 'CompanyAddress', label: 'Alamat Perusahaan', icon: 'hand-o-right', params: { sortField: 'defaultAddress', sortDirection: 'DESC' } }
+                  - { entity: 'EmployeeAddress', label: 'Alamat Karyawan', icon: 'hand-o-right', params: { sortField: 'defaultAddress', sortDirection: 'DESC' } }

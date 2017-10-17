@@ -1,15 +1,15 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
+namespace KejawenLab\Application\SemartHris\Component\Contract\Service;
 
-use KejawenLab\Application\SemartHris\Component\Employee\IdentityType;
+use KejawenLab\Application\SemartHris\Component\Contract\ContractType;
 use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateIdentityType implements ValidateTypeInterface
+class ValidateContractType implements ValidateTypeInterface
 {
     /**
      * @param string $type
@@ -19,11 +19,7 @@ class ValidateIdentityType implements ValidateTypeInterface
     public static function isValidType(string $type): bool
     {
         $type = StringUtil::lowercase($type);
-        if (!in_array($type, [
-            IdentityType::DRIVER_LISENCE,
-            IdentityType::ID_CARD,
-            IdentityType::PASSPORT,
-        ])) {
+        if (!in_array($type, [ContractType::CONTRACT_EMPLOYEE, ContractType::CONTRACT_CLIENT])) {
             return false;
         }
 
@@ -35,11 +31,7 @@ class ValidateIdentityType implements ValidateTypeInterface
      */
     public static function getTypes(): array
     {
-        return [
-            IdentityType::DRIVER_LISENCE,
-            IdentityType::ID_CARD,
-            IdentityType::PASSPORT,
-        ];
+        return [ContractType::CONTRACT_EMPLOYEE, ContractType::CONTRACT_CLIENT];
     }
 
     /**
@@ -49,11 +41,7 @@ class ValidateIdentityType implements ValidateTypeInterface
      */
     public static function convertToText(string $type): string
     {
-        $types = [
-            IdentityType::DRIVER_LISENCE => IdentityType::DRIVER_LISENCE_TEXT,
-            IdentityType::PASSPORT => IdentityType::PASSPORT_TEXT,
-            IdentityType::ID_CARD => IdentityType::ID_CARD_TEXT,
-        ];
+        $types = [ContractType::CONTRACT_EMPLOYEE => ContractType::CONTRACT_EMPLOYEE_TEXT, ContractType::CONTRACT_CLIENT => ContractType::CONTRACT_CLIENT_TEXT];
 
         if (self::isValidType($type)) {
             return $types[$type];

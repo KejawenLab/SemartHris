@@ -898,7 +898,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function getEmployeeStatusChoices(): array
     {
-        return ValidateContractType::getContractTypes();
+        return ValidateContractType::getTypes();
     }
 
     /**
@@ -906,7 +906,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function getGenderChoices(): array
     {
-        return ValidateGender::getGenders();
+        return ValidateGender::getTypes();
     }
 
     /**
@@ -914,7 +914,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function getMaritalStatusChoices(): array
     {
-        return ValidateMaritalStatus::getMaritalStatus();
+        return ValidateMaritalStatus::getTypes();
     }
 
     /**
@@ -922,7 +922,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function getIdentityTypeChoices(): array
     {
-        return ValidateIdentityType::getIdentityTypes();
+        return ValidateIdentityType::getTypes();
     }
 
     /**
@@ -930,7 +930,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function getTaxGroupChoices(): array
     {
-        return ValidateIndonesiaTaxType::getTaxGroups();
+        return ValidateIndonesiaTaxType::getTypes();
     }
 
     /**

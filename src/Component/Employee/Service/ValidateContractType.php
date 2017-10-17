@@ -3,12 +3,13 @@
 namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
 
 use KejawenLab\Application\SemartHris\Component\Employee\ContractType;
+use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateContractType
+class ValidateContractType implements ValidateTypeInterface
 {
     /**
      * @param string $type
@@ -33,7 +34,7 @@ class ValidateContractType
     /**
      * @return array
      */
-    public static function getContractTypes()
+    public static function getTypes(): array
     {
         return [
             ContractType::INTERSHIP,

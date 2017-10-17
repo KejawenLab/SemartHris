@@ -153,6 +153,6 @@ class Reason implements ReasonInterface
      */
     public function getTypeChoices(): array
     {
-        return ValidateReasonType::getReasonTypes();
+        return ValidateReasonType::getTypes();
     }
 }

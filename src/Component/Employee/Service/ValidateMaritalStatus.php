@@ -3,12 +3,13 @@
 namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
 
 use KejawenLab\Application\SemartHris\Component\Employee\MaritalStatus;
+use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateMaritalStatus
+class ValidateMaritalStatus implements ValidateTypeInterface
 {
     /**
      * @param string $type
@@ -32,7 +33,7 @@ class ValidateMaritalStatus
     /**
      * @return array
      */
-    public static function getMaritalStatus()
+    public static function getTypes(): array
     {
         return [
             MaritalStatus::DISVORCE,

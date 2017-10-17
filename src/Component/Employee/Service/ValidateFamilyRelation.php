@@ -3,12 +3,13 @@
 namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
 
 use KejawenLab\Application\SemartHris\Component\Employee\FamilyRelation;
+use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateFamilyRelation
+class ValidateFamilyRelation implements ValidateTypeInterface
 {
     /**
      * @param string $type
@@ -32,7 +33,7 @@ class ValidateFamilyRelation
     /**
      * @return array
      */
-    public static function getFamilyRelations()
+    public static function getTypes(): array
     {
         return [
             FamilyRelation::COUPLE,

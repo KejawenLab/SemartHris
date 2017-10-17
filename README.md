@@ -14,6 +14,9 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Menejemen Shift Kerja
 - [X] Menejemen Karyawan
 - [X] Support Multi Alamat
+- [X] Support Penempatan Karyawan
+- [X] Menejemen Kontrak Kerja
+- [X] Menejemen Kontrak Perusahaan dengan Rekanan/Klien
 - [X] Backend Site and API Sekaligus
 
 ## TODO LIST
@@ -37,9 +40,9 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Create Username Generator Service
 - [X] Implement User Model and Repository
 - [X] Add Listener to Generate Username, Role and Applying Default Password
-- [ ] Create Company Address When Creating New Company
-- [ ] Create Employee Address When Creating New Employee
-- [ ] Create Contract When Creating New Employee
+- [X] Improvement Company Address
+- [X] Improvement Company Employee
+- [ ] Contract Management
 - [ ] Create Job Allocation When Creating New Employee
 - [ ] Soft Delete and Blameable
 - [ ] Change Password

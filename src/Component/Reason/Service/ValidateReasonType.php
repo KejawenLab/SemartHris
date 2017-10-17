@@ -3,12 +3,13 @@
 namespace KejawenLab\Application\SemartHris\Component\Reason\Service;
 
 use KejawenLab\Application\SemartHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateReasonType
+class ValidateReasonType implements ValidateTypeInterface
 {
     /**
      * @param string $type
@@ -28,7 +29,7 @@ class ValidateReasonType
     /**
      * @return array
      */
-    public static function getReasonTypes()
+    public static function getTypes(): array
     {
         return [ReasonType::ABSENT_CODE, ReasonType::LEAVE_CODE];
     }

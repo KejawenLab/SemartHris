@@ -8,6 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -46,20 +47,27 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     /**
      * @param GenericEvent $event
      */
-    public function generateUsername(GenericEvent $event): void
+    public function generateFromGenericEvent(GenericEvent $event): void
     {
         $user = $event->getSubject();
         if (!$user instanceof UserInterface) {
             return;
         }
 
-        if ($user->getId()) {
+        $this->generateUsernameAndPassword($user);
+    }
+
+    /**
+     * @param GetResponseForControllerResultEvent $event
+     */
+    public function generateFromControllerEvent(GetResponseForControllerResultEvent $event)
+    {
+        $user = $event->getControllerResult();
+        if (!$user instanceof UserInterface) {
             return;
         }
 
-        $user->setPassword($this->passwordEncoder->encodePassword($user, $this->defaultPassword));
-        $user->setUsername($this->usernameGenerator->generate($user));
-        $user->setRoles(['ROLE_EMPLOYEE']);
+        $this->generateUsernameAndPassword($user);
     }
 
     /**
@@ -68,8 +76,22 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            EasyAdminEvents::PRE_PERSIST => ['generateUsername', 0],
-            KernelEvents::VIEW => ['generateUsername', EventPriorities::PRE_WRITE],
+            EasyAdminEvents::PRE_PERSIST => ['generateFromGenericEvent', 0],
+            KernelEvents::VIEW => ['generateFromControllerEvent', EventPriorities::PRE_WRITE],
         ];
+    }
+
+    /**
+     * @param UserInterface $user
+     */
+    private function generateUsernameAndPassword(UserInterface $user)
+    {
+        if ($user->getId()) {
+            return;
+        }
+
+        $user->setPassword($this->passwordEncoder->encodePassword($user, $this->defaultPassword));
+        $user->setUsername($this->usernameGenerator->generate($user));
+        $user->setRoles(['ROLE_EMPLOYEE']);
     }
 }

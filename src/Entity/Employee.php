@@ -72,7 +72,6 @@ class Employee implements EmployeeInterface, Supervisable, Contractable, UserInt
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="date")
-     * @Assert\NotBlank()
      *
      * @var \DateTimeInterface
      */
@@ -354,7 +353,7 @@ class Employee implements EmployeeInterface, Supervisable, Contractable, UserInt
     /**
      * @param \DateTimeInterface $joinDate
      */
-    public function setJoinDate(\DateTimeInterface $joinDate)
+    public function setJoinDate(\DateTimeInterface $joinDate): void
     {
         $this->joinDate = $joinDate;
     }

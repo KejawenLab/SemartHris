@@ -8,7 +8,8 @@ label:
     null: 'TIDAK ADA'
     true: 'ON'
     false: 'OFF'
-    nullable_field: 'Munculkan/Sembunyikan'
+    nullable_field: 'Sembunyikan'
+    inaccessible: 'BELUM DISET'
 delete_modal:
     action: 'Hapus'
     title: 'PERINGATAN'

@@ -31,6 +31,11 @@ interface EmployeeInterface extends Addressable
     public function getJoinDate(): ? \DateTimeInterface;
 
     /**
+     * @param \DateTimeInterface $date
+     */
+    public function setJoinDate(\DateTimeInterface $date): void;
+
+    /**
      * @return string
      *
      * @see ContractType

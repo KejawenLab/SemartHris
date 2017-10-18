@@ -111,9 +111,8 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=11)
+     * @ORM\Column(type="string", length=11, nullable=true)
      * @Assert\Length(max=11)
-     * @Assert\NotBlank()
      *
      * @var string
      */

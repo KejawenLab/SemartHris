@@ -2,7 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Form\Manipulator;
 
-use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Entity\Employee;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -42,22 +42,39 @@ final class EmployeeManipulator extends FormManipulator implements FormManipulat
      * @return FormBuilderInterface
      */
     public function manipulate(FormBuilderInterface $formBuilder, $entity): FormBuilderInterface
-    {/* @var EmployeeInterface $entity */
+    {/* @var Employee $entity */
         $formBuilder = parent::manipulate($formBuilder, $entity);
 
         if (!$companyEntity = $entity->getCompany()) {
             $formBuilder->remove('company_readonly');
         } else {
-            if ($entity->getId()) {
-                $formBuilder->remove('company');
+            $formBuilder->remove('company');
 
-                $formBuilder->add('company', HiddenType::class);
-                $company = $formBuilder->get('company');
-                $company->addModelTransformer($this->companyTransformer);
-                $company->setData($companyEntity->getId());
+            $formBuilder->add('company', HiddenType::class);
+            $company = $formBuilder->get('company');
+            $company->addModelTransformer($this->companyTransformer);
+            $company->setData($companyEntity->getId());
 
-                $formBuilder->get('company_readonly')->setData($companyEntity);
-            }
+            $formBuilder->get('company_readonly')->setData($companyEntity);
+        }
+
+        if (!$employeeContract = $entity->getContract()) {
+            $formBuilder->remove('contract_readonly');
+        } else {
+            $formBuilder->remove('contract_text');
+            $formBuilder->get('contract_readonly')->setData($employeeContract);
+        }
+
+        if (!$entity->getEmployeeStatus()) {
+            $formBuilder->remove('employee_status_text');
+        } else {
+            $formBuilder->remove('employeeStatus');
+
+            $formBuilder->add('employeeStatus', HiddenType::class);
+            $company = $formBuilder->get('employeeStatus');
+            $company->setData($entity->getEmployeeStatus());
+
+            $formBuilder->get('employee_status_text')->setData($entity->getEmployeeStatusText());
         }
 
         if (!$departmentEntity = $entity->getDepartment()) {

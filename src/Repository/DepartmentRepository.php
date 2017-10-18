@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Repository\DepartmentRepositoryInterface;
+use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -29,7 +30,7 @@ class DepartmentRepository extends Repository implements DepartmentRepositoryInt
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('o');
-        $queryBuilder->from($this->entityClass, 'o');
+        $queryBuilder->from(CompanyDepartment::class, 'o');
         $queryBuilder->addSelect('d.id');
         $queryBuilder->addSelect('d.code');
         $queryBuilder->addSelect('d.name');

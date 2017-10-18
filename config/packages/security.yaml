@@ -8,8 +8,13 @@ security:
 
     role_hierarchy:
         ROLE_EMPLOYEE: ROLE_EMPLOYEE
-        ROLE_HRSTAFF: ROLE_HRSTAFF, ROLE_EMPLOYEE]
-        ROLE_SUPER_ADMIN: [ROLE_EMPLOYEE]
+        ROLE_HRSTAFF: [ROLE_HRSTAFF, ROLE_EMPLOYEE]
+        ROLE_HRSUPERVISOR: [ROLE_HRSUPERVISOR, ROLE_HRSTAFF]
+        ROLE_HRMANAGER: [ROLE_HRMANAGER, ROLE_HRSUPERVISOR]
+        ROLE_HRGENERAL_MANAGER: [ROLE_HRGENERAL_MANAGER, ROLE_HRMANAGER]
+        ROLE_HRDIRECTOR: [ROLE_HRDIRECTOR, ROLE_HRGENERAL_MANAGER]
+        ROLE_TOP_LEVEL_MANAGEMENT: [ROLE_TOP_LEVEL_MANAGEMENT, ROLE_EMPLOYEE]
+        ROLE_SUPER_ADMIN: [ROLE_TOP_LEVEL_MANAGEMENT, ROLE_HRDIRECTOR]
 
     providers:
         semarthris:
@@ -23,5 +28,10 @@ security:
                 csrf_token_generator: security.csrf.token_manager
             logout:       true
             anonymous:    true
+            guard:
+                authenticators:
+                    - KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
+                    - KejawenLab\Application\SemartHris\Security\Authentication\ApiKeyAuthenticator
+                entry_point: KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
 
     access_control:

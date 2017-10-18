@@ -950,7 +950,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function getSalt(): ? string
     {
-        return '';
+        return;
     }
 
     /**

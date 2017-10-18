@@ -5,6 +5,9 @@ namespace KejawenLab\Application\SemartHris\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -28,11 +31,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  *
  * @UniqueEntity("code")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class Company implements CompanyInterface
 {
+    use BlameableEntity;
+    use SoftDeleteableEntity;
+
     /**
      * @Groups({"read", "write"})
      * @ORM\Id()

@@ -12,3 +12,9 @@ services:
             - '%env(APP_DEFAULT_PASSWORD)%'
         tags:
             - { name: 'kernel.event_subscriber' }
+
+    Gedmo\SoftDeleteable\SoftDeleteableListener:
+        calls:
+            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
+        tags:
+            - { name: 'doctrine.event_subscriber', connection: 'default' }

@@ -4,6 +4,9 @@ namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Service\ValidateReasonType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -26,12 +29,17 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @UniqueEntity("code")
+ * @UniqueEntity({"type", "code"})
+ *
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class Reason implements ReasonInterface
 {
+    use BlameableEntity;
+    use SoftDeleteableEntity;
+
     /**
      * @Groups({"read", "write"})
      * @ORM\Id()

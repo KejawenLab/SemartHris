@@ -4,6 +4,9 @@ namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -21,10 +24,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class Contract implements ContractInterface
 {
+    use BlameableEntity;
+    use SoftDeleteableEntity;
+
     /**
      * @Groups({"read", "write"})
      * @ORM\Id()

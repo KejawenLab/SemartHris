@@ -5,6 +5,9 @@ namespace KejawenLab\Application\SemartHris\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
@@ -45,10 +48,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity("email")
  * @UniqueEntity("username")
  *
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class Employee implements EmployeeInterface, UserInterface, \Serializable
 {
+    use BlameableEntity;
+    use SoftDeleteableEntity;
+
     /**
      * @Groups({"read"})
      * @ORM\Id()

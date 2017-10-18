@@ -12,3 +12,7 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'KejawenLab\Application\SemartHris\Entity\'
                 alias: KejawenLab\Application\SemartHris
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true

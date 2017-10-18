@@ -18,6 +18,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Menejemen Kontrak Kerja
 - [X] Menejemen Kontrak Perusahaan dengan Rekanan/Klien
 - [X] Backend Site and API Sekaligus
+- [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)
 
 ## TODO LIST
 
@@ -43,8 +44,8 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Improvement Company Address
 - [X] Improvement Company Employee
 - [X] Contract Management
+- [X] Soft Delete and Blameable
 - [ ] Create Job Allocation When Creating New Employee
-- [ ] Soft Delete and Blameable
 - [ ] Change Password
 - [ ] Change Role
 - [ ] Menejemen Absensi

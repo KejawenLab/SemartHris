@@ -5,6 +5,9 @@ namespace KejawenLab\Application\SemartHris\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use KejawenLab\Application\SemartHris\Component\Skill\Model\SkillGroupInterface;
 use KejawenLab\Application\SemartHris\Component\Skill\Model\SkillInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -25,10 +28,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
 class Skill implements SkillInterface
 {
+    use BlameableEntity;
+    use SoftDeleteableEntity;
+
     /**
      * @Groups({"read", "write"})
      * @ORM\Id()

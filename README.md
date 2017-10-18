@@ -63,6 +63,17 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [ ] Login Page
 - [ ] Delete Session Notification
 
+## Kontributor
+
+Proyek ini dikembangkan oleh [Muhamad Surya Iksanudin](https://github.com/ad3n) dan para [kontributor](https://github.com/KejawenLab/SemartHris/graphs/contributors)
+untuk [KejawenLab](https://github.com/KejawenLab)
+
+## Lisensi
+
+Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)). Pastikan Anda memahami kewajiban dan hak Anda sebelum Anda memutuskan untuk menggunakan software ini.
+
+## Preview
+
 ![SemartHris Preview](preview.png)
 
 ![SemartHris API Preview](api-preview.png)

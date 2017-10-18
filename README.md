@@ -20,6 +20,17 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Backend Site and API Sekaligus
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)
 
+## Cara Install
+
+- [X] Clone/Download Repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
+- [X] Jalankan [Composer](https://getcomposer.org/download) Install/Update `composer update --prefer-dist -vvv`
+- [X] Setup koneksi database pada `.env` menggunakan format URL yaitu: `<PROTOCOL>://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE>`
+- [X] Jalankan perintah `php bin/console doctrine:database:crate` untuk membuat database
+- [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
+- [X] Jalankan perintah `make serve` untuk mengaktifkan web server
+- [X] Buka halaman `<HOST>:<PORT>/admin` untuk halaman admin
+- [X] Buka halaman `<HOST>:<PORT>/api` untuk halaman API
+
 ## TODO LIST
 
 - [X] Master Alasan Ketidakhadiran dan Cuti

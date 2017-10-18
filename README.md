@@ -58,7 +58,10 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Soft Delete and Blameable
 - [X] Change Password
 - [X] Change Role
-- [ ] Create Job Allocation When Creating New Employee
+- [ ] Create Job Allocation
+- [ ] Create Job History
+- [ ] Create Job Promotion
+- [ ] Create Job Mutation
 - [ ] Menejemen Absensi
 - [ ] Login Page
 - [ ] Delete Session Notification

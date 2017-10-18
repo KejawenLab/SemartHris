@@ -42,7 +42,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Add Listener to Generate Username, Role and Applying Default Password
 - [X] Improvement Company Address
 - [X] Improvement Company Employee
-- [ ] Contract Management
+- [X] Contract Management
 - [ ] Create Job Allocation When Creating New Employee
 - [ ] Soft Delete and Blameable
 - [ ] Change Password

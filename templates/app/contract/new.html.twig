@@ -17,9 +17,9 @@
     <script type="text/javascript">
         $(function() {
             var locale = '{{ _select2_locale }}';
-            var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
 
-            tags_autocomplete(locale, emptyText);
+            tags_autocomplete(locale);
+            change_static_select(locale);
         });
     </script>
 {% endblock %}

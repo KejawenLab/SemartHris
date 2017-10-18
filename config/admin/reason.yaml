@@ -2,7 +2,10 @@ easy_admin:
     entities:
         LeaveReason:
             class: 'KejawenLab\Application\SemartHris\Entity\Reason'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ReasonController'
+            templates:
+                new: '/app/reason/new.html.twig'
+                edit: '/app/reason/edit.html.twig'
             new:
                 title: 'Tambah Alasan Cuti'
             edit:
@@ -13,7 +16,8 @@ easy_admin:
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
-                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'l', choices: { CUTI: 'l' } } }
+                    - { property: 'type', type: 'hidden', type_options: { data: 'l' } }
+                    - { property: 'type_text', label: 'Jenis Alasan', type: 'choice', type_options: { disabled: true, mapped: false, attr: { class: 'static-select' }, data: 'l', choices: { CUTI: 'l' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { type: 'group', css_class: 'col-sm-6' }
@@ -34,7 +38,10 @@ easy_admin:
 
         AbsentReason:
             class: 'KejawenLab\Application\SemartHris\Entity\Reason'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ReasonController'
+            templates:
+                new: '/app/reason/new.html.twig'
+                edit: '/app/reason/edit.html.twig'
             new:
                 title: 'Tambah Alasan Ketidakhadiran'
             edit:
@@ -45,7 +52,8 @@ easy_admin:
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
-                    - { property: 'type', label: 'Jenis Alasan', type: 'choice', type_options: { attr: { readonly: true }, data: 'a', choices: { ABSENSI: 'a' } } }
+                    - { property: 'type', type: 'hidden', type_options: { data: 'l' } }
+                    - { property: 'type_text', label: 'Jenis Alasan', type: 'choice', type_options: { disabled: true, mapped: false, attr: { class: 'static-select' }, data: 'l', choices: { CUTI: 'l' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { type: 'group', css_class: 'col-sm-6' }

@@ -24,3 +24,8 @@ services:
         arguments:
             - { tags: '@KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveTagsTextFieldSubscriber' ]
+
+    KejawenLab\Application\SemartHris\Form\Manipulator\ReasonManipulator:
+        arguments:
+            - []
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTypeTextFieldSubscriber' ]

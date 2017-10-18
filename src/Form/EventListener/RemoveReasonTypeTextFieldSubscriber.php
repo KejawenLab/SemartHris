@@ -9,19 +9,14 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveTagsTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveReasonTypeTextFieldSubscriber implements EventSubscriberInterface
 {
     /**
      * @param FormEvent $event
      */
     public function removeTagsText(FormEvent $event): void
     {
-        $form = $event->getForm();
-        $data = $event->getData();
-
-        if ($data['tags']) {
-            $form->remove('tags_text');
-        }
+        $event->getForm()->remove('type_text');
     }
 
     /**

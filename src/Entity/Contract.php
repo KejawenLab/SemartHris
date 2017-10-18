@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
+use KejawenLab\Application\SemartHris\Component\Contract\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -39,6 +40,7 @@ class Contract implements ContractInterface
      * @ORM\Column(type="string", length=1)
      * @Assert\Length(max=1)
      * @Assert\NotBlank()
+     * @Assert\Choice(callback="getContractTypeChoices")
      *
      * @var string
      */
@@ -127,10 +129,22 @@ class Contract implements ContractInterface
     }
 
     /**
+     * @return string
+     */
+    public function getTypeText(): string
+    {
+        return ValidateContractType::convertToText($this->type);
+    }
+
+    /**
      * @param string $type
      */
     public function setType(string $type): void
     {
+        if (!ValidateContractType::isValidType($type)) {
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid contract type.', $type));
+        }
+
         $this->type = $type;
     }
 
@@ -243,6 +257,16 @@ class Contract implements ContractInterface
      */
     public function setTags(array $tags = []): void
     {
-        $this->tags = $tags;
+        foreach ($tags as $tag) {
+            $this->tags = StringUtil::uppercase($tag);
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getContractTypeChoices(): array
+    {
+        return ValidateContractType::getTypes();
     }
 }

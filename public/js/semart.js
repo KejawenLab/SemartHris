@@ -198,38 +198,39 @@ function supervisor_autocomplete(locale, emptyText) {
     });
 }
 
-function tags_autocomplete(locale, emptyText) {
+function tags_autocomplete(locale) {
     var tagsSelect = $('.tags-select');
     var tagsId = $('.tags-id');
     var tags = tagsId.val().split(',');
 
-    $.ajax({
-        url: Routing.generate('contract_tags'),
-        type: 'GET',
-        data: {},
-        beforeSend: function () {},
-        success: function (dataResponse) {
-            var options = '<option value="">' + emptyText + '</option>';
-            $.each(dataResponse['tags'], function (idx, val) {
-                options += '<option value="' + val + '">' + val + '</option>';
-            });
-
-            tagsSelect.html(options);
-            tagsSelect.select2({
-                tags: true,
-                theme: 'bootstrap',
-                language: locale
-            });
-
-            if (0 < tags.length) {
-                tagsSelect.val(tags);
-                tagsSelect.change();
+    tagsSelect.select2({
+        minimumInputLength: 2,
+        theme: 'bootstrap',
+        language: locale,
+        tags: true,
+        ajax: {
+            url: Routing.generate('contract_tags'),
+            data: function (params) {
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.tags
+                };
             }
-        },
-        error: function () {
-            console.log('KO');
         }
     });
+
+    if (0 < tags.length) {
+        var options = '';
+        $.each(tags, function (idx, val) {
+            options += '<option value="' + val + '" selected="selected">' + val + '</option>';
+        });
+
+        tagsSelect.html(options);
+    }
 
     tagsSelect.change();
 

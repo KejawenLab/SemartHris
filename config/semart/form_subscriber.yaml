@@ -24,3 +24,5 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveTagsTextFieldSubscriber:
+
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTypeTextFieldSubscriber:

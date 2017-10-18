@@ -12,7 +12,7 @@ easy_admin:
                 title: 'Edit Kontrak'
             search:
                 title: 'Kontrak'
-                fields: ['letterNumber', 'tags']
+                fields: ['letterNumber', 'subject', 'tags']
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }

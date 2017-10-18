@@ -2,11 +2,13 @@
 
 namespace KejawenLab\Application\SemartHris\EventListener;
 
+use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -67,6 +69,7 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     {
         return [
             EasyAdminEvents::PRE_PERSIST => ['generateUsername', 0],
+            KernelEvents::VIEW => ['generateUsername', EventPriorities::PRE_WRITE],
         ];
     }
 }

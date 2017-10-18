@@ -239,6 +239,47 @@ function tags_autocomplete(locale) {
     });
 }
 
+function employee_contract_autocomplete(locale, emptyText) {
+    var contractSelect = $('.contract-select');
+
+    contractSelect.select2({
+        theme: 'bootstrap',
+        language: locale
+    });
+
+    $.ajax({
+        url: Routing.generate('contract_employee'),
+        type: 'GET',
+        data: {},
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var contractId = $('.contract-id').val();
+            var options = '<option value="">' + emptyText + '</option>';
+
+            $.each(dataResponse['contracts'], function (idx, val) {
+                if (contractId === val.id) {
+                    options += '<option value="' + val.id + '" selected="selected">' + val.letterNumber + ' - ' + val.subject + '</option>';
+                } else {
+                    options += '<option value="' + val.id + '">' + val.letterNumber + ' - ' + val.subject + '</option>';
+                }
+            });
+
+            contractSelect.html(options);
+            contractSelect.select2({
+                theme: 'bootstrap',
+                language: locale
+            });
+        },
+        error: function () {
+            console.log('KO');
+        }
+    });
+
+    $(document).on('change', '.contract-select', function () {
+        $('.contract-id').val($(this).val());
+    });
+}
+
 function change_static_select(locale) {
     $('.static-select').select2({
         theme: 'bootstrap',

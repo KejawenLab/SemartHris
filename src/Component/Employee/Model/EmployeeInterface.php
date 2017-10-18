@@ -38,26 +38,6 @@ interface EmployeeInterface extends Addressable
     public function getEmployeeStatus(): string;
 
     /**
-     * @return string
-     */
-    public function getLetterNumber(): ? string;
-
-    /**
-     * @param string $letterNumber
-     */
-    public function setLetterNumber(string $letterNumber): void;
-
-    /**
-     * @return \DateTimeInterface
-     */
-    public function getContractEndDate(): ? \DateTimeInterface;
-
-    /**
-     * @param \DateTimeInterface $dateTime
-     */
-    public function setContractEndDate(\DateTimeInterface $dateTime = null): void;
-
-    /**
      * @return null|CompanyInterface
      */
     public function getCompany(): ? CompanyInterface;

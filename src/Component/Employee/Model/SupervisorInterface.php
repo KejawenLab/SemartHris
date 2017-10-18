@@ -33,14 +33,14 @@ interface SupervisorInterface
     public function setSupervisor(EmployeeInterface $supervisor = null): void;
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getStartDate(): \DateTime;
+    public function getStartDate(): \DateTimeInterface;
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEndDate(): ? \DateTime;
+    public function getEndDate(): ? \DateTimeInterface;
 
     /**
      * @return bool

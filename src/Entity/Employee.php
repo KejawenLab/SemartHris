@@ -13,7 +13,10 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
+use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
+use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\Supervisable;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateGender;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentityType;
@@ -42,7 +45,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @UniqueEntity("letterNumber")
  * @UniqueEntity("code")
  * @UniqueEntity("identityNumber")
  * @UniqueEntity("email")
@@ -52,7 +54,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Employee implements EmployeeInterface, UserInterface, \Serializable
+class Employee implements EmployeeInterface, Supervisable, Contractable, UserInterface, \Serializable
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
@@ -87,21 +89,15 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
     private $employeeStatus;
 
     /**
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=27)
+     * @Groups({"write", "read"})
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Contract", fetch="EAGER")
+     * @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
      * @Assert\NotBlank()
+     * @ApiSubresource()
      *
-     * @var string
+     * @var ContractInterface
      */
-    private $letterNumber;
-
-    /**
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="date", nullable=true)
-     *
-     * @var \DateTimeInterface
-     */
-    private $contractEndDate;
+    private $contract;
 
     /**
      * @Groups({"write", "read"})
@@ -392,35 +388,19 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
     }
 
     /**
-     * @return string
+     * @return ContractInterface
      */
-    public function getLetterNumber(): string
+    public function getContract(): ? ContractInterface
     {
-        return (string) $this->letterNumber;
+        return $this->contract;
     }
 
     /**
-     * @param string $letterNumber
+     * @param ContractInterface $contract
      */
-    public function setLetterNumber(string $letterNumber): void
+    public function setContract(ContractInterface $contract = null): void
     {
-        $this->letterNumber = $letterNumber;
-    }
-
-    /**
-     * @return \DateTimeInterface
-     */
-    public function getContractEndDate(): ? \DateTimeInterface
-    {
-        return $this->contractEndDate;
-    }
-
-    /**
-     * @param \DateTimeInterface $contractEndDate
-     */
-    public function setContractEndDate(\DateTimeInterface $contractEndDate = null): void
-    {
-        $this->contractEndDate = $contractEndDate;
+        $this->contract = $contract;
     }
 
     /**
@@ -1019,5 +999,13 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
     public function getAddressClass(): string
     {
         return EmployeeAddress::class;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSupervisorClass(): string
+    {
+        return EmployeeSupervisor::class;
     }
 }

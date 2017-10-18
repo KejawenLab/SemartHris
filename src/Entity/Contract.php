@@ -271,6 +271,14 @@ class Contract implements ContractInterface
     }
 
     /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return sprintf('%s - %s', $this->getLetterNumber(), $this->getSubject());
+    }
+
+    /**
      * @return array
      */
     public function getContractTypeChoices(): array

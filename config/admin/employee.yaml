@@ -30,12 +30,10 @@ easy_admin:
                     - { property: 'email', label: 'Alamat Email' }
                     - { property: 'taxGroup', label: 'Kode Pajak', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', TK0: 'tk0', TK1: 'tk1', TK2: 'tk2', TK3: 'tk3', K0: 'k0', K1: 'k1', K2: 'k2', K3: 'k3', KI0: 'ki0', KI1: 'ki1', KI2: 'ki2', KI3: 'ki3' } } }
                     - { property: 'haveOvertimeBenefit', label: 'Berhak Lembur?', type_options: { required: false } }
-                    - { type: 'group', icon: 'id-card-o', label: 'Informasi Kontrak', css_class: 'col-sm-6' }
-                    - { property: 'joinDate', label: 'Tanggal Masuk' }
+                    - { type: 'group', icon: 'id-card-o', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
                     - { property: 'employeeStatus', label: 'Status Karyawan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KARYAWAN TETAP': 'p', 'KARYAWAN KONTRAK': 't', 'KARYAWAN OUTSOURCE': 'o', 'KARYAWAN MAGANG': 'i' } } }
-                    - { property: 'letterNumber', label: 'No. Kontrak' }
-                    - { property: 'contractEndDate', label: 'Tanggal Akhir Kontrak' }
-                    - { type: 'group', icon: 'building', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
+                    - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
+                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
                     - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
@@ -57,8 +55,8 @@ easy_admin:
                     - { property: 'fullName', label: 'Nama Karyawan' }
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
                     - { property: 'employee_status_text', label: 'Status Karyawan' }
-                    - { property: 'letterNumber', label: 'No. Kontrak' }
-                    - { property: 'contractEndDate', label: 'Tanggal Akhir Kontrak' }
+                    - { property: 'contract.letterNumber', label: 'No. Kontrak' }
+                    - { property: 'contract.EndDate', label: 'Tanggal Akhir Kontrak' }
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Department' }
                     - { property: 'jobLevel', label: 'Level Jabatan' }

@@ -23,6 +23,10 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
 
+    KejawenLab\Application\SemartHris\Form\DataTransformer\ContractTransformer:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
+
     KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer:
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\RoleTransformer:

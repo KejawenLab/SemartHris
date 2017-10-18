@@ -4,7 +4,9 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
+use KejawenLab\Application\SemartHris\Component\Contract\ContractType;
 use KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeManipulator;
+use KejawenLab\Application\SemartHris\Repository\ContractRepository;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,6 +29,22 @@ class EmployeeController extends AdminController
         $employees = $this->container->get(EmployeeRepository::class)->findSupervisorByJobLevel($id);
 
         return new JsonResponse(['employees' => $employees]);
+    }
+
+    /**
+     * @Route(path="/contract/employee", name="contract_employee", options={"expose"=true})
+     *
+     * @return Response
+     */
+    public function findEmployeeContractAction()
+    {
+        $result = [];
+        $employees = $this->container->get(ContractRepository::class)->findByType(ContractType::CONTRACT_EMPLOYEE);
+        foreach ($employees as $employee) {
+            $result[] = $employee;
+        }
+
+        return new JsonResponse(['contracts' => $employees]);
     }
 
     /**

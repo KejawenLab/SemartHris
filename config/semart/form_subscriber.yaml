@@ -19,6 +19,10 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
 
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveContractTextFieldSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
+
     KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'

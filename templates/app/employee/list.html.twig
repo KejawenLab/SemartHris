@@ -3,7 +3,7 @@
 {% block body_javascript %}
     <script type="text/javascript">
         $(function() {
-            $(this).bootstrapToggle('disable');
+            $('input[type="checkbox"]').bootstrapToggle('disable');
 
             $('.action-delete').on('click', function(e) {
                 e.preventDefault();

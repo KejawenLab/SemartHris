@@ -329,6 +329,11 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     private $roles;
 
+    /**
+     * @var string|null
+     */
+    private $plainPassword;
+
     public function __construct()
     {
         $this->haveOvertimeBenefit = false;
@@ -869,6 +874,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function setRoles(array $roles): void
     {
+        $this->roles = [];
         foreach ($roles as $role) {
             $this->addRole($role);
         }
@@ -950,7 +956,7 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function getSalt(): ? string
     {
-        return;
+        return null;
     }
 
     /**
@@ -961,6 +967,22 @@ class Employee implements EmployeeInterface, UserInterface, \Serializable
      */
     public function eraseCredentials(): void
     {
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getPlainPassword(): ? string
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param null|string $plainPassword
+     */
+    public function setPlainPassword(string $plainPassword = null): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 
     /**

@@ -18,7 +18,7 @@ security:
 
     providers:
         semarthris:
-            id: KejawenLab\Application\SemartHris\Security\UserProvider
+            id: KejawenLab\Application\SemartHris\Security\Provider\UserProvider
 
     firewalls:
         main:
@@ -28,10 +28,10 @@ security:
                 csrf_token_generator: security.csrf.token_manager
             logout:       true
             anonymous:    true
-            guard:
-                authenticators:
-                    - KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
-                    - KejawenLab\Application\SemartHris\Security\Authentication\ApiKeyAuthenticator
-                entry_point: KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
+#            guard:
+#                authenticators:
+#                    - KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
+#                    - KejawenLab\Application\SemartHris\Security\Authentication\ApiKeyAuthenticator
+#                entry_point: KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
 
     access_control:

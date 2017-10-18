@@ -124,7 +124,11 @@ class EmployeeRepository extends AddressRepository implements EmployeeRepository
      */
     public function findByUsername(string $username): ? UserInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['username' => $username]);
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
+            'username' => $username,
+            'deletedAt' => null,
+            'resignDate' => null,
+        ]);
     }
 
     /**

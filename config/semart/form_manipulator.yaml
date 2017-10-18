@@ -29,3 +29,8 @@ services:
         arguments:
             - []
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTypeTextFieldSubscriber' ]
+
+    KejawenLab\Application\SemartHris\Form\Manipulator\UserManipulator:
+        arguments:
+            - { roles: '@KejawenLab\Application\SemartHris\Form\DataTransformer\RoleTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\EncodePasswordSubscriber' ]

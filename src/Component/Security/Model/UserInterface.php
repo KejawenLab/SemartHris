@@ -16,6 +16,11 @@ interface UserInterface extends UsernameInterface, SymfonyUser
     public function setPassword(string $password): void;
 
     /**
+     * @return string
+     */
+    public function getPlainPassword(): ? string;
+
+    /**
      * @param string $role
      */
     public function addRole(string $role): void;

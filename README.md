@@ -56,9 +56,9 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Improvement Company Employee
 - [X] Contract Management
 - [X] Soft Delete and Blameable
+- [X] Change Password
+- [X] Change Role
 - [ ] Create Job Allocation When Creating New Employee
-- [ ] Change Password
-- [ ] Change Role
 - [ ] Menejemen Absensi
 - [ ] Login Page
 - [ ] Delete Session Notification
@@ -70,7 +70,8 @@ untuk [KejawenLab](https://github.com/KejawenLab)
 
 ## Lisensi
 
-Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)). Pastikan Anda memahami kewajiban dan hak Anda sebelum Anda memutuskan untuk menggunakan software ini.
+Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)). 
+Pastikan Anda memahami kewajiban dan hak Anda sebelum Anda memutuskan untuk menggunakan software ini.
 
 ## Preview
 

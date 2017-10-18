@@ -1,6 +1,10 @@
 easy_admin:
     design:
         menu:
+            - label: 'Setting'
+              icon: 'cog'
+              children:
+                  - { entity: 'User', label: 'User', icon: 'hand-o-right', params: { sortField: 'username', sortDirection: 'ASC' } }
             - label: 'Master'
               icon: 'database'
               children:

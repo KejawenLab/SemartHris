@@ -17,7 +17,7 @@ use Symfony\Component\Security\Guard\Token\GuardTokenInterface;
 class ApiKeyAuthenticator implements GuardAuthenticatorInterface
 {
     /**
-     * @param Request $request The request that resulted in an AuthenticationException
+     * @param Request                 $request       The request that resulted in an AuthenticationException
      * @param AuthenticationException $authException The exception that started the authentication process
      *
      * @return Response
@@ -38,7 +38,7 @@ class ApiKeyAuthenticator implements GuardAuthenticatorInterface
     }
 
     /**
-     * @param mixed $credentials
+     * @param mixed                 $credentials
      * @param UserProviderInterface $userProvider
      *
      * @throws AuthenticationException
@@ -51,7 +51,7 @@ class ApiKeyAuthenticator implements GuardAuthenticatorInterface
     }
 
     /**
-     * @param mixed $credentials
+     * @param mixed         $credentials
      * @param UserInterface $user
      *
      * @return bool
@@ -67,7 +67,7 @@ class ApiKeyAuthenticator implements GuardAuthenticatorInterface
      * @see AbstractGuardAuthenticator
      *
      * @param UserInterface $user
-     * @param string $providerKey The provider (i.e. firewall) key
+     * @param string        $providerKey The provider (i.e. firewall) key
      *
      * @return GuardTokenInterface
      */
@@ -77,7 +77,7 @@ class ApiKeyAuthenticator implements GuardAuthenticatorInterface
     }
 
     /**
-     * @param Request $request
+     * @param Request                 $request
      * @param AuthenticationException $exception
      *
      * @return Response|null
@@ -88,9 +88,9 @@ class ApiKeyAuthenticator implements GuardAuthenticatorInterface
     }
 
     /**
-     * @param Request $request
+     * @param Request        $request
      * @param TokenInterface $token
-     * @param string $providerKey The provider (i.e. firewall) key
+     * @param string         $providerKey The provider (i.e. firewall) key
      *
      * @return Response|null
      */

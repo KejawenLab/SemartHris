@@ -1,0 +1,11 @@
+{% extends '@EasyAdmin/default/list.html.twig' %}
+
+{% block body_javascript %}
+    {% if 'search' == app.request.get('action') %}
+        <script type="text/javascript">
+            var _search_query = "{{ app.request.get('query')|default('')|e('js') }}";
+            // the original query is prepended to allow matching exact phrases in addition to single words
+            $('#main').find('table tbody').highlight($.merge([_search_query], _search_query.split(' ')));
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+easy_admin:
+    entities:
+        User:
+            class: 'KejawenLab\Application\SemartHris\Entity\Employee'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\UserController'
+            disabled_actions: ['new', 'delete']
+            templates:
+                edit: 'app/user/edit.html.twig'
+                list: 'app/user/list.html.twig'
+            edit:
+                title: 'Ubah Password'
+            form:
+                fields:
+                    - { type: 'group', label: false, css_class: 'col-sm-12' }
+                    - { property: 'plainPassword', type: 'password', help: 'Pastikan password Anda unik dan aman', label: 'Ubah Password' }
+                    - { property: 'roles', label: 'Hak Akses', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'KARYAWAN': 'ROLE_EMPLOYEE', 'STAF HRD': 'ROLE_HRSTAFF', 'SUPERVISOR HRD': 'ROLE_HRSUPERVISOR', 'MANAGER HRD': 'ROLE_HRMANAGER', 'GENERAL MANAGER HRD': 'ROLE_HRGENERAL_MANAGER', 'DIREKTUR HRD': 'ROLE_HRDIRECTOR', 'TOP LEVEL MANAGEMENT': 'ROLE_TOP_LEVEL_MANAGEMENT', 'SUPER ADMINISTATOR': 'ROLE_SUPER_ADMIN' } } }
+            show:
+                title: 'Detil User'
+                fields:
+                    - { property: 'fullName', label: 'Nama Lengkap' }
+                    - { property: 'username', label: 'Username' }
+                    - { property: 'roles', label: 'Hak Akses', template: 'app/default/field_array.html.twig' }
+                    - { property: 'resign', label: 'Aktif', type: 'boolean', template: 'app/default/field_boolean_negation.html.twig' }
+            list:
+                title: 'User'
+                fields:
+                    - { property: 'fullName', label: 'Nama Lengkap' }
+                    - { property: 'username', label: 'Username' }
+                    - { property: 'roles', label: 'Hak Akses' }
+                    - { property: 'resign', label: 'Aktif', type: 'boolean', template: 'app/default/field_boolean_negation.html.twig' }

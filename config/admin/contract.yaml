@@ -4,8 +4,8 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\Contract'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ContractController'
             templates:
-                new: '/app/contract/new.html.twig'
-                edit: '/app/contract/edit.html.twig'
+                new: 'app/contract/new.html.twig'
+                edit: 'app/contract/edit.html.twig'
             new:
                 title: 'Tambah Kontrak'
             edit:
@@ -37,7 +37,7 @@ easy_admin:
                     - { property: 'endDate', label: 'Tanggal Akhir' }
                     - { property: 'signedDate', label: 'Tanggal Tanda Tangan' }
                     - { property: 'description', label: 'Description' }
-                    - { property: 'tags', label: 'Penanda', template: '/app/default/field_array.html.twig' }
+                    - { property: 'tags', label: 'Penanda', template: 'app/default/field_array.html.twig' }
             list:
                 title: 'Kontrak'
                 fields:

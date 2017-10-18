@@ -110,9 +110,9 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\CompanyAddress'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyAddressController'
             templates:
-                new: '/app/address/new.html.twig'
-                edit: '/app/address/edit.html.twig'
-                list: '/app/address/list.html.twig'
+                new: 'app/address/new.html.twig'
+                edit: 'app/address/edit.html.twig'
+                list: 'app/address/list.html.twig'
             new:
                 title: 'Tambah Alamat Perusahaan'
             edit:

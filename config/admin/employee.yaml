@@ -4,9 +4,9 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\Employee'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeController'
             templates:
-                new: '/app/employee/new.html.twig'
-                edit: '/app/employee/edit.html.twig'
-                list: '/app/employee/list.html.twig'
+                new: 'app/employee/new.html.twig'
+                edit: 'app/employee/edit.html.twig'
+                list: 'app/employee/list.html.twig'
             new:
                 title: 'Tambah Karyawan'
             edit:
@@ -100,9 +100,9 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\EmployeeAddress'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeAddressController'
             templates:
-                new: '/app/address/new.html.twig'
-                edit: '/app/address/edit.html.twig'
-                list: '/app/address/list.html.twig'
+                new: 'app/address/new.html.twig'
+                edit: 'app/address/edit.html.twig'
+                list: 'app/address/list.html.twig'
             new:
                 title: 'Tambah Alamat Karyawan'
             edit:

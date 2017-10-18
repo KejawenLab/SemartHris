@@ -24,3 +24,5 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer:
+
+    KejawenLab\Application\SemartHris\Form\DataTransformer\RoleTransformer:

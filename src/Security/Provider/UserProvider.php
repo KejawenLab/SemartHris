@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Security;
+namespace KejawenLab\Application\SemartHris\Security\Provider;
 
 use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface as BaseUser;
 use KejawenLab\Application\SemartHris\Component\Security\Repository\UserRepositoryInterface;

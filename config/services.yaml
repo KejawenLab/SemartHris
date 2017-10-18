@@ -24,6 +24,10 @@ services:
         arguments:
             - '@KejawenLab\Library\PetrukUsername\UsernameFactory'
 
-    KejawenLab\Application\SemartHris\Security\UserProvider:
+    KejawenLab\Application\SemartHris\Security\Provider\UserProvider:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+
+    KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService:
+        arguments:
+            - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'

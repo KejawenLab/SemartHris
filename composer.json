@@ -3,7 +3,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "~7.1.7",
+        "php": ">=7.1.7",
         "api-platform/api-pack": "~1.0",
         "friendsofsymfony/jsrouting-bundle": "~1.6",
         "javiereguiluz/easyadmin-bundle": "~1.17",

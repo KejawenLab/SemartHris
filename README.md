@@ -20,6 +20,12 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Backend Site and API Sekaligus
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)
 
+## Kebutuhan Software Minimum
+
+- [X] PHP versi 7.1.7
+- [X] RDBMS (MySQL, PostgresSQL, MariaDB, Oracle, etc) yang disupport [Doctrine](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html)
+- [X] Web Server (Apache, Nginx, IIS, etc)
+
 ## Cara Install
 
 - [X] Clone/Download Repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`

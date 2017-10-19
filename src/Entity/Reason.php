@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Service\ValidateReasonType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -39,6 +40,7 @@ class Reason implements ReasonInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
+    use TimestampableEntity;
 
     /**
      * @Groups({"read", "write"})

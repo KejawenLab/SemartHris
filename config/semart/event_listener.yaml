@@ -21,4 +21,10 @@ services:
         calls:
             - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
         tags:
-            - { name: 'doctrine.event_subscriber', connection: 'default' }
+            - { name: 'doctrine.event_subscriber' }
+
+    Gedmo\Timestampable\TimestampableListener:
+        calls:
+            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
+        tags:
+            - { name: 'doctrine.event_subscriber' }

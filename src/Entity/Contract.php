@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -32,6 +33,7 @@ class Contract implements ContractInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
+    use TimestampableEntity;
 
     /**
      * @Groups({"read", "write"})

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Education\Model\EducationTitleInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -35,6 +36,7 @@ class EducationTitle implements EducationTitleInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
+    use TimestampableEntity;
 
     /**
      * @Groups({"read", "write"})

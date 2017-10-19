@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -40,6 +41,7 @@ class JobTitle implements JobTitleInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
+    use TimestampableEntity;
 
     /**
      * @Groups({"read", "write"})

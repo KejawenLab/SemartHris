@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Skill\Model\SkillGroupInterface;
 use KejawenLab\Application\SemartHris\Component\Skill\Model\SkillInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -36,6 +37,7 @@ class Skill implements SkillInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
+    use TimestampableEntity;
 
     /**
      * @Groups({"read", "write"})

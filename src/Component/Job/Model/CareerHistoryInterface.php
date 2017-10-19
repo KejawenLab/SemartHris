@@ -28,16 +28,6 @@ interface CareerHistoryInterface
     public function setEmployee(EmployeeInterface $employee = null): void;
 
     /**
-     * @return null|JobTitleInterface
-     */
-    public function getJobTitle(): ? JobTitleInterface;
-
-    /**
-     * @param JobTitleInterface $jobTitle
-     */
-    public function setJobTitle(JobTitleInterface $jobTitle = null): void;
-
-    /**
      * @return null|CompanyInterface
      */
     public function getCompany(): ? CompanyInterface;
@@ -56,6 +46,36 @@ interface CareerHistoryInterface
      * @param DepartmentInterface $department
      */
     public function setDepartment(DepartmentInterface $department = null): void;
+
+    /**
+     * @return null|JobLevelInterface
+     */
+    public function getJobLevel(): ? JobLevelInterface;
+
+    /**
+     * @param JobLevelInterface $jobLevel
+     */
+    public function setJobLevel(JobLevelInterface $jobLevel = null): void;
+
+    /**
+     * @return null|JobTitleInterface
+     */
+    public function getJobTitle(): ? JobTitleInterface;
+
+    /**
+     * @param JobTitleInterface $jobTitle
+     */
+    public function setJobTitle(JobTitleInterface $jobTitle = null): void;
+
+    /**
+     * @return null|EmployeeInterface
+     */
+    public function getSupervisor(): ? EmployeeInterface;
+
+    /**
+     * @param EmployeeInterface|null $employee
+     */
+    public function setSupervisor(EmployeeInterface $employee = null): void;
 
     /**
      * @return ContractInterface|null

@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
@@ -16,7 +17,7 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterfac
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
-use KejawenLab\Application\SemartHris\Component\Employee\Model\Supervisable;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateGender;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentityType;
@@ -49,15 +50,17 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity("identityNumber")
  * @UniqueEntity("email")
  * @UniqueEntity("username")
+ * @UniqueEntity("contract")
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Employee implements EmployeeInterface, Supervisable, Contractable, UserInterface, \Serializable
+class Employee implements EmployeeInterface, Superviseable, Contractable, UserInterface, \Serializable
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
+    use TimestampableEntity;
 
     /**
      * @Groups({"read"})

@@ -4,6 +4,19 @@
     <script type="text/javascript">
         $(function() {
             $('input[type="checkbox"]').bootstrapToggle('disable');
+
+            $('.action-delete').on('click', function(e) {
+                e.preventDefault();
+                var id = $(this).parents('tr').first().data('id');
+
+                $('#modal-delete').modal({ backdrop: true, keyboard: true })
+                    .off('click', '#modal-delete-button')
+                    .on('click', '#modal-delete-button', function () {
+                        var deleteForm = $('#delete-form');
+                        deleteForm.attr('action', deleteForm.attr('action').replace('__id__', id));
+                        deleteForm.trigger('submit');
+                    });
+            });
         });
     </script>
 

@@ -4,39 +4,40 @@ easy_admin:
             - label: 'Setting'
               icon: 'cog'
               children:
-                  - { entity: 'User', label: 'User', icon: 'hand-o-right', params: { sortField: 'username', sortDirection: 'ASC' } }
+                  - { entity: 'User', label: 'User', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Master'
               icon: 'database'
               children:
-                  - { entity: 'EducationalInstitute', label: 'Lembaga Pendidikan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'EducationTitle', label: 'Gelar Pendidikan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'SkillGroup', label: 'Grup Keahlian', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'Skill', label: 'Keahlian', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'Region', label: 'Propinsi', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'City', label: 'Kota', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'Contract', label: 'Kontrak', icon: 'hand-o-right', params: { sortField: 'type', sortDirection: 'ASC' } }
+                  - { entity: 'EducationalInstitute', label: 'Lembaga Pendidikan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'EducationTitle', label: 'Gelar Pendidikan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'SkillGroup', label: 'Grup Keahlian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Skill', label: 'Keahlian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Region', label: 'Propinsi', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'City', label: 'Kota', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Contract', label: 'Kontrak', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Perusahaan'
               icon: 'building'
               children:
-                  - { entity: 'Company', label: 'Perusahaan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'Department', label: 'Departemen', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'JobLevel', label: 'Level Jabatan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'JobTitle', label: 'Jabatan', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'Company', label: 'Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Department', label: 'Departemen', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'JobLevel', label: 'Level Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'JobTitle', label: 'Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Karyawan'
               icon: 'user-md'
               children:
-                  - { entity: 'Employee', label: 'Profil', icon: 'hand-o-right', params: { sortField: 'fullName', sortDirection: 'ASC' } }
+                  - { entity: 'Employee', label: 'Profil Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Placement', label: 'Penempatan Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Absensi'
               icon: 'clock-o'
               children:
-                  - { entity: 'AbsentReason', label: 'Alasan Ketidakhadiran', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
-                  - { entity: 'Shiftment', label: 'Shift Kerja', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'AbsentReason', label: 'Alasan Ketidakhadiran', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Shiftment', label: 'Shift Kerja', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Cuti'
               icon: 'envelope-o'
               children:
-                  - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'name', sortDirection: 'ASC' } }
+                  - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
               icon: 'id-card-o'
               children:
-                  - { entity: 'CompanyAddress', label: 'Alamat Perusahaan', icon: 'hand-o-right', params: { sortField: 'defaultAddress', sortDirection: 'DESC' } }
-                  - { entity: 'EmployeeAddress', label: 'Alamat Karyawan', icon: 'hand-o-right', params: { sortField: 'defaultAddress', sortDirection: 'DESC' } }
+                  - { entity: 'CompanyAddress', label: 'Alamat Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'EmployeeAddress', label: 'Alamat Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }

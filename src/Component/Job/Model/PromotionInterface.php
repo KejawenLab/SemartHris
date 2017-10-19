@@ -15,6 +15,26 @@ interface PromotionInterface extends MutationInterface
     public function getType(): string;
 
     /**
+     * @return null|JobLevelInterface
+     */
+    public function getCurrentJobLevel(): ? JobLevelInterface;
+
+    /**
+     * @param JobLevelInterface $jobLevel
+     */
+    public function setCurrentJobLevel(JobLevelInterface $jobLevel = null): void;
+
+    /**
+     * @return null|JobLevelInterface
+     */
+    public function getNewJobLevel(): ? JobLevelInterface;
+
+    /**
+     * @param JobLevelInterface $jobLevel
+     */
+    public function setNewJobLevel(JobLevelInterface $jobLevel = null): void;
+
+    /**
      * @return null|JobTitleInterface
      */
     public function getCurrentJobTitle(): ? JobTitleInterface;

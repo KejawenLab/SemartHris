@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Employee\Model;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-interface Supervisable
+interface Superviseable
 {
     /**
      * @return EmployeeInterface|null

@@ -3,6 +3,7 @@ easy_admin:
         Employee:
             class: 'KejawenLab\Application\SemartHris\Entity\Employee'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeController'
+            disabled_actions: ['delete']
             templates:
                 new: 'app/employee/new.html.twig'
                 edit: 'app/employee/edit.html.twig'
@@ -36,12 +37,12 @@ easy_admin:
                     - { property: 'employee_status_text', label: 'Status Karyawan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
                     - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
-                    - { property: 'contract_readonly', label: 'Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'contract_readonly', label: 'Kontrak Kerja', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
                     - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
-                    - { property: 'department_readonly', label: 'Department', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
-                    - { property: 'department_text', label: 'Department', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'department_readonly', label: 'Departemen', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
                     - { property: 'joblevel_readonly', label: 'Level Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
@@ -61,7 +62,7 @@ easy_admin:
                     - { property: 'contract.letterNumber', label: 'No. Kontrak' }
                     - { property: 'contract.EndDate', label: 'Tanggal Akhir Kontrak' }
                     - { property: 'company', label: 'Perusahaan' }
-                    - { property: 'department', label: 'Department' }
+                    - { property: 'department', label: 'Departemen' }
                     - { property: 'jobLevel', label: 'Level Jabatan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
                     - { property: 'supervisor', label: 'Atasan Langsung' }
@@ -147,3 +148,41 @@ easy_admin:
                     - { property: 'region', label: 'Propinsi' }
                     - { property: 'postalCode', label: 'Kode Pos' }
                     - { property: 'defaultAddress', label: 'Default' }
+
+        Placement:
+            class: 'KejawenLab\Application\SemartHris\Entity\Placement'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
+            disabled_actions: ['show']
+            templates:
+                new: 'app/placement/new.html.twig'
+                edit: 'app/placement/edit.html.twig'
+                list: 'app/placement/list.html.twig'
+            new:
+                title: 'Tambah Penempatan Karyawan'
+            edit:
+                title: 'Edit Penempatan Karyawan'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
+                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
+                    - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
+                    - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
+                    - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
+                    - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
+                    - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
+            list:
+                title: 'Penempatan Karyawan'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'supervisor', label: 'Supervisor' }
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'department', label: 'Departemen' }
+                    - { property: 'jobLevel', label: 'Level Jabatan' }
+                    - { property: 'jobTitle', label: 'Jabatan' }
+                    - { property: 'contract', label: 'Kontrak Kerja' }

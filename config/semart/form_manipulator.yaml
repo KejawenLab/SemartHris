@@ -15,6 +15,11 @@ services:
             - { cityOfBirth: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer', department: '@KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer', jobTitle: '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer', supervisor: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer', contract: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ContractTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityOfBirthTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveDepartmentTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveJobTitleTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveSupervisorTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveContractTextFieldSubscriber' ]
 
+    KejawenLab\Application\SemartHris\Form\Manipulator\PlacementManipulator:
+        arguments:
+            - { department: '@KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer', jobTitle: '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer', supervisor: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer', contract: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ContractTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveDepartmentTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveJobTitleTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveSupervisorTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveContractTextFieldSubscriber' ]
+
     KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeAddressManipulator:
         arguments:
             - { employee: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer', city: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer' }

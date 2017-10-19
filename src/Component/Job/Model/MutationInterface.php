@@ -68,6 +68,26 @@ interface MutationInterface
     public function setNewDepartment(DepartmentInterface $department = null): void;
 
     /**
+     * @return null|EmployeeInterface
+     */
+    public function getCurrentSupervisor(): ? EmployeeInterface;
+
+    /**
+     * @param EmployeeInterface|null $employee
+     */
+    public function setCurrenctSupervisor(EmployeeInterface $employee = null): void;
+
+    /**
+     * @return null|EmployeeInterface
+     */
+    public function getNewSupervisor(): ? EmployeeInterface;
+
+    /**
+     * @param EmployeeInterface|null $employee
+     */
+    public function setNewSupervisor(EmployeeInterface $employee = null): void;
+
+    /**
      * @return ContractInterface|null
      */
     public function getContract(): ? ContractInterface;

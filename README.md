@@ -58,7 +58,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Soft Delete and Blameable
 - [X] Change Password
 - [X] Change Role
-- [ ] Create Job Allocation
+- [X] Create Job Placement
 - [ ] Create Job History
 - [ ] Create Job Promotion
 - [ ] Create Job Mutation

@@ -247,12 +247,4 @@ class Company implements CompanyInterface
     {
         return sprintf('%s - %s', $this->getCode(), $this->getName());
     }
-
-    /**
-     * @return string
-     */
-    public function getAddressClass(): string
-    {
-        return CompanyAddress::class;
-    }
 }

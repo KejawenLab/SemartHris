@@ -994,20 +994,4 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
     {
         return sprintf('%s - %s', $this->getCode(), $this->getFullName());
     }
-
-    /**
-     * @return string
-     */
-    public function getAddressClass(): string
-    {
-        return EmployeeAddress::class;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSupervisorClass(): string
-    {
-        return EmployeeSupervisor::class;
-    }
 }

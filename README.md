@@ -59,6 +59,8 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Change Password
 - [X] Change Role
 - [X] Create Job Placement
+- [ ] Register Contract Validator
+- [ ] Applying Contract Validator
 - [ ] Create Job History
 - [ ] Create Job Promotion
 - [ ] Create Job Mutation

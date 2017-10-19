@@ -16,9 +16,4 @@ interface Superviseable
      * @param EmployeeInterface|null $supervisor
      */
     public function setSupervisor(EmployeeInterface $supervisor = null): void;
-
-    /**
-     * @return string
-     */
-    public function getSupervisorClass(): string;
 }

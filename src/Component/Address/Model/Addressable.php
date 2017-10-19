@@ -16,9 +16,4 @@ interface Addressable
      * @param AddressInterface|null $address
      */
     public function setAddress(AddressInterface $address = null): void;
-
-    /**
-     * @return string
-     */
-    public function getAddressClass(): string;
 }

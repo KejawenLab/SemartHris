@@ -73,7 +73,7 @@ untuk [KejawenLab](https://github.com/KejawenLab)
 
 ## Lisensi
 
-Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)). 
+Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) &copy; Muhamad Surya Iksanudin. 
 Pastikan Anda memahami kewajiban dan hak Anda sebelum Anda memutuskan untuk menggunakan software ini.
 
 ## Preview

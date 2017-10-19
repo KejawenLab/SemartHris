@@ -1,16 +1,9 @@
-/* Import Color */
-@import
-	"helper/color",
-	"helper/function",
-	"icon/ion-icons.scss";
-
 body {
     background-image: url(../img/background.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
-
 
 @-webkit-keyframes hue {
   from {

@@ -1,0 +1,22 @@
+{
+  "name": "template-skeleton",
+  "version": "1.0.0",
+  "description": "My custom personal skeleton for build template base on Bootstrap 3 and jQuery v3.1.1",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp default",
+    "watch": "gulp watch",
+    "build": "gulp build"
+  },
+  "keywords": [],
+  "author": "Muhibbudin Suretno",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^3.0.0"
+  }
+}

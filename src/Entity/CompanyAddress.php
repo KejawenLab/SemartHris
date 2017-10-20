@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="company_addresses")
  *
  * @ApiResource(
@@ -40,7 +40,8 @@ class CompanyAddress implements CompanyAddressInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -51,10 +52,12 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var CompanyInterface
@@ -64,6 +67,7 @@ class CompanyAddress implements CompanyAddressInterface
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -72,9 +76,12 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var RegionInterface
@@ -83,9 +90,12 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\City", fetch="EAGER")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var CityInterface
@@ -94,7 +104,9 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=5)
+     *
      * @Assert\Length(max=5)
      * @Assert\NotBlank()
      *
@@ -104,7 +116,9 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=17)
+     *
      * @Assert\Length(max=17)
      * @Assert\NotBlank()
      *
@@ -114,7 +128,9 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=11)
+     *
      * @Assert\Length(max=11)
      * @Assert\NotBlank()
      *
@@ -124,6 +140,7 @@ class CompanyAddress implements CompanyAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="boolean")
      *
      * @var bool

@@ -21,12 +21,12 @@ final class UpdateJoinDateFromContractSubscriber implements EventSubscriberInter
      */
     public function updateFromGenericEvent(GenericEvent $event)
     {
-        $employee = $event->getSubject();
-        if (!$employee instanceof EmployeeInterface) {
+        $entity = $event->getSubject();
+        if (!$entity instanceof EmployeeInterface) {
             return;
         }
 
-        $this->updateEmployeeJoinDate($employee);
+        $this->updateEmployeeJoinDate($entity);
     }
 
     /**
@@ -34,12 +34,12 @@ final class UpdateJoinDateFromContractSubscriber implements EventSubscriberInter
      */
     public function updateFromControllerEvent(GetResponseForControllerResultEvent $event)
     {
-        $employee = $event->getControllerResult();
-        if (!$employee instanceof EmployeeInterface) {
+        $entity = $event->getControllerResult();
+        if (!$entity instanceof EmployeeInterface) {
             return;
         }
 
-        $this->updateEmployeeJoinDate($employee);
+        $this->updateEmployeeJoinDate($entity);
     }
 
     /**

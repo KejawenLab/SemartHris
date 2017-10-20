@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="employee_addresses")
  *
  * @ApiResource(
@@ -40,7 +40,8 @@ class EmployeeAddress implements EmployeeAddressInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -51,8 +52,10 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
      * @ApiSubresource()
      *
@@ -62,7 +65,9 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -71,9 +76,12 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var RegionInterface
@@ -82,9 +90,12 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\City", fetch="EAGER")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var CityInterface
@@ -93,7 +104,9 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=5)
+     *
      * @Assert\Length(max=5)
      * @Assert\NotBlank()
      *
@@ -103,7 +116,9 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=17)
+     *
      * @Assert\Length(max=17)
      * @Assert\NotBlank()
      *
@@ -113,7 +128,9 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=11, nullable=true)
+     *
      * @Assert\Length(max=11)
      *
      * @var string
@@ -122,6 +139,7 @@ class EmployeeAddress implements EmployeeAddressInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="boolean")
      *
      * @var bool

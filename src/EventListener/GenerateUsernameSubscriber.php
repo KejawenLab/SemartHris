@@ -49,12 +49,12 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
      */
     public function generateFromGenericEvent(GenericEvent $event): void
     {
-        $user = $event->getSubject();
-        if (!$user instanceof UserInterface) {
+        $entity = $event->getSubject();
+        if (!$entity instanceof UserInterface) {
             return;
         }
 
-        $this->generateUsernameAndPassword($user);
+        $this->generateUsernameAndPassword($entity);
     }
 
     /**
@@ -62,12 +62,12 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
      */
     public function generateFromControllerEvent(GetResponseForControllerResultEvent $event)
     {
-        $user = $event->getControllerResult();
-        if (!$user instanceof UserInterface) {
+        $entity = $event->getControllerResult();
+        if (!$entity instanceof UserInterface) {
             return;
         }
 
-        $this->generateUsernameAndPassword($user);
+        $this->generateUsernameAndPassword($entity);
     }
 
     /**

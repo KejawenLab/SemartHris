@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="skills", indexes={@ORM\Index(name="skills_idx", columns={"name"})})
  *
  * @ApiResource(
@@ -40,7 +40,8 @@ class Skill implements SkillInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -51,9 +52,12 @@ class Skill implements SkillInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\SkillGroup", fetch="EAGER")
      * @ORM\JoinColumn(name="skill_group_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var SkillGroupInterface
@@ -62,7 +66,9 @@ class Skill implements SkillInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string

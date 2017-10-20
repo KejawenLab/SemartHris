@@ -2,6 +2,8 @@
 
 namespace KejawenLab\Application\SemartHris;
 
+use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AddressRepositoryFactoryPass;
+use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\ContractableRepositoryFactoryPass;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -78,6 +80,7 @@ class Kernel extends BaseKernel implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        //TODO: waiting for stable release
+//        $container->addCompilerPass(new AddressRepositoryFactoryPass());
+//        $container->addCompilerPass(new ContractableRepositoryFactoryPass());
     }
 }

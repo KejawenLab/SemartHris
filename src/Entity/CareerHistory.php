@@ -14,17 +14,16 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterfac
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
-use KejawenLab\Application\SemartHris\Component\Job\Model\PlacementInterface;
-use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="employee_placements")
+ * @ORM\Table(name="career_histories")
  *
  * @ApiResource(
  *     attributes={
@@ -35,13 +34,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueEntity({"employee", "company", "department", "jobLevel", "jobTitle", "supervisor"})
  * @UniqueEntity("contract")
- * @UniqueContract()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Placement implements PlacementInterface, Contractable
+class CareerHistory implements CareerHistoryInterface, Contractable
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
@@ -59,7 +57,7 @@ class Placement implements PlacementInterface, Contractable
     private $id;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
@@ -73,7 +71,7 @@ class Placement implements PlacementInterface, Contractable
     private $employee;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
@@ -87,7 +85,7 @@ class Placement implements PlacementInterface, Contractable
     private $company;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
@@ -101,7 +99,7 @@ class Placement implements PlacementInterface, Contractable
     private $department;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
      * @ORM\JoinColumn(name="joblevel_id", referencedColumnName="id")
@@ -115,7 +113,7 @@ class Placement implements PlacementInterface, Contractable
     private $jobLevel;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobTitle", fetch="EAGER")
      * @ORM\JoinColumn(name="jobtitle_id", referencedColumnName="id")
@@ -129,7 +127,7 @@ class Placement implements PlacementInterface, Contractable
     private $jobTitle;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id")
@@ -141,7 +139,7 @@ class Placement implements PlacementInterface, Contractable
     private $supervisor;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Contract", fetch="EAGER")
      * @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
@@ -156,16 +154,12 @@ class Placement implements PlacementInterface, Contractable
 
     /**
      * @Groups({"read", "write"})
-     * @ORM\Column(type="boolean")
      *
-     * @var bool
+     * @ORM\Column(type="string", length=11)
+     *
+     * @var string
      */
-    private $active;
-
-    public function __construct()
-    {
-        $this->active = true;
-    }
+    private $description;
 
     /**
      * @return string
@@ -288,27 +282,11 @@ class Placement implements PlacementInterface, Contractable
     }
 
     /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->active;
-    }
-
-    /**
-     * @param bool $active
-     */
-    public function setActive(bool $active)
-    {
-        $this->active = $active;
-    }
-
-    /**
      * @return null|string
      */
     public function getDescription(): ? string
     {
-        throw new \RuntimeException();
+        return $this->description;
     }
 
     /**
@@ -316,6 +294,6 @@ class Placement implements PlacementInterface, Contractable
      */
     public function setDescription(string $description): void
     {
-        throw new \RuntimeException();
+        $this->description = $description;
     }
 }

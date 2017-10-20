@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="job_titles", indexes={@ORM\Index(name="job_titles_idx", columns={"code", "name"})})
  *
  * @ApiResource(
@@ -44,7 +44,8 @@ class JobTitle implements JobTitleInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -55,8 +56,10 @@ class JobTitle implements JobTitleInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
      * @ORM\JoinColumn(name="job_level_id", referencedColumnName="id")
+     *
      * @ApiSubresource()
      *
      * @var JobLevelInterface
@@ -65,7 +68,9 @@ class JobTitle implements JobTitleInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=9)
+     *
      * @Assert\Length(max=9)
      * @Assert\NotBlank()
      *
@@ -75,7 +80,9 @@ class JobTitle implements JobTitleInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string

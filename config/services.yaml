@@ -19,6 +19,12 @@ services:
     KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory'
+            - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
+
+    KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistoryService:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\CareerHistoryRepository'
+            - 'KejawenLab\Application\SemartHris\Entity\CareerHistory'
 
     KejawenLab\Library\PetrukUsername\UsernameFactory:
         arguments:

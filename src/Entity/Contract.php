@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="contracts")
  *
  * @ApiResource(
@@ -36,7 +36,8 @@ class Contract implements ContractInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -47,7 +48,9 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=1)
+     *
      * @Assert\Length(max=1)
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getContractTypeChoices")
@@ -58,7 +61,9 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=27)
+     *
      * @Assert\Length(max=27)
      * @Assert\NotBlank()
      *
@@ -68,7 +73,9 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -77,6 +84,7 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", nullable=true)
      *
      * @var string
@@ -85,7 +93,9 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date")
+     *
      * @Assert\NotBlank()
      *
      * @var \DateTimeInterface
@@ -94,6 +104,7 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTimeInterface|null
@@ -102,7 +113,9 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date")
+     *
      * @Assert\NotBlank()
      *
      * @var \DateTimeInterface
@@ -111,14 +124,25 @@ class Contract implements ContractInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="array", nullable=true)
      *
      * @var array
      */
     private $tags;
 
+    /**
+     * @Groups({"read"})
+     *
+     * @ORM\Column(type="boolean")
+     *
+     * @var bool
+     */
+    private $used;
+
     public function __construct()
     {
+        $this->used = false;
         $this->tags = [];
     }
 
@@ -270,6 +294,30 @@ class Contract implements ContractInterface
         foreach ($tags as $tag) {
             $this->tags = StringUtil::uppercase($tag);
         }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUsed(): bool
+    {
+        return $this->used;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getUsed(): bool
+    {
+        return $this->isUsed();
+    }
+
+    /**
+     * @param bool $used
+     */
+    public function setUsed(bool $used): void
+    {
+        $this->used = $used;
     }
 
     /**

@@ -28,8 +28,12 @@
 - [X] Create Job Placement
 - [X] Register Contract Validator
 - [X] Applying Contract Validator
-- [ ] Create Job History
+- [X] Create Job History Page
 - [ ] Create Job Promotion
+- [ ] Add Job History When Adding New Placement
+- [ ] Prevent Remove Placement When Job History is Exist
+- [ ] Add Job History When Adding New Promtion
+- [ ] Prevent Remove Promotion When Job History is Exist
 - [ ] Create Job Mutation
 - [ ] Menejemen Absensi
 - [ ] Login Page

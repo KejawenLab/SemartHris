@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="shiftments", indexes={@ORM\Index(name="shiftments_idx", columns={"code", "name"})})
  *
  * @ApiResource(
@@ -42,7 +42,8 @@ class Shiftment implements ShiftmentInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -53,7 +54,9 @@ class Shiftment implements ShiftmentInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=7)
+     *
      * @Assert\Length(max=7)
      * @Assert\NotBlank()
      *
@@ -63,7 +66,9 @@ class Shiftment implements ShiftmentInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -72,7 +77,9 @@ class Shiftment implements ShiftmentInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="time")
+     *
      * @Assert\NotBlank()
      *
      * @var \DateTimeInterface
@@ -81,7 +88,9 @@ class Shiftment implements ShiftmentInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="time")
+     *
      * @Assert\NotBlank()
      *
      * @var \DateTimeInterface

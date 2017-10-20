@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="employee_supervisors")
  *
  * @ApiResource(
@@ -36,7 +36,8 @@ class EmployeeSupervisor implements SupervisorInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -47,9 +48,12 @@ class EmployeeSupervisor implements SupervisorInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var EmployeeInterface
@@ -58,9 +62,12 @@ class EmployeeSupervisor implements SupervisorInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var EmployeeInterface
@@ -69,7 +76,9 @@ class EmployeeSupervisor implements SupervisorInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date")
+     *
      * @Assert\NotBlank()
      *
      * @var \DateTimeInterface
@@ -78,6 +87,7 @@ class EmployeeSupervisor implements SupervisorInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTimeInterface|null
@@ -85,6 +95,7 @@ class EmployeeSupervisor implements SupervisorInterface
     private $endDate;
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="boolean")
      *
      * @var bool

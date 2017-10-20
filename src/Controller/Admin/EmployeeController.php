@@ -39,12 +39,12 @@ class EmployeeController extends AdminController
     public function findEmployeeContractAction()
     {
         $result = [];
-        $employees = $this->container->get(ContractRepository::class)->findByType(ContractType::CONTRACT_EMPLOYEE);
-        foreach ($employees as $employee) {
-            $result[] = $employee;
+        $contracts = $this->container->get(ContractRepository::class)->findByType(ContractType::CONTRACT_EMPLOYEE);
+        foreach ($contracts as $contract) {
+            $result[] = $contract;
         }
 
-        return new JsonResponse(['contracts' => $employees]);
+        return new JsonResponse(['contracts' => $contracts]);
     }
 
     /**

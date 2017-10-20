@@ -3,7 +3,9 @@
 namespace KejawenLab\Application\SemartHris\Component\Contract\Service;
 
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
+use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory;
+use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -16,11 +18,18 @@ class CheckContractService
     private $contractableRepositoryFactory;
 
     /**
-     * @param ContractableRepositoryFactory $repositoryFactory
+     * @var ContractRepositoryInterface
      */
-    public function __construct(ContractableRepositoryFactory $repositoryFactory)
+    private $contractRepository;
+
+    /**
+     * @param ContractableRepositoryFactory $repositoryFactory
+     * @param ContractRepositoryInterface   $contractRepository
+     */
+    public function __construct(ContractableRepositoryFactory $repositoryFactory, ContractRepositoryInterface $contractRepository)
     {
         $this->contractableRepositoryFactory = $repositoryFactory;
+        $this->contractRepository = $contractRepository;
     }
 
     /**
@@ -47,5 +56,14 @@ class CheckContractService
         }
 
         return false;
+    }
+
+    /**
+     * @param ContractInterface $contract
+     */
+    public function markUsedContract(ContractInterface $contract)
+    {
+        $contract->setUsed(true);
+        $this->contractRepository->update($contract);
     }
 }

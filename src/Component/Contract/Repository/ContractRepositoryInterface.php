@@ -27,4 +27,9 @@ interface ContractRepositoryInterface
      * @return array
      */
     public function findByType(string $type): array;
+
+    /**
+     * @param ContractInterface $contract
+     */
+    public function update(ContractInterface $contract): void;
 }

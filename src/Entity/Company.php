@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="companies", indexes={@ORM\Index(name="companies_idx", columns={"code", "name"})})
  *
  * @ApiResource(
@@ -44,7 +44,8 @@ class Company implements CompanyInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -55,6 +56,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      *
@@ -66,6 +68,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=7)
      *
      * @Assert\Length(max=7)
@@ -77,6 +80,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
      *
      * @Assert\NotBlank()
@@ -87,6 +91,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date")
      *
      * @Assert\NotBlank()
@@ -97,6 +102,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
      *
      * @Assert\NotBlank()
@@ -108,6 +114,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\OneToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\CompanyAddress", fetch="EAGER", cascade={"persist"})
      * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
      *
@@ -119,6 +126,7 @@ class Company implements CompanyInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
      *
      * @Assert\NotBlank()

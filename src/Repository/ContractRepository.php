@@ -43,8 +43,18 @@ class ContractRepository extends Repository implements ContractRepositoryInterfa
         $queryBuilder->select('c.id, c.letterNumber, c.subject');
         $queryBuilder->from($this->entityClass, 'c');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('c.type', ':type'));
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('c.used', $queryBuilder->expr()->literal(false)));
         $queryBuilder->setParameter('type', $type);
 
         return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
+     * @param ContractInterface $contract
+     */
+    public function update(ContractInterface $contract): void
+    {
+        $this->entityManager->persist($contract);
+        $this->entityManager->flush();
     }
 }

@@ -27,6 +27,7 @@ easy_admin:
               children:
                   - { entity: 'Employee', label: 'Profil Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Placement', label: 'Penempatan Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'CareerHistory', label: 'Riwayat Karir', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Absensi'
               icon: 'clock-o'
               children:

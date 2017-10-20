@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-interface PromotionInterface
+interface MutationInterface
 {
     /**
      * @return string

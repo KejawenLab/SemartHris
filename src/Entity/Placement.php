@@ -33,7 +33,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @UniqueEntity({"employee", "company", "department", "jobLevel", "jobTitle", "supervisor"})
  * @UniqueEntity("contract")
  * @UniqueContract()
  *

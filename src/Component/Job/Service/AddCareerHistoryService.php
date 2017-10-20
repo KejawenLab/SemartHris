@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryable;
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\PlacementInterface;
-use KejawenLab\Application\SemartHris\Component\Job\Model\PromotionInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Repository\CareerHistoryRepositoryInterface;
 
 /**
@@ -55,7 +55,7 @@ class AddCareerHistoryService
             $careerHistory->setDescription('PENEMPATAN');
         }
 
-        if ($careerHistoryable instanceof PromotionInterface) {
+        if ($careerHistoryable instanceof MutationInterface) {
             /** @var Contractable|EmployeeInterface $employee */
             $employee = $careerHistoryable->getEmployee();
             $careerHistory->setEmployee($employee);

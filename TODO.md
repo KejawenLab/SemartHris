@@ -32,7 +32,7 @@
 - [ ] Create Job Promotion
 - [X] Add Job History When Adding New Placement
 - [ ] Prevent Remove Placement When Job History is Exist
-- [ ] Add Job History When Adding New Promtion
+- [X] Add Job History When Adding New Promtion
 - [ ] Prevent Remove Promotion When Job History is Exist
 - [ ] Create Job Mutation
 - [ ] Menejemen Absensi

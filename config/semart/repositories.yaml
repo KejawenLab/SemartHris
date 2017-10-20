@@ -32,3 +32,15 @@ services:
     KejawenLab\Application\SemartHris\Repository\ContractRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Contract']]
+        tags:
+            { name: 'semarthris.contract_repository' }
+
+    KejawenLab\Application\SemartHris\Repository\PlacementRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Placement']]
+        tags:
+            { name: 'semarthris.contract_repository' }
+
+    KejawenLab\Application\SemartHris\Repository\CareerHistoryRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\CareerHistory']]

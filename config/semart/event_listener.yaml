@@ -17,6 +17,18 @@ services:
         tags:
             - { name: 'kernel.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\AddCareerHistorySubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistoryService'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
+    KejawenLab\Application\SemartHris\EventListener\MarkUsedContractSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
     Gedmo\SoftDeleteable\SoftDeleteableListener:
         calls:
             - [ 'setAnnotationReader', [ '@annotation_reader' ] ]

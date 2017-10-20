@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="absent_reasons", indexes={@ORM\Index(name="absent_reasons_idx", columns={"code", "name"})})
  *
  * @ApiResource(
@@ -43,7 +43,8 @@ class Reason implements ReasonInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -54,7 +55,9 @@ class Reason implements ReasonInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=1)
+     *
      * @Assert\Length(max=1)
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getTypeChoices")
@@ -65,7 +68,9 @@ class Reason implements ReasonInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=7)
+     *
      * @Assert\Length(max=7)
      * @Assert\NotBlank()
      *
@@ -75,7 +80,9 @@ class Reason implements ReasonInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string

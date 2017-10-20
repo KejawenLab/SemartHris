@@ -59,8 +59,8 @@ easy_admin:
                     - { property: 'fullName', label: 'Nama Karyawan' }
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
                     - { property: 'employee_status_text', label: 'Status Karyawan' }
-                    - { property: 'contract.letterNumber', label: 'No. Kontrak' }
-                    - { property: 'contract.EndDate', label: 'Tanggal Akhir Kontrak' }
+                    - { property: 'contract', label: 'No. Kontrak' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir Kontrak' }
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
                     - { property: 'jobLevel', label: 'Level Jabatan' }
@@ -185,4 +185,29 @@ easy_admin:
                     - { property: 'department', label: 'Departemen' }
                     - { property: 'jobLevel', label: 'Level Jabatan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
-                    - { property: 'contract', label: 'Kontrak Kerja' }
+                    - { property: 'contract', label: 'No. Kontrak' }
+                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
+                    - { property: 'active', label: 'Status' }
+
+        CareerHistory:
+            class: 'KejawenLab\Application\SemartHris\Entity\CareerHistory'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
+            disabled_actions: ['show', 'new', 'edit']
+            templates:
+                new: 'app/placement/new.html.twig'
+                edit: 'app/placement/edit.html.twig'
+                list: 'app/placement/list.html.twig'
+            list:
+                title: 'Riwayat Karir'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'supervisor', label: 'Supervisor' }
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'department', label: 'Departemen' }
+                    - { property: 'jobLevel', label: 'Level Jabatan' }
+                    - { property: 'jobTitle', label: 'Jabatan' }
+                    - { property: 'contract', label: 'No. Kontrak' }
+                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
+                    - { property: 'description', label: 'Keterangan' }

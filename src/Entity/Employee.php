@@ -27,12 +27,13 @@ use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="employees", indexes={@ORM\Index(name="employees_idx", columns={"code", "full_name", "username"})})
  *
  * @ApiResource(
@@ -51,6 +52,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity("email")
  * @UniqueEntity("username")
  * @UniqueEntity("contract")
+ * @UniqueContract()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
@@ -64,6 +66,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -74,6 +77,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date")
      *
      * @var \DateTimeInterface
@@ -82,7 +86,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=1)
+     *
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getEmployeeStatusChoices")
      *
@@ -92,9 +98,12 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Contract", fetch="EAGER")
      * @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var ContractInterface
@@ -103,9 +112,12 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var CompanyInterface
@@ -114,9 +126,12 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var DepartmentInterface
@@ -125,9 +140,12 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
      * @ORM\JoinColumn(name="joblevel_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var JobLevelInterface
@@ -136,9 +154,12 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobTitle", fetch="EAGER")
      * @ORM\JoinColumn(name="jobtitle_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var JobTitleInterface
@@ -147,8 +168,10 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id")
+     *
      * @ApiSubresource()
      *
      * @var EmployeeInterface
@@ -157,7 +180,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=17)
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -166,7 +191,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -175,7 +202,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=1)
+     *
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getGenderChoices")
      *
@@ -185,9 +214,12 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_of_birth_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var RegionInterface
@@ -196,9 +228,12 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\City", fetch="EAGER")
      * @ORM\JoinColumn(name="city_of_birth_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var CityInterface
@@ -207,7 +242,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="date")
+     *
      * @Assert\NotBlank()
      *
      * @var \DateTimeInterface
@@ -216,7 +253,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=27)
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -225,7 +264,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=1)
+     *
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getIdentityTypeChoices")
      *
@@ -235,7 +276,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=1)
+     *
      * @Assert\NotBlank()
      * @Assert\Choice(callback="getMaritalStatusChoices")
      *
@@ -245,7 +288,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -254,8 +299,10 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\OneToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\EmployeeAddress", fetch="EAGER", cascade={"persist"})
      * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     *
      * @ApiSubresource()
      *
      * @var AddressInterface
@@ -264,6 +311,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read"})
+     *
      * @ORM\Column(type="float", scale=27, precision=2, nullable=true)
      *
      * @var float
@@ -272,6 +320,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read"})
+     *
      * @ORM\Column(type="integer", nullable=true)
      *
      * @var int
@@ -280,7 +329,9 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=3)
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -289,6 +340,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read"})
+     *
      * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTimeInterface
@@ -297,6 +349,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="boolean")
      *
      * @var bool
@@ -305,6 +358,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read"})
+     *
      * @ORM\Column(type="string")
      *
      * @var string
@@ -313,6 +367,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
      *
      * @var string
@@ -321,6 +376,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="array")
      *
      * @var array

@@ -36,7 +36,7 @@ class UniqueContractValidator extends ConstraintValidator
             throw new ValidatorException(sprintf('Your class must implements "%s" interface', Contractable::class));
         }
 
-        if (!$this->checkContractService->isAlreadyUsedContract($value->getContract())) {
+        if ($this->checkContractService->isAlreadyUsedContract($value)) {
             $this->context->buildViolation($constraint->message)->atPath('contract')->addViolation();
         }
     }

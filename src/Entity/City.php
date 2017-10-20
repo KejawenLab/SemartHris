@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="cities", indexes={@ORM\Index(name="cities_idx", columns={"code", "name"})})
  *
  * @ApiResource(
@@ -44,7 +44,8 @@ class City implements CityInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -55,9 +56,12 @@ class City implements CityInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Region", fetch="EAGER")
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
+     *
      * @ApiSubresource()
      *
      * @var RegionInterface
@@ -66,7 +70,9 @@ class City implements CityInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=7)
+     *
      * @Assert\Length(max=7)
      * @Assert\NotBlank()
      *
@@ -76,7 +82,9 @@ class City implements CityInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string

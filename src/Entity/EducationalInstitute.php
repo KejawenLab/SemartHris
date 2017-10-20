@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="educational_institutes", indexes={@ORM\Index(name="educational_institutes_idx", columns={"name"})})
  *
  * @ApiResource(
@@ -41,7 +41,8 @@ class EducationalInstitute implements EducationalInstituteInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -52,7 +53,9 @@ class EducationalInstitute implements EducationalInstituteInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string

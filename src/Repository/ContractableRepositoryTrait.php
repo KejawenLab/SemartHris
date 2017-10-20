@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Contract\Repository;
+namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
@@ -8,12 +8,18 @@ use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-interface ContractableRepositoryInterface
+trait ContractableRepositoryTrait
 {
     /**
      * @param ContractInterface $contract
      *
      * @return Contractable[]
      */
-    public function findByContract(ContractInterface $contract): array;
+    public function findByContract(ContractInterface $contract): array
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findBy([
+            'contract' => $contract,
+            'deletedAt' => null,
+        ]);
+    }
 }

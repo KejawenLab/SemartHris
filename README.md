@@ -6,6 +6,13 @@ SemartHris adalah Human Resources Information System (HRIS) yang dapat digunakan
 
 SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengembangan.
 
+## Minimum Requirement
+
+- [X] PHP versi 7.1.7
+- [X] RDBMS (MySQL, MariaDB, PostgreSQL atau lainnya) yang disupport oleh [Doctrine](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html)
+- [X] Web Server (Apache, Nginx atau IIS)
+- [X] APCu extension (untuk Production)
+
 ## Fitur
 
 - [X] Menejemen Perusahaan
@@ -36,43 +43,6 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Jalankan perintah `make serve` untuk mengaktifkan web server
 - [X] Buka halaman `<HOST>:<PORT>/admin` untuk halaman admin
 - [X] Buka halaman `<HOST>:<PORT>/api` untuk halaman API
-
-## TODO LIST
-
-- [X] Master Alasan Ketidakhadiran dan Cuti
-- [X] Master Gelar Pendidikan dan Instansi Pendidikan
-- [X] Master Propinsi dan Kota
-- [X] Master Keahlian dan Group Keahlian
-- [X] Master Perusahaan dan Department
-- [X] Master Alamat Perusahaan
-- [X] Remove Default From Address When Default Address is Submitted
-- [X] Set Random Default When Default Address is Deleted
-- [X] Repository yang dibutuhkan untuk Karyawan
-- [X] Data Transformer untuk Karyawan
-- [X] Improvisasi Form Karyawan
-- [X] Form Manipulator untuk Karyawan
-- [X] Perancangan Form Edit Karyawan
-- [X] Refactor Menu
-- [X] Master Jabatan dan Level Jabatan
-- [X] Master Shift Kerja
-- [X] Create Username Generator Service
-- [X] Implement User Model and Repository
-- [X] Add Listener to Generate Username, Role and Applying Default Password
-- [X] Improvement Company Address
-- [X] Improvement Company Employee
-- [X] Contract Management
-- [X] Soft Delete and Blameable
-- [X] Change Password
-- [X] Change Role
-- [X] Create Job Placement
-- [ ] Register Contract Validator
-- [ ] Applying Contract Validator
-- [ ] Create Job History
-- [ ] Create Job Promotion
-- [ ] Create Job Mutation
-- [ ] Menejemen Absensi
-- [ ] Login Page
-- [ ] Delete Session Notification
 
 ## Kontributor
 

@@ -39,12 +39,12 @@ class EmployeeController extends AdminController
     public function findEmployeeContractAction()
     {
         $result = [];
-        $employees = $this->container->get(ContractRepository::class)->findByType(ContractType::CONTRACT_EMPLOYEE);
-        foreach ($employees as $employee) {
-            $result[] = $employee;
+        $contracts = $this->container->get(ContractRepository::class)->findByType(ContractType::CONTRACT_EMPLOYEE);
+        foreach ($contracts as $contract) {
+            $result[] = $contract;
         }
 
-        return new JsonResponse(['contracts' => $employees]);
+        return new JsonResponse(['contracts' => $contracts]);
     }
 
     /**
@@ -70,7 +70,7 @@ class EmployeeController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        return $this->container->get(EmployeeRepository::class)->createEmployeeQueryBuilder($sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('employeeId'));
+        return $this->container->get(EmployeeRepository::class)->createEmployeeQueryBuilder($sortField, $sortDirection, $dqlFilter);
     }
 
     /**
@@ -85,6 +85,6 @@ class EmployeeController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(EmployeeRepository::class)->createSearchEmployeeQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter, null !== $this->get('session')->get('employeeId'));
+        return $this->container->get(EmployeeRepository::class)->createSearchEmployeeQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter);
     }
 }

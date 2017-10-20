@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Contract\Repository;
  */
 final class ContractableRepositoryFactory
 {
-    const ADDRESS_REPOSITORY_SERVICE_TAG = 'semarthris.contractable_repository';
+    const SEMARTHRIS_CONTRACTABLE_REPOSITORY = 'semarthris.contract_repository';
 
     /**
      * @var array

@@ -1,0 +1,6 @@
+services:
+    KejawenLab\Application\SemartHris\Validator\UniqueContractValidator:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService'
+        tags:
+            { name: 'validator.constraint_validator' }

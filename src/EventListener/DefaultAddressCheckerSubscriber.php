@@ -32,15 +32,15 @@ final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
      */
     public function checkDefaultAddress(GetResponseForControllerResultEvent $event): void
     {
-        $data = $event->getControllerResult();
-        if ($data instanceof AddressInterface && $data->isDefaultAddress()) {
+        $entity = $event->getControllerResult();
+        if ($entity instanceof AddressInterface && $entity->isDefaultAddress()) {
             $request = $event->getRequest();
             if (in_array($request->getMethod(), ['POST', 'PUT'])) {
-                $this->addressChecker->unsetDefaultExcept($data);
+                $this->addressChecker->unsetDefaultExcept($entity);
             }
 
             if ('DELETE' === $request->getMethod()) {
-                $this->addressChecker->setRandomDefault($data);
+                $this->addressChecker->setRandomDefault($entity);
             }
         }
     }

@@ -1,0 +1,40 @@
+## TODO LIST
+
+- [X] Master Alasan Ketidakhadiran dan Cuti
+- [X] Master Gelar Pendidikan dan Instansi Pendidikan
+- [X] Master Propinsi dan Kota
+- [X] Master Keahlian dan Group Keahlian
+- [X] Master Perusahaan dan Department
+- [X] Master Alamat Perusahaan
+- [X] Remove Default From Address When Default Address is Submitted
+- [X] Set Random Default When Default Address is Deleted
+- [X] Repository yang dibutuhkan untuk Karyawan
+- [X] Data Transformer untuk Karyawan
+- [X] Improvisasi Form Karyawan
+- [X] Form Manipulator untuk Karyawan
+- [X] Perancangan Form Edit Karyawan
+- [X] Refactor Menu
+- [X] Master Jabatan dan Level Jabatan
+- [X] Master Shift Kerja
+- [X] Create Username Generator Service
+- [X] Implement User Model and Repository
+- [X] Add Listener to Generate Username, Role and Applying Default Password
+- [X] Improvement Company Address
+- [X] Improvement Company Employee
+- [X] Contract Management
+- [X] Soft Delete and Blameable
+- [X] Change Password
+- [X] Change Role
+- [X] Create Job Placement
+- [X] Register Contract Validator
+- [X] Applying Contract Validator
+- [X] Create Job History Page
+- [ ] Create Job Promotion
+- [X] Add Job History When Adding New Placement
+- [ ] Prevent Remove Placement When Job History is Exist
+- [X] Add Job History When Adding New Promtion
+- [ ] Prevent Remove Promotion When Job History is Exist
+- [ ] Create Job Mutation
+- [ ] Menejemen Absensi
+- [ ] Login Page
+- [ ] Delete Session Notification

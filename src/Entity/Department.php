@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="departments", indexes={@ORM\Index(name="departments_idx", columns={"code", "name"})})
  *
  * @ApiResource(
@@ -43,7 +43,8 @@ class Department implements DepartmentInterface
     use TimestampableEntity;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -54,8 +55,10 @@ class Department implements DepartmentInterface
 
     /**
      * @Groups({"write", "read"})
+     *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     *
      * @ApiSubresource()
      *
      * @var DepartmentInterface
@@ -64,7 +67,9 @@ class Department implements DepartmentInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string", length=7)
+     *
      * @Assert\Length(max=7)
      * @Assert\NotBlank()
      *
@@ -74,7 +79,9 @@ class Department implements DepartmentInterface
 
     /**
      * @Groups({"read", "write"})
+     *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string

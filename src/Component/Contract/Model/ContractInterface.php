@@ -57,4 +57,14 @@ interface ContractInterface
      * @return array
      */
     public function getTags(): array;
+
+    /**
+     * @return bool
+     */
+    public function isUsed(): bool;
+
+    /**
+     * @param bool $used
+     */
+    public function setUsed(bool $used): void;
 }

@@ -86,4 +86,14 @@ interface CareerHistoryInterface
      * @param ContractInterface|null $contract
      */
     public function setContract(ContractInterface $contract = null): void;
+
+    /**
+     * @return null|string
+     */
+    public function getDescription(): ? string;
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void;
 }

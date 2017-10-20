@@ -78,6 +78,7 @@ class Kernel extends BaseKernel implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        //TODO: waiting for stable release
+//        $container->addCompilerPass(new AddressRepositoryFactoryPass());
+//        $container->addCompilerPass(new ContractableRepositoryFactoryPass());
     }
 }

@@ -6,13 +6,12 @@ use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
-use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-abstract class AddressRepository extends Repository implements AddressRepositoryInterface
+trait AddressRepositoryTrait
 {
     /**
      * @param AddressInterface $address

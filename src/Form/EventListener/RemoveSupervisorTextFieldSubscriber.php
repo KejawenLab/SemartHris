@@ -33,7 +33,11 @@ final class RemoveSupervisorTextFieldSubscriber implements EventSubscriberInterf
         $form = $event->getForm();
         $data = $event->getData();
 
-        if ($this->employeeRepository->find($data['supervisor'])) {
+        if (array_key_exists('supervisor', $data) && $this->employeeRepository->find($data['supervisor'])) {
+            $form->remove('supervisor_text');
+        }
+
+        if (array_key_exists('newSupervisor', $data) && $this->employeeRepository->find($data['newSupervisor'])) {
             $form->remove('supervisor_text');
         }
     }

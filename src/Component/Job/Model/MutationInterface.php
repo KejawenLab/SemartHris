@@ -82,7 +82,7 @@ interface MutationInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setCurrenctSupervisor(EmployeeInterface $employee = null): void;
+    public function setCurrentSupervisor(EmployeeInterface $employee = null): void;
 
     /**
      * @return null|EmployeeInterface

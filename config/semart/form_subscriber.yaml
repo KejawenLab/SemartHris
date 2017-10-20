@@ -3,10 +3,6 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
 
-    KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityOfBirthTextFieldSubscriber:
-        arguments:
-            - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
-
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveDepartmentTextFieldSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
@@ -29,7 +25,7 @@ services:
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveTagsTextFieldSubscriber:
 
-    KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTypeTextFieldSubscriber:
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveTypeTextFieldSubscriber:
 
     KejawenLab\Application\SemartHris\Form\EventListener\EncodePasswordSubscriber:
         arguments:

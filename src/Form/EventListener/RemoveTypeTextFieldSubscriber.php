@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveReasonTypeTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveTypeTextFieldSubscriber implements EventSubscriberInterface
 {
     /**
      * @param FormEvent $event

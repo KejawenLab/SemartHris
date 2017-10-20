@@ -33,7 +33,7 @@ final class RemoveContractTextFieldSubscriber implements EventSubscriberInterfac
         $form = $event->getForm();
         $data = $event->getData();
 
-        if ($this->contractRepository->find($data['contract'])) {
+        if (array_key_exists('contract', $data) && $this->contractRepository->find($data['contract'])) {
             $form->remove('contract_text');
         }
     }

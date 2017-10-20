@@ -8,6 +8,11 @@ namespace KejawenLab\Application\SemartHris\Component\Contract\Model;
 interface Contractable
 {
     /**
+     * @return string
+     */
+    public function getId(): string;
+
+    /**
      * @return ContractInterface|null
      */
     public function getContract(): ? ContractInterface;

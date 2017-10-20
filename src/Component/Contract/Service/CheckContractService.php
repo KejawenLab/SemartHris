@@ -44,8 +44,14 @@ class CheckContractService
         foreach ($repositories as $repository) {
             if ($exists = $repository->findByContract($contractable->getContract())) {
                 foreach ($exists as $exist) {
-                    if ($exist->getContract()->getId() !== $contractable->getContract()->getId()) {
-                        ++$count;
+                    if ($contractable->getId()) {
+                        if ($exist->getContract()->getId() !== $contractable->getContract()->getId()) {
+                            ++$count;
+                        }
+                    } else {
+                        if ($exist->getContract()->getId() === $contractable->getContract()->getId()) {
+                            ++$count;
+                        }
                     }
                 }
             }

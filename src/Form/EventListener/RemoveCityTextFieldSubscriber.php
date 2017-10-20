@@ -33,7 +33,11 @@ final class RemoveCityTextFieldSubscriber implements EventSubscriberInterface
         $form = $event->getForm();
         $data = $event->getData();
 
-        if ($this->cityRepository->find($data['city'])) {
+        if (array_key_exists('city', $data) && $this->cityRepository->find($data['city'])) {
+            $form->remove('city_text');
+        }
+
+        if (array_key_exists('cityOfBirth', $data) && $this->cityRepository->find($data['cityOfBirth'])) {
             $form->remove('city_text');
         }
     }

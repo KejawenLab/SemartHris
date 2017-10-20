@@ -57,3 +57,99 @@ easy_admin:
                     - { property: 'jobLevel', label: 'Level Jabatan' }
                     - { property: 'code', label: 'Kode Jabatan' }
                     - { property: 'name', label: 'Nama Jabatan' }
+
+        Placement:
+            class: 'KejawenLab\Application\SemartHris\Entity\Placement'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
+            disabled_actions: ['show']
+            templates:
+                new: 'app/placement/new.html.twig'
+                edit: 'app/placement/edit.html.twig'
+                list: 'app/placement/list.html.twig'
+            new:
+                title: 'Tambah Penempatan Karyawan'
+            edit:
+                title: 'Edit Penempatan Karyawan'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
+                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
+                    - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
+                    - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
+                    - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
+                    - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
+                    - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
+            list:
+                title: 'Penempatan Karyawan'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'supervisor', label: 'Supervisor' }
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'department', label: 'Departemen' }
+                    - { property: 'jobLevel', label: 'Level Jabatan' }
+                    - { property: 'jobTitle', label: 'Jabatan' }
+                    - { property: 'contract', label: 'No. Kontrak' }
+                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
+                    - { property: 'active', label: 'Status' }
+
+        CareerHistory:
+            class: 'KejawenLab\Application\SemartHris\Entity\CareerHistory'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
+            disabled_actions: ['show', 'new', 'edit']
+            list:
+                title: 'Riwayat Karir'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'supervisor', label: 'Supervisor' }
+                    - { property: 'company', label: 'Perusahaan' }
+                    - { property: 'department', label: 'Departemen' }
+                    - { property: 'jobLevel', label: 'Level Jabatan' }
+                    - { property: 'jobTitle', label: 'Jabatan' }
+                    - { property: 'contract', label: 'No. Kontrak' }
+                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
+                    - { property: 'description', label: 'Keterangan' }
+
+        Mutation:
+            class: 'KejawenLab\Application\SemartHris\Entity\Mutation'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\MutationController'
+            templates:
+                new: 'app/placement/new.html.twig'
+                edit: 'app/placement/edit.html.twig'
+            new:
+                title: 'Tambah Mutasi Karyawan'
+            edit:
+                title: 'Edit Mutasi Karyawan'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
+                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'newCompany', label: 'Perusahaan Baru', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
+                    - { property: 'newDepartment', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
+                    - { property: 'new_department_text', label: 'Departemen Baru', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'type', label: 'Tipe Mutasi', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', PROMOSI: 'p', DEMOSI: 'd', MUTASI: 'm' } } }
+                    - { property: 'newJobLevel', label: 'Level Jabatan Baru', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
+                    - { property: 'newJobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
+                    - { property: 'new_jobtitle_text', label: 'Jabatan Baru', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'newSupervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
+                    - { property: 'new_supervisor_text', label: 'Atasan Baru', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
+            list:
+                title: 'Mutasi Karyawan'
+                fields:
+                    - { property: 'type', label: 'Jenis Mutasi' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'newCompany', label: 'Perusahaan Baru' }
+                    - { property: 'newDepartment', label: 'Departemen Baru' }
+                    - { property: 'newJobTitle', label: 'Jabatan Baru' }
+                    - { property: 'newSupervisor', label: 'Atasan Baru' }
+                    - { property: 'contract', label: 'No. Kontrak' }

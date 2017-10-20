@@ -29,12 +29,12 @@
 - [X] Register Contract Validator
 - [X] Applying Contract Validator
 - [X] Create Job History Page
-- [ ] Create Job Promotion
 - [X] Add Job History When Adding New Placement
 - [ ] Prevent Remove Placement When Job History is Exist
-- [X] Add Job History When Adding New Promtion
-- [ ] Prevent Remove Promotion When Job History is Exist
-- [ ] Create Job Mutation
+- [X] Add Job History When Adding New Mutation
+- [ ] Mutation Validation
+- [ ] Change Employee Company, Department, etc when Mutation is saved
+- [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Menejemen Absensi
 - [ ] Login Page
 - [ ] Delete Session Notification

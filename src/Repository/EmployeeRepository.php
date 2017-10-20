@@ -10,7 +10,6 @@ use KejawenLab\Application\SemartHris\Component\Contract\Repository\Contractable
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeAddressInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
-use KejawenLab\Application\SemartHris\Component\Employee\Repository\SupervisorRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\Security\Repository\UserRepositoryInterface;
@@ -24,7 +23,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class EmployeeRepository extends Repository implements EmployeeRepositoryInterface, SupervisorRepositoryInterface, UserRepositoryInterface, AddressRepositoryInterface, ContractableRepositoryInterface
+class EmployeeRepository extends Repository implements EmployeeRepositoryInterface, UserRepositoryInterface, AddressRepositoryInterface, ContractableRepositoryInterface
 {
     use AddressRepositoryTrait;
     use ContractableRepositoryTrait;

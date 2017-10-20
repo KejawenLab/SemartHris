@@ -30,7 +30,7 @@
 - [X] Applying Contract Validator
 - [X] Create Job History Page
 - [ ] Create Job Promotion
-- [ ] Add Job History When Adding New Placement
+- [X] Add Job History When Adding New Placement
 - [ ] Prevent Remove Placement When Job History is Exist
 - [ ] Add Job History When Adding New Promtion
 - [ ] Prevent Remove Promotion When Job History is Exist

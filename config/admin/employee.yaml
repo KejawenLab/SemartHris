@@ -186,8 +186,8 @@ easy_admin:
                     - { property: 'jobLevel', label: 'Level Jabatan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
                     - { property: 'contract', label: 'No. Kontrak' }
-                    - { property: 'contract.startDate', label: 'Tanggal Mulai' }
-                    - { property: 'contract.endDate', label: 'Tanggal Akhir' }
+                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
                     - { property: 'active', label: 'Status' }
 
         CareerHistory:
@@ -208,5 +208,6 @@ easy_admin:
                     - { property: 'jobLevel', label: 'Level Jabatan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
                     - { property: 'contract', label: 'No. Kontrak' }
-                    - { property: 'contract.startDate', label: 'Tanggal Mulai' }
-                    - { property: 'contract.endDate', label: 'Tanggal Akhir' }
+                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
+                    - { property: 'description', label: 'Keterangan' }

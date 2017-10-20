@@ -296,6 +296,14 @@ class Placement implements PlacementInterface, Contractable
     }
 
     /**
+     * @return bool
+     */
+    public function getActive(): bool
+    {
+        return $this->isActive();
+    }
+
+    /**
      * @param bool $active
      */
     public function setActive(bool $active)

@@ -292,7 +292,7 @@ class Contract implements ContractInterface
     public function setTags(array $tags = []): void
     {
         foreach ($tags as $tag) {
-            $this->tags = StringUtil::uppercase($tag);
+            $this->tags[] = StringUtil::uppercase($tag);
         }
     }
 

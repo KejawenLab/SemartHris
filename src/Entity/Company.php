@@ -57,6 +57,7 @@ class Company implements CompanyInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     *
      * @ApiSubresource()
      *
      * @var CompanyInterface
@@ -66,6 +67,7 @@ class Company implements CompanyInterface
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=7)
+     *
      * @Assert\Length(max=7)
      * @Assert\NotBlank()
      *
@@ -76,6 +78,7 @@ class Company implements CompanyInterface
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string
@@ -85,6 +88,7 @@ class Company implements CompanyInterface
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="date")
+     *
      * @Assert\NotBlank()
      *
      * @var \DateTimeInterface
@@ -94,6 +98,7 @@ class Company implements CompanyInterface
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      * @Assert\Email()
      *
@@ -105,6 +110,7 @@ class Company implements CompanyInterface
      * @Groups({"write", "read"})
      * @ORM\OneToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\CompanyAddress", fetch="EAGER", cascade={"persist"})
      * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     *
      * @ApiSubresource()
      *
      * @var AddressInterface
@@ -114,6 +120,7 @@ class Company implements CompanyInterface
     /**
      * @Groups({"read", "write"})
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      *
      * @var string

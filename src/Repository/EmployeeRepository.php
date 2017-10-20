@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeAddressInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
@@ -23,8 +24,11 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class EmployeeRepository extends AddressRepository implements EmployeeRepositoryInterface, SupervisorRepositoryInterface, UserRepositoryInterface, AddressRepositoryInterface
+class EmployeeRepository extends Repository implements EmployeeRepositoryInterface, SupervisorRepositoryInterface, UserRepositoryInterface, AddressRepositoryInterface, ContractableRepositoryInterface
 {
+    use AddressRepositoryTrait;
+    use ContractableRepositoryTrait;
+
     /**
      * @var SessionInterface
      */
@@ -142,34 +146,40 @@ class EmployeeRepository extends AddressRepository implements EmployeeRepository
     }
 
     /**
-     * @param null $sortField
-     * @param null $sortDirection
-     * @param null $dqlFilter
-     * @param bool $useEmployeeFilter
+     * @param string|null $sortField
+     * @param string|null $sortDirection
+     * @param string|null $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createEmployeeQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
+    public function createEmployeeQueryBuilder(string $sortField = null, string $sortDirection = null, string $dqlFilter = null)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('entity');
         $queryBuilder->from($this->entityClass, 'entity');
 
+        if (!empty($dqlFilter)) {
+            $queryBuilder->andWhere($dqlFilter);
+        }
+
+        if (null !== $sortField) {
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?: 'DESC');
+        }
+
         return $queryBuilder;
     }
 
     /**
-     * @param string $searchQuery
-     * @param null   $sortField
-     * @param null   $sortDirection
-     * @param null   $dqlFilter
-     * @param bool   $useEmployeeFilter
+     * @param string      $searchQuery
+     * @param string|null $sortField
+     * @param string|null $sortDirection
+     * @param string|null $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createSearchEmployeeQueryBuilder($searchQuery, $sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
+    public function createSearchEmployeeQueryBuilder(string $searchQuery, string $sortField = null, string $sortDirection = null, string $dqlFilter = null)
     {
-        $queryBuilder = $this->createEmployeeQueryBuilder($sortField, $sortDirection, $dqlFilter, $useEmployeeFilter);
+        $queryBuilder = $this->createEmployeeQueryBuilder($sortField, $sortDirection, $dqlFilter);
         $queryBuilder->orWhere('LOWER(entity.code) LIKE :query');
         $queryBuilder->orWhere('LOWER(entity.fullName) LIKE :query');
         $queryBuilder->setParameter('query', sprintf('%%%s%%', StringUtil::lowercase($searchQuery)));
@@ -187,7 +197,7 @@ class EmployeeRepository extends AddressRepository implements EmployeeRepository
      */
     public function createEmployeeAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
     {
-        return $this->buildEmployeeSearch($this->getEntityClass(), $sortField, $sortDirection, $dqlFilter, $useEmployeeFilter);
+        return $this->buildEmployeeFilterableSearch($this->getEntityClass(), $sortField, $sortDirection, $dqlFilter, $useEmployeeFilter);
     }
 
     /**
@@ -215,7 +225,7 @@ class EmployeeRepository extends AddressRepository implements EmployeeRepository
      *
      * @return QueryBuilder
      */
-    private function buildEmployeeSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
+    private function buildEmployeeFilterableSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('entity');

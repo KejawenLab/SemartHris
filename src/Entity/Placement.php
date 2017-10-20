@@ -17,6 +17,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\PlacementInterface;
+use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -34,6 +35,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueEntity({"employee", "company", "department", "jobLevel", "jobTitle", "supervisor"})
  * @UniqueEntity("contract")
+ * @UniqueContract()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *

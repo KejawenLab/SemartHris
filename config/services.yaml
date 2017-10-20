@@ -4,8 +4,6 @@ parameters:
     locale: 'id'
 
 services:
-    KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AddressFactoryPass:
-
     KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
         arguments:
             - ['@KejawenLab\Application\SemartHris\Repository\CompanyRepository', '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository']
@@ -13,6 +11,14 @@ services:
     KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory'
+
+    KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory:
+        arguments:
+            - ['@KejawenLab\Application\SemartHris\Repository\EmployeeRepository', '@KejawenLab\Application\SemartHris\Repository\PlacementRepository']
+
+    KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory'
 
     KejawenLab\Library\PetrukUsername\UsernameFactory:
         arguments:

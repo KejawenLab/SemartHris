@@ -16,8 +16,10 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class CompanyRepository extends AddressRepository implements CompanyRepositoryInterface, AddressRepositoryInterface
+class CompanyRepository extends Repository implements CompanyRepositoryInterface, AddressRepositoryInterface
 {
+    use AddressRepositoryTrait;
+
     /**
      * @var SessionInterface
      */

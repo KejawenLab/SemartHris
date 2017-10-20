@@ -53,6 +53,7 @@ class CompanyAddress implements CompanyAddressInterface
      * @Groups({"write", "read"})
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     *
      * @Assert\NotBlank()
      * @ApiSubresource()
      *

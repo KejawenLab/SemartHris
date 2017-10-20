@@ -32,3 +32,7 @@ services:
     KejawenLab\Application\SemartHris\Repository\ContractRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Contract']]
+
+    KejawenLab\Application\SemartHris\Repository\PlacementRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Placement']]

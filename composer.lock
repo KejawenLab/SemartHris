@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "04554d464d90546dd61ead5f07ddeb8a",
+    "content-hash": "a5c0eebe47fe417533cc7a6b38c33621",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -1113,16 +1113,16 @@
         },
         {
             "name": "javiereguiluz/easyadmin-bundle",
-            "version": "v1.17.4",
+            "version": "v1.17.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "4d2126af86f32d3344be309e0cb250560b6bfded"
+                "reference": "f2fec43743dfaa576d5549f858695f38303e9cbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/4d2126af86f32d3344be309e0cb250560b6bfded",
-                "reference": "4d2126af86f32d3344be309e0cb250560b6bfded",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/f2fec43743dfaa576d5549f858695f38303e9cbe",
+                "reference": "f2fec43743dfaa576d5549f858695f38303e9cbe",
                 "shasum": ""
             },
             "require": {
@@ -1132,7 +1132,7 @@
                 "doctrine/orm": "~2.3",
                 "pagerfanta/pagerfanta": "~1.0,>=1.0.1",
                 "php": ">=5.3.0",
-                "sensio/framework-extra-bundle": "~2.3|~3.0,>=3.0.2|4.0.x",
+                "sensio/framework-extra-bundle": "~2.3|~3.0,>=3.0.2|4.0.x|~5.0",
                 "symfony/asset": "~2.3|~3.0|~4.0",
                 "symfony/config": "~2.3|~3.0|~4.0",
                 "symfony/dependency-injection": "~2.3|~3.0|~4.0",
@@ -1198,7 +1198,7 @@
                 "backend",
                 "generator"
             ],
-            "time": "2017-10-15T13:39:40+00:00"
+            "time": "2017-10-20T17:44:34+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1745,16 +1745,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v4.0.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "74f1f17e1e5c32ca43de92611e9097a8d0e0acf2"
+                "reference": "9e3fa14aa959f703961bc9e4ab00110d617bcfdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/74f1f17e1e5c32ca43de92611e9097a8d0e0acf2",
-                "reference": "74f1f17e1e5c32ca43de92611e9097a8d0e0acf2",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/9e3fa14aa959f703961bc9e4ab00110d617bcfdd",
+                "reference": "9e3fa14aa959f703961bc9e4ab00110d617bcfdd",
                 "shasum": ""
             },
             "require": {
@@ -1810,7 +1810,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2017-09-29T16:05:12+00:00"
+            "time": "2017-10-12T17:37:44+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -4965,7 +4965,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.1.7"
+        "php": ">=7.1.7"
     },
     "platform-dev": []
 }

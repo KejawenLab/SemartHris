@@ -286,3 +286,10 @@ function change_static_select(locale) {
         language: locale
     });
 }
+
+function change_date_select(locale) {
+    $('.date-select').find('select').select2({
+        theme: 'bootstrap',
+        language: locale
+    });
+}

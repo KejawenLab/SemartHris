@@ -20,9 +20,9 @@ easy_admin:
                     - { property: 'letterNumber', label: 'No. Kontrak' }
                     - { property: 'subject', label: 'Subyek' }
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'startDate', label: 'Tanggal Awal' }
-                    - { property: 'endDate', label: 'Tanggal Akhir' }
-                    - { property: 'signedDate', label: 'Tanggal Tanda Tangan' }
+                    - { property: 'startDate', label: 'Tanggal Awal', type_options: { attr: { class: 'date-select' } } }
+                    - { property: 'endDate', label: 'Tanggal Akhir', type_options: { attr: { class: 'date-select' } } }
+                    - { property: 'signedDate', label: 'Tanggal Tanda Tangan', type_options: { attr: { class: 'date-select' } } }
                     - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'description', label: 'Description' }
                     - { property: 'tags', type: 'hidden', type_options: { attr: { class: 'tags-id' } } }

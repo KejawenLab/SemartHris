@@ -24,7 +24,7 @@ easy_admin:
                     - { property: 'regionOfBirth', label: 'Propinsi Kelahiran', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
                     - { property: 'cityOfBirth', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
                     - { property: 'city_text', label: 'Kota Kelahiran', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
-                    - { property: 'dateOfBirth', label: 'Tanggal Lahir', type: 'birthday' }
+                    - { property: 'dateOfBirth', label: 'Tanggal Lahir', type: 'birthday', type_options: { attr: { class: 'date-select' } } }
                     - { property: 'identityType', label: 'Jenis Identitas', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', SIM: 's', PASPOR: 'p', KTP: 'k' } } }
                     - { property: 'identityNumber', label: 'No. Identitas' }
                     - { property: 'maritalStatus', label: 'Status Perkawinan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'BELUM MENIKAH': 's', MENIKAH: 'm', CERAI: 'd' } } }
@@ -32,7 +32,6 @@ easy_admin:
                     - { property: 'taxGroup', label: 'Kode Pajak', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', TK0: 'tk0', TK1: 'tk1', TK2: 'tk2', TK3: 'tk3', K0: 'k0', K1: 'k1', K2: 'k2', K3: 'k3', KI0: 'ki0', KI1: 'ki1', KI2: 'ki2', KI3: 'ki3' } } }
                     - { property: 'haveOvertimeBenefit', label: 'Berhak Lembur?', type_options: { required: false } }
                     - { type: 'group', icon: 'id-card-o', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
-                    - { property: 'joinDate', label: 'Tanggal Masuk', type_options: { widget: 'single_text', attr: { readonly: true } } }
                     - { property: 'employeeStatus', label: 'Status Karyawan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KARYAWAN TETAP': 'p', 'KARYAWAN KONTRAK': 't', 'KARYAWAN OUTSOURCE': 'o', 'KARYAWAN MAGANG': 'i' } } }
                     - { property: 'employee_status_text', label: 'Status Karyawan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
@@ -86,7 +85,7 @@ easy_admin:
             list:
                 title: 'Karyawan'
                 actions:
-                    - { name: 'employee_address', type: 'route', icon: 'book', label: false }
+                    - { name: 'employee_address', type: 'route', icon: 'book', label: false, title: 'Lihat Alamat' }
                 fields:
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }

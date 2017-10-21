@@ -76,7 +76,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
     private $id;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
      *
      * @ORM\Column(type="date")
      *

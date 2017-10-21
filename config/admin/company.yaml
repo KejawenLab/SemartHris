@@ -42,8 +42,8 @@ easy_admin:
             list:
                 title: 'Perusahaan'
                 actions:
-                    - { name: 'company_department', type: 'route', icon: 'university', label: false }
-                    - { name: 'company_address', type: 'route', icon: 'book', label: false }
+                    - { name: 'company_department', type: 'route', icon: 'university', label: false, title: 'Lihat Department' }
+                    - { name: 'company_address', type: 'route', icon: 'book', label: false, title: 'Lihat Alamat' }
                 fields:
                     - { property: 'parent', label: 'Perusahaan Induk' }
                     - { property: 'code', label: 'Kode Perusahaan' }

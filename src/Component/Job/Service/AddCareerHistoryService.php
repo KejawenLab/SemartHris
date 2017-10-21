@@ -57,12 +57,18 @@ class AddCareerHistoryService
         if ($careerHistoryable instanceof MutationInterface) {
             /** @var Contractable|EmployeeInterface $employee */
             $employee = $careerHistoryable->getEmployee();
+            $company = $careerHistoryable->getOldCompany() ?: $employee->getCompany();
+            $department = $careerHistoryable->getOldDepartment() ?: $employee->getDepartment();
+            $jobLevel = $careerHistoryable->getOldJobLevel() ?: $employee->getJobLevel();
+            $jobTitle = $careerHistoryable->getOldJobTitle() ?: $employee->getJobTitle();
+            $supervisor = $careerHistoryable->getOldSupervisor() ?: $employee->getSupervisor();
+
             $careerHistory->setEmployee($employee);
-            $careerHistory->setSupervisor($careerHistoryable->getOldSupervisor());
-            $careerHistory->setCompany($careerHistoryable->getOldCompany());
-            $careerHistory->setDepartment($careerHistoryable->getOldDepartment());
-            $careerHistory->setJobLevel($careerHistoryable->getOldJobLevel());
-            $careerHistory->setJobTitle($careerHistoryable->getOldJobTitle());
+            $careerHistory->setSupervisor($supervisor);
+            $careerHistory->setCompany($company);
+            $careerHistory->setDepartment($department);
+            $careerHistory->setJobLevel($jobLevel);
+            $careerHistory->setJobTitle($jobTitle);
             $careerHistory->setContract($employee->getContract());
             $careerHistory->setDescription(ValidateMutationType::convertToText($careerHistoryable->getType()));
         }

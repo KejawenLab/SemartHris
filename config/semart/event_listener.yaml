@@ -8,7 +8,7 @@ services:
     KejawenLab\Application\SemartHris\EventListener\GenerateUsernameSubscriber:
         arguments:
             - '@security.password_encoder'
-            - '@KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator'
+            - '@KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator'
             - '%env(APP_DEFAULT_PASSWORD)%'
         tags:
             - { name: 'kernel.event_subscriber' }

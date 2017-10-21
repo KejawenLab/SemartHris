@@ -2,8 +2,8 @@
 
 namespace KejawenLab\Application\SemartHris\Security\Provider;
 
-use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface as BaseUser;
-use KejawenLab\Application\SemartHris\Component\Security\Repository\UserRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface as BaseUser;
+use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;

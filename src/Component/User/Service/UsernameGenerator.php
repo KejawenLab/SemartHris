@@ -1,8 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Security\Service;
+namespace KejawenLab\Application\SemartHris\Component\User\Service;
 
-use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Library\PetrukUsername\UsernameFactory;
 
 /**

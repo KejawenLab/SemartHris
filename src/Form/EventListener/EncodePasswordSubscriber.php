@@ -2,7 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Form\EventListener;
 
-use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;

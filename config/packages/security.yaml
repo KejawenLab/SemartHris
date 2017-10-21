@@ -1,6 +1,6 @@
 security:
     encoders:
-        KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface: bcrypt
+        KejawenLab\Application\SemartHris\Component\User\Model\UserInterface: bcrypt
 #            algorithm: 'argon2i' #change to argon2i encoder after stable release
 
     access_decision_manager:

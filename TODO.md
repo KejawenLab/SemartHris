@@ -30,11 +30,11 @@
 - [X] Applying Contract Validator
 - [X] Create Job History Page
 - [X] Add Job History When Adding New Placement
-- [ ] Prevent Remove Placement When Job History is Exist
 - [X] Add Job History When Adding New Mutation
 - [X] Mutation Validation
-- [ ] Change Employee Company, Department, etc when Mutation is saved
-- [ ] Prevent Remove Mutation When Job History is Exist
+- [X] Change Employee Company, Department, etc when Mutation is saved
 - [ ] Menejemen Absensi
 - [ ] Login Page
 - [ ] Delete Session Notification
+- [ ] Prevent Remove Mutation When Job History is Exist
+- [ ] Prevent Remove Placement When Job History is Exist

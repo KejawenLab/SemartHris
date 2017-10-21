@@ -19,23 +19,23 @@ class ValidateMutationService
         $count = 0;
         $employee = $mutation->getEmployee();
 
-        if (null === $mutation->getOldCompany() || $mutation->getOldCompany() === $employee->getCompany()) {
+        if (null === $mutation->getNewCompany() || $mutation->getNewCompany() === $employee->getCompany()) {
             ++$count;
         }
 
-        if (null === $mutation->getOldDepartment() || $mutation->getOldDepartment() === $employee->getDepartment()) {
+        if (null === $mutation->getNewDepartment() || $mutation->getNewDepartment() === $employee->getDepartment()) {
             ++$count;
         }
 
-        if (null === $mutation->getOldJobLevel() || $mutation->getOldJobLevel() === $employee->getJobLevel()) {
+        if (null === $mutation->getNewJobLevel() || $mutation->getNewJobLevel() === $employee->getJobLevel()) {
             ++$count;
         }
 
-        if (null === $mutation->getOldJobTitle() || $mutation->getOldJobTitle() === $employee->getJobTitle()) {
+        if (null === $mutation->getNewJobTitle() || $mutation->getNewJobTitle() === $employee->getJobTitle()) {
             ++$count;
         }
 
-        if (null === $mutation->getOldSupervisor() || $mutation->getOldSupervisor() === $employee->getSupervisor()) {
+        if (null === $mutation->getNewSupervisor() || $mutation->getNewSupervisor() === $employee->getSupervisor()) {
             ++$count;
         }
 

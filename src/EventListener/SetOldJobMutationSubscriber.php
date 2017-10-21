@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\EventListener;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Service\SetEmployeeNewJobService;
 use KejawenLab\Application\SemartHris\Component\Job\Service\SetOldJobMutationService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -27,6 +28,7 @@ final class SetOldJobMutationSubscriber implements EventSubscriberInterface
         }
 
         SetOldJobMutationService::setOldJob($entity);
+        SetEmployeeNewJobService::setNewJob($entity);
     }
 
     /**
@@ -40,6 +42,7 @@ final class SetOldJobMutationSubscriber implements EventSubscriberInterface
         }
 
         SetOldJobMutationService::setOldJob($entity);
+        SetEmployeeNewJobService::setNewJob($entity);
     }
 
     /**

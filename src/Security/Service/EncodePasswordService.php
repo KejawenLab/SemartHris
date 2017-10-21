@@ -2,7 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Security\Service;
 
-use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**

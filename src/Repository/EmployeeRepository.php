@@ -11,8 +11,8 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeAddressIn
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
-use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
-use KejawenLab\Application\SemartHris\Component\Security\Repository\UserRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
+use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use KejawenLab\Application\SemartHris\Entity\Employee;
 use KejawenLab\Application\SemartHris\Entity\EmployeeAddress;
 use KejawenLab\Application\SemartHris\Entity\JobLevel;

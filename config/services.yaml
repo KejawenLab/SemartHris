@@ -32,7 +32,7 @@ services:
             - ''
             - false
 
-    KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator:
+    KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator:
         arguments:
             - '@KejawenLab\Library\PetrukUsername\UsernameFactory'
 

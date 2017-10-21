@@ -4,8 +4,8 @@ namespace KejawenLab\Application\SemartHris\EventListener;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
-use KejawenLab\Application\SemartHris\Component\Security\Model\UserInterface;
-use KejawenLab\Application\SemartHris\Component\Security\Service\UsernameGenerator;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
+use KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;

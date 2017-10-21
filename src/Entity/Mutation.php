@@ -14,6 +14,7 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterfac
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryable;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
@@ -36,7 +37,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @UniqueEntity("contract")
+ * @UniqueEntity("contract", message="smarthris.contract.already_used")
  * @UniqueContract()
  * @ValidMutation()
  *
@@ -44,7 +45,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Mutation implements MutationInterface, Contractable
+class Mutation implements MutationInterface, Contractable, CareerHistoryable
 {
     use BlameableEntity;
     use SoftDeleteableEntity;

@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Contract\Service;
+namespace KejawenLab\Application\SemartHris\Component\Job\Service;
 
 use KejawenLab\Application\SemartHris\Component\Job\MutationType;
 use KejawenLab\Application\SemartHris\Component\ValidateTypeInterface;
@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Util\StringUtil;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateMutaionType implements ValidateTypeInterface
+class ValidateMutationType implements ValidateTypeInterface
 {
     /**
      * @param string $type

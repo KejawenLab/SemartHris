@@ -37,12 +37,12 @@ interface MutationInterface
     /**
      * @return null|CompanyInterface
      */
-    public function getCurrentCompany(): ? CompanyInterface;
+    public function getOldCompany(): ? CompanyInterface;
 
     /**
      * @param CompanyInterface $company
      */
-    public function setCurrentCompany(CompanyInterface $company = null): void;
+    public function setOldCompany(CompanyInterface $company = null): void;
 
     /**
      * @return null|CompanyInterface
@@ -57,12 +57,12 @@ interface MutationInterface
     /**
      * @return null|DepartmentInterface
      */
-    public function getCurrentDepartment(): ? DepartmentInterface;
+    public function getOldDepartment(): ? DepartmentInterface;
 
     /**
      * @param DepartmentInterface $department
      */
-    public function setCurrentDepartment(DepartmentInterface $department = null): void;
+    public function setOldDepartment(DepartmentInterface $department = null): void;
 
     /**
      * @return null|DepartmentInterface
@@ -77,12 +77,12 @@ interface MutationInterface
     /**
      * @return null|EmployeeInterface
      */
-    public function getCurrentSupervisor(): ? EmployeeInterface;
+    public function getOldSupervisor(): ? EmployeeInterface;
 
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setCurrentSupervisor(EmployeeInterface $employee = null): void;
+    public function setOldSupervisor(EmployeeInterface $employee = null): void;
 
     /**
      * @return null|EmployeeInterface
@@ -97,12 +97,12 @@ interface MutationInterface
     /**
      * @return null|JobLevelInterface
      */
-    public function getCurrentJobLevel(): ? JobLevelInterface;
+    public function getOldJobLevel(): ? JobLevelInterface;
 
     /**
      * @param JobLevelInterface $jobLevel
      */
-    public function setCurrentJobLevel(JobLevelInterface $jobLevel = null): void;
+    public function setOldJobLevel(JobLevelInterface $jobLevel = null): void;
 
     /**
      * @return null|JobLevelInterface
@@ -117,12 +117,12 @@ interface MutationInterface
     /**
      * @return null|JobTitleInterface
      */
-    public function getCurrentJobTitle(): ? JobTitleInterface;
+    public function getOldJobTitle(): ? JobTitleInterface;
 
     /**
      * @param JobTitleInterface $jobTitle
      */
-    public function setCurrentJobTitle(JobTitleInterface $jobTitle = null): void;
+    public function setOldJobTitle(JobTitleInterface $jobTitle = null): void;
 
     /**
      * @return null|JobTitleInterface

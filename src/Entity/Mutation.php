@@ -13,13 +13,14 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
-use KejawenLab\Application\SemartHris\Component\Contract\Service\ValidateMutaionType;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
 use KejawenLab\Application\SemartHris\Component\Job\MutationType;
+use KejawenLab\Application\SemartHris\Component\Job\Service\ValidateMutationType;
 use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
+use KejawenLab\Application\SemartHris\Validator\Constraint\ValidMutation;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -37,6 +38,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueEntity("contract")
  * @UniqueContract()
+ * @ValidMutation()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
@@ -87,64 +89,64 @@ class Mutation implements MutationInterface, Contractable
     private $employee;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
-     * @ORM\JoinColumn(name="current_company_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="old_company_id", referencedColumnName="id")
      *
      * @ApiSubresource()
      *
      * @var CompanyInterface
      */
-    private $currentCompany;
+    private $oldCompany;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
-     * @ORM\JoinColumn(name="current_department_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="old_department_id", referencedColumnName="id")
      *
      * @ApiSubresource()
      *
      * @var DepartmentInterface
      */
-    private $currentDepartment;
+    private $oldDepartment;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
-     * @ORM\JoinColumn(name="current_joblevel_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="old_joblevel_id", referencedColumnName="id")
      *
      * @ApiSubresource()
      *
      * @var JobLevelInterface
      */
-    private $currentJobLevel;
+    private $oldJobLevel;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobTitle", fetch="EAGER")
-     * @ORM\JoinColumn(name="current_jobtitle_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="old_jobtitle_id", referencedColumnName="id")
      *
      * @ApiSubresource()
      *
      * @var JobTitleInterface
      */
-    private $currentJobTitle;
+    private $oldJobTitle;
 
     /**
      * @Groups({"write", "read"})
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
-     * @ORM\JoinColumn(name="current_supervisor_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="old_supervisor_id", referencedColumnName="id")
      *
      * @ApiSubresource()
      *
      * @var EmployeeInterface
      */
-    private $currentSupervisor;
+    private $oldSupervisor;
 
     /**
      * @Groups({"write", "read"})
@@ -239,7 +241,7 @@ class Mutation implements MutationInterface, Contractable
      */
     public function getTypeText(): string
     {
-        return ValidateMutaionType::convertToText($this->type);
+        return ValidateMutationType::convertToText($this->type);
     }
 
     /**
@@ -249,7 +251,7 @@ class Mutation implements MutationInterface, Contractable
      */
     public function setType(string $type)
     {
-        if (!ValidateMutaionType::isValidType($type)) {
+        if (!ValidateMutationType::isValidType($type)) {
             throw new \InvalidArgumentException(sprintf('"%s" is not valid type.', $type));
         }
 
@@ -275,81 +277,81 @@ class Mutation implements MutationInterface, Contractable
     /**
      * @return CompanyInterface|null
      */
-    public function getCurrentCompany(): ? CompanyInterface
+    public function getOldCompany(): ? CompanyInterface
     {
-        return $this->currentCompany;
+        return $this->oldCompany;
     }
 
     /**
-     * @param CompanyInterface|null $currentCompany
+     * @param CompanyInterface|null $oldCompany
      */
-    public function setCurrentCompany(CompanyInterface $currentCompany = null): void
+    public function setOldCompany(CompanyInterface $oldCompany = null): void
     {
-        $this->currentCompany = $currentCompany;
+        $this->oldCompany = $oldCompany;
     }
 
     /**
      * @return DepartmentInterface|null
      */
-    public function getCurrentDepartment(): ? DepartmentInterface
+    public function getOldDepartment(): ? DepartmentInterface
     {
-        return $this->currentDepartment;
+        return $this->oldDepartment;
     }
 
     /**
-     * @param DepartmentInterface|null $currentDepartment
+     * @param DepartmentInterface|null $oldDepartment
      */
-    public function setCurrentDepartment(DepartmentInterface $currentDepartment = null): void
+    public function setOldDepartment(DepartmentInterface $oldDepartment = null): void
     {
-        $this->currentDepartment = $currentDepartment;
+        $this->oldDepartment = $oldDepartment;
     }
 
     /**
      * @return JobLevelInterface|null
      */
-    public function getCurrentJobLevel(): ? JobLevelInterface
+    public function getOldJobLevel(): ? JobLevelInterface
     {
-        return $this->currentJobLevel;
+        return $this->oldJobLevel;
     }
 
     /**
-     * @param JobLevelInterface|null $currentJobLevel
+     * @param JobLevelInterface|null $oldJobLevel
      */
-    public function setCurrentJobLevel(JobLevelInterface $currentJobLevel = null): void
+    public function setOldJobLevel(JobLevelInterface $oldJobLevel = null): void
     {
-        $this->currentJobLevel = $currentJobLevel;
+        $this->oldJobLevel = $oldJobLevel;
     }
 
     /**
      * @return JobTitleInterface|null
      */
-    public function getCurrentJobTitle(): ? JobTitleInterface
+    public function getOldJobTitle(): ? JobTitleInterface
     {
-        return $this->currentJobTitle;
+        return $this->oldJobTitle;
     }
 
     /**
-     * @param JobTitleInterface|null $currentJobTitle
+     * @param JobTitleInterface|null $oldJobTitle
      */
-    public function setCurrentJobTitle(JobTitleInterface $currentJobTitle = null): void
+    public function setOldJobTitle(JobTitleInterface $oldJobTitle = null): void
     {
-        $this->currentJobTitle = $currentJobTitle;
+        $this->oldJobTitle = $oldJobTitle;
     }
 
     /**
      * @return EmployeeInterface|null
      */
-    public function getCurrentSupervisor(): ? EmployeeInterface
+    public function getOldSupervisor(): ? EmployeeInterface
     {
-        return $this->currentSupervisor;
+        return $this->oldSupervisor;
     }
 
     /**
-     * @param EmployeeInterface|null $currentSupervisor
+     * @param EmployeeInterface|null $oldSupervisor
      */
-    public function setCurrentSupervisor(EmployeeInterface $currentSupervisor = null): void
+    public function setOldSupervisor(EmployeeInterface $oldSupervisor = null): void
     {
-        $this->currentSupervisor = $currentSupervisor;
+        $this->oldSupervisor = $oldSupervisor;
     }
 
     /**
@@ -453,6 +455,6 @@ class Mutation implements MutationInterface, Contractable
      */
     public function getTypeChoices(): array
     {
-        return ValidateMutaionType::getTypes();
+        return ValidateMutationType::getTypes();
     }
 }

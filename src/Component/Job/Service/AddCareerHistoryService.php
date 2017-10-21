@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Component\Job\Service;
 
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
-use KejawenLab\Application\SemartHris\Component\Contract\Service\ValidateMutaionType;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryable;
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryInterface;
@@ -59,13 +58,13 @@ class AddCareerHistoryService
             /** @var Contractable|EmployeeInterface $employee */
             $employee = $careerHistoryable->getEmployee();
             $careerHistory->setEmployee($employee);
-            $careerHistory->setSupervisor($careerHistoryable->getCurrentSupervisor());
-            $careerHistory->setCompany($careerHistoryable->getCurrentCompany());
-            $careerHistory->setDepartment($careerHistoryable->getCurrentDepartment());
-            $careerHistory->setJobLevel($careerHistoryable->getCurrentJobLevel());
-            $careerHistory->setJobTitle($careerHistoryable->getCurrentJobTitle());
+            $careerHistory->setSupervisor($careerHistoryable->getOldSupervisor());
+            $careerHistory->setCompany($careerHistoryable->getOldCompany());
+            $careerHistory->setDepartment($careerHistoryable->getOldDepartment());
+            $careerHistory->setJobLevel($careerHistoryable->getOldJobLevel());
+            $careerHistory->setJobTitle($careerHistoryable->getOldJobTitle());
             $careerHistory->setContract($employee->getContract());
-            $careerHistory->setDescription(ValidateMutaionType::convertToText($careerHistoryable->getType()));
+            $careerHistory->setDescription(ValidateMutationType::convertToText($careerHistoryable->getType()));
         }
 
         $this->careerHistoryRepository->storeHistory($careerHistory);

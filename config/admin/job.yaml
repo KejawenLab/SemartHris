@@ -146,7 +146,7 @@ easy_admin:
             list:
                 title: 'Mutasi Karyawan'
                 fields:
-                    - { property: 'type', label: 'Jenis Mutasi' }
+                    - { property: 'type_text', label: 'Jenis Mutasi' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'newCompany', label: 'Perusahaan Baru' }
                     - { property: 'newDepartment', label: 'Departemen Baru' }

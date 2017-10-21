@@ -32,7 +32,7 @@
 - [X] Add Job History When Adding New Placement
 - [ ] Prevent Remove Placement When Job History is Exist
 - [X] Add Job History When Adding New Mutation
-- [ ] Mutation Validation
+- [X] Mutation Validation
 - [ ] Change Employee Company, Department, etc when Mutation is saved
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Menejemen Absensi

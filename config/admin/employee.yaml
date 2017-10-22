@@ -24,7 +24,7 @@ easy_admin:
                     - { property: 'regionOfBirth', label: 'Propinsi Kelahiran', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
                     - { property: 'cityOfBirth', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
                     - { property: 'city_text', label: 'Kota Kelahiran', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
-                    - { property: 'dateOfBirth', label: 'Tanggal Lahir', type: 'birthday', type_options: { attr: { class: 'date-select' } } }
+                    - { property: 'dateOfBirth', label: 'Tanggal Lahir', type: 'birthday', type_options: { widget: 'single_text', format: 'dd-MM-yyyy', attr: { class: 'date-picker' } } }
                     - { property: 'identityType', label: 'Jenis Identitas', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', SIM: 's', PASPOR: 'p', KTP: 'k' } } }
                     - { property: 'identityNumber', label: 'No. Identitas' }
                     - { property: 'maritalStatus', label: 'Status Perkawinan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'BELUM MENIKAH': 's', MENIKAH: 'm', CERAI: 'd' } } }

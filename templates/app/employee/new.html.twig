@@ -7,11 +7,18 @@
     : _app_language in _select2_locales ? _app_language : 'en'
 %}
 
+{% block head_stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
+{% endblock %}
+
 {% block body_javascript %}
     {{ parent() }}
 
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/semart.js') }}"></script>
 
     <script type="text/javascript">
@@ -20,7 +27,7 @@
             var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
 
             change_static_select(locale);
-            change_date_select(locale);
+            date_picker(locale);
 
             employee_contract_autocomplete(locale, emptyText);
             city_autocomplete(locale, emptyText);

@@ -287,9 +287,9 @@ function change_static_select(locale) {
     });
 }
 
-function change_date_select(locale) {
-    $('.date-select').find('select').select2({
-        theme: 'bootstrap',
+function date_picker(locale) {
+    $('.date-picker').datepicker({
+        format: 'dd-mm-yyyy',
         language: locale
     });
 }

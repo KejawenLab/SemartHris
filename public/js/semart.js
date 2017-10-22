@@ -290,6 +290,10 @@ function change_static_select(locale) {
 function date_picker(locale) {
     $('.date-picker').datepicker({
         format: 'dd-mm-yyyy',
-        language: locale
+        language: locale,
+        todayBtn: true,
+        todayHighlight: true,
+        weekStart: 1,
+        autoclose: true
     });
 }

@@ -1,0 +1,22 @@
+{% extends '@EasyAdmin/default/new.html.twig' %}
+
+{% block head_stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-clockpicker.min.css') }}">
+{% endblock %}
+
+{% block body_javascript %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
+    <script src="{{ asset('js/semart.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            time_picker();
+        });
+    </script>
+{% endblock %}

@@ -33,7 +33,9 @@
 - [X] Add Job History When Adding New Mutation
 - [X] Mutation Validation
 - [X] Change Employee Company, Department, etc when Mutation is saved
-- [ ] Menejemen Absensi
+- [X] Slicing Workshift jika overlap
+- [ ] Report Workshift Seminggu Berjalan
+- [ ] Absensi Karyawan
 - [ ] Login Page
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist

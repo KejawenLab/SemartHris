@@ -3,6 +3,9 @@ easy_admin:
         Shiftment:
             class: 'KejawenLab\Application\SemartHris\Entity\Shiftment'
             controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            templates:
+                new: 'app/shiftment/new.html.twig'
+                edit: 'app/shiftment/edit.html.twig'
             new:
                 title: 'Tambah Shift Kerja'
             edit:
@@ -16,9 +19,9 @@ easy_admin:
                     - { property: 'code', label: 'Kode Shift' }
                     - { property: 'name', label: 'Nama Shift' }
                     - { type: 'group', css_class: 'col-sm-3' }
-                    - { property: 'startHour', label: 'Jam Masuk' }
+                    - { property: 'startHour', label: 'Jam Masuk', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
                     - { type: 'group', css_class: 'col-sm-3' }
-                    - { property: 'endHour', label: 'Jam Pulang' }
+                    - { property: 'endHour', label: 'Jam Pulang', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
             show:
                 title: 'Detil Shift Kerja'
                 fields:
@@ -33,3 +36,38 @@ easy_admin:
                     - { property: 'name', label: 'Nama Shift' }
                     - { property: 'startHour', label: 'Kode Shift' }
                     - { property: 'endHour', label: 'Nama Shift' }
+
+        Workshift:
+            class: 'KejawenLab\Application\SemartHris\Entity\Workshift'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            disabled_actions: ['show']
+            templates:
+                new: 'app/workshift/new.html.twig'
+                edit: 'app/workshift/edit.html.twig'
+            new:
+                title: 'Tambah Jadwal Kerja'
+            edit:
+                title: 'Edit Jadwal Kerja'
+            search:
+                title: 'Jadwal Kerja'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'shiftment', label: 'Shift Kerja', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
+                    - { property: 'startDate', label: 'Dari Tanggal', type_options:{ format: 'dd-MM-yyyy', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'endDate', label: 'Sampai Tanggal', type_options:{ format: 'dd-MM-yyyy', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { type: 'group', css_class: 'col-sm-12 new-row' }
+                    - { property: 'description', label: 'Keterangan' }
+            list:
+                title: 'Jadwal Kerja'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'startDate', label: 'Dari Tanggal' }
+                    - { property: 'endDate', label: 'Sampai Tanggal' }
+                    - { property: 'shiftment.startHour', label: 'Jam Masuk', type: 'time' }
+                    - { property: 'shiftment.endHour', label: 'Jam Pulang', type: 'time' }
+                    - { property: 'description', label: 'Keterangan' }

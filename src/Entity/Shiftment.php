@@ -168,4 +168,12 @@ class Shiftment implements ShiftmentInterface
     {
         $this->endHour = $endHour;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return sprintf('%s - %s #%s - %s', $this->getCode(), $this->getName(), $this->getStartHour()->format('h:i'), $this->getEndHour()->format('h:i'));
+    }
 }

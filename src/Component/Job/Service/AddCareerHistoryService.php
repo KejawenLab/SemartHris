@@ -6,8 +6,8 @@ use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryable;
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryInterface;
-use KejawenLab\Application\SemartHris\Component\Job\Model\PlacementInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
+use KejawenLab\Application\SemartHris\Component\Job\Model\PlacementInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Repository\CareerHistoryRepositoryInterface;
 
 /**

@@ -27,6 +27,13 @@ services:
         tags:
             - { name: 'kernel.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\WorkshiftSlicerSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\WorkshiftSlicer'
+            - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
     KejawenLab\Application\SemartHris\EventListener\MarkUsedContractSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService'

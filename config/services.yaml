@@ -40,6 +40,11 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
 
+    KejawenLab\Application\SemartHris\Component\Attendance\Service\WorkshiftSlicer:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
+            - 'KejawenLab\Application\SemartHris\Entity\Workshift'
+
     KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService:
         arguments:
             - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'

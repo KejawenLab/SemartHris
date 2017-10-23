@@ -18,12 +18,16 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Menejemen Perusahaan
 - [X] Suport Multi Perusahaan
 - [X] Menejemen Jabatan
-- [X] Menejemen Shift Kerja
 - [X] Menejemen Karyawan
 - [X] Support Multi Alamat
 - [X] Support Penempatan Karyawan
 - [X] Menejemen Kontrak Kerja
 - [X] Menejemen Kontrak Perusahaan dengan Rekanan/Klien
+- [X] Karir History
+- [X] Promosi, Mutasi dan Demosi
+- [X] Menejemen Shift Kerja
+- [X] Menejemen Jadwal Kerja
+- [X] Menejemen Absensi
 - [X] Backend Site and API Sekaligus
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)
 

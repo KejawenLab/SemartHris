@@ -23,7 +23,7 @@ easy_admin:
                     - { property: 'startDate', label: 'Tanggal Awal', type_options: { widget: 'single_text', format: 'dd-MM-yyyy', attr: { class: 'date-picker' } } }
                     - { property: 'endDate', label: 'Tanggal Akhir', type_options: { widget: 'single_text', format: 'dd-MM-yyyy', attr: { class: 'date-picker' } } }
                     - { property: 'signedDate', label: 'Tanggal Tanda Tangan', type_options: { widget: 'single_text', format: 'dd-MM-yyyy', attr: { class: 'date-picker' } } }
-                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { type: 'group', css_class: 'col-sm-12 new-row' }
                     - { property: 'description', label: 'Description' }
                     - { property: 'tags', type: 'hidden', type_options: { attr: { class: 'tags-id' } } }
                     - { property: 'tags_text', label: 'Penanda', help: 'Tekan Enter untuk menambahkan tag', type: 'choice', type_options: { attr: { class: 'tags-select', multiple: 'multiple' }, mapped: false, placeholder: false } }

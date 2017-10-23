@@ -24,8 +24,8 @@ use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentit
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateMaritalStatus;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
-use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;

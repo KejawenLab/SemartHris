@@ -297,3 +297,12 @@ function date_picker(locale) {
         autoclose: true
     });
 }
+
+function time_picker() {
+    $('.time-picker').clockpicker({
+        placement: 'bottom',
+        align: 'left',
+        donetext: 'Pilih'
+    });
+}
+

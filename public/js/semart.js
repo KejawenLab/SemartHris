@@ -98,6 +98,46 @@ function department_autocomplete(locale, emptyText) {
     });
 }
 
+function company_autocomplete(locale, emptyText) {
+    var tagsSelect = $('.tags-select');
+    var tagsId = $('.tags-id');
+    var tags = tagsId.val().split(',');
+
+    tagsSelect.select2({
+        minimumInputLength: 2,
+        theme: 'bootstrap',
+        language: locale,
+        ajax: {
+            url: Routing.generate('contract_tags'),
+            data: function (params) {
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.tags
+                };
+            }
+        }
+    });
+
+    if (0 < tags.length) {
+        var options = '';
+        $.each(tags, function (idx, val) {
+            options += '<option value="' + val + '" selected="selected">' + val + '</option>';
+        });
+
+        tagsSelect.html(options);
+    }
+
+    tagsSelect.change();
+
+    $(document).on('change', '.tags-select', function () {
+        tagsId.val($(this).val());
+    });
+}
+
 function jobtitle_autocomplete(locale, emptyText) {
     var jobtitleSelect = $('.jobtitle-select');
 

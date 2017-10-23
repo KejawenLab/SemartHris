@@ -71,3 +71,19 @@ easy_admin:
                     - { property: 'shiftment.startHour', label: 'Jam Masuk', type: 'time' }
                     - { property: 'shiftment.endHour', label: 'Jam Pulang', type: 'time' }
                     - { property: 'description', label: 'Keterangan' }
+
+        WorkSchedule:
+            class: 'KejawenLab\Application\SemartHris\Entity\Workshift'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\WorkScheduleController'
+            disabled_actions: ['show', 'new', 'delete', 'edit', 'search']
+            templates:
+                list: 'app/workshift/list.html.twig'
+            list:
+                title: 'Laporan Jadwal Kerja'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'startDate', label: 'Dari Tanggal' }
+                    - { property: 'endDate', label: 'Sampai Tanggal' }
+                    - { property: 'shiftment.startHour', label: 'Jam Masuk', type: 'time' }
+                    - { property: 'shiftment.endHour', label: 'Jam Pulang', type: 'time' }
+                    - { property: 'description', label: 'Keterangan' }

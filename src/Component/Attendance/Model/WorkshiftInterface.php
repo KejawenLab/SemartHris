@@ -25,6 +25,16 @@ interface WorkshiftInterface
     public function setEmployee(EmployeeInterface $employee = null): void;
 
     /**
+     * @return null|ShiftmentInterface
+     */
+    public function getShiftment(): ? ShiftmentInterface;
+
+    /**
+     * @param ShiftmentInterface|null $shiftment
+     */
+    public function setShiftment(ShiftmentInterface $shiftment = null): void;
+
+    /**
      * @return null|string
      */
     public function getDescription(): ? string;
@@ -53,14 +63,4 @@ interface WorkshiftInterface
      * @param \DateTimeInterface|null $endDate
      */
     public function setEndDate(\DateTimeInterface $endDate = null): void;
-
-    /**
-     * @return null|ShiftmentInterface
-     */
-    public function getShiftment(): ? ShiftmentInterface;
-
-    /**
-     * @param ShiftmentInterface|null $shiftment
-     */
-    public function setShiftment(ShiftmentInterface $shiftment = null): void;
 }

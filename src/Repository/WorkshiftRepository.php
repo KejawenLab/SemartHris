@@ -42,10 +42,11 @@ class WorkshiftRepository extends Repository implements WorkshiftRepositoryInter
      * @param \DateTimeInterface $endDate
      * @param string|null        $companyId
      * @param string|null        $departmentId
+     * @param string|null        $shiftmentId
      *
      * @return QueryBuilder
      */
-    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null): QueryBuilder
+    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null): QueryBuilder
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('w');
@@ -60,6 +61,10 @@ class WorkshiftRepository extends Repository implements WorkshiftRepositoryInter
 
         if ($departmentId) {
             $queryBuilder->andWhere($queryBuilder->expr()->lte('e.department', $queryBuilder->expr()->literal($departmentId)));
+        }
+
+        if ($shiftmentId) {
+            $queryBuilder->andWhere($queryBuilder->expr()->lte('w.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
         }
 
         return  $queryBuilder;

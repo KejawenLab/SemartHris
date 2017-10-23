@@ -24,7 +24,8 @@ class WorkScheduleController extends AdminController
         $endDate = \DateTime::createFromFormat('d-m-Y', $this->request->query->get('endDate', date('d-m-Y')));
         $companyId = $this->request->get('company');
         $departmentId = $this->request->get('department');
+        $shiftmentId = $this->request->get('shiftment');
 
-        return $this->container->get(WorkshiftRepository::class)->getWorkshiftFiltered($startDate, $endDate, $companyId, $departmentId);
+        return $this->container->get(WorkshiftRepository::class)->getWorkshiftFiltered($startDate, $endDate, $companyId, $departmentId, $shiftmentId);
     }
 }

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "api-platform/api-pack",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/api-pack.git",
-                "reference": "2e6c40e06d3270712303ad66cf4cf4ca64b2dab5"
+                "reference": "1fd6b089849ebd8159d1d274f9b83b1d14099ba6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/api-pack/zipball/2e6c40e06d3270712303ad66cf4cf4ca64b2dab5",
-                "reference": "2e6c40e06d3270712303ad66cf4cf4ca64b2dab5",
+                "url": "https://api.github.com/repos/api-platform/api-pack/zipball/1fd6b089849ebd8159d1d274f9b83b1d14099ba6",
+                "reference": "1fd6b089849ebd8159d1d274f9b83b1d14099ba6",
                 "shasum": ""
             },
             "require": {
@@ -26,12 +26,12 @@
                 "doctrine/doctrine-bundle": "^1.6",
                 "doctrine/orm": "^2.4.5",
                 "php": "^7.0",
-                "phpdocumentor/reflection-docblock": "^3.0",
-                "symfony/asset": "^3.0",
-                "symfony/expression-language": "^3.0",
-                "symfony/security-bundle": "^3.0",
-                "symfony/twig-bundle": "^3.0",
-                "symfony/validator": "^3.0"
+                "phpdocumentor/reflection-docblock": "^3.0 || ^4.0",
+                "symfony/asset": "^3.0 || ^4.0",
+                "symfony/expression-language": "^3.0 || ^4.0",
+                "symfony/security-bundle": "^3.0 || ^4.0",
+                "symfony/twig-bundle": "^3.0 || ^4.0",
+                "symfony/validator": "^3.0 || ^4.0"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
@@ -39,7 +39,7 @@
                 "MIT"
             ],
             "description": "A pack for API Platform",
-            "time": "2017-09-08T15:05:30+00:00"
+            "time": "2017-10-23T13:19:07+00:00"
         },
         {
             "name": "api-platform/core",
@@ -1463,21 +1463,21 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.3.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "48eb1f629d55621f03ca72195fe04d05d463b807"
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/48eb1f629d55621f03ca72195fe04d05d463b807",
-                "reference": "48eb1f629d55621f03ca72195fe04d05d463b807",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/2d3d238c433cf69caeb4842e97a3223a116f94b2",
+                "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "phpdocumentor/reflection-common": "^1.0.0",
+                "phpdocumentor/reflection-common": "^1.0@dev",
                 "phpdocumentor/type-resolver": "^0.4.0",
                 "webmozart/assert": "^1.0"
             },
@@ -1504,7 +1504,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-09-11T18:06:56+00:00"
+            "time": "2017-08-30T18:51:59+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",

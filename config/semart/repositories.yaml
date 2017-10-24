@@ -52,3 +52,7 @@ services:
     KejawenLab\Application\SemartHris\Repository\ShiftmentRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Shiftment']]
+
+    KejawenLab\Application\SemartHris\Repository\AttendanceRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Attendance']]

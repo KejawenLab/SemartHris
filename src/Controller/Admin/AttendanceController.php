@@ -3,12 +3,12 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
-use KejawenLab\Application\SemartHris\Repository\WorkshiftRepository;
+use KejawenLab\Application\SemartHris\Repository\AttendanceRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class WorkshiftController extends AdminController
+class AttendanceController extends AdminController
 {
     /**
      * @param string $entityClass
@@ -26,6 +26,6 @@ class WorkshiftController extends AdminController
         $departmentId = $this->request->get('department');
         $shiftmentId = $this->request->get('shiftment');
 
-        return $this->container->get(WorkshiftRepository::class)->getFilteredWorkshift($startDate, $endDate, $companyId, $departmentId, $shiftmentId, [$sortField => $sortDirection]);
+        return $this->container->get(AttendanceRepository::class)->getFilteredAttendance($startDate, $endDate, $companyId, $departmentId, $shiftmentId, [$sortField => $sortDirection]);
     }
 }

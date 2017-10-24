@@ -76,44 +76,44 @@ interface AttendanceInterface
     public function setCheckOut(\DateTimeInterface $time): void;
 
     /**
-     * @return \DateTimeInterface
+     * @return int
      */
-    public function getEarlyIn(): \DateTimeInterface;
+    public function getEarlyIn(): int;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param int $minutes
      */
-    public function setEarlyIn(\DateTimeInterface $time): void;
+    public function setEarlyIn(int $minutes): void;
 
     /**
-     * @return \DateTimeInterface
+     * @return int
      */
-    public function getEarlyOut(): \DateTimeInterface;
+    public function getEarlyOut(): int;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param int $minutes
      */
-    public function setEarlyOut(\DateTimeInterface $time): void;
+    public function setEarlyOut(int $minutes): void;
 
     /**
-     * @return \DateTimeInterface
+     * @return int
      */
-    public function getLateIn(): \DateTimeInterface;
+    public function getLateIn(): int;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param int $minutes
      */
-    public function setLateIn(\DateTimeInterface $time): void;
+    public function setLateIn(int $minutes): void;
 
     /**
-     * @return \DateTimeInterface
+     * @return int
      */
-    public function getLateOut(): \DateTimeInterface;
+    public function getLateOut(): int;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param int $minutes
      */
-    public function setLateOut(\DateTimeInterface $time): void;
+    public function setLateOut(int $minutes): void;
 
     /**
      * @return bool
@@ -128,10 +128,10 @@ interface AttendanceInterface
     /**
      * @return null|ReasonInterface
      */
-    public function getAbsentReason(): ? ReasonInterface;
+    public function getReason(): ? ReasonInterface;
 
     /**
      * @param ReasonInterface $reason
      */
-    public function setAbsentReason(ReasonInterface $reason = null): void;
+    public function setReason(ReasonInterface $reason = null): void;
 }

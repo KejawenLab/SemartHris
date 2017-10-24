@@ -354,6 +354,17 @@ function date_picker(locale) {
     });
 }
 
+function date_range_picker(locale) {
+    $('.input-daterange').datepicker({
+        format: 'dd-mm-yyyy',
+        language: locale,
+        todayBtn: true,
+        todayHighlight: true,
+        weekStart: 1,
+        autoclose: true
+    });
+}
+
 function time_picker() {
     $('.time-picker').clockpicker({
         placement: 'bottom',

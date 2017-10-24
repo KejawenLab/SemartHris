@@ -40,6 +40,12 @@ services:
         tags:
             - { name: 'kernel.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\AttendanceCalculatorSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
     Gedmo\SoftDeleteable\SoftDeleteableListener:
         calls:
             - [ 'setAnnotationReader', [ '@annotation_reader' ] ]

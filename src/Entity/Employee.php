@@ -1079,7 +1079,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
     /**
      * @param string $profileImage
      */
-    public function setProfileImage(string $profileImage): void
+    public function setProfileImage(string $profileImage = null): void
     {
         $this->profileImage = $profileImage;
     }
@@ -1095,7 +1095,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
     /**
      * @param int $profileSize
      */
-    public function setProfileSize(int $profileSize): void
+    public function setProfileSize(int $profileSize = null): void
     {
         $this->profileSize = $profileSize;
     }

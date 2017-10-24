@@ -21,34 +21,36 @@
                 <div class="box box-default">
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-xs-12 ">
+                            <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
                                     <label class="control-label" for="company">Pilih Perusahaan</label>
                                     <select id="company" name="company" class="static-select company-select">
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
                                     <label class="control-label" for="department">Pilih Department</label>
                                     <input type="hidden" name="department" class="department-id" value="{{ app.request.get('department') }}">
                                     <select id="department" name="department_text" class="department-select">
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-5 new-row">
                                 <div class="form-group">
                                     <label class="control-label" for="shiftment">Pilih Shift</label>
                                     <select id="shiftment" name="shiftment" class="static-select shiftment-select">
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-5 new-row">
-                                <div class="form-group field-date">
-                                    <label class="control-label required" for="startDate">Dari Tanggal</label>
-                                    <input id="startDate" type="text" name="startDate" class="date-picker form-control" required="required" value="{{ app.request.get('startDate') ?: date() | date('01-m-Y') }}">
-                                </div>
-                            </div>
-                            <div class="col-xs-5">
-                                <div class="form-group field-date">
-                                    <label class="control-label required" for="endDate">Sampai Tanggal</label>
-                                    <input id="endDate" type="text" name="endDate" class="date-picker form-control" required="required" value="{{ app.request.get('endDate') ?: date() | date('t-m-Y') }}">
+                            <div class="col-xs-12 col-sm-5">
+                                <div class="form-group">
+                                    <label class="control-label" for="startDate">Pilih Tanggal</label>
+                                    <div class="input-group input-daterange">
+                                        <input id="startDate" type="text" name="startDate" class="form-control" required="required" value="{{ app.request.get('startDate') ?: date() | date('01-m-Y') }}">
+                                        <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
+                                        <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.get('endDate') ?: date() | date('t-m-Y') }}">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xs-2">
@@ -105,7 +107,7 @@
             var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
 
             change_static_select(locale);
-            date_picker(locale);
+            date_range_picker(locale);
             company_autocomplete(emptyText, '{{ app.request.get('company') }}');
             shiftment_autocomplete(emptyText, '{{ app.request.get('shiftment') }}');
             department_autocomplete(locale, emptyText);

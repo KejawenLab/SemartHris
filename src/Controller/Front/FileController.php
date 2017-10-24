@@ -24,7 +24,7 @@ final class FileController extends Controller
      */
     public function getFileAction($path)
     {
-        $fullPath = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), $this->container->getParameter('upload_destination'), $path);
+        $fullPath = sprintf('%s%s/%s', $this->container->getParameter('kernel.project_dir'), $this->container->getParameter('upload_destination'), $path);
         $file = file_get_contents($fullPath);
         if ($file) {
             $response = new Response();

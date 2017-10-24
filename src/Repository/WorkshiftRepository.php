@@ -48,7 +48,7 @@ class WorkshiftRepository extends Repository implements WorkshiftRepositoryInter
      *
      * @return QueryBuilder
      */
-    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder
+    public function getFilteredWorkshift(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('w');
@@ -90,8 +90,8 @@ class WorkshiftRepository extends Repository implements WorkshiftRepositoryInter
         $queryBuilder->select('w');
         $queryBuilder->from($this->entityClass, 'w');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('w.employee', $queryBuilder->expr()->literal($employee->getId())));
-        $queryBuilder->andWhere($queryBuilder->expr()->gte('w.startDate', $queryBuilder->expr()->literal($date->format('Y-m-d'))));
-        $queryBuilder->andWhere($queryBuilder->expr()->lte('w.endDate', $queryBuilder->expr()->literal($date->format('Y-m-d'))));
+        $queryBuilder->andWhere($queryBuilder->expr()->lte('w.startDate', $queryBuilder->expr()->literal($date->format('Y-m-d'))));
+        $queryBuilder->andWhere($queryBuilder->expr()->gte('w.endDate', $queryBuilder->expr()->literal($date->format('Y-m-d'))));
 
         return  $queryBuilder->getQuery()->getOneOrNullResult();
     }

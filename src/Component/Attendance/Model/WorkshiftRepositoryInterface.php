@@ -32,7 +32,7 @@ interface WorkshiftRepositoryInterface
      *
      * @return QueryBuilder
      */
-    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder;
+    public function getFilteredWorkshift(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder;
 
     /**
      * @param EmployeeInterface  $employee

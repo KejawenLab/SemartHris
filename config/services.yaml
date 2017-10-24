@@ -46,6 +46,10 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
             - 'KejawenLab\Application\SemartHris\Entity\Workshift'
 
+    KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
+
     KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService:
         arguments:
             - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'

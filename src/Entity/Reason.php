@@ -162,7 +162,7 @@ class Reason implements ReasonInterface
      */
     public function __toString(): string
     {
-        return sprintf('%s: %s - %s', $this->getType(), $this->getCode(), $this->getName());
+        return sprintf('%s - %s', $this->getCode(), $this->getName());
     }
 
     /**

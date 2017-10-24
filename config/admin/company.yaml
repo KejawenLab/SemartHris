@@ -2,7 +2,7 @@ easy_admin:
     entities:
         Company:
             class: 'KejawenLab\Application\SemartHris\Entity\Company'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyController'
             new:
                 title: 'Tambah Perusahaan'
             edit:

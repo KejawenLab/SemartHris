@@ -56,15 +56,15 @@ class WorkshiftRepository extends Repository implements WorkshiftRepositoryInter
         $queryBuilder->andWhere($queryBuilder->expr()->lte('w.endDate', $queryBuilder->expr()->literal($endDate->format('Y-m-d'))));
 
         if ($companyId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->lte('e.company', $queryBuilder->expr()->literal($companyId)));
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.company', $queryBuilder->expr()->literal($companyId)));
         }
 
         if ($departmentId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->lte('e.department', $queryBuilder->expr()->literal($departmentId)));
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.department', $queryBuilder->expr()->literal($departmentId)));
         }
 
         if ($shiftmentId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->lte('w.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('w.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
         }
 
         return  $queryBuilder;

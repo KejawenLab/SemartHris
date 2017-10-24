@@ -98,43 +98,59 @@ function department_autocomplete(locale, emptyText) {
     });
 }
 
-function company_autocomplete(locale, emptyText) {
-    var tagsSelect = $('.tags-select');
-    var tagsId = $('.tags-id');
-    var tags = tagsId.val().split(',');
+function company_autocomplete(emptyText, selected) {
+    var companySelect = $('.company-select');
 
-    tagsSelect.select2({
-        minimumInputLength: 2,
-        theme: 'bootstrap',
-        language: locale,
-        ajax: {
-            url: Routing.generate('contract_tags'),
-            data: function (params) {
-                return {
-                    search: params.term
-                };
-            },
-            processResults: function (data) {
-                return {
-                    results: data.tags
-                };
-            }
+    $.ajax({
+        url: Routing.generate('all_company'),
+        type: 'GET',
+        data: {},
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var options = '<option value="">' + emptyText + '</option>';
+
+            $.each(dataResponse['companies'], function (idx, val) {
+                if (selected === val.id) {
+                    options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
+                } else {
+                    options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                }
+            });
+
+            companySelect.html(options);
+            companySelect.change();
+        },
+        error: function () {
+            console.log('KO');
         }
     });
+}
 
-    if (0 < tags.length) {
-        var options = '';
-        $.each(tags, function (idx, val) {
-            options += '<option value="' + val + '" selected="selected">' + val + '</option>';
-        });
+function shiftment_autocomplete(emptyText, selected) {
+    var shiftmentSelect = $('.shiftment-select');
 
-        tagsSelect.html(options);
-    }
+    $.ajax({
+        url: Routing.generate('all_shiftment'),
+        type: 'GET',
+        data: {},
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var options = '<option value="">' + emptyText + '</option>';
 
-    tagsSelect.change();
+            $.each(dataResponse['shiftments'], function (idx, val) {
+                if (selected === val.id) {
+                    options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
+                } else {
+                    options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                }
+            });
 
-    $(document).on('change', '.tags-select', function () {
-        tagsId.val($(this).val());
+            shiftmentSelect.html(options);
+            shiftmentSelect.change();
+        },
+        error: function () {
+            console.log('KO');
+        }
     });
 }
 

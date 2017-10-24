@@ -24,30 +24,22 @@
                             <div class="col-xs-12 ">
                                 <div class="form-group">
                                     <label class="control-label" for="company">Pilih Perusahaan</label>
-                                    <select id="company" name="company" class="static-select">
+                                    <select id="company" name="company" class="static-select company-select">
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="department">Pilih Department</label>
-                                    <input type="hidden" name="department" class="department-id" value="">
+                                    <input type="hidden" name="department" class="department-id" value="{{ app.request.get('department') }}">
                                     <select id="department" name="department_text" class="department-select">
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="shiftment">Pilih Shift</label>
-                                    <select id="shiftment" name="shiftment" class="static-select">
+                                    <select id="shiftment" name="shiftment" class="static-select shiftment-select">
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field-group col-xs-12 col-sm-12 new-row">
-                <div class="box box-default">
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-5 new-row">
                                 <div class="form-group field-date">
                                     <label class="control-label required" for="startDate">Dari Tanggal</label>
                                     <input id="startDate" type="text" name="startDate" class="date-picker form-control" required="required" value="{{ app.request.get('startDate') }}">
@@ -118,6 +110,8 @@
 
             change_static_select(locale);
             date_picker(locale);
+            company_autocomplete(emptyText, '{{ app.request.get('company') }}');
+            shiftment_autocomplete(emptyText, '{{ app.request.get('shiftment') }}');
             department_autocomplete(locale, emptyText);
         });
     </script>

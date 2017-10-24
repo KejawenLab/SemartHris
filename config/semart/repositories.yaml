@@ -48,3 +48,7 @@ services:
     KejawenLab\Application\SemartHris\Repository\WorkshiftRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Workshift']]
+
+    KejawenLab\Application\SemartHris\Repository\ShiftmentRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Shiftment']]

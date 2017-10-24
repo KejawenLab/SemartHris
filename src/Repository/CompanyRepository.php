@@ -47,6 +47,18 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
     }
 
     /**
+     * @return CompanyInterface[]
+     */
+    public function findAll(): array
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('entity.id, entity. code, entity.name');
+        $queryBuilder->from($this->entityClass, 'entity');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
      * @param string $companyAddressId
      *
      * @return null|CompanyAddressInterface

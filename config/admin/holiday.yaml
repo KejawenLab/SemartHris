@@ -1,0 +1,31 @@
+easy_admin:
+    entities:
+        Holiday:
+            class: 'KejawenLab\Application\SemartHris\Entity\Holiday'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            templates:
+                new: 'app/holiday/new.html.twig'
+                edit: 'app/holiday/edit.html.twig'
+            new:
+                title: 'Tambah Hari Libur'
+            edit:
+                title: 'Edit Hari Libur'
+            search:
+                title: 'Hari Libur'
+                fields: ['shortName', 'name']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'holidayDate', label: 'Tanggal', type_options: { widget: 'single_text', format: 'dd-MM-yyyy', attr: { class: 'date-picker' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'name', label: 'Nama Libur' }
+            show:
+                title: 'Detil Hari Libur'
+                fields:
+                    - { property: 'holidayDate', label: 'Tanggal' }
+                    - { property: 'name', label: 'Nama Libur' }
+            list:
+                title: 'Hari Libur'
+                fields:
+                    - { property: 'holidayDate', label: 'Tanggal' }
+                    - { property: 'name', label: 'Nama Libur' }

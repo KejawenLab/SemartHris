@@ -60,3 +60,7 @@ services:
     KejawenLab\Application\SemartHris\Repository\ReasonRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Reason']]
+
+    KejawenLab\Application\SemartHris\Repository\HolidayRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Holiday']]

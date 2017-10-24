@@ -28,6 +28,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Menejemen Shift Kerja
 - [X] Menejemen Jadwal Kerja
 - [X] Menejemen Absensi
+- [X] Menejemen Hari Libur
 - [X] Backend Site and API Sekaligus
 - [X] Soft Delete (Data tidak benar-benar dihapus)
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)

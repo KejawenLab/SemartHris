@@ -15,6 +15,7 @@ easy_admin:
                   - { entity: 'Region', label: 'Propinsi', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'City', label: 'Kota', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Contract', label: 'Kontrak', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Holiday', label: 'Hari Libur', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Perusahaan'
               icon: 'building'
               children:

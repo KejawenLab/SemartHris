@@ -7,6 +7,7 @@ services:
 
     KejawenLab\Application\SemartHris\EventListener\GenerateUsernameSubscriber:
         arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@security.password_encoder'
             - '@KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator'
             - '%env(APP_DEFAULT_PASSWORD)%'

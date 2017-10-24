@@ -56,24 +56,24 @@ interface AttendanceInterface
     public function setDescription(string $description): void;
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeInterface|null
      */
-    public function getCheckIn(): \DateTimeInterface;
+    public function getCheckIn(): ? \DateTimeInterface;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param \DateTimeInterface|null $time
      */
-    public function setCheckIn(\DateTimeInterface $time): void;
+    public function setCheckIn(\DateTimeInterface $time = null): void;
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeInterface|null
      */
-    public function getCheckOut(): \DateTimeInterface;
+    public function getCheckOut(): ? \DateTimeInterface;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param \DateTimeInterface|null $time
      */
-    public function setCheckOut(\DateTimeInterface $time): void;
+    public function setCheckOut(\DateTimeInterface $time = null): void;
 
     /**
      * @return int

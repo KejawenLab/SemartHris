@@ -100,9 +100,7 @@ class Attendance implements AttendanceInterface
     /**
      * @Groups({"read", "write"})
      *
-     * @ORM\Column(type="time")
-     *
-     * @Assert\NotBlank()
+     * @ORM\Column(type="time", nullable=true)
      *
      * @var \DateTimeInterface
      */
@@ -111,9 +109,7 @@ class Attendance implements AttendanceInterface
     /**
      * @Groups({"read", "write"})
      *
-     * @ORM\Column(type="time")
-     *
-     * @Assert\NotBlank()
+     * @ORM\Column(type="time", nullable=true)
      *
      * @var \DateTimeInterface
      */
@@ -268,31 +264,31 @@ class Attendance implements AttendanceInterface
     /**
      * @return \DateTimeInterface|null
      */
-    public function getCheckIn(): \DateTimeInterface
+    public function getCheckIn(): ? \DateTimeInterface
     {
-        return $this->checkIn ?: new \DateTime();
+        return $this->checkIn;
     }
 
     /**
-     * @param \DateTimeInterface $checkIn
+     * @param \DateTimeInterface|null $checkIn
      */
-    public function setCheckIn(\DateTimeInterface $checkIn): void
+    public function setCheckIn(\DateTimeInterface $checkIn = null): void
     {
         $this->checkIn = $checkIn;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeInterface|null
      */
-    public function getCheckOut(): \DateTimeInterface
+    public function getCheckOut(): ? \DateTimeInterface
     {
-        return $this->checkOut ?: new \DateTime();
+        return $this->checkOut;
     }
 
     /**
-     * @param \DateTimeInterface $checkOut
+     * @param \DateTimeInterface|null $checkOut
      */
-    public function setCheckOut(\DateTimeInterface $checkOut): void
+    public function setCheckOut(\DateTimeInterface $checkOut = null): void
     {
         $this->checkOut = $checkOut;
     }

@@ -17,6 +17,8 @@
 {% block body_javascript %}
     {{ parent() }}
 
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
     <script src="{{ asset('js/semart.js') }}"></script>
@@ -24,8 +26,9 @@
     <script type="text/javascript">
         $(function() {
             var locale = '{{ _select2_locale }}';
+            var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
 
-            change_static_select(locale);
+            reason_autocomplete(locale, 'a', emptyText);
             time_picker();
             date_picker(locale);
         });

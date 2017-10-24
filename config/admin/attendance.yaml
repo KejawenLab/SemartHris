@@ -98,7 +98,7 @@ easy_admin:
                     - { property: 'absent', label: 'Tidak Masuk?' }
                     - { property: 'reason', type: 'hidden', type_options: { attr: { class: 'reason-id' } } }
                     - { property: 'reason_readonly', label: 'Alasan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
-                    - { property: 'reason_text', label: 'Alasan', type: 'choice', type_options: { attr: { class: 'static-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'reason_text', label: 'Alasan', type: 'choice', type_options: { attr: { class: 'reason-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { type: 'group', css_class: 'col-sm-12 new-row' }
                     - { property: 'description', label: 'Keterangan' }
             show:

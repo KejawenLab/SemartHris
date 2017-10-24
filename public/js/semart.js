@@ -298,11 +298,6 @@ function tags_autocomplete(locale) {
 function employee_contract_autocomplete(locale, emptyText) {
     var contractSelect = $('.contract-select');
 
-    contractSelect.select2({
-        theme: 'bootstrap',
-        language: locale
-    });
-
     $.ajax({
         url: Routing.generate('contract_employee'),
         type: 'GET',
@@ -333,6 +328,43 @@ function employee_contract_autocomplete(locale, emptyText) {
 
     $(document).on('change', '.contract-select', function () {
         $('.contract-id').val($(this).val());
+    });
+}
+
+
+function reason_autocomplete(locale, type, emptyText) {
+    var reasonSelect = $('.reason-select');
+
+    $.ajax({
+        url: Routing.generate('reason_by_type', { type: type }),
+        type: 'GET',
+        data: {},
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var reasonId = $('.reason-id').val();
+            var options = '<option value="">' + emptyText + '</option>';
+
+            $.each(dataResponse['reasons'], function (idx, val) {
+                if (reasonId === val.id) {
+                    options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
+                } else {
+                    options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                }
+            });
+
+            reasonSelect.html(options);
+            reasonSelect.select2({
+                theme: 'bootstrap',
+                language: locale
+            });
+        },
+        error: function () {
+            console.log('KO');
+        }
+    });
+
+    $(document).on('change', '.reason-select', function () {
+        $('.reason-id').val($(this).val());
     });
 }
 

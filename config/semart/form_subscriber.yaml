@@ -27,6 +27,8 @@ services:
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveTypeTextFieldSubscriber:
 
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber:
+
     KejawenLab\Application\SemartHris\Form\EventListener\EncodePasswordSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService'

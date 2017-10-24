@@ -48,3 +48,4 @@ services:
     KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator:
         arguments:
             - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber' ]

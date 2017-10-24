@@ -37,6 +37,17 @@ final class AttendanceCalculator
             return;
         }
 
+        if ($attendance->isAbsent()) {
+            $attendance->setCheckIn(null);
+            $attendance->setCheckOut(null);
+            $attendance->setEarlyIn(0);
+            $attendance->setEarlyOut(0);
+            $attendance->setLateIn(0);
+            $attendance->setLateOut(0);
+
+            return;
+        }
+
         $shiftment = $workshift->getShiftment();
         $attendance->setShiftment($shiftment);
 

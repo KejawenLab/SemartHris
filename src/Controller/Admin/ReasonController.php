@@ -4,12 +4,30 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Form\Manipulator\ReasonManipulator;
+use KejawenLab\Application\SemartHris\Repository\ReasonRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class ReasonController extends AdminController
 {
+    /**
+     * @Route(path="/reason/{type}", name="reason_by_type", options={"expose"=true})
+     *
+     * @param string $type
+     *
+     * @return Response
+     */
+    public function findByTypeAction(string $type)
+    {
+        $reasons = $this->container->get(ReasonRepository::class)->findByType($type);
+
+        return new JsonResponse(['reasons' => $reasons]);
+    }
+
     /**
      * @param object $entity
      * @param string $view

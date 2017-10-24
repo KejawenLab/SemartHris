@@ -44,3 +44,7 @@ services:
         arguments:
             - { roles: '@KejawenLab\Application\SemartHris\Form\DataTransformer\RoleTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\EncodePasswordSubscriber' ]
+
+    KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator:
+        arguments:
+            - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }

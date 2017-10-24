@@ -14,7 +14,7 @@ final class RemoveTypeTextFieldSubscriber implements EventSubscriberInterface
     /**
      * @param FormEvent $event
      */
-    public function removeTagsText(FormEvent $event): void
+    public function removeTypeText(FormEvent $event): void
     {
         $event->getForm()->remove('type_text');
     }
@@ -24,6 +24,6 @@ final class RemoveTypeTextFieldSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeTagsText'];
+        return [FormEvents::PRE_SUBMIT => 'removeTypeText'];
     }
 }

@@ -56,3 +56,7 @@ services:
     KejawenLab\Application\SemartHris\Repository\AttendanceRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Attendance']]
+
+    KejawenLab\Application\SemartHris\Repository\ReasonRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Reason']]

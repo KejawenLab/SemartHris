@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
+use KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator;
 use KejawenLab\Application\SemartHris\Repository\AttendanceRepository;
 
 /**
@@ -27,5 +28,18 @@ class AttendanceController extends AdminController
         $shiftmentId = $this->request->get('shiftment');
 
         return $this->container->get(AttendanceRepository::class)->getFilteredAttendance($startDate, $endDate, $companyId, $departmentId, $shiftmentId, [$sortField => $sortDirection]);
+    }
+
+    /**
+     * @param object $entity
+     * @param string $view
+     *
+     * @return \Symfony\Component\Form\FormBuilderInterface
+     */
+    protected function createEntityFormBuilder($entity, $view)
+    {
+        $builder = parent::createEntityFormBuilder($entity, $view);
+
+        return $this->container->get(AttendanceManipulator::class)->manipulate($builder, $entity);
     }
 }

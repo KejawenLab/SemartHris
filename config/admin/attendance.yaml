@@ -96,7 +96,9 @@ easy_admin:
                     - { property: 'checkOut', label: 'Jam Keluar', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'absent', label: 'Tidak Masuk?' }
-                    - { property: 'reason', label: 'Alasan', type: 'easyadmin_autocomplete' }
+                    - { property: 'reason', type: 'hidden', type_options: { attr: { class: 'reason-id' } } }
+                    - { property: 'reason_readonly', label: 'Alasan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'reason_text', label: 'Alasan', type: 'choice', type_options: { attr: { class: 'static-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { type: 'group', css_class: 'col-sm-12 new-row' }
                     - { property: 'description', label: 'Keterangan' }
             show:

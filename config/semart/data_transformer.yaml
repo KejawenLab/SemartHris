@@ -27,6 +27,10 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
 
+    KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
+
     KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer:
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\RoleTransformer:

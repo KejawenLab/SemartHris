@@ -10,6 +10,7 @@ label:
     false: 'OFF'
     nullable_field: 'Sembunyikan'
     inaccessible: 'BELUM DISET'
+    empty: 'BELUM TERSEDIA'
 delete_modal:
     action: 'Hapus'
     title: 'PERINGATAN'

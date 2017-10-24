@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Component\Attendance\Model;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -27,8 +28,17 @@ interface WorkshiftRepositoryInterface
      * @param string|null        $companyId
      * @param string|null        $departmentId
      * @param string|null        $shiftmentId
+     * @param array              $sorts
      *
      * @return QueryBuilder
      */
-    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null): QueryBuilder;
+    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder;
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $date
+     *
+     * @return WorkshiftInterface|null
+     */
+    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? WorkshiftInterface;
 }

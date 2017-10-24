@@ -39,10 +39,11 @@ easy_admin:
 
         Workshift:
             class: 'KejawenLab\Application\SemartHris\Entity\Workshift'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
-            disabled_actions: ['show']
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\WorkshiftController'
+            disabled_actions: ['search', 'show']
             templates:
                 new: 'app/workshift/new.html.twig'
+                list: 'app/workshift/list.html.twig'
                 edit: 'app/workshift/edit.html.twig'
             new:
                 title: 'Tambah Jadwal Kerja'
@@ -64,22 +65,6 @@ easy_admin:
                     - { property: 'description', label: 'Keterangan' }
             list:
                 title: 'Jadwal Kerja'
-                fields:
-                    - { property: 'employee', label: 'Karyawan' }
-                    - { property: 'startDate', label: 'Dari Tanggal' }
-                    - { property: 'endDate', label: 'Sampai Tanggal' }
-                    - { property: 'shiftment.startHour', label: 'Jam Masuk', type: 'time' }
-                    - { property: 'shiftment.endHour', label: 'Jam Pulang', type: 'time' }
-                    - { property: 'description', label: 'Keterangan' }
-
-        WorkSchedule:
-            class: 'KejawenLab\Application\SemartHris\Entity\Workshift'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\WorkScheduleController'
-            disabled_actions: ['show', 'new', 'delete', 'edit', 'search']
-            templates:
-                list: 'app/workshift/list.html.twig'
-            list:
-                title: 'Laporan Jadwal Kerja'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'startDate', label: 'Dari Tanggal' }

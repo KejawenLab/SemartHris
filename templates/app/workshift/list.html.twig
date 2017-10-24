@@ -42,13 +42,13 @@
                             <div class="col-xs-5 new-row">
                                 <div class="form-group field-date">
                                     <label class="control-label required" for="startDate">Dari Tanggal</label>
-                                    <input id="startDate" type="text" name="startDate" class="date-picker form-control" required="required" value="{{ app.request.get('startDate') }}">
+                                    <input id="startDate" type="text" name="startDate" class="date-picker form-control" required="required" value="{{ app.request.get('startDate') ?: date() | date('01-m-Y') }}">
                                 </div>
                             </div>
                             <div class="col-xs-5">
                                 <div class="form-group field-date">
                                     <label class="control-label required" for="endDate">Sampai Tanggal</label>
-                                    <input id="endDate" type="text" name="endDate" class="date-picker form-control" required="required" value="{{ app.request.get('endDate') }}">
+                                    <input id="endDate" type="text" name="endDate" class="date-picker form-control" required="required" value="{{ app.request.get('endDate') ?: date() | date('t-m-Y') }}">
                                 </div>
                             </div>
                             <div class="col-xs-2">
@@ -83,10 +83,6 @@
     {% block paginator %}
         {{ parent() }}
     {% endblock paginator %}
-
-    {% block delete_form %}
-        {{ parent() }}
-    {% endblock delete_form %}
 {% endblock main %}
 
 {% block head_stylesheets %}

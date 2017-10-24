@@ -1,0 +1,6 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        profiles:
+            uri_prefix: '%env(PROFILE_IMAGE_UPLOAD_PATH)%'
+            upload_destination: '%kernel.project_dir%/public%env(PROFILE_IMAGE_UPLOAD_PATH)%'

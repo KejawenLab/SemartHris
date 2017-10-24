@@ -29,8 +29,10 @@ use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity()
@@ -55,6 +57,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueContract()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
+ * @Vich\Uploadable()
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -382,6 +386,27 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      * @var array
      */
     private $roles;
+
+    /**
+     * @Vich\UploadableField(mapping="profiles", fileNameProperty="profileImage", size="profileSize")
+     *
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @var string
+     */
+    private $profileImage;
+
+    /**
+     * @ORM\Column(type="integer")
+     *
+     * @var int
+     */
+    private $profileSize;
 
     /**
      * @var string|null
@@ -1021,6 +1046,58 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
     public function setPlainPassword(string $plainPassword = null): void
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    /**
+     * @return null|File
+     */
+    public function getImageFile(): ? File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     */
+    public function setImageFile(File $imageFile = null): void
+    {
+        if ($imageFile) {
+            $this->updatedAt = new \DateTime();
+        }
+
+        $this->imageFile = $imageFile;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfileImage(): string
+    {
+        return (string) $this->profileImage;
+    }
+
+    /**
+     * @param string $profileImage
+     */
+    public function setProfileImage(string $profileImage): void
+    {
+        $this->profileImage = $profileImage;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProfileSize(): int
+    {
+        return (int) $this->profileSize;
+    }
+
+    /**
+     * @param int $profileSize
+     */
+    public function setProfileSize(int $profileSize): void
+    {
+        $this->profileSize = $profileSize;
     }
 
     /**

@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\WorkshiftInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\WorkshiftRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -43,10 +44,11 @@ class WorkshiftRepository extends Repository implements WorkshiftRepositoryInter
      * @param string|null        $companyId
      * @param string|null        $departmentId
      * @param string|null        $shiftmentId
+     * @param array              $sorts
      *
      * @return QueryBuilder
      */
-    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null): QueryBuilder
+    public function getWorkshiftFiltered(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('w');
@@ -67,6 +69,30 @@ class WorkshiftRepository extends Repository implements WorkshiftRepositoryInter
             $queryBuilder->andWhere($queryBuilder->expr()->eq('w.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
         }
 
+        if (!empty($sorts)) {
+            foreach ($sorts as $field => $direction) {
+                $queryBuilder->addOrderBy(sprintf('w.%s', $field), $direction);
+            }
+        }
+
         return  $queryBuilder;
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $date
+     *
+     * @return WorkshiftInterface|null
+     */
+    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? WorkshiftInterface
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('w');
+        $queryBuilder->from($this->entityClass, 'w');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('w.employee', $queryBuilder->expr()->literal($employee->getId())));
+        $queryBuilder->andWhere($queryBuilder->expr()->gte('w.startDate', $queryBuilder->expr()->literal($date->format('Y-m-d'))));
+        $queryBuilder->andWhere($queryBuilder->expr()->lte('w.endDate', $queryBuilder->expr()->literal($date->format('Y-m-d'))));
+
+        return  $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

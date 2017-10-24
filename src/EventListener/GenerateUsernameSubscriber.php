@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\EventListener;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
+use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -17,6 +18,11 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 final class GenerateUsernameSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @var UserRepositoryInterface
+     */
+    private $userRepository;
+
     /**
      * @var UserPasswordEncoderInterface
      */
@@ -33,12 +39,14 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     private $defaultPassword;
 
     /**
+     * @param UserRepositoryInterface      $repository
      * @param UserPasswordEncoderInterface $encoder
      * @param UsernameGenerator            $usernameGenerator
      * @param string                       $defaultPassword
      */
-    public function __construct(UserPasswordEncoderInterface $encoder, UsernameGenerator $usernameGenerator, string $defaultPassword)
+    public function __construct(UserRepositoryInterface $repository, UserPasswordEncoderInterface $encoder, UsernameGenerator $usernameGenerator, string $defaultPassword)
     {
+        $this->userRepository = $repository;
         $this->passwordEncoder = $encoder;
         $this->defaultPassword = $defaultPassword;
         $this->usernameGenerator = $usernameGenerator;
@@ -90,8 +98,13 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
             return;
         }
 
+        $role = ['ROLE_EMPLOYEE'];
+        if (0 === $this->userRepository->count()) {
+            $role = ['ROLE_SUPER_ADMIN'];
+        }
+
         $user->setPassword($this->passwordEncoder->encodePassword($user, $this->defaultPassword));
         $user->setUsername($this->usernameGenerator->generate($user));
-        $user->setRoles(['ROLE_EMPLOYEE']);
+        $user->setRoles($role);
     }
 }

@@ -36,6 +36,8 @@
 - [X] Slicing Workshift jika overlap
 - [X] Report Workshift Seminggu Berjalan
 - [X] Absensi Karyawan
+- [ ] Set first user is Super Administrator
+- [ ] Lembur Karyawan
 - [ ] Login Page
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist

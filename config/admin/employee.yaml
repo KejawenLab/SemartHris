@@ -23,7 +23,7 @@ easy_admin:
                     - { property: 'gender', label: 'Jenis Kelamin', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', PRIA: 'm', WANITA: 'f' } } }
                     - { property: 'regionOfBirth', label: 'Propinsi Kelahiran', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'region-select' } } }
                     - { property: 'cityOfBirth', type: 'hidden', type_options: { attr: { class: 'city-id' } } }
-                    - { property: 'city_text', label: 'Kota Kelahiran', type: 'choice', type_options: { attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'city_text', label: 'Kota Kelahiran', type: 'choice', type_options: { required: true, attr: { class: 'city-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'dateOfBirth', label: 'Tanggal Lahir', type: 'birthday', type_options: { widget: 'single_text', format: 'dd-MM-yyyy', attr: { class: 'date-picker' } } }
                     - { property: 'identityType', label: 'Jenis Identitas', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', SIM: 's', PASPOR: 'p', KTP: 'k' } } }
                     - { property: 'identityNumber', label: 'No. Identitas' }
@@ -37,18 +37,18 @@ easy_admin:
                     - { property: 'employeeStatus', label: 'Status Karyawan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KARYAWAN TETAP': 'p', 'KARYAWAN KONTRAK': 't', 'KARYAWAN OUTSOURCE': 'o', 'KARYAWAN MAGANG': 'i' } } }
                     - { property: 'employee_status_text', label: 'Status Karyawan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
-                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { required: true, attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'contract_readonly', label: 'Kontrak Kerja', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
                     - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
                     - { property: 'department_readonly', label: 'Departemen', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
-                    - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { required: true, attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
                     - { property: 'joblevel_readonly', label: 'Level Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
                     - { property: 'jobtitle_readonly', label: 'Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
-                    - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { required: true, attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
                     - { property: 'supervisor_readonly', label: 'Atasan Langsung', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }

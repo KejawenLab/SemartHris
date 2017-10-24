@@ -16,4 +16,9 @@ interface UserRepositoryInterface extends UsernameRepositoryInterface
      * @return UserInterface|null
      */
     public function findByUsername(string $username): ? UserInterface;
+
+    /**
+     * @return int
+     */
+    public function count(): int;
 }

@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryInterface;
@@ -58,10 +57,8 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
             return [];
         }
 
-        /** @var EntityRepository $repository */
-        $repository = $this->entityManager->getRepository($this->entityClass);
-
-        $queryBuilder = $repository->createQueryBuilder('e');
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'e');
         $queryBuilder->addSelect('e.id');
         $queryBuilder->addSelect('e.code');
         $queryBuilder->addSelect('e.fullName');
@@ -102,10 +99,9 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function countUsage(string $characters): int
     {
-        /** @var EntityRepository $repository */
-        $repository = $this->entityManager->getRepository($this->entityClass);
         /** @var QueryBuilder $queryBuilder */
-        $queryBuilder = $repository->createQueryBuilder('o');
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'o');
         $queryBuilder->select('COUNT(1)');
         $queryBuilder->andWhere($queryBuilder->expr()->like('o.username', $queryBuilder->expr()->literal(sprintf('%%%s%%', $characters))));
 
@@ -142,6 +138,19 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     public function findEmployeeAddress(string $employeeAddressId): ? EmployeeAddressInterface
     {
         return $this->entityManager->getRepository($this->getEntityClass())->find($employeeAddressId);
+    }
+
+    /**
+     * @return int
+     */
+    public function count(): int
+    {
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'o');
+        $queryBuilder->select('COUNT(1)');
+
+        return (int) $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
     /**

@@ -1,4 +1,10 @@
+semart:
+    resource: ../src/Controller/Front
+    prefix: /
+    type: annotation
+
 semart_admin:
     resource: ../src/Controller/Admin
     prefix: /admin
     type: annotation
+

@@ -56,7 +56,7 @@ easy_admin:
             show:
                 title: 'Detil Karyawan'
                 fields:
-                    - { property: 'profileImage', label: 'Foto Profil', type: 'image', base_path: '%env(PROFILE_IMAGE_UPLOAD_PATH)%' }
+                    - { property: 'profileImage', label: 'Foto Profil', type: 'image', base_path: '/files%env(PROFILE_IMAGE_UPLOAD_PATH)%' }
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
@@ -90,7 +90,7 @@ easy_admin:
                 actions:
                     - { name: 'employee_address', type: 'route', icon: 'book', label: false, title: 'Lihat Alamat' }
                 fields:
-                    - { property: 'profileImage', type: 'image', base_path: '%env(PROFILE_IMAGE_UPLOAD_PATH)%' }
+                    - { property: 'profileImage', type: 'image', base_path: '/files%env(PROFILE_IMAGE_UPLOAD_PATH)%' }
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
                     - { property: 'gender_text', label: 'Jenis Kelamin' }

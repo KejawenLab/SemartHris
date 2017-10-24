@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveSupervisorTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveSupervisorTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @var EmployeeRepositoryInterface
@@ -28,7 +28,7 @@ final class RemoveSupervisorTextFieldSubscriber implements EventSubscriberInterf
     /**
      * @param FormEvent $event
      */
-    public function removeSupervisorText(FormEvent $event): void
+    public function remove(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -47,6 +47,6 @@ final class RemoveSupervisorTextFieldSubscriber implements EventSubscriberInterf
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeSupervisorText'];
+        return [FormEvents::PRE_SUBMIT => 'remove'];
     }
 }

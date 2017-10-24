@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveContractTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveContractTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @var ContractRepositoryInterface
@@ -28,7 +28,7 @@ final class RemoveContractTextFieldSubscriber implements EventSubscriberInterfac
     /**
      * @param FormEvent $event
      */
-    public function removeContractText(FormEvent $event): void
+    public function remove(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -43,6 +43,6 @@ final class RemoveContractTextFieldSubscriber implements EventSubscriberInterfac
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeContractText'];
+        return [FormEvents::PRE_SUBMIT => 'remove'];
     }
 }

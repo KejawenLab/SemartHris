@@ -9,12 +9,12 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveTypeTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveTypeTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @param FormEvent $event
      */
-    public function removeTypeText(FormEvent $event): void
+    public function remove(FormEvent $event): void
     {
         $event->getForm()->remove('type_text');
     }
@@ -24,6 +24,6 @@ final class RemoveTypeTextFieldSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeTypeText'];
+        return [FormEvents::PRE_SUBMIT => 'remove'];
     }
 }

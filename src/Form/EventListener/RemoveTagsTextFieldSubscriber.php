@@ -9,12 +9,12 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveTagsTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveTagsTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @param FormEvent $event
      */
-    public function removeTagsText(FormEvent $event): void
+    public function remove(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -29,6 +29,6 @@ final class RemoveTagsTextFieldSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeTagsText'];
+        return [FormEvents::PRE_SUBMIT => 'remove'];
     }
 }

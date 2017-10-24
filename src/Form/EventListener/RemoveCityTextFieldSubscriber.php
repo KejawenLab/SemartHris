@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveCityTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveCityTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @var CityRepositoryInterface
@@ -28,7 +28,7 @@ final class RemoveCityTextFieldSubscriber implements EventSubscriberInterface
     /**
      * @param FormEvent $event
      */
-    public function removeCityText(FormEvent $event): void
+    public function remove(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -47,6 +47,6 @@ final class RemoveCityTextFieldSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeCityText'];
+        return [FormEvents::PRE_SUBMIT => 'remove'];
     }
 }

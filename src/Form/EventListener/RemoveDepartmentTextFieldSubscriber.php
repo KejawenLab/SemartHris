@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveDepartmentTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveDepartmentTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @var DepartmentRepositoryInterface
@@ -28,7 +28,7 @@ final class RemoveDepartmentTextFieldSubscriber implements EventSubscriberInterf
     /**
      * @param FormEvent $event
      */
-    public function removeDepartmentText(FormEvent $event): void
+    public function remove(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -47,6 +47,6 @@ final class RemoveDepartmentTextFieldSubscriber implements EventSubscriberInterf
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeDepartmentText'];
+        return [FormEvents::PRE_SUBMIT => 'remove'];
     }
 }

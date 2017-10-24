@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveJobTitleTextFieldSubscriber implements EventSubscriberInterface
+final class RemoveJobTitleTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @var JobTitleRepositoryInterface
@@ -28,7 +28,7 @@ final class RemoveJobTitleTextFieldSubscriber implements EventSubscriberInterfac
     /**
      * @param FormEvent $event
      */
-    public function removeJobTitleText(FormEvent $event): void
+    public function remove(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();
@@ -47,6 +47,6 @@ final class RemoveJobTitleTextFieldSubscriber implements EventSubscriberInterfac
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::PRE_SUBMIT => 'removeJobTitleText'];
+        return [FormEvents::PRE_SUBMIT => 'remove'];
     }
 }

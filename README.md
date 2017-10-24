@@ -29,6 +29,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Menejemen Jadwal Kerja
 - [X] Menejemen Absensi
 - [X] Backend Site and API Sekaligus
+- [X] Soft Delete (Data tidak benar-benar dihapus)
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)
 
 ## Kebutuhan Software Minimum

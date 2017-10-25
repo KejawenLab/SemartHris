@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -57,8 +56,6 @@ class Skill implements SkillInterface
      * @ORM\JoinColumn(name="skill_group_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var SkillGroupInterface
      */

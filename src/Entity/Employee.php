@@ -122,8 +122,6 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var CompanyInterface
      */
     private $company;
@@ -135,8 +133,6 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var DepartmentInterface
      */
@@ -150,8 +146,6 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var JobLevelInterface
      */
     private $jobLevel;
@@ -163,8 +157,6 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      * @ORM\JoinColumn(name="jobtitle_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var JobTitleInterface
      */
@@ -224,8 +216,6 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var RegionInterface
      */
     private $regionOfBirth;
@@ -237,8 +227,6 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      * @ORM\JoinColumn(name="city_of_birth_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var CityInterface
      */

@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -58,8 +57,6 @@ class Workshift implements WorkshiftInterface
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var EmployeeInterface
      */
     private $employee;
@@ -71,8 +68,6 @@ class Workshift implements WorkshiftInterface
      * @ORM\JoinColumn(name="shiftment_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var ShiftmentInterface
      */

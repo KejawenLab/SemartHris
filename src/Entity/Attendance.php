@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -59,8 +58,6 @@ class Attendance implements AttendanceInterface
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var EmployeeInterface
      */
     private $employee;
@@ -70,8 +67,6 @@ class Attendance implements AttendanceInterface
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Shiftment", fetch="EAGER")
      * @ORM\JoinColumn(name="shiftment_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var ShiftmentInterface
      */
@@ -165,8 +160,6 @@ class Attendance implements AttendanceInterface
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Reason", fetch="EAGER")
      * @ORM\JoinColumn(name="reason_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var ReasonInterface
      */

@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -83,8 +82,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var EmployeeInterface
      */
     private $employee;
@@ -94,8 +91,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="old_company_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var CompanyInterface
      */
@@ -107,8 +102,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="old_department_id", referencedColumnName="id")
      *
-     * @ApiSubresource()
-     *
      * @var DepartmentInterface
      */
     private $oldDepartment;
@@ -118,8 +111,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
      * @ORM\JoinColumn(name="old_joblevel_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var JobLevelInterface
      */
@@ -131,8 +122,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobTitle", fetch="EAGER")
      * @ORM\JoinColumn(name="old_jobtitle_id", referencedColumnName="id")
      *
-     * @ApiSubresource()
-     *
      * @var JobTitleInterface
      */
     private $oldJobTitle;
@@ -142,8 +131,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="old_supervisor_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var EmployeeInterface
      */
@@ -155,8 +142,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="new_company_id", referencedColumnName="id")
      *
-     * @ApiSubresource()
-     *
      * @var CompanyInterface
      */
     private $newCompany;
@@ -166,8 +151,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Department", fetch="EAGER")
      * @ORM\JoinColumn(name="new_department_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var DepartmentInterface
      */
@@ -179,8 +162,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobLevel", fetch="EAGER")
      * @ORM\JoinColumn(name="new_joblevel_id", referencedColumnName="id")
      *
-     * @ApiSubresource()
-     *
      * @var JobLevelInterface
      */
     private $newJobLevel;
@@ -190,8 +171,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\JobTitle", fetch="EAGER")
      * @ORM\JoinColumn(name="new_jobtitle_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var JobTitleInterface
      */
@@ -203,8 +182,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="new_supervisor_id", referencedColumnName="id")
      *
-     * @ApiSubresource()
-     *
      * @var EmployeeInterface
      */
     private $newSupervisor;
@@ -214,8 +191,6 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Contract", fetch="EAGER")
      * @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var ContractInterface
      */

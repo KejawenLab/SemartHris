@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -58,8 +57,6 @@ class CompanyAddress implements CompanyAddressInterface
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var CompanyInterface
      */
     private $company;
@@ -82,8 +79,6 @@ class CompanyAddress implements CompanyAddressInterface
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var RegionInterface
      */
     private $region;
@@ -95,8 +90,6 @@ class CompanyAddress implements CompanyAddressInterface
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var CityInterface
      */

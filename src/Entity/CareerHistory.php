@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -64,8 +63,6 @@ class CareerHistory implements CareerHistoryInterface, Contractable
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var EmployeeInterface
      */
     private $employee;
@@ -77,8 +74,6 @@ class CareerHistory implements CareerHistoryInterface, Contractable
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var CompanyInterface
      */
@@ -92,8 +87,6 @@ class CareerHistory implements CareerHistoryInterface, Contractable
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var DepartmentInterface
      */
     private $department;
@@ -105,8 +98,6 @@ class CareerHistory implements CareerHistoryInterface, Contractable
      * @ORM\JoinColumn(name="joblevel_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var JobLevelInterface
      */
@@ -120,8 +111,6 @@ class CareerHistory implements CareerHistoryInterface, Contractable
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var JobTitleInterface
      */
     private $jobTitle;
@@ -131,8 +120,6 @@ class CareerHistory implements CareerHistoryInterface, Contractable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var EmployeeInterface
      */
@@ -145,8 +132,6 @@ class CareerHistory implements CareerHistoryInterface, Contractable
      * @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var ContractInterface
      */

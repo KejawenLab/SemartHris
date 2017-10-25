@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -58,8 +57,6 @@ class CompanyDepartment implements CompanyDepartmentInterface
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var DepartmentInterface
      */
     private $department;
@@ -69,8 +66,6 @@ class CompanyDepartment implements CompanyDepartmentInterface
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var CompanyInterface
      */

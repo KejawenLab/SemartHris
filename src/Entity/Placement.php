@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -67,8 +66,6 @@ class Placement implements PlacementInterface, Contractable
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var EmployeeInterface
      */
     private $employee;
@@ -80,8 +77,6 @@ class Placement implements PlacementInterface, Contractable
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var CompanyInterface
      */
@@ -95,8 +90,6 @@ class Placement implements PlacementInterface, Contractable
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var DepartmentInterface
      */
     private $department;
@@ -108,8 +101,6 @@ class Placement implements PlacementInterface, Contractable
      * @ORM\JoinColumn(name="joblevel_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var JobLevelInterface
      */
@@ -123,8 +114,6 @@ class Placement implements PlacementInterface, Contractable
      *
      * @Assert\NotBlank()
      *
-     * @ApiSubresource()
-     *
      * @var JobTitleInterface
      */
     private $jobTitle;
@@ -134,8 +123,6 @@ class Placement implements PlacementInterface, Contractable
      *
      * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
      * @ORM\JoinColumn(name="supervisor_id", referencedColumnName="id")
-     *
-     * @ApiSubresource()
      *
      * @var EmployeeInterface
      */
@@ -148,8 +135,6 @@ class Placement implements PlacementInterface, Contractable
      * @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
-     *
-     * @ApiSubresource()
      *
      * @var ContractInterface
      */

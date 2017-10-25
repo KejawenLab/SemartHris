@@ -40,7 +40,7 @@
 - [X] Menejemen Hari Libur
 - [X] Authentication (Urgent)
 - [ ] Access Control List for All Menu
-- [ ] Create Supervisor Voter
+- [X] Create Supervisor Voter
 - [ ] Lembur Karyawan
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist

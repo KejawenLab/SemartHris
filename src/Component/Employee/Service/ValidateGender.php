@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Util\StringUtil;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class ValidateGender implements ValidateTypeInterface
+final class ValidateGender implements ValidateTypeInterface
 {
     /**
      * @param string $type

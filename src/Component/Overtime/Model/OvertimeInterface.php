@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Overtime\Model;
 
+use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
@@ -25,6 +26,16 @@ interface OvertimeInterface
     public function setEmployee(EmployeeInterface $employee): void;
 
     /**
+     * @return null|ShiftmentInterface
+     */
+    public function getShiftment(): ? ShiftmentInterface;
+
+    /**
+     * @param ShiftmentInterface|null $shiftment
+     */
+    public function setShiftment(ShiftmentInterface $shiftment = null): void;
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getOvertimeDate(): ? \DateTimeInterface;
@@ -35,9 +46,24 @@ interface OvertimeInterface
     public function setOvertimeDate(\DateTimeInterface $date): void;
 
     /**
-     * @return float
+     * @return \DateTimeInterface|null
      */
-    public function getOvertimeValue(): float;
+    public function getStartHour(): ? \DateTimeInterface;
+
+    /**
+     * @param \DateTimeInterface $time
+     */
+    public function setStartHour(\DateTimeInterface $time): void;
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getEndHour(): ? \DateTimeInterface;
+
+    /**
+     * @param \DateTimeInterface $time
+     */
+    public function setEndHour(\DateTimeInterface $time): void;
 
     /**
      * @return float|null
@@ -57,7 +83,22 @@ interface OvertimeInterface
     /**
      * @return bool
      */
+    public function isOverday(): bool;
+
+    /**
+     * @return bool
+     */
     public function isApproved(): bool;
+
+    /**
+     * @return EmployeeInterface|null
+     */
+    public function getApprovedBy(): ? EmployeeInterface;
+
+    /**
+     * @param EmployeeInterface|null $employee
+     */
+    public function setApprovedBy(EmployeeInterface $employee = null): void;
 
     /**
      * @return null|string

@@ -29,14 +29,11 @@ final class EncodePasswordSubscriber implements EventSubscriberInterface
     /**
      * @param FormEvent $event
      */
-    public function encodeAndApply(FormEvent $event): void
+    public function setPassword(FormEvent $event): void
     {
         /** @var UserInterface $data */
         $data = $event->getData();
-
-        if ($data->getPlainPassword()) {
-            $this->passwordEncoderService->encodeAndApply($data);
-        }
+        $this->passwordEncoderService->setPassword($data);
     }
 
     /**
@@ -44,6 +41,6 @@ final class EncodePasswordSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents(): array
     {
-        return [FormEvents::POST_SUBMIT => 'encodeAndApply'];
+        return [FormEvents::POST_SUBMIT => 'setPassword'];
     }
 }

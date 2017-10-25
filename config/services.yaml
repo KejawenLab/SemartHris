@@ -53,3 +53,11 @@ services:
     KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService:
         arguments:
             - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
+
+    KejawenLab\Application\SemartHris\Component\Employee\Service\EmployeeSupervisorChecker:
+
+    KejawenLab\Application\SemartHris\Security\Voter\SupervisorVoter:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Employee\Service\EmployeeSupervisorChecker'
+        tags:
+            { name: 'security.voter' }

@@ -7,11 +7,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator;
+use KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -24,7 +24,7 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     private $userRepository;
 
     /**
-     * @var UserPasswordEncoderInterface
+     * @var EncodePasswordService
      */
     private $passwordEncoder;
 
@@ -39,12 +39,12 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     private $defaultPassword;
 
     /**
-     * @param UserRepositoryInterface      $repository
-     * @param UserPasswordEncoderInterface $encoder
-     * @param UsernameGenerator            $usernameGenerator
-     * @param string                       $defaultPassword
+     * @param UserRepositoryInterface $repository
+     * @param EncodePasswordService   $encoder
+     * @param UsernameGenerator       $usernameGenerator
+     * @param string                  $defaultPassword
      */
-    public function __construct(UserRepositoryInterface $repository, UserPasswordEncoderInterface $encoder, UsernameGenerator $usernameGenerator, string $defaultPassword)
+    public function __construct(UserRepositoryInterface $repository, EncodePasswordService $encoder, UsernameGenerator $usernameGenerator, string $defaultPassword)
     {
         $this->userRepository = $repository;
         $this->passwordEncoder = $encoder;
@@ -103,8 +103,8 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
             $role = ['ROLE_SUPER_ADMIN'];
         }
 
-        $user->setPassword($this->passwordEncoder->encodePassword($user, $this->defaultPassword));
         $user->setUsername($this->usernameGenerator->generate($user));
         $user->setRoles($role);
+        $this->passwordEncoder->setPassword($user);
     }
 }

@@ -26,10 +26,11 @@ class EncodePasswordService
     /**
      * @param UserInterface $user
      */
-    public function encodeAndApply(UserInterface $user): void
+    public function setPassword(UserInterface $user): void
     {
         if ($plainPassword = $user->getPlainPassword()) {
             $user->setPassword($this->passwordEncoder->encodePassword($user, $plainPassword));
+            $user->setPlainPassword(null);
         }
     }
 }

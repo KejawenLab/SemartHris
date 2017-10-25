@@ -4,7 +4,7 @@ security:
 #            algorithm: 'argon2i' #change to argon2i encoder after stable release
 
     access_decision_manager:
-        strategy: unanimous
+        strategy: affirmative
 
     role_hierarchy:
         ROLE_EMPLOYEE: ROLE_EMPLOYEE

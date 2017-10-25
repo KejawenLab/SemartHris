@@ -38,7 +38,8 @@
 - [X] Absensi Karyawan
 - [X] Set first user is Super Administrator
 - [X] Menejemen Hari Libur
-- [ ] Authentication (Urgent)
+- [X] Authentication (Urgent)
+- [ ] Access Control List for All Menu
 - [ ] Create Supervisor Voter
 - [ ] Lembur Karyawan
 - [ ] Delete Session Notification

@@ -13,6 +13,10 @@ class SecurityController extends Controller
     /**
      * @Route("/login", name="login")
      *
+     * @Route("/login_check", name="login_check")
+     *
+     * @Route("/logout", name="logout")
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction()
@@ -26,21 +30,5 @@ class SecurityController extends Controller
         ];
 
         return $this->render('app/user/login.html.twig', $data);
-    }
-
-    /**
-     * @Route("/login_check", name="login_check")
-     */
-    public function checkAction()
-    {
-        throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
-    }
-
-    /**
-     * @Route("/logout", name="logout")
-     */
-    public function logoutAction()
-    {
-        throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
     }
 }

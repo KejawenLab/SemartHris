@@ -1,0 +1,33 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex, nofollow">
+        <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="card card-container">
+                <img id="profile-img" class="profile-img-card" src="{{ asset('img/login-avatar.png') }}" />
+                <p id="profile-name" class="profile-name-card"></p>
+                <form class="form-signin" method="post" action="{{ path('login_check') }}">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="text" id="inputEmail" class="form-control" name="_username" value="{{ username }}" placeholder="Username" required autofocus>
+                    <input type="password" id="inputPassword" class="form-control" name="_password" placeholder="Password" required>
+                    {% if error %}
+                        <span class="has-error" id="login-error"><i class="help-block"><i class="fa fa-exclamation-triangle"></i> {{ 'auth.failed' | trans }}</i></span>
+                    {% endif %}
+                    <input type="hidden" name="_target_path" value="{{ path('easyadmin') }}" />
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit"><i class="fa fa-sign-in"></i> {{ 'auth.action' | trans }}</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="{{ asset('bundles/easyadmin/javascript/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/easyadmin/javascript/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
+</html>

@@ -18,3 +18,5 @@ delete_modal:
 user:
     anonymous: 'Belum Login'
     logged_in_as: 'Masuk sebagai'
+    unnamed: 'Tanpa Nama'
+    signout: 'Keluar'

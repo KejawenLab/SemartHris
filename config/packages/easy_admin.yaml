@@ -12,5 +12,5 @@ easy_admin:
             - { name: 'edit', icon: 'pencil', label: false, title: 'Edit' }
             - { name: 'delete', icon: 'close', label: false, title: 'Hapus' }
     design:
-        brand_color: '#ac2925'
+        brand_color: '#1b5228'
         form_theme: 'vertical'

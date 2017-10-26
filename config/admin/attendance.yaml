@@ -121,6 +121,7 @@ easy_admin:
                 fields:
                     - { property: 'attendanceDate', label: 'Tanggal' }
                     - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'shiftment', label: 'Shift' }
                     - { property: 'checkIn', label: 'Jam Masuk' }
                     - { property: 'checkOut', label: 'Jam Keluar' }
                     - { property: 'absent', label: 'Tidak Masuk?' }

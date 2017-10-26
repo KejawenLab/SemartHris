@@ -1,6 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Reason\Model;
+namespace KejawenLab\Application\SemartHris\Component\Reason\Repository;
+
+use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

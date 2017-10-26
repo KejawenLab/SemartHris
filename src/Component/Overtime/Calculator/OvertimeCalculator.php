@@ -1,8 +1,7 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Overtime\Service;
+namespace KejawenLab\Application\SemartHris\Component\Overtime\Calculator;
 
-use KejawenLab\Application\SemartHris\Component\Overtime\Calculator\CalculatorException;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeCalculatorInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 

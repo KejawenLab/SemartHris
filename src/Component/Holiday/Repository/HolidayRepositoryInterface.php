@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Holiday\Model;
+namespace KejawenLab\Application\SemartHris\Component\Holiday\Repository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

@@ -8,9 +8,9 @@ easy_admin:
         max_results: 17
         actions:
             - { name: 'show', icon: 'search', label: false, title: 'Detil' }
-            - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-success action-new', label: false, title: 'Tambah Baru' }
+            - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-primary action-new', label: false, title: 'Tambah Baru' }
             - { name: 'edit', icon: 'pencil', label: false, title: 'Edit' }
             - { name: 'delete', icon: 'close', label: false, title: 'Hapus' }
     design:
-        brand_color: '#1b5228'
+        brand_color: '#ac2925'
         form_theme: 'vertical'

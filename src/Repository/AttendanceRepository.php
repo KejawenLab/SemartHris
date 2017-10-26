@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\QueryBuilder;
-use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Attendance\Repository\AttendanceRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

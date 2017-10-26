@@ -1,0 +1,51 @@
+easy_admin:
+    entities:
+        Overtime:
+            class: 'KejawenLab\Application\SemartHris\Entity\Overtime'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\OvertimeController'
+            disabled_actions: ['search']
+            templates:
+                new: 'app/overtime/new.html.twig'
+                list: 'app/workshift/list.html.twig'
+                edit: 'app/overtime/edit.html.twig'
+            new:
+                title: 'Tambah Lembur'
+            edit:
+                title: 'Edit Lembur'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'overtimeDate', label: 'Tanggal', type_options:{ format: 'dd-MM-yyyy', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
+                    - { property: 'startHour', label: 'Jam Masuk', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
+                    - { property: 'endHour', label: 'Jam Keluar', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
+                    - { type: 'group', css_class: 'col-sm-12 new-row' }
+                    - { property: 'description', label: 'Keterangan' }
+            show:
+                title: 'Detil Lembur'
+                fields:
+                    - { property: 'overtimeDate', label: 'Tanggal' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'shiftment', label: 'Shift' }
+                    - { property: 'startHour', label: 'Jam Masuk' }
+                    - { property: 'endHour', label: 'Jam Keluar' }
+                    - { property: 'overday', label: 'Ganti Tanggal?' }
+                    - { property: 'calculatedValue', label: 'Jumlah' }
+                    - { property: 'holiday', label: 'Hari Libur?' }
+                    - { property: 'approved', label: 'Disetujui?' }
+                    - { property: 'approvedBy', label: 'Disetujui oleh' }
+                    - { property: 'description', label: 'Keterangan' }
+            list:
+                title: 'Lembur'
+                fields:
+                    - { property: 'overtimeDate', label: 'Tanggal' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'shiftment', label: 'Shift' }
+                    - { property: 'startHour', label: 'Jam Masuk' }
+                    - { property: 'endHour', label: 'Jam Keluar' }
+                    - { property: 'overday', label: 'Ganti Tanggal?' }
+                    - { property: 'holiday', label: 'Hari Libur?' }
+                    - { property: 'approved', label: 'Disetujui?' }
+                    - { property: 'description', label: 'Keterangan' }

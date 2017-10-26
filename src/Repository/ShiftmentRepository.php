@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentInterface;
-use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Attendance\Repository\ShiftmentRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

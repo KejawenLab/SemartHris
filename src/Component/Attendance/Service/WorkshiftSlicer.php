@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Component\Attendance\Service;
 
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\WorkshiftInterface;
-use KejawenLab\Application\SemartHris\Component\Attendance\Model\WorkshiftRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

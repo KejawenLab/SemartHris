@@ -1,8 +1,9 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Attendance\Model;
+namespace KejawenLab\Application\SemartHris\Component\Attendance\Repository;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Attendance\Model\WorkshiftInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**

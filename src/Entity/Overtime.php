@@ -163,7 +163,7 @@ class Overtime implements OvertimeInterface
      */
     public function getId(): string
     {
-        return $this->id;
+        return (string) $this->id;
     }
 
     /**

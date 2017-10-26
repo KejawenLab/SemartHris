@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
-use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

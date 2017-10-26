@@ -2,7 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Repository;
 
-use KejawenLab\Application\SemartHris\Component\Holiday\Model\HolidayRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

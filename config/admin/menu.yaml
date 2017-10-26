@@ -36,7 +36,11 @@ easy_admin:
                   - { entity: 'AbsentReason', label: 'Alasan Ketidakhadiran', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Shiftment', label: 'Shift Kerja', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Workshift', label: 'Jadwal Kerja', icon: 'hand-o-right', params: { sortField: 'startDate', sortDirection: 'DESC' } }
-                  - { entity: 'Attendance', label: 'Presensi', icon: 'hand-o-right', params: { sortField: 'attendanceDate', sortDirection: 'DESC' } }
+                  - { entity: 'Attendance', label: 'Absensi', icon: 'hand-o-right', params: { sortField: 'attendanceDate', sortDirection: 'DESC' } }
+            - label: 'Lembur'
+              icon: 'list-alt'
+              children:
+                  - { entity: 'Overtime', label: 'Lembur', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Cuti'
               icon: 'envelope-o'
               children:

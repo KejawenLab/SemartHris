@@ -1,6 +1,6 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Attendance\Model;
+namespace KejawenLab\Application\SemartHris\Component\Attendance\Repository;
 
 use Doctrine\ORM\QueryBuilder;
 

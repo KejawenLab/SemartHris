@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Form\DataTransformer;
 
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
-use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 

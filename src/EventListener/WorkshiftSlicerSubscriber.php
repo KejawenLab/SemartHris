@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\EventListener;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\WorkshiftInterface;
-use KejawenLab\Application\SemartHris\Component\Attendance\Model\WorkshiftRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Service\WorkshiftSlicer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;

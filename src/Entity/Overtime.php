@@ -251,7 +251,7 @@ class Overtime implements OvertimeInterface
      */
     public function getCalculatedValue(): ? float
     {
-        return $this->calculatedValue;
+        return (float) $this->calculatedValue ?: 0;
     }
 
     /**

@@ -57,7 +57,7 @@ final class CheckContractService
             }
         }
 
-        if (1 <= $count) {
+        if (0 < $count) {
             return true;
         }
 

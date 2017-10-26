@@ -4,7 +4,7 @@ namespace KejawenLab\Application\SemartHris\Security\Voter;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
-use KejawenLab\Application\SemartHris\Component\Employee\Service\EmployeeSupervisorChecker;
+use KejawenLab\Application\SemartHris\Component\Employee\Service\SupervisorChecker;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
@@ -13,14 +13,14 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 class SupervisorVoter extends Voter
 {
     /**
-     * @var EmployeeSupervisorChecker
+     * @var SupervisorChecker
      */
     private $supervisorChecker;
 
     /**
-     * @param EmployeeSupervisorChecker $supervisorChecker
+     * @param SupervisorChecker $supervisorChecker
      */
-    public function __construct(EmployeeSupervisorChecker $supervisorChecker)
+    public function __construct(SupervisorChecker $supervisorChecker)
     {
         $this->supervisorChecker = $supervisorChecker;
     }

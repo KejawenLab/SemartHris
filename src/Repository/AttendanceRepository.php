@@ -3,7 +3,9 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\AttendanceRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -48,5 +50,16 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
         }
 
         return  $queryBuilder;
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $date
+     *
+     * @return AttendanceInterface|null
+     */
+    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? AttendanceInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['employee' => $employee, 'date' => $date]);
     }
 }

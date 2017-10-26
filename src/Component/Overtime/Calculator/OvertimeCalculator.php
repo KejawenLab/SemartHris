@@ -10,18 +10,20 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface
  */
 class OvertimeCalculator implements OvertimeCalculatorInterface
 {
+    const SEMARTHRIS_OVERTIME_CALCULATOR = 'semarthris.overtime_calculator';
+
     /**
      * @var OvertimeCalculatorInterface[]
      */
-    private $formulas;
+    private $calculators;
 
     /**
-     * @param OvertimeCalculatorInterface[] $formulas
+     * @param OvertimeCalculatorInterface[] $calculators
      */
-    public function __construct(array $formulas = [])
+    public function __construct(array $calculators = [])
     {
-        foreach ($formulas as $formula) {
-            $this->addFormula($formula);
+        foreach ($calculators as $calculator) {
+            $this->addCalculator($calculator);
         }
     }
 
@@ -30,9 +32,9 @@ class OvertimeCalculator implements OvertimeCalculatorInterface
      */
     public function calculate(OvertimeInterface $overtime): void
     {
-        foreach ($this->formulas as $formula) {
+        foreach ($this->calculators as $calculator) {
             try {
-                $formula->calculate($overtime);
+                $calculator->calculate($overtime);
             } catch (CalculatorException $exception) {
                 continue;
             }
@@ -40,10 +42,10 @@ class OvertimeCalculator implements OvertimeCalculatorInterface
     }
 
     /**
-     * @param OvertimeCalculatorInterface $formula
+     * @param OvertimeCalculatorInterface $calculator
      */
-    private function addFormula(OvertimeCalculatorInterface $formula)
+    private function addCalculator(OvertimeCalculatorInterface $calculator)
     {
-        $this->formulas[] = $formula;
+        $this->calculators[] = $calculator;
     }
 }

@@ -17,9 +17,6 @@ trait ContractableRepositoryTrait
      */
     public function findByContract(ContractInterface $contract): array
     {
-        return $this->entityManager->getRepository($this->entityClass)->findBy([
-            'contract' => $contract,
-            'deletedAt' => null,
-        ]);
+        return $this->entityManager->getRepository($this->entityClass)->findBy(['contract' => $contract]);
     }
 }

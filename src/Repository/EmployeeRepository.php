@@ -125,7 +125,6 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     {
         return $this->entityManager->getRepository($this->entityClass)->findOneBy([
             'username' => $username,
-            'deletedAt' => null,
             'resignDate' => null,
         ]);
     }

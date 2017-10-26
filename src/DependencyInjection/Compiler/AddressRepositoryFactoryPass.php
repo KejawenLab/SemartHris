@@ -22,11 +22,11 @@ final class AddressRepositoryFactoryPass implements CompilerPassInterface
         }
 
         $services = $container->findTaggedServiceIds(AddressRepositoryFactory::ADDRESS_REPOSITORY_SERVICE_TAG);
-        $addressRepository = [];
+        $repositories = [];
         foreach ($services as $serviceId => $tags) {
-            $addressRepository[] = new Reference($serviceId);
+            $repositories[] = new Reference($serviceId);
         }
 
-        $container->getDefinition(AddressRepositoryFactory::class)->addArgument($addressRepository);
+        $container->getDefinition(AddressRepositoryFactory::class)->addArgument($repositories);
     }
 }

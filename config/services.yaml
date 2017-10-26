@@ -6,16 +6,12 @@ parameters:
 
 services:
     KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
-        arguments:
-            - ['@KejawenLab\Application\SemartHris\Repository\CompanyRepository', '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository']
 
     KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory'
 
     KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory:
-        arguments:
-            - ['@KejawenLab\Application\SemartHris\Repository\EmployeeRepository', '@KejawenLab\Application\SemartHris\Repository\PlacementRepository']
 
     KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService:
         arguments:
@@ -54,10 +50,30 @@ services:
         arguments:
             - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
 
-    KejawenLab\Application\SemartHris\Component\Employee\Service\EmployeeSupervisorChecker:
+    KejawenLab\Application\SemartHris\Component\Employee\Service\SupervisorChecker:
 
     KejawenLab\Application\SemartHris\Security\Voter\SupervisorVoter:
         arguments:
-            - '@KejawenLab\Application\SemartHris\Component\Employee\Service\EmployeeSupervisorChecker'
+            - '@KejawenLab\Application\SemartHris\Component\Employee\Service\SupervisorChecker'
         tags:
             { name: 'security.voter' }
+
+    KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeChecker:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
+
+    KejawenLab\Application\SemartHris\Component\Overtime\Calculator\HolidayCalculator:
+        tags:
+            { name: 'semarthris.overtime_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Overtime\Calculator\WorkdayCalculator:
+        tags:
+            { name: 'semarthris.overtime_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator:
+
+    KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeChecker'
+            - '@KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator'
+            - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'

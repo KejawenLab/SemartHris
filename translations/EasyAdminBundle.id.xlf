@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- generic actions displayed on buttons and links -->
+            <trans-unit id="action.new">
+                <source>action.new</source>
+                <target>Tambah Baru</target>
+            </trans-unit>
+            <trans-unit id="action.show">
+                <source>action.show</source>
+                <target>Tampilkan</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="action.search">
+                <source>action.search</source>
+                <target>Cari</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Hapus</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Simpan</target>
+            </trans-unit>
+            <trans-unit id="action.cancel">
+                <source>action.cancel</source>
+                <target>Batal</target>
+            </trans-unit>
+            <trans-unit id="action.list">
+                <source>action.list</source>
+                <target>Kembali ke list</target>
+            </trans-unit>
+            <trans-unit id="label.form.empty_value">
+                <source>label.form.empty_value</source>
+                <target>---PILIH OPSI---</target>
+            </trans-unit>
+
+            <!-- labels -->
+            <trans-unit id="label.null">
+                <source>label.null</source>
+                <target>TIDAK ADA</target>
+            </trans-unit>
+            <trans-unit id="label.true">
+                <source>label.true</source>
+                <target>ON</target>
+            </trans-unit>
+            <trans-unit id="label.false">
+                <source>label.false</source>
+                <target>OFF</target>
+            </trans-unit>
+            <trans-unit id="label.nullable_field">
+                <source>label.nullable_field</source>
+                <target>Tutup/Buka</target>
+            </trans-unit>
+            <trans-unit id="label.inaccessible">
+                <source>label.inaccessible</source>
+                <target>BELUM DISET</target>
+            </trans-unit>
+            <trans-unit id="label.empty">
+                <source>label.empty</source>
+                <target>BELUM TERSEDIA</target>
+            </trans-unit>
+
+            <!-- modals -->
+            <trans-unit id="delete_modal.action">
+                <source>delete_modal.action</source>
+                <target>Hapus</target>
+            </trans-unit>
+            <trans-unit id="delete_modal.title">
+                <source>delete_modal.title</source>
+                <target>PERINGATAN</target>
+            </trans-unit>
+            <trans-unit id="delete_modal.content">
+                <source>delete_modal.content</source>
+                <target>Anda yakin akan menghapus data ini?</target>
+            </trans-unit>
+            <trans-unit id="form.are_you_sure">
+                <source>form.are_you_sure</source>
+                <target>Inputan Anda belum disimpan, yakin akan diabaikan?</target>
+            </trans-unit>
+
+            <!-- users -->
+            <trans-unit id="user.anonymous">
+                <source>user.anonymous</source>
+                <target>Belum Login</target>
+            </trans-unit>
+            <trans-unit id="user.logged_in_as">
+                <source>user.logged_in_as</source>
+                <target>Masuk sebagai</target>
+            </trans-unit>
+            <trans-unit id="user.unnamed">
+                <source>user.unnamed</source>
+                <target>TANPA NAMA</target>
+            </trans-unit>
+            <trans-unit id="user.signout">
+                <source>user.signout</source>
+                <target>Keluar</target>
+            </trans-unit>
+
+            <!-- grids -->
+            <trans-unit id="list.row_actions">
+                <source>list.row_actions</source>
+                <target>Pilihan</target>
+            </trans-unit>
+            <trans-unit id="search.no_results">
+                <source>search.no_results</source>
+                <target>Tidak ada data yang ditampilkan</target>
+            </trans-unit>
+
+            <!-- forms -->
+            <trans-unit id="form.label.collections">
+                <!-- don't change this "translation" -->
+                <source>__name__label__</source>
+                <target>__name__label__</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

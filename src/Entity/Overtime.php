@@ -109,8 +109,6 @@ class Overtime implements OvertimeInterface
      *
      * @ORM\Column(type="float", scale=27, precision=2)
      *
-     * @Assert\NotBlank()
-     *
      * @var float
      */
     private $calculatedValue;
@@ -154,6 +152,7 @@ class Overtime implements OvertimeInterface
 
     public function __construct()
     {
+        $this->calculatedValue = (float) 0;
         $this->holiday = false;
         $this->overday = false;
     }

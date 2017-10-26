@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Validator;
 
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
-use KejawenLab\Application\SemartHris\Component\Job\Service\ValidateMutationService;
+use KejawenLab\Application\SemartHris\Component\Job\Service\ValidateMutation;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ValidatorException;
@@ -23,7 +23,7 @@ class ValidMutationValidator extends ConstraintValidator
             throw new ValidatorException(sprintf('Your class must implements "%s" interface', MutationInterface::class));
         }
 
-        if (!ValidateMutationService::validate($value)) {
+        if (!ValidateMutation::validate($value)) {
             $this->context->buildViolation($constraint->message)->atPath('mutation')->addViolation();
         }
     }

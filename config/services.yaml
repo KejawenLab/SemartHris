@@ -3,6 +3,8 @@
 parameters:
     locale: 'id'
     upload_destination: '%env(UPLOAD_DESTINATION)%'
+    workday_per_week: '%env(WORKDAY_PER_WEEK)%'
+    offday_per_week: '%env(OFFDAY_PER_WEEK)%'
 
 services:
     KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
@@ -13,12 +15,12 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory:
 
-    KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService:
+    KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory'
             - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
 
-    KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistoryService:
+    KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistory:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CareerHistoryRepository'
             - 'KejawenLab\Application\SemartHris\Entity\CareerHistory'
@@ -77,3 +79,4 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeChecker'
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
+            - '%workday_per_week%'

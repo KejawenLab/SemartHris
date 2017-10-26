@@ -81,6 +81,11 @@ interface OvertimeInterface
     public function isHoliday(): bool;
 
     /**
+     * @param bool $holiday
+     */
+    public function setHoliday(bool $holiday): void;
+
+    /**
      * @return bool
      */
     public function isOverday(): bool;

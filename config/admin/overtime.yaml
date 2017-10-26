@@ -35,7 +35,7 @@ easy_admin:
                     - { property: 'overday', label: 'Ganti Tanggal?' }
                     - { property: 'calculatedValue', label: 'Jumlah' }
                     - { property: 'holiday', label: 'Hari Libur?' }
-                    - { property: 'approved', label: 'Disetujui?' }
+                    - { property: 'approved', label: 'Disetujui?', type: 'boolean' }
                     - { property: 'approvedBy', label: 'Disetujui oleh' }
                     - { property: 'description', label: 'Keterangan' }
             list:
@@ -48,5 +48,5 @@ easy_admin:
                     - { property: 'endHour', label: 'Jam Keluar' }
                     - { property: 'overday', label: 'Ganti Tanggal?' }
                     - { property: 'holiday', label: 'Hari Libur?' }
-                    - { property: 'approved', label: 'Disetujui?' }
+                    - { property: 'approved', label: 'Disetujui?', type: 'boolean' }
                     - { property: 'description', label: 'Keterangan' }

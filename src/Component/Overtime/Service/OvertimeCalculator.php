@@ -27,15 +27,22 @@ final class OvertimeCalculator
     private $workshiftRepository;
 
     /**
+     * @var int
+     */
+    private $workDay;
+
+    /**
      * @param OvertimeChecker              $checker
      * @param Calculator                   $calculator
      * @param WorkshiftRepositoryInterface $repository
+     * @param int                          $workDayPerWeek
      */
-    public function __construct(OvertimeChecker $checker, Calculator $calculator, WorkshiftRepositoryInterface $repository)
+    public function __construct(OvertimeChecker $checker, Calculator $calculator, WorkshiftRepositoryInterface $repository, int $workDayPerWeek)
     {
         $this->checker = $checker;
         $this->calculator = $calculator;
         $this->workshiftRepository = $repository;
+        $this->workDay = $workDayPerWeek;
     }
 
     /**
@@ -57,6 +64,7 @@ final class OvertimeCalculator
         }
 
         $overtime->setShiftment($workshift->getShiftment());
+        $this->calculator->setWorkdayPerWeek($this->workDay);
         $this->calculator->calculate($overtime);
     }
 }

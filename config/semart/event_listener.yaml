@@ -20,7 +20,7 @@ services:
 
     KejawenLab\Application\SemartHris\EventListener\AddCareerHistorySubscriber:
         arguments:
-            - '@KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistoryService'
+            - '@KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistory'
         tags:
             - { name: 'kernel.event_subscriber' }
 
@@ -37,13 +37,20 @@ services:
 
     KejawenLab\Application\SemartHris\EventListener\MarkUsedContractSubscriber:
         arguments:
-            - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService'
+            - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract'
         tags:
             - { name: 'kernel.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\AttendanceCalculatorSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
+    KejawenLab\Application\SemartHris\EventListener\OvertimeCalculatorSubscriber:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
+            - '%offday_per_week%'
         tags:
             - { name: 'kernel.event_subscriber' }
 

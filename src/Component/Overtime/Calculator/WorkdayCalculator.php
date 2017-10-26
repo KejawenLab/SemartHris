@@ -6,6 +6,8 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ *
+ * @see https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur
  */
 class WorkdayCalculator extends Calculator
 {
@@ -23,12 +25,7 @@ class WorkdayCalculator extends Calculator
         $calculatedValue = 1.5 * 1;
         --$hours;
         if (0 < $hours) {
-            $calculatedValue += (2 * $hours); //2 hours in second, multiply with 2
-            $hours -= 2;
-        }
-
-        if (0 < $hours) {
-            $calculatedValue += (3 * $hours); //Others, multiply with 3
+            $calculatedValue += (2 * $hours); //Others, multiply with 2
         }
 
         $overtime->setCalculatedValue($calculatedValue);

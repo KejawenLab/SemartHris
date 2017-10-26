@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class OvertimeCalculator implements OvertimeCalculatorInterface
+class OvertimeCalculator extends Calculator implements OvertimeCalculatorInterface
 {
     const SEMARTHRIS_OVERTIME_CALCULATOR = 'semarthris.overtime_calculator';
 
@@ -34,6 +34,7 @@ class OvertimeCalculator implements OvertimeCalculatorInterface
     {
         foreach ($this->calculators as $calculator) {
             try {
+                $calculator->setWorkdayPerWeek($this->workday);
                 $calculator->calculate($overtime);
             } catch (CalculatorException $exception) {
                 continue;

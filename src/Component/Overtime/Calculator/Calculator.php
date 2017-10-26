@@ -11,11 +11,24 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface
 abstract class Calculator implements OvertimeCalculatorInterface
 {
     /**
+     * @var int
+     */
+    protected $workday;
+
+    /**
+     * @param int $workday
+     */
+    public function setWorkdayPerWeek(int $workday): void
+    {
+        $this->workday = $workday;
+    }
+
+    /**
      * @param OvertimeInterface $overtime
      *
-     * @return int
+     * @return float
      */
-    protected function getOvertimeHours(OvertimeInterface $overtime): int
+    protected function getOvertimeHours(OvertimeInterface $overtime): float
     {
         /** @var \DateTime $endHour */
         $endHour = $overtime->getEndHour();
@@ -26,10 +39,37 @@ abstract class Calculator implements OvertimeCalculatorInterface
         $delta = $overtime->getEndHour()->diff($overtime->getStartHour(), true);
         $hours = $delta->h;
         $minutes = $delta->i;
-        if (45 >= $minutes) {//More than 45 minutes count as 1 hour
-            ++$hours;
+        if (15 < $minutes) {//Minute adjustment
+            if (15 < $minutes && 45 >= $minutes) {
+                $hours += 0.5;
+            } else {
+                ++$hours;
+            }
         }
 
-        return $hours;
+        return $this->breakSub((float) $hours);
+    }
+
+    /**
+     * @param float $hours
+     *
+     * @return float
+     */
+    private function breakSub(float $hours): float
+    {
+        $realHours = $hours;
+        $flag = true;
+        while ($flag) {
+            if (4 <= $hours) {
+                $realHours -= 0.5;
+                $hours -= 4;
+
+                $this->breakSub($hours);
+            } else {
+                $flag = false;
+            }
+        }
+
+        return $realHours;
     }
 }

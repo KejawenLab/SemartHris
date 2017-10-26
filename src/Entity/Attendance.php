@@ -12,6 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInter
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
+use KejawenLab\Application\SemartHris\Validator\Constraint\ValidAttendance;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -28,6 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  *
  * @UniqueEntity({"employee", "attendanceDate"})
+ * @ValidAttendance()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *

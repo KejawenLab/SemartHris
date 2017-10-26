@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\EventListener;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
-use KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService;
+use KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -17,14 +17,14 @@ use Symfony\Component\HttpKernel\KernelEvents;
 final class MarkUsedContractSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var CheckContractService
+     * @var CheckContract
      */
     private $checkContractService;
 
     /**
-     * @param CheckContractService $service
+     * @param CheckContract $service
      */
-    public function __construct(CheckContractService $service)
+    public function __construct(CheckContract $service)
     {
         $this->checkContractService = $service;
     }

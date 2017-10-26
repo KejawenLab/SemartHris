@@ -60,6 +60,6 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
      */
     public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? AttendanceInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['employee' => $employee, 'date' => $date]);
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['employee' => $employee, 'attendanceDate' => $date]);
     }
 }

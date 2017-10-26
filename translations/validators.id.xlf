@@ -10,6 +10,10 @@
                 <source>smarthris.same_job</source>
                 <target>Karyawan tidak mengalami perubahan apapun</target>
             </trans-unit>
+            <trans-unit id="smarthris.attendance.invalid_data">
+                <source>smarthris.attendance.invalid_data</source>
+                <target>Data absensi tidak valid</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

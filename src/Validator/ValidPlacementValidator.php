@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Validator;
 
 use KejawenLab\Application\SemartHris\Component\Job\Model\PlacementInterface;
-use KejawenLab\Application\SemartHris\Component\Job\Service\ValidatePlacementService;
+use KejawenLab\Application\SemartHris\Component\Job\Service\ValidatePlacement;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ValidatorException;
@@ -23,7 +23,7 @@ class ValidPlacementValidator extends ConstraintValidator
             throw new ValidatorException(sprintf('Your class must implements "%s" interface', PlacementInterface::class));
         }
 
-        if (!ValidatePlacementService::validate($value)) {
+        if (!ValidatePlacement::validate($value)) {
             $this->context->buildViolation($constraint->message)->atPath('placement')->addViolation();
         }
     }

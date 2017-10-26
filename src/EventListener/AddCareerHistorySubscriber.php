@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\EventListener;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryable;
-use KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistoryService;
+use KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistory;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -17,14 +17,14 @@ use Symfony\Component\HttpKernel\KernelEvents;
 final class AddCareerHistorySubscriber implements EventSubscriberInterface
 {
     /**
-     * @var AddCareerHistoryService
+     * @var AddCareerHistory
      */
     private $addCareerHistoryService;
 
     /**
-     * @param AddCareerHistoryService $service
+     * @param AddCareerHistory $service
      */
-    public function __construct(AddCareerHistoryService $service)
+    public function __construct(AddCareerHistory $service)
     {
         $this->addCareerHistoryService = $service;
     }

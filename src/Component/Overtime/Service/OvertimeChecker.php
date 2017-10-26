@@ -35,8 +35,20 @@ final class OvertimeChecker
             return false;
         }
 
-        if (!$this->attendanceRepository->findByEmployeeAndDate($employee, $overtime->getOvertimeDate())) {
+        if (!$attendance = $this->attendanceRepository->findByEmployeeAndDate($employee, $overtime->getOvertimeDate())) {
             return false;
+        }
+
+        if ($attendance->isAbsent()) {
+            return false;
+        }
+
+        if ($overtime->getStartHour() < $attendance->getCheckIn()) {//When start date less then check in, let me use check in
+            $overtime->setStartHour($attendance->getCheckIn());
+        }
+
+        if ($overtime->getEndHour() > $attendance->getCheckOut()) {//When end date more then check out, let me use check out
+            $overtime->setEndHour($attendance->getCheckOut());
         }
 
         return true;

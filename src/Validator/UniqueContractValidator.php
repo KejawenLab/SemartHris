@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Validator;
 
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
-use KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContractService;
+use KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ValidatorException;
@@ -14,14 +14,14 @@ use Symfony\Component\Validator\Exception\ValidatorException;
 class UniqueContractValidator extends ConstraintValidator
 {
     /**
-     * @var CheckContractService
+     * @var CheckContract
      */
     private $checkContractService;
 
     /**
-     * @param CheckContractService $service
+     * @param CheckContract $service
      */
-    public function __construct(CheckContractService $service)
+    public function __construct(CheckContract $service)
     {
         $this->checkContractService = $service;
     }

@@ -1,8 +1,8 @@
 easy_admin:
     design:
         menu:
-            - label: 'Setting'
-              icon: 'cog'
+            - label: 'Administrator'
+              icon: 'shield'
               children:
                   - { entity: 'User', label: 'User', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Master'

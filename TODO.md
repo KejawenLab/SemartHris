@@ -41,7 +41,9 @@
 - [X] Authentication (Urgent)
 - [ ] Access Control List for All Menu
 - [X] Create Supervisor Voter
-- [ ] Lembur Karyawan
+- [X] Lembur Karyawan
+- [X] Setting jumlah hari kerja per minggu
+- [ ] Batch hari libur berdasarkan jadwal kerja
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

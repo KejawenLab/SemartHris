@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Job\Model\PlacementInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ValidatePlacementService
+final class ValidatePlacement
 {
     /**
      * @param PlacementInterface $placement

@@ -47,6 +47,7 @@ final class AttendanceCalculator
 
             return;
         }
+        $attendance->setReason(null);
 
         $shiftment = $workshift->getShiftment();
         $attendance->setShiftment($shiftment);

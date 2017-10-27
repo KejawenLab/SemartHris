@@ -81,3 +81,7 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
             - '%env(int:SEMART_WORKDAY_PER_WEEK)%'
+
+    KejawenLab\Application\SemartHris\Component\Setting\Setting:
+        arguments:
+            - '%kernel.project_dir%/.env'

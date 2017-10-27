@@ -3,17 +3,19 @@ easy_admin:
         Setting:
             class: 'KejawenLab\Application\SemartHris\Entity\Region'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SettingController'
-            new:
-                title: 'Tambah Setting'
+            disabled_actions: ['show', 'new', 'delete']
+            templates:
+                edit: 'app/setting/edit.html.twig'
+                list: 'app/setting/list.html.twig'
             edit:
-                title: 'Edit Setting'
+                title: 'Edit Konfigurasi'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'key', label: 'Parameter' }
+                    - { property: 'code', label: 'Parameter' }
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'value', label: 'Nilai Parameter' }
+                    - { property: 'id', label: 'Nilai Baru' }
             search:
-                title: 'Setting'
+                title: 'Konfigurasi Aplikasi'
             list:
-                title: 'Setting'
+                title: 'Konfigurasi Aplikasi'

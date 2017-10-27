@@ -38,11 +38,10 @@ final class Setting
     public function save(string $key, string $value): void
     {
         $key = self::getKey($key);
-        if (self::get($key)) {
+        if ($this->isExist($key)) {
             $this->replaceEnv($key, $value);
         } else {
             file_put_contents($this->path, $this->createEnvValue($key, $value), FILE_APPEND);
-            file_put_contents(sprintf('%s.dist', $this->path), $this->createEnvValue($key, $value), FILE_APPEND);
         }
 
         $this->dotEnv->load($this->path);
@@ -54,19 +53,13 @@ final class Setting
     public function remove(string $key): void
     {
         $key = self::getKey($key);
-        $value = self::get($key);
-        if (!$value) {
+        if (!$this->isExist($key)) {
             return;
         }
 
         $env = file_get_contents($this->path);
-        $envDist = file_get_contents(sprintf('%s.dist', $this->path));
-
-        $env = str_replace($this->createEnvValue($key, $value), '', $env);
-        $envDist = str_replace($this->createEnvValue($key, $value), '', $envDist);
-
+        $env = str_replace($this->createEnvValue($key, self::get($key)), '', $env);
         file_put_contents($this->path, $env);
-        file_put_contents(sprintf('%s.dist', $this->path), $envDist);
 
         $this->dotEnv->load($this->path);
     }
@@ -78,7 +71,7 @@ final class Setting
      */
     public static function get(string $key): ? string
     {
-        if ($env = getenv(self::getKey($key))) {
+        if ($env = getenv($key)) {
             return $env;
         }
 
@@ -111,19 +104,36 @@ final class Setting
 
     /**
      * @param string $key
+     * @param bool   $removePrefix
+     *
+     * @return string
+     */
+    public static function getKey(string $key, bool $removePrefix = false): string
+    {
+        $key = StringUtil::uppercase($key);
+        if (false === strpos($key, sprintf('%s', self::SETTING_PREFIX))) {
+            $key = sprintf('%s%s', self::SETTING_PREFIX, $key);
+        }
+
+        if ($removePrefix) {
+            $key = str_replace(self::SETTING_PREFIX, '', $key);
+        }
+
+        return $key;
+    }
+
+    /**
+     * @param string $key
      * @param string $newValue
      */
     private function replaceEnv(string $key, string $newValue): void
     {
         $oldValue = self::get($key);
-        $env = file_get_contents($this->path);
-        $envDist = file_get_contents(sprintf('%s.dist', $this->path));
 
+        $env = file_get_contents($this->path);
         $env = str_replace(sprintf('%s="%s"', $key, $oldValue), sprintf('%s="%s"', $key, $newValue), $env);
-        $envDist = str_replace(sprintf('%s="%s"', $key, $oldValue), sprintf('%s="%s"', $key, $newValue), $envDist);
 
         file_put_contents($this->path, $env);
-        file_put_contents(sprintf('%s.dist', $this->path), $envDist);
     }
 
     /**
@@ -134,25 +144,23 @@ final class Setting
      */
     private function createEnvValue(string $key, string $value): string
     {
-        return sprintf('%s%s="%s"%s', PHP_EOL, $key, $value, PHP_EOL);
+        return sprintf('%s="%s"%s', $key, $value, PHP_EOL);
     }
 
     /**
      * @param string $key
-     * @param bool   $removePrefix
      *
-     * @return string
+     * @return bool
      */
-    private static function getKey(string $key, bool $removePrefix = false): string
+    private function isExist(string $key): bool
     {
-        if (false === strpos($key, sprintf('%s', self::SETTING_PREFIX))) {
-            $key = sprintf('%s%s', self::SETTING_PREFIX, StringUtil::uppercase($key));
+        if (self::get($key)) {
+            $env = file_get_contents($this->path);
+            if (false !== strpos($env, $key)) {
+                return true;
+            }
         }
 
-        if ($removePrefix) {
-            $key = str_replace(self::SETTING_PREFIX, '', $key);
-        }
-
-        return $key;
+        return false;
     }
 }

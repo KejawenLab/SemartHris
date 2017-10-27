@@ -14,5 +14,41 @@
 
 {% block main %}
     {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
-    {{ dump(settings) }}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><span>{{ 'semarthris.setting_key'|trans }}</span></th>
+                    <th><span>{{ 'semarthris.setting_value'|trans }}</span></th>
+                    <th><span>{{ 'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') }}</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in settings %}
+                <tr data-id="{{ key }}">
+                    <td>{{ key }}</td>
+                    {% if key == 'DB_PASSWORD' %}
+                        <td>**********</td>
+                    {% else  %}
+                        <td>{{ value }}</td>
+                    {% endif %}
+                    {% if _list_item_actions|length > 0 %}
+                        {% set _column_label =  'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') %}
+                        <td data-label="{{ _column_label }}" class="actions">
+                            {% block item_actions %}
+                                {{ include('@EasyAdmin/default/includes/_actions.html.twig', {
+                                    actions: _list_item_actions,
+                                    request_parameters: _request_parameters,
+                                    translation_domain: _entity_config.translation_domain,
+                                    trans_parameters: _trans_parameters,
+                                    item_id: key
+                                }, with_context = false) }}
+                            {% endblock item_actions %}
+                        </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock main %}

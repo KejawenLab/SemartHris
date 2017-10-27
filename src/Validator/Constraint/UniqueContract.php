@@ -15,7 +15,7 @@ final class UniqueContract extends Constraint
     /**
      * @var string
      */
-    public $message = 'smarthris.contract.already_used';
+    public $message = 'semarthris.contract.already_used';
 
     /**
      * @return string

@@ -5,7 +5,7 @@ easy_admin:
               icon: 'shield'
               children:
                   - { entity: 'User', label: 'User', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
-                  - { entity: 'Setting', label: 'Setting', icon: 'hand-o-right' }
+                  - { entity: 'Setting', label: 'Konfigurasi', icon: 'hand-o-right' }
             - label: 'Master'
               icon: 'database'
               children:

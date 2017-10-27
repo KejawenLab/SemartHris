@@ -53,7 +53,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @UniqueEntity("identityNumber")
  * @UniqueEntity("email")
  * @UniqueEntity("username")
- * @UniqueEntity("contract", message="smarthris.contract.already_used")
+ * @UniqueEntity("contract", message="semarthris.contract.already_used")
  * @UniqueContract()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")

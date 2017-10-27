@@ -15,7 +15,7 @@ final class ValidAttendance extends Constraint
     /**
      * @var string
      */
-    public $message = 'smarthris.attendance.invalid_data';
+    public $message = 'semarthris.attendance.invalid_data';
 
     /**
      * @return string

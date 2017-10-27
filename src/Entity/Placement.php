@@ -33,7 +33,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @UniqueEntity("contract", message="smarthris.contract.already_used")
+ * @UniqueEntity("contract", message="semarthris.contract.already_used")
  * @UniqueContract()
  * @ValidPlacement()
  *

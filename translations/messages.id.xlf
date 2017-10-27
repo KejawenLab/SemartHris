@@ -47,6 +47,14 @@
                 <source>label.form.empty_value</source>
                 <target>---PILIH OPSI---</target>
             </trans-unit>
+            <trans-unit id="semarthris.setting_key">
+                <source>semarthris.setting_key</source>
+                <target>Parameter</target>
+            </trans-unit>
+            <trans-unit id="semarthris.setting_value">
+                <source>semarthris.setting_value</source>
+                <target>Nilai</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -15,7 +15,7 @@ final class ValidPlacement extends Constraint
     /**
      * @var string
      */
-    public $message = 'smarthris.same_job';
+    public $message = 'semarthris.same_job';
 
     /**
      * @return string

@@ -2,16 +2,16 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="smarthris.contract.already_used">
-                <source>smarthris.contract.already_used</source>
+            <trans-unit id="semarthris.contract.already_used">
+                <source>semarthris.contract.already_used</source>
                 <target>Kontrak telah digunakan</target>
             </trans-unit>
-            <trans-unit id="smarthris.same_job">
-                <source>smarthris.same_job</source>
+            <trans-unit id="semarthris.same_job">
+                <source>semarthris.same_job</source>
                 <target>Karyawan tidak mengalami perubahan apapun</target>
             </trans-unit>
-            <trans-unit id="smarthris.attendance.invalid_data">
-                <source>smarthris.attendance.invalid_data</source>
+            <trans-unit id="semarthris.attendance.invalid_data">
+                <source>semarthris.attendance.invalid_data</source>
                 <target>Data absensi tidak valid</target>
             </trans-unit>
         </body>

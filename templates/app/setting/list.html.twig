@@ -27,7 +27,7 @@
                 {% for key, value in settings %}
                 <tr data-id="{{ key }}">
                     <td>{{ key }}</td>
-                    {% if key == 'DB_PASSWORD' %}
+                    {% if key == 'DB_PASSWORD' or key == 'APP_DEFAULT_PASSWORD'%}
                         <td>**********</td>
                     {% else  %}
                         <td>{{ value }}</td>

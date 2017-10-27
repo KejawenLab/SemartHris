@@ -12,7 +12,7 @@ easy_admin:
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'code', label: 'Parameter' }
+                    - { property: 'code', label: 'Parameter', type_options: { attr: { readonly: true } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'id', label: 'Nilai Baru' }
             search:

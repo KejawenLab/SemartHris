@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        Setting:
+            class: 'KejawenLab\Application\SemartHris\Entity\Region'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SettingController'
+            new:
+                title: 'Tambah Setting'
+            edit:
+                title: 'Edit Setting'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'key', label: 'Parameter' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'value', label: 'Nilai Parameter' }
+            search:
+                title: 'Setting'
+            list:
+                title: 'Setting'

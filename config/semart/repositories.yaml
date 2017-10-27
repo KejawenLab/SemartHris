@@ -63,3 +63,7 @@ services:
     KejawenLab\Application\SemartHris\Repository\HolidayRepository:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Holiday']]
+
+    KejawenLab\Application\SemartHris\Repository\OvertimeRepository:
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Overtime']]

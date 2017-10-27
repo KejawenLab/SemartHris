@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ShiftmentController extends AdminController
 {
     /**
-     * @Route(path="/shiftment/all", name="all_shiftment", options={"expose"=true})
+     * @Route("/shiftment/all", name="all_shiftment", options={"expose"=true})
      *
      * @return Response
      */

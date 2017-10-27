@@ -2,11 +2,12 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'id'
-    upload_destination: '%env(UPLOAD_DESTINATION)%'
-    workday_per_week: '%env(WORKDAY_PER_WEEK)%'
-    offday_per_week: '%env(OFFDAY_PER_WEEK)%'
 
 services:
+    KejawenLab\Application\SemartHris\Util\FileUtil:
+        arguments:
+            - '%kernel.project_dir%%env(SEMART_UPLOAD_DESTINATION)%'
+
     KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
 
     KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker:
@@ -79,4 +80,4 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeChecker'
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
-            - '%workday_per_week%'
+            - '%env(int:SEMART_WORKDAY_PER_WEEK)%'

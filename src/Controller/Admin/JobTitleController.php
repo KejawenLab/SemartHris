@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class JobTitleController extends AdminController
 {
     /**
-     * @Route(path="/joblevel/{id}/jobtitles", name="jobtitle_by_joblevel", options={"expose"=true})
+     * @Route("/joblevel/{id}/jobtitles", name="jobtitle_by_joblevel", options={"expose"=true})
      *
      * @param string $id
      *

@@ -1,5 +1,5 @@
 easy_admin:
-    site_name: '%env(APP_NAME)%'
+    site_name: '%env(SEMART_APP_NAME)%'
     formats:
         date:     'd-m-Y'
         time:     'H:i'

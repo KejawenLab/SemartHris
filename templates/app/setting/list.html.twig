@@ -1,0 +1,18 @@
+{% extends '@EasyAdmin/default/list.html.twig' %}
+
+{% block content_title %}
+    {% spaceless %}
+        {% if 'search' == app.request.get('action') %}
+            {% set _default_title = 'search.page_title'|trans(_trans_parameters, 'EasyAdminBundle') %}
+            {{ (_entity_config.search.title is defined ? _entity_config.search.title|trans(_trans_parameters, 'EasyAdminBundle') : _default_title)|raw }}
+        {% else %}
+            {% set _default_title = 'list.page_title'|trans(_trans_parameters, 'EasyAdminBundle') %}
+            {{ (_entity_config.list.title is defined ? _entity_config.list.title|trans(_trans_parameters) : _default_title)|raw }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block main %}
+    {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
+    {{ dump(settings) }}
+{% endblock main %}

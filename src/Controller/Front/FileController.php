@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Front;
 
+use KejawenLab\Application\SemartHris\Util\FileUtil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,14 +25,13 @@ final class FileController extends Controller
      */
     public function getFileAction($path)
     {
-        $fullPath = sprintf('%s%s/%s', $this->container->getParameter('kernel.project_dir'), $this->container->getParameter('upload_destination'), $path);
-        $file = file_get_contents($fullPath);
-        if ($file) {
+        $fileUtil = $this->container->get(FileUtil::class);
+        if ($file = $fileUtil->getFile($path)) {
             $response = new Response();
 
             $response->headers->set('Cache-Control', 'private');
-            $response->headers->set('Content-type', mime_content_type($fullPath));
-            $response->headers->set('Content-length', filesize($fullPath));
+            $response->headers->set('Content-type', $fileUtil->getFileSize());
+            $response->headers->set('Content-length', $fileUtil->getFileSize());
 
             $response->sendHeaders();
             $response->setContent($file);

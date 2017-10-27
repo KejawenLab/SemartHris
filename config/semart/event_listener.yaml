@@ -10,7 +10,7 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService'
             - '@KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator'
-            - '%env(APP_DEFAULT_PASSWORD)%'
+            - '%env(SEMART_APP_DEFAULT_PASSWORD)%'
         tags:
             - { name: 'kernel.event_subscriber' }
 
@@ -50,7 +50,7 @@ services:
     KejawenLab\Application\SemartHris\EventListener\OvertimeCalculatorSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
-            - '%offday_per_week%'
+            - '%env(SEMART_OFFDAY_PER_WEEK)%'
         tags:
             - { name: 'kernel.event_subscriber' }
 

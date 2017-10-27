@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DepartmentController extends AdminController
 {
     /**
-     * @Route(path="/company/{id}/departments", name="department_by_company", options={"expose"=true})
+     * @Route("/company/{id}/departments", name="department_by_company", options={"expose"=true})
      *
      * @param string $id
      *

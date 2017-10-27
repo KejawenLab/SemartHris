@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EmployeeAddressController extends AdminController
 {
     /**
-     * @Route(path="/employee/address", name="employee_address")
+     * @Route("/employee/address", name="employee_address")
      *
      * @param Request $request
      *

@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ContractController extends AdminController
 {
     /**
-     * @Route(path="/contract/tags", name="contract_tags", options={"expose"=true})
+     * @Route("/contract/tags", name="contract_tags", options={"expose"=true})
      *
      * @return Response
      */

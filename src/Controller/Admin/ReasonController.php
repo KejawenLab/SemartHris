@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ReasonController extends AdminController
 {
     /**
-     * @Route(path="/reason/{type}", name="reason_by_type", options={"expose"=true})
+     * @Route("/reason/{type}", name="reason_by_type", options={"expose"=true})
      *
      * @param string $type
      *

@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EmployeeController extends AdminController
 {
     /**
-     * @Route(path="/joblevel/{id}/supervisors", name="supervisor_by_joblevel", options={"expose"=true})
+     * @Route("/joblevel/{id}/supervisors", name="supervisor_by_joblevel", options={"expose"=true})
      *
      * @param string $id
      *
@@ -32,7 +32,7 @@ class EmployeeController extends AdminController
     }
 
     /**
-     * @Route(path="/contract/employee", name="contract_employee", options={"expose"=true})
+     * @Route("/contract/employee", name="contract_employee", options={"expose"=true})
      *
      * @return Response
      */

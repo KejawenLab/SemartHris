@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CompanyController extends AdminController
 {
     /**
-     * @Route(path="/company/all", name="all_company", options={"expose"=true})
+     * @Route("/company/all", name="all_company", options={"expose"=true})
      *
      * @return Response
      */

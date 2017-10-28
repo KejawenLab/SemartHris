@@ -24,7 +24,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Manajemen Kontrak Kerja
 - [X] Manajemen Kontrak Perusahaan dengan Rekanan/Klien
 - [X] Karir History
-- [X] Promosi, Mutasi dan Demosi
+- [X] Promosi, Mutasi, dan Demosi
 - [X] Manajemen Shift Kerja
 - [X] Manajemen Jadwal Kerja
 - [X] Manajemen Absensi
@@ -32,7 +32,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Manajemen Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
 - [X] Backend Site and API sekaligus
 - [X] Soft Delete (Data tidak benar-benar dihapus)
-- [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)
+- [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, dan DeletedAt)
 
 ## Cara Install
 

@@ -32,11 +32,13 @@ abstract class Calculator implements OvertimeCalculatorInterface
     {
         /** @var \DateTime $endHour */
         $endHour = $overtime->getEndHour();
-        if ($overtime->isOverday()) {
+        $startHour = $overtime->getStartHour();
+        if ($endHour < $startHour) {
             $endHour->add(new \DateInterval('P1D'));
+            $overtime->setOverday(true);
         }
 
-        $delta = $overtime->getEndHour()->diff($overtime->getStartHour(), true);
+        $delta = $overtime->getEndHour()->diff($startHour, true);
         $hours = $delta->h;
         $minutes = $delta->i;
         if (15 < $minutes) {//Minute adjustment

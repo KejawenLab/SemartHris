@@ -91,6 +91,11 @@ interface OvertimeInterface
     public function isOverday(): bool;
 
     /**
+     * @param bool $overday
+     */
+    public function setOverday(bool $overday): void;
+
+    /**
      * @return bool
      */
     public function isApproved(): bool;

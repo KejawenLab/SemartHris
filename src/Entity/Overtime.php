@@ -123,7 +123,7 @@ class Overtime implements OvertimeInterface
     private $holiday;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"read"})
      *
      * @ORM\Column(type="boolean")
      *

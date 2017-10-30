@@ -43,7 +43,7 @@
 - [X] Create Supervisor Voter
 - [X] Lembur Karyawan
 - [X] Setting jumlah hari kerja per minggu
-- [ ] Setting Management
+- [X] Setting Management
 - [ ] Batch hari libur berdasarkan jadwal kerja
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist

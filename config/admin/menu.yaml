@@ -46,6 +46,10 @@ easy_admin:
               icon: 'envelope-o'
               children:
                   - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+            - label: 'Penggajian'
+              icon: 'money'
+              children:
+                  - { entity: 'Component', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
               icon: 'id-card-o'
               children:

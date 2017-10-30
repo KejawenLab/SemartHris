@@ -21,4 +21,14 @@ interface ComponentInterface
      * @return string
      */
     public function getName(): string;
+
+    /**
+     * @return string
+     */
+    public function getState(): string;
+
+    /**
+     * @return bool
+     */
+    public function isFixed(): bool;
 }

@@ -18,12 +18,12 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'type', type: 'hidden', type_options: { data: 'l' } }
                     - { property: 'type_text', label: 'Jenis Alasan', type: 'choice', type_options: { disabled: true, mapped: false, attr: { class: 'static-select' }, data: 'l', choices: { CUTI: 'l' } } }
-                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
                     - { property: 'code', label: 'Kode Alasan' }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Alasan' }
             show:
-                title: 'Detil Cuti'
+                title: 'Detil Alasan Cuti'
                 fields:
                     - { property: 'type', label: 'Jenis Alasan' }
                     - { property: 'code', label: 'Kode Alasan' }

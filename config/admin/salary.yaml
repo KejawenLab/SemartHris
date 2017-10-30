@@ -1,0 +1,31 @@
+easy_admin:
+    entities:
+        Component:
+            class: 'KejawenLab\Application\SemartHris\Entity\Component'
+            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            disabled_actions: ['show']
+            templates:
+                new: 'app/reason/new.html.twig'
+                edit: 'app/reason/edit.html.twig'
+            new:
+                title: 'Tambah Komponen Gaji'
+            edit:
+                title: 'Edit Komponen Gaji'
+            search:
+                title: 'Komponen Gaji'
+                fields: ['code', 'name']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'code', label: 'Kode Komponen Gaji' }
+                    - { property: 'state', label: 'Tipe', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'TUNJANGAN': 'p', 'POTONGAN': 'm' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'name', label: 'Komponen Gaji' }
+                    - { property: 'fixed', label: 'Tunjangan/Potongan Tetap?' }
+            list:
+                title: 'Komponen Gaji'
+                fields:
+                    - { property: 'code', label: 'Kode Komponen' }
+                    - { property: 'state_text', label: 'Tipe Komponen' }
+                    - { property: 'name', label: 'Komponen Gaji' }
+                    - { property: 'fixed', label: 'Tetap?' }

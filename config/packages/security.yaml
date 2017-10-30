@@ -31,11 +31,6 @@ security:
                 path: logout
                 target: easyadmin
             anonymous:    true
-#            guard:
-#                authenticators:
-#                    - KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
-#                    - KejawenLab\Application\SemartHris\Security\Authentication\ApiKeyAuthenticator
-#                entry_point: KejawenLab\Application\SemartHris\Security\Authentication\UsernamePasswordAuthenticator
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -44,4 +39,4 @@ security:
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_EMPLOYEE }
+#        - { path: ^/admin/, role: ROLE_EMPLOYEE }

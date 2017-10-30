@@ -38,7 +38,15 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 
 - [X] Clone/Download Repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
 - [X] Jalankan [Composer](https://getcomposer.org/download) Install/Update `composer update --prefer-dist -vvv`
-- [X] Setup koneksi database pada `.env` menggunakan format URL yaitu: `<PROTOCOL>://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE>`
+- [X] Setup koneksi database pada `.env`
+```bash
+  SEMART_DB_DRIVER="mysql"
+  SEMART_DB_USER="root"
+  SEMART_DB_PASSWORD="password"
+  SEMART_DB_HOST="127.0.0.1"
+  SEMART_DB_PORT="3306"
+  SEMART_DB_NAME="semarthris"
+```
 - [X] Jalankan perintah `php bin/console doctrine:database:crate` untuk membuat database
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `make serve` untuk mengaktifkan web server

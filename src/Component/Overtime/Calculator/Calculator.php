@@ -36,6 +36,8 @@ abstract class Calculator implements OvertimeCalculatorInterface
         if ($endHour < $startHour) {
             $endHour->add(new \DateInterval('P1D'));
             $overtime->setOverday(true);
+        } else {
+            $overtime->setOverday(false);
         }
 
         $delta = $overtime->getEndHour()->diff($startHour, true);

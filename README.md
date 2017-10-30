@@ -15,31 +15,31 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 
 ## Fitur
 
-- [X] Menejemen Perusahaan
-- [X] Suport Multi Perusahaan
-- [X] Menejemen Jabatan
-- [X] Menejemen Karyawan
+- [X] Manajemen Perusahaan
+- [X] Support Multi Perusahaan
+- [X] Manajemen Jabatan
+- [X] Manajemen Karyawan
 - [X] Support Multi Alamat
 - [X] Support Penempatan Karyawan
-- [X] Menejemen Kontrak Kerja
-- [X] Menejemen Kontrak Perusahaan dengan Rekanan/Klien
+- [X] Manajemen Kontrak Kerja
+- [X] Manajemen Kontrak Perusahaan dengan Rekanan/Klien
 - [X] Karir History
-- [X] Promosi, Mutasi dan Demosi
-- [X] Menejemen Shift Kerja
-- [X] Menejemen Jadwal Kerja
-- [X] Menejemen Absensi
-- [X] Menejemen Hari Libur
-- [X] Menejemen Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
-- [X] Backend Site and API Sekaligus
+- [X] Promosi, Mutasi, dan Demosi
+- [X] Manajemen Shift Kerja
+- [X] Manajemen Jadwal Kerja
+- [X] Manajemen Absensi
+- [X] Manajemen Hari Libur
+- [X] Manajemen Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
+- [X] Backend Site and API sekaligus
 - [X] Soft Delete (Data tidak benar-benar dihapus)
-- [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy dan DeletedAt)
+- [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, dan DeletedAt)
 
 ## Cara Install
 
-- [X] Clone/Download Repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
+- [X] Clone/Download repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
 - [X] Jalankan [Composer](https://getcomposer.org/download) Install/Update `composer update --prefer-dist -vvv`
 - [X] Setup koneksi database pada `.env` menggunakan format URL yaitu: `<PROTOCOL>://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE>`
-- [X] Jalankan perintah `php bin/console doctrine:database:crate` untuk membuat database
+- [X] Jalankan perintah `php bin/console doctrine:database:create` untuk membuat database
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `make serve` untuk mengaktifkan web server
 - [X] Buka halaman `<HOST>:<PORT>/admin` untuk halaman admin
@@ -48,11 +48,11 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 ## Kontributor
 
 Proyek ini dikembangkan oleh [Muhamad Surya Iksanudin](https://github.com/ad3n) dan para [kontributor](https://github.com/KejawenLab/SemartHris/graphs/contributors)
-untuk [KejawenLab](https://github.com/KejawenLab)
+untuk [KejawenLab](https://github.com/KejawenLab).
 
 ## Lisensi
 
-Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) &copy; Muhamad Surya Iksanudin. 
+Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) &copy; Muhamad Surya Iksanudin.
 Pastikan Anda memahami kewajiban dan hak Anda sebelum Anda memutuskan untuk menggunakan software ini.
 
 ## Preview

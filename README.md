@@ -39,7 +39,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Clone/Download repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
 - [X] Jalankan [Composer](https://getcomposer.org/download) Install/Update `composer update --prefer-dist -vvv`
 - [X] Setup koneksi database pada `.env`
-```bash
+```lang=bash
   SEMART_DB_DRIVER="mysql"
   SEMART_DB_USER="root"
   SEMART_DB_PASSWORD="password"
@@ -57,6 +57,14 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 
 Proyek ini dikembangkan oleh [Muhamad Surya Iksanudin](https://github.com/ad3n) dan para [kontributor](https://github.com/KejawenLab/SemartHris/graphs/contributors)
 untuk [KejawenLab](https://github.com/KejawenLab).
+
+## TODO
+
+Untuk apa saja yang sudah dan belum dikerjakan bisa melihat [TODO LIST](TODO.md)
+
+## ROADMAP
+
+Untuk mengetahui roadmap dari aplikasi SemartHRIS bisa melihat [ROADMAP](ROADMAP.md)
 
 ## Lisensi
 

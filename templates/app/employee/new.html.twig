@@ -25,8 +25,8 @@
     <script type="text/javascript">
         $(function() {
             var locale = '{{ _select2_locale }}';
-            var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
-            var btnFile = '{{ 'label.form.avatar_chooser' | trans({'translation_domain': 'messages'}) }}';
+            var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
+            var btnFile = '{{ 'label.form.avatar_chooser' | trans({}, 'messages') }}';
 
             change_file_chooser(btnFile, 'fa fa-photo');
             change_static_select(locale);

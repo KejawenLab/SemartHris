@@ -31,12 +31,16 @@
     <div class="row">
         <div class="col-sm-5">
             {% block content_title_wrapper %}
-                <h1 class="title">{{ 'label.attendance.preview_upload' | trans({'translation_domain': 'messages'}) }}</h1>
+                <h1 class="title">{{ 'label.attendance.preview_upload' | trans({}, 'messages') }}</h1>
             {% endblock %}
         </div>
 
         <div class="col-sm-7">
-            <div class="global-actions"></div>
+            <div class="global-actions">
+                <form method="post" action="{{ path('process_upload_attendance') }}">
+                    <button class="btn btn-primary pull-right" type="submit"><i class="fa fa-cogs"></i> {{ 'label.attendance.process_action' | trans({}, 'messages') }}</button>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock content_header %}
@@ -44,24 +48,17 @@
 {% block main %}
     {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
 
-    <div class="row">
-        <div class="col-sm-12">
-            <form method="post" action="{{ path('process_attendance') }}">
-                <button class="btn btn-primary pull-right" type="submit"><i class="fa fa-cogs"></i> {{ 'label.attendance.process_action' | trans({'translation_domain': 'messages'}) }}</button>
-            </form>
-        </div>
-    </div>
     <div class="row">&nbsp;</div>
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th><span>{{ 'semarthris.attendance_date' | trans({'translation_domain': 'messages'}) }}</span></th>
-                    <th><span>{{ 'semarthris.attendance_employee' | trans({'translation_domain': 'messages'}) }}</span></th>
-                    <th><span>{{ 'semarthris.attendance_check_in' | trans({'translation_domain': 'messages'}) }}</span></th>
-                    <th><span>{{ 'semarthris.attendance_check_out' | trans({'translation_domain': 'messages'}) }}</span></th>
-                    <th><span>{{ 'semarthris.attendance_absent' | trans({'translation_domain': 'messages'}) }}</span></th>
-                    <th><span>{{ 'semarthris.attendance_absent_reason' | trans({'translation_domain': 'messages'}) }}</span></th>
+                    <th><span>{{ 'semarthris.attendance_date' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.attendance_employee' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.attendance_check_in' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.attendance_check_out' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.attendance_absent' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.attendance_absent_reason' | trans({}, 'messages') }}</span></th>
                 </tr>
             </thead>
             <tbody>
@@ -72,20 +69,20 @@
                         <td>{{ attendance.employee }}</td>
                         {% if true == attendance.absent %}
                             <td>
-                                <span class="label">{{ 'label.null' | trans({'translation_domain': 'messages'}) }}</span>
+                                <span class="label">{{ 'label.null' | trans({}, 'EasyAdminBundle') }}</span>
                             </td>
                             <td>
-                                <span class="label">{{ 'label.null' | trans({'translation_domain': 'messages'}) }}</span>
+                                <span class="label">{{ 'label.null' | trans({}, 'EasyAdminBundle') }}</span>
                             </td>
                             <td>
-                                <span class="label label-success">{{ 'label.true' | trans({'translation_domain': 'messages'}) }}</span>
+                                <span class="label label-success">{{ 'label.true' | trans({}, 'EasyAdminBundle') }}</span>
                             </td>
                         {% else %}
 
                             <td>{{ attendance.checkIn | date('H:i') }}</td>
                             <td>{{ attendance.checkOut | date('H:i') }}</td>
                             <td>
-                                <span class="label label-danger">{{ 'label.false' | trans({'translation_domain': 'messages'}) }}</span>
+                                <span class="label label-danger">{{ 'label.false' | trans({}, 'EasyAdminBundle') }}</span>
                             </td>
                         {% endif %}
                         <td>{{ attendance.reason }}</td>

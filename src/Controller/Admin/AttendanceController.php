@@ -11,6 +11,7 @@ use League\Csv\Reader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -54,14 +55,14 @@ class AttendanceController extends AdminController
     }
 
     /**
-     * @Route("/attendance/process", name="process_attendance")
+     * @Route("/attendance/process_upload", name="process_upload_attendance")
      * @Method("POST")
      *
      * @param Request $request
      *
      * @return Response
      */
-    public function processAction(Request $request)
+    public function processUploadAction(Request $request)
     {
         /** @var Reader $processor */
         $processor = Reader::createFromPath($request->getSession()->get(self::ATTENDANCE_UPLOAD_SESSION));
@@ -76,6 +77,17 @@ class AttendanceController extends AdminController
             'sortDirection' => 'DESC',
             'entity' => 'Attendance',
         ));
+    }
+
+    /**
+     * @Route("/attendance/process", name="process_attendance", options={"expose"=true})
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function processAction()
+    {
+        return new JsonResponse(['message' => 'OK']);
     }
 
     /**

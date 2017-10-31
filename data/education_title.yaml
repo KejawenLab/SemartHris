@@ -1,0 +1,7 @@
+- { short_name: 'S.Kom', name: 'Sarjana Komputer' }
+- { short_name: 'S.T', name: 'Sarjana Teknik' }
+- { short_name: 'S.Sos', name: 'Sarjana Sosial' }
+- { short_name: 'S.Ag', name: 'Sarjana Agama' }
+- { short_name: 'S.Pd', name: 'Sarjana Pendidikan' }
+- { short_name: 'S.H', name: 'Sarjana Hukum' }
+- { short_name: 'S.E', name: 'Sarjana Ekonomi' }

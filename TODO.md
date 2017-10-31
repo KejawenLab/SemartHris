@@ -44,7 +44,8 @@
 - [X] Lembur Karyawan
 - [X] Setting jumlah hari kerja per minggu
 - [X] Setting Management
-- [ ] Batch hari libur berdasarkan jadwal kerja
+- [X] Proses Absensi
+- [ ] Penggajian
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

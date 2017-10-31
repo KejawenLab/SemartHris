@@ -33,11 +33,11 @@ final class RemoveJobTitleTextFieldSubscriber implements EventSubscriberInterfac
         $form = $event->getForm();
         $data = $event->getData();
 
-        if (array_key_exists('jobTitle', $data) && $this->jobTitleRepository->find($data['jobTitle'])) {
+        if (isset($data['jobTitle']) && $this->jobTitleRepository->find($data['jobTitle'])) {
             $form->remove('jobtitle_text');
         }
 
-        if (array_key_exists('newJobTitle', $data) && $this->jobTitleRepository->find($data['newJobTitle'])) {
+        if (isset($data['newJobTitle']) && $this->jobTitleRepository->find($data['newJobTitle'])) {
             $form->remove('new_jobtitle_text');
         }
     }

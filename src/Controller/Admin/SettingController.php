@@ -90,7 +90,7 @@ class SettingController extends AdminController
             return;
         }
 
-        if (!array_key_exists($entityName, $this->config['entities'])) {
+        if (!isset($this->config['entities'][$entityName])) {
             throw new UndefinedEntityException(array('entity_name' => $entityName));
         }
 

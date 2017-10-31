@@ -1,0 +1,18 @@
+- { region: 'ref:region#DKI', code: 'JAKUT', name: 'KOTA JAKARTA UTARA' }
+- { region: 'ref:region#DKI', code: 'JAKPUS', name: 'KOTA JAKARTA PUSAT' }
+- { region: 'ref:region#DKI', code: 'JAKBAR', name: 'KOTA JAKARTA BARAT' }
+- { region: 'ref:region#DKI', code: 'JAKTIM', name: 'KOTA JAKARTA TIMUR' }
+- { region: 'ref:region#DKI', code: 'JAKSEL', name: 'KOTA JAKARTA SELATAN' }
+- { region: 'ref:region#DKI', code: 'KEPSE', name: 'KOTA ADMINISTRASI KEPULAUAN SERIBU' }
+- { region: 'ref:region#JABAR', code: 'BGRKOT', name: 'KOTA BOGOR' }
+- { region: 'ref:region#JABAR', code: 'BGRKAB', name: 'KABUPATEN BOGOR' }
+- { region: 'ref:region#JABAR', code: 'BDGKOT', name: 'KOTA BANDUNG' }
+- { region: 'ref:region#JABAR', code: 'BDGKAB', name: 'KABUPATEN BANDUNG' }
+- { region: 'ref:region#JABAR', code: 'BKSKOT', name: 'KOTA BEKASI' }
+- { region: 'ref:region#JABAR', code: 'BKSKAB', name: 'KABUPATEN BEKASI' }
+- { region: 'ref:region#JATENG', code: 'SMGKOT', name: 'KOTA SEMARANG' }
+- { region: 'ref:region#JATENG', code: 'SMGKAB', name: 'KABUPATEN SEMARANG' }
+- { region: 'ref:region#JATENG', code: 'PKLKAB', name: 'KABUPATEN PEKALONGAN' }
+- { region: 'ref:region#JATENG', code: 'TGLKOT', name: 'KOTA TEGAL' }
+- { region: 'ref:region#JATENG', code: 'TGLKAB', name: 'KABUPATEN TEGAL' }
+- { region: 'ref:region#JATENG', code: 'PMLKAB', name: 'KABUPATEN PEMALANG' }

@@ -79,6 +79,16 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     }
 
     /**
+     * @param string $code
+     *
+     * @return EmployeeInterface|null
+     */
+    public function findByCode(string $code): ? EmployeeInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['code' => StringUtil::uppercase($code)]);
+    }
+
+    /**
      * @param string $username
      *
      * @return bool

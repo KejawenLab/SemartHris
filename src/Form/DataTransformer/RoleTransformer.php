@@ -16,7 +16,7 @@ final class RoleTransformer implements DataTransformerInterface
      */
     public function transform($roles): string
     {
-        if (is_array($roles) && array_key_exists(0, $roles)) {
+        if (is_array($roles) && isset($roles[0])) {
             return $roles[0];
         }
 

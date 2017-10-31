@@ -79,7 +79,7 @@ easy_admin:
             disabled_actions: ['search']
             templates:
                 new: 'app/attendance/new.html.twig'
-                list: 'app/workshift/list.html.twig'
+                list: 'app/attendance/list.html.twig'
                 edit: 'app/attendance/edit.html.twig'
             new:
                 title: 'Tambah Presensi'

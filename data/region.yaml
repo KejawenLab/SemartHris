@@ -1,0 +1,5 @@
+- { code: 'DKI', name: 'DKI JAKARTA', ref: 'dki' }
+- { code: 'JABAR', name: 'JAWA BARAT', ref: 'jabar' }
+- { code: 'JATENG', name: 'JAWA TENGAH', ref: 'jateng' }
+- { code: 'JATIM', name: 'JAWA TIMUR', ref: 'jatim' }
+- { code: 'DIY', name: 'DI YOGYAKARTA', ref: 'diy' }

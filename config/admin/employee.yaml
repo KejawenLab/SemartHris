@@ -32,7 +32,7 @@ easy_admin:
                     - { property: 'taxGroup', label: 'Kode Pajak', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', TK0: 'tk0', TK1: 'tk1', TK2: 'tk2', TK3: 'tk3', K0: 'k0', K1: 'k1', K2: 'k2', K3: 'k3', KI0: 'ki0', KI1: 'ki1', KI2: 'ki2', KI3: 'ki3' } } }
                     - { property: 'haveOvertimeBenefit', label: 'Berhak Lembur?', type_options: { required: false } }
                     - { type: 'group', icon: 'id-card-o', label: 'Foto Profil', css_class: 'col-sm-6' }
-                    - { property: 'imageFile', type: 'vich_image' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { attr: { accept: '.jpg, .png, jpeg' } } }
                     - { type: 'group', icon: 'id-card-o', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
                     - { property: 'employeeStatus', label: 'Status Karyawan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KARYAWAN TETAP': 'p', 'KARYAWAN KONTRAK': 't', 'KARYAWAN OUTSOURCE': 'o', 'KARYAWAN MAGANG': 'i' } } }
                     - { property: 'employee_status_text', label: 'Status Karyawan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }

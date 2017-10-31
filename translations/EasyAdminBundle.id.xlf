@@ -111,6 +111,26 @@
                 <source>search.no_results</source>
                 <target>Tidak ada data yang ditampilkan</target>
             </trans-unit>
+            <trans-unit id="paginator.first">
+                <source>paginator.first</source>
+                <target>Halaman depan</target>
+            </trans-unit>
+            <trans-unit id="paginator.previous">
+                <source>paginator.previous</source>
+                <target>Sebelumnya</target>
+            </trans-unit>
+            <trans-unit id="paginator.next">
+                <source>paginator.next</source>
+                <target>Selanjutnya</target>
+            </trans-unit>
+            <trans-unit id="paginator.last">
+                <source>paginator.last</source>
+                <target>Terakhir</target>
+            </trans-unit>
+            <trans-unit id="paginator.counter">
+                <source>paginator.counter</source>
+                <target><![CDATA[<strong>%start%</strong> - <strong>%end%</strong> dari <strong>%results%</strong>]]></target>
+            </trans-unit>
 
             <!-- forms -->
             <trans-unit id="form.label.collections">

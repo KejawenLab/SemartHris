@@ -22,4 +22,11 @@ interface ReasonRepositoryInterface
      * @return ReasonInterface[]
      */
     public function findByType(string $type): array;
+
+    /**
+     * @param string $code
+     *
+     * @return ReasonInterface|null
+     */
+    public function findByCode(string $code): ? ReasonInterface;
 }

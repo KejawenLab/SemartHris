@@ -36,7 +36,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-5 new-row">
+                            <div class="col-xs-12 col-sm-6 new-row">
                                 <div class="form-group">
                                     <label class="control-label" for="shiftment">Pilih Shift</label>
                                     <select id="shiftment" name="shiftment" class="static-select shiftment-select">
@@ -53,10 +53,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-xs-1">
                                 <div class="form-group field-date">
-                                    <label class="control-label" for="endDate">&nbsp;</label>
-                                    <button name="fileter" id="filter" class="btn btn-primary form-control"><i class="fa fa-television"></i> Filter</button>
+                                    <label class="control-label new-row" for="endDate">&nbsp;</label>
+                                    <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit"><i class="fa fa-television"></i> {{ 'label.attendance.filter_action' | trans({}, 'messages') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
     <script type="text/javascript">
         $(function() {
             var locale = '{{ _select2_locale }}';
-            var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
+            var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
 
             change_static_select(locale);
             date_range_picker(locale);

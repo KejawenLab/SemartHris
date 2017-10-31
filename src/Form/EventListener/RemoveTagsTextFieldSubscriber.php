@@ -19,7 +19,7 @@ final class RemoveTagsTextFieldSubscriber implements EventSubscriberInterface, F
         $form = $event->getForm();
         $data = $event->getData();
 
-        if (array_key_exists('tags', $data) && $data['tags']) {
+        if (isset($data['tags']) && $data['tags']) {
             $form->remove('tags_text');
         }
     }

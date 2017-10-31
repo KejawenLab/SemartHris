@@ -4,6 +4,8 @@ namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -33,5 +35,15 @@ class ReasonRepository extends Repository implements ReasonRepositoryInterface
     public function find(string $id): ? ReasonInterface
     {
         return $this->entityManager->getRepository($this->entityClass)->find($id);
+    }
+
+    /**
+     * @param string $code
+     *
+     * @return ReasonInterface|null
+     */
+    public function findByCode(string $code): ? ReasonInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['code' => StringUtil::uppercase($code), 'type' => ReasonType::ABSENT_CODE]);
     }
 }

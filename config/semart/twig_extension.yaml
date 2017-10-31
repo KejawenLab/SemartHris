@@ -1,0 +1,8 @@
+services:
+    KejawenLab\Application\SemartHris\Twig\SemartHrisAttendanceTwigExtension:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
+            - 'KejawenLab\Application\SemartHris\Entity\Attendance'
+        tags:
+            - { name: 'twig.extension' }

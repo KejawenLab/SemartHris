@@ -154,7 +154,10 @@ final class Setting
      */
     private function isExist(string $key): bool
     {
-        if (self::get($key)) {
+        $loadedVars = array_flip(explode(',', getenv('SYMFONY_DOTENV_VARS')));
+        unset($loadedVars['']);
+
+        if (isset($loadedVars[$key])) {
             $env = file_get_contents($this->path);
             if (false !== strpos($env, $key)) {
                 return true;

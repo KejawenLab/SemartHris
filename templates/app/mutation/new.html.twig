@@ -17,7 +17,7 @@
     <script type="text/javascript">
         $(function() {
             var locale = '{{ _select2_locale }}';
-            var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
+            var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
 
             change_static_select(locale);
             employee_contract_autocomplete(locale, emptyText);

@@ -19,13 +19,16 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-filestyle.min.js') }}"></script>
     <script src="{{ asset('js/semart.js') }}"></script>
 
     <script type="text/javascript">
         $(function() {
             var locale = '{{ _select2_locale }}';
-            var emptyText = '{{ 'label.form.empty_value' | trans({'translation_domain': 'messages'}) }}';
+            var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
+            var btnFile = '{{ 'label.form.avatar_chooser' | trans({}, 'messages') }}';
 
+            change_file_chooser(btnFile, 'fa fa-photo');
             change_static_select(locale);
             date_picker(locale);
 

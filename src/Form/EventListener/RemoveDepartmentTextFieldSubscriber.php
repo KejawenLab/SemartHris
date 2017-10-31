@@ -33,11 +33,11 @@ final class RemoveDepartmentTextFieldSubscriber implements EventSubscriberInterf
         $form = $event->getForm();
         $data = $event->getData();
 
-        if (array_key_exists('department', $data) && $this->departmentRepository->find($data['department'])) {
+        if (isset($data['department']) && $this->departmentRepository->find($data['department'])) {
             $form->remove('department_text');
         }
 
-        if (array_key_exists('newDepartment', $data) && $this->departmentRepository->find($data['newDepartment'])) {
+        if (isset($data['newDepartment']) && $this->departmentRepository->find($data['newDepartment'])) {
             $form->remove('new_department_text');
         }
     }

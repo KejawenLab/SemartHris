@@ -48,19 +48,23 @@
             </trans-unit>
             <trans-unit id="label.form.avatar_chooser">
                 <source>label.form.avatar_chooser</source>
-                <target>Pilih Foto</target>
+                <target>Pilih foto</target>
             </trans-unit>
             <trans-unit id="label.form.file_chooser">
                 <source>label.form.file_chooser</source>
-                <target>Impor Absen</target>
+                <target>Pilih file</target>
             </trans-unit>
             <trans-unit id="label.attendance.upload_action">
                 <source>label.attendance.upload_action</source>
                 <target>Upload</target>
             </trans-unit>
+            <trans-unit id="label.attendance.download_template">
+                <source>label.attendance.download_template</source>
+                <target>Download template absen</target>
+            </trans-unit>
             <trans-unit id="label.attendance.process_action">
                 <source>label.attendance.process_action</source>
-                <target>Proses</target>
+                <target>Proses absensi</target>
             </trans-unit>
             <trans-unit id="label.attendance.preview_upload">
                 <source>label.attendance.preview_upload</source>

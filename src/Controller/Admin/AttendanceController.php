@@ -33,13 +33,27 @@ class AttendanceController extends AdminController
     public function uploadAttendanceAction(Request $request): Response
     {
         $this->initialize($request);
+        $this->request = $request;
 
         if (null === $request->request->get('entity')) {
-            return $this->redirectToBackendHomepage();
+            return $this->redirectToRoute('easyadmin', array(
+                'action' => 'list',
+                'sortField' => 'attendanceDate',
+                'sortDirection' => 'DESC',
+                'entity' => 'Attendance',
+            ));
         }
 
         /** @var UploadedFile $attendance */
         $attendance = $request->files->get('attendance');
+        if (null === $attendance) {
+            return $this->redirectToRoute('easyadmin', array(
+                'action' => 'list',
+                'sortField' => 'attendanceDate',
+                'sortDirection' => 'DESC',
+                'entity' => 'Attendance',
+            ));
+        }
 
         $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), Setting::get(Setting::getKey('SEMART_UPLOAD_DESTINATION')), Setting::get(Setting::getKey('SEMART_ATTENDANCE_UPLOAD_PATH')));
         $fileName = sprintf('%s.%s', (new \DateTime())->format('Y_m_d_H_i_s'), $attendance->guessExtension());

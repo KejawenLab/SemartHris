@@ -38,7 +38,7 @@
         <div class="col-sm-7">
             <div class="global-actions">
                 <form method="post" action="{{ path('process_upload_attendance') }}">
-                    <button class="btn btn-primary pull-right" type="submit"><i class="fa fa-cogs"></i> {{ 'label.attendance.process_action' | trans({}, 'messages') }}</button>
+                    <button class="btn btn-danger pull-right" type="submit" title="{{ 'label.attendance.process_action' | trans({}, 'messages') }}"><i class="fa fa-cogs"></i></button>
                 </form>
             </div>
         </div>

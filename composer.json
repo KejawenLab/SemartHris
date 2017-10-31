@@ -17,8 +17,9 @@
         "vich/uploader-bundle": "^1.6"
     },
     "require-dev": {
-        "symfony/flex": "~1.0",
-        "symfony/dotenv": "~3.3"
+        "doctrine/doctrine-fixtures-bundle": "^2.4",
+        "symfony/dotenv": "~3.3",
+        "symfony/flex": "~1.0"
     },
     "config": {
         "preferred-install": {

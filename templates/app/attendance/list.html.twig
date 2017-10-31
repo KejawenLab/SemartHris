@@ -12,10 +12,18 @@
         <form method="post" action="{{ path('upload_attendance') }}" enctype="multipart/form-data">
             <input type="hidden" name="entity" value="{{ _request_parameters.entity }}">
             <div class="input-group">
-            <input type="file" accept=".csv" name="attendance" class="form-control"/>
+                <input type="file" accept=".csv" name="attendance" class="form-control"/>
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-default" type="submit" title="{{ 'label.attendance.upload_action' | trans({}, 'messages') }}">
                         <i class="fa fa-upload"></i>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                    <a class="btn btn-default download" title="{{ 'label.attendance.download_template' | trans({}, 'messages') }}">
+                        <i class="fa fa-download"></i>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </a>
+                    <button class="btn btn-primary process" type="button" title="{{ 'label.attendance.process_action' | trans({}, 'messages') }}">
+                        <i class="fa fa-cogs"></i>
                         <span class="hidden-xs hidden-sm"></span>
                     </button>
                 </span>
@@ -23,13 +31,6 @@
         </form>
     </div>
     {{ parent() }}
-    <div style="margin-left: 3px !important;"></div>
-    <div class="form-action">
-        <button class="btn btn-primary pull-right process" type="submit">
-            <i class="fa fa-cogs"></i>
-            <span class="hidden-xs hidden-sm">{{ 'label.attendance.process_action' | trans({}, 'messages') }}</span>
-        </button>
-    </div>
 {% endblock %}
 
 {% block main %}
@@ -155,6 +156,10 @@
 
             $(document).on('click', '.process', function () {
                $('#modal-process').modal();
+            });
+
+            $(document).on('click', '.download', function () {
+                window.location = '/files/attendances/template.csv?force=1';
             });
 
             $(document).on('click', '.process-attendance', function () {

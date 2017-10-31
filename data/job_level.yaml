@@ -1,0 +1,7 @@
+-  { code: 'KMRS', name: 'KOMISARIS', ref: 'kmrs' }
+-  { code: 'DRT', parent: 'ref:job_level#kmrs', name: 'DIREKTUR', ref: 'drt' }
+-  { code: 'GM', parent: 'ref:job_level#drt', name: 'GENERAL MANAGER', ref: 'gm' }
+-  { code: 'MGR', parent: 'ref:job_level#gm', name: 'MANAGER', ref: 'mgr' }
+-  { code: 'SPV', parent: 'ref:job_level#mgr', name: 'SUPERVISOR', ref: 'spv' }
+-  { code: 'STF', parent: 'ref:job_level#spv', name: 'STAFF', ref: 'stf' }
+-  { code: 'NSTF', parent: 'ref:job_level#stf', name: 'NON STAFF', ref: 'nstf' }

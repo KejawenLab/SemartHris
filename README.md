@@ -49,6 +49,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 ```
 - [X] Jalankan perintah `php bin/console doctrine:database:create` untuk membuat database
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
+- [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data
 - [X] Jalankan perintah `make serve` untuk mengaktifkan web server
 - [X] Buka halaman `<HOST>:<PORT>/admin` untuk halaman admin
 - [X] Buka halaman `<HOST>:<PORT>/api` untuk halaman API
@@ -70,6 +71,21 @@ Untuk mengetahui roadmap dari aplikasi SemartHRIS bisa melihat [ROADMAP](ROADMAP
 
 Proyek ini menggunakan lisensi [Apache License 2.0 (Apache-2.0)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) &copy; Muhamad Surya Iksanudin.
 Pastikan Anda memahami kewajiban dan hak Anda sebelum Anda memutuskan untuk menggunakan software ini.
+
+## Donasi
+
+Untuk mensupport proyek ini, Anda dapat memberikan donasi melalui rekening berikut:
+
+- BCA 607-045-794-4 a/n Muhamad Surya Iksanudin
+- Mandiri 121-00-069-6522-6 a/n Muhamad Surya Iksanudin
+
+## Profesional Support
+
+Bila Anda memerlukan profesional support atau ingin mengadakan kerjasama dengan saya, dapat menghubungi saya melalui:
+
+- Email: [surya.kejawen@gmail.com](mailto:surya.kejawen@gmail.com)
+- WA: 0878-000-939-15
+- FB: [KejawenLab](https://facebook.com/KejawenLab) 
 
 ## Preview
 

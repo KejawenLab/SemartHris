@@ -21,7 +21,7 @@ final class FileController extends Controller
      * @Method({"GET"})
      *
      * @param Request $request
-     * @param string $path
+     * @param string  $path
      *
      * @return Response
      */

@@ -43,6 +43,10 @@ abstract class Fixture extends Base
                         $value = $this->getReference(StringUtil::uppercase(str_replace('ref:', '', $value)));
                     }
 
+                    if (false !== strpos($value, 'date:')) {
+                        $value = \DateTime::createFromFormat('Y-m-d', str_replace('date:', '', $value));
+                    }
+
                     $accessor->setValue($entity, $key, $value);
                 }
             }

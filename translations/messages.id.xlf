@@ -76,7 +76,7 @@
             </trans-unit>
             <trans-unit id="label.attendance.preview_upload">
                 <source>label.attendance.preview_upload</source>
-                <target>Preview Presensi</target>
+                <target>Pratinjau Presensi</target>
             </trans-unit>
             <trans-unit id="semarthris.attendance_date">
                 <source>semarthris.attendance_date</source>

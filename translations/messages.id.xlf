@@ -47,6 +47,18 @@
                 <source>label.form.empty_value</source>
                 <target>---PILIH OPSI---</target>
             </trans-unit>
+            <trans-unit id="label.form.avatar_chooser">
+                <source>label.form.avatar_chooser</source>
+                <target>Pilih Foto</target>
+            </trans-unit>
+            <trans-unit id="label.form.file_chooser">
+                <source>label.form.file_chooser</source>
+                <target>Upload Absen</target>
+            </trans-unit>
+            <trans-unit id="label.attendance.upload_action">
+                <source>label.attendance.upload_action</source>
+                <target>Proses</target>
+            </trans-unit>
             <trans-unit id="semarthris.setting_key">
                 <source>semarthris.setting_key</source>
                 <target>Parameter</target>

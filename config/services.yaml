@@ -48,6 +48,15 @@ services:
     KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
+            - 'KejawenLab\Application\SemartHris\Entity\Workshift'
+
+    KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceImporter:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator'
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
+            - 'KejawenLab\Application\SemartHris\Entity\Attendance'
 
     KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService:
         arguments:

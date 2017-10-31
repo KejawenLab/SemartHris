@@ -68,4 +68,14 @@ final class StringUtil
     {
         return sha1(uniqid($prefix, true));
     }
+
+    /**
+     * @param string $value
+     *
+     * @return string
+     */
+    public static function sanitize(string $value): string
+    {
+        return trim($value);
+    }
 }

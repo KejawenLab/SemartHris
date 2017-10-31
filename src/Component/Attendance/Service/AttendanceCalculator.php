@@ -37,6 +37,9 @@ final class AttendanceCalculator
             return;
         }
 
+        $shiftment = $workshift->getShiftment();
+        $attendance->setShiftment($shiftment);
+
         if ($attendance->isAbsent()) {
             $attendance->setCheckIn(null);
             $attendance->setCheckOut(null);
@@ -48,9 +51,6 @@ final class AttendanceCalculator
             return;
         }
         $attendance->setReason(null);
-
-        $shiftment = $workshift->getShiftment();
-        $attendance->setShiftment($shiftment);
 
         /** @var \DateTime $startHour */
         $startHour = $shiftment->getStartHour();

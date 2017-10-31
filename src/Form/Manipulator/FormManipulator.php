@@ -79,7 +79,7 @@ abstract class FormManipulator implements FormManipulatorInterface
      */
     protected function getDataTransformerForField(string $field): ? DataTransformerInterface
     {
-        if (array_key_exists($field, $this->dataTransformers)) {
+        if (isset($this->dataTransformers[$field])) {
             return $this->dataTransformers[$field];
         }
 

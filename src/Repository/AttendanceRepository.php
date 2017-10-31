@@ -62,4 +62,13 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
     {
         return $this->entityManager->getRepository($this->entityClass)->findOneBy(['employee' => $employee, 'attendanceDate' => $date]);
     }
+
+    /**
+     * @param AttendanceInterface $attendance
+     */
+    public function update(AttendanceInterface $attendance): void
+    {
+        $this->entityManager->persist($attendance);
+        $this->entityManager->flush();
+    }
 }

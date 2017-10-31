@@ -405,3 +405,16 @@ function time_picker() {
     });
 }
 
+function change_file_chooser(btnText, iconCss, input) {
+    if ('undefined' === typeof input) {
+        input = false;
+    }
+
+    $(':file').filestyle({
+        input: input,
+        buttonBefore: true,
+        buttonText: btnText,
+        iconName: iconCss,
+        badge: true
+    });
+}

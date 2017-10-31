@@ -157,7 +157,7 @@ final class Setting
         $loadedVars = array_flip(explode(',', getenv('SYMFONY_DOTENV_VARS')));
         unset($loadedVars['']);
 
-        if (array_key_exists($key, $loadedVars)) {
+        if (isset($loadedVars[$key])) {
             $env = file_get_contents($this->path);
             if (false !== strpos($env, $key)) {
                 return true;

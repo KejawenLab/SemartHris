@@ -30,4 +30,9 @@ interface AttendanceRepositoryInterface
      * @return AttendanceInterface|null
      */
     public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? AttendanceInterface;
+
+    /**
+     * @param AttendanceInterface $attendance
+     */
+    public function update(AttendanceInterface $attendance): void;
 }

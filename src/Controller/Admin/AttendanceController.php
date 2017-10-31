@@ -3,14 +3,34 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
+use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceImporter;
 use KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator;
 use KejawenLab\Application\SemartHris\Repository\AttendanceRepository;
+use League\Csv\Reader;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class AttendanceController extends AdminController
 {
+    /**
+     * @Route("/attendance/upload", name="upload_attendance")
+     *
+     * @param Request $request
+     */
+    public function uploadAttendanceAction(Request $request)
+    {
+        /** @var Reader $processor */
+        $processor = Reader::createFromPath($request->files->get('attendance'));
+        $processor->setHeaderOffset(0);
+
+        $importer = $this->container->get(AttendanceImporter::class);
+        $importer->import($processor->getRecords());
+        exit();
+    }
+
     /**
      * @param string $entityClass
      * @param string $sortDirection

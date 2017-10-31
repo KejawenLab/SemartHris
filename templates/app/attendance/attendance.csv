@@ -1,0 +1,2 @@
+date,employee_code,check_in,check_out,absent,reason_code
+2017-10-31,xxx,,,true,TLT

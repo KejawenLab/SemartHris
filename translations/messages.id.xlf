@@ -2,7 +2,18 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <!-- auths -->
+            <trans-unit id="label.true">
+                <source>label.true</source>
+                <target>ON</target>
+            </trans-unit>
+            <trans-unit id="label.false">
+                <source>label.false</source>
+                <target>OFF</target>
+            </trans-unit>
+            <trans-unit id="label.null">
+                <source>label.null</source>
+                <target>TIDAK ADA</target>
+            </trans-unit>
             <trans-unit id="auth.failed">
                 <source>auth.failed</source>
                 <target>Username atau password salah</target>
@@ -53,11 +64,43 @@
             </trans-unit>
             <trans-unit id="label.form.file_chooser">
                 <source>label.form.file_chooser</source>
-                <target>Upload Absen</target>
+                <target>Impor Absen</target>
             </trans-unit>
             <trans-unit id="label.attendance.upload_action">
                 <source>label.attendance.upload_action</source>
+                <target>Upload</target>
+            </trans-unit>
+            <trans-unit id="label.attendance.process_action">
+                <source>label.attendance.process_action</source>
                 <target>Proses</target>
+            </trans-unit>
+            <trans-unit id="label.attendance.preview_upload">
+                <source>label.attendance.preview_upload</source>
+                <target>Preview Presensi</target>
+            </trans-unit>
+            <trans-unit id="semarthris.attendance_date">
+                <source>semarthris.attendance_date</source>
+                <target>Tanggal</target>
+            </trans-unit>
+            <trans-unit id="semarthris.attendance_employee">
+                <source>semarthris.attendance_employee</source>
+                <target>Karyawan</target>
+            </trans-unit>
+            <trans-unit id="semarthris.attendance_check_in">
+                <source>semarthris.attendance_check_in</source>
+                <target>Jam Masuk</target>
+            </trans-unit>
+            <trans-unit id="semarthris.attendance_check_out">
+                <source>semarthris.attendance_check_out</source>
+                <target>Jam Keluar</target>
+            </trans-unit>
+            <trans-unit id="semarthris.attendance_absent">
+                <source>semarthris.attendance_absent</source>
+                <target>Tidak Masuk?</target>
+            </trans-unit>
+            <trans-unit id="semarthris.attendance_absent_reason">
+                <source>semarthris.attendance_absent_reason</source>
+                <target>Alasan</target>
             </trans-unit>
             <trans-unit id="semarthris.setting_key">
                 <source>semarthris.setting_key</source>

@@ -90,11 +90,12 @@ final class AttendanceImporter
                     $object->setReason($reason);
                 }
             } else {
+                $object->setAbsent(false);
                 $object->setCheckIn(\DateTime::createFromFormat('H:i', StringUtil::sanitize($attendance['check_in'])));
                 $object->setCheckOut(\DateTime::createFromFormat('H:i', StringUtil::sanitize($attendance['check_out'])));
-                $this->attendanceCalculator->calculate($object);
             }
 
+            $this->attendanceCalculator->calculate($object);
             $this->attendanceRepository->update($object);
         }
     }

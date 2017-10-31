@@ -28,10 +28,6 @@ final class AttendanceCalculator
      */
     public function calculate(AttendanceInterface $attendance): void
     {
-        if (!$attendance->getCheckOut()) {
-            return;
-        }
-
         $workshift = $this->workshiftRepository->findByEmployeeAndDate($attendance->getEmployee(), $attendance->getAttendanceDate());
         if (!$workshift) {
             return;
@@ -40,7 +36,7 @@ final class AttendanceCalculator
         $shiftment = $workshift->getShiftment();
         $attendance->setShiftment($shiftment);
 
-        if ($attendance->isAbsent()) {
+        if ($attendance->isAbsent() || !$attendance->getCheckOut()) {
             $attendance->setCheckIn(null);
             $attendance->setCheckOut(null);
             $attendance->setEarlyIn(0);

@@ -41,7 +41,7 @@ easy_admin:
             - label: 'Lembur'
               icon: 'list-alt'
               children:
-                  - { entity: 'Overtime', label: 'Lembur', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Overtime', label: 'Lembur', icon: 'hand-o-right', params: { sortField: 'overtimeDate', sortDirection: 'DESC' } }
             - label: 'Cuti'
               icon: 'envelope-o'
               children:

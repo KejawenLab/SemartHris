@@ -67,7 +67,7 @@ services:
             - '%env(string:SEMART_ATTENDANCE_DEFAULT_ABSENT_REASON_CODE)%'
             - 'KejawenLab\Application\SemartHris\Entity\Attendance'
 
-    KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService:
+    KejawenLab\Application\SemartHris\Security\Service\PasswordSetter:
         arguments:
             - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
 

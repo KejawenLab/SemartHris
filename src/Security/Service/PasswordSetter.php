@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class EncodePasswordService
+class PasswordSetter
 {
     /**
      * @var UserPasswordEncoderInterface

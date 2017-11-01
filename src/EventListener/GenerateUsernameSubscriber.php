@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator;
-use KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService;
+use KejawenLab\Application\SemartHris\Security\Service\PasswordSetter;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -24,7 +24,7 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     private $userRepository;
 
     /**
-     * @var EncodePasswordService
+     * @var PasswordSetter
      */
     private $passwordEncoder;
 
@@ -40,11 +40,11 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
 
     /**
      * @param UserRepositoryInterface $repository
-     * @param EncodePasswordService   $encoder
+     * @param PasswordSetter   $encoder
      * @param UsernameGenerator       $usernameGenerator
      * @param string                  $defaultPassword
      */
-    public function __construct(UserRepositoryInterface $repository, EncodePasswordService $encoder, UsernameGenerator $usernameGenerator, string $defaultPassword)
+    public function __construct(UserRepositoryInterface $repository, PasswordSetter $encoder, UsernameGenerator $usernameGenerator, string $defaultPassword)
     {
         $this->userRepository = $repository;
         $this->passwordEncoder = $encoder;

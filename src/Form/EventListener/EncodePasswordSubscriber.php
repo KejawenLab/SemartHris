@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Form\EventListener;
 
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
-use KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService;
+use KejawenLab\Application\SemartHris\Security\Service\PasswordSetter;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -14,14 +14,14 @@ use Symfony\Component\Form\FormEvents;
 final class EncodePasswordSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var EncodePasswordService
+     * @var PasswordSetter
      */
     private $passwordEncoderService;
 
     /**
-     * @param EncodePasswordService $service
+     * @param PasswordSetter $service
      */
-    public function __construct(EncodePasswordService $service)
+    public function __construct(PasswordSetter $service)
     {
         $this->passwordEncoderService = $service;
     }

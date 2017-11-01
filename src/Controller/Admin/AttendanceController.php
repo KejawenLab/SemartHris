@@ -105,7 +105,7 @@ class AttendanceController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $month = (int) $request->get('month', date('n'));
+        $month = (int) $request->get('month', 10);
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         $employee = null;
         if ($employeeId = $request->get('employeeId')) {

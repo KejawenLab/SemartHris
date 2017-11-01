@@ -19,7 +19,10 @@ class HolidayRepository extends Repository implements HolidayRepositoryInterface
      */
     public function __construct(string $offDayPerWeek)
     {
-        $offDay = explode(',', $offDayPerWeek);
+        $offDays = explode(',', $offDayPerWeek);
+        foreach ($offDays as $offDay) {
+            $this->offDayPerWeek[] = $offDay;
+        }
     }
 
     /**

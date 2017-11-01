@@ -7,7 +7,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RoleTransformer implements DataTransformerInterface
+class RoleTransformer implements DataTransformerInterface
 {
     /**
      * @param array $roles

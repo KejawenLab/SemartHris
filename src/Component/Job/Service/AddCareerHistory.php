@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Component\Job\Repository\CareerHistoryRepo
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class AddCareerHistory
+class AddCareerHistory
 {
     /**
      * @var CareerHistoryRepositoryInterface

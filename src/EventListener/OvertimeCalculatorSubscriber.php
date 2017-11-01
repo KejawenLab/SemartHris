@@ -2,20 +2,17 @@
 
 namespace KejawenLab\Application\SemartHris\EventListener;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
-use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class OvertimeCalculatorSubscriber implements EventSubscriberInterface
+class OvertimeCalculatorSubscriber implements EventSubscriber
 {
     /**
      * @var OvertimeCalculator
@@ -38,11 +35,11 @@ final class OvertimeCalculatorSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GenericEvent $event
+     * @param LifecycleEventArgs $event
      */
-    public function calculateFromGenericEvent(GenericEvent $event)
+    public function prePersist(LifecycleEventArgs $event)
     {
-        $entity = $event->getSubject();
+        $entity = $event->getEntity();
         if (!$entity instanceof OvertimeInterface) {
             return;
         }
@@ -51,11 +48,11 @@ final class OvertimeCalculatorSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GetResponseForControllerResultEvent $event
+     * @param LifecycleEventArgs $event
      */
-    public function calculateFromControllerEvent(GetResponseForControllerResultEvent $event)
+    public function preUpdate(LifecycleEventArgs $event)
     {
-        $entity = $event->getControllerResult();
+        $entity = $event->getEntity();
         if (!$entity instanceof OvertimeInterface) {
             return;
         }
@@ -66,13 +63,9 @@ final class OvertimeCalculatorSubscriber implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents(): array
+    public function getSubscribedEvents(): array
     {
-        return [
-            EasyAdminEvents::PRE_PERSIST => ['calculateFromGenericEvent', 0],
-            EasyAdminEvents::PRE_UPDATE => ['calculateFromGenericEvent', 0],
-            KernelEvents::VIEW => ['calculateFromControllerEvent', EventPriorities::PRE_WRITE],
-        ];
+        return array(Events::prePersist, Events::preUpdate);
     }
 
     /**

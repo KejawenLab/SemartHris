@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Employee;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class Gender
+class Gender
 {
     const MALE = 'm';
     const FEMALE = 'f';

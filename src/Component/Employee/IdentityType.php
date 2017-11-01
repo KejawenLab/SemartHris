@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Employee;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class IdentityType
+class IdentityType
 {
     const DRIVER_LISENCE = 's';
     const PASSPORT = 'p';

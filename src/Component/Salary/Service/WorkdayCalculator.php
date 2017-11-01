@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayReposi
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class WorkdayCalculator
+class WorkdayCalculator
 {
     /**
      * @var HolidayRepositoryInterface

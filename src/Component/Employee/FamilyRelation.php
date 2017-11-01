@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Employee;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class FamilyRelation
+class FamilyRelation
 {
     const PARENT = 'p';
     const COUPLE = 'c';

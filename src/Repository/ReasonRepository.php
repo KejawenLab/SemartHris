@@ -3,8 +3,8 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
-use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\ReasonType;
+use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**

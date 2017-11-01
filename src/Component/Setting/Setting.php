@@ -8,7 +8,7 @@ use Symfony\Component\Dotenv\Dotenv;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class Setting
+class Setting
 {
     const SETTING_PREFIX = 'SEMART_';
 

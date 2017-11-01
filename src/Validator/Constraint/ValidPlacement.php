@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraint;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ValidPlacement extends Constraint
+class ValidPlacement extends Constraint
 {
     /**
      * @var string

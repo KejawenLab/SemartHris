@@ -1,36 +1,46 @@
 services:
     KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CompanyRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\JobLevelTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\JobLevelRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\JobTitleRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\ContractTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Form\DataTransformer\RoleTransformer:
+        lazy: true

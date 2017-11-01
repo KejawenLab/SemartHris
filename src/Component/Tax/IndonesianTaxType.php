@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Tax;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class IndonesianTaxType
+class IndonesianTaxType
 {
     const TAX_TK_0 = 'tk0';
     const TAX_TK_1 = 'tk1';

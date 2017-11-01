@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Reason;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ReasonType
+class ReasonType
 {
     const ABSENT_CODE = 'a';
     const LEAVE_CODE = 'l';

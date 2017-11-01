@@ -12,6 +12,7 @@
         "stof/doctrine-extensions-bundle": "~1.2",
         "symfony/framework-bundle": "~3.3",
         "symfony/profiler-pack": "~1.0",
+        "symfony/proxy-manager-bridge": "^4.0@beta",
         "symfony/web-server-bundle": "~3.3",
         "symfony/yaml": "~3.3",
         "vich/uploader-bundle": "^1.6"

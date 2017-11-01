@@ -45,7 +45,7 @@
 - [X] Setting jumlah hari kerja per minggu
 - [X] Setting Management
 - [X] Proses Absensi
-- [ ] Pindah Object Subscriber ke Doctrine Subscriber
+- [X] Pindah Object Subscriber ke Doctrine Subscriber
 - [ ] Report Absen Diperbaiki, Hari Libur di Buat Merge Cell
 - [ ] Penggajian
 - [ ] Delete Session Notification

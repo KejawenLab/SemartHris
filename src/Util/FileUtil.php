@@ -7,7 +7,7 @@ use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-final class FileUtil
+class FileUtil
 {
     /**
      * @var string

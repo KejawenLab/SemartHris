@@ -2,19 +2,16 @@
 
 namespace KejawenLab\Application\SemartHris\EventListener;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
-use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class MarkUsedContractSubscriber implements EventSubscriberInterface
+class MarkUsedContractSubscriber implements EventSubscriber
 {
     /**
      * @var CheckContract
@@ -30,22 +27,11 @@ final class MarkUsedContractSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GenericEvent $event
+     * @param LifecycleEventArgs $event
      */
-    public function markUsedContractFromGenericEvent(GenericEvent $event)
+    public function prePersist(LifecycleEventArgs $event)
     {
-        $entity = $event->getSubject();
-        if ($entity instanceof Contractable && $contract = $entity->getContract()) {
-            $this->checkContractService->markUsedContract($contract);
-        }
-    }
-
-    /**
-     * @param GetResponseForControllerResultEvent $event
-     */
-    public function markUsedContractFromControllerEvent(GetResponseForControllerResultEvent $event)
-    {
-        $entity = $event->getControllerResult();
+        $entity = $event->getEntity();
         if ($entity instanceof Contractable && $contract = $entity->getContract()) {
             $this->checkContractService->markUsedContract($contract);
         }
@@ -54,11 +40,8 @@ final class MarkUsedContractSubscriber implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents(): array
+    public function getSubscribedEvents(): array
     {
-        return [
-            EasyAdminEvents::PRE_PERSIST => ['markUsedContractFromGenericEvent', 0],
-            KernelEvents::VIEW => ['markUsedContractFromControllerEvent', EventPriorities::PRE_WRITE],
-        ];
+        return array(Events::prePersist);
     }
 }

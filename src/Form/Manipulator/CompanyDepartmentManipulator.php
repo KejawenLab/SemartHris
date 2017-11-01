@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class CompanyDepartmentManipulator extends FormManipulator implements FormManipulatorInterface
+class CompanyDepartmentManipulator extends FormManipulator implements FormManipulatorInterface
 {
     /**
      * @param FormBuilderInterface $formBuilder

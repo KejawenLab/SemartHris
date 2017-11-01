@@ -1,34 +1,44 @@
 services:
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityTextFieldSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CityRepository'
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveDepartmentTextFieldSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\DepartmentRepository'
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveJobTitleTextFieldSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\JobTitleRepository'
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveSupervisorTextFieldSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveContractTextFieldSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
 
     KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveTagsTextFieldSubscriber:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveTypeTextFieldSubscriber:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Form\EventListener\EncodePasswordSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Security\Service\PasswordSetter'

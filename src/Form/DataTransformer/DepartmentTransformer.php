@@ -10,7 +10,7 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class DepartmentTransformer implements DataTransformerInterface
+class DepartmentTransformer implements DataTransformerInterface
 {
     /**
      * @var DepartmentRepositoryInterface

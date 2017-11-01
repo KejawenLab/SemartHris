@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class AttendanceManipulator extends FormManipulator implements FormManipulatorInterface
+class AttendanceManipulator extends FormManipulator implements FormManipulatorInterface
 {
     public function manipulate(FormBuilderInterface $formBuilder, $entity): FormBuilderInterface
     {/* @var Attendance $entity */

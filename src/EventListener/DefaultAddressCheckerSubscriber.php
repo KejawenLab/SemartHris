@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
+class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
 {
     /**
      * @var DefaultAddressChecker

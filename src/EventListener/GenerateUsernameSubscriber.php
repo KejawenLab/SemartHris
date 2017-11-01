@@ -2,21 +2,18 @@
 
 namespace KejawenLab\Application\SemartHris\EventListener;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
-use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator;
 use KejawenLab\Application\SemartHris\Security\Service\PasswordSetter;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class GenerateUsernameSubscriber implements EventSubscriberInterface
+class GenerateUsernameSubscriber implements EventSubscriber
 {
     /**
      * @var UserRepositoryInterface
@@ -53,24 +50,11 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GenericEvent $event
+     * @param LifecycleEventArgs $event
      */
-    public function generateFromGenericEvent(GenericEvent $event): void
+    public function prePersist(LifecycleEventArgs $event): void
     {
-        $entity = $event->getSubject();
-        if (!$entity instanceof UserInterface) {
-            return;
-        }
-
-        $this->generateUsernameAndPassword($entity);
-    }
-
-    /**
-     * @param GetResponseForControllerResultEvent $event
-     */
-    public function generateFromControllerEvent(GetResponseForControllerResultEvent $event)
-    {
-        $entity = $event->getControllerResult();
+        $entity = $event->getEntity();
         if (!$entity instanceof UserInterface) {
             return;
         }
@@ -81,12 +65,9 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
     /**
      * @return array
      */
-    public static function getSubscribedEvents(): array
+    public function getSubscribedEvents(): array
     {
-        return [
-            EasyAdminEvents::PRE_PERSIST => ['generateFromGenericEvent', 0],
-            KernelEvents::VIEW => ['generateFromControllerEvent', EventPriorities::PRE_WRITE],
-        ];
+        return array(Events::prePersist);
     }
 
     /**

@@ -5,6 +5,6 @@ namespace KejawenLab\Application\SemartHris\Form\Manipulator;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class UserManipulator extends FormManipulator implements FormManipulatorInterface
+class UserManipulator extends FormManipulator implements FormManipulatorInterface
 {
 }

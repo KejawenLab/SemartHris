@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Contract\Repository;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ContractableRepositoryFactory
+class ContractableRepositoryFactory
 {
     const SEMARTHRIS_CONTRACTABLE_REPOSITORY = 'semarthris.contract_repository';
 

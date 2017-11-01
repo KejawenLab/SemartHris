@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class OvertimeCalculator
+class OvertimeCalculator
 {
     /**
      * @var OvertimeChecker

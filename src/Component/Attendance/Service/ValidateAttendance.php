@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInter
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ValidateAttendance
+class ValidateAttendance
 {
     /**
      * @param AttendanceInterface $attendance

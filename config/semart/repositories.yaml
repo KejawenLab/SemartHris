@@ -1,5 +1,6 @@
 services:
     KejawenLab\Application\SemartHris\Repository\CompanyRepository:
+        lazy: true
         arguments:
             - '@Doctrine\ORM\EntityManagerInterface'
             - '@Symfony\Component\HttpFoundation\Session\SessionInterface'
@@ -7,65 +8,80 @@ services:
             { name: 'semarthris.address_repository' }
 
     KejawenLab\Application\SemartHris\Repository\CityRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\City']]
 
     KejawenLab\Application\SemartHris\Repository\DepartmentRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Department']]
 
     KejawenLab\Application\SemartHris\Repository\JobTitleRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\JobTitle']]
 
     KejawenLab\Application\SemartHris\Repository\JobLevelRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\JobLevel']]
 
     KejawenLab\Application\SemartHris\Repository\EmployeeRepository:
+        lazy: true
         arguments:
-            - '@Doctrine\ORM\EntityManagerInterface'
             - '@Symfony\Component\HttpFoundation\Session\SessionInterface'
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Employee']]
         tags:
             - { name: 'semarthris.address_repository' }
             - { name: 'semarthris.contract_repository' }
 
     KejawenLab\Application\SemartHris\Repository\ContractRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Contract']]
 
     KejawenLab\Application\SemartHris\Repository\PlacementRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Placement']]
         tags:
             - { name: 'semarthris.contract_repository' }
 
     KejawenLab\Application\SemartHris\Repository\CareerHistoryRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\CareerHistory']]
 
     KejawenLab\Application\SemartHris\Repository\WorkshiftRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Workshift']]
 
     KejawenLab\Application\SemartHris\Repository\ShiftmentRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Shiftment']]
 
     KejawenLab\Application\SemartHris\Repository\AttendanceRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Attendance']]
 
     KejawenLab\Application\SemartHris\Repository\ReasonRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Reason']]
 
     KejawenLab\Application\SemartHris\Repository\HolidayRepository:
+        lazy: true
         arguments:
             - '%env(string:SEMART_OFFDAY_PER_WEEK)%'
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Holiday']]
 
     KejawenLab\Application\SemartHris\Repository\OvertimeRepository:
+        lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Overtime']]

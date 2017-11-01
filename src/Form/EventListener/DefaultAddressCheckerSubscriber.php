@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
+class DefaultAddressCheckerSubscriber implements EventSubscriberInterface
 {
     /**
      * @var DefaultAddressChecker

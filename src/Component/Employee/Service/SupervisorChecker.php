@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class SupervisorChecker
+class SupervisorChecker
 {
     /**
      * @param EmployeeInterface $employee

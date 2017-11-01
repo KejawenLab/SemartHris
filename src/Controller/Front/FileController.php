@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class FileController extends Controller
+class FileController extends Controller
 {
     /**
      * @Route(name="get_file", path="/files/{path}", requirements={"path"=".+"})

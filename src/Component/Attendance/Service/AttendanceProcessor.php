@@ -12,7 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonReposito
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class AttendanceProcessor
+class AttendanceProcessor
 {
     const CUT_OFF_LAST_DATE = -1;
     const CUT_OFF_KEY = 'SEMART_ATTENDANCE_CUT_OFF_DATE';

@@ -1,5 +1,6 @@
 services:
     KejawenLab\Application\SemartHris\Validator\UniqueContractValidator:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract'
         tags:

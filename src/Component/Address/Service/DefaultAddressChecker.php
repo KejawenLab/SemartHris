@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressReposi
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class DefaultAddressChecker
+class DefaultAddressChecker
 {
     /**
      * @var AddressRepositoryFactory

@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Util\StringUtil;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ValidateReasonType implements ValidateTypeInterface
+class ValidateReasonType implements ValidateTypeInterface
 {
     /**
      * @param string $type

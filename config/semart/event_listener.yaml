@@ -1,66 +1,77 @@
 services:
     KejawenLab\Application\SemartHris\EventListener\DefaultAddressCheckerSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker'
         tags:
             - { name: 'kernel.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\GenerateUsernameSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Security\Service\PasswordSetter'
             - '@KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator'
             - '%env(SEMART_APP_DEFAULT_PASSWORD)%'
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\UpdateJoinDateFromContractSubscriber:
+        lazy: true
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\AddCareerHistorySubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistory'
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\SetOldJobMutationSubscriber:
+        lazy: true
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\WorkshiftSlicerSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\WorkshiftSlicer'
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\MarkUsedContractSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract'
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\AttendanceCalculatorSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator'
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     KejawenLab\Application\SemartHris\EventListener\OvertimeCalculatorSubscriber:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
         tags:
-            - { name: 'kernel.event_subscriber' }
+            - { name: 'doctrine.event_subscriber' }
 
     Gedmo\SoftDeleteable\SoftDeleteableListener:
+        lazy: true
         calls:
             - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
         tags:
             - { name: 'doctrine.event_subscriber' }
 
     Gedmo\Timestampable\TimestampableListener:
+        lazy: true
         calls:
             - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
         tags:

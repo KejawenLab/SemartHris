@@ -5,52 +5,64 @@ parameters:
 
 services:
     KejawenLab\Application\SemartHris\Util\FileUtil:
+        lazy: true
         arguments:
             - '%kernel.project_dir%%env(SEMART_UPLOAD_DESTINATION)%'
 
     KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryFactory'
 
     KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryFactory'
             - '@KejawenLab\Application\SemartHris\Repository\ContractRepository'
 
     KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistory:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\CareerHistoryRepository'
             - 'KejawenLab\Application\SemartHris\Entity\CareerHistory'
 
     KejawenLab\Library\PetrukUsername\UsernameFactory:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - ''
             - false
 
     KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator:
+        lazy: true
         arguments:
             - '@KejawenLab\Library\PetrukUsername\UsernameFactory'
 
     KejawenLab\Application\SemartHris\Security\Provider\UserProvider:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
 
     KejawenLab\Application\SemartHris\Component\Attendance\Service\WorkshiftSlicer:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
             - 'KejawenLab\Application\SemartHris\Entity\Workshift'
 
     KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
             - 'KejawenLab\Application\SemartHris\Entity\Workshift'
 
     KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceImporter:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
@@ -59,6 +71,7 @@ services:
             - 'KejawenLab\Application\SemartHris\Entity\Attendance'
 
     KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceProcessor:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
@@ -68,32 +81,40 @@ services:
             - 'KejawenLab\Application\SemartHris\Entity\Attendance'
 
     KejawenLab\Application\SemartHris\Security\Service\PasswordSetter:
+        lazy: true
         arguments:
             - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
 
     KejawenLab\Application\SemartHris\Component\Employee\Service\SupervisorChecker:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Security\Voter\SupervisorVoter:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Employee\Service\SupervisorChecker'
         tags:
             { name: 'security.voter' }
 
     KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeChecker:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
 
     KejawenLab\Application\SemartHris\Component\Overtime\Calculator\HolidayCalculator:
+        lazy: true
         tags:
             { name: 'semarthris.overtime_calculator' }
 
     KejawenLab\Application\SemartHris\Component\Overtime\Calculator\WorkdayCalculator:
+        lazy: true
         tags:
             { name: 'semarthris.overtime_calculator' }
 
     KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator:
+        lazy: true
 
     KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeChecker'
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator'
@@ -101,9 +122,11 @@ services:
             - '%env(int:SEMART_WORKDAY_PER_WEEK)%'
 
     KejawenLab\Application\SemartHris\Component\Salary\Service\WorkdayCalculator:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
 
     KejawenLab\Application\SemartHris\Component\Setting\Setting:
+        lazy: true
         arguments:
             - '%kernel.project_dir%/.env'

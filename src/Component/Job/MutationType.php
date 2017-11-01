@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Job;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class MutationType
+class MutationType
 {
     const PROMOTION = 'p';
     const DEMOTION = 'd';

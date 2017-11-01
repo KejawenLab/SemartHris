@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Util\StringUtil;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class SemartHrisAttendanceTwigExtension extends \Twig_Extension
+class SemartHrisAttendanceTwigExtension extends \Twig_Extension
 {
     /**
      * @var EmployeeRepositoryInterface

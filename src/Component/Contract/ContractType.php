@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Contract;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ContractType
+class ContractType
 {
     const CONTRACT_EMPLOYEE = 'e';
     const CONTRACT_CLIENT = 'c';

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraint;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class UniqueContract extends Constraint
+class UniqueContract extends Constraint
 {
     /**
      * @var string

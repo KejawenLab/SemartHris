@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractRepo
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class CheckContract
+class CheckContract
 {
     /**
      * @var ContractableRepositoryFactory

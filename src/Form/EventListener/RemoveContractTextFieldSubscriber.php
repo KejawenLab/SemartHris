@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class RemoveContractTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
+class RemoveContractTextFieldSubscriber implements EventSubscriberInterface, FieldRemoverInterface
 {
     /**
      * @var ContractRepositoryInterface

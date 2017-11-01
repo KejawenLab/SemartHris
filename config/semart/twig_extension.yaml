@@ -1,5 +1,6 @@
 services:
     KejawenLab\Application\SemartHris\Twig\SemartHrisAttendanceTwigExtension:
+        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'

@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Repository;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryInterface;
@@ -12,7 +11,6 @@ use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepo
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
-use KejawenLab\Application\SemartHris\Entity\Employee;
 use KejawenLab\Application\SemartHris\Entity\EmployeeAddress;
 use KejawenLab\Application\SemartHris\Entity\JobLevel;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -33,14 +31,11 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     private $session;
 
     /**
-     * @param EntityManagerInterface $entityManager
-     * @param SessionInterface       $session
+     * @param SessionInterface $session
      */
-    public function __construct(EntityManagerInterface $entityManager, SessionInterface $session)
+    public function __construct(SessionInterface $session)
     {
-        $this->entityManager = $entityManager;
         $this->session = $session;
-        $this->initialize($this->entityManager, Employee::class);
     }
 
     /**

@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormEvents;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class EncodePasswordSubscriber implements EventSubscriberInterface
+class EncodePasswordSubscriber implements EventSubscriberInterface
 {
     /**
      * @var PasswordSetter

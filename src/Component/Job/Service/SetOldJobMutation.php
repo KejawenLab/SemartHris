@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class SetOldJobMutation
+class SetOldJobMutation
 {
     /**
      * @param MutationInterface $mutation

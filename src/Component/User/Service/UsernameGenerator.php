@@ -8,7 +8,7 @@ use KejawenLab\Library\PetrukUsername\UsernameFactory;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class UsernameGenerator
+class UsernameGenerator
 {
     /**
      * @var UsernameFactory

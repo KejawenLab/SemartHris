@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class ContractableRepositoryFactoryPass implements CompilerPassInterface
+class ContractableRepositoryFactoryPass implements CompilerPassInterface
 {
     /**
      * @param ContainerBuilder $container

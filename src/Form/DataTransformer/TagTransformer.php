@@ -7,7 +7,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class TagTransformer implements DataTransformerInterface
+class TagTransformer implements DataTransformerInterface
 {
     /**
      * @param array $tags

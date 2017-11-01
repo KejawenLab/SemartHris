@@ -2,19 +2,16 @@
 
 namespace KejawenLab\Application\SemartHris\EventListener;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
-use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class AttendanceCalculatorSubscriber implements EventSubscriberInterface
+class AttendanceCalculatorSubscriber implements EventSubscriber
 {
     /**
      * @var AttendanceCalculator
@@ -30,48 +27,36 @@ final class AttendanceCalculatorSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GenericEvent $event
+     * @param LifecycleEventArgs $event
      */
-    public function calculateFromGenericEvent(GenericEvent $event)
+    public function prePersist(LifecycleEventArgs $event)
     {
-        $entity = $event->getSubject();
+        $entity = $event->getEntity();
         if (!$entity instanceof AttendanceInterface) {
             return;
         }
 
-        $this->calculate($entity);
+        $this->attandanceCalculatorService->calculate($entity);
     }
 
     /**
-     * @param GetResponseForControllerResultEvent $event
+     * @param LifecycleEventArgs $event
      */
-    public function calculateFromControllerEvent(GetResponseForControllerResultEvent $event)
+    public function preUpdate(LifecycleEventArgs $event)
     {
-        $entity = $event->getControllerResult();
+        $entity = $event->getEntity();
         if (!$entity instanceof AttendanceInterface) {
             return;
         }
 
-        $this->calculate($entity);
+        $this->attandanceCalculatorService->calculate($entity);
     }
 
     /**
      * @return array
      */
-    public static function getSubscribedEvents(): array
+    public function getSubscribedEvents(): array
     {
-        return [
-            EasyAdminEvents::PRE_PERSIST => ['calculateFromGenericEvent', 0],
-            EasyAdminEvents::PRE_UPDATE => ['calculateFromGenericEvent', 0],
-            KernelEvents::VIEW => ['calculateFromControllerEvent', EventPriorities::PRE_WRITE],
-        ];
-    }
-
-    /**
-     * @param AttendanceInterface $attendance
-     */
-    private function calculate(AttendanceInterface $attendance): void
-    {
-        $this->attandanceCalculatorService->calculate($attendance);
+        return array(Events::prePersist, Events::preUpdate);
     }
 }

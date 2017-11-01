@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Address\Repository;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class AddressRepositoryFactory
+class AddressRepositoryFactory
 {
     const ADDRESS_REPOSITORY_SERVICE_TAG = 'semarthris.address_repository';
 

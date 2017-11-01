@@ -2,19 +2,16 @@
 
 namespace KejawenLab\Application\SemartHris\EventListener;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
-use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryable;
 use KejawenLab\Application\SemartHris\Component\Job\Service\AddCareerHistory;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class AddCareerHistorySubscriber implements EventSubscriberInterface
+class AddCareerHistorySubscriber implements EventSubscriber
 {
     /**
      * @var AddCareerHistory
@@ -30,47 +27,23 @@ final class AddCareerHistorySubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GenericEvent $event
+     * @param LifecycleEventArgs $event
      */
-    public function addHistoryFromGenericEvent(GenericEvent $event)
+    public function prePersist(LifecycleEventArgs $event)
     {
-        $entity = $event->getSubject();
+        $entity = $event->getEntity();
         if (!$entity instanceof CareerHistoryable) {
             return;
         }
 
-        $this->addCareerHistory($entity);
-    }
-
-    /**
-     * @param GetResponseForControllerResultEvent $event
-     */
-    public function addHistoryFromControllerEvent(GetResponseForControllerResultEvent $event)
-    {
-        $entity = $event->getControllerResult();
-        if (!$entity instanceof CareerHistoryable) {
-            return;
-        }
-
-        $this->addCareerHistory($entity);
+        $this->addCareerHistoryService->store($entity);
     }
 
     /**
      * @return array
      */
-    public static function getSubscribedEvents(): array
+    public function getSubscribedEvents(): array
     {
-        return [
-            EasyAdminEvents::PRE_PERSIST => ['addHistoryFromGenericEvent', 0],
-            KernelEvents::VIEW => ['addHistoryFromControllerEvent', EventPriorities::PRE_WRITE],
-        ];
-    }
-
-    /**
-     * @param CareerHistoryable $careerHistoryable
-     */
-    private function addCareerHistory(CareerHistoryable $careerHistoryable)
-    {
-        $this->addCareerHistoryService->store($careerHistoryable);
+        return array(Events::prePersist);
     }
 }

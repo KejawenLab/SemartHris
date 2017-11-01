@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class EmployeeManipulator extends FormManipulator implements FormManipulatorInterface
+class EmployeeManipulator extends FormManipulator implements FormManipulatorInterface
 {
     /**
      * @var DataTransformerInterface

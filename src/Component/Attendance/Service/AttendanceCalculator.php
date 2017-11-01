@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftR
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-final class AttendanceCalculator
+class AttendanceCalculator
 {
     /**
      * @var WorkshiftRepositoryInterface

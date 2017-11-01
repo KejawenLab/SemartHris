@@ -140,6 +140,7 @@ class AttendanceProcessor
             $attendance->setReason($this->reasonRepository->findByCode($this->reasonCode));
             $attendance->setAbsent(true);
         }
+        $attendance->setLateIn(-1); //To triggering subscriber
 
         $this->attendanceRepository->update($attendance);
     }

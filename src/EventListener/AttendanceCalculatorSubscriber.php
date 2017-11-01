@@ -57,6 +57,6 @@ class AttendanceCalculatorSubscriber implements EventSubscriber
      */
     public function getSubscribedEvents(): array
     {
-        return array(Events::prePersist, Events::preUpdate);
+        return [Events::prePersist, Events::preUpdate];
     }
 }

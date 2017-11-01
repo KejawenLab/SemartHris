@@ -44,6 +44,6 @@ class AddCareerHistorySubscriber implements EventSubscriber
      */
     public function getSubscribedEvents(): array
     {
-        return array(Events::prePersist);
+        return [Events::prePersist];
     }
 }

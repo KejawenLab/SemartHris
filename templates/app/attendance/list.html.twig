@@ -9,14 +9,18 @@
 
 {% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
 
+{% set startDate = app.request.get('startDate', date() | date('01-m-Y')) %}
+
+{%  set endDate = app.request.get('endDate', date() | date('t-m-Y')) %}
+
 {% set _request_parameters = _request_parameters|default({})|merge({
     action: app.request.get('action'),
     entity: _entity_config.name,
     menuIndex: app.request.get('menuIndex'),
     submenuIndex: app.request.get('submenuIndex'),
     sortField: app.request.get('sortField', ''),
-    startDate: app.request.get('startDate', ''),
-    endDate: app.request.get('endDate', ''),
+    startDate: startDate,
+    endDate: endDate,
     sortDirection: app.request.get('sortDirection', 'DESC'),
     page: app.request.get('page', 1)
 }) %}
@@ -116,7 +120,49 @@
 
             <tbody>
             {% block table_body %}
-                {{ parent() }}
+                {% for key, item in results %}
+                    {% if item is not empty %}
+                        {# the empty string concatenation is needed when the primary key is an object (e.g. an Uuid object) #}
+                        {% set _item_id = '' ~ attribute(item, _entity_config.primary_key_field_name) %}
+                        <tr data-id="{{ _item_id }}">
+                        {% for field, metadata in fields %}
+                            {% set isSortingField = metadata.property == app.request.get('sortField') %}
+                            {% set _column_label =  (metadata.label ?: field|humanize)|trans(_trans_parameters)  %}
+
+                            <td data-label="{{ _column_label }}" class="{{ isSortingField ? 'sorted' }} {{ metadata.dataType|lower }} {{ metadata.css_class }}">
+                                {{ easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) }}
+                            </td>
+                        {% endfor %}
+
+                        {% if _list_item_actions|length > 0 %}
+                            {% set _column_label =  'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') %}
+                            <td data-label="{{ _column_label }}" class="actions">
+                                {% block item_actions %}
+                                    {{ include('@EasyAdmin/default/includes/_actions.html.twig', {
+                                        actions: _list_item_actions,
+                                        request_parameters: _request_parameters,
+                                        translation_domain: _entity_config.translation_domain,
+                                        trans_parameters: _trans_parameters,
+                                        item_id: _item_id
+                                    }, with_context = false) }}
+                                {% endblock item_actions %}
+                            </td>
+                        {% endif %}
+                        </tr>
+                    {% else  %}
+                        <tr data-id="{{ key }}">
+                            <td>{{ key }}</td>
+                            <td colspan="8" class="label label-primary text-center">{{ 'semarthris.holiday' | trans({}, 'messages') | upper }}</span>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% else %}
+                    <tr>
+                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 1 : fields|length }}">
+                            {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
+                        </td>
+                    </tr>
+                {% endfor %}
             {% endblock table_body %}
             </tbody>
         </table>
@@ -193,7 +239,7 @@
 
             change_file_chooser(btnFile, 'fa fa-file-excel-o', true);
             change_static_select(locale);
-            date_range_picker(locale);
+            date_range_picker(locale,  '{{ date_format_long }}');
             company_autocomplete(emptyText, '{{ app.request.get('company') }}');
             shiftment_autocomplete(emptyText, '{{ app.request.get('shiftment') }}');
             department_autocomplete(locale, emptyText);

@@ -65,7 +65,7 @@
                 {% for key, value in records %}
                     <tr data-id="{{ key }}">
                     {%  set attendance = semarthris_create_attendance_preview(value) %}
-                        <td>{{ attendance.attendanceDate | date('d-m-Y') }}</td>
+                        <td>{{ attendance.attendanceDate | date(date_format) }}</td>
                         <td>{{ attendance.employee }}</td>
                         {% if true == attendance.absent %}
                             <td>
@@ -79,8 +79,8 @@
                             </td>
                         {% else %}
 
-                            <td>{{ attendance.checkIn | date('H:i') }}</td>
-                            <td>{{ attendance.checkOut | date('H:i') }}</td>
+                            <td>{{ attendance.checkIn | date(hour_format) }}</td>
+                            <td>{{ attendance.checkOut | date(hour_format) }}</td>
                             <td>
                                 <span class="label label-danger">{{ 'label.false' | trans({}, 'EasyAdminBundle') }}</span>
                             </td>

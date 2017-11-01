@@ -1,7 +1,7 @@
 api_platform:
-    title: '%env(SEMART_APP_NAME)%'
-    description: '%env(SEMART_APP_API_DESCRIPTION)%'
-    version: '%env(SEMART_APP_API_VERSION)%'
+    title: '%env(string:SEMART_APP_NAME)%'
+    description: '%env(string:SEMART_APP_API_DESCRIPTION)%'
+    version: '%env(string:SEMART_APP_API_VERSION)%'
     collection:
         order: 'DESC'
         order_parameter_name: 'o'
@@ -9,7 +9,7 @@ api_platform:
             enabled: true
             client_enabled: true
             client_items_per_page: true
-            items_per_page: 27
+            items_per_page: 17
             maximum_items_per_page: 99
             page_parameter_name: 'p'
             enabled_parameter_name: 'ep'

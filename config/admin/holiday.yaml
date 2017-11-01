@@ -16,7 +16,7 @@ easy_admin:
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'holidayDate', label: 'Tanggal', type_options: { widget: 'single_text', format: 'dd-MM-yyyy', attr: { class: 'date-picker' } } }
+                    - { property: 'holidayDate', label: 'Tanggal', type_options: { widget: 'single_text', format: '%env(string:SEMART_DATE_FORMAT_INTL)%', attr: { class: 'date-picker' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Nama Libur' }
             show:

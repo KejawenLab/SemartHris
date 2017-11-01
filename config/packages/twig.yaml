@@ -2,3 +2,9 @@ twig:
     paths: ['%kernel.project_dir%/templates/']
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        date_format_long: '%env(string:SEMART_DATE_FORMAT_LONG)%'
+        date_format: '%env(string:SEMART_DATE_FORMAT)%'
+        datetime_format: '%env(string:SEMART_DATE_TIME_FORMAT)%'
+        time_format: '%env(string:SEMART_TIME_FORMAT)%'
+        hour_format: '%env(string:SEMART_HOUR_FORMAT)%'

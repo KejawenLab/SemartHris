@@ -67,9 +67,9 @@ class Setting
     /**
      * @param string $key
      *
-     * @return null|string
+     * @return array|false|null|string
      */
-    public static function get(string $key): ? string
+    public static function get(string $key)
     {
         if ($env = getenv($key)) {
             return $env;

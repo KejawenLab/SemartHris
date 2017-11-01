@@ -16,7 +16,7 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
-                    - { property: 'overtimeDate', label: 'Tanggal', help: 'Ganti tanggal otomatis dihitung jika jam masuk lebih besar dari jam keluar', type_options:{ format: 'dd-MM-yyyy', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { property: 'overtimeDate', label: 'Tanggal', help: 'Ganti tanggal otomatis dihitung jika jam masuk lebih besar dari jam keluar', type_options:{ format: '%env(string:SEMART_DATE_FORMAT_INTL)%', attr: { class: 'date-picker' }, widget: 'single_text' } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'startHour', label: 'Jam Masuk', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
                     - { property: 'endHour', label: 'Jam Keluar', help: 'Hari libur dicentang jika lembur dihari libur/off', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }

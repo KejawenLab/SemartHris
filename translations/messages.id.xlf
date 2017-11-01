@@ -106,6 +106,10 @@
                 <source>semarthris.setting_key</source>
                 <target>Parameter</target>
             </trans-unit>
+            <trans-unit id="semarthris.holiday">
+                <source>semarthris.holiday</source>
+                <target>Hari Libur</target>
+            </trans-unit>
             <trans-unit id="semarthris.setting_value">
                 <source>semarthris.setting_value</source>
                 <target>Nilai</target>

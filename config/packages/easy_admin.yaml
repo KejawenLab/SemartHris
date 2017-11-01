@@ -1,16 +1,16 @@
 easy_admin:
-    site_name: '%env(SEMART_APP_NAME)%'
+    site_name: '%env(string:SEMART_APP_NAME)%'
     formats:
-        date:     'd-m-Y'
-        time:     'H:i'
-        datetime: 'd-m-Y H:i:s'
+        date:     '%env(string:SEMART_DATE_FORMAT)%'
+        time:     '%env(string:SEMART_HOUR_FORMAT)%'
+        datetime: '%env(string:SEMART_DATE_TIME_FORMAT)%'
     list:
         max_results: 17
         actions:
-            - { name: 'show', icon: 'search', label: false, title: 'Detil' }
-            - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-primary action-new', label: false, title: 'Tambah Baru' }
-            - { name: 'edit', icon: 'pencil', label: false, title: 'Edit' }
-            - { name: 'delete', icon: 'close', label: false, title: 'Hapus' }
+            - { name: 'show', icon: 'search', label: false, title: 'action.show' }
+            - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-primary action-new', label: false, title: 'action.new' }
+            - { name: 'edit', icon: 'pencil', label: false, title: 'action.edit' }
+            - { name: 'delete', icon: 'close', label: false, title: 'action.delete' }
     design:
         brand_color: '#ac2925'
         form_theme: 'vertical'

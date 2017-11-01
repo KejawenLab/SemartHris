@@ -58,9 +58,9 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'shiftment', label: 'Shift Kerja', type: 'easyadmin_autocomplete' }
                     - { type: 'group', css_class: 'col-sm-6 new-row' }
-                    - { property: 'startDate', label: 'Dari Tanggal', type_options:{ format: 'dd-MM-yyyy', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { property: 'startDate', label: 'Dari Tanggal', type_options:{ format: '%env(string:SEMART_DATE_FORMAT_INTL)%', attr: { class: 'date-picker' }, widget: 'single_text' } }
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'endDate', label: 'Sampai Tanggal', type_options:{ format: 'dd-MM-yyyy', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { property: 'endDate', label: 'Sampai Tanggal', type_options:{ format: '%env(string:SEMART_DATE_FORMAT_INTL)%', attr: { class: 'date-picker' }, widget: 'single_text' } }
                     - { type: 'group', css_class: 'col-sm-12 new-row' }
                     - { property: 'description', label: 'Keterangan' }
             list:
@@ -90,7 +90,7 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'attendanceDate', label: 'Tanggal', type_options:{ format: 'dd-MM-yyyy', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { property: 'attendanceDate', label: 'Tanggal', type_options:{ format: '%env(string:SEMART_DATE_FORMAT_INTL)%', attr: { class: 'date-picker' }, widget: 'single_text' } }
                     - { type: 'group', css_class: 'col-sm-6 new-row' }
                     - { property: 'checkIn', label: 'Jam Masuk', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
                     - { property: 'checkOut', label: 'Jam Keluar', type_options:{ attr: { class: 'time-picker' }, widget: 'single_text' } }
@@ -120,10 +120,10 @@ easy_admin:
                 title: 'Presensi'
                 fields:
                     - { property: 'attendanceDate', label: 'Tanggal' }
-                    - { property: 'employee', label: 'Karyawan' }
-                    - { property: 'shiftment', label: 'Shift' }
-                    - { property: 'checkIn', label: 'Jam Masuk' }
-                    - { property: 'checkOut', label: 'Jam Keluar' }
-                    - { property: 'absent', label: 'Tidak Masuk?' }
-                    - { property: 'reason', label: 'Alasan' }
-                    - { property: 'description', label: 'Keterangan' }
+                    - { property: 'employee', label: 'Karyawan', sortable: false }
+                    - { property: 'shiftment', label: 'Shift', sortable: false }
+                    - { property: 'checkIn', label: 'Jam Masuk', sortable: false }
+                    - { property: 'checkOut', label: 'Jam Keluar', sortable: false }
+                    - { property: 'absent', label: 'Tidak Masuk?', sortable: false }
+                    - { property: 'reason', label: 'Alasan', sortable: false }
+                    - { property: 'description', label: 'Keterangan', sortable: false }

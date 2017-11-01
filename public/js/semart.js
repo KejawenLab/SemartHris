@@ -386,9 +386,9 @@ function date_picker(locale) {
     });
 }
 
-function date_range_picker(locale) {
+function date_range_picker(locale, format) {
     $('.input-daterange').datepicker({
-        format: 'dd-mm-yyyy',
+        format: format,
         language: locale,
         todayBtn: true,
         todayHighlight: true,

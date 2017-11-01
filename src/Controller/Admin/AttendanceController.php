@@ -139,6 +139,9 @@ class AttendanceController extends AdminController
         $output = [];
         /** @var AttendanceInterface[] $results */
         $results = $paginator->getCurrentPageResults();
+        if ($results instanceof \Traversable) {
+            $results = iterator_to_array($results);
+        }
 
         if (!$results) {
             return $this->render($this->entity['templates']['list'], array(
@@ -220,28 +223,5 @@ class AttendanceController extends AdminController
         $builder = parent::createEntityFormBuilder($entity, $view);
 
         return $this->container->get(AttendanceManipulator::class)->manipulate($builder, $entity);
-    }
-
-    /**
-     * @param array     $results
-     * @param \DateTime $i
-     *
-     * @return array
-     */
-    private function normalizeOutput(array $results, \DateTime $i): array
-    {
-        $output = [];
-        /** @var AttendanceInterface $result */
-        foreach ($results as $result) {
-            if ($result->getAttendanceDate()->format(Setting::get(Setting::DATE_FORMAT)) === $i->format(Setting::get(Setting::DATE_FORMAT))) {
-                $output[$i->format(Setting::get(Setting::DATE_FORMAT))] = $result;
-            } else {
-                if (!isset($output[$i->format(Setting::get(Setting::DATE_FORMAT))])) {
-                    $output[$i->format(Setting::get(Setting::DATE_FORMAT))] = null;
-                }
-            }
-        }
-
-        return $output;
     }
 }

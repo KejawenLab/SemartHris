@@ -40,7 +40,7 @@ final class GenerateUsernameSubscriber implements EventSubscriberInterface
 
     /**
      * @param UserRepositoryInterface $repository
-     * @param PasswordSetter   $encoder
+     * @param PasswordSetter          $encoder
      * @param UsernameGenerator       $usernameGenerator
      * @param string                  $defaultPassword
      */

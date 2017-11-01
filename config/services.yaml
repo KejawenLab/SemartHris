@@ -58,6 +58,15 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
             - 'KejawenLab\Application\SemartHris\Entity\Attendance'
 
+    KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceProcessor:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
+            - '%env(string:SEMART_ATTENDANCE_DEFAULT_ABSENT_REASON_CODE)%'
+            - 'KejawenLab\Application\SemartHris\Entity\Attendance'
+
     KejawenLab\Application\SemartHris\Security\Service\EncodePasswordService:
         arguments:
             - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
@@ -90,6 +99,10 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
             - '%env(int:SEMART_WORKDAY_PER_WEEK)%'
+
+    KejawenLab\Application\SemartHris\Component\Salary\Service\WorkdayCalculator:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
 
     KejawenLab\Application\SemartHris\Component\Setting\Setting:
         arguments:

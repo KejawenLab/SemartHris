@@ -2,22 +2,24 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Salary\Service;
 
+use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
+
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 final class WorkdayCalculator
 {
     /**
-     * @var array
+     * @var HolidayRepositoryInterface
      */
-    private $offdayPerWeek;
+    private $holidayRepository;
 
     /**
-     * @param string $offdayPerWeek
+     * @param HolidayRepositoryInterface $holidayRepository
      */
-    public function __construct(string $offdayPerWeek)
+    public function __construct(HolidayRepositoryInterface $holidayRepository)
     {
-        $this->offdayPerWeek = explode(', ', $offdayPerWeek);
+        $this->holidayRepository = $holidayRepository;
     }
 
     /**
@@ -33,7 +35,7 @@ final class WorkdayCalculator
         $totalDate = $dateLimit ?: $month->format('t');
         for ($i = $dateStart; $i <= $totalDate; ++$i) {
             $date = \DateTime::createFromFormat('Y-m-j', sprintf('%s-%d', $month->format('Y-m'), $i));
-            if (in_array($date->format('N'), $this->offdayPerWeek)) {
+            if ($this->holidayRepository->isHoliday($date)) {
                 continue;
             }
 

@@ -50,7 +50,7 @@ services:
     KejawenLab\Application\SemartHris\EventListener\OvertimeCalculatorSubscriber:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
-            - '%env(SEMART_OFFDAY_PER_WEEK)%'
+            - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
         tags:
             - { name: 'kernel.event_subscriber' }
 

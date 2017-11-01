@@ -4,9 +4,11 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceImporter;
+use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceProcessor;
 use KejawenLab\Application\SemartHris\Component\Setting\Setting;
 use KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator;
 use KejawenLab\Application\SemartHris\Repository\AttendanceRepository;
+use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use League\Csv\Reader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -97,10 +99,25 @@ class AttendanceController extends AdminController
      * @Route("/attendance/process", name="process_attendance", options={"expose"=true})
      * @Method("POST")
      *
+     * @param Request $request
+     *
      * @return Response
      */
-    public function processAction()
+    public function processAction(Request $request)
     {
+        $month = (int) $request->get('month', date('n'));
+        $employeeRepository = $this->container->get(EmployeeRepository::class);
+        $employee = null;
+        if ($employeeId = $request->get('employeeId')) {
+            $employee = $employeeRepository->find($employeeId);
+        }
+
+        $employees = $employee ? [$employee] : $employeeRepository->findAll();
+        $processor = $this->container->get(AttendanceProcessor::class);
+        foreach ($employees as $employee) {
+            $processor->process($employee, \DateTime::createFromFormat('Y-n', sprintf('%s-%s', date('Y'), $month)));
+        }
+
         return new JsonResponse(['message' => 'OK']);
     }
 

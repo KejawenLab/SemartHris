@@ -29,4 +29,9 @@ interface EmployeeRepositoryInterface
      * @return EmployeeInterface|null
      */
     public function findByCode(string $code): ? EmployeeInterface;
+
+    /**
+     * @return EmployeeInterface[]
+     */
+    public function findAll(): array;
 }

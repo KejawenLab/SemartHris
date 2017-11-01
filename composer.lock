@@ -5303,16 +5303,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.0.34",
+            "version": "v1.0.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "a04e41d3530029531c79c724b2e87ea4b0f9365d"
+                "reference": "321a45a4668a583107e7474d077b5b58fdae2b44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/a04e41d3530029531c79c724b2e87ea4b0f9365d",
-                "reference": "a04e41d3530029531c79c724b2e87ea4b0f9365d",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/321a45a4668a583107e7474d077b5b58fdae2b44",
+                "reference": "321a45a4668a583107e7474d077b5b58fdae2b44",
                 "shasum": ""
             },
             "require": {
@@ -5345,7 +5345,7 @@
                     "email": "fabien.potencier@gmail.com"
                 }
             ],
-            "time": "2017-10-29T18:41:04+00:00"
+            "time": "2017-10-31T23:27:40+00:00"
         }
     ],
     "aliases": [],

@@ -64,6 +64,16 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
     }
 
     /**
+     * @param \DateTimeInterface $date
+     *
+     * @return AttendanceInterface[]
+     */
+    public function findByDate(\DateTimeInterface $date): array
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findBy(['attendanceDate' => $date]);
+    }
+
+    /**
      * @param AttendanceInterface $attendance
      */
     public function update(AttendanceInterface $attendance): void

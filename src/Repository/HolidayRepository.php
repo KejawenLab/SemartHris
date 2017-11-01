@@ -10,12 +10,29 @@ use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayReposi
 class HolidayRepository extends Repository implements HolidayRepositoryInterface
 {
     /**
+     * @var array
+     */
+    private $offDayPerWeek;
+
+    /**.
+     * @param string $offDayPerWeek
+     */
+    public function __construct(string $offDayPerWeek)
+    {
+        $offDay = explode(',', $offDayPerWeek);
+    }
+
+    /**
      * @param \DateTimeInterface $date
      *
      * @return bool
      */
     public function isHoliday(\DateTimeInterface $date): bool
     {
+        if (in_array($date->format('N'), $this->offDayPerWeek)) {
+            return true;
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('COUNT(1)');
         $queryBuilder->from($this->entityClass, 'h');

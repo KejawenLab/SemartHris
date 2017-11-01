@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\EventListener;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -22,18 +23,18 @@ final class OvertimeCalculatorSubscriber implements EventSubscriberInterface
     private $overtimeCalculatorService;
 
     /**
-     * @var array
+     * @var HolidayRepositoryInterface
      */
-    private $offDay;
+    private $holidayRepository;
 
     /**
-     * @param OvertimeCalculator $service
-     * @param string             $offDayPerWeek
+     * @param OvertimeCalculator         $service
+     * @param HolidayRepositoryInterface $holidayRepository
      */
-    public function __construct(OvertimeCalculator $service, string $offDayPerWeek)
+    public function __construct(OvertimeCalculator $service, HolidayRepositoryInterface $holidayRepository)
     {
         $this->overtimeCalculatorService = $service;
-        $this->offDay = explode(',', $offDayPerWeek);
+        $this->holidayRepository = $holidayRepository;
     }
 
     /**
@@ -80,7 +81,7 @@ final class OvertimeCalculatorSubscriber implements EventSubscriberInterface
     private function calculate(OvertimeInterface $overtime): void
     {
         if (!$overtime->isHoliday()) {
-            if (in_array($overtime->getOvertimeDate()->format('N'), $this->offDay)) {
+            if ($this->holidayRepository->isHoliday($overtime->getOvertimeDate())) {
                 $overtime->setHoliday(true);
             }
         }

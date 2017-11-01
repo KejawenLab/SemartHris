@@ -79,6 +79,14 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     }
 
     /**
+     * @return EmployeeInterface[]
+     */
+    public function findAll(): array
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findAll();
+    }
+
+    /**
      * @param string $code
      *
      * @return EmployeeInterface|null

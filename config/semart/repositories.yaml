@@ -61,6 +61,8 @@ services:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Reason']]
 
     KejawenLab\Application\SemartHris\Repository\HolidayRepository:
+        arguments:
+            - '%env(string:SEMART_OFFDAY_PER_WEEK)%'
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Holiday']]
 

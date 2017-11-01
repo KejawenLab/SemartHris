@@ -32,6 +32,13 @@ interface AttendanceRepositoryInterface
     public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? AttendanceInterface;
 
     /**
+     * @param \DateTimeInterface $date
+     *
+     * @return AttendanceInterface[]
+     */
+    public function findByDate(\DateTimeInterface $date): array;
+
+    /**
      * @param AttendanceInterface $attendance
      */
     public function update(AttendanceInterface $attendance): void;

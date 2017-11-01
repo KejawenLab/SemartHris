@@ -78,7 +78,7 @@ class AttendanceProcessor
     public function process(EmployeeInterface $employee, \DateTimeInterface $date): void
     {
         $cutOff = getenv(self::CUT_OFF_KEY);
-        if ((int) $cutOff === self::CUT_OFF_LAST_DATE) {
+        if (self::CUT_OFF_LAST_DATE === (int) $cutOff) {
             $this->processFullMonth($employee, $date);
         } else {
             $this->processPartialMonth($employee, $date, $cutOff);

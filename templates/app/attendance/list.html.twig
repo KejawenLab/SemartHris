@@ -8,9 +8,7 @@
 %}
 
 {% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
-
 {% set startDate = app.request.get('startDate', date() | date('01-m-Y')) %}
-
 {%  set endDate = app.request.get('endDate', date() | date('t-m-Y')) %}
 
 {% set _request_parameters = _request_parameters|default({})|merge({
@@ -152,7 +150,12 @@
                     {% else  %}
                         <tr data-id="{{ key }}">
                             <td>{{ key }}</td>
-                            <td colspan="8" class="label label-primary text-center">{{ 'semarthris.holiday' | trans({}, 'messages') | upper }}</span>
+                            <td colspan="8" class="label label-primary text-center">
+                                {% if semarthris_is_weekend_holiday(key | date(date_format)) %}
+                                    {{ 'semarthris.weekend_holiday' | trans({}, 'messages') | upper }}
+                                {% else %}
+                                    {{ semarthris_holiday(key | date(date_format)) | upper }}
+                                {% endif %}
                             </td>
                         </tr>
                     {% endif %}

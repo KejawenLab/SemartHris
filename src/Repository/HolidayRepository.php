@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Repository;
 
+use KejawenLab\Application\SemartHris\Component\Holiday\Model\HolidayInterface;
 use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
 
 /**
@@ -32,7 +33,7 @@ class HolidayRepository extends Repository implements HolidayRepositoryInterface
      */
     public function isHoliday(\DateTimeInterface $date): bool
     {
-        if (in_array($date->format('N'), $this->offDayPerWeek)) {
+        if ($this->isWeekendHoliday($date)) {
             return true;
         }
 
@@ -46,5 +47,29 @@ class HolidayRepository extends Repository implements HolidayRepositoryInterface
         }
 
         return false;
+    }
+
+    /**
+     * @param \DateTimeInterface $date
+     *
+     * @return bool
+     */
+    public function isWeekendHoliday(\DateTimeInterface $date): bool
+    {
+        if (in_array($date->format('N'), $this->offDayPerWeek)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param \DateTimeInterface $date
+     * 
+     * @return HolidayInterface|null
+     */
+    public function getHoliday(\DateTimeInterface $date): ? HolidayInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['holidayDate' => $date]);
     }
 }

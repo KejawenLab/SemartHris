@@ -106,9 +106,9 @@
                 <source>semarthris.setting_key</source>
                 <target>Parameter</target>
             </trans-unit>
-            <trans-unit id="semarthris.holiday">
-                <source>semarthris.holiday</source>
-                <target>Hari Libur</target>
+            <trans-unit id="semarthris.weekend_holiday">
+                <source>semarthris.weekend_holiday</source>
+                <target>Libur Akhir Pekan</target>
             </trans-unit>
             <trans-unit id="semarthris.setting_value">
                 <source>semarthris.setting_value</source>

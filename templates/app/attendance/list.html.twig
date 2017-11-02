@@ -239,7 +239,7 @@
                     <p>{{ 'semarthris.attendance.process_finish_content'|trans({}, 'messages') }}</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary reload">
                         {{ 'action.close'|trans({}, 'messages') }}
                     </button>
                 </div>
@@ -296,7 +296,7 @@
                     },
                     beforeSend: function () {},
                     success: function () {
-                        window.location.reload(true);
+                        $('#modal-after-process').modal();
                     },
                     error: function () {
                         console.log('KO');
@@ -304,7 +304,11 @@
                 });
             });
 
-            $('.employee_checkall').click(function(){
+            $(document).on('click', '.reload', function() {
+                window.location.reload(true);
+            });
+
+            $(document).on('click', '.employee_checkall', function(){
                 $('.employee').prop('checked', this.checked);
             });
 

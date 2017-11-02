@@ -89,6 +89,8 @@ Bila Anda memerlukan profesional support atau ingin mengadakan kerjasama dengan 
 
 ## Preview
 
-![SemartHris Preview](preview.png)
+![SemartHris Profil Karyawan Preview](preview.png)
+
+![SemartHris Laporan Absensi Preview](preview2.png)
 
 ![SemartHris API Preview](api-preview.png)

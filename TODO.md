@@ -47,7 +47,10 @@
 - [X] Proses Absensi
 - [X] Pindah Object Subscriber ke Doctrine Subscriber
 - [X] Report Absen Diperbaiki, Hari Libur di Buat Merge Cell
-- [ ] Make sure hari libur pada report Absen
+- [X] Make sure hari libur pada report Absen
+- [X] Attendance Rules
+- [X] Masuk/Pulang Lupa Absen
+- [X] Attendance Rules
 - [ ] Penggajian
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist

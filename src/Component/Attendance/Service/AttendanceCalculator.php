@@ -36,7 +36,7 @@ class AttendanceCalculator
         $shiftment = $workshift->getShiftment();
         $attendance->setShiftment($shiftment);
 
-        if ($attendance->isAbsent() || !$attendance->getCheckOut()) {
+        if ($attendance->isAbsent() || !($attendance->getCheckOut() || $attendance->getCheckIn())) {
             $attendance->setCheckIn(null);
             $attendance->setCheckOut(null);
             $attendance->setEarlyIn(0);
@@ -52,8 +52,12 @@ class AttendanceCalculator
         $startHour = $shiftment->getStartHour();
         /** @var \DateTime $endHour */
         $endHour = $shiftment->getEndHour();
-        $checkIn = $attendance->getCheckIn();
-        $checkOut = $attendance->getCheckOut();
+
+        $checkIn = $attendance->getCheckIn() ?? $shiftment->getStartHour();
+        $attendance->setCheckIn($checkIn);
+
+        $checkOut = $attendance->getCheckOut() ?? $shiftment->getEndHour();
+        $attendance->setCheckOut($checkOut);
 
         if ($checkIn <= $startHour) {
             $delta = $startHour->getTimestamp() - $checkIn->getTimestamp();

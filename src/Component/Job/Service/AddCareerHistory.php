@@ -57,11 +57,11 @@ class AddCareerHistory
         if ($careerHistoryable instanceof MutationInterface) {
             /** @var Contractable|EmployeeInterface $employee */
             $employee = $careerHistoryable->getEmployee();
-            $company = $careerHistoryable->getOldCompany() ?: $employee->getCompany();
-            $department = $careerHistoryable->getOldDepartment() ?: $employee->getDepartment();
-            $jobLevel = $careerHistoryable->getOldJobLevel() ?: $employee->getJobLevel();
-            $jobTitle = $careerHistoryable->getOldJobTitle() ?: $employee->getJobTitle();
-            $supervisor = $careerHistoryable->getOldSupervisor() ?: $employee->getSupervisor();
+            $company = $careerHistoryable->getOldCompany() ?? $employee->getCompany();
+            $department = $careerHistoryable->getOldDepartment() ?? $employee->getDepartment();
+            $jobLevel = $careerHistoryable->getOldJobLevel() ?? $employee->getJobLevel();
+            $jobTitle = $careerHistoryable->getOldJobTitle() ?? $employee->getJobTitle();
+            $supervisor = $careerHistoryable->getOldSupervisor() ?? $employee->getSupervisor();
 
             $careerHistory->setEmployee($employee);
             $careerHistory->setSupervisor($supervisor);

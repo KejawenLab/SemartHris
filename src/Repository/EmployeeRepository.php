@@ -183,7 +183,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?: 'DESC');
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?? 'DESC');
         }
 
         return $queryBuilder;
@@ -260,7 +260,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?: 'DESC');
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?? 'DESC');
         }
 
         return $queryBuilder;

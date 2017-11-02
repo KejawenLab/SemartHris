@@ -5,6 +5,8 @@ namespace KejawenLab\Application\SemartHris\Component\Attendance\Service;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\AttendanceRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Attendance\Rule\NotQualifiedException;
+use KejawenLab\Application\SemartHris\Component\Attendance\Rule\RuleInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
@@ -16,6 +18,11 @@ class AttendanceProcessor
 {
     const CUT_OFF_LAST_DATE = -1;
     const CUT_OFF_KEY = 'SEMART_ATTENDANCE_CUT_OFF_DATE';
+
+    /**
+     * @var RuleInterface
+     */
+    private $attendanceRule;
 
     /**
      * @var AttendanceRepositoryInterface
@@ -48,6 +55,7 @@ class AttendanceProcessor
     private $class;
 
     /**
+     * @param RuleInterface                 $attendanceRule
      * @param AttendanceRepositoryInterface $attendanceRepository
      * @param HolidayRepositoryInterface    $holidayRepository
      * @param ReasonRepositoryInterface     $reasonRepository
@@ -56,6 +64,7 @@ class AttendanceProcessor
      * @param string                        $attendanceClass
      */
     public function __construct(
+        RuleInterface $attendanceRule,
         AttendanceRepositoryInterface $attendanceRepository,
         HolidayRepositoryInterface $holidayRepository,
         ReasonRepositoryInterface $reasonRepository,
@@ -63,6 +72,7 @@ class AttendanceProcessor
         string $reasonCode,
         string $attendanceClass
     ) {
+        $this->attendanceRule = $attendanceRule;
         $this->attendanceRepository = $attendanceRepository;
         $this->holidayRepository = $holidayRepository;
         $this->reasonRepository = $reasonRepository;
@@ -125,6 +135,14 @@ class AttendanceProcessor
     private function doProcess(EmployeeInterface $employee, \DateTimeInterface $date): void
     {
         $attendance = $this->attendanceRepository->findByEmployeeAndDate($employee, $date);
+        if (!$attendance) {
+            try {
+                $attendance = $this->attendanceRule->apply($employee, $date);
+            } catch (NotQualifiedException $exception) {
+                //Do nothing
+            }
+        }
+
         if ($this->holidayRepository->isHoliday($date) && !$attendance) {
             return;
         }

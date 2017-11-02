@@ -7,10 +7,10 @@ easy_admin:
     list:
         max_results: 17
         actions:
-            - { name: 'show', icon: 'search', label: false, title: 'Tampilkan' }
-            - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-primary action-new', label: false, title: 'Tambah Baru' }
-            - { name: 'edit', icon: 'pencil', label: false, title: 'Edit' }
-            - { name: 'delete', icon: 'close', label: false, title: 'Hapus' }
+            - { name: 'show', icon: 'search', label: false, title: 'action.show' }
+            - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-primary action-new', label: false, title: 'action.new' }
+            - { name: 'edit', icon: 'pencil', label: false, title: 'action.edit' }
+            - { name: 'delete', icon: 'close', label: false, title: 'action.delete' }
     design:
         brand_color: '#ac2925'
         form_theme: 'vertical'

@@ -150,13 +150,22 @@
                     {% else  %}
                         <tr data-id="{{ key }}">
                             <td>{{ key }}</td>
-                            <td colspan="8" class="label label-primary text-center">
-                                {% if semarthris_is_weekend_holiday(key | date(date_format)) %}
-                                    {{ 'semarthris.weekend_holiday' | trans({}, 'messages') | upper }}
-                                {% else %}
-                                    {{ semarthris_holiday(key | date(date_format)) | upper }}
+                            {% if semarthris_is_weekend_holiday(date(key)) %}
+                                <td colspan="8" class="label label-primary text-center">
+                                {{ 'semarthris.weekend_holiday' | trans({}, 'messages') | upper }}
+                                </td>
+                            {% else %}
+                                {% set holiday = semarthris_holiday(date(key)) %}
+                                {% if holiday is null %}
+                                    <td colspan="8" class="label label-success text-center">
+                                        {{ 'label.null' | trans({}, 'EasyAdminBundle') | upper }}
+                                    </td>
+                                {%  else %}
+                                    <td colspan="8" class="label label-danger text-center">
+                                        {{ holiday | upper }}
+                                    </td>
                                 {% endif %}
-                            </td>
+                            {% endif %}
                         </tr>
                     {% endif %}
                 {% else %}

@@ -65,7 +65,7 @@ class HolidayRepository extends Repository implements HolidayRepositoryInterface
 
     /**
      * @param \DateTimeInterface $date
-     * 
+     *
      * @return HolidayInterface|null
      */
     public function getHoliday(\DateTimeInterface $date): ? HolidayInterface

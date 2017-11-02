@@ -651,7 +651,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      */
     public function getDateOfBirth(): \DateTimeInterface
     {
-        return $this->dateOfBirth ?: new \DateTime();
+        return $this->dateOfBirth ?? new \DateTime();
     }
 
     /**
@@ -905,7 +905,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      */
     public function getRoles(): array
     {
-        return $this->roles ?: ['ROLE_USER'];
+        return $this->roles ?? ['ROLE_USER'];
     }
 
     /**

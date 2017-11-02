@@ -108,7 +108,7 @@ class AttendanceController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $month = (int) $request->get('month', date('n'));
+        $month = (int) $request->get('month', 10);
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         $employee = null;
         if ($employeeId = $request->get('employeeId')) {
@@ -140,7 +140,7 @@ class AttendanceController extends AdminController
         /** @var AttendanceInterface[] $results */
         $results = $paginator->getCurrentPageResults();
         if ($results instanceof \Traversable) {
-            $results = iterator_to_array($results);
+            $results = iterator_to_array($results, false);
         }
 
         if (!$results) {

@@ -235,7 +235,7 @@ class Contract implements ContractInterface
      */
     public function getStartDate(): \DateTimeInterface
     {
-        return $this->startDate ?: new \DateTime();
+        return $this->startDate ?? new \DateTime();
     }
 
     /**
@@ -267,7 +267,7 @@ class Contract implements ContractInterface
      */
     public function getSignedDate(): \DateTimeInterface
     {
-        return $this->signedDate ?: new \DateTime();
+        return $this->signedDate ?? new \DateTime();
     }
 
     /**

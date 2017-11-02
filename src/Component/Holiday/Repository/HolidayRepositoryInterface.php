@@ -1,6 +1,7 @@
 <?php
 
 namespace KejawenLab\Application\SemartHris\Component\Holiday\Repository;
+
 use KejawenLab\Application\SemartHris\Component\Holiday\Model\HolidayInterface;
 
 /**

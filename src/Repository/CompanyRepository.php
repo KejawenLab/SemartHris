@@ -133,7 +133,7 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?: 'DESC');
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?? 'DESC');
         }
 
         return $queryBuilder;

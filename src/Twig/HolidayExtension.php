@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Twig;
 
-use KejawenLab\Application\SemartHris\Component\Holiday\Model\HolidayInterface;
 use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
 
 /**
@@ -53,11 +52,16 @@ class HolidayExtension extends \Twig_Extension
     /**
      * @param \DateTimeInterface $date
      *
-     * @return HolidayInterface|null
+     * @return string|null
      */
-    public function getHoliday(\DateTimeInterface $date): ? HolidayInterface
+    public function getHoliday(\DateTimeInterface $date): ? string
     {
-        return $this->holidayRepository->getHoliday($date);
+        $holiday = $this->holidayRepository->getHoliday($date);
+        if ($holiday) {
+            return $holiday->getName();
+        }
+
+        return $holiday;
     }
 
     /**

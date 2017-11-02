@@ -1,6 +1,5 @@
 services:
     KejawenLab\Application\SemartHris\Twig\AttendanceExtension:
-        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
@@ -9,7 +8,6 @@ services:
             - { name: 'twig.extension' }
 
     KejawenLab\Application\SemartHris\Twig\HolidayExtension:
-        lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
         tags:

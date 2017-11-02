@@ -84,7 +84,7 @@ class Holiday implements HolidayInterface
      */
     public function getHolidayDate(): \DateTimeInterface
     {
-        return $this->holidayDate ?: new \DateTime();
+        return $this->holidayDate ?? new \DateTime();
     }
 
     /**

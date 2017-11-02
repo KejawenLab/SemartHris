@@ -10,6 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Setting\Setting as Base;
 class Setting
 {
     const DATE_FORMAT = 'date_format';
+    const TIME_FORMAT = 'time_format';
     const DATE_TIME_FORMAT = 'date_time_format';
     const FIRST_DATE_FORMAT = 'first_date_format';
     const LAST_DATE_FORMAT = 'last_date_format';

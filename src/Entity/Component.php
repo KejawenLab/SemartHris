@@ -179,7 +179,7 @@ class Component implements ComponentInterface
      */
     public function isFixed(): bool
     {
-        return $this->fixed ?: false;
+        return $this->fixed ?? false;
     }
 
     /**

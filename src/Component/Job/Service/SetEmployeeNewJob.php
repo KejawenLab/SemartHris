@@ -15,11 +15,11 @@ class SetEmployeeNewJob
     public static function setNewJob(MutationInterface $mutation): void
     {
         $employee = $mutation->getEmployee();
-        $company = $mutation->getNewCompany() ?: $employee->getCompany();
-        $department = $mutation->getNewDepartment() ?: $employee->getDepartment();
-        $jobLevel = $mutation->getNewJobLevel() ?: $employee->getJobLevel();
-        $jobTitle = $mutation->getNewJobTitle() ?: $employee->getJobTitle();
-        $supervisor = $mutation->getNewSupervisor() ?: $employee->getSupervisor();
+        $company = $mutation->getNewCompany() ?? $employee->getCompany();
+        $department = $mutation->getNewDepartment() ?? $employee->getDepartment();
+        $jobLevel = $mutation->getNewJobLevel() ?? $employee->getJobLevel();
+        $jobTitle = $mutation->getNewJobTitle() ?? $employee->getJobTitle();
+        $supervisor = $mutation->getNewSupervisor() ?? $employee->getSupervisor();
 
         $employee->setCompany($company);
         $employee->setDepartment($department);

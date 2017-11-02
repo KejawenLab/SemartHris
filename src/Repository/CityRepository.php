@@ -44,7 +44,7 @@ class CityRepository extends Repository implements CityRepositoryInterface
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?: 'DESC');
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?? 'DESC');
         }
 
         return $queryBuilder;

@@ -17,6 +17,13 @@ interface EmployeeRepositoryInterface
     public function find(string $id): ? EmployeeInterface;
 
     /**
+     * @param array $ids
+     *
+     * @return EmployeeInterface[]
+     */
+    public function finds(array $ids = []): array;
+
+    /**
      * @param string $jobLevelId
      *
      * @return array

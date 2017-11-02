@@ -14,6 +14,10 @@
                 <source>action.new</source>
                 <target>Tambah Baru</target>
             </trans-unit>
+            <trans-unit id="action.close">
+                <source>action.close</source>
+                <target>Tutup</target>
+            </trans-unit>
             <trans-unit id="action.show">
                 <source>action.show</source>
                 <target>Tampilkan</target>
@@ -66,6 +70,10 @@
                 <source>label.attendance.process_action</source>
                 <target>Proses absensi</target>
             </trans-unit>
+            <trans-unit id="semarthris.attendance.process_finish_content">
+                <source>semarthris.attendance.process_finish_content</source>
+                <target>Presensi telah selesai diproses</target>
+            </trans-unit>
             <trans-unit id="label.attendance.preview_upload">
                 <source>label.attendance.preview_upload</source>
                 <target>Pratinjau Presensi</target>
@@ -100,7 +108,7 @@
             </trans-unit>
             <trans-unit id="semarthris.attendance.process_warning_content">
                 <source>semarthris.attendance.process_warning_content</source>
-                <target>Anda yakin akan memproses absensi pada bulan berjalan?</target>
+                <target>Pastikan filter awal tanggal dan tanda centang pada tabel sudah benar!</target>
             </trans-unit>
             <trans-unit id="semarthris.setting_key">
                 <source>semarthris.setting_key</source>

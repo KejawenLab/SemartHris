@@ -108,14 +108,14 @@ class AttendanceController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $month = (int) $request->get('month', 10);
+        $month = (int) $request->get('month', date('n'));
         $employeeRepository = $this->container->get(EmployeeRepository::class);
-        $employee = null;
-        if ($employeeId = $request->get('employeeId')) {
-            $employee = $employeeRepository->find($employeeId);
+        if ($ids = $request->get('employees')) {
+            $employees = $employeeRepository->finds($ids);
+        } else {
+            $employees = $employeeRepository->findAll();
         }
 
-        $employees = $employee ? [$employee] : $employeeRepository->findAll();
         $processor = $this->container->get(AttendanceProcessor::class);
         foreach ($employees as $employee) {
             $processor->process($employee, \DateTime::createFromFormat('Y-n', sprintf('%s-%s', date('Y'), $month)));

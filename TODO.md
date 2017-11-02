@@ -51,6 +51,8 @@
 - [X] Attendance Rules
 - [X] Masuk/Pulang Lupa Absen
 - [X] Attendance Rules
+- [X] Proses Absen per Karyawan
+- [ ] Security!!! Very Urgent
 - [ ] Penggajian
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist

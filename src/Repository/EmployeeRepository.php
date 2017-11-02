@@ -74,6 +74,23 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     }
 
     /**
+     * @param array $ids
+     *
+     * @return EmployeeInterface[]
+     */
+    public function finds(array $ids = []): array
+    {
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'o');
+        $queryBuilder->select('o');
+        $queryBuilder->andWhere($queryBuilder->expr()->in('o.id', ':ids'));
+        $queryBuilder->setParameter('ids', $ids);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
      * @return EmployeeInterface[]
      */
     public function findAll(): array

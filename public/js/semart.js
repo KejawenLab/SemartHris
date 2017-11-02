@@ -418,3 +418,19 @@ function change_file_chooser(btnText, iconCss, input) {
         badge: true
     });
 }
+
+function createDate(input, format) {
+    var parts = input.match(/(\d+)/g);
+    var i = 0;
+    var fmt = {};
+
+    format.replace(/(yyyy|dd|mm)/g, function(part) { fmt[part] = i++; });
+
+    return new Date(parts[fmt['yyyy']], parts[fmt['mm']]-1, parts[fmt['dd']]);
+}
+
+Array.prototype.unique = function() {
+    return this.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+    });
+};

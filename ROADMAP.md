@@ -18,6 +18,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [X] Jadwal Kerja
 - [X] Absensi
 - [X] Lembur
+- [ ] Authorisasi dan Authentikasi
 - [ ] Penggajian
 
 ### Fase II
@@ -38,7 +39,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 - [ ] Perbaikan Arsitektur
 - [ ] Perbaikan API
-- [ ] Authorisasi dan Authentikasi
+- [ ] Perbaikan Tampilan
 
 ### Fase V
 

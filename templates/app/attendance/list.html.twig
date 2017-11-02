@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="startDate">Pilih Tanggal</label>
                                     <div class="input-group input-daterange">
-                                        <input id="startDate" type="text" name="startDate" class="form-control" required="required" value="{{ app.request.get('startDate') ?: date() | date('01-m-Y') }}">
+                                        <input id="startDate" type="text" name="startDate" class="form-control startDate" required="required" value="{{ app.request.get('startDate') ?: date() | date('01-m-Y') }}">
                                         <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
                                         <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.get('endDate') ?: date() | date('t-m-Y') }}">
                                     </div>
@@ -112,7 +112,32 @@
         <table class="table">
             <thead>
             {% block table_head %}
-                {{ parent() }}
+                <tr>
+                    <td><input type="checkbox" name="employee_checkall" class="employee_checkall"/></td>
+                    {% for field, metadata in fields %}
+                        {% set isSortingField = metadata.property == app.request.get('sortField')|split('.')|first %}
+                        {% set nextSortDirection = isSortingField ? (app.request.get('sortDirection') == 'DESC' ? 'ASC' : 'DESC') : 'DESC' %}
+                        {% set _column_label = (metadata.label ?: field|humanize)|trans(_trans_parameters) %}
+                        {% set _column_icon = isSortingField ? (nextSortDirection == 'DESC' ? 'fa-caret-up' : 'fa-caret-down') : 'fa-sort' %}
+
+                        <th data-property-name="{{ metadata.property }}" class="{{ isSortingField ? 'sorted' }} {{ metadata.virtual ? 'virtual' }} {{ metadata.dataType|lower }} {{ metadata.css_class }}">
+                            {% if metadata.sortable %}
+                                <a href="{{ path('easyadmin', _request_parameters|merge({ sortField: metadata.property, sortDirection: nextSortDirection })) }}">
+                                    <i class="fa {{ _column_icon }}"></i>
+                                    {{ _column_label|raw }}
+                                </a>
+                            {% else %}
+                                <span>{{ _column_label|raw }}</span>
+                            {% endif %}
+                        </th>
+                    {% endfor %}
+
+                    {% if _list_item_actions|length > 0 %}
+                        <th>
+                            <span>{{ 'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') }}</span>
+                        </th>
+                    {% endif %}
+                </tr>
             {% endblock table_head %}
             </thead>
 
@@ -123,6 +148,8 @@
                         {# the empty string concatenation is needed when the primary key is an object (e.g. an Uuid object) #}
                         {% set _item_id = '' ~ attribute(item, _entity_config.primary_key_field_name) %}
                         <tr data-id="{{ _item_id }}">
+                            {% set employeeId = item.employee ? item.employee.id : null %}
+                            <td><input type="checkbox" name="employee[]" class="employee" data-employee="{{ employeeId }}"/></td>
                         {% for field, metadata in fields %}
                             {% set isSortingField = metadata.property == app.request.get('sortField') %}
                             {% set _column_label =  (metadata.label ?: field|humanize)|trans(_trans_parameters)  %}
@@ -149,6 +176,7 @@
                         </tr>
                     {% else  %}
                         <tr data-id="{{ key }}">
+                            <td>&nbsp;</td>
                             <td>{{ key }}</td>
                             {% if semarthris_is_weekend_holiday(date(key)) %}
                                 <td colspan="8" class="label label-primary text-center">
@@ -170,7 +198,7 @@
                     {% endif %}
                 {% else %}
                     <tr>
-                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 1 : fields|length }}">
+                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 2 : fields|length }}">
                             {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
                         </td>
                     </tr>
@@ -197,6 +225,22 @@
                     </button>
                     <button type="button" data-dismiss="modal" class="btn btn-danger process-attendance">
                         {{ 'label.attendance.process_action' | trans({}, 'messages') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-after-process" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>{{ 'delete_modal.title'|trans({}, 'EasyAdminBundle') }}</h4>
+                    <p>{{ 'semarthris.attendance.process_finish_content'|trans({}, 'messages') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn">
+                        {{ 'action.close'|trans({}, 'messages') }}
                     </button>
                 </div>
             </div>
@@ -235,10 +279,21 @@
             });
 
             $(document).on('click', '.process-attendance', function () {
+                var employees = [];
+                $('.employee:checkbox:checked').each(function () {
+                    employees.push($(this).data('employee'));
+                });
+
+                var date = createDate($('.startDate').val(), '{{ date_format_long }}');
+                var month = date.getMonth() + 1;
+
                 $.ajax({
                     url: Routing.generate('process_attendance'),
                     type: 'POST',
-                    data: {},
+                    data: {
+                        employees: employees,
+                        month: month
+                    },
                     beforeSend: function () {},
                     success: function () {
                         window.location.reload(true);
@@ -247,6 +302,10 @@
                         console.log('KO');
                     }
                 });
+            });
+
+            $('.employee_checkall').click(function(){
+                $('.employee').prop('checked', this.checked);
             });
 
             change_file_chooser(btnFile, 'fa fa-file-excel-o', true);

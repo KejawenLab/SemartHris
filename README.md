@@ -27,7 +27,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Promosi, Mutasi, dan Demosi
 - [X] Manajemen Shift Kerja
 - [X] Manajemen Jadwal Kerja
-- [X] Manajemen Absensi
+- [X] Manajemen Absensi dengan fitur *rules*
 - [X] Manajemen Hari Libur
 - [X] Manajemen Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
 - [X] Backend Site and API sekaligus

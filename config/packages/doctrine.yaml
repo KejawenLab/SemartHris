@@ -13,6 +13,6 @@ doctrine:
                 prefix: 'KejawenLab\Application\SemartHris\Entity\'
                 alias: KejawenLab\Application\SemartHris
         filters:
-            softdeleteable:
+            semart_soft_delete:
                 class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                 enabled: true

@@ -44,6 +44,8 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 ### Fase V
 
+- [ ] Super Admin add extra field (is_deleted?)
+- [ ] Restore Record when it is deleted
 - [ ] Pre rilis
 - [ ] Perbaikan dan pemantapan sebelum rilis
 - [ ] Rilis

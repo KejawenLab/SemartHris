@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Repository\DepartmentRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;

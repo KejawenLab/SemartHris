@@ -1,6 +1,7 @@
 easy_admin:
     entities:
         LeaveReason:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Reason'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ReasonController'
             templates:
@@ -29,6 +30,7 @@ easy_admin:
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Alasan Cuti'
                 dql_filter: "entity.type = 'l'"
                 fields:
@@ -37,6 +39,7 @@ easy_admin:
                     - { property: 'name', label: 'Alasan' }
 
         AbsentReason:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Reason'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ReasonController'
             templates:
@@ -65,6 +68,7 @@ easy_admin:
                     - { property: 'code', label: 'Kode Alasan' }
                     - { property: 'name', label: 'Alasan' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Alasan Ketidakhadiran'
                 dql_filter: "entity.type = 'a'"
                 fields:

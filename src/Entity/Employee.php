@@ -16,7 +16,6 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
-use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateGender;
@@ -62,7 +61,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Employee implements EmployeeInterface, Superviseable, Contractable, UserInterface, \Serializable
+class Employee implements Superviseable, Contractable, UserInterface, \Serializable
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
@@ -170,7 +169,7 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
      *
      * @ApiSubresource()
      *
-     * @var EmployeeInterface
+     * @var Superviseable
      */
     private $supervisor;
 
@@ -539,17 +538,17 @@ class Employee implements EmployeeInterface, Superviseable, Contractable, UserIn
     }
 
     /**
-     * @return EmployeeInterface|null
+     * @return Superviseable|null
      */
-    public function getSupervisor(): ? EmployeeInterface
+    public function getSupervisor(): ? Superviseable
     {
         return $this->supervisor;
     }
 
     /**
-     * @param EmployeeInterface|null $supervisor
+     * @param Superviseable|null $supervisor
      */
-    public function setSupervisor(EmployeeInterface $supervisor = null): void
+    public function setSupervisor(Superviseable $supervisor = null): void
     {
         $this->supervisor = $supervisor;
     }

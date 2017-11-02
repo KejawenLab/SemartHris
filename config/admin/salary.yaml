@@ -1,8 +1,9 @@
 easy_admin:
     entities:
         Component:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Component'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             disabled_actions: ['show']
             templates:
                 new: 'app/reason/new.html.twig'
@@ -23,6 +24,7 @@ easy_admin:
                     - { property: 'name', label: 'Komponen Gaji' }
                     - { property: 'fixed', label: 'Tunjangan/Potongan Tetap?' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Komponen Gaji'
                 fields:
                     - { property: 'code', label: 'Kode Komponen' }

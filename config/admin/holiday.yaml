@@ -1,8 +1,9 @@
 easy_admin:
     entities:
         Holiday:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Holiday'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             templates:
                 new: 'app/holiday/new.html.twig'
                 edit: 'app/holiday/edit.html.twig'
@@ -25,6 +26,7 @@ easy_admin:
                     - { property: 'holidayDate', label: 'Tanggal' }
                     - { property: 'name', label: 'Nama Libur' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Hari Libur'
                 fields:
                     - { property: 'holidayDate', label: 'Tanggal' }

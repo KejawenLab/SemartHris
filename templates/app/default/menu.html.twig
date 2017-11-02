@@ -1,0 +1,31 @@
+{% set parent = '@EasyAdmin/default/menu.html.twig' %}
+
+{% extends parent %}
+
+{% import parent as helper %}
+
+{% block menu_item %}
+    {% if is_granted(item.role) %}
+        <li class="{{ item.type == 'divider' ? 'header' }} {{ item.children is not empty ? 'treeview' }} {{ app.request.query.get('menuIndex')|default(-1) == loop.index0 ? 'active' }} {{ app.request.query.get('submenuIndex')|default(-1) != -1 ? 'submenu-active' }}">
+            {{ helper.render_menu_item(item, _entity_config.translation_domain|default('messages')) }}
+
+            {% if item.children|default([]) is not empty %}
+                <ul class="treeview-menu">
+                    {% for subitem in item.children %}
+                        {% block menu_subitem %}
+                            {% set _entity_config = easyadmin_entity(subitem.entity) %}
+                            {% set _entity_role = _entity_config.role | default(default_role) %}
+                            {% set _list_role = _entity_config.list.role | default(default_role) %}
+
+                            {% if is_granted(_entity_role) and is_granted(_list_role) %}
+                                <li class="{{ subitem.type == 'divider' ? 'header' }} {{ app.request.query.get('menuIndex')|default(-1) == loop.parent.loop.index0 and app.request.query.get('submenuIndex')|default(-1) == loop.index0 ? 'active' }}">
+                                    {{ helper.render_menu_item(subitem, _entity_config.translation_domain|default('messages')) }}
+                                </li>
+                            {% endif %}
+                        {% endblock menu_subitem %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endif %}
+{% endblock menu_item %}

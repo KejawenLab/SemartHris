@@ -1,7 +1,8 @@
 easy_admin:
     entities:
         Setting:
-            class: 'KejawenLab\Application\SemartHris\Entity\Region'
+            role: 'ROLE_HRSTAFF'
+            class: 'KejawenLab\Application\SemartHris\Entity\Region' #don't use just a config
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SettingController'
             disabled_actions: ['show', 'new', 'delete']
             templates:
@@ -18,4 +19,5 @@ easy_admin:
             search:
                 title: 'Konfigurasi Aplikasi'
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Konfigurasi Aplikasi'

@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Form\Manipulator\MutationManipulator;
 
 /**

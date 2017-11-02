@@ -1,6 +1,7 @@
 easy_admin:
     entities:
         Company:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Company'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyController'
             new:
@@ -40,6 +41,7 @@ easy_admin:
                     - { property: 'address.faxNumber', label: 'No. Fax'}
                     - { property: 'taxNumber', label: 'NPWP' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Perusahaan'
                 actions:
                     - { name: 'company_department', type: 'route', icon: 'university', label: false, title: 'Lihat Department' }
@@ -50,6 +52,7 @@ easy_admin:
                     - { property: 'name', label: 'Nama Perusahaan' }
 
         Department:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Department'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\DepartmentController'
             new:
@@ -74,6 +77,7 @@ easy_admin:
                     - { property: 'code', label: 'Kode Departemen' }
                     - { property: 'name', label: 'Nama Departemen' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Departemen'
                 fields:
                     - { property: 'parent', label: 'Departemen Induk' }
@@ -81,6 +85,7 @@ easy_admin:
                     - { property: 'name', label: 'Nama Departemen' }
 
         CompanyDepartment:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\CompanyDepartment'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyDepartmentController'
             disabled_actions: ['search']
@@ -101,12 +106,14 @@ easy_admin:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Departemen Perusahaan'
                 fields:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
 
         CompanyAddress:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\CompanyAddress'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyAddressController'
             templates:
@@ -147,6 +154,7 @@ easy_admin:
                     - { property: 'faxNumber', label: 'No. Fax' }
                     - { property: 'defaultAddress', label: 'Set Default' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Alamat Perusahaan'
                 fields:
                     - { property: 'company', label: 'Perusahaan' }

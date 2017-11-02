@@ -1,6 +1,7 @@
 easy_admin:
     entities:
         Employee:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Employee'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeController'
             disabled_actions: ['delete']
@@ -86,6 +87,7 @@ easy_admin:
                     - { property: 'email', label: 'Alamat Email' }
                     - { property: 'resign', label: 'Resign?', type: 'boolean' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Karyawan'
                 actions:
                     - { name: 'employee_address', type: 'route', icon: 'book', label: false, title: 'Lihat Alamat' }
@@ -103,6 +105,7 @@ easy_admin:
                     - { property: 'haveOvertimeBenefit', label: 'Hak Lembur?', type: 'boolean' }
 
         EmployeeAddress:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\EmployeeAddress'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\EmployeeAddressController'
             templates:
@@ -143,6 +146,7 @@ easy_admin:
                     - { property: 'faxNumber', label: 'No. Fax' }
                     - { property: 'defaultAddress', label: 'Set Default' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Alamat Karyawan'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }

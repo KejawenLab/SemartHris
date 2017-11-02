@@ -26,10 +26,10 @@ abstract class Voter extends BaseVoter implements VoterInterface
             return false;
         }
 
-        $reflection = $reflection = new \ReflectionObject($subject);
-        if (!$reflection->implementsInterface($this->supportClass())) {
-            return false;
-        }
+//        $reflection = $reflection = new \ReflectionObject($subject);
+//        if (!$reflection->implementsInterface($this->supportClass())) {
+//            return false;
+//        }
 
         return true;
     }

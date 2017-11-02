@@ -1,6 +1,7 @@
 easy_admin:
     entities:
         User:
+            role: 'ROLE_SUPER_ADMIN'
             class: 'KejawenLab\Application\SemartHris\Entity\Employee'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\UserController'
             disabled_actions: ['new', 'delete']
@@ -22,6 +23,7 @@ easy_admin:
                     - { property: 'roles', label: 'Hak Akses', template: 'app/default/field_array.html.twig' }
                     - { property: 'resign', label: 'Aktif', type: 'boolean', template: 'app/default/field_boolean_negation.html.twig' }
             list:
+                role: 'ROLE_SUPER_ADMIN'
                 title: 'User'
                 fields:
                     - { property: 'fullName', label: 'Nama Lengkap' }

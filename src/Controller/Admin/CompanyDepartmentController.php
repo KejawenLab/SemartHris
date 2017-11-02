@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyDepartmentInterface;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
 use KejawenLab\Application\SemartHris\Form\Manipulator\CompanyDepartmentManipulator;

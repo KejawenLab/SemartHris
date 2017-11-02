@@ -2,7 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
 
-use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -10,12 +10,12 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 class SupervisorChecker
 {
     /**
-     * @param EmployeeInterface $employee
-     * @param EmployeeInterface $supervisor
+     * @param Superviseable $employee
+     * @param Superviseable $supervisor
      *
      * @return bool
      */
-    public function isAllowToSupervise(EmployeeInterface $employee, EmployeeInterface $supervisor): bool
+    public function isAllowToSupervise(Superviseable $employee, Superviseable $supervisor): bool
     {
         $employeeJobTitle = $employee->getJobTitle();
         $supervisorJobTitle = $supervisor->getJobTitle();
@@ -32,12 +32,12 @@ class SupervisorChecker
     }
 
     /**
-     * @param EmployeeInterface $employee
-     * @param EmployeeInterface $supervisor
+     * @param Superviseable $employee
+     * @param Superviseable $supervisor
      *
      * @return bool
      */
-    private function canSupervise(EmployeeInterface $employee, EmployeeInterface $supervisor): bool
+    private function canSupervise(Superviseable $employee, Superviseable $supervisor): bool
     {
         $allow = false;
 

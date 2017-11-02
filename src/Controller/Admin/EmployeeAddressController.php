@@ -3,7 +3,6 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressChecker;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeAddressInterface;
 use KejawenLab\Application\SemartHris\Entity\EmployeeAddress;

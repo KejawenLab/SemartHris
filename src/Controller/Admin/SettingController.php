@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use EasyCorp\Bundle\EasyAdminBundle\Exception\NoEntitiesConfiguredException;
 use EasyCorp\Bundle\EasyAdminBundle\Exception\UndefinedEntityException;
 use KejawenLab\Application\SemartHris\Component\Setting\Setting;

@@ -1,6 +1,7 @@
 easy_admin:
     entities:
         Overtime:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Overtime'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\OvertimeController'
             disabled_actions: ['search']
@@ -38,6 +39,7 @@ easy_admin:
                     - { property: 'approvedBy', label: 'Disetujui oleh' }
                     - { property: 'description', label: 'Keterangan' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Lembur'
                 fields:
                     - { property: 'overtimeDate', label: 'Tanggal' }

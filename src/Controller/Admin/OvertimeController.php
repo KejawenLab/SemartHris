@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController;
 use KejawenLab\Application\SemartHris\Repository\OvertimeRepository;
 use KejawenLab\Application\SemartHris\Util\Setting;
 

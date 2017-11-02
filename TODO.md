@@ -52,7 +52,8 @@
 - [X] Masuk/Pulang Lupa Absen
 - [X] Attendance Rules
 - [X] Proses Absen per Karyawan
-- [ ] Security!!! Very Urgent
+- [X] Security!!! Very Urgent
+- [ ] Security Per Action
 - [ ] Penggajian
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist

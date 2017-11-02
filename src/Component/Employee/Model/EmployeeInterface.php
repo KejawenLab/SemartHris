@@ -83,16 +83,6 @@ interface EmployeeInterface extends Addressable
     public function setJobTitle(JobTitleInterface $jobTitle = null): void;
 
     /**
-     * @return null|EmployeeInterface
-     */
-    public function getSupervisor(): ? EmployeeInterface;
-
-    /**
-     * @param EmployeeInterface|null $employee
-     */
-    public function setSupervisor(EmployeeInterface $employee = null): void;
-
-    /**
      * @return string
      */
     public function getCode(): string;

@@ -1,8 +1,9 @@
 easy_admin:
     entities:
         EducationTitle:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\EducationTitle'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             new:
                 title: 'Tambah Gelar Pendidikan'
             edit:
@@ -22,14 +23,16 @@ easy_admin:
                     - { property: 'shortName', label: 'Gelar' }
                     - { property: 'name', label: 'Nama Gelar' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Gelar Pendidikan'
                 fields:
                     - { property: 'shortName', label: 'Gelar' }
                     - { property: 'name', label: 'Nama Gelar' }
 
         EducationalInstitute:
+            role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\EducationalInstitute'
-            controller: 'EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             new:
                 title: 'Tambah Lembaga Pendidikan'
             edit:
@@ -46,6 +49,7 @@ easy_admin:
                 fields:
                     - { property: 'name', label: 'Nama Lembaga' }
             list:
+                role: 'ROLE_HRSTAFF'
                 title: 'Lembaga Pendidikan'
                 fields:
                     - { property: 'name', label: 'Nama Lembaga' }

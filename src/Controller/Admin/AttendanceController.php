@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendancePro
 use KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator;
 use KejawenLab\Application\SemartHris\Repository\AttendanceRepository;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
-use KejawenLab\Application\SemartHris\Util\Setting;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use League\Csv\Reader;
 use Pagerfanta\Exception\LogicException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -59,7 +59,7 @@ class AttendanceController extends AdminController
             ));
         }
 
-        $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), Setting::get(Setting::UPDATE_DESTIONATION), Setting::get(Setting::ATTENDANCE_UPLOAD_PATH));
+        $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), SettingUtil::get(SettingUtil::UPDATE_DESTIONATION), SettingUtil::get(SettingUtil::ATTENDANCE_UPLOAD_PATH));
         $fileName = sprintf('%s.%s', (new \DateTime())->format('Y_m_d_H_i_s'), $attendance->guessExtension());
         $attendance->move($destination, $fileName);
 
@@ -156,7 +156,7 @@ class AttendanceController extends AdminController
                 $paginator->getNextPage();
                 $startDate = clone $results[count($results) - 1]->getAttendanceDate();
             } catch (LogicException $exception) {
-                $startDate = \DateTime::createFromFormat(Setting::get(Setting::DATE_TIME_FORMAT), sprintf('%s 00:00:00', $this->request->query->get('startDate', date(Setting::get(Setting::DATE_FORMAT)))));
+                $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_TIME_FORMAT), sprintf('%s 00:00:00', $this->request->query->get('startDate', date(SettingUtil::get(SettingUtil::DATE_FORMAT)))));
             }
 
             $endDate = clone $results[0]->getAttendanceDate();
@@ -164,23 +164,23 @@ class AttendanceController extends AdminController
             try {
                 $paginator->getNextPage();
                 $endDate = clone $results[count($results) - 1]->getAttendanceDate();
-                $startDate = \DateTime::createFromFormat(Setting::get(Setting::DATE_TIME_FORMAT), sprintf('%s 00:00:00', $this->request->query->get('startDate', date(Setting::get(Setting::DATE_FORMAT)))));
+                $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_TIME_FORMAT), sprintf('%s 00:00:00', $this->request->query->get('startDate', date(SettingUtil::get(SettingUtil::DATE_FORMAT)))));
             } catch (LogicException $exception) {
-                $endDate = \DateTime::createFromFormat(Setting::get(Setting::DATE_TIME_FORMAT), sprintf('%s 00:00:00', $this->request->query->get('endDate', date(Setting::get(Setting::DATE_FORMAT)))));
+                $endDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_TIME_FORMAT), sprintf('%s 00:00:00', $this->request->query->get('endDate', date(SettingUtil::get(SettingUtil::DATE_FORMAT)))));
                 $startDate = clone $results[0]->getAttendanceDate();
             }
         }
 
         /** @var \DateTime $i */
         for ($i = $endDate; $i >= $startDate;) {
-            $output[$i->format(Setting::get(Setting::DATE_FORMAT))] = [];
+            $output[$i->format(SettingUtil::get(SettingUtil::DATE_FORMAT))] = [];
             $i->sub(new \DateInterval('P1D'));
         }
 
         /** @var AttendanceInterface $result */
         foreach ($results as $result) {
-            if (empty($output[$result->getAttendanceDate()->format(Setting::get(Setting::DATE_FORMAT))])) {
-                $output[$result->getAttendanceDate()->format(Setting::get(Setting::DATE_FORMAT))] = $result;
+            if (empty($output[$result->getAttendanceDate()->format(SettingUtil::get(SettingUtil::DATE_FORMAT))])) {
+                $output[$result->getAttendanceDate()->format(SettingUtil::get(SettingUtil::DATE_FORMAT))] = $result;
             }
         }
 
@@ -202,8 +202,8 @@ class AttendanceController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        $startDate = \DateTime::createFromFormat(Setting::get(Setting::DATE_FORMAT), $this->request->query->get('startDate', date(Setting::get(Setting::FIRST_DATE_FORMAT))));
-        $endDate = \DateTime::createFromFormat(Setting::get(Setting::DATE_FORMAT), $this->request->query->get('endDate', date(Setting::get(Setting::LAST_DATE_FORMAT))));
+        $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $this->request->query->get('startDate', date(SettingUtil::get(SettingUtil::FIRST_DATE_FORMAT))));
+        $endDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $this->request->query->get('endDate', date(SettingUtil::get(SettingUtil::LAST_DATE_FORMAT))));
         $companyId = $this->request->get('company');
         $departmentId = $this->request->get('department');
         $shiftmentId = $this->request->get('shiftment');

@@ -26,8 +26,8 @@ class AdminController extends EasyAdmin
             $this->getDoctrine()->getManager()->getFilters()->disable('semart_soft_delete');
         }
 
-//        $this->denyAccessUnlessGranted($this->entity['role'] ?? self::DEFAULT_ROLE);
-//        $action = $request->query->get('action', 'list');
-//        $this->denyAccessUnlessGranted($this->entity[$action]['role'] ?? self::DEFAULT_ROLE);
+        $this->denyAccessUnlessGranted($this->entity['role'] ?? self::DEFAULT_ROLE);
+        $action = $request->query->get('action', 'list');
+        $this->denyAccessUnlessGranted($this->entity[$action]['role'] ?? self::DEFAULT_ROLE);
     }
 }

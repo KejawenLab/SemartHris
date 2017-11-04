@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator;
 use KejawenLab\Application\SemartHris\Security\Service\PasswordSetter;
-use KejawenLab\Application\SemartHris\Util\Setting;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

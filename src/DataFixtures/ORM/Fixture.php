@@ -4,7 +4,7 @@ namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture as Base;
 use Doctrine\Common\Persistence\ObjectManager;
-use KejawenLab\Application\SemartHris\Util\Setting;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Yaml\Yaml;
@@ -45,11 +45,11 @@ abstract class Fixture extends Base
                     }
 
                     if (false !== strpos($value, 'date:')) {
-                        $value = \DateTime::createFromFormat(Setting::get(Setting::DATE_FORMAT), str_replace('date:', '', $value));
+                        $value = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), str_replace('date:', '', $value));
                     }
 
                     if (is_string($value) && false !== strpos($value, 'year')) {
-                        $value = \DateTime::createFromFormat(Setting::get(Setting::DATE_FORMAT), sprintf('%s-%s', str_replace('year:', '', $value), date('Y')));
+                        $value = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), sprintf('%s-%s', str_replace('year:', '', $value), date('Y')));
                     }
 
                     $accessor->setValue($entity, $key, $value);

@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Holiday\Model\HolidayInterface;
-use KejawenLab\Application\SemartHris\Util\Setting;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -116,6 +116,6 @@ class Holiday implements HolidayInterface
      */
     public function __toString(): string
     {
-        return sprintf('%s - %s', $this->getHolidayDate()->format(Setting::get(Setting::DATE_FORMAT)), $this->getName());
+        return sprintf('%s - %s', $this->getHolidayDate()->format(SettingUtil::get(SettingUtil::DATE_FORMAT)), $this->getName());
     }
 }

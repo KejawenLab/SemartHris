@@ -6,7 +6,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInter
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\AttendanceRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
-use KejawenLab\Application\SemartHris\Util\Setting;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
@@ -77,7 +77,7 @@ class AttendanceImporter
                 continue;
             }
 
-            $attendanceDate = \DateTime::createFromFormat(Setting::get(Setting::DATE_FORMAT), StringUtil::sanitize($attendance['date']));
+            $attendanceDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), StringUtil::sanitize($attendance['date']));
             $object = $this->attendanceRepository->findByEmployeeAndDate($employee, $attendanceDate);
             if (!$object) {
                 $object = new $this->attendanceClass();

@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Setting\Setting as Base;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Setting
+class SettingUtil
 {
     const DATE_FORMAT = 'date_format';
     const TIME_FORMAT = 'time_format';
@@ -16,7 +16,6 @@ class Setting
     const LAST_DATE_FORMAT = 'last_date_format';
     const UPDATE_DESTIONATION = 'upload_destination';
     const ATTENDANCE_UPLOAD_PATH = 'attendance_upload_path';
-    const DEFAULT_PASSWORD = 'app_default_password';
 
     public static function get(string $key)
     {

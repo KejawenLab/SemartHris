@@ -36,7 +36,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Component implements ComponentInterface
+class SalaryComponent implements ComponentInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;

@@ -9,6 +9,7 @@ use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator;
 use KejawenLab\Application\SemartHris\Security\Service\PasswordSetter;
+use KejawenLab\Application\SemartHris\Util\Setting;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -84,6 +85,7 @@ class GenerateUsernameSubscriber implements EventSubscriber
             $role = ['ROLE_SUPER_ADMIN'];
         }
 
+        $user->setPlainPassword($this->defaultPassword);
         $user->setUsername($this->usernameGenerator->generate($user));
         $user->setRoles($role);
         $this->passwordEncoder->setPassword($user);

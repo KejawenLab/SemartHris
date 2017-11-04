@@ -22,12 +22,12 @@ class AdminController extends EasyAdmin
         parent::initialize($request);
 
         $user = $this->getUser();
-        if ($user instanceof UserInterface && $this->isGranted($user->getRoles())) {
+        if ($user instanceof UserInterface && $this->isGranted(self::ROLE_SUPER_ADMIN)) {
             $this->getDoctrine()->getManager()->getFilters()->disable('semart_soft_delete');
         }
 
-        $this->denyAccessUnlessGranted($this->entity['role'] ?? self::DEFAULT_ROLE);
-        $action = $request->query->get('action', 'list');
-        $this->denyAccessUnlessGranted($this->entity[$action]['role'] ?? self::DEFAULT_ROLE);
+//        $this->denyAccessUnlessGranted($this->entity['role'] ?? self::DEFAULT_ROLE);
+//        $action = $request->query->get('action', 'list');
+//        $this->denyAccessUnlessGranted($this->entity[$action]['role'] ?? self::DEFAULT_ROLE);
     }
 }

@@ -1,8 +1,8 @@
 easy_admin:
     entities:
-        Component:
+        SalaryComponent:
             role: 'ROLE_HRSTAFF'
-            class: 'KejawenLab\Application\SemartHris\Entity\Component'
+            class: 'KejawenLab\Application\SemartHris\Entity\SalaryComponent'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             disabled_actions: ['show']
             templates:

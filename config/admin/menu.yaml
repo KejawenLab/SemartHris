@@ -57,7 +57,7 @@ easy_admin:
               role: 'ROLE_HRMANAGER'
               icon: 'money'
               children:
-                  - { entity: 'Component', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'SalaryComponent', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
               role: 'ROLE_HRSTAFF'
               icon: 'id-card-o'

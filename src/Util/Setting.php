@@ -16,6 +16,7 @@ class Setting
     const LAST_DATE_FORMAT = 'last_date_format';
     const UPDATE_DESTIONATION = 'upload_destination';
     const ATTENDANCE_UPLOAD_PATH = 'attendance_upload_path';
+    const DEFAULT_PASSWORD = 'app_default_password';
 
     public static function get(string $key)
     {

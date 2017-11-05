@@ -16,3 +16,4 @@ easy_admin:
         form_theme: 'vertical'
         templates:
             menu: 'app/default/menu.html.twig'
+            list: 'app/default/list.html.twig'

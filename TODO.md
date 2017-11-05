@@ -39,7 +39,7 @@
 - [X] Set first user is Super Administrator
 - [X] Menejemen Hari Libur
 - [X] Authentication (Urgent)
-- [ ] Access Control List for All Menu
+- [X] Access Control List for All Menu
 - [X] Create Supervisor Voter
 - [X] Lembur Karyawan
 - [X] Setting jumlah hari kerja per minggu

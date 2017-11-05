@@ -32,6 +32,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Manajemen Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
 - [X] Backend Site and API sekaligus
 - [X] Soft Delete (Data tidak benar-benar dihapus)
+- [X] Restore Deleted Record
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, dan DeletedAt)
 
 ## Cara Install

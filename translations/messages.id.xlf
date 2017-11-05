@@ -122,6 +122,10 @@
                 <source>semarthris.setting_value</source>
                 <target>Nilai</target>
             </trans-unit>
+            <trans-unit id="semarthris.is_deleted">
+                <source>semarthris.is_deleted</source>
+                <target>Dihapus?</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

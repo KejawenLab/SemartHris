@@ -53,8 +53,11 @@
 - [X] Attendance Rules
 - [X] Proses Absen per Karyawan
 - [X] Security!!! Very Urgent
+- [ ] Overtime Upload
+- [ ] Komponen Gaji
+- [ ] Benefit dan Pemotongan
+- [ ] Periode Penggajian
 - [ ] Security Per Action
-- [ ] Penggajian
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

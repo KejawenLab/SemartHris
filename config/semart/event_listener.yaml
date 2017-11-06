@@ -60,6 +60,8 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
+            - '@Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface'
+            - '%env(bool:SEMART_OVERTIME_AUTO_APPROVED)%'
         tags:
             - { name: 'doctrine.event_subscriber' }
 
@@ -71,6 +73,13 @@ services:
             - { name: 'doctrine.event_subscriber' }
 
     Gedmo\Timestampable\TimestampableListener:
+        lazy: true
+        calls:
+            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
+    Gedmo\Blameable\BlameableListener:
         lazy: true
         calls:
             - [ 'setAnnotationReader', [ '@annotation_reader' ] ]

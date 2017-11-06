@@ -82,6 +82,30 @@
                 <source>label.attendance.filter_action</source>
                 <target>Filter</target>
             </trans-unit>
+            <trans-unit id="label.overtime.upload_action">
+                <source>label.overtime.upload_action</source>
+                <target>Upload</target>
+            </trans-unit>
+            <trans-unit id="label.overtime.download_template">
+                <source>label.overtime.download_template</source>
+                <target>Download template lembur</target>
+            </trans-unit>
+            <trans-unit id="label.overtime.process_action">
+                <source>label.overtime.process_action</source>
+                <target>Proses lembur</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime.process_finish_content">
+                <source>semarthris.overtime.process_finish_content</source>
+                <target>Lembur telah selesai diproses</target>
+            </trans-unit>
+            <trans-unit id="label.overtime.preview_upload">
+                <source>label.overtime.preview_upload</source>
+                <target>Pratinjau Lembur</target>
+            </trans-unit>
+            <trans-unit id="label.overtime.filter_action">
+                <source>label.overtime.filter_action</source>
+                <target>Filter</target>
+            </trans-unit>
             <trans-unit id="semarthris.attendance_date">
                 <source>semarthris.attendance_date</source>
                 <target>Tanggal</target>
@@ -97,6 +121,38 @@
             <trans-unit id="semarthris.attendance_check_out">
                 <source>semarthris.attendance_check_out</source>
                 <target>Jam Keluar</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_date">
+                <source>semarthris.overtime_date</source>
+                <target>Tanggal</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_employee">
+                <source>semarthris.overtime_employee</source>
+                <target>Karyawan</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_check_in">
+                <source>semarthris.overtime_check_in</source>
+                <target>Jam Masuk</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_check_out">
+                <source>semarthris.overtime_check_out</source>
+                <target>Jam Keluar</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_holiday">
+                <source>semarthris.overtime_holiday</source>
+                <target>Hari Libur?</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_overday">
+                <source>semarthris.overtime_overday</source>
+                <target>Ganti Tanggal?</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_calculated_value">
+                <source>semarthris.overtime_calculated_value</source>
+                <target>Nilai Lembur</target>
+            </trans-unit>
+            <trans-unit id="semarthris.overtime_description">
+                <source>semarthris.overtime_description</source>
+                <target>Keterangan</target>
             </trans-unit>
             <trans-unit id="semarthris.attendance_absent">
                 <source>semarthris.attendance_absent</source>
@@ -125,6 +181,10 @@
             <trans-unit id="semarthris.is_deleted">
                 <source>semarthris.is_deleted</source>
                 <target>Dihapus?</target>
+            </trans-unit>
+            <trans-unit id="semarthris.invalid_data">
+                <source>semarthris.invalid_data</source>
+                <target>DATA TIDAK VALID</target>
             </trans-unit>
         </body>
     </file>

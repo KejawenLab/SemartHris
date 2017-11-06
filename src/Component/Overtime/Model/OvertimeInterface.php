@@ -116,7 +116,7 @@ interface OvertimeInterface
     public function getDescription(): ? string;
 
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(string $description): void;
+    public function setDescription(string $description = null): void;
 }

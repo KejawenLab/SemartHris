@@ -8,6 +8,8 @@
 %}
 
 {% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
+{% set startDate = app.request.get('startDate', date() | date('01-m-Y')) %}
+{%  set endDate = app.request.get('endDate', date() | date('t-m-Y')) %}
 
 {% set _request_parameters = _request_parameters|default({})|merge({
     action: app.request.get('action'),
@@ -15,11 +17,37 @@
     menuIndex: app.request.get('menuIndex'),
     submenuIndex: app.request.get('submenuIndex'),
     sortField: app.request.get('sortField', ''),
-    startDate: app.request.get('startDate', ''),
-    endDate: app.request.get('endDate', ''),
+    startDate: startDate,
+    endDate: endDate,
     sortDirection: app.request.get('sortDirection', 'DESC'),
     page: app.request.get('page', 1)
 }) %}
+
+{% block global_actions %}
+    <div class="form-action">
+        <form method="post" action="{{ path('upload_overtime') }}" enctype="multipart/form-data">
+            <input type="hidden" name="entity" value="{{ _request_parameters.entity }}">
+            <div class="input-group">
+                <input type="file" accept=".csv" name="overtime" class="form-control"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" title="{{ 'label.overtime.upload_action' | trans({}, 'messages') }}">
+                        <i class="fa fa-upload"></i>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                    <a class="btn btn-default download" title="{{ 'label.overtime.download_template' | trans({}, 'messages') }}">
+                        <i class="fa fa-download"></i>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </a>
+                    <button class="btn btn-primary process" type="button" title="{{ 'label.overtime.process_action' | trans({}, 'messages') }}">
+                        <i class="fa fa-cogs"></i>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+    {{ parent() }}
+{% endblock %}
 
 {% block main %}
     {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
@@ -61,16 +89,16 @@
                                 <div class="form-group">
                                     <label class="control-label" for="startDate">Pilih Tanggal</label>
                                     <div class="input-group input-daterange">
-                                        <input id="startDate" type="text" name="startDate" class="form-control" required="required" value="{{ app.request.query.get('startDate') ?: date() | date('01-m-Y') }}">
+                                        <input id="startDate" type="text" name="startDate" class="form-control startDate" required="required" value="{{ app.request.get('startDate') ?: date() | date('01-m-Y') }}">
                                         <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
-                                        <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.query.get('endDate') ?: date() | date('t-m-Y') }}">
+                                        <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.get('endDate') ?: date() | date('t-m-Y') }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-1">
                                 <div class="form-group field-date">
                                     <label class="control-label new-row" for="endDate">&nbsp;</label>
-                                    <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit"><i class="fa fa-television"></i> {{ 'label.attendance.filter_action' | trans({}, 'messages') }}</button>
+                                    <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit"><i class="fa fa-television"></i> {{ 'label.overtime.filter_action' | trans({}, 'messages') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -99,6 +127,42 @@
     {% block paginator %}
         {{ parent() }}
     {% endblock paginator %}
+
+    <div id="modal-process" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>{{ 'delete_modal.title'|trans({}, 'EasyAdminBundle') }}</h4>
+                    <p>{{ 'semarthris.overtime.process_warning_content'|trans({}, 'messages') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn">
+                        {{ 'action.cancel'|trans({}, 'messages') }}
+                    </button>
+                    <button type="button" data-dismiss="modal" class="btn btn-danger process-overtime">
+                        {{ 'label.overtime.process_action' | trans({}, 'messages') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-after-process" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>{{ 'delete_modal.title'|trans({}, 'EasyAdminBundle') }}</h4>
+                    <p>{{ 'semarthris.overtime.process_finish_content'|trans({}, 'messages') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary reload">
+                        {{ 'action.close'|trans({}, 'messages') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock main %}
 
 {% block head_stylesheets %}
@@ -113,13 +177,58 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-filestyle.min.js') }}"></script>
     <script src="{{ asset('js/semart.js') }}"></script>
 
     <script type="text/javascript">
         $(function() {
             var locale = '{{ _select2_locale }}';
             var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
+            var btnFile = '{{ 'label.form.file_chooser' | trans({}, 'messages') }}';
 
+            $(document).on('click', '.process', function () {
+               $('#modal-process').modal();
+            });
+
+            $(document).on('click', '.download', function () {
+                window.location = '/files/templates/overtime.csv?force=1';
+            });
+
+            $(document).on('click', '.process-overtime', function () {
+                var employees = [];
+                $('.employee:checkbox:checked').each(function () {
+                    employees.push($(this).data('employee'));
+                });
+
+                var date = createDate($('.startDate').val(), '{{ date_format_long }}');
+                var month = date.getMonth() + 1;
+
+                $.ajax({
+                    url: Routing.generate('process_overtime'),
+                    type: 'POST',
+                    data: {
+                        employees: employees,
+                        month: month
+                    },
+                    beforeSend: function () {},
+                    success: function () {
+                        $('#modal-after-process').modal();
+                    },
+                    error: function () {
+                        console.log('KO');
+                    }
+                });
+            });
+
+            $(document).on('click', '.reload', function() {
+                window.location.reload(true);
+            });
+
+            $(document).on('click', '.employee_checkall', function(){
+                $('.employee').prop('checked', this.checked);
+            });
+
+            change_file_chooser(btnFile, 'fa fa-file-excel-o', true);
             change_static_select(locale);
             date_range_picker(locale,  '{{ date_format_long }}');
             company_autocomplete(emptyText, '{{ app.request.get('company') }}');

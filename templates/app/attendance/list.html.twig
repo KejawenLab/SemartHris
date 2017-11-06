@@ -10,6 +10,7 @@
 {% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
 {% set startDate = app.request.get('startDate', date() | date('01-m-Y')) %}
 {%  set endDate = app.request.get('endDate', date() | date('t-m-Y')) %}
+{% set extraField = is_granted('ROLE_SUPER_ADMIN') ? 1 : 0 %}
 
 {% set _request_parameters = _request_parameters|default({})|merge({
     action: app.request.get('action'),
@@ -191,17 +192,17 @@
                             <td>&nbsp;</td>
                             <td>{{ key }}</td>
                             {% if semarthris_is_weekend_holiday(date(key)) %}
-                                <td colspan="8" class="label label-primary text-center">
+                                <td colspan="{{ _list_item_actions|length > 0 ? fields|length + extraField : fields|length }}" class="label label-primary text-center">
                                 {{ 'semarthris.weekend_holiday' | trans({}, 'messages') | upper }}
                                 </td>
                             {% else %}
                                 {% set holiday = semarthris_holiday(date(key)) %}
                                 {% if holiday is null %}
-                                    <td colspan="8" class="label label-success text-center">
+                                    <td colspan="{{ _list_item_actions|length > 0 ? fields|length + extraField : fields|length }}" class="label label-success text-center">
                                         {{ 'label.null' | trans({}, 'EasyAdminBundle') | upper }}
                                     </td>
                                 {%  else %}
-                                    <td colspan="8" class="label label-danger text-center">
+                                    <td colspan="{{ _list_item_actions|length > 0 ? fields|length + extraField : fields|length }}" class="label label-danger text-center">
                                         {{ holiday | upper }}
                                     </td>
                                 {% endif %}
@@ -210,7 +211,7 @@
                     {% endif %}
                 {% else %}
                     <tr>
-                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 2 : fields|length }}">
+                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 2 + extraField : fields|length }}">
                             {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
                         </td>
                     </tr>

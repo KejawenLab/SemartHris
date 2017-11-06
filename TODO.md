@@ -54,10 +54,12 @@
 - [X] Proses Absen per Karyawan
 - [X] Security!!! Very Urgent
 - [ ] Overtime Upload
+- [ ] Proses Overtime
 - [ ] Komponen Gaji
 - [ ] Benefit dan Pemotongan
 - [ ] Periode Penggajian
 - [ ] Security Per Action
+- [ ] Created and Updated Log in List
 - [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

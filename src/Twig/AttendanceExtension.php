@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\Twig;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
@@ -65,7 +66,7 @@ class AttendanceExtension extends \Twig_Extension
             throw new \InvalidArgumentException();
         }
 
-        $attendanceDate = \DateTime::createFromFormat('Y-m-d', StringUtil::sanitize($preview['date']));
+        $attendanceDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), StringUtil::sanitize($preview['date']));
         $attendance = new $this->attendanceClass();
         $attendance->setAttendanceDate($attendanceDate);
         $attendance->setEmployee($employee);

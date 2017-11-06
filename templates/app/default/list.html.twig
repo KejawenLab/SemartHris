@@ -1,5 +1,7 @@
 {% extends '@EasyAdmin/default/list.html.twig' %}
 
+{% set extraField = is_granted('ROLE_SUPER_ADMIN') ? 1 : 0 %}
+
 {% block table_head %}
     <tr>
         {% for field, metadata in fields %}
@@ -42,7 +44,12 @@
                 {% set _column_label =  (metadata.label ?: field|humanize)|trans(_trans_parameters)  %}
 
                 <td data-label="{{ _column_label }}" class="{{ isSortingField ? 'sorted' }} {{ metadata.dataType|lower }} {{ metadata.css_class }}">
-                    {{ easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) }}
+                    {% set data = easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) | trim %}
+                    {% if data == 'semarthris.invalid_data' %}
+                        <span class="label label-danger">{{ data | raw | trans({}, 'messages')}}</span>
+                    {% else %}
+                        {{ data | raw }}
+                    {% endif %}
                 </td>
             {% endfor %}
 
@@ -71,7 +78,7 @@
         </tr>
     {% else %}
         <tr>
-            <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 1 : fields|length }}">
+            <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 1 + extraField : fields|length }}">
                 {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
             </td>
         </tr>

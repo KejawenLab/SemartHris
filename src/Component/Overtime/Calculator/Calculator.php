@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Component\Overtime\Calculator;
 
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeCalculatorInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -31,8 +32,22 @@ abstract class Calculator implements OvertimeCalculatorInterface
     protected function getOvertimeHours(OvertimeInterface $overtime): float
     {
         /** @var \DateTime $endHour */
-        $endHour = $overtime->getEndHour();
-        $startHour = $overtime->getStartHour();
+        $endHour = \DateTime::createFromFormat(
+            SettingUtil::get(SettingUtil::DATE_TIME_FORMAT),
+            sprintf('%s %s',
+                date(SettingUtil::get(SettingUtil::DATE_FORMAT)),
+                $overtime->getEndHour()->format(SettingUtil::get(SettingUtil::TIME_FORMAT))
+            )
+        );
+
+        $startHour = \DateTime::createFromFormat(
+            SettingUtil::get(SettingUtil::DATE_TIME_FORMAT),
+            sprintf('%s %s',
+                date(SettingUtil::get(SettingUtil::DATE_FORMAT)),
+                $overtime->getStartHour()->format(SettingUtil::get(SettingUtil::TIME_FORMAT))
+            )
+        );
+
         if ($endHour < $startHour) {
             $endHour->add(new \DateInterval('P1D'));
             $overtime->setOverday(true);

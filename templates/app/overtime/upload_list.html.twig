@@ -1,0 +1,104 @@
+{% set _entity_config = easyadmin_entity(app.request.request.get('entity')) %}
+{% trans_default_domain _entity_config.translation_domain %}
+{% set _trans_parameters = { '%entity_name%': _entity_config.name | trans, '%entity_label%': _entity_config.label|trans } %}
+
+{% extends _entity_config.templates.layout %}
+
+{% set _request_parameters = _request_parameters|default({})|merge({
+    action: app.request.get('action'),
+    entity: _entity_config.name,
+    menuIndex: app.request.get('menuIndex'),
+    submenuIndex: app.request.get('submenuIndex'),
+    sortField: app.request.get('sortField', ''),
+    sortDirection: app.request.get('sortDirection', 'DESC'),
+    page: app.request.get('page', 1)
+}) %}
+
+{% if 'search' == app.request.get('action') %}
+    {% set _request_parameters = _request_parameters|merge({
+    query: app.request.get('query')|default(''),
+    sortField: _entity_config.search.sort.field|default(app.request.get('sortField', '')),
+    sortDirection: _entity_config.search.sort.direction|default(app.request.get('sortDirection', 'DESC')),
+    }) %}
+{% endif %}
+
+{% set _request_parameters = _request_parameters|merge({ referer: path('easyadmin', _request_parameters)|url_encode }) %}
+
+{% block body_id 'easyadmin-list-' ~ _entity_config.name %}
+{% block body_class 'list list-' ~ _entity_config.name|lower %}
+
+{% block content_header %}
+    <div class="row">
+        <div class="col-sm-5">
+            {% block content_title_wrapper %}
+                <h1 class="title">{{ 'label.overtime.preview_upload' | trans({}, 'messages') }}</h1>
+            {% endblock %}
+        </div>
+
+        <div class="col-sm-7">
+            <div class="global-actions">
+                <form method="post" action="{{ path('process_upload_overtime') }}">
+                    <button class="btn btn-danger pull-right" type="submit" title="{{ 'label.overtime.process_action' | trans({}, 'messages') }}"><i class="fa fa-cogs"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content_header %}
+
+{% block main %}
+    {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
+
+    <div class="row">&nbsp;</div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><span>{{ 'semarthris.overtime_date' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.overtime_employee' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.overtime_check_in' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.overtime_check_out' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.overtime_holiday' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.overtime_overday' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.overtime_calculated_value' | trans({}, 'messages') }}</span></th>
+                    <th><span>{{ 'semarthris.overtime_description' | trans({}, 'messages') }}</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in records %}
+                    <tr data-id="{{ key }}">
+                    {%  set overtime = semarthris_create_overtime_preview(value) %}
+                        <td>{{ overtime.overtimeDate | date(date_format) }}</td>
+                        <td>{{ overtime.employee }}</td>
+                        <td>{{ overtime.startHour | date(hour_format) }}</td>
+                        <td>{{ overtime.endHour | date(hour_format) }}</td>
+                        <td>
+                            {% if true == overtime.holiday %}
+                                <span class="label label-success">{{ 'label.true' | trans({}, 'EasyAdminBundle') }}</span>
+                            {% else %}
+                                <span class="label label-danger">{{ 'label.false' | trans({}, 'EasyAdminBundle') }}</span>
+                            {% endif %}
+                        <td>
+                            {% if true == overtime.overday %}
+                                <span class="label label-success">{{ 'label.true' | trans({}, 'EasyAdminBundle') }}</span>
+                            {% else %}
+                                <span class="label label-danger">{{ 'label.false' | trans({}, 'EasyAdminBundle') }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ overtime.calculatedValue }}</td>
+                        <td>
+                            {% if overtime.description == 'semarthris.invalid_data' %}
+                                <span class="label label-danger">{{ overtime.description | trans({}, 'messages')}}</span>
+                            {% else %}
+                                {{ overtime.description }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock main %}
+
+{% block body_javascript %}
+    {{ parent() }}
+{% endblock %}

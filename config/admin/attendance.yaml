@@ -130,6 +130,6 @@ easy_admin:
                     - { property: 'shiftment', label: 'Shift', sortable: false }
                     - { property: 'checkIn', label: 'Jam Masuk', sortable: false }
                     - { property: 'checkOut', label: 'Jam Keluar', sortable: false }
-                    - { property: 'absent', label: 'Tidak Masuk?', , type: 'boolean', sortable: false }
+                    - { property: 'absent', label: 'Masuk?', , type: 'boolean', sortable: false, template: 'app/default/field_boolean_negation.html.twig' }
                     - { property: 'reason', label: 'Alasan', sortable: false }
                     - { property: 'description', label: 'Keterangan', sortable: false }

@@ -3,6 +3,8 @@
 /uploads/images
 /uploads/templates/*
 !/uploads/templates/template.csv
+/uploads/overtimes/*
+/uploads/attendances/*
 ###> symfony/framework-bundle ###
 .env
 /public/bundles/

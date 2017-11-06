@@ -7,6 +7,14 @@ services:
         tags:
             - { name: 'twig.extension' }
 
+    KejawenLab\Application\SemartHris\Twig\OvertimeExtension:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
+            - 'KejawenLab\Application\SemartHris\Entity\Overtime'
+        tags:
+            - { name: 'twig.extension' }
+
     KejawenLab\Application\SemartHris\Twig\HolidayExtension:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'

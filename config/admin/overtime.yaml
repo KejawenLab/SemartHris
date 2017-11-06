@@ -7,7 +7,7 @@ easy_admin:
             disabled_actions: ['search']
             templates:
                 new: 'app/attendance/new.html.twig'
-                list: 'app/workshift/list.html.twig'
+                list: 'app/overtime/list.html.twig'
                 edit: 'app/attendance/edit.html.twig'
             new:
                 title: 'Tambah Lembur'
@@ -47,7 +47,7 @@ easy_admin:
                     - { property: 'shiftment', label: 'Shift' }
                     - { property: 'startHour', label: 'Jam Masuk' }
                     - { property: 'endHour', label: 'Jam Keluar' }
-                    - { property: 'overday', label: 'Ganti Tanggal?' }
-                    - { property: 'holiday', label: 'Hari Libur?' }
+                    - { property: 'overday', label: 'Ganti Tanggal?', type: 'boolean' }
+                    - { property: 'holiday', label: 'Libur?', type: 'boolean' }
                     - { property: 'approved', label: 'Disetujui?', type: 'boolean' }
-                    - { property: 'description', label: 'Keterangan' }
+                    - { property: 'description', label: 'Keterangan', type: 'raw' }

@@ -1,4 +1,4 @@
-- { region: 'ref:region#DKI', code: 'JAKUT', name: 'KOTA JAKARTA UTARA' }
+- { region: 'ref:region#DKI', code: 'JAKUT', name: 'KOTA JAKARTA UTARA', ref: 'jakut' }
 - { region: 'ref:region#DKI', code: 'JAKPUS', name: 'KOTA JAKARTA PUSAT' }
 - { region: 'ref:region#DKI', code: 'JAKBAR', name: 'KOTA JAKARTA BARAT' }
 - { region: 'ref:region#DKI', code: 'JAKTIM', name: 'KOTA JAKARTA TIMUR' }

@@ -1,2 +1,2 @@
-- { code: 'STFIT', jobLevel: 'ref:job_level#stf', name: 'STAFF IT' }
-- { code: 'STFADM', jobLevel: 'ref:job_level#stf', name: 'STAFF ADMINISTRASI' }
+- { code: 'STFIT', jobLevel: 'ref:job_level#stf', name: 'STAFF IT', ref: 'stfit' }
+- { code: 'STFADM', jobLevel: 'ref:job_level#stf', name: 'STAFF ADMINISTRASI', ref: 'stfadm' }

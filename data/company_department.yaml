@@ -1,0 +1,4 @@
+- { company: 'ref:company#ssi', department: 'ref:department#it' }
+- { company: 'ref:company#ssi', department: 'ref:department#itsp' }
+- { company: 'ref:company#ssi', department: 'ref:department#itdc' }
+- { company: 'ref:company#ssi', department: 'ref:department#itmis' }

@@ -51,6 +51,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Jalankan perintah `php bin/console doctrine:database:create` untuk membuat database
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data
+- [X] Cek *username* yang di-*generate* di Database (bisa menggunakan PhpMyAdmin/Adminer/lainnya) dan *default password* adalah pada `.env`
 - [X] Jalankan perintah `make serve` untuk mengaktifkan web server
 - [X] Buka halaman `<HOST>:<PORT>/admin` untuk halaman admin
 - [X] Buka halaman `<HOST>:<PORT>/api` untuk halaman API

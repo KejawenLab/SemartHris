@@ -1,4 +1,4 @@
 - { code: 'IT', name: 'INFORMATION TECHNOLOGY', ref: 'it' }
-- { code: 'ITSP', parent: 'ref:department#it', name: 'IT SUPPORT' }
-- { code: 'ITDC', parent: 'ref:department#it', name: 'IT DATA CENTER' }
-- { code: 'ITMIS', parent: 'ref:department#it', name: 'IT MANAGEMENT INFORMATION SYSTEM'}
+- { code: 'ITSP', parent: 'ref:department#it', name: 'IT SUPPORT', ref: 'itsp' }
+- { code: 'ITDC', parent: 'ref:department#it', name: 'IT DATA CENTER', ref: 'itdc' }
+- { code: 'ITMIS', parent: 'ref:department#it', name: 'IT MANAGEMENT INFORMATION SYSTEM', ref: 'itmis' }

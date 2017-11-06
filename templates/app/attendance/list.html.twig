@@ -1,4 +1,4 @@
-{% extends '@EasyAdmin/default/list.html.twig' %}
+{% extends 'app/default/list.html.twig' %}
 
 {% set _select2_locales = ['ar', 'az', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'is', 'it', 'ja', 'km', 'ko', 'lt', 'lv', 'mk', 'ms', 'nb', 'nl', 'pl', 'pt-BR', 'pt', 'ro', 'ru', 'sk', 'sr-Cyrl', 'sr', 'sv', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW'] %}
 {% set _app_language = app.request.locale|split('-')|first|split('_')|first %}
@@ -132,6 +132,10 @@
                         </th>
                     {% endfor %}
 
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <th data-property-name="deleted"><span>{{ 'semarthris.is_deleted' | trans({}, 'messages') }}</span></th>
+                    {% endif %}
+
                     {% if _list_item_actions|length > 0 %}
                         <th>
                             <span>{{ 'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') }}</span>
@@ -158,6 +162,14 @@
                                 {{ easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) }}
                             </td>
                         {% endfor %}
+
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            {% if attribute(item, 'deleted') is defined and item.deleted == true %}
+                                <td>{{ include('@EasyAdmin/default/field_toggle.html.twig', { value: true, view: 'list', backend_config: _entity_config }) }}</td>
+                            {% else %}
+                                <td>{{ include('@EasyAdmin/default/field_boolean.html.twig', { value: false }) }}</td>
+                            {% endif %}
+                        {% endif %}
 
                         {% if _list_item_actions|length > 0 %}
                             {% set _column_label =  'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') %}

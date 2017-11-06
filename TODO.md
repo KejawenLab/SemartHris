@@ -53,8 +53,9 @@
 - [X] Attendance Rules
 - [X] Proses Absen per Karyawan
 - [X] Security!!! Very Urgent
-- [ ] Overtime Upload
-- [ ] Proses Overtime
+- [X] Overtime Upload
+- [X] Proses Overtime
+- [ ] Cek Ulang perhitungan lembur
 - [ ] Komponen Gaji
 - [ ] Benefit dan Pemotongan
 - [ ] Periode Penggajian

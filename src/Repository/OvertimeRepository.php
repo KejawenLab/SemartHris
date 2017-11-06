@@ -3,6 +3,8 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Repository\OvertimeRepositoryInterface;
 
 /**
@@ -48,5 +50,25 @@ class OvertimeRepository extends Repository implements OvertimeRepositoryInterfa
         }
 
         return  $queryBuilder;
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $date
+     *
+     * @return OvertimeInterface|null
+     */
+    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? OvertimeInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy(['employee' => $employee, 'overtimeDate' => $date]);
+    }
+
+    /**
+     * @param OvertimeInterface $overtime
+     */
+    public function update(OvertimeInterface $overtime): void
+    {
+        $this->entityManager->persist($overtime);
+        $this->entityManager->flush();
     }
 }

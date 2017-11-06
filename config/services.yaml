@@ -125,6 +125,14 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\WorkshiftRepository'
             - '%env(int:SEMART_WORKDAY_PER_WEEK)%'
 
+    KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeImporter:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
+            - '@KejawenLab\Application\SemartHris\Repository\OvertimeRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+            - 'KejawenLab\Application\SemartHris\Entity\Overtime'
+
     KejawenLab\Application\SemartHris\Component\Salary\Service\WorkdayCalculator:
         lazy: true
         arguments:

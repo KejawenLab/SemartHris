@@ -63,7 +63,7 @@ class AttendanceImporter
     /**
      * @param \Iterator $attendances
      *
-     * @see attendance_template.csv
+     * @see uploads/templates/attendance.csv
      */
     public function import(\Iterator $attendances): void
     {

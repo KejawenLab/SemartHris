@@ -86,7 +86,7 @@ class OvertimeController extends AdminController
             'action' => 'list',
             'sortField' => 'overtimeDate',
             'sortDirection' => 'DESC',
-            'entity' => 'Attendance',
+            'entity' => 'Overtime',
         ));
     }
 

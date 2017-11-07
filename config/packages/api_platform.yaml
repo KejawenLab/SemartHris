@@ -1,7 +1,7 @@
 api_platform:
     title: '%env(string:SEMART_APP_NAME)%'
     description: '%env(string:SEMART_APP_API_DESCRIPTION)%'
-    version: '%env(string:SEMART_APP_API_VERSION)%'
+    version: !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_VERSION
     collection:
         order: 'DESC'
         order_parameter_name: 'o'

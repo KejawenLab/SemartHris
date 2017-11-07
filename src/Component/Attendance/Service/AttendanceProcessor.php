@@ -17,7 +17,6 @@ use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonReposito
 class AttendanceProcessor
 {
     const CUT_OFF_LAST_DATE = -1;
-    const CUT_OFF_KEY = 'SEMART_ATTENDANCE_CUT_OFF_DATE';
 
     /**
      * @var RuleInterface
@@ -49,6 +48,8 @@ class AttendanceProcessor
      */
     private $reasonCode;
 
+    private $cutOffDate;
+
     /**
      * @var string
      */
@@ -61,6 +62,7 @@ class AttendanceProcessor
      * @param ReasonRepositoryInterface     $reasonRepository
      * @param WorkshiftRepositoryInterface  $workshiftRepository
      * @param string                        $reasonCode
+     * @param int                           $cutOffDate
      * @param string                        $attendanceClass
      */
     public function __construct(
@@ -70,6 +72,7 @@ class AttendanceProcessor
         ReasonRepositoryInterface $reasonRepository,
         WorkshiftRepositoryInterface $workshiftRepository,
         string $reasonCode,
+        int $cutOffDate,
         string $attendanceClass
     ) {
         $this->attendanceRule = $attendanceRule;
@@ -78,6 +81,7 @@ class AttendanceProcessor
         $this->reasonRepository = $reasonRepository;
         $this->workshiftRepository = $workshiftRepository;
         $this->reasonCode = $reasonCode;
+        $this->cutOffDate = $cutOffDate;
         $this->class = $attendanceClass;
     }
 
@@ -87,11 +91,10 @@ class AttendanceProcessor
      */
     public function process(EmployeeInterface $employee, \DateTimeInterface $date): void
     {
-        $cutOff = getenv(self::CUT_OFF_KEY);
-        if (self::CUT_OFF_LAST_DATE === (int) $cutOff) {
+        if (self::CUT_OFF_LAST_DATE === $this->cutOffDate) {
             $this->processFullMonth($employee, $date);
         } else {
-            $this->processPartialMonth($employee, $date, $cutOff);
+            $this->processPartialMonth($employee, $date, $this->cutOffDate);
         }
     }
 

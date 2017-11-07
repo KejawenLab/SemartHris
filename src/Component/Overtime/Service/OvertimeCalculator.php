@@ -5,6 +5,7 @@ namespace KejawenLab\Application\SemartHris\Component\Overtime\Service;
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Calculator\OvertimeCalculator as Calculator;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
+use KejawenLab\Application\SemartHris\Kernel;
 use KejawenLab\Application\SemartHris\Util\SettingUtil;
 
 /**
@@ -52,20 +53,20 @@ class OvertimeCalculator
     public function calculate(OvertimeInterface $overtime): void
     {
         if (!$this->checker->allowToOvertime($overtime)) {
-            $overtime->setDescription(SettingUtil::get(SettingUtil::OVERTIME_INVALID_MESSAGE));
+            $this->setInvalid($overtime);
 
             return;
         }
 
         if (!$overtime->getEndHour()) {
-            $overtime->setDescription(SettingUtil::get(SettingUtil::OVERTIME_INVALID_MESSAGE));
+            $this->setInvalid($overtime);
 
             return;
         }
 
         $workshift = $this->workshiftRepository->findByEmployeeAndDate($overtime->getEmployee(), $overtime->getOvertimeDate());
         if (!$workshift) {
-            $overtime->setDescription('semarthris.overtime_not_valid');
+            $this->setInvalid($overtime);
 
             return;
         }
@@ -73,5 +74,16 @@ class OvertimeCalculator
         $overtime->setShiftment($workshift->getShiftment());
         $this->calculator->setWorkdayPerWeek($this->workDay);
         $this->calculator->calculate($overtime);
+
+        $overtime->setDescription(str_replace(sprintf('%s#', Kernel::SEMART_VERSION), '', $overtime->getDescription()));
+    }
+
+    /**
+     * @param OvertimeInterface $overtime
+     */
+    private function setInvalid(OvertimeInterface $overtime): void
+    {
+        $overtime->setDescription(SettingUtil::get(SettingUtil::OVERTIME_INVALID_MESSAGE));
+        $overtime->setApprovedBy(null);
     }
 }

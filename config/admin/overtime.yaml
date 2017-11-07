@@ -33,6 +33,7 @@ easy_admin:
                     - { property: 'startHour', label: 'Jam Masuk' }
                     - { property: 'endHour', label: 'Jam Keluar' }
                     - { property: 'overday', label: 'Ganti Tanggal?' }
+                    - { property: 'rawValue', label: 'Jam' }
                     - { property: 'calculatedValue', label: 'Jumlah' }
                     - { property: 'holiday', label: 'Hari Libur?' }
                     - { property: 'approved', label: 'Disetujui?', type: 'boolean' }

@@ -55,7 +55,7 @@ abstract class Calculator implements OvertimeCalculatorInterface
             $overtime->setOverday(false);
         }
 
-        $delta = $overtime->getEndHour()->diff($startHour, true);
+        $delta = $endHour->diff($startHour, true);
         $hours = $delta->h;
         $minutes = $delta->i;
         if (15 < $minutes) {//Minute adjustment

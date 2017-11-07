@@ -68,6 +68,16 @@ interface OvertimeInterface
     /**
      * @return float|null
      */
+    public function getRawValue(): ? float;
+
+    /**
+     * @param float $overtime
+     */
+    public function setRawValue(float $overtime): void;
+
+    /**
+     * @return float|null
+     */
     public function getCalculatedValue(): ? float;
 
     /**

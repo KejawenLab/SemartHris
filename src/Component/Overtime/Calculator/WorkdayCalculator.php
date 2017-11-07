@@ -21,6 +21,7 @@ class WorkdayCalculator extends Calculator
         }
 
         $hours = $this->getOvertimeHours($overtime);
+        $overtime->setRawValue($hours);
         //1 first hour multiply with 1.5
         $calculatedValue = 1.5 * 1;
         --$hours;

@@ -15,5 +15,6 @@ easy_admin:
         brand_color: '#ac2925'
         form_theme: 'vertical'
         templates:
+            layout: 'app/default/layout.html.twig'
             menu: 'app/default/menu.html.twig'
             list: 'app/default/list.html.twig'

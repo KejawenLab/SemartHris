@@ -111,6 +111,15 @@ class Overtime implements OvertimeInterface
      *
      * @var float
      */
+    private $rawValue;
+
+    /**
+     * @Groups({"read"})
+     *
+     * @ORM\Column(type="float", scale=27, precision=2)
+     *
+     * @var float
+     */
     private $calculatedValue;
 
     /**
@@ -259,6 +268,22 @@ class Overtime implements OvertimeInterface
     public function setCalculatedValue(float $calculatedValue): void
     {
         $this->calculatedValue = $calculatedValue;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getRawValue(): ? float
+    {
+        return (float) $this->rawValue ?? 0;
+    }
+
+    /**
+     * @param float $rawValue
+     */
+    public function setRawValue(float $rawValue): void
+    {
+        $this->rawValue = $rawValue;
     }
 
     /**

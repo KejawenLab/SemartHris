@@ -19,6 +19,10 @@ class Kernel extends BaseKernel implements CompilerPassInterface
 
     const CONFIG_EXTS = '.{php,xml,yaml,yml}';
 
+    const SEMART_VERSION = '0.0.0-dev';
+
+    const SEMART_APP_CANONICAL = 'SemartHris';
+
     /**
      * @return string
      */

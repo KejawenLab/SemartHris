@@ -3,12 +3,15 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeImporter;
+use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeProcessor;
+use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use KejawenLab\Application\SemartHris\Repository\OvertimeRepository;
 use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use League\Csv\Reader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -88,6 +91,32 @@ class OvertimeController extends AdminController
             'sortDirection' => 'DESC',
             'entity' => 'Overtime',
         ));
+    }
+
+    /**
+     * @Route("/overtime/process", name="process_overtime", options={"expose"=true})
+     * @Method("POST")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function processAction(Request $request)
+    {
+        $month = (int) $request->get('month', date('n'));
+        $employeeRepository = $this->container->get(EmployeeRepository::class);
+        if ($ids = $request->get('employees')) {
+            $employees = $employeeRepository->finds($ids);
+        } else {
+            $employees = $employeeRepository->findAll();
+        }
+
+        $processor = $this->container->get(OvertimeProcessor::class);
+        foreach ($employees as $employee) {
+            $processor->process($employee, \DateTime::createFromFormat('Y-n', sprintf('%s-%s', date('Y'), $month)));
+        }
+
+        return new JsonResponse(['message' => 'OK']);
     }
 
     /**

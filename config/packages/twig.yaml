@@ -3,6 +3,8 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
+        semarthris_app_name: !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_APP_CANONICAL
+        semarthris_version: !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_VERSION
         default_role: 'ROLE_EMPLOYEE'
         date_format_long: '%env(string:SEMART_DATE_FORMAT_LONG)%'
         date_format: '%env(string:SEMART_DATE_FORMAT)%'

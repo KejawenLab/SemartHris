@@ -209,7 +209,7 @@ class SalaryComponent implements ComponentInterface
     /**
      * @return array
      */
-    public function getTypeChoices(): array
+    public function getStateChoices(): array
     {
         return ValidateStateType::getTypes();
     }

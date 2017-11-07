@@ -13,6 +13,8 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Web Server (Apache, Nginx atau IIS)
 - [X] APCu extension (untuk Production)
 
+**NOTE**: Sistem ini dikembangkan menggunakan lingkungan pengembangan Linux, pengembang tidak menjamin jika sistem ini dapat berjalan dengan baik pada sistem operasi lain.
+
 ## Fitur
 
 - [X] Manajemen Perusahaan
@@ -30,6 +32,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Manajemen Absensi dengan fitur *rules*
 - [X] Manajemen Hari Libur
 - [X] Manajemen Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
+- [X] Gaji dan Credential data **dienkripsi** dengan algoritma RSA
 - [X] Backend Site and API sekaligus
 - [X] Soft Delete (Data tidak benar-benar dihapus)
 - [X] Restore Deleted Record
@@ -48,6 +51,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
   SEMART_DB_PORT="3306"
   SEMART_DB_NAME="semarthris"
 ```
+- [X] Jalankan perintah `php bin/console doctrine:database:drop --force` untuk menghapus database lama (**optional**)
 - [X] Jalankan perintah `php bin/console doctrine:database:create` untuk membuat database
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data

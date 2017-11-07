@@ -25,6 +25,7 @@ use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
+use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -58,6 +59,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @Vich\Uploadable()
+ *
+ * @Encrypt(properties={"basicSalary"})
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -303,7 +306,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @Groups({"read"})
      *
-     * @ORM\Column(type="float", scale=27, precision=2, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @var float
      */
@@ -766,17 +769,17 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getBasicSalary(): float
+    public function getBasicSalary(): string
     {
         return (float) $this->basicSalary;
     }
 
     /**
-     * @param float $basicSalary
+     * @param string $basicSalary
      */
-    public function setBasicSalary(float $basicSalary): void
+    public function setBasicSalary(string $basicSalary): void
     {
         $this->basicSalary = $basicSalary;
     }

@@ -149,3 +149,13 @@ services:
         lazy: true
         arguments:
             - '%kernel.project_dir%/.env'
+
+    KejawenLab\Application\SemartHris\Component\Encryptor\KeyLoader:
+        lazy: true
+        arguments:
+            - '%kernel.project_dir%%env(SEMART_CERTIFICATE_KEY_PATH)%'
+
+    KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Encryptor\KeyLoader'

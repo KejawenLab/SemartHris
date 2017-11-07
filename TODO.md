@@ -55,7 +55,7 @@
 - [X] Security!!! Very Urgent
 - [X] Overtime Upload
 - [X] Proses Overtime
-- [ ] Cek Ulang perhitungan lembur
+- [X] Cek Ulang perhitungan lembur
 - [ ] Komponen Gaji
 - [ ] Benefit dan Pemotongan
 - [ ] Periode Penggajian

@@ -55,6 +55,15 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\EncryptorSubscriber:
+        lazy: true
+        arguments:
+            - '@annotations.reader'
+            - '@Symfony\Component\PropertyAccess\PropertyAccessorInterface'
+            - '@KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor'
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
     KejawenLab\Application\SemartHris\EventListener\OvertimeCalculatorSubscriber:
         lazy: true
         arguments:

@@ -39,13 +39,13 @@ class AdminController extends EasyAdmin
 
             if ('undefined' === mb_strtolower($property)) {
                 $property = 'deletedAt';
+
+                $easyadmin = $this->request->attributes->get('easyadmin');
+                $entity = $easyadmin['item'];
+                $this->updateEntityProperty($entity, $property, null);
+
+                return new Response((int) $newValue);
             }
-
-            $easyadmin = $this->request->attributes->get('easyadmin');
-            $entity = $easyadmin['item'];
-            $this->updateEntityProperty($entity, $property, null);
-
-            return new Response((int) $newValue);
         }
 
         return parent::editAction();

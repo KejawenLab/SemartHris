@@ -1,5 +1,5 @@
 {% if view == 'show' %}
-    {% if value|length > 0 %}
+    {% if value | length > 0 %}
         {% for element in value %}
             <button type="button" class="btn btn-success">{{ element }}</button>
         {% endfor %}

@@ -60,7 +60,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @Vich\Uploadable()
  *
- * @Encrypt(properties={"basicSalary"})
+ * @Encrypt(properties={"basicSalary"}, keyStore="encryptionKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -402,6 +402,13 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      * @var string|null
      */
     private $plainPassword;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $encryptionKey;
 
     public function __construct()
     {
@@ -1088,6 +1095,22 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     public function setProfileSize(int $profileSize = null): void
     {
         $this->profileSize = $profileSize;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEncryptionKey(): string
+    {
+        return (string) $this->encryptionKey;
+    }
+
+    /**
+     * @param string $encryptionKey
+     */
+    public function setEncryptionKey(string $encryptionKey)
+    {
+        $this->encryptionKey = $encryptionKey;
     }
 
     /**

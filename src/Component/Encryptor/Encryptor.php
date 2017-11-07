@@ -13,6 +13,11 @@ class Encryptor
     private $keyLoader;
 
     /**
+     * @var string
+     */
+    private $key;
+
+    /**
      * @param KeyLoader $keyLoader
      */
     public function __construct(KeyLoader $keyLoader)
@@ -27,26 +32,44 @@ class Encryptor
      */
     public function encrypt($plain): string
     {
-        $result = openssl_public_encrypt($plain, $encryptedData, $this->keyLoader->getPublicKey());
+        $this->key = $this->generateKey();
+        $result = openssl_public_encrypt(sprintf('%s#%s', $this->key, $plain), $encryptedData, $this->keyLoader->getPublicKey());
         if (!$result) {
             return $plain;
         }
 
-        return $encryptedData;
+        return base64_encode(sprintf('%s#%s', $encryptedData, $this->key));
     }
 
     /**
      * @param string $encrypted
+     * @param string $key
      *
      * @return mixed
      */
-    public function decrypt(string $encrypted)
+    public function decrypt(string $encrypted, string $key)
     {
-        $result = openssl_private_decrypt($encrypted, $decryptedData, $this->keyLoader->getPrivateKey());
+        $result = openssl_private_decrypt(str_replace(sprintf('#%s', $key), '', base64_decode($encrypted)), $decryptedData, $this->keyLoader->getPrivateKey());
         if (!$result) {
             return $encrypted;
         }
 
-        return $decryptedData;
+        return str_replace(sprintf('%s#', $key), '', $decryptedData);
+    }
+
+    /**
+     * @return string
+     */
+    public function getKey(): string
+    {
+        return (string) $this->key;
+    }
+
+    /**
+     * @return string
+     */
+    private function generateKey(): string
+    {
+        return sha1(uniqid());
     }
 }

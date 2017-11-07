@@ -154,6 +154,7 @@ services:
         lazy: true
         arguments:
             - '%kernel.project_dir%%env(SEMART_CERTIFICATE_KEY_PATH)%'
+            - !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_APP_CANONICAL
 
     KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor:
         lazy: true

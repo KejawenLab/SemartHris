@@ -17,12 +17,21 @@ class Encrypt
     private $properties;
 
     /**
+     * @var string
+     */
+    private $keyStore;
+
+    /**
      * @param array $data
      */
     public function __construct(array $data = [])
     {
         if (isset($data['properties'])) {
             $this->properties = $data['properties'];
+        }
+
+        if (isset($data['keyStore'])) {
+            $this->keyStore = $data['keyStore'];
         }
     }
 
@@ -32,5 +41,13 @@ class Encrypt
     public function getProperties(): array
     {
         return $this->properties ?: [];
+    }
+
+    /**
+     * @return string
+     */
+    public function getKeyStore(): string
+    {
+        return (string) $this->keyStore;
     }
 }

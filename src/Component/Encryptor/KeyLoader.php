@@ -2,15 +2,11 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Encryptor;
 
-use KejawenLab\Application\SemartHris\Kernel;
-
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class KeyLoader
 {
-    const KEY_PHARSE = Kernel::SEMART_APP_CANONICAL;
-
     /**
      * @var string
      */
@@ -22,12 +18,19 @@ class KeyLoader
     private $privateKeyPath;
 
     /**
-     * @param string $keyDir
+     * @var string
      */
-    public function __construct(string $keyDir)
+    private $pharse;
+
+    /**
+     * @param string $keyDir
+     * @param string $pharse
+     */
+    public function __construct(string $keyDir, string $pharse)
     {
         $this->publicKeyPath = sprintf('%s/public.pem', $keyDir);
         $this->privateKeyPath = sprintf('%s/private.pem', $keyDir);
+        $this->pharse = $pharse;
     }
 
     /**
@@ -43,7 +46,7 @@ class KeyLoader
      */
     public function getPrivateKey()
     {
-        return openssl_pkey_get_private($this->getKey($this->privateKeyPath), self::KEY_PHARSE);
+        return openssl_pkey_get_private($this->getKey($this->privateKeyPath), $this->pharse);
     }
 
     /**

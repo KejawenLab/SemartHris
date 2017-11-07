@@ -85,5 +85,9 @@ class OvertimeCalculator
     {
         $overtime->setDescription(SettingUtil::get(SettingUtil::OVERTIME_INVALID_MESSAGE));
         $overtime->setApprovedBy(null);
+        $overtime->setRawValue((float) 0);
+        $overtime->setCalculatedValue((float) 0);
+        $overtime->setHoliday(false);
+        $overtime->setOverday(false);
     }
 }

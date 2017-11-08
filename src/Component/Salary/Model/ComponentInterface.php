@@ -24,6 +24,8 @@ interface ComponentInterface
 
     /**
      * @return string
+     *
+     * @see StateType
      */
     public function getState(): string;
 

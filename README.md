@@ -91,7 +91,11 @@ Bila Anda memerlukan profesional support atau ingin mengadakan kerjasama dengan 
 
 - Email: [surya.kejawen@gmail.com](mailto:surya.kejawen@gmail.com)
 - WA: 0878-000-939-15
-- FB: [KejawenLab](https://facebook.com/KejawenLab) 
+- FB: [KejawenLab](https://facebook.com/KejawenLab)
+
+## Keamanan Aplikasi
+
+Jika Anda menemukan bug/celah keamaan pada aplikasi ini, Anda dapat mengirimkan email dengan subject: **[SEMARTHRIS][SECURITY] SUBJECT** ke alamat [surya.kejawen@gmail.com](mailto:surya.kejawen@gmail.com)
 
 ## Preview
 

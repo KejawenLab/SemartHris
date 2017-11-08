@@ -19,6 +19,8 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [X] Absensi
 - [X] Lembur
 - [X] Authorisasi dan Authentikasi
+- [X] Super Admin add extra field (is_deleted?)
+- [X] Restore Record when it is deleted
 - [ ] Penggajian
 
 ### Fase II
@@ -44,8 +46,8 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 ### Fase V
 
-- [ ] Super Admin add extra field (is_deleted?)
-- [ ] Restore Record when it is deleted
+- [ ] Dokumentasi
+- [ ] Unit Test
 - [ ] Pre rilis
 - [ ] Perbaikan dan pemantapan sebelum rilis
 - [ ] Rilis

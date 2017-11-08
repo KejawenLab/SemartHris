@@ -185,14 +185,6 @@ class Attendance implements AttendanceInterface
     }
 
     /**
-     * @param string $id
-     */
-    public function setId(string $id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @return EmployeeInterface|null
      */
     public function getEmployee(): ? EmployeeInterface

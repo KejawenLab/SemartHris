@@ -8,34 +8,31 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
-use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="regions", indexes={@ORM\Index(name="regions_idx", columns={"code", "name"})})
+ * @ORM\Table(name="payrolls")
  *
  * @ApiResource(
  *     attributes={
- *         "filters"={
- *             "code.search",
- *             "name.search"
- *         },
  *         "normalization_context"={"groups"={"read"}},
  *         "denormalization_context"={"groups"={"write"}}
  *     }
  * )
  *
- * @UniqueEntity("code")
+ * @UniqueEntity({"employee", "period"})
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Region implements RegionInterface
+class Payroll implements PayrollInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
@@ -53,27 +50,28 @@ class Region implements RegionInterface
     private $id;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"write", "read"})
      *
-     * @ORM\Column(type="string", length=7)
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Employee", fetch="EAGER")
+     * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      *
-     * @Assert\Length(max=7)
      * @Assert\NotBlank()
      *
-     * @var string
+     * @var EmployeeInterface
      */
-    private $code;
+    private $employee;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"write", "read"})
      *
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\PayrollPeriod", fetch="EAGER")
+     * @ORM\JoinColumn(name="period_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()
      *
-     * @var string
+     * @var PayrollPeriodInterface
      */
-    private $name;
+    private $period;
 
     /**
      * @return string
@@ -84,42 +82,34 @@ class Region implements RegionInterface
     }
 
     /**
-     * @return string
+     * @return EmployeeInterface|null
      */
-    public function getCode(): string
+    public function getEmployee(): ? EmployeeInterface
     {
-        return (string) $this->code;
+        return $this->employee;
     }
 
     /**
-     * @param string $code
+     * @param EmployeeInterface|null $employee
      */
-    public function setCode(string $code): void
+    public function setEmployee(EmployeeInterface $employee = null): void
     {
-        $this->code = StringUtil::uppercase($code);
+        $this->employee = $employee;
     }
 
     /**
-     * @return string
+     * @return PayrollPeriodInterface
      */
-    public function getName(): string
+    public function getPeriod(): ? PayrollPeriodInterface
     {
-        return (string) $this->name;
+        return $this->period;
     }
 
     /**
-     * @param string $name
+     * @param PayrollPeriodInterface|null $period
      */
-    public function setName(string $name): void
+    public function setPeriod(PayrollPeriodInterface $period = null): void
     {
-        $this->name = StringUtil::uppercase($name);
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return sprintf('%s - %s', $this->getCode(), $this->getName());
+        $this->period = $period;
     }
 }

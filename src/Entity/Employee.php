@@ -25,7 +25,6 @@ use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
-use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -59,8 +58,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @Vich\Uploadable()
- *
- * @Encrypt(properties={"basicSalary"}, keyStore="encryptionKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -306,15 +303,6 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @Groups({"read"})
      *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     * @var float
-     */
-    private $basicSalary;
-
-    /**
-     * @Groups({"read"})
-     *
      * @ORM\Column(type="integer", nullable=true)
      *
      * @var int
@@ -402,13 +390,6 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      * @var string|null
      */
     private $plainPassword;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     * @var string
-     */
-    private $encryptionKey;
 
     public function __construct()
     {
@@ -776,22 +757,6 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     }
 
     /**
-     * @return string
-     */
-    public function getBasicSalary(): string
-    {
-        return (float) $this->basicSalary;
-    }
-
-    /**
-     * @param string $basicSalary
-     */
-    public function setBasicSalary(string $basicSalary): void
-    {
-        $this->basicSalary = $basicSalary;
-    }
-
-    /**
      * @return int
      */
     public function getLeaveBalance(): int
@@ -1095,22 +1060,6 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     public function setProfileSize(int $profileSize = null): void
     {
         $this->profileSize = $profileSize;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEncryptionKey(): string
-    {
-        return (string) $this->encryptionKey;
-    }
-
-    /**
-     * @param string $encryptionKey
-     */
-    public function setEncryptionKey(string $encryptionKey)
-    {
-        $this->encryptionKey = $encryptionKey;
     }
 
     /**

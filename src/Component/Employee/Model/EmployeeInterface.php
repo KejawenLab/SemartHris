@@ -154,16 +154,6 @@ interface EmployeeInterface extends Addressable
     public function setHaveOvertimeBenefit(bool $haveOvertimeBenefit): void;
 
     /**
-     * @return string
-     */
-    public function getBasicSalary(): string;
-
-    /**
-     * @param string $basicSalary
-     */
-    public function setBasicSalary(string $basicSalary): void;
-
-    /**
      * @return int
      */
     public function getLeaveBalance(): int;

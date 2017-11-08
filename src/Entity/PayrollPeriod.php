@@ -8,34 +8,29 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
-use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="regions", indexes={@ORM\Index(name="regions_idx", columns={"code", "name"})})
+ * @ORM\Table(name="payroll_periods", indexes={@ORM\Index(name="payroll_periods_idx", columns={"month", "year"})})
  *
  * @ApiResource(
  *     attributes={
- *         "filters"={
- *             "code.search",
- *             "name.search"
- *         },
  *         "normalization_context"={"groups"={"read"}},
  *         "denormalization_context"={"groups"={"write"}}
  *     }
  * )
  *
- * @UniqueEntity("code")
+ * @UniqueEntity({"month", "year"})
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
-class Region implements RegionInterface
+class PayrollPeriod implements PayrollPeriodInterface
 {
     use BlameableEntity;
     use SoftDeleteableEntity;
@@ -55,25 +50,35 @@ class Region implements RegionInterface
     /**
      * @Groups({"read", "write"})
      *
-     * @ORM\Column(type="string", length=7)
+     * @ORM\Column(type="smallint")
      *
-     * @Assert\Length(max=7)
      * @Assert\NotBlank()
+     * @Assert\Length(max="2")
      *
-     * @var string
+     * @var int
      */
-    private $code;
+    private $month;
 
     /**
      * @Groups({"read", "write"})
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="smallint")
      *
      * @Assert\NotBlank()
+     * @Assert\Length(max="2")
      *
-     * @var string
+     * @var int
      */
-    private $name;
+    private $year;
+
+    /**
+     * @Groups({"read", "write"})
+     *
+     * @ORM\Column(type="boolean")
+     *
+     * @var bool
+     */
+    private $closed;
 
     /**
      * @return string
@@ -84,42 +89,50 @@ class Region implements RegionInterface
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getCode(): string
+    public function getMonth(): int
     {
-        return (string) $this->code;
+        return (int) $this->month;
     }
 
     /**
-     * @param string $code
+     * @param int $month
      */
-    public function setCode(string $code): void
+    public function setMonth(int $month): void
     {
-        $this->code = StringUtil::uppercase($code);
+        $this->month = $month;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getName(): string
+    public function getYear(): int
     {
-        return (string) $this->name;
+        return (int) $this->year;
     }
 
     /**
-     * @param string $name
+     * @param int $year
      */
-    public function setName(string $name): void
+    public function setYear(int $year): void
     {
-        $this->name = StringUtil::uppercase($name);
+        $this->year = $year;
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function __toString(): string
+    public function isClosed(): bool
     {
-        return sprintf('%s - %s', $this->getCode(), $this->getName());
+        return (bool) $this->closed;
+    }
+
+    /**
+     * @param bool $closed
+     */
+    public function setClosed(bool $closed)
+    {
+        $this->closed = $closed;
     }
 }

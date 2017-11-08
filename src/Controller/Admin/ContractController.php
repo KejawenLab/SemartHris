@@ -4,9 +4,11 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use KejawenLab\Application\SemartHris\Form\Manipulator\ContractManipulator;
 use KejawenLab\Application\SemartHris\Repository\ContractRepository;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -16,15 +18,21 @@ class ContractController extends AdminController
     /**
      * @Route("/contract/tags", name="contract_tags", options={"expose"=true})
      *
+     * @param Request $request
+     *
      * @return Response
      */
-    public function findAllTagsAction()
+    public function searchTagsAction(Request $request)
     {
         $result = [];
-        $tags = $this->container->get(ContractRepository::class)->findAllTags();
+        $tags = $this->container->get(ContractRepository::class)->search($request);
         foreach ($tags as $tag) {
             foreach ($tag as $item) {
-                $result = array_merge(array_values($item), $result);
+                foreach ($item as $value) {
+                    if (false !== strpos($value, StringUtil::uppercase($request->query->get('search', '')))) {
+                        $result[] = $value;
+                    }
+                }
             }
         }
 

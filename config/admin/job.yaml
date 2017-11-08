@@ -66,11 +66,9 @@ easy_admin:
             role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\Placement'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
-            disabled_actions: ['show']
             templates:
                 new: 'app/placement/new.html.twig'
                 edit: 'app/placement/edit.html.twig'
-                list: 'app/placement/list.html.twig'
             new:
                 title: 'Tambah Penempatan Karyawan'
             edit:
@@ -95,34 +93,26 @@ easy_admin:
                 title: 'Penempatan Karyawan'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
-                    - { property: 'supervisor', label: 'Supervisor' }
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
                     - { property: 'jobLevel', label: 'Level Jabatan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
-                    - { property: 'contract', label: 'No. Kontrak' }
-                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
-                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
-                    - { property: 'active', label: 'Status' }
+                    - { property: 'active', label: 'Status', type: 'boolean' }
 
         CareerHistory:
             role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\CareerHistory'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
-            disabled_actions: ['show', 'new', 'edit']
+            disabled_actions: ['new', 'edit']
             list:
                 role: 'ROLE_HRSTAFF'
                 title: 'Riwayat Karir'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
-                    - { property: 'supervisor', label: 'Supervisor' }
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
                     - { property: 'jobLevel', label: 'Level Jabatan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
-                    - { property: 'contract', label: 'No. Kontrak' }
-                    - { property: 'contract.startDate', label: 'Tanggal Mulai', type: 'date' }
-                    - { property: 'contract.endDate', label: 'Tanggal Akhir', type: 'date' }
                     - { property: 'description', label: 'Keterangan' }
 
         Mutation:
@@ -161,5 +151,3 @@ easy_admin:
                     - { property: 'newCompany', label: 'Perusahaan Baru' }
                     - { property: 'newDepartment', label: 'Departemen Baru' }
                     - { property: 'newJobTitle', label: 'Jabatan Baru' }
-                    - { property: 'newSupervisor', label: 'Atasan Baru' }
-                    - { property: 'contract', label: 'No. Kontrak' }

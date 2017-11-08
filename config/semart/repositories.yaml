@@ -85,3 +85,8 @@ services:
         lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Overtime']]
+
+    KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryComponent']]

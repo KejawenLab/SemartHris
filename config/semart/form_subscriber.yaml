@@ -42,3 +42,8 @@ services:
         lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Security\Service\PasswordSetter'
+
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveBenefitValueFieldSubscriber:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'

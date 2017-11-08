@@ -27,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class Contract implements ContractInterface
 {
@@ -293,8 +293,9 @@ class Contract implements ContractInterface
     {
         $this->tags = [];
         foreach ($tags as $tag) {
-            if ($tag) {
-                $this->tags[] = StringUtil::uppercase($tag);
+            $tag = StringUtil::uppercase($tag);
+            if ($tag && !in_array($tag, $this->tags)) {
+                $this->tags[] = $tag;
             }
         }
     }

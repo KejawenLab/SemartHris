@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
 use KejawenLab\Application\SemartHris\Entity\Department;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class DepartmentFixtures extends Fixture
 {

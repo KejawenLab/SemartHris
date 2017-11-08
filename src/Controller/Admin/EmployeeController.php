@@ -10,6 +10,7 @@ use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -44,6 +45,20 @@ class EmployeeController extends AdminController
         }
 
         return new JsonResponse(['contracts' => $contracts]);
+    }
+
+    /**
+     * @Route("/employee/search", name="employee_search", options={"expose"=true})
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function searchEmployeesAction(Request $request)
+    {
+        $employees = $this->container->get(EmployeeRepository::class)->search($request);
+
+        return new JsonResponse(['employees' => $employees]);
     }
 
     /**

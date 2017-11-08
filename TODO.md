@@ -56,11 +56,13 @@
 - [X] Overtime Upload
 - [X] Proses Overtime
 - [X] Cek Ulang perhitungan lembur
-- [ ] Komponen Gaji
-- [ ] Benefit dan Pemotongan
-- [ ] Periode Penggajian
+- [X] Komponen Gaji
+- [X] Periode Penggajian
+- [X] Benefit dan Pemotongan
+- [ ] remove sticky session is exist (Company and Employee)
+- [ ] Halaman Proses Gaji
+- [ ] Summary Absensi
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List
-- [ ] Delete Session Notification
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

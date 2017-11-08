@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Util;
 use KejawenLab\Application\SemartHris\Component\Setting\Setting as Base;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class SettingUtil
 {

@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\Util;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class FileUtil
 {

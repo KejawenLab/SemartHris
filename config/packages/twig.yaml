@@ -11,3 +11,7 @@ twig:
         datetime_format: '%env(string:SEMART_DATE_TIME_FORMAT)%'
         time_format: '%env(string:SEMART_TIME_FORMAT)%'
         hour_format: '%env(string:SEMART_HOUR_FORMAT)%'
+        currency_prefix: '%env(string:SEMART_CURRENCY_PREFIX)%'
+        decimal_precision: '%env(int:SEMART_DECIMAL_PRECISION)%'
+        decimal_point: '%env(string:SEMART_DECIMAL_POINT)%'
+        thousand_separator: '%env(string:SEMART_THOUSAND_SEPARATOR)%'

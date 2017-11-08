@@ -5,7 +5,7 @@ namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
 use KejawenLab\Application\SemartHris\Entity\Contract;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class ContractFixtures extends Fixture
 {

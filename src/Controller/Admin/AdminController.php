@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdmin;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,9 @@ class AdminController extends EasyAdmin
     {
         $user = $this->getUser();
         if ($user instanceof UserInterface && $this->isGranted(self::ROLE_SUPER_ADMIN)) {
-            $this->getDoctrine()->getManager()->getFilters()->disable('semart_soft_delete');
+            /** @var EntityManagerInterface $manager */
+            $manager = $this->getDoctrine()->getManager();
+            $manager->getFilters()->disable('semart_soft_delete');
         }
 
         parent::initialize($request);

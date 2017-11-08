@@ -268,12 +268,20 @@ function tags_autocomplete(locale) {
             url: Routing.generate('contract_tags'),
             data: function (params) {
                 return {
-                    search: params.term
+                    search: params.term.toUpperCase()
                 };
             },
             processResults: function (data) {
+                var results = [];
+                $.each(data.tags, function (idx, val) {
+                    results.push({
+                        id: val,
+                        text: val
+                    });
+                });
+
                 return {
-                    results: data.tags
+                    results: results
                 };
             }
         }
@@ -282,7 +290,9 @@ function tags_autocomplete(locale) {
     if (0 < tags.length) {
         var options = '';
         $.each(tags, function (idx, val) {
-            options += '<option value="' + val + '" selected="selected">' + val + '</option>';
+            if ('' !== val) {
+                options += '<option value="' + val + '" selected="selected">' + val + '</option>';
+            }
         });
 
         tagsSelect.html(options);
@@ -292,6 +302,38 @@ function tags_autocomplete(locale) {
 
     $(document).on('change', '.tags-select', function () {
         tagsId.val($(this).val());
+    });
+}
+
+function employee_search(locale) {
+    var employeeSelect = $('.employee-search');
+
+    employeeSelect.select2({
+        minimumInputLength: 2,
+        theme: 'bootstrap',
+        language: locale,
+        tags: true,
+        ajax: {
+            url: Routing.generate('employee_search'),
+            data: function (params) {
+                return {
+                    search: params.term.toUpperCase()
+                };
+            },
+            processResults: function (data) {
+                var results = [];
+                $.each(data.employees, function (idx, val) {
+                    results.push({
+                        id: val.id,
+                        text: val.code + ' - ' +val.fullName
+                    });
+                });
+
+                return {
+                    results: results
+                };
+            }
+        }
     });
 }
 
@@ -330,7 +372,6 @@ function employee_contract_autocomplete(locale, emptyText) {
         $('.contract-id').val($(this).val());
     });
 }
-
 
 function reason_autocomplete(locale, type, emptyText) {
     var reasonSelect = $('.reason-select');

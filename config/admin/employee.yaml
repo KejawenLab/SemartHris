@@ -8,7 +8,6 @@ easy_admin:
             templates:
                 new: 'app/employee/new.html.twig'
                 edit: 'app/employee/edit.html.twig'
-                list: 'app/employee/list.html.twig'
             new:
                 title: 'Tambah Karyawan'
             edit:
@@ -95,14 +94,10 @@ easy_admin:
                     - { property: 'profileImage', type: 'image', base_path: '/files%env(SEMART_PROFILE_IMAGE_UPLOAD_PATH)%' }
                     - { property: 'code', label: 'Kode Karyawan' }
                     - { property: 'fullName', label: 'Nama Karyawan' }
-                    - { property: 'gender_text', label: 'Jenis Kelamin' }
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'jobTitle', label: 'Jabatan' }
-                    - { property: 'joinDate', label: 'Tanggal Masuk' }
                     - { property: 'employee_status_text', label: 'Status' }
-                    - { property: 'supervisor', label: 'Atasan' }
                     - { property: 'resign', label: 'Resign?', type: 'boolean' }
-                    - { property: 'haveOvertimeBenefit', label: 'Hak Lembur?', type: 'boolean' }
 
         EmployeeAddress:
             role: 'ROLE_HRSTAFF'
@@ -111,7 +106,7 @@ easy_admin:
             templates:
                 new: 'app/address/new.html.twig'
                 edit: 'app/address/edit.html.twig'
-                list: 'app/address/list.html.twig'
+                list: 'app/employee_address/list.html.twig'
             new:
                 title: 'Tambah Alamat Karyawan'
             edit:

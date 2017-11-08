@@ -15,3 +15,28 @@ easy_admin:
                     - { property: 'month', label: 'Bulan' }
                     - { property: 'year', label: 'Tahun' }
                     - { property: 'closed', label: 'Ditutup?' }
+
+        SalaryBenefit:
+            role: 'ROLE_HRSTAFF'
+            class: 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryBenefitController'
+            disabled_actions: ['show']
+            new:
+                title: 'Tambah Tunjangan/Potongan'
+            edit:
+                title: 'Edit Tunjangan/Potongan'
+            search:
+                title: 'Tunjangan/Potongan'
+            form:
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'component', label: 'Tunjangan/Potongan' }
+                    - { property: 'benefitValue', label: 'Nilai', type: 'text' }
+            list:
+                role: 'ROLE_HRSTAFF'
+                title: 'Tunjangan/Potongan'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'component', label: 'Tunjangan/Potongan' }
+                    - { property: 'component.fixed', label: 'Tetap?', type: 'boolean' }
+                    - { property: 'benefitValue', label: 'Nilai', type: 'float', template: 'app/default/field_currency.html.twig' }

@@ -14,6 +14,10 @@
                 <source>semarthris.attendance.invalid_data</source>
                 <target>Data absensi tidak valid</target>
             </trans-unit>
+            <trans-unit id="semarthris.field_required">
+                <source>semarthris.field_required</source>
+                <target>Field ini wajib diisi</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

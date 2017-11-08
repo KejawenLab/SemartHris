@@ -3,7 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Util;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class StringUtil
 {

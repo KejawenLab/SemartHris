@@ -15,6 +15,7 @@ use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity()
@@ -33,7 +34,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Encrypt(properties="benefitValue", keyStore="benefitKey")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class SalaryBenefit implements BenefitInterface
 {
@@ -80,8 +81,6 @@ class SalaryBenefit implements BenefitInterface
      * @Groups({"read", "write"})
      *
      * @ORM\Column(type="text", nullable=true)
-     *
-     * @Assert\NotBlank()
      *
      * @var string
      */
@@ -164,5 +163,22 @@ class SalaryBenefit implements BenefitInterface
     public function setBenefitKey(string $benefitKey = null): void
     {
         $this->benefitKey = $benefitKey;
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     * @param mixed                     $payload
+     *
+     * @Assert\Callback()
+     */
+    public function checkBenefitValue(ExecutionContextInterface $context, $payload)
+    {
+        if ($this->component && $this->component->isFixed() && !$this->benefitValue) {
+            $context
+                ->buildViolation('semarthris.field_required')
+                ->atPath('benefitValue')
+                ->addViolation()
+            ;
+        }
     }
 }

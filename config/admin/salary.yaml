@@ -4,7 +4,6 @@ easy_admin:
             role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryComponent'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
-            disabled_actions: ['show']
             templates:
                 new: 'app/reason/new.html.twig'
                 edit: 'app/reason/edit.html.twig'
@@ -22,7 +21,14 @@ easy_admin:
                     - { property: 'state', label: 'Tipe', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'TUNJANGAN': 'p', 'POTONGAN': 'm' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Komponen Gaji' }
-                    - { property: 'fixed', label: 'Tunjangan/Potongan Tetap?' }
+                    - { property: 'fixed', label: 'Tetap?' }
+            show:
+                title: 'Detil Komponen Gaji'
+                fields:
+                    - { property: 'code', label: 'Kode Komponen' }
+                    - { property: 'state_text', label: 'Tipe Komponen' }
+                    - { property: 'name', label: 'Komponen Gaji' }
+                    - { property: 'fixed', label: 'Tetap?' }
             list:
                 role: 'ROLE_HRSTAFF'
                 title: 'Komponen Gaji'

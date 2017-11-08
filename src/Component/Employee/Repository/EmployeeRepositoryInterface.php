@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Component\Employee\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -36,6 +37,13 @@ interface EmployeeRepositoryInterface
      * @return EmployeeInterface|null
      */
     public function findByCode(string $code): ? EmployeeInterface;
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function search(Request $request): array;
 
     /**
      * @return EmployeeInterface[]

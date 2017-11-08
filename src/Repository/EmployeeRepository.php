@@ -16,6 +16,7 @@ use KejawenLab\Application\SemartHris\Entity\JobLevel;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use KejawenLab\Library\PetrukUsername\Repository\UsernameInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -96,6 +97,25 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     public function findAll(): array
     {
         return $this->entityManager->getRepository($this->entityClass)->findAll();
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function search(Request $request): array
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'e');
+        $queryBuilder->addSelect('e.id');
+        $queryBuilder->addSelect('e.code');
+        $queryBuilder->addSelect('e.fullName');
+        $queryBuilder->orWhere($queryBuilder->expr()->like('e.code', ':search'));
+        $queryBuilder->orWhere($queryBuilder->expr()->like('e.fullName', ':search'));
+        $queryBuilder->setParameter('search', sprintf('%%%s%%', $request->query->get('search')));
+
+        return $queryBuilder->getQuery()->getResult();
     }
 
     /**

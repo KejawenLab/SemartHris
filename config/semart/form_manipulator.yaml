@@ -59,3 +59,9 @@ services:
         arguments:
             - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber' ]
+
+    KejawenLab\Application\SemartHris\Form\Manipulator\SalaryBenefitManipulator:
+        lazy: true
+        arguments:
+            - []
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveBenefitValueFieldSubscriber' ]

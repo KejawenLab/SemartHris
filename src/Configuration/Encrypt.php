@@ -27,6 +27,10 @@ class Encrypt
     public function __construct(array $data = [])
     {
         if (isset($data['properties'])) {
+            if (!is_array($data['properties'])) {
+                $data['properties'] = (array) $data['properties'];
+            }
+
             $this->properties = $data['properties'];
         }
 

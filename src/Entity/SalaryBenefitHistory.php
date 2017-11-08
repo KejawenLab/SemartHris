@@ -11,6 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\BenefitHistoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
+use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -29,6 +30,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity({"employee", "component"})
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
+ * @Encrypt(properties="benefitValue", keyStore="benefitKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -76,7 +79,7 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
     /**
      * @Groups({"read", "write"})
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Assert\NotBlank()
      *
@@ -92,6 +95,13 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
      * @var string
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $benefitKey;
 
     /**
      * @return string
@@ -163,5 +173,21 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
     public function setDescription(string $description = null): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitKey(): ? string
+    {
+        return $this->benefitKey;
+    }
+
+    /**
+     * @param string $benefitKey
+     */
+    public function setBenefitKey(string $benefitKey = null): void
+    {
+        $this->benefitKey = $benefitKey;
     }
 }

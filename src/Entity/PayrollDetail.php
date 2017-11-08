@@ -11,6 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollDetailInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
+use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -26,6 +27,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
+ * @Encrypt(properties="benefitValue", keyStore="benefitKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -82,6 +85,13 @@ class PayrollDetail implements PayrollDetailInterface
     private $benefitValue;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $benefitKey;
+
+    /**
      * @return string
      */
     public function getId(): string
@@ -135,5 +145,21 @@ class PayrollDetail implements PayrollDetailInterface
     public function setBenefitValue(string $benefitValue = null): void
     {
         $this->benefitValue = $benefitValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitKey(): ? string
+    {
+        return $this->benefitKey;
+    }
+
+    /**
+     * @param string $benefitKey
+     */
+    public function setBenefitKey(string $benefitKey = null): void
+    {
+        $this->benefitKey = $benefitKey;
     }
 }

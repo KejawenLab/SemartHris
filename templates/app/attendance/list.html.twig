@@ -211,7 +211,7 @@
                     {% endif %}
                 {% else %}
                     <tr>
-                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 2 + extraField : fields|length }}">
+                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 2 + extraField : fields | length + 1 + extraField }}">
                             {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
                         </td>
                     </tr>

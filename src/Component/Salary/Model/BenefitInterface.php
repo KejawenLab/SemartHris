@@ -17,12 +17,12 @@ interface BenefitInterface
     /**
      * @return EmployeeInterface|null
      */
-    public function getPayroll(): ? EmployeeInterface;
+    public function getEmployee(): ? EmployeeInterface;
 
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setPayroll(EmployeeInterface $employee = null): void;
+    public function setEmployee(EmployeeInterface $employee = null): void;
 
     /**
      * @return ComponentInterface|null

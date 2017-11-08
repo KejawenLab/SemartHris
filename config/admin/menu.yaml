@@ -54,10 +54,11 @@ easy_admin:
               children:
                   - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Penggajian'
-              role: 'ROLE_HRMANAGER'
+              role: 'ROLE_HRSTAFF'
               icon: 'money'
               children:
                   - { entity: 'SalaryComponent', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'PayrollPeriod', label: 'Periode Penggajian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
               role: 'ROLE_HRSTAFF'
               icon: 'id-card-o'

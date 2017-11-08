@@ -11,6 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\BenefitInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
+use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -29,6 +30,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity({"employee", "component"})
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
+ * @Encrypt(properties="benefitValue", keyStore="benefitKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.id>
  */
@@ -76,13 +79,20 @@ class SalaryBenefit implements BenefitInterface
     /**
      * @Groups({"read", "write"})
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Assert\NotBlank()
      *
      * @var string
      */
     private $benefitValue;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $benefitKey;
 
     /**
      * @return string
@@ -95,7 +105,7 @@ class SalaryBenefit implements BenefitInterface
     /**
      * @return EmployeeInterface|null
      */
-    public function getPayroll(): ? EmployeeInterface
+    public function getEmployee(): ? EmployeeInterface
     {
         return $this->employee;
     }
@@ -103,7 +113,7 @@ class SalaryBenefit implements BenefitInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setPayroll(EmployeeInterface $employee = null): void
+    public function setEmployee(EmployeeInterface $employee = null): void
     {
         $this->employee = $employee;
     }
@@ -138,5 +148,21 @@ class SalaryBenefit implements BenefitInterface
     public function setBenefitValue(string $benefitValue = null): void
     {
         $this->benefitValue = $benefitValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefitKey(): ? string
+    {
+        return $this->benefitKey;
+    }
+
+    /**
+     * @param string $benefitKey
+     */
+    public function setBenefitKey(string $benefitKey = null): void
+    {
+        $this->benefitKey = $benefitKey;
     }
 }

@@ -95,3 +95,8 @@ services:
         lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\PayrollPeriod']]
+
+    KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\AttendanceSummary']]

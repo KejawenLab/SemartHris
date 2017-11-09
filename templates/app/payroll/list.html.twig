@@ -163,7 +163,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <h4>{{ 'delete_modal.title'|trans({}, 'EasyAdminBundle') }}</h4>
-                    <p>{{ 'semarthris.payroll.process_finish_content'|trans({}, 'messages') }}</p>
+                    <p class="fail-message">{{ 'semarthris.payroll.process_finish_content'|trans({}, 'messages') }}</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-primary reload">
@@ -221,8 +221,10 @@
                     success: function () {
                         $('#modal-after-process').modal();
                     },
-                    error: function () {
-                        console.log('KO');
+                    error: function (r) {
+                        var response = JSON.parse(r.responseText);
+                        $('.fail-message').html(response.message);
+                        $('#modal-after-process').modal();
                     }
                 });
             });

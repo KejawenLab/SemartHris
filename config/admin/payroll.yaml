@@ -9,7 +9,6 @@ easy_admin:
                 list: 'app/payroll/list.html.twig'
             search:
                 title: 'Penggajian'
-                fields: ['code', 'name']
             list:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Penggajian'
@@ -43,3 +42,14 @@ easy_admin:
                     - { property: 'component', label: 'Tunjangan/Potongan' }
                     - { property: 'component.fixed', label: 'Tetap?', type: 'boolean' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'float', template: 'app/default/field_currency.html.twig' }
+
+        AttendanceSummary:
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\AttendanceSummary'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
+            disabled_actions: ['show', 'new', 'edit', 'delete']
+            search:
+                title: 'Riwayat Absensi'
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Riwayat Absensi'

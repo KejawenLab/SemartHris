@@ -63,8 +63,8 @@
 - [X] Security for Processing Attendance and Overtime
 - [X] Halaman Proses Gaji
 - [X] Proses Penggajian
-- [ ] Summary Absensi Prosesor
-- [ ] Lembur Prosesor
+- [X] Summary Absensi Prosesor
+- [X] Lembur Prosesor
 - [ ] Tunjangan/Potongan Prosesor
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List

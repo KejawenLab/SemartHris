@@ -9,6 +9,8 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
  */
 class PayrollProcessor implements ProcessorInterface
 {
+    const SEMARTHRIS_PAYROLL_PROCESSOR = 'semarthris.payroll_processor';
+
     /**
      * @var ProcessorInterface[]
      */

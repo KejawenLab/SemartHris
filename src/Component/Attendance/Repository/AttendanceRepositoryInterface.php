@@ -43,4 +43,13 @@ interface AttendanceRepositoryInterface
      * @param AttendanceInterface $attendance
      */
     public function update(AttendanceInterface $attendance): void;
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $from
+     * @param \DateTimeInterface $to
+     *
+     * @return array
+     */
+    public function getSummaryByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $from, \DateTimeInterface $to): array;
 }

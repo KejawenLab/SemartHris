@@ -32,7 +32,7 @@ class WorkdayCalculator
     public function getWorkdays(\DateTimeInterface $month, $dateLimit = 0, $dateStart = 1): int
     {
         $workdays = 0;
-        $totalDate = $dateLimit ?? $month->format('t');
+        $totalDate = $dateLimit ?: $month->format('t');
         for ($i = $dateStart; $i <= $totalDate; ++$i) {
             $date = \DateTime::createFromFormat('Y-m-j', sprintf('%s-%d', $month->format('Y-m'), $i));
             if ($this->holidayRepository->isHoliday($date)) {

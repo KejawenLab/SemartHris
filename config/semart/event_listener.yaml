@@ -94,3 +94,11 @@ services:
             - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
         tags:
             - { name: 'doctrine.event_subscriber' }
+
+    KejawenLab\Application\SemartHris\EventListener\ExceptionSubscriber:
+        lazy: true
+        arguments:
+            - '@Symfony\Component\Serializer\SerializerInterface'
+            - '@Psr\Log\LoggerInterface'
+        tags:
+            - { name: 'kernel.event_subscriber' }

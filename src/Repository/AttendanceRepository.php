@@ -6,6 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\AttendanceRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -85,5 +86,29 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
     {
         $this->entityManager->persist($attendance);
         $this->entityManager->flush();
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $from
+     * @param \DateTimeInterface $to
+     *
+     * @return array
+     */
+    public function getSummaryByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $from, \DateTimeInterface $to): array
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->addSelect('COUNT(1) AS totalIn');
+        $queryBuilder->addSelect('SUM(a.earlyIn) AS earlyIn');
+        $queryBuilder->addSelect('SUM(a.earlyOut) AS earlyOut');
+        $queryBuilder->addSelect('SUM(a.lateIn) AS lateIn');
+        $queryBuilder->addSelect('SUM(a.lateOut) AS lateOut');
+        $queryBuilder->from($this->entityClass, 'a');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('a.absent', $queryBuilder->expr()->literal(false)));
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('a.employee', $queryBuilder->expr()->literal($employee->getId())));
+        $queryBuilder->andWhere($queryBuilder->expr()->gte('a.attendanceDate', $queryBuilder->expr()->literal($from->format(SettingUtil::get(SettingUtil::DATE_QUERY_FORMAT)))));
+        $queryBuilder->andWhere($queryBuilder->expr()->lte('a.attendanceDate', $queryBuilder->expr()->literal($to->format(SettingUtil::get(SettingUtil::DATE_QUERY_FORMAT)))));
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

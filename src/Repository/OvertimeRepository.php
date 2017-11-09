@@ -6,6 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Repository\OvertimeRepositoryInterface;
+use KejawenLab\Application\SemartHris\Util\SettingUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -75,5 +76,25 @@ class OvertimeRepository extends Repository implements OvertimeRepositoryInterfa
     {
         $this->entityManager->persist($overtime);
         $this->entityManager->flush();
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $from
+     * @param \DateTimeInterface $to
+     *
+     * @return array
+     */
+    public function getSummaryByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $from, \DateTimeInterface $to): array
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->addSelect('SUM(o.calculatedValue) AS totalOvertime');
+        $queryBuilder->from($this->entityClass, 'o');
+        $queryBuilder->andWhere($queryBuilder->expr()->isNotNull('o.approvedBy'));
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('o.employee', $queryBuilder->expr()->literal($employee->getId())));
+        $queryBuilder->andWhere($queryBuilder->expr()->gte('o.overtimeDate', $queryBuilder->expr()->literal($from->format(SettingUtil::get(SettingUtil::DATE_QUERY_FORMAT)))));
+        $queryBuilder->andWhere($queryBuilder->expr()->lte('o.overtimeDate', $queryBuilder->expr()->literal($to->format(SettingUtil::get(SettingUtil::DATE_QUERY_FORMAT)))));
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

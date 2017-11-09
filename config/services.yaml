@@ -148,6 +148,18 @@ services:
     KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcessor:
         lazy: true
 
+    KejawenLab\Application\SemartHris\Component\Salary\Processor\AttendanceProcessor:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Salary\Service\WorkdayCalculator'
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\OvertimeRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository'
+            - '%env(int:SEMART_ATTENDANCE_CUT_OFF_DATE)%'
+            - 'KejawenLab\Application\SemartHris\Entity\AttendanceSummary'
+        tags:
+            { name: 'semarthris.payroll_processor' }
+
     KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor:
         lazy: true
         arguments:

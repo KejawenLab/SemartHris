@@ -77,16 +77,6 @@ interface AttendanceSummaryInterface
     /**
      * @return int|null
      */
-    public function getTotalLate(): ? int;
-
-    /**
-     * @param int $totalLate
-     */
-    public function setTotalLate(int $totalLate): void;
-
-    /**
-     * @return int|null
-     */
     public function getTotalAbsent(): ? int;
 
     /**

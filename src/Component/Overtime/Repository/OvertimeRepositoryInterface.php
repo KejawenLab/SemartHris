@@ -36,4 +36,13 @@ interface OvertimeRepositoryInterface
      * @param OvertimeInterface $overtime
      */
     public function update(OvertimeInterface $overtime): void;
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $from
+     * @param \DateTimeInterface $to
+     *
+     * @return array
+     */
+    public function getSummaryByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $from, \DateTimeInterface $to): array;
 }

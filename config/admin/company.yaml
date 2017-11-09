@@ -88,11 +88,14 @@ easy_admin:
             role: 'ROLE_HRSTAFF'
             class: 'KejawenLab\Application\SemartHris\Entity\CompanyDepartment'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyDepartmentController'
-            disabled_actions: ['search']
+            templates:
+                list: 'app/company/department.html.twig'
             new:
-                title: 'Tambah Departemen Perusahaan'
+                title: 'Tambah Departemen'
             edit:
-                title: 'Edit Departemen Perusahaan'
+                title: 'Edit Departemen'
+            search:
+                title: 'Departemen'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
@@ -101,13 +104,13 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'department', label: 'Departemen' }
             show:
-                title: 'Detil Departemen Perusahaan'
+                title: 'Detil Departemen'
                 fields:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
             list:
                 role: 'ROLE_HRSTAFF'
-                title: 'Departemen Perusahaan'
+                title: 'Departemen'
                 fields:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
@@ -119,11 +122,13 @@ easy_admin:
             templates:
                 new: 'app/address/new.html.twig'
                 edit: 'app/address/edit.html.twig'
-                list: 'app/address/list.html.twig'
+                list: 'app/company/address.html.twig'
             new:
-                title: 'Tambah Alamat Perusahaan'
+                title: 'Tambah Alamat'
             edit:
-                title: 'Edit Alamat Perusahaan'
+                title: 'Edit Alamat'
+            search:
+                title: 'Alamat'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
@@ -143,7 +148,7 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'faxNumber', label: 'No. Fax' }
             show:
-                title: 'Detil Alamat Perusahaan'
+                title: 'Detil Alamat'
                 fields:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'address', label: 'Alamat' }
@@ -155,7 +160,7 @@ easy_admin:
                     - { property: 'defaultAddress', label: 'Set Default' }
             list:
                 role: 'ROLE_HRSTAFF'
-                title: 'Alamat Perusahaan'
+                title: 'Alamat'
                 fields:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'address', label: 'Alamat' }

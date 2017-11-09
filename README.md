@@ -1,6 +1,6 @@
 # SemartHris
 
-SemartHris adalah Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
+SemartHris adalah Enterprise Grade Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
 
 ## Tahap Pengembangan
 

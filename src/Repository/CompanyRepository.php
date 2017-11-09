@@ -11,6 +11,7 @@ use KejawenLab\Application\SemartHris\Component\Company\Repository\CompanyReposi
 use KejawenLab\Application\SemartHris\Entity\Company;
 use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
@@ -31,9 +32,8 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
      */
     public function __construct(EntityManagerInterface $entityManager, SessionInterface $session)
     {
-        $this->entityManager = $entityManager;
         $this->session = $session;
-        $this->initialize($this->entityManager, Company::class);
+        $this->initialize($entityManager, Company::class);
     }
 
     /**
@@ -78,6 +78,29 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
     public function createCompanyDepartmentQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null)
     {
         return $this->buildSearch(CompanyDepartment::class, $sortField, $sortDirection, $dqlFilter);
+    }
+
+    /**
+     * @param string $searchQuery
+     * @param null   $sortField
+     * @param null   $sortDirection
+     * @param null   $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    public function createSearchCompanyDepartmentQueryBuilder($searchQuery, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    {
+        $queryBuilder = $this->createCompanyDepartmentQueryBuilder($sortField, $sortDirection, $dqlFilter);
+        $queryBuilder->leftJoin('entity.company', 'company');
+        $queryBuilder->orWhere('LOWER(company.code) LIKE :query');
+        $queryBuilder->orWhere('LOWER(company.name) LIKE :query');
+        $queryBuilder->leftJoin('entity.department', 'department');
+        $queryBuilder->orWhere('LOWER(department.code) LIKE :query');
+        $queryBuilder->orWhere('LOWER(department.name) LIKE :query');
+
+        $queryBuilder->setParameter('query', sprintf('%%%s%%', StringUtil::lowercase($searchQuery)));
+
+        return $queryBuilder;
     }
 
     /**

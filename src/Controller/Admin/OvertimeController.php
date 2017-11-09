@@ -103,9 +103,9 @@ class OvertimeController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $month = (int) $request->get('month', date('n'));
+        $month = (int) $request->request->get('month', date('n'));
         $employeeRepository = $this->container->get(EmployeeRepository::class);
-        if ($ids = $request->get('employees')) {
+        if ($ids = $request->request->get('employees')) {
             $employees = $employeeRepository->finds($ids);
         } else {
             $employees = $employeeRepository->findAll();
@@ -141,10 +141,11 @@ class OvertimeController extends AdminController
 
         $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $startDate);
         $endDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $endDate);
-        $companyId = $this->request->get('company');
-        $departmentId = $this->request->get('department');
-        $shiftmentId = $this->request->get('shiftment');
+        $companyId = $this->request->query->get('company');
+        $departmentId = $this->request->query->get('department');
+        $shiftmentId = $this->request->query->get('shiftment');
+        $employeeId = $this->request->query->get('employeeId');
 
-        return $this->container->get(OvertimeRepository::class)->getFilteredOvertime($startDate, $endDate, $companyId, $departmentId, $shiftmentId, [$sortField => $sortDirection]);
+        return $this->container->get(OvertimeRepository::class)->getFilteredOvertime($startDate, $endDate, $companyId, $departmentId, $shiftmentId, $employeeId, [$sortField => $sortDirection]);
     }
 }

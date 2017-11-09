@@ -30,6 +30,7 @@ class CompanyAddressController extends AdminController
         if ($company) {
             $session = $this->get('session');
             $session->set('companyId', $company->getId());
+            $session->set('companyCode', $company->getCode());
         }
 
         return $this->redirectToRoute('easyadmin', array(

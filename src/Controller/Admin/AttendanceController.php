@@ -107,9 +107,9 @@ class AttendanceController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $month = (int) $request->get('month', date('n'));
+        $month = (int) $request->request->get('month', date('n'));
         $employeeRepository = $this->container->get(EmployeeRepository::class);
-        if ($ids = $request->get('employees')) {
+        if ($ids = $request->request->get('employees')) {
             $employees = $employeeRepository->finds($ids);
         } else {
             $employees = $employeeRepository->findAll();
@@ -204,11 +204,12 @@ class AttendanceController extends AdminController
     {
         $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $this->request->query->get('startDate', date(SettingUtil::get(SettingUtil::FIRST_DATE_FORMAT))));
         $endDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $this->request->query->get('endDate', date(SettingUtil::get(SettingUtil::LAST_DATE_FORMAT))));
-        $companyId = $this->request->get('company');
-        $departmentId = $this->request->get('department');
-        $shiftmentId = $this->request->get('shiftment');
+        $companyId = $this->request->query->get('company');
+        $departmentId = $this->request->query->get('department');
+        $shiftmentId = $this->request->query->get('shiftment');
+        $employeeId = $this->request->query->get('employeeId');
 
-        return $this->container->get(AttendanceRepository::class)->getFilteredAttendance($startDate, $endDate, $companyId, $departmentId, $shiftmentId, [$sortField => $sortDirection]);
+        return $this->container->get(AttendanceRepository::class)->getFilteredAttendance($startDate, $endDate, $companyId, $departmentId, $shiftmentId, $employeeId, [$sortField => $sortDirection]);
     }
 
     /**

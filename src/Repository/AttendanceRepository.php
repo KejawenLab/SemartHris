@@ -18,11 +18,12 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
      * @param string|null        $companyId
      * @param string|null        $departmentId
      * @param string|null        $shiftmentId
+     * @param string|null        $employeeId
      * @param array              $sorts
      *
      * @return QueryBuilder
      */
-    public function getFilteredAttendance(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder
+    public function getFilteredAttendance(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, string $employeeId = null, array $sorts = []): QueryBuilder
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('a');
@@ -31,16 +32,20 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
         $queryBuilder->andWhere($queryBuilder->expr()->gte('a.attendanceDate', $queryBuilder->expr()->literal($startDate->format('Y-m-d'))));
         $queryBuilder->andWhere($queryBuilder->expr()->lte('a.attendanceDate', $queryBuilder->expr()->literal($endDate->format('Y-m-d'))));
 
-        if ($companyId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.company', $queryBuilder->expr()->literal($companyId)));
-        }
+        if ($employeeId) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.id', $queryBuilder->expr()->literal($employeeId)));
+        } else {
+            if ($companyId) {
+                $queryBuilder->andWhere($queryBuilder->expr()->eq('e.company', $queryBuilder->expr()->literal($companyId)));
+            }
 
-        if ($departmentId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.department', $queryBuilder->expr()->literal($departmentId)));
-        }
+            if ($departmentId) {
+                $queryBuilder->andWhere($queryBuilder->expr()->eq('e.department', $queryBuilder->expr()->literal($departmentId)));
+            }
 
-        if ($shiftmentId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->eq('a.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
+            if ($shiftmentId) {
+                $queryBuilder->andWhere($queryBuilder->expr()->eq('a.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
+            }
         }
 
         if (!empty($sorts)) {

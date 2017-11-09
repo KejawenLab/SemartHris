@@ -8,6 +8,7 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -48,16 +49,14 @@ class PayrollPeriod implements PayrollPeriodInterface
     private $id;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"write", "read"})
      *
-     * @ORM\Column(type="smallint")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Company", fetch="EAGER")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      *
-     * @Assert\NotBlank()
-     * @Assert\Length(max="2")
-     *
-     * @var int
+     * @var CompanyInterface
      */
-    private $month;
+    private $company;
 
     /**
      * @Groups({"read", "write"})
@@ -70,6 +69,18 @@ class PayrollPeriod implements PayrollPeriodInterface
      * @var int
      */
     private $year;
+
+    /**
+     * @Groups({"read", "write"})
+     *
+     * @ORM\Column(type="smallint")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(max="2")
+     *
+     * @var int
+     */
+    private $month;
 
     /**
      * @Groups({"read", "write"})
@@ -89,19 +100,19 @@ class PayrollPeriod implements PayrollPeriodInterface
     }
 
     /**
-     * @return int
+     * @return null|CompanyInterface
      */
-    public function getMonth(): int
+    public function getCompany(): ? CompanyInterface
     {
-        return (int) $this->month;
+        return $this->company;
     }
 
     /**
-     * @param int $month
+     * @param CompanyInterface|null $company
      */
-    public function setMonth(int $month): void
+    public function setCompany(CompanyInterface $company = null): void
     {
-        $this->month = $month;
+        $this->company = $company;
     }
 
     /**
@@ -118,6 +129,22 @@ class PayrollPeriod implements PayrollPeriodInterface
     public function setYear(int $year): void
     {
         $this->year = $year;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMonth(): int
+    {
+        return (int) $this->month;
+    }
+
+    /**
+     * @param int $month
+     */
+    public function setMonth(int $month): void
+    {
+        $this->month = $month;
     }
 
     /**

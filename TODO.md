@@ -59,8 +59,10 @@
 - [X] Komponen Gaji
 - [X] Periode Penggajian
 - [X] Benefit dan Pemotongan
-- [ ] remove sticky session is exist (Company and Employee)
-- [ ] Halaman Proses Gaji
+- [X] Remove sticky session is exist (Company and Employee)
+- [ ] Security for Processing Attendance and Overtime
+- [X] Halaman Proses Gaji
+- [ ] Proses Penggajian
 - [ ] Summary Absensi
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List

@@ -18,34 +18,39 @@ class OvertimeRepository extends Repository implements OvertimeRepositoryInterfa
      * @param string|null        $companyId
      * @param string|null        $departmentId
      * @param string|null        $shiftmentId
+     * @param string|null        $employeeId
      * @param array              $sorts
      *
      * @return QueryBuilder
      */
-    public function getFilteredOvertime(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder
+    public function getFilteredOvertime(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, string $employeeId = null, array $sorts = []): QueryBuilder
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
-        $queryBuilder->select('a');
-        $queryBuilder->from($this->entityClass, 'a');
-        $queryBuilder->leftJoin('a.employee', 'e');
-        $queryBuilder->andWhere($queryBuilder->expr()->gte('a.overtimeDate', $queryBuilder->expr()->literal($startDate->format('Y-m-d'))));
-        $queryBuilder->andWhere($queryBuilder->expr()->lte('a.overtimeDate', $queryBuilder->expr()->literal($endDate->format('Y-m-d'))));
+        $queryBuilder->select('o');
+        $queryBuilder->from($this->entityClass, 'o');
+        $queryBuilder->leftJoin('o.employee', 'e');
+        $queryBuilder->andWhere($queryBuilder->expr()->gte('o.overtimeDate', $queryBuilder->expr()->literal($startDate->format('Y-m-d'))));
+        $queryBuilder->andWhere($queryBuilder->expr()->lte('o.overtimeDate', $queryBuilder->expr()->literal($endDate->format('Y-m-d'))));
 
-        if ($companyId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.company', $queryBuilder->expr()->literal($companyId)));
-        }
+        if ($employeeId) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.id', $queryBuilder->expr()->literal($employeeId)));
+        } else {
+            if ($companyId) {
+                $queryBuilder->andWhere($queryBuilder->expr()->eq('e.company', $queryBuilder->expr()->literal($companyId)));
+            }
 
-        if ($departmentId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->eq('e.department', $queryBuilder->expr()->literal($departmentId)));
-        }
+            if ($departmentId) {
+                $queryBuilder->andWhere($queryBuilder->expr()->eq('e.department', $queryBuilder->expr()->literal($departmentId)));
+            }
 
-        if ($shiftmentId) {
-            $queryBuilder->andWhere($queryBuilder->expr()->eq('a.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
+            if ($shiftmentId) {
+                $queryBuilder->andWhere($queryBuilder->expr()->eq('o.shiftment', $queryBuilder->expr()->literal($shiftmentId)));
+            }
         }
 
         if (!empty($sorts)) {
             foreach ($sorts as $field => $direction) {
-                $queryBuilder->addOrderBy(sprintf('a.%s', $field), $direction);
+                $queryBuilder->addOrderBy(sprintf('o.%s', $field), $direction);
             }
         }
 

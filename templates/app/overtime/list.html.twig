@@ -8,19 +8,23 @@
 %}
 
 {% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
-{% set startDate = app.request.get('startDate', date() | date('01-m-Y')) %}
-{%  set endDate = app.request.get('endDate', date() | date('t-m-Y')) %}
+{% set startDate = app.request.query.get('startDate', date() | date('01-m-Y')) %}
+{%  set endDate = app.request.query.get('endDate', date() | date('t-m-Y')) %}
 
 {% set _request_parameters = _request_parameters|default({})|merge({
-    action: app.request.get('action'),
+    action: app.request.query.get('action'),
     entity: _entity_config.name,
-    menuIndex: app.request.get('menuIndex'),
-    submenuIndex: app.request.get('submenuIndex'),
-    sortField: app.request.get('sortField', ''),
+    menuIndex: app.request.query.get('menuIndex'),
+    submenuIndex: app.request.query.get('submenuIndex'),
+    sortField: app.request.query.get('sortField', ''),
     startDate: startDate,
     endDate: endDate,
-    sortDirection: app.request.get('sortDirection', 'DESC'),
-    page: app.request.get('page', 1)
+    company: app.request.query.get('company'),
+    department: app.request.query.get('department'),
+    shiftment: app.request.query.get('shiftment'),
+    employeeId: app.request.query.get('employeeId'),
+    sortDirection: app.request.query.get('sortDirection', 'DESC'),
+    page: app.request.query.get('page', 1)
 }) %}
 
 {% block global_actions %}
@@ -59,46 +63,85 @@
             <input type="hidden" name="sortDirection" value="{{ _entity_config.search.sort.direction|default(_request_parameters.sortDirection) }}">
             <input type="hidden" name="menuIndex" value="{{ _request_parameters.menuIndex }}">
             <input type="hidden" name="submenuIndex" value="{{ _request_parameters.submenuIndex }}">
-            <div class="field-group col-xs-12 col-sm-12">
+            <div class="field-group col-xs-12 col-sm-12 col-md-12">
                 <div class="box box-default">
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-6">
+                            <div class="col-xs-12 col-sm-12 col-md-6 new-row">
+                                <div class="form-group">
+                                    <label class="control-label" for="shiftment">Pilih Karyawan</label>
+                                    {% set employee = semarthris_create_employee(app.request.query.get('employeeId', '')) %}
+                                    <select class="employee-search" name="employeeId">
+                                        {% if employee is not null %}
+                                            <option value="{{ employee.id }}">{{ employee.code ~ ' ' ~ employee.fullName }}</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="startDate">Pilih Tanggal</label>
+                                    <div class="input-group input-daterange">
+                                        <input id="startDate" type="text" name="startDate" class="form-control startDate" required="required" value="{{ app.request.query.get('startDate') ?: date() | date('01-m-Y') }}">
+                                        <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
+                                        <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.query.get('endDate') ?: date() | date('t-m-Y') }}">
+                                        <span class="input-group-btn">
+                                            <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit"><i class="fa fa-television"></i> {{ 'label.overtime.filter_action' | trans({}, 'messages') }}</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <form method="get" action="{{ path('easyadmin') }}">
+            <input type="hidden" name="entity" value="{{ _request_parameters.entity }}">
+            <input type="hidden" name="sortField" value="{{ _entity_config.search.sort.field|default(_request_parameters.sortField) }}">
+            <input type="hidden" name="sortDirection" value="{{ _entity_config.search.sort.direction|default(_request_parameters.sortDirection) }}">
+            <input type="hidden" name="menuIndex" value="{{ _request_parameters.menuIndex }}">
+            <input type="hidden" name="submenuIndex" value="{{ _request_parameters.submenuIndex }}">
+            <div class="field-group col-xs-12 col-sm-12 col-md-12">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="company">Pilih Perusahaan</label>
                                     <select id="company" name="company" class="static-select company-select">
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="department">Pilih Department</label>
-                                    <input type="hidden" name="department" class="department-id" value="{{ app.request.get('department') }}">
+                                    <input type="hidden" name="department" class="department-id" value="{{ app.request.query.get('department') }}">
                                     <select id="department" name="department_text" class="department-select">
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 new-row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 new-row">
                                 <div class="form-group">
                                     <label class="control-label" for="shiftment">Pilih Shift</label>
                                     <select id="shiftment" name="shiftment" class="static-select shiftment-select">
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-5">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="startDate">Pilih Tanggal</label>
                                     <div class="input-group input-daterange">
-                                        <input id="startDate" type="text" name="startDate" class="form-control startDate" required="required" value="{{ app.request.get('startDate') ?: date() | date('01-m-Y') }}">
+                                        <input id="startDate" type="text" name="startDate" class="form-control startDate" required="required" value="{{ app.request.query.get('startDate') ?: date() | date('01-m-Y') }}">
                                         <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
-                                        <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.get('endDate') ?: date() | date('t-m-Y') }}">
+                                        <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.query.get('endDate') ?: date() | date('t-m-Y') }}">
+                                        <span class="input-group-btn">
+                                            <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit"><i class="fa fa-television"></i> {{ 'label.overtime.filter_action' | trans({}, 'messages') }}</button>
+                                        </span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-1">
-                                <div class="form-group field-date">
-                                    <label class="control-label new-row" for="endDate">&nbsp;</label>
-                                    <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit"><i class="fa fa-television"></i> {{ 'label.overtime.filter_action' | trans({}, 'messages') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -231,9 +274,12 @@
             change_file_chooser(btnFile, 'fa fa-file-excel-o', true);
             change_static_select(locale);
             date_range_picker(locale,  '{{ date_format_long }}');
-            company_autocomplete(emptyText, '{{ app.request.get('company') }}');
-            shiftment_autocomplete(emptyText, '{{ app.request.get('shiftment') }}');
+            company_autocomplete(emptyText, '{{ app.request.query.get('company') }}');
+            shiftment_autocomplete(emptyText, '{{ app.request.query.get('shiftment') }}');
             department_autocomplete(locale, emptyText);
+
+            employee_search('{{ _select2_locale }}');
+            $('.employee-search').change();
         });
     </script>
 {% endblock %}

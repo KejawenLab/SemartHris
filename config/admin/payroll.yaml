@@ -5,15 +5,18 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\PayrollPeriod'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             disabled_actions: ['show', 'new', 'edit', 'delete']
+            templates:
+                list: 'app/payroll/list.html.twig'
             search:
-                title: 'Period Penggajian'
+                title: 'Penggajian'
                 fields: ['code', 'name']
             list:
                 role: 'ROLE_HRSTAFF'
-                title: 'Period Penggajian'
+                title: 'Penggajian'
                 fields:
-                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'company', label: 'Perusahaan' }
                     - { property: 'year', label: 'Tahun' }
+                    - { property: 'month', label: 'Bulan' }
                     - { property: 'closed', label: 'Ditutup?' }
 
         SalaryBenefit:

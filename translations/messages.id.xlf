@@ -186,6 +186,26 @@
                 <source>semarthris.invalid_data</source>
                 <target>DATA TIDAK VALID</target>
             </trans-unit>
+            <trans-unit id="semarthris.overtime.process_warning_content">
+                <source>semarthris.overtime.process_warning_content</source>
+                <target>Pastikan filter awal tanggal dan tanda centang pada tabel sudah benar!</target>
+            </trans-unit>
+            <trans-unit id="semarthris.payroll.process_warning_content">
+                <source>semarthris.payroll.process_warning_content</source>
+                <target>Pastikan filter periode dan tanda centang pada tabel sudah benar!</target>
+            </trans-unit>
+            <trans-unit id="semarthris.payroll.process_finish_content">
+                <source>semarthris.payroll.process_finish_content</source>
+                <target>Penggajian telah selesai diproses</target>
+            </trans-unit>
+            <trans-unit id="label.payroll.process_action">
+                <source>label.payroll.process_action</source>
+                <target>Proses penggajian</target>
+            </trans-unit>
+            <trans-unit id="label.payroll.filter_action">
+                <source>label.payroll.filter_action</source>
+                <target>Filter</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -17,11 +17,12 @@ interface OvertimeRepositoryInterface
      * @param string|null        $companyId
      * @param string|null        $departmentId
      * @param string|null        $shiftmentId
+     * @param string|null        $employeeId
      * @param array              $sorts
      *
      * @return QueryBuilder
      */
-    public function getFilteredOvertime(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, array $sorts = []): QueryBuilder;
+    public function getFilteredOvertime(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, string $employeeId = null, array $sorts = []): QueryBuilder;
 
     /**
      * @param EmployeeInterface  $employee

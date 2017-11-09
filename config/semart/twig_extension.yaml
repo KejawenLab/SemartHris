@@ -20,3 +20,9 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
         tags:
             - { name: 'twig.extension' }
+
+    KejawenLab\Application\SemartHris\Twig\EmployeeExtension:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+        tags:
+            - { name: 'twig.extension' }

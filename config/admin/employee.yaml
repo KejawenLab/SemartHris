@@ -106,11 +106,11 @@ easy_admin:
             templates:
                 new: 'app/address/new.html.twig'
                 edit: 'app/address/edit.html.twig'
-                list: 'app/employee_address/list.html.twig'
+                list: 'app/employee/address.html.twig'
             new:
-                title: 'Tambah Alamat Karyawan'
+                title: 'Tambah Alamat'
             edit:
-                title: 'Edit Alamat Karyawan'
+                title: 'Edit Alamat'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
@@ -130,7 +130,7 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'faxNumber', label: 'No. Fax' }
             show:
-                title: 'Detil Alamat Karyawan'
+                title: 'Detil Alamat'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'address', label: 'Alamat' }
@@ -142,7 +142,7 @@ easy_admin:
                     - { property: 'defaultAddress', label: 'Set Default' }
             list:
                 role: 'ROLE_HRSTAFF'
-                title: 'Alamat Karyawan'
+                title: 'Alamat'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'address', label: 'Alamat' }

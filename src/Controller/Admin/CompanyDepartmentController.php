@@ -33,6 +33,7 @@ class CompanyDepartmentController extends AdminController
 
         $session = $this->get('session');
         $session->set('companyId', $company->getId());
+        $session->set('companyCode', $company->getCode());
 
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'list',
@@ -111,6 +112,6 @@ class CompanyDepartmentController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createCompanyDepartmentQueryBuilder($sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(CompanyRepository::class)->createSearchCompanyDepartmentQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter);
     }
 }

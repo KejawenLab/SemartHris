@@ -2,6 +2,8 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Salary\Model;
 
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
@@ -13,14 +15,14 @@ interface PayrollPeriodInterface
     public function getId(): string;
 
     /**
-     * @return int|null
+     * @return CompanyInterface|null
      */
-    public function getMonth(): int;
+    public function getCompany(): ? CompanyInterface;
 
     /**
-     * @param int|null $month
+     * @param CompanyInterface|null $company
      */
-    public function setMonth(int $month): void;
+    public function setCompany(CompanyInterface $company = null): void;
 
     /**
      * @return int|null
@@ -31,6 +33,16 @@ interface PayrollPeriodInterface
      * @param int|null $year
      */
     public function setYear(int $year): void;
+
+    /**
+     * @return int|null
+     */
+    public function getMonth(): int;
+
+    /**
+     * @param int|null $month
+     */
+    public function setMonth(int $month): void;
 
     /**
      * @return bool

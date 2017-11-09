@@ -43,6 +43,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [ ] Perbaikan API
 - [ ] Perbaikan Tampilan
 - [ ] Translating Menu, Label, etc
+- [ ] Simple Cache Management
 
 ### Fase V
 

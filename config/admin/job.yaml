@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         JobLevel:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_COMPANY_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\JobLevel'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             new:
@@ -24,7 +24,7 @@ easy_admin:
                     - { property: 'code', label: 'Kode Level Jabatan' }
                     - { property: 'name', label: 'Nama Level Jabatan' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_COMPANY_MENU)%'
                 title: 'Level Jabatan'
                 fields:
                     - { property: 'parent', label: 'Atasan' }
@@ -32,7 +32,7 @@ easy_admin:
                     - { property: 'name', label: 'Nama Level Jabatan' }
 
         JobTitle:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_COMPANY_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\JobTitle'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\JobTitleController'
             new:
@@ -55,7 +55,7 @@ easy_admin:
                     - { property: 'code', label: 'Kode Jabatan' }
                     - { property: 'name', label: 'Nama Jabatan' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_COMPANY_MENU)%'
                 title: 'Jabatan'
                 fields:
                     - { property: 'jobLevel', label: 'Level Jabatan' }
@@ -63,7 +63,7 @@ easy_admin:
                     - { property: 'name', label: 'Nama Jabatan' }
 
         Placement:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Placement'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
             templates:
@@ -89,7 +89,7 @@ easy_admin:
                     - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
                     - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
                 title: 'Penempatan Karyawan'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
@@ -100,12 +100,12 @@ easy_admin:
                     - { property: 'active', label: 'Status', type: 'boolean' }
 
         CareerHistory:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\CareerHistory'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PlacementController'
             disabled_actions: ['new', 'edit']
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
                 title: 'Riwayat Karir'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
@@ -116,7 +116,7 @@ easy_admin:
                     - { property: 'description', label: 'Keterangan' }
 
         Mutation:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Mutation'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\MutationController'
             templates:
@@ -143,7 +143,7 @@ easy_admin:
                     - { property: 'newSupervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
                     - { property: 'new_supervisor_text', label: 'Atasan Baru', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
                 title: 'Mutasi Karyawan'
                 fields:
                     - { property: 'type_text', label: 'Jenis Mutasi' }

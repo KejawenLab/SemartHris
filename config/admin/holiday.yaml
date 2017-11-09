@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Holiday:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Holiday'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             templates:
@@ -26,7 +26,7 @@ easy_admin:
                     - { property: 'holidayDate', label: 'Tanggal' }
                     - { property: 'name', label: 'Nama Libur' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
                 title: 'Hari Libur'
                 fields:
                     - { property: 'holidayDate', label: 'Tanggal' }

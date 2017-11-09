@@ -32,6 +32,8 @@ class OvertimeController extends AdminController
      */
     public function uploadOvertimeAction(Request $request): Response
     {
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
+
         $this->initialize($request);
         $this->request = $request;
 
@@ -78,6 +80,8 @@ class OvertimeController extends AdminController
      */
     public function processUploadAction(Request $request)
     {
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
+
         /** @var Reader $processor */
         $processor = Reader::createFromPath($request->getSession()->get(self::OVERTIME_UPLOAD_SESSION));
         $processor->setHeaderOffset(0);
@@ -103,6 +107,8 @@ class OvertimeController extends AdminController
      */
     public function processAction(Request $request)
     {
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
+
         $month = (int) $request->request->get('month', date('n'));
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         if ($ids = $request->request->get('employees')) {

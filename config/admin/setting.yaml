@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Setting:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_CONFIG_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Region' #don't use just a config
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SettingController'
             disabled_actions: ['show', 'new', 'delete']
@@ -13,11 +13,11 @@ easy_admin:
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'code', label: 'Parameter', type_options: { attr: { readonly: true } } }
+                    - { property: 'name', label: 'Parameter', type_options: { attr: { readonly: true } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'id', label: 'Nilai Baru' }
             search:
                 title: 'Konfigurasi Aplikasi'
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_CONFIG_MENU)%'
                 title: 'Konfigurasi Aplikasi'

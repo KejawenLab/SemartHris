@@ -2,13 +2,13 @@ easy_admin:
     design:
         menu:
             - label: 'Administrator'
-              role: 'ROLE_SUPER_ADMIN'
+              role: '%env(string:SEMART_SECURITY_USER_MENU)%'
               icon: 'shield'
               children:
                   - { entity: 'User', label: 'User', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Setting', label: 'Konfigurasi', icon: 'hand-o-right' }
             - label: 'Master'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
               icon: 'database'
               children:
                   - { entity: 'EducationalInstitute', label: 'Lembaga Pendidikan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
@@ -20,7 +20,7 @@ easy_admin:
                   - { entity: 'Contract', label: 'Kontrak', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Holiday', label: 'Hari Libur', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Perusahaan'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_COMPANY_MENU)%'
               icon: 'building'
               children:
                   - { entity: 'Company', label: 'Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
@@ -28,7 +28,7 @@ easy_admin:
                   - { entity: 'JobLevel', label: 'Level Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'JobTitle', label: 'Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Karyawan'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
               icon: 'user-md'
               children:
                   - { entity: 'Employee', label: 'Profil Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
@@ -36,7 +36,7 @@ easy_admin:
                   - { entity: 'Mutation', label: 'Mutasi Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'CareerHistory', label: 'Riwayat Karir', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Absensi'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
               icon: 'clock-o'
               children:
                   - { entity: 'AbsentReason', label: 'Alasan Ketidakhadiran', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
@@ -44,24 +44,24 @@ easy_admin:
                   - { entity: 'Workshift', label: 'Jadwal Kerja', icon: 'hand-o-right', params: { sortField: 'startDate', sortDirection: 'DESC' } }
                   - { entity: 'Attendance', label: 'Absensi', icon: 'hand-o-right', params: { sortField: 'attendanceDate', sortDirection: 'DESC' } }
             - label: 'Lembur'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_OVERTIME_MENU)%'
               icon: 'list-alt'
               children:
                   - { entity: 'Overtime', label: 'Lembur', icon: 'hand-o-right', params: { sortField: 'overtimeDate', sortDirection: 'DESC' } }
             - label: 'Cuti'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_LEAVE_MENU)%'
               icon: 'envelope-o'
               children:
                   - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Penggajian'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
               icon: 'money'
               children:
                   - { entity: 'SalaryComponent', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'SalaryBenefit', label: 'Tunjangan/Potongan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'PayrollPeriod', label: 'Penggajian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
-              role: 'ROLE_HRSTAFF'
+              role: '%env(string:SEMART_SECURITY_ADDRESS_MENU)%'
               icon: 'id-card-o'
               children:
                   - { entity: 'CompanyAddress', label: 'Alamat Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }

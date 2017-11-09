@@ -19,7 +19,10 @@ class AttendanceRule implements RuleInterface
      */
     public function __construct(array $rules = [])
     {
-        $this->rules = $rules;
+        $this->rules = [];
+        foreach ($rules as $rule) {
+            $this->addRule($rule);
+        }
     }
 
     /**
@@ -41,5 +44,13 @@ class AttendanceRule implements RuleInterface
         }
 
         throw new NotQualifiedException();
+    }
+
+    /**
+     * @param RuleInterface $rule
+     */
+    private function addRule(RuleInterface $rule): void
+    {
+        $this->rules[] = $rule;
     }
 }

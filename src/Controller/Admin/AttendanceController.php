@@ -36,6 +36,8 @@ class AttendanceController extends AdminController
      */
     public function uploadAttendanceAction(Request $request): Response
     {
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_ATTENDANCE_MENU));
+
         $this->initialize($request);
         $this->request = $request;
 
@@ -82,6 +84,8 @@ class AttendanceController extends AdminController
      */
     public function processUploadAction(Request $request)
     {
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_ATTENDANCE_MENU));
+
         /** @var Reader $processor */
         $processor = Reader::createFromPath($request->getSession()->get(self::ATTENDANCE_UPLOAD_SESSION));
         $processor->setHeaderOffset(0);
@@ -107,6 +111,8 @@ class AttendanceController extends AdminController
      */
     public function processAction(Request $request)
     {
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_ATTENDANCE_MENU));
+
         $month = (int) $request->request->get('month', date('n'));
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         if ($ids = $request->request->get('employees')) {

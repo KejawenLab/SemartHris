@@ -91,6 +91,11 @@ class PayrollPeriod implements PayrollPeriodInterface
      */
     private $closed;
 
+    public function __construct()
+    {
+        $this->closed = false;
+    }
+
     /**
      * @return string
      */
@@ -158,7 +163,7 @@ class PayrollPeriod implements PayrollPeriodInterface
     /**
      * @param bool $closed
      */
-    public function setClosed(bool $closed)
+    public function setClosed(bool $closed): void
     {
         $this->closed = $closed;
     }

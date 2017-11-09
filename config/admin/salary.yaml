@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         SalaryComponent:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryComponent'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             templates:
@@ -30,7 +30,7 @@ easy_admin:
                     - { property: 'name', label: 'Komponen Gaji' }
                     - { property: 'fixed', label: 'Tetap?' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Komponen Gaji'
                 fields:
                     - { property: 'code', label: 'Kode Komponen' }

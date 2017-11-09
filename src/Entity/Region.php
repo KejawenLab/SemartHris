@@ -84,6 +84,14 @@ class Region implements RegionInterface
     }
 
     /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return string
      */
     public function getCode(): string

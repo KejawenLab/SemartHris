@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Shiftment:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Shiftment'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             templates:
@@ -31,7 +31,7 @@ easy_admin:
                     - { property: 'startHour', label: 'Kode Shift' }
                     - { property: 'endHour', label: 'Nama Shift' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
                 title: 'Shift Kerja'
                 fields:
                     - { property: 'code', label: 'Kode Shift' }
@@ -40,7 +40,7 @@ easy_admin:
                     - { property: 'endHour', label: 'Nama Shift' }
 
         Workshift:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Workshift'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\WorkshiftController'
             disabled_actions: ['search', 'show']
@@ -67,7 +67,7 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-12 new-row' }
                     - { property: 'description', label: 'Keterangan' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
                 title: 'Jadwal Kerja'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
@@ -78,7 +78,7 @@ easy_admin:
                     - { property: 'description', label: 'Keterangan' }
 
         Attendance:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Attendance'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AttendanceController'
             disabled_actions: ['search']
@@ -122,7 +122,7 @@ easy_admin:
                     - { property: 'reason', label: 'Alasan' }
                     - { property: 'description', label: 'Keterangan' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
                 title: 'Presensi'
                 fields:
                     - { property: 'attendanceDate', label: 'Tanggal' }

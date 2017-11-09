@@ -123,109 +123,13 @@
         <table class="table">
             <thead>
             {% block table_head %}
-                <tr>
-                    <td><input type="checkbox" name="employee_checkall" class="employee_checkall"/></td>
-                    {% for field, metadata in fields %}
-                        {% set isSortingField = metadata.property == app.request.query.get('sortField')|split('.')|first %}
-                        {% set nextSortDirection = isSortingField ? (app.request.query.get('sortDirection') == 'DESC' ? 'ASC' : 'DESC') : 'DESC' %}
-                        {% set _column_label = (metadata.label ?: field|humanize)|trans(_trans_parameters) %}
-                        {% set _column_icon = isSortingField ? (nextSortDirection == 'DESC' ? 'fa-caret-up' : 'fa-caret-down') : 'fa-sort' %}
-
-                        <th data-property-name="{{ metadata.property }}" class="{{ isSortingField ? 'sorted' }} {{ metadata.virtual ? 'virtual' }} {{ metadata.dataType|lower }} {{ metadata.css_class }}">
-                            {% if metadata.sortable %}
-                                <a href="{{ path('easyadmin', _request_parameters|merge({ sortField: metadata.property, sortDirection: nextSortDirection })) }}">
-                                    <i class="fa {{ _column_icon }}"></i>
-                                    {{ _column_label|raw }}
-                                </a>
-                            {% else %}
-                                <span>{{ _column_label|raw }}</span>
-                            {% endif %}
-                        </th>
-                    {% endfor %}
-
-                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        <th data-property-name="deleted"><span>{{ 'semarthris.is_deleted' | trans({}, 'messages') }}</span></th>
-                    {% endif %}
-
-                    {% if _list_item_actions|length > 0 %}
-                        <th>
-                            <span>{{ 'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') }}</span>
-                        </th>
-                    {% endif %}
-                </tr>
+                {{ parent() }}
             {% endblock table_head %}
             </thead>
 
             <tbody>
             {% block table_body %}
-                {% for key, item in paginator %}
-                    {% if item is not empty %}
-                        {# the empty string concatenation is needed when the primary key is an object (e.g. an Uuid object) #}
-                        {% set _item_id = '' ~ attribute(item, _entity_config.primary_key_field_name) %}
-                        <tr data-id="{{ _item_id }}">
-                            {% set employeeId = item.employee ? item.employee.id : null %}
-                            <td><input type="checkbox" name="employee[]" class="employee" data-employee="{{ employeeId }}"/></td>
-                        {% for field, metadata in fields %}
-                            {% set isSortingField = metadata.property == app.request.query.get('sortField') %}
-                            {% set _column_label =  (metadata.label ?: field|humanize)|trans(_trans_parameters)  %}
-
-                            <td data-label="{{ _column_label }}" class="{{ isSortingField ? 'sorted' }} {{ metadata.dataType|lower }} {{ metadata.css_class }}">
-                                {{ easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) }}
-                            </td>
-                        {% endfor %}
-
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            {% if attribute(item, 'deleted') is defined and item.deleted == true %}
-                                <td>{{ include('@EasyAdmin/default/field_toggle.html.twig', { value: true, view: 'list', backend_config: _entity_config }) }}</td>
-                            {% else %}
-                                <td>{{ include('@EasyAdmin/default/field_boolean.html.twig', { value: false }) }}</td>
-                            {% endif %}
-                        {% endif %}
-
-                        {% if _list_item_actions|length > 0 %}
-                            {% set _column_label =  'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') %}
-                            <td data-label="{{ _column_label }}" class="actions">
-                                {% block item_actions %}
-                                    {{ include('@EasyAdmin/default/includes/_actions.html.twig', {
-                                        actions: _list_item_actions,
-                                        request_parameters: _request_parameters,
-                                        translation_domain: _entity_config.translation_domain,
-                                        trans_parameters: _trans_parameters,
-                                        item_id: _item_id
-                                    }, with_context = false) }}
-                                {% endblock item_actions %}
-                            </td>
-                        {% endif %}
-                        </tr>
-                    {% else  %}
-                        <tr data-id="{{ key }}">
-                            <td>&nbsp;</td>
-                            <td>{{ key }}</td>
-                            {% if semarthris_is_weekend_holiday(date(key)) %}
-                                <td colspan="{{ _list_item_actions|length > 0 ? fields|length + extraField : fields|length }}" class="label label-primary text-center">
-                                {{ 'semarthris.weekend_holiday' | trans({}, 'messages') | upper }}
-                                </td>
-                            {% else %}
-                                {% set holiday = semarthris_holiday(date(key)) %}
-                                {% if holiday is null %}
-                                    <td colspan="{{ _list_item_actions|length > 0 ? fields|length + extraField : fields|length }}" class="label label-success text-center">
-                                        {{ 'label.null' | trans({}, 'EasyAdminBundle') | upper }}
-                                    </td>
-                                {%  else %}
-                                    <td colspan="{{ _list_item_actions|length > 0 ? fields|length + extraField : fields|length }}" class="label label-danger text-center">
-                                        {{ holiday | upper }}
-                                    </td>
-                                {% endif %}
-                            {% endif %}
-                        </tr>
-                    {% endif %}
-                {% else %}
-                    <tr>
-                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 2 + extraField : fields | length + 1 + extraField }}">
-                            {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
-                        </td>
-                    </tr>
-                {% endfor %}
+                {{ parent() }}
             {% endblock table_body %}
             </tbody>
         </table>

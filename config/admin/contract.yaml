@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Contract:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Contract'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\ContractController'
             templates:
@@ -40,7 +40,7 @@ easy_admin:
                     - { property: 'description', label: 'Description' }
                     - { property: 'tags', label: 'Penanda', template: 'app/default/field_array.html.twig' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
                 title: 'Kontrak'
                 fields:
                     - { property: 'type_text', label: 'Tipe Kontrak' }

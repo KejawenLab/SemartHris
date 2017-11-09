@@ -22,6 +22,7 @@ class OvertimeCalculator extends Calculator implements OvertimeCalculatorInterfa
      */
     public function __construct(array $calculators = [])
     {
+        $this->calculators = [];
         foreach ($calculators as $calculator) {
             $this->addCalculator($calculator);
         }

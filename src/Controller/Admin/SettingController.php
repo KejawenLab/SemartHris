@@ -51,7 +51,7 @@ class SettingController extends AdminController
          * This created just because the form is mapped to Region object.
          */
         $cheat = new Region();
-        $cheat->setCode($id);
+        $cheat->setName($id);
 
         $editForm = $this->executeDynamicMethod('create<EntityName>EditForm', array($cheat, $fields));
         $deleteForm = $this->createDeleteForm($this->entity['name'], $id);
@@ -60,7 +60,7 @@ class SettingController extends AdminController
         if ($editForm->isSubmitted()) {
             $setting = $this->container->get(Setting::class);
             if ($value = $cheat->getId()) {
-                $setting->save($cheat->getCode(), $value);
+                $setting->save($cheat->getName(), $value);
             }
 
             return $this->redirectToReferrer();

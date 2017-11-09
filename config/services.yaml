@@ -145,6 +145,15 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
 
+    KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcessor:
+        lazy: true
+
+    KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcessor'
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository'
+
     KejawenLab\Application\SemartHris\Component\Setting\Setting:
         lazy: true
         arguments:

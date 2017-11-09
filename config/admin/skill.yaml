@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Skill:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Skill'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SkillController'
             new:
@@ -24,14 +24,14 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Keahlian' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
                 title: 'Keahlian'
                 fields:
                     - { property: 'skillGroup', label: 'Grup Keahlian' }
                     - { property: 'name', label: 'Keahlian' }
 
         SkillGroup:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\SkillGroup'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             new:
@@ -53,7 +53,7 @@ easy_admin:
                     - { property: 'parent', label: 'GrupInduk' }
                     - { property: 'name', label: 'Grup Keahlian' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
                 title: 'Grup Keahlian'
                 fields:
                     - { property: 'parent', label: 'Grup Induk' }

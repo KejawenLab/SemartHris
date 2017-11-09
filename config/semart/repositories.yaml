@@ -90,3 +90,8 @@ services:
         lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryComponent']]
+
+    KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\PayrollPeriod']]

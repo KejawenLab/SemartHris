@@ -19,6 +19,7 @@ class AddressRepositoryFactory
      */
     public function __construct(array $addressRepositories = [])
     {
+        $this->repositories = [];
         foreach ($addressRepositories as $addressRepository) {
             $this->addRepository($addressRepository);
         }
@@ -31,11 +32,11 @@ class AddressRepositoryFactory
      */
     public function getRepositoryFor(string $addressClasss): AddressRepositoryInterface
     {
-        if (!$repository = $this->repositories[$addressClasss]) {
+        if (!isset($this->repositories[$addressClasss])) {
             throw new \InvalidArgumentException(sprintf('Repository for class "%s" not found.', $addressClasss));
         }
 
-        return $repository;
+        return $this->repositories[$addressClasss];
     }
 
     /**

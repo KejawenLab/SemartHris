@@ -48,4 +48,9 @@ interface PayrollPeriodInterface
      * @return bool
      */
     public function isClosed(): bool;
+
+    /**
+     * @param bool $closed
+     */
+    public function setClosed(bool $closed): void;
 }

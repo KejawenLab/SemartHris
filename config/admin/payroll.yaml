@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         PayrollPeriod:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\PayrollPeriod'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             disabled_actions: ['show', 'new', 'edit', 'delete']
@@ -11,16 +11,16 @@ easy_admin:
                 title: 'Penggajian'
                 fields: ['code', 'name']
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Penggajian'
                 fields:
                     - { property: 'company', label: 'Perusahaan' }
-                    - { property: 'year', label: 'Tahun' }
-                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'year', label: 'Tahun', type: 'text' }
+                    - { property: 'month', label: 'Bulan', type: 'text', template: 'app/default/field_month.html.twig' }
                     - { property: 'closed', label: 'Ditutup?' }
 
         SalaryBenefit:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryBenefitController'
             disabled_actions: ['show']
@@ -36,7 +36,7 @@ easy_admin:
                     - { property: 'component', label: 'Tunjangan/Potongan' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'text' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Tunjangan/Potongan'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }

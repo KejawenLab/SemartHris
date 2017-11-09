@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         EducationTitle:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\EducationTitle'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             new:
@@ -23,14 +23,14 @@ easy_admin:
                     - { property: 'shortName', label: 'Gelar' }
                     - { property: 'name', label: 'Nama Gelar' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
                 title: 'Gelar Pendidikan'
                 fields:
                     - { property: 'shortName', label: 'Gelar' }
                     - { property: 'name', label: 'Nama Gelar' }
 
         EducationalInstitute:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\EducationalInstitute'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             new:
@@ -49,7 +49,7 @@ easy_admin:
                 fields:
                     - { property: 'name', label: 'Nama Lembaga' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
                 title: 'Lembaga Pendidikan'
                 fields:
                     - { property: 'name', label: 'Nama Lembaga' }

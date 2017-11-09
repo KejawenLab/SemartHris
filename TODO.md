@@ -60,10 +60,12 @@
 - [X] Periode Penggajian
 - [X] Benefit dan Pemotongan
 - [X] Remove sticky session is exist (Company and Employee)
-- [ ] Security for Processing Attendance and Overtime
+- [X] Security for Processing Attendance and Overtime
 - [X] Halaman Proses Gaji
-- [ ] Proses Penggajian
-- [ ] Summary Absensi
+- [X] Proses Penggajian
+- [ ] Summary Absensi Prosesor
+- [ ] Lembur Prosesor
+- [ ] Tunjangan/Potongan Prosesor
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List
 - [ ] Prevent Remove Mutation When Job History is Exist

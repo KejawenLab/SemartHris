@@ -1,7 +1,7 @@
 easy_admin:
     entities:
         Overtime:
-            role: 'ROLE_HRSTAFF'
+            role: '%env(string:SEMART_SECURITY_OVERTIME_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Overtime'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\OvertimeController'
             disabled_actions: ['search']
@@ -40,7 +40,7 @@ easy_admin:
                     - { property: 'approvedBy', label: 'Disetujui oleh' }
                     - { property: 'description', label: 'Keterangan' }
             list:
-                role: 'ROLE_HRSTAFF'
+                role: '%env(string:SEMART_SECURITY_OVERTIME_MENU)%'
                 title: 'Lembur'
                 fields:
                     - { property: 'overtimeDate', label: 'Tanggal' }

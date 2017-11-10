@@ -84,7 +84,7 @@ class EmployeeController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        return $this->container->get(EmployeeRepository::class)->createEmployeeQueryBuilder($sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(EmployeeRepository::class)->createQueryBuilder($sortField, $sortDirection, $dqlFilter);
     }
 
     /**
@@ -99,6 +99,6 @@ class EmployeeController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(EmployeeRepository::class)->createSearchEmployeeQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(EmployeeRepository::class)->createSearchQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter);
     }
 }

@@ -28,7 +28,6 @@ class CityRepository extends Repository implements CityRepositoryInterface
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(City::class);
-        /* @var QueryBuilder $queryBuilder */
         $queryBuilder = $entityManager->createQueryBuilder();
         $queryBuilder->select('entity');
         $queryBuilder->from(City::class, 'entity');

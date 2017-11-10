@@ -37,3 +37,57 @@ easy_admin:
                     - { property: 'state_text', label: 'Tipe Komponen' }
                     - { property: 'name', label: 'Komponen Gaji' }
                     - { property: 'fixed', label: 'Tetap?' }
+
+        SalaryAllowancePlus:
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
+            disabled_actions: ['search']
+            new:
+                title: 'Tambah Tunjangan'
+            edit:
+                title: 'Edit Tunjangan'
+            search:
+                title: 'Tunjangan'
+            form:
+                fields:
+                    - { property: 'year', label: 'Tahun' }
+                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'component', label: 'Komponen Gaji' }
+                    - { property: 'benefitValue', label: 'Nilai', type: 'text' }
+            show:
+                title: 'Detil Tunjangan'
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Tunjangan'
+                fields:
+                    - { property: 'year', label: 'Tahun' }
+                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'component', label: 'Tunjangan' }
+                    - { property: 'benefitValue', label: 'Nilai' }
+
+        SalaryAllowanceMinus:
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
+            disabled_actions: ['search']
+            new:
+                title: 'Tambah Potongan'
+            edit:
+                title: 'Edit Potongan'
+            search:
+                title: 'Potongan'
+            form:
+            show:
+                title: 'Detil Potongan'
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Potongan'
+                fields:
+                    - { property: 'year', label: 'Tahun' }
+                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'component', label: 'Potongan' }
+                    - { property: 'benefitValue', label: 'Nilai' }

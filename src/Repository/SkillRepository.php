@@ -26,7 +26,6 @@ class SkillRepository
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(Skill::class);
-        /* @var QueryBuilder $queryBuilder */
         $queryBuilder = $entityManager->createQueryBuilder();
         $queryBuilder->select('entity');
         $queryBuilder->from(Skill::class, 'entity');

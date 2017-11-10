@@ -470,6 +470,14 @@ function createDate(input, format) {
     return new Date(parts[fmt['yyyy']], parts[fmt['mm']]-1, parts[fmt['dd']]);
 }
 
+function __numeric() {
+    $('.numeric').numeric();
+}
+
+function __positive() {
+    $('.positive').numeric({ negative: false }, function() { this.value = ''; this.focus(); });
+}
+
 Array.prototype.unique = function() {
     return this.filter(function (value, index, self) {
         return self.indexOf(value) === index;

@@ -97,7 +97,7 @@ class CompanyDepartmentController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createCompanyDepartmentQueryBuilder($sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(CompanyRepository::class)->createDepartmentQueryBuilder($sortField, $sortDirection, $dqlFilter);
     }
 
     /**
@@ -112,6 +112,6 @@ class CompanyDepartmentController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(CompanyRepository::class)->createSearchCompanyDepartmentQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(CompanyRepository::class)->createSearchDepartmentQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter);
     }
 }

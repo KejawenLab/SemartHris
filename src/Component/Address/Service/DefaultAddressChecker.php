@@ -36,9 +36,10 @@ class DefaultAddressChecker
         $repository->unsetDefaultExcept($address);
 
         $addressable = $address->getAddressable();
-        $addressable->setAddress($address);
-
-        $repository->apply($addressable);
+        if ($addressable) {
+            $addressable->setAddress($address);
+            $repository->apply($addressable);
+        }
     }
 
     /**

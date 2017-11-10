@@ -23,6 +23,8 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryBenefitController'
             disabled_actions: ['show']
+            templates:
+                new: 'app/payroll/new.html.twig'
             new:
                 title: 'Setting Gaji'
             edit:
@@ -31,9 +33,12 @@ easy_admin:
                 title: 'Setting Gaji'
             form:
                 fields:
+                    - { type: 'group', css_class: 'col-sm-5' }
                     - { property: 'employee', label: 'Karyawan' }
+                    - { type: 'group', css_class: 'col-sm-5' }
                     - { property: 'component', label: 'Komponen Gaji' }
-                    - { property: 'benefitValue', label: 'Nilai', type: 'text' }
+                    - { type: 'group', css_class: 'col-sm-2' }
+                    - { property: 'benefitValue', label: 'Nilai', type: 'text', type_options: { attr: { class: 'positive' } } }
             list:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Setting Gaji'

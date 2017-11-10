@@ -44,6 +44,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [ ] Perbaikan Tampilan
 - [ ] Translating Menu, Label, etc
 - [ ] Simple Cache Management
+- [ ] Optimasi Search Query
 
 ### Fase V
 

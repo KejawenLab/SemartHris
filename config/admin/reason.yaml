@@ -13,6 +13,7 @@ easy_admin:
                 title: 'Edit Alasan Cuti'
             search:
                 title: 'Alasan Cuti'
+                dql_filter: "entity.type = 'l'"
                 fields: ['code', 'name']
             form:
                 fields:
@@ -51,6 +52,7 @@ easy_admin:
                 title: 'Edit Alasan Ketidakhadiran'
             search:
                 title: 'Alasan Ketidakhadiran'
+                dql_filter: "entity.type = 'a'"
                 fields: ['code', 'name']
             form:
                 fields:

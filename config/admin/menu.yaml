@@ -59,6 +59,8 @@ easy_admin:
               children:
                   - { entity: 'SalaryComponent', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'SalaryBenefit', label: 'Setting Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'SalaryAllowancePlus', label: 'Tunjangan', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC', state: 'p' } }
+                  - { entity: 'SalaryAllowanceMinus', label: 'Potongan', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC', state: 'm' } }
                   - { entity: 'PayrollPeriod', label: 'Penggajian', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC' } }
                   - { entity: 'AttendanceSummary', label: 'Riwayat Absensi', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'

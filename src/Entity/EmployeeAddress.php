@@ -282,9 +282,9 @@ class EmployeeAddress implements EmployeeAddressInterface
     }
 
     /**
-     * @return Addressable
+     * @return Addressable|null
      */
-    public function getAddressable(): Addressable
+    public function getAddressable(): ? Addressable
     {
         return $this->getEmployee();
     }

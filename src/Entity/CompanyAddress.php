@@ -282,9 +282,9 @@ class CompanyAddress implements CompanyAddressInterface
     }
 
     /**
-     * @return Addressable
+     * @return Addressable|null
      */
-    public function getAddressable(): Addressable
+    public function getAddressable(): ? Addressable
     {
         return $this->getCompany();
     }

@@ -83,7 +83,7 @@ interface AddressInterface
     public function setDefaultAddress(bool $default): void;
 
     /**
-     * @return Addressable
+     * @return Addressable|null
      */
-    public function getAddressable(): Addressable;
+    public function getAddressable(): ? Addressable;
 }

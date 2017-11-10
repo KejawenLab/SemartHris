@@ -43,6 +43,8 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
             disabled_actions: ['search']
+            templates:
+                new: 'app/payroll/new.html.twig'
             new:
                 title: 'Tambah Tunjangan'
             edit:
@@ -51,10 +53,13 @@ easy_admin:
                 title: 'Tunjangan'
             form:
                 fields:
-                    - { property: 'year', label: 'Tahun' }
-                    - { property: 'month', label: 'Bulan' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'year', label: 'Tahun', type: 'KejawenLab\Application\SemartHris\Form\Type\YearType', type_options: { attr: { class: 'static-select' } } }
+                    - { property: 'month', label: 'Bulan', type: 'KejawenLab\Application\SemartHris\Form\Type\MonthType', type_options: { attr: { class: 'static-select' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'component', label: 'Komponen Gaji' }
+                    - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'text' }
             show:
                 title: 'Detil Tunjangan'
@@ -73,6 +78,8 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
             disabled_actions: ['search']
+            templates:
+                new: 'app/payroll/new.html.twig'
             new:
                 title: 'Tambah Potongan'
             edit:

@@ -37,7 +37,7 @@ interface AllowanceInterface
     /**
      * @return int|null
      */
-    public function getYear(): int;
+    public function getYear(): ? int;
 
     /**
      * @param int|null $year
@@ -47,7 +47,7 @@ interface AllowanceInterface
     /**
      * @return int|null
      */
-    public function getMonth(): int;
+    public function getMonth(): ? int;
 
     /**
      * @param int|null $month

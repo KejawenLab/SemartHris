@@ -157,11 +157,11 @@ class SalaryAllowance implements AllowanceInterface
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getYear(): int
+    public function getYear(): ? int
     {
-        return (int) $this->year;
+        return $this->year;
     }
 
     /**
@@ -175,9 +175,9 @@ class SalaryAllowance implements AllowanceInterface
     /**
      * @return int
      */
-    public function getMonth(): int
+    public function getMonth(): ? int
     {
-        return (int) $this->month;
+        return $this->month;
     }
 
     /**

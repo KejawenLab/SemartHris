@@ -42,6 +42,10 @@ class ExceptionSubscriber implements EventSubscriberInterface
             return;
         }
 
+        if (!$event->getRequest()->isXmlHttpRequest()) {
+            return;
+        }
+
         $this->logger->error(sprintf('Message: %s => Trace: %s', $exception->getMessage(), $exception->getTraceAsString()));
 
         $response = new Response();

@@ -33,11 +33,11 @@ easy_admin:
                 title: 'Setting Gaji'
             form:
                 fields:
-                    - { type: 'group', css_class: 'col-sm-5' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'employee', label: 'Karyawan' }
-                    - { type: 'group', css_class: 'col-sm-5' }
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'component', label: 'Komponen Gaji' }
-                    - { type: 'group', css_class: 'col-sm-2' }
+                    - { type: 'group', css_class: 'col-sm-12 new-row' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'text', type_options: { attr: { class: 'positive' } } }
             list:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'

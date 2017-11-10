@@ -52,8 +52,8 @@ class PayrollProcessor
         $prevPeriod->sub(new \DateInterval('P1M'));
 
         $prev = $this->payrollPeriodRepository->findByEmployeeAndDate($employee, $prevPeriod);
-        if (!$prev && $this->payrollPeriodRepository->isEmpty()) {
-            throw new \InvalidArgumentException(sprintf('Can\'t process invalid payroll period.'));
+        if (!$prev && !$this->payrollPeriodRepository->isEmpty()) {
+            throw new \InvalidArgumentException(sprintf('Previous period must be processed before processing it period.'));
         }
 
         $period = $this->payrollPeriodRepository->findByEmployeeAndDate($employee, $date);
@@ -61,13 +61,17 @@ class PayrollProcessor
             $period = $this->payrollPeriodRepository->createNew($employee, $date);
         }
 
-        if ($period->isClosed()) {
-            throw new \InvalidArgumentException(sprintf('Payroll is closed.'));
-        }
-
         if ($prev) {
+            if ($prev->getMonth() !== $period->getMonth() - 1) {
+                throw new \InvalidArgumentException(sprintf('Previous period must be processed before processing it period.'));
+            }
+
             $prev->setClosed(true);
             $this->payrollPeriodRepository->update($prev);
+        }
+
+        if ($period->isClosed()) {
+            throw new \InvalidArgumentException(sprintf('Payroll is closed.'));
         }
     }
 }

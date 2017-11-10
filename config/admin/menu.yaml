@@ -58,8 +58,8 @@ easy_admin:
               icon: 'money'
               children:
                   - { entity: 'SalaryComponent', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
-                  - { entity: 'SalaryBenefit', label: 'Tunjangan/Potongan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
-                  - { entity: 'PayrollPeriod', label: 'Penggajian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'SalaryBenefit', label: 'Setting Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'PayrollPeriod', label: 'Penggajian', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC' } }
                   - { entity: 'AttendanceSummary', label: 'Riwayat Absensi', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
               role: '%env(string:SEMART_SECURITY_ADDRESS_MENU)%'

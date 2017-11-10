@@ -2,7 +2,6 @@
 
 namespace KejawenLab\Application\SemartHris\Component\Overtime\Calculator;
 
-use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeCalculatorInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 
 /**

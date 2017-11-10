@@ -26,3 +26,7 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
         tags:
             - { name: 'twig.extension' }
+
+    KejawenLab\Application\SemartHris\Twig\SemartViewExtension:
+        tags:
+            - { name: 'twig.extension' }

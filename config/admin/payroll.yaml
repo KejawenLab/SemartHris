@@ -24,22 +24,22 @@ easy_admin:
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryBenefitController'
             disabled_actions: ['show']
             new:
-                title: 'Tambah Tunjangan/Potongan'
+                title: 'Setting Gaji'
             edit:
-                title: 'Edit Tunjangan/Potongan'
+                title: 'Setting Gaji'
             search:
-                title: 'Tunjangan/Potongan'
+                title: 'Setting Gaji'
             form:
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
-                    - { property: 'component', label: 'Tunjangan/Potongan' }
+                    - { property: 'component', label: 'Komponen Gaji' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'text' }
             list:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
-                title: 'Tunjangan/Potongan'
+                title: 'Setting Gaji'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
-                    - { property: 'component', label: 'Tunjangan/Potongan' }
+                    - { property: 'component', label: 'Komponen Gaji' }
                     - { property: 'component.fixed', label: 'Tetap?', type: 'boolean' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'float', template: 'app/default/field_currency.html.twig' }
 
@@ -53,3 +53,12 @@ easy_admin:
             list:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Riwayat Absensi'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'year', label: 'Tahun', type: 'text' }
+                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'totalWorkday', label: 'Total Hari Kerja' }
+                    - { property: 'totalIn', label: 'Total Masuk' }
+                    - { property: 'totalLoyality', label: 'Total Loyalitas' }
+                    - { property: 'totalAbsent', label: 'Total Tidak Masuk' }
+                    - { property: 'totalOvertime', label: 'Total Lembur' }

@@ -1,6 +1,8 @@
 <?php
 
-namespace KejawenLab\Application\SemartHris\Component\Overtime\Model;
+namespace KejawenLab\Application\SemartHris\Component\Overtime\Calculator;
+
+use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

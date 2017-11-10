@@ -83,26 +83,13 @@
                                 <div class="form-group">
                                     <label class="control-label" for="year">Pilih Periode</label>
                                     <div class="input-group input-daterange">
+                                        <!-- Need to optimize -->
                                         <select id="month" name="month" class="form-control static-select month" required="required">
-                                            <option value="1">Januari</option>
-                                            <option value="2">Februari</option>
-                                            <option value="3">Maret</option>
-                                            <option value="4">April</option>
-                                            <option value="5">Mei</option>
-                                            <option value="6">Juni</option>
-                                            <option value="7">Juli</option>
-                                            <option value="8">Agustus</option>
-                                            <option value="9">September</option>
-                                            <option value="10">Oktober</option>
-                                            <option value="11">November</option>
-                                            <option value="12">Desember</option>
+                                            {{ semarthris_month_options() | raw }}
                                         </select>
                                         <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
                                         <select id="year" name="year" class="form-control static-select year" required="required">
-                                            {% for i in 0..99 %}
-                                                {% set value = date() | date('Y') + i %}
-                                                <option value="{{ value }}">{{ value }}</option>
-                                            {% endfor %}
+                                            {{  semarthris_year_options(6) | raw }}
                                         </select>
                                         <span class="input-group-btn">
                                             <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit">

@@ -15,5 +15,5 @@ interface Addressable
     /**
      * @param AddressInterface|null $address
      */
-    public function setAddress(AddressInterface $address = null): void;
+    public function setAddress(?AddressInterface $address): void;
 }

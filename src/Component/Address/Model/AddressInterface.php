@@ -30,7 +30,7 @@ interface AddressInterface
     /**
      * @param RegionInterface|null $region
      */
-    public function setRegion(RegionInterface $region = null): void;
+    public function setRegion(?RegionInterface $region): void;
 
     /**
      * @return null|CityInterface
@@ -40,7 +40,7 @@ interface AddressInterface
     /**
      * @param CityInterface|null $city
      */
-    public function setCity(CityInterface $city = null): void;
+    public function setCity(?CityInterface $city): void;
 
     /**
      * @return string

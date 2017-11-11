@@ -9,14 +9,13 @@ use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressReposi
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class AddressRepositoryStub implements AddressRepositoryInterface
+class ValidAddressRepositoryStub implements AddressRepositoryInterface
 {
     /**
      * @param AddressInterface $address
      */
     public function unsetDefaultExcept(AddressInterface $address): void
     {
-        // TODO: Implement unsetDefaultExcept() method.
     }
 
     /**
@@ -24,7 +23,6 @@ class AddressRepositoryStub implements AddressRepositoryInterface
      */
     public function apply(Addressable $address): void
     {
-        // TODO: Implement apply() method.
     }
 
     /**
@@ -32,7 +30,6 @@ class AddressRepositoryStub implements AddressRepositoryInterface
      */
     public function setRandomDefault(): AddressInterface
     {
-        // TODO: Implement setRandomDefault() method.
     }
 
     /**

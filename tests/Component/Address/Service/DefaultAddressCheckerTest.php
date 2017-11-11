@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\KejawenLab\Application\SemartHris\Component\Service;
+namespace Tests\KejawenLab\Application\SemartHris\Component\Address\Service;
 
 use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
@@ -37,16 +37,8 @@ class DefaultAddressCheckerTest extends TestCase
 
     public function testUnsetDefaultAddressExceptWithDefaultAddressFalse()
     {
-        $addressable = $this->getMockBuilder(Addressable::class)->getMock();
-        $addressable->expects($this->never())->method('setAddress');
-
         $address = $this->getMockBuilder(AddressInterface::class)->getMock();
         $address->expects($this->once())->method('isDefaultAddress')->willReturn(false);
-        $address->expects($this->never())->method('getAddressable');
-
-        $repository = $this->getMockBuilder(AddressRepositoryInterface::class)->getMock();
-        $repository->expects($this->never())->method('unsetDefaultExcept');
-        $repository->expects($this->never())->method('apply');
 
         $addressFactory = $this->getMockBuilder(AddressRepositoryFactory::class)->getMock();
         $addressFactory->expects($this->never())->method('getRepositoryFor');

@@ -21,27 +21,25 @@ class AdressRepositoryFactoryTest extends TestCase
         $firstRepository = $this->getMockBuilder(AddressRepositoryInterface::class)->getMock();
         $secondRepostiroy = $this->getMockBuilder(AddressRepositoryInterface::class)->getMock();
 
-        $this->addressRepositoryFactory = new AddressRepositoryFactory([$firstRepository, $secondRepostiroy, new AddressRepositoryStub()]);
+        $this->addressRepositoryFactory = new AddressRepositoryFactory([$firstRepository, $secondRepostiroy, new ValidAddressRepositoryStub()]);
     }
 
     public function testGetRepositoryForClass()
     {
-        $this->assertInstanceOf(AddressRepositoryInterface::class, $this->addressRepositoryFactory->getRepositoryFor(AddressRepositoryStub::class));
+        $this->assertInstanceOf(AddressRepositoryInterface::class, $this->addressRepositoryFactory->getRepositoryFor(ValidAddressRepositoryStub::class));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testNonExistRepository()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->addressRepositoryFactory->getRepositoryFor(InvalidAddressRepositoryStub::class);
     }
 
-    /**
-     * @expectedException \TypeError
-     */
     public function testInvalidRepositoryTest()
     {
+        $this->expectException(\TypeError::class);
+
         (new AddressRepositoryFactory([new InvalidAddressRepositoryStub()]));
     }
 }

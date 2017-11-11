@@ -22,7 +22,7 @@ interface AttendanceRepositoryInterface
      *
      * @return QueryBuilder
      */
-    public function getFilteredAttendance(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, string $employeeId = null, array $sorts = []): QueryBuilder;
+    public function getFilteredAttendance(\DateTimeInterface $startDate, \DateTimeInterface $endDate, ?string $companyId, ?string $departmentId, ?string $shiftmentId, ?string $employeeId, array $sorts = []): QueryBuilder;
 
     /**
      * @param EmployeeInterface  $employee

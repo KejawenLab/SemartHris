@@ -20,5 +20,5 @@ interface Contractable
     /**
      * @param ContractInterface|null $contract
      */
-    public function setContract(ContractInterface $contract = null): void;
+    public function setContract(?ContractInterface $contract): void;
 }

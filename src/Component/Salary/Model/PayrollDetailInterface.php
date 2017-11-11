@@ -20,7 +20,7 @@ interface PayrollDetailInterface
     /**
      * @param PayrollInterface|null $payroll
      */
-    public function setPayroll(PayrollInterface $payroll = null): void;
+    public function setPayroll(?PayrollInterface $payroll): void;
 
     /**
      * @return ComponentInterface|null
@@ -30,7 +30,7 @@ interface PayrollDetailInterface
     /**
      * @param ComponentInterface|null $component
      */
-    public function setComponent(ComponentInterface $component = null): void;
+    public function setComponent(?ComponentInterface $component): void;
 
     /**
      * @return null|string

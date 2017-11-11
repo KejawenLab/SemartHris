@@ -23,7 +23,7 @@ interface EmployeeSkillInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 
     /**
      * @return null|SkillInterface
@@ -33,7 +33,7 @@ interface EmployeeSkillInterface
     /**
      * @param SkillInterface|null $skill
      */
-    public function setSkill(SkillInterface $skill = null): void;
+    public function setSkill(?SkillInterface $skill): void;
 
     /**
      * @return string

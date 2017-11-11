@@ -30,7 +30,7 @@ interface ShiftmentInterface
     /**
      * @param \DateTimeInterface|null $startHour
      */
-    public function setStartHour(\DateTimeInterface $startHour = null): void;
+    public function setStartHour(?\DateTimeInterface $startHour): void;
 
     /**
      * @return \DateTimeInterface
@@ -40,5 +40,5 @@ interface ShiftmentInterface
     /**
      * @param \DateTimeInterface|null $endHour
      */
-    public function setEndHour(\DateTimeInterface $endHour = null): void;
+    public function setEndHour(?\DateTimeInterface $endHour): void;
 }

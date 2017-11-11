@@ -30,5 +30,5 @@ interface JobLevelInterface
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setParent(JobLevelInterface $jobLevel = null): void;
+    public function setParent(?JobLevelInterface $jobLevel): void;
 }

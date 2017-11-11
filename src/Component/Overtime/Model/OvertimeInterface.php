@@ -33,7 +33,7 @@ interface OvertimeInterface
     /**
      * @param ShiftmentInterface|null $shiftment
      */
-    public function setShiftment(ShiftmentInterface $shiftment = null): void;
+    public function setShiftment(?ShiftmentInterface $shiftment): void;
 
     /**
      * @return \DateTimeInterface|null
@@ -41,9 +41,9 @@ interface OvertimeInterface
     public function getOvertimeDate(): ? \DateTimeInterface;
 
     /**
-     * @param \DateTimeInterface $date
+     * @param \DateTimeInterface|null $date
      */
-    public function setOvertimeDate(\DateTimeInterface $date): void;
+    public function setOvertimeDate(?\DateTimeInterface $date): void;
 
     /**
      * @return \DateTimeInterface|null
@@ -51,9 +51,9 @@ interface OvertimeInterface
     public function getStartHour(): ? \DateTimeInterface;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param \DateTimeInterface|null $time
      */
-    public function setStartHour(\DateTimeInterface $time): void;
+    public function setStartHour(?\DateTimeInterface $time): void;
 
     /**
      * @return \DateTimeInterface|null
@@ -61,9 +61,9 @@ interface OvertimeInterface
     public function getEndHour(): ? \DateTimeInterface;
 
     /**
-     * @param \DateTimeInterface $time
+     * @param \DateTimeInterface|null $time
      */
-    public function setEndHour(\DateTimeInterface $time): void;
+    public function setEndHour(?\DateTimeInterface $time): void;
 
     /**
      * @return float|null
@@ -118,7 +118,7 @@ interface OvertimeInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setApprovedBy(EmployeeInterface $employee = null): void;
+    public function setApprovedBy(?EmployeeInterface $employee): void;
 
     /**
      * @return null|string
@@ -128,5 +128,5 @@ interface OvertimeInterface
     /**
      * @param string|null $description
      */
-    public function setDescription(string $description = null): void;
+    public function setDescription(?string $description): void;
 }

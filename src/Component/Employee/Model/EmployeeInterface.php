@@ -50,7 +50,7 @@ interface EmployeeInterface extends Addressable
     /**
      * @param CompanyInterface $company
      */
-    public function setCompany(CompanyInterface $company = null): void;
+    public function setCompany(?CompanyInterface $company): void;
 
     /**
      * @return null|DepartmentInterface
@@ -60,7 +60,7 @@ interface EmployeeInterface extends Addressable
     /**
      * @param DepartmentInterface $department
      */
-    public function setDepartment(DepartmentInterface $department = null): void;
+    public function setDepartment(?DepartmentInterface $department): void;
 
     /**
      * @return JobLevelInterface|null
@@ -70,7 +70,7 @@ interface EmployeeInterface extends Addressable
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setJobLevel(JobLevelInterface $jobLevel = null): void;
+    public function setJobLevel(?JobLevelInterface $jobLevel): void;
 
     /**
      * @return null|JobTitleInterface
@@ -80,7 +80,7 @@ interface EmployeeInterface extends Addressable
     /**
      * @param JobTitleInterface $jobTitle
      */
-    public function setJobTitle(JobTitleInterface $jobTitle = null): void;
+    public function setJobTitle(?JobTitleInterface $jobTitle): void;
 
     /**
      * @return string
@@ -107,7 +107,7 @@ interface EmployeeInterface extends Addressable
     /**
      * @param RegionInterface $region
      */
-    public function setRegionOfBirth(RegionInterface $region = null): void;
+    public function setRegionOfBirth(?RegionInterface $region): void;
 
     /**
      * @return null|CityInterface
@@ -117,7 +117,7 @@ interface EmployeeInterface extends Addressable
     /**
      * @param CityInterface $city
      */
-    public function setCityOfBirth(CityInterface $city = null): void;
+    public function setCityOfBirth(?CityInterface $city): void;
 
     /**
      * @return \DateTimeInterface

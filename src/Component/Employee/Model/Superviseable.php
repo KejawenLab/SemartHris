@@ -15,5 +15,5 @@ interface Superviseable extends EmployeeInterface
     /**
      * @param Superviseable|null $superviseable
      */
-    public function setSupervisor(Superviseable $superviseable = null): void;
+    public function setSupervisor(?Superviseable $superviseable): void;
 }

@@ -32,7 +32,7 @@ interface MutationInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 
     /**
      * @return null|CompanyInterface
@@ -40,9 +40,9 @@ interface MutationInterface
     public function getOldCompany(): ? CompanyInterface;
 
     /**
-     * @param CompanyInterface $company
+     * @param CompanyInterface|null $company
      */
-    public function setOldCompany(CompanyInterface $company = null): void;
+    public function setOldCompany(?CompanyInterface $company): void;
 
     /**
      * @return null|CompanyInterface
@@ -50,9 +50,9 @@ interface MutationInterface
     public function getNewCompany(): ? CompanyInterface;
 
     /**
-     * @param CompanyInterface $company
+     * @param CompanyInterface|null $company
      */
-    public function setNewCompany(CompanyInterface $company = null): void;
+    public function setNewCompany(?CompanyInterface $company): void;
 
     /**
      * @return null|DepartmentInterface
@@ -60,9 +60,9 @@ interface MutationInterface
     public function getOldDepartment(): ? DepartmentInterface;
 
     /**
-     * @param DepartmentInterface $department
+     * @param DepartmentInterface|null $department
      */
-    public function setOldDepartment(DepartmentInterface $department = null): void;
+    public function setOldDepartment(?DepartmentInterface $department): void;
 
     /**
      * @return null|DepartmentInterface
@@ -70,9 +70,9 @@ interface MutationInterface
     public function getNewDepartment(): ? DepartmentInterface;
 
     /**
-     * @param DepartmentInterface $department
+     * @param DepartmentInterface|null $department
      */
-    public function setNewDepartment(DepartmentInterface $department = null): void;
+    public function setNewDepartment(?DepartmentInterface $department): void;
 
     /**
      * @return null|EmployeeInterface
@@ -82,7 +82,7 @@ interface MutationInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setOldSupervisor(EmployeeInterface $employee = null): void;
+    public function setOldSupervisor(?EmployeeInterface $employee): void;
 
     /**
      * @return null|EmployeeInterface
@@ -92,7 +92,7 @@ interface MutationInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setNewSupervisor(EmployeeInterface $employee = null): void;
+    public function setNewSupervisor(?EmployeeInterface $employee): void;
 
     /**
      * @return null|JobLevelInterface
@@ -100,9 +100,9 @@ interface MutationInterface
     public function getOldJobLevel(): ? JobLevelInterface;
 
     /**
-     * @param JobLevelInterface $jobLevel
+     * @param JobLevelInterface|null $jobLevel
      */
-    public function setOldJobLevel(JobLevelInterface $jobLevel = null): void;
+    public function setOldJobLevel(?JobLevelInterface $jobLevel): void;
 
     /**
      * @return null|JobLevelInterface
@@ -110,9 +110,9 @@ interface MutationInterface
     public function getNewJobLevel(): ? JobLevelInterface;
 
     /**
-     * @param JobLevelInterface $jobLevel
+     * @param JobLevelInterface|null $jobLevel
      */
-    public function setNewJobLevel(JobLevelInterface $jobLevel = null): void;
+    public function setNewJobLevel(?JobLevelInterface $jobLevel): void;
 
     /**
      * @return null|JobTitleInterface
@@ -120,9 +120,9 @@ interface MutationInterface
     public function getOldJobTitle(): ? JobTitleInterface;
 
     /**
-     * @param JobTitleInterface $jobTitle
+     * @param JobTitleInterface|null $jobTitle
      */
-    public function setOldJobTitle(JobTitleInterface $jobTitle = null): void;
+    public function setOldJobTitle(?JobTitleInterface $jobTitle): void;
 
     /**
      * @return null|JobTitleInterface
@@ -130,9 +130,9 @@ interface MutationInterface
     public function getNewJobTitle(): ? JobTitleInterface;
 
     /**
-     * @param JobTitleInterface $jobTitle
+     * @param JobTitleInterface|null $jobTitle
      */
-    public function setNewJobTitle(JobTitleInterface $jobTitle = null): void;
+    public function setNewJobTitle(?JobTitleInterface $jobTitle): void;
 
     /**
      * @return ContractInterface|null
@@ -142,5 +142,5 @@ interface MutationInterface
     /**
      * @param ContractInterface|null $contract
      */
-    public function setContract(ContractInterface $contract = null): void;
+    public function setContract(?ContractInterface $contract): void;
 }

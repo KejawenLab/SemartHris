@@ -25,7 +25,7 @@ interface CareerHistoryInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 
     /**
      * @return null|CompanyInterface
@@ -35,7 +35,7 @@ interface CareerHistoryInterface
     /**
      * @param CompanyInterface $company
      */
-    public function setCompany(CompanyInterface $company = null): void;
+    public function setCompany(?CompanyInterface $company): void;
 
     /**
      * @return null|DepartmentInterface
@@ -45,7 +45,7 @@ interface CareerHistoryInterface
     /**
      * @param DepartmentInterface $department
      */
-    public function setDepartment(DepartmentInterface $department = null): void;
+    public function setDepartment(?DepartmentInterface $department): void;
 
     /**
      * @return null|JobLevelInterface
@@ -55,7 +55,7 @@ interface CareerHistoryInterface
     /**
      * @param JobLevelInterface $jobLevel
      */
-    public function setJobLevel(JobLevelInterface $jobLevel = null): void;
+    public function setJobLevel(?JobLevelInterface $jobLevel): void;
 
     /**
      * @return null|JobTitleInterface
@@ -65,7 +65,7 @@ interface CareerHistoryInterface
     /**
      * @param JobTitleInterface $jobTitle
      */
-    public function setJobTitle(JobTitleInterface $jobTitle = null): void;
+    public function setJobTitle(?JobTitleInterface $jobTitle): void;
 
     /**
      * @return null|EmployeeInterface
@@ -75,7 +75,7 @@ interface CareerHistoryInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setSupervisor(EmployeeInterface $employee = null): void;
+    public function setSupervisor(?EmployeeInterface $employee): void;
 
     /**
      * @return ContractInterface|null
@@ -85,7 +85,7 @@ interface CareerHistoryInterface
     /**
      * @param ContractInterface|null $contract
      */
-    public function setContract(ContractInterface $contract = null): void;
+    public function setContract(?ContractInterface $contract): void;
 
     /**
      * @return null|string

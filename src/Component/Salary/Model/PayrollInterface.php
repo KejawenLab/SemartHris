@@ -22,7 +22,7 @@ interface PayrollInterface
     /**
      * @param PayrollPeriodInterface|null $period
      */
-    public function setPeriod(PayrollPeriodInterface $period = null): void;
+    public function setPeriod(?PayrollPeriodInterface $period): void;
 
     /**
      * @return EmployeeInterface|null
@@ -32,5 +32,5 @@ interface PayrollInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 }

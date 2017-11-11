@@ -20,7 +20,7 @@ interface SkillGroupInterface
     /**
      * @param SkillGroupInterface|null $group
      */
-    public function setParent(SkillGroupInterface $group = null): void;
+    public function setParent(?SkillGroupInterface $group): void;
 
     /**
      * @return string

@@ -23,7 +23,7 @@ interface AttendanceInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 
     /**
      * @return null|ShiftmentInterface
@@ -33,7 +33,7 @@ interface AttendanceInterface
     /**
      * @param ShiftmentInterface|null $shiftment
      */
-    public function setShiftment(ShiftmentInterface $shiftment = null): void;
+    public function setShiftment(?ShiftmentInterface $shiftment): void;
 
     /**
      * @return \DateTimeInterface
@@ -43,7 +43,7 @@ interface AttendanceInterface
     /**
      * @param \DateTimeInterface|null $date
      */
-    public function setAttendanceDate(\DateTimeInterface $date = null): void;
+    public function setAttendanceDate(?\DateTimeInterface $date): void;
 
     /**
      * @return null|string
@@ -63,7 +63,7 @@ interface AttendanceInterface
     /**
      * @param \DateTimeInterface|null $time
      */
-    public function setCheckIn(\DateTimeInterface $time = null): void;
+    public function setCheckIn(?\DateTimeInterface $time): void;
 
     /**
      * @return \DateTimeInterface|null
@@ -73,7 +73,7 @@ interface AttendanceInterface
     /**
      * @param \DateTimeInterface|null $time
      */
-    public function setCheckOut(\DateTimeInterface $time = null): void;
+    public function setCheckOut(?\DateTimeInterface $time): void;
 
     /**
      * @return int
@@ -133,5 +133,5 @@ interface AttendanceInterface
     /**
      * @param ReasonInterface $reason
      */
-    public function setReason(ReasonInterface $reason = null): void;
+    public function setReason(?ReasonInterface $reason): void;
 }

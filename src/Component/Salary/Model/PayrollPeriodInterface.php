@@ -22,7 +22,7 @@ interface PayrollPeriodInterface
     /**
      * @param CompanyInterface|null $company
      */
-    public function setCompany(CompanyInterface $company = null): void;
+    public function setCompany(?CompanyInterface $company): void;
 
     /**
      * @return int|null

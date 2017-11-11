@@ -22,7 +22,7 @@ interface ResignInterface
     /**
      * @param EmployeeInterface $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 
     /**
      * @return \DateTime
@@ -42,7 +42,7 @@ interface ResignInterface
     /**
      * @param ReasonInterface $reason
      */
-    public function setReason(ReasonInterface $reason = null): void;
+    public function setReason(?ReasonInterface $reason): void;
 
     /**
      * @return string
@@ -52,5 +52,5 @@ interface ResignInterface
     /**
      * @param string $remark
      */
-    public function setDescription(string $remark = null): void;
+    public function setDescription(?string $remark): void;
 }

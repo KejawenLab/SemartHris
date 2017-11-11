@@ -22,7 +22,7 @@ interface BenefitHistoryInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 
     /**
      * @return ComponentInterface|null
@@ -32,7 +32,7 @@ interface BenefitHistoryInterface
     /**
      * @param ComponentInterface|null $component
      */
-    public function setComponent(ComponentInterface $component = null): void;
+    public function setComponent(?ComponentInterface $component): void;
 
     /**
      * @return null|string
@@ -42,7 +42,7 @@ interface BenefitHistoryInterface
     /**
      * @param string|null $value
      */
-    public function setBenefitValue(string $value = null): void;
+    public function setBenefitValue(?string $value): void;
 
     /**
      * @return null|string
@@ -52,5 +52,5 @@ interface BenefitHistoryInterface
     /**
      * @param string|null $description
      */
-    public function setDescription(string $description = null): void;
+    public function setDescription(?string $description): void;
 }

@@ -22,7 +22,7 @@ interface AllowanceInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 
     /**
      * @return ComponentInterface|null
@@ -32,7 +32,7 @@ interface AllowanceInterface
     /**
      * @param ComponentInterface|null $component
      */
-    public function setComponent(ComponentInterface $component = null): void;
+    public function setComponent(?ComponentInterface $component): void;
 
     /**
      * @return int|null

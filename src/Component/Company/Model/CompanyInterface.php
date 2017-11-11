@@ -22,7 +22,7 @@ interface CompanyInterface extends Addressable
     /**
      * @param CompanyInterface $company
      */
-    public function setParent(CompanyInterface $company = null): void;
+    public function setParent(?CompanyInterface $company): void;
 
     /**
      * @return string

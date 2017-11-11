@@ -17,5 +17,5 @@ interface EmployeeAddressInterface extends AddressInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void;
+    public function setEmployee(?EmployeeInterface $employee): void;
 }

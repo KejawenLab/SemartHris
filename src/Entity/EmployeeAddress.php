@@ -258,9 +258,9 @@ class EmployeeAddress implements EmployeeAddressInterface
     }
 
     /**
-     * @param string $faxNumber
+     * @param null|string $faxNumber
      */
-    public function setFaxNumber(string $faxNumber): void
+    public function setFaxNumber(?string $faxNumber): void
     {
         $this->faxNumber = $faxNumber;
     }

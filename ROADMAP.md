@@ -40,6 +40,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 ### Fase IV
 
 - [ ] Perbaikan Arsitektur
+- [ ] Mapping Entity Menggunakan XML
 - [ ] Perbaikan API
 - [ ] Perbaikan Tampilan
 - [ ] Translating Menu, Label, etc

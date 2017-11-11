@@ -20,8 +20,18 @@ class WorkshiftController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $this->request->query->get('startDate', date(SettingUtil::get(SettingUtil::FIRST_DATE_FORMAT))));
-        $endDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $this->request->query->get('endDate', date(SettingUtil::get(SettingUtil::LAST_DATE_FORMAT))));
+        $startDate = $this->request->query->get('startDate');
+        if (!$startDate) {
+            $startDate = date(SettingUtil::get(SettingUtil::FIRST_DATE_FORMAT));
+        }
+
+        $endDate = $this->request->query->get('endDate');
+        if (!$endDate) {
+            $endDate = date(SettingUtil::get(SettingUtil::LAST_DATE_FORMAT));
+        }
+
+        $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $startDate);
+        $endDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $endDate);
         $companyId = $this->request->get('company');
         $departmentId = $this->request->get('department');
         $shiftmentId = $this->request->get('shiftment');

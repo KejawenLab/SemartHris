@@ -83,7 +83,7 @@ class Setting
      *
      * @return array
      */
-    public static function all(?string $filter): array
+    public static function all(?string $filter = null): array
     {
         $variables = explode(',', getenv('SYMFONY_DOTENV_VARS'));
         $envVariables = [];

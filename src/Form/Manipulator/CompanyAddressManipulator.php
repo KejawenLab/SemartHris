@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Form\Manipulator;
 
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -12,6 +13,22 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class CompanyAddressManipulator extends FormManipulator implements FormManipulatorInterface
 {
+    /**
+     * @var DataTransformerInterface
+     */
+    private $companyTransformer;
+
+    /**
+     * @param DataTransformerInterface $transformer
+     * @param array                    $dataTransformers
+     * @param array                    $eventSubscribers
+     */
+    public function __construct(DataTransformerInterface $transformer, $dataTransformers = [], $eventSubscribers = [])
+    {
+        parent::__construct($dataTransformers, $eventSubscribers);
+        $this->companyTransformer = $transformer;
+    }
+
     /**
      * @param FormBuilderInterface $formBuilder
      * @param mixed                $entity
@@ -28,7 +45,7 @@ class CompanyAddressManipulator extends FormManipulator implements FormManipulat
 
             $formBuilder->add('company', HiddenType::class);
             $company = $formBuilder->get('company');
-            $company->addModelTransformer($this->getDataTransformerForField('company'));
+            $company->addModelTransformer($this->companyTransformer);
             $company->setData($companyEntity->getId());
 
             $formBuilder->get('company_readonly')->setData($companyEntity);

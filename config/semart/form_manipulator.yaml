@@ -2,7 +2,8 @@ services:
     KejawenLab\Application\SemartHris\Form\Manipulator\CompanyAddressManipulator:
         lazy: true
         arguments:
-            - { company: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer', city: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer' }
+            - '@KejawenLab\Application\SemartHris\Form\DataTransformer\CompanyTransformer'
+            - { city: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber' ]
 
     KejawenLab\Application\SemartHris\Form\Manipulator\CompanyDepartmentManipulator:
@@ -33,7 +34,8 @@ services:
     KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeAddressManipulator:
         lazy: true
         arguments:
-            - { employee: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer', city: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer' }
+            - '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer'
+            - { city: '@KejawenLab\Application\SemartHris\Form\DataTransformer\CityTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveCityTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\DefaultAddressCheckerSubscriber' ]
 
     KejawenLab\Application\SemartHris\Form\Manipulator\ContractManipulator:

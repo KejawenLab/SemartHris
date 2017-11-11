@@ -38,7 +38,7 @@ interface PayrollDetailInterface
     public function getBenefitValue(): ? string;
 
     /**
-     * @param string $benefit
+     * @param null|string $benefit
      */
-    public function setBenefitValue(string $benefit): void;
+    public function setBenefitValue(?string $benefit): void;
 }

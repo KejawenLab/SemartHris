@@ -245,7 +245,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void
+    public function setEmployee(?EmployeeInterface $employee): void
     {
         $this->employee = $employee;
     }
@@ -261,7 +261,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param CompanyInterface|null $oldCompany
      */
-    public function setOldCompany(CompanyInterface $oldCompany = null): void
+    public function setOldCompany(?CompanyInterface $oldCompany): void
     {
         $this->oldCompany = $oldCompany;
     }
@@ -277,7 +277,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param DepartmentInterface|null $oldDepartment
      */
-    public function setOldDepartment(DepartmentInterface $oldDepartment = null): void
+    public function setOldDepartment(?DepartmentInterface $oldDepartment): void
     {
         $this->oldDepartment = $oldDepartment;
     }
@@ -293,7 +293,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param JobLevelInterface|null $oldJobLevel
      */
-    public function setOldJobLevel(JobLevelInterface $oldJobLevel = null): void
+    public function setOldJobLevel(?JobLevelInterface $oldJobLevel): void
     {
         $this->oldJobLevel = $oldJobLevel;
     }
@@ -309,7 +309,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param JobTitleInterface|null $oldJobTitle
      */
-    public function setOldJobTitle(JobTitleInterface $oldJobTitle = null): void
+    public function setOldJobTitle(?JobTitleInterface $oldJobTitle): void
     {
         $this->oldJobTitle = $oldJobTitle;
     }
@@ -325,7 +325,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param EmployeeInterface|null $oldSupervisor
      */
-    public function setOldSupervisor(EmployeeInterface $oldSupervisor = null): void
+    public function setOldSupervisor(?EmployeeInterface $oldSupervisor): void
     {
         $this->oldSupervisor = $oldSupervisor;
     }
@@ -341,7 +341,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param CompanyInterface|null $newCompany
      */
-    public function setNewCompany(CompanyInterface $newCompany = null): void
+    public function setNewCompany(?CompanyInterface $newCompany): void
     {
         $this->newCompany = $newCompany;
     }
@@ -357,7 +357,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param DepartmentInterface|null $newDepartment
      */
-    public function setNewDepartment(DepartmentInterface $newDepartment = null): void
+    public function setNewDepartment(?DepartmentInterface $newDepartment): void
     {
         $this->newDepartment = $newDepartment;
     }
@@ -373,7 +373,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param JobLevelInterface|null $newJobLevel
      */
-    public function setNewJobLevel(JobLevelInterface $newJobLevel = null): void
+    public function setNewJobLevel(?JobLevelInterface $newJobLevel): void
     {
         $this->newJobLevel = $newJobLevel;
     }
@@ -389,7 +389,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param JobTitleInterface|null $newJobTitle
      */
-    public function setNewJobTitle(JobTitleInterface $newJobTitle = null): void
+    public function setNewJobTitle(?JobTitleInterface $newJobTitle): void
     {
         $this->newJobTitle = $newJobTitle;
     }
@@ -405,7 +405,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param EmployeeInterface|null $newSupervisor
      */
-    public function setNewSupervisor(EmployeeInterface $newSupervisor = null): void
+    public function setNewSupervisor(?EmployeeInterface $newSupervisor): void
     {
         $this->newSupervisor = $newSupervisor;
     }
@@ -421,7 +421,7 @@ class Mutation implements MutationInterface, Contractable, CareerHistoryable
     /**
      * @param ContractInterface|null $contract
      */
-    public function setContract(ContractInterface $contract = null): void
+    public function setContract(?ContractInterface $contract): void
     {
         $this->contract = $contract;
     }

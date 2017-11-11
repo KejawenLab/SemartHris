@@ -107,7 +107,7 @@ class City implements CityInterface
     /**
      * @param RegionInterface|null $region
      */
-    public function setRegion(RegionInterface $region = null): void
+    public function setRegion(?RegionInterface $region): void
     {
         $this->region = $region;
     }

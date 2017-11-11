@@ -225,7 +225,7 @@ class Contract implements ContractInterface
     /**
      * @param string $description
      */
-    public function setDescription(string $description = null): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -257,7 +257,7 @@ class Contract implements ContractInterface
     /**
      * @param \DateTimeInterface|null $endDate
      */
-    public function setEndDate(\DateTimeInterface $endDate = null): void
+    public function setEndDate(?\DateTimeInterface $endDate): void
     {
         $this->endDate = $endDate;
     }

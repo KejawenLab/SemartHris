@@ -91,7 +91,7 @@ class Skill implements SkillInterface
     /**
      * @param SkillGroupInterface $skillGroup
      */
-    public function setSkillGroup(SkillGroupInterface $skillGroup = null): void
+    public function setSkillGroup(?SkillGroupInterface $skillGroup): void
     {
         $this->skillGroup = $skillGroup;
     }

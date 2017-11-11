@@ -200,13 +200,13 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     }
 
     /**
-     * @param string|null $sortField
-     * @param string|null $sortDirection
-     * @param string|null $dqlFilter
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createQueryBuilder(string $sortField = null, string $sortDirection = null, string $dqlFilter = null)
+    public function createQueryBuilder(?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('entity');
@@ -217,7 +217,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?? 'DESC');
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
         }
 
         return $queryBuilder;
@@ -225,13 +225,13 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
 
     /**
      * @param string      $searchQuery
-     * @param string|null $sortField
-     * @param string|null $sortDirection
-     * @param string|null $dqlFilter
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createSearchQueryBuilder(string $searchQuery, string $sortField = null, string $sortDirection = null, string $dqlFilter = null)
+    public function createSearchQueryBuilder(string $searchQuery, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
         $queryBuilder = $this->createQueryBuilder($sortField, $sortDirection, $dqlFilter);
         $queryBuilder->orWhere('LOWER(entity.code) LIKE :query');
@@ -242,44 +242,44 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     }
 
     /**
-     * @param null $sortField
-     * @param null $sortDirection
-     * @param null $dqlFilter
-     * @param bool $useEmployeeFilter
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
+     * @param bool        $useEmployeeFilter
      *
      * @return QueryBuilder
      */
-    public function createAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
+    public function createAddressQueryBuilder(?string $sortField, string $sortDirection = 'ASc', ?string $dqlFilter, bool $useEmployeeFilter = true)
     {
         return $this->buildFilterableSearch($this->getEntityClass(), $sortField, $sortDirection, $dqlFilter, $useEmployeeFilter);
     }
 
     /**
-     * @param string $searchQuery
-     * @param null   $sortField
-     * @param null   $sortDirection
-     * @param null   $dqlFilter
-     * @param bool   $useEmployeeFilter
+     * @param string      $searchQuery
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
+     * @param bool        $useEmployeeFilter
      *
      * @return QueryBuilder
      */
-    public function createSearchAddressQueryBuilder($searchQuery, $sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
+    public function createSearchAddressQueryBuilder(string $searchQuery, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter, bool $useEmployeeFilter = true)
     {
         $queryBuilder = $this->createAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, $useEmployeeFilter);
 
-        return $this->createSearchAddressQueryBuilder($queryBuilder, $searchQuery);
+        return $this->buildSearchAddressQueryBuilder($queryBuilder, $searchQuery);
     }
 
     /**
-     * @param string $entityClass
-     * @param null   $sortField
-     * @param null   $sortDirection
-     * @param null   $dqlFilter
-     * @param bool   $useEmployeeFilter
+     * @param string      $entityClass
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
+     * @param bool        $useEmployeeFilter
      *
      * @return QueryBuilder
      */
-    private function buildFilterableSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null, $useEmployeeFilter = true)
+    private function buildFilterableSearch(string $entityClass, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter, bool $useEmployeeFilter = true)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('entity');
@@ -294,7 +294,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?? 'DESC');
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
         }
 
         return $queryBuilder;

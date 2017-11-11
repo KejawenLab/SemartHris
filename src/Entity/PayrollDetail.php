@@ -110,7 +110,7 @@ class PayrollDetail implements PayrollDetailInterface
     /**
      * @param PayrollInterface|null $payroll
      */
-    public function setPayroll(PayrollInterface $payroll = null): void
+    public function setPayroll(?PayrollInterface $payroll): void
     {
         $this->payroll = $payroll;
     }
@@ -126,7 +126,7 @@ class PayrollDetail implements PayrollDetailInterface
     /**
      * @param ComponentInterface|null $component
      */
-    public function setComponent(ComponentInterface $component = null): void
+    public function setComponent(?ComponentInterface $component): void
     {
         $this->component = $component;
     }
@@ -142,7 +142,7 @@ class PayrollDetail implements PayrollDetailInterface
     /**
      * @param string|null $benefitValue
      */
-    public function setBenefitValue(string $benefitValue = null): void
+    public function setBenefitValue(?string $benefitValue): void
     {
         $this->benefitValue = $benefitValue;
     }
@@ -158,7 +158,7 @@ class PayrollDetail implements PayrollDetailInterface
     /**
      * @param string $benefitKey
      */
-    public function setBenefitKey(string $benefitKey = null): void
+    public function setBenefitKey(?string $benefitKey): void
     {
         $this->benefitKey = $benefitKey;
     }

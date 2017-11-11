@@ -164,7 +164,7 @@ class EmployeeAddress implements EmployeeAddressInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void
+    public function setEmployee(?EmployeeInterface $employee): void
     {
         $this->employee = $employee;
     }
@@ -196,7 +196,7 @@ class EmployeeAddress implements EmployeeAddressInterface
     /**
      * @param RegionInterface|null $region
      */
-    public function setRegion(RegionInterface $region = null): void
+    public function setRegion(?RegionInterface $region): void
     {
         $this->region = $region;
     }
@@ -212,7 +212,7 @@ class EmployeeAddress implements EmployeeAddressInterface
     /**
      * @param CityInterface|null $city
      */
-    public function setCity(CityInterface $city = null): void
+    public function setCity(?CityInterface $city): void
     {
         $this->city = $city;
     }

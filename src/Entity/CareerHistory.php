@@ -165,7 +165,7 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void
+    public function setEmployee(?EmployeeInterface $employee): void
     {
         $this->employee = $employee;
     }
@@ -181,7 +181,7 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     /**
      * @param CompanyInterface|null $company
      */
-    public function setCompany(CompanyInterface $company = null): void
+    public function setCompany(?CompanyInterface $company): void
     {
         $this->company = $company;
     }
@@ -197,7 +197,7 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     /**
      * @param DepartmentInterface|null $department
      */
-    public function setDepartment(DepartmentInterface $department = null): void
+    public function setDepartment(?DepartmentInterface $department): void
     {
         $this->department = $department;
     }
@@ -213,7 +213,7 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setJobLevel(JobLevelInterface $jobLevel = null): void
+    public function setJobLevel(?JobLevelInterface $jobLevel): void
     {
         $this->jobLevel = $jobLevel;
     }
@@ -229,7 +229,7 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     /**
      * @param JobTitleInterface|null $jobTitle
      */
-    public function setJobTitle(JobTitleInterface $jobTitle = null): void
+    public function setJobTitle(?JobTitleInterface $jobTitle): void
     {
         $this->jobTitle = $jobTitle;
     }
@@ -245,7 +245,7 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     /**
      * @param EmployeeInterface|null $supervisor
      */
-    public function setSupervisor(EmployeeInterface $supervisor = null): void
+    public function setSupervisor(?EmployeeInterface $supervisor): void
     {
         $this->supervisor = $supervisor;
     }
@@ -261,7 +261,7 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     /**
      * @param ContractInterface $contract
      */
-    public function setContract(ContractInterface $contract = null): void
+    public function setContract(?ContractInterface $contract): void
     {
         $this->contract = $contract;
     }
@@ -275,9 +275,9 @@ class CareerHistory implements CareerHistoryInterface, Contractable
     }
 
     /**
-     * @param string $description
+     * @param null|string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }

@@ -105,7 +105,7 @@ class JobTitle implements JobTitleInterface
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setJobLevel(JobLevelInterface $jobLevel = null): void
+    public function setJobLevel(?JobLevelInterface $jobLevel): void
     {
         $this->jobLevel = $jobLevel;
     }

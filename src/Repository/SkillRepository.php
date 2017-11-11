@@ -22,7 +22,7 @@ class SkillRepository
      *
      * @return QueryBuilder
      */
-    public static function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    public static function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, ?string $searchQuery, array $searchableFields = [], ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(Skill::class);

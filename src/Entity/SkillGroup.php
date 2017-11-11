@@ -92,9 +92,9 @@ class SkillGroup implements SkillGroupInterface
     }
 
     /**
-     * @param SkillGroupInterface $parent
+     * @param SkillGroupInterface|null $parent
      */
-    public function setParent(SkillGroupInterface $parent = null): void
+    public function setParent(?SkillGroupInterface $parent): void
     {
         $this->parent = $parent;
     }

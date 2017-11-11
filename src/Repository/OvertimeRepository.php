@@ -16,15 +16,15 @@ class OvertimeRepository extends Repository implements OvertimeRepositoryInterfa
     /**
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
-     * @param string|null        $companyId
-     * @param string|null        $departmentId
-     * @param string|null        $shiftmentId
-     * @param string|null        $employeeId
+     * @param null|string        $companyId
+     * @param null|string        $departmentId
+     * @param null|string        $shiftmentId
+     * @param null|string        $employeeId
      * @param array              $sorts
      *
      * @return QueryBuilder
      */
-    public function getFilteredOvertime(\DateTimeInterface $startDate, \DateTimeInterface $endDate, string $companyId = null, string $departmentId = null, string $shiftmentId = null, string $employeeId = null, array $sorts = []): QueryBuilder
+    public function getFilteredOvertime(\DateTimeInterface $startDate, \DateTimeInterface $endDate, ?string $companyId, ?string $departmentId, ?string $shiftmentId, ?string $employeeId, array $sorts = []): QueryBuilder
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('o');

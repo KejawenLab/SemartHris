@@ -122,7 +122,7 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void
+    public function setEmployee(?EmployeeInterface $employee): void
     {
         $this->employee = $employee;
     }
@@ -138,7 +138,7 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
     /**
      * @param ComponentInterface|null $component
      */
-    public function setComponent(ComponentInterface $component = null): void
+    public function setComponent(?ComponentInterface $component): void
     {
         $this->component = $component;
     }
@@ -154,7 +154,7 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
     /**
      * @param string|null $benefitValue
      */
-    public function setBenefitValue(string $benefitValue = null): void
+    public function setBenefitValue(?string $benefitValue): void
     {
         $this->benefitValue = $benefitValue;
     }
@@ -170,7 +170,7 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
     /**
      * @param string|null $description
      */
-    public function setDescription(string $description = null): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -186,7 +186,7 @@ class SalaryBenefitHistory implements BenefitHistoryInterface
     /**
      * @param string $benefitKey
      */
-    public function setBenefitKey(string $benefitKey = null): void
+    public function setBenefitKey(?string $benefitKey): void
     {
         $this->benefitKey = $benefitKey;
     }

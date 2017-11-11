@@ -17,14 +17,14 @@ class CityRepository extends Repository implements CityRepositoryInterface
     /**
      * @param ManagerRegistry $managerRegistry
      * @param $searchQuery
-     * @param array $searchableFields
-     * @param null  $sortField
-     * @param null  $sortDirection
-     * @param null  $dqlFilter
+     * @param array       $searchableFields
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
      *
      * @return QueryBuilder
      */
-    public static function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    public static function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(City::class);
@@ -43,7 +43,7 @@ class CityRepository extends Repository implements CityRepositoryInterface
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection ?? 'DESC');
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
         }
 
         return $queryBuilder;

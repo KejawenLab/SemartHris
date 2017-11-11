@@ -93,7 +93,7 @@ interface CareerHistoryInterface
     public function getDescription(): ? string;
 
     /**
-     * @param string $description
+     * @param null|string $description
      */
-    public function setDescription(string $description): void;
+    public function setDescription(?string $description): void;
 }

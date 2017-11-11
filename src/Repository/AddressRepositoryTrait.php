@@ -58,7 +58,7 @@ trait AddressRepositoryTrait
      *
      * @return QueryBuilder
      */
-    protected function createSearchAddressQueryBuilder(QueryBuilder $queryBuilder, string $queryString): QueryBuilder
+    protected function buildSearchAddressQueryBuilder(QueryBuilder $queryBuilder, string $queryString): QueryBuilder
     {
         $queryBuilder->leftJoin('entity.region', 'region');
         $queryBuilder->orWhere('LOWER(region.code) LIKE :query');

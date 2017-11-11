@@ -459,7 +459,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param ContractInterface $contract
      */
-    public function setContract(ContractInterface $contract = null): void
+    public function setContract(?ContractInterface $contract): void
     {
         $this->contract = $contract;
     }
@@ -475,7 +475,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param CompanyInterface|null $company
      */
-    public function setCompany(CompanyInterface $company = null): void
+    public function setCompany(?CompanyInterface $company): void
     {
         $this->company = $company;
     }
@@ -491,7 +491,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param DepartmentInterface|null $department
      */
-    public function setDepartment(DepartmentInterface $department = null): void
+    public function setDepartment(?DepartmentInterface $department): void
     {
         $this->department = $department;
     }
@@ -507,7 +507,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setJobLevel(JobLevelInterface $jobLevel = null): void
+    public function setJobLevel(?JobLevelInterface $jobLevel): void
     {
         $this->jobLevel = $jobLevel;
     }
@@ -523,7 +523,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param JobTitleInterface|null $jobTitle
      */
-    public function setJobTitle(JobTitleInterface $jobTitle = null): void
+    public function setJobTitle(?JobTitleInterface $jobTitle): void
     {
         $this->jobTitle = $jobTitle;
     }
@@ -539,7 +539,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param Superviseable|null $supervisor
      */
-    public function setSupervisor(Superviseable $supervisor = null): void
+    public function setSupervisor(?Superviseable $supervisor): void
     {
         $this->supervisor = $supervisor;
     }
@@ -615,7 +615,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param RegionInterface|null $regionOfBirth
      */
-    public function setRegionOfBirth(RegionInterface $regionOfBirth = null): void
+    public function setRegionOfBirth(?RegionInterface $regionOfBirth): void
     {
         $this->regionOfBirth = $regionOfBirth;
     }
@@ -631,7 +631,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param CityInterface|null $cityOfBirth
      */
-    public function setCityOfBirth(CityInterface $cityOfBirth = null): void
+    public function setCityOfBirth(?CityInterface $cityOfBirth): void
     {
         $this->cityOfBirth = $cityOfBirth;
     }
@@ -751,7 +751,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param AddressInterface|null $address
      */
-    public function setAddress(AddressInterface $address = null): void
+    public function setAddress(?AddressInterface $address): void
     {
         $this->address = $address;
     }
@@ -1005,7 +1005,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param null|string $plainPassword
      */
-    public function setPlainPassword(string $plainPassword = null): void
+    public function setPlainPassword(?string $plainPassword): void
     {
         $this->plainPassword = $plainPassword;
     }
@@ -1021,7 +1021,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     /**
      * @param File|null $imageFile
      */
-    public function setImageFile(File $imageFile = null): void
+    public function setImageFile(?File $imageFile): void
     {
         if ($imageFile) {
             $this->updatedAt = new \DateTime();
@@ -1039,9 +1039,9 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     }
 
     /**
-     * @param string $profileImage
+     * @param null|string $profileImage
      */
-    public function setProfileImage(string $profileImage = null): void
+    public function setProfileImage(?string $profileImage): void
     {
         $this->profileImage = $profileImage;
     }
@@ -1055,9 +1055,9 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     }
 
     /**
-     * @param int $profileSize
+     * @param int|null $profileSize
      */
-    public function setProfileSize(int $profileSize = null): void
+    public function setProfileSize(?int $profileSize): void
     {
         $this->profileSize = $profileSize;
     }

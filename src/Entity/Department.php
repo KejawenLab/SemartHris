@@ -105,9 +105,9 @@ class Department implements DepartmentInterface
     }
 
     /**
-     * @param DepartmentInterface $parent
+     * @param DepartmentInterface|null $parent
      */
-    public function setParent(DepartmentInterface $parent = null): void
+    public function setParent(?DepartmentInterface $parent): void
     {
         $this->parent = $parent;
     }

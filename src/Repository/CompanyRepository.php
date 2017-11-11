@@ -69,26 +69,26 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
     }
 
     /**
-     * @param null $sortField
-     * @param null $sortDirection
-     * @param null $dqlFilter
+     * @param null|string $sortField
+     * @param null|string $sortDirection
+     * @param null|string $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createDepartmentQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null)
+    public function createDepartmentQueryBuilder(?string $sortField, ?string $sortDirection, ?string $dqlFilter)
     {
         return $this->buildSearch(CompanyDepartment::class, $sortField, $sortDirection, $dqlFilter);
     }
 
     /**
-     * @param string $searchQuery
-     * @param null   $sortField
-     * @param null   $sortDirection
-     * @param null   $dqlFilter
+     * @param $searchQuery
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createSearchDepartmentQueryBuilder($searchQuery, $sortField = null, $sortDirection = null, $dqlFilter = null)
+    public function createSearchDepartmentQueryBuilder($searchQuery, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
         $queryBuilder = $this->createDepartmentQueryBuilder($sortField, $sortDirection, $dqlFilter);
         $queryBuilder->leftJoin('entity.company', 'company');
@@ -111,25 +111,25 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
      *
      * @return QueryBuilder
      */
-    public function createAddressQueryBuilder($sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
+    public function createAddressQueryBuilder(?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter, bool $useCompanyFilter = true)
     {
         return $this->buildSearch($this->getEntityClass(), $sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
     }
 
     /**
-     * @param string $searchQuery
-     * @param null   $sortField
-     * @param null   $sortDirection
-     * @param null   $dqlFilter
-     * @param bool   $useCompanyFilter
+     * @param string      $searchQuery
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
+     * @param bool        $useCompanyFilter
      *
      * @return QueryBuilder
      */
-    public function createSearchAddressQueryBuilder($searchQuery, $sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
+    public function createSearchAddressQueryBuilder(string $searchQuery, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter, bool $useCompanyFilter = true)
     {
         $queryBuilder = $this->createAddressQueryBuilder($sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
 
-        return $this->createSearchAddressQueryBuilder($queryBuilder, $searchQuery);
+        return $this->buildSearchAddressQueryBuilder($queryBuilder, $searchQuery);
     }
 
     /**
@@ -141,7 +141,7 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
      *
      * @return QueryBuilder
      */
-    private function buildSearch(string $entityClass, $sortField = null, $sortDirection = null, $dqlFilter = null, $useCompanyFilter = true)
+    private function buildSearch(string $entityClass, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter, bool $useCompanyFilter = true)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('entity');

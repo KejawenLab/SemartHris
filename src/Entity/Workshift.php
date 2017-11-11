@@ -123,7 +123,7 @@ class Workshift implements WorkshiftInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void
+    public function setEmployee(?EmployeeInterface $employee): void
     {
         $this->employee = $employee;
     }
@@ -139,7 +139,7 @@ class Workshift implements WorkshiftInterface
     /**
      * @param ShiftmentInterface|null $shiftment
      */
-    public function setShiftment(ShiftmentInterface $shiftment = null): void
+    public function setShiftment(?ShiftmentInterface $shiftment): void
     {
         $this->shiftment = $shiftment;
     }
@@ -153,9 +153,9 @@ class Workshift implements WorkshiftInterface
     }
 
     /**
-     * @param string $description
+     * @param null|string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -171,7 +171,7 @@ class Workshift implements WorkshiftInterface
     /**
      * @param \DateTimeInterface|null $startDate
      */
-    public function setStartDate(\DateTimeInterface $startDate = null): void
+    public function setStartDate(?\DateTimeInterface $startDate): void
     {
         $this->startDate = $startDate;
     }
@@ -187,7 +187,7 @@ class Workshift implements WorkshiftInterface
     /**
      * @param \DateTimeInterface|null $endDate
      */
-    public function setEndDate(\DateTimeInterface $endDate = null): void
+    public function setEndDate(?\DateTimeInterface $endDate): void
     {
         $this->endDate = $endDate;
     }

@@ -90,7 +90,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
     /**
      * @param DepartmentInterface|null $department
      */
-    public function setDepartment(DepartmentInterface $department = null): void
+    public function setDepartment(?DepartmentInterface $department): void
     {
         $this->department = $department;
     }
@@ -106,7 +106,7 @@ class CompanyDepartment implements CompanyDepartmentInterface
     /**
      * @param CompanyInterface|null $company
      */
-    public function setCompany(CompanyInterface $company = null): void
+    public function setCompany(?CompanyInterface $company): void
     {
         $this->company = $company;
     }

@@ -195,7 +195,7 @@ class Attendance implements AttendanceInterface
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void
+    public function setEmployee(?EmployeeInterface $employee): void
     {
         $this->employee = $employee;
     }
@@ -211,7 +211,7 @@ class Attendance implements AttendanceInterface
     /**
      * @param ShiftmentInterface|null $shiftment
      */
-    public function setShiftment(ShiftmentInterface $shiftment = null): void
+    public function setShiftment(?ShiftmentInterface $shiftment): void
     {
         $this->shiftment = $shiftment;
     }
@@ -227,7 +227,7 @@ class Attendance implements AttendanceInterface
     /**
      * @param \DateTimeInterface|null $attendanceDate
      */
-    public function setAttendanceDate(\DateTimeInterface $attendanceDate = null): void
+    public function setAttendanceDate(?\DateTimeInterface $attendanceDate): void
     {
         $this->attendanceDate = $attendanceDate;
     }
@@ -259,7 +259,7 @@ class Attendance implements AttendanceInterface
     /**
      * @param \DateTimeInterface|null $checkIn
      */
-    public function setCheckIn(\DateTimeInterface $checkIn = null): void
+    public function setCheckIn(?\DateTimeInterface $checkIn): void
     {
         $this->checkIn = $checkIn;
     }
@@ -275,7 +275,7 @@ class Attendance implements AttendanceInterface
     /**
      * @param \DateTimeInterface|null $checkOut
      */
-    public function setCheckOut(\DateTimeInterface $checkOut = null): void
+    public function setCheckOut(?\DateTimeInterface $checkOut): void
     {
         $this->checkOut = $checkOut;
     }
@@ -371,7 +371,7 @@ class Attendance implements AttendanceInterface
     /**
      * @param ReasonInterface $reason
      */
-    public function setReason(ReasonInterface $reason = null): void
+    public function setReason(?ReasonInterface $reason): void
     {
         $this->reason = $reason;
     }

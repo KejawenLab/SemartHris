@@ -60,7 +60,7 @@ interface AllowanceInterface
     public function getBenefitValue(): ? string;
 
     /**
-     * @param string $value
+     * @param null|string $value
      */
-    public function setBenefitValue(string $value): void;
+    public function setBenefitValue(?string $value): void;
 }

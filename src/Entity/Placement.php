@@ -172,7 +172,7 @@ class Placement implements PlacementInterface, Contractable
     /**
      * @param EmployeeInterface|null $employee
      */
-    public function setEmployee(EmployeeInterface $employee = null): void
+    public function setEmployee(?EmployeeInterface $employee): void
     {
         $this->employee = $employee;
     }
@@ -188,7 +188,7 @@ class Placement implements PlacementInterface, Contractable
     /**
      * @param CompanyInterface|null $company
      */
-    public function setCompany(CompanyInterface $company = null): void
+    public function setCompany(?CompanyInterface $company): void
     {
         $this->company = $company;
     }
@@ -204,7 +204,7 @@ class Placement implements PlacementInterface, Contractable
     /**
      * @param DepartmentInterface|null $department
      */
-    public function setDepartment(DepartmentInterface $department = null): void
+    public function setDepartment(?DepartmentInterface $department): void
     {
         $this->department = $department;
     }
@@ -220,7 +220,7 @@ class Placement implements PlacementInterface, Contractable
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setJobLevel(JobLevelInterface $jobLevel = null): void
+    public function setJobLevel(?JobLevelInterface $jobLevel): void
     {
         $this->jobLevel = $jobLevel;
     }
@@ -236,7 +236,7 @@ class Placement implements PlacementInterface, Contractable
     /**
      * @param JobTitleInterface|null $jobTitle
      */
-    public function setJobTitle(JobTitleInterface $jobTitle = null): void
+    public function setJobTitle(?JobTitleInterface $jobTitle): void
     {
         $this->jobTitle = $jobTitle;
     }
@@ -252,7 +252,7 @@ class Placement implements PlacementInterface, Contractable
     /**
      * @param EmployeeInterface|null $supervisor
      */
-    public function setSupervisor(EmployeeInterface $supervisor = null): void
+    public function setSupervisor(?EmployeeInterface $supervisor): void
     {
         $this->supervisor = $supervisor;
     }
@@ -266,9 +266,9 @@ class Placement implements PlacementInterface, Contractable
     }
 
     /**
-     * @param ContractInterface $contract
+     * @param ContractInterface|null $contract
      */
-    public function setContract(ContractInterface $contract = null): void
+    public function setContract(?ContractInterface $contract): void
     {
         $this->contract = $contract;
     }
@@ -308,7 +308,7 @@ class Placement implements PlacementInterface, Contractable
     /**
      * @param string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         throw new \RuntimeException();
     }

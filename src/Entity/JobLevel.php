@@ -107,7 +107,7 @@ class JobLevel implements JobLevelInterface
     /**
      * @param JobLevelInterface|null $parent
      */
-    public function setParent(JobLevelInterface $parent = null): void
+    public function setParent(?JobLevelInterface $parent): void
     {
         $this->parent = $parent;
     }

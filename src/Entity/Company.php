@@ -154,7 +154,7 @@ class Company implements CompanyInterface
     /**
      * @param CompanyInterface|null $parent
      */
-    public function setParent(CompanyInterface $parent = null): void
+    public function setParent(?CompanyInterface $parent): void
     {
         $this->parent = $parent;
     }
@@ -234,7 +234,7 @@ class Company implements CompanyInterface
     /**
      * @param AddressInterface|null $address
      */
-    public function setAddress(AddressInterface $address = null): void
+    public function setAddress(?AddressInterface $address): void
     {
         $this->address = $address;
     }

@@ -58,14 +58,14 @@ class SalaryAllowanceRepository extends Repository implements AllowanceRepositor
     }
 
     /**
-     * @param Request $request
-     * @param string  $sortDirection
-     * @param null    $sortField
-     * @param null    $dqlFilter
+     * @param Request     $request
+     * @param string      $sortDirection
+     * @param null|string $sortField
+     * @param null|string $dqlFilter
      *
      * @return QueryBuilder
      */
-    public function createListQueryBuilder(Request $request, string $sortDirection = 'ASC', $sortField = null, $dqlFilter = null): QueryBuilder
+    public function createListQueryBuilder(Request $request, string $sortDirection = 'ASC', ?string $sortField, ?string $dqlFilter): QueryBuilder
     {
         $now = new \DateTime();
         $state = $request->query->get('state', 'p');

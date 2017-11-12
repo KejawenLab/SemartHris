@@ -22,15 +22,9 @@ services:
         volumes:
             - ./uploads:/semarthris/uploads
         links:
-            - redis
             - db
         depends_on:
-            - redis
             - db
-
-    redis:
-        image: redis:alpine
-        restart: always
 
     db:
         image: mariadb:latest
@@ -40,6 +34,8 @@ services:
             MYSQL_PASSWORD: semarthris
             MYSQL_DATABASE: semarthris
             MYSQL_ROOT_PASSWORD: semarthris
+        volumes:
+            - ./database:/var/lib/mysql
 
     adminer:
         image: adminer

@@ -2,9 +2,11 @@
 /.DS_Store
 /uploads/images
 /uploads/templates/*
-!/uploads/templates/template.csv
+!/uploads/templates/attendance.csv
+!/uploads/templates/overtime.csv
 /uploads/overtimes/*
 /uploads/attendances/*
+/database
 ###> symfony/framework-bundle ###
 .env
 /public/bundles/

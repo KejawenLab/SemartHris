@@ -38,7 +38,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Restore Deleted Record
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, dan DeletedAt)
 
-## Cara Install
+## Cara Install I
 
 - [X] Clone/Download repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
 - [X] Jalankan [Composer](https://getcomposer.org/download) Install/Update `composer update --prefer-dist -vvv`
@@ -55,10 +55,24 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Jalankan perintah `php bin/console doctrine:database:create` untuk membuat database
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data
-- [X] Cek *username* yang di-*generate* di Database (bisa menggunakan PhpMyAdmin/Adminer/lainnya) dan *default password* adalah pada `.env`
+- [X] Simpan username dan password yang ditampilkan untuk digunakan mengakses aplikasi
 - [X] Jalankan perintah `make serve` untuk mengaktifkan web server
 - [X] Buka halaman `<HOST>:<PORT>/admin` untuk halaman admin
 - [X] Buka halaman `<HOST>:<PORT>/api` untuk halaman API
+
+## Cara Install II
+
+- [X] Clone/Download repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
+- [X] Build image dengan [docker-compose](https://docs.docker.com/compose) dengan menjalankan `docker-compose build && docker-compose up` 
+- [X] Jalankan perintah `docker-compose exec app bin/console doctrine:schema:create` untuk membuat table yang dibutuhkan
+- [X] Jalankan perintah `docker-compose exec app bin/console doctrine:fixtures:load -n` untuk *populate initial* data
+- [X] Buka halaman `<HOST>:8000/admin` untuk halaman admin
+- [X] Buka halaman `<HOST>:8000/api` untuk halaman API
+- [X] Buka halaman `<HOST>:8080` untuk halaman Adminer
+
+## Unit Test
+
+Untuk menjalankan unit testing, Anda cukup menjalankan perintah `php vendor/bin/phpunit`
 
 ## Kontributor
 

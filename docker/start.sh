@@ -8,9 +8,9 @@ do
 done
 
 if [ "$SYMFONY_ENV" = 'prod' ]; then
-	composer install --prefer-dist --no-dev --no-progress --no-suggest --optimize-autoloader --classmap-authoritative
+    composer install --prefer-dist --no-dev --no-progress --no-suggest --optimize-autoloader --classmap-authoritative -vvv
 else
-	composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative
+    composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative -vvv
 fi
 
 chmod 777 -R var/

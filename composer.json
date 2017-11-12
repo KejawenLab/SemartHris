@@ -10,9 +10,10 @@
         "kejawenlab/petruk-username": "~2.0",
         "league/csv": "~9.1",
         "stof/doctrine-extensions-bundle": "~1.2",
+        "symfony/dotenv": "~3.3",
         "symfony/framework-bundle": "~3.3",
         "symfony/profiler-pack": "~1.0",
-        "symfony/proxy-manager-bridge": "~4.0@beta",
+        "symfony/proxy-manager-bridge": "~3.3",
         "symfony/web-server-bundle": "~3.3",
         "symfony/yaml": "~3.3",
         "vich/uploader-bundle": "~1.6"
@@ -22,9 +23,8 @@
         "phpunit/dbunit": "~3.0",
         "phpunit/php-invoker": "~1.1",
         "phpunit/phpunit": "~6.4",
-        "symfony/dotenv": "~3.3",
         "symfony/flex": "~1.0",
-        "symfony/phpunit-bridge": "~4.0@beta"
+        "symfony/phpunit-bridge": "~3.3"
     },
     "config": {
         "preferred-install": {

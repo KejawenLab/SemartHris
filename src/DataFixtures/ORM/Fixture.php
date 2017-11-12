@@ -4,8 +4,11 @@ namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture as Base;
 use Doctrine\Common\Persistence\ObjectManager;
+use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Yaml\Yaml;
 
@@ -15,6 +18,16 @@ use Symfony\Component\Yaml\Yaml;
 abstract class Fixture extends Base
 {
     const REF_KEY = 'ref';
+
+    /**
+     * @var OutputInterface
+     */
+    private $output;
+
+    public function __construct()
+    {
+        $this->output = new ConsoleOutput();
+    }
 
     /**
      * @return string
@@ -57,6 +70,12 @@ abstract class Fixture extends Base
             }
 
             $manager->persist($entity);
+
+            if ($entity instanceof UserInterface) {
+                $this->output->writeln('<info>User baru telah dibuat!!!</info>');
+                $this->output->writeln(sprintf('<comment>Username: %s</comment>', $entity->getUsername()));
+                $this->output->writeln(sprintf('<comment>Password: %s</comment>', getenv('SEMART_APP_DEFAULT_PASSWORD')));
+            }
         }
 
         $manager->flush();

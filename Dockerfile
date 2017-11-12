@@ -8,7 +8,7 @@ RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/buaya.klas.or.id/g' /etc/apt/
 # Install Software
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install nginx-full supervisor vim varnish -y
-RUN apt-get install software-properties-common python-software-properties -y
+RUN apt-get install software-properties-common python-software-properties build-essential -y
 RUN apt-get install curl ca-certificates -y
 RUN touch /etc/apt/sources.list.d/ondrej-php.list
 RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" >> /etc/apt/sources.list.d/ondrej-php.list
@@ -26,7 +26,7 @@ RUN apt-get remove --purge -y software-properties-common python-software-propert
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
 # Setup Environment
-ENV NGINX_WEBROOT   /bigerp/web
+ENV NGINX_WEBROOT   /semarthris/public
 ENV SYMFONY_ENV     dev
 ENV VARNISH_CONFIG  /etc/varnish/default.vcl
 ENV CACHE_SIZE      512m
@@ -69,26 +69,32 @@ ADD docker/varnish/default.vcl /etc/varnish/default.vcl
 # Setup Application
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-RUN composer global require "hirak/prestissimo:^0.3" "alcaeus/mongo-php-adapter:^1.0" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
+RUN composer global require "hirak/prestissimo:~0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative -vvv \
 && composer clear-cache
 
-WORKDIR /bigerp
+WORKDIR /semarthris
 
 COPY composer.json ./
 COPY composer.lock ./
+COPY .env.dist ./.env
+COPY Makefile ./Makefile
 
 RUN mkdir -p \
-		var/cache \
-		var/logs \
-		var/sessions \
-	&& chmod 777 -R var/ \
-	&& composer install --prefer-dist --no-autoloader --no-scripts --no-progress --no-suggest \
-	&& composer clear-cache
+        var/cache \
+        var/logs \
+        var/sessions \
+    && chmod 777 -R var/ \
+    && composer update --prefer-dist --no-autoloader --no-scripts --no-progress --no-suggest -vvv \
+    && composer clear-cache
 
-COPY app app/
 COPY bin bin/
-COPY web web/
+COPY config config/
+COPY data data/
+COPY public public/
 COPY src src/
+COPY templates templates/
+COPY translations translations/
+COPY uploads uploads/
 
 RUN composer dump-autoload --optimize --classmap-authoritative
 

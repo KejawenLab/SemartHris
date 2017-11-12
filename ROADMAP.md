@@ -29,6 +29,8 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [ ] PPH21
 - [ ] Relasi Karyawan (Keluarga, Keterampilan, dan lain sebagainya)
 - [ ] Perbaikan Performa, dan *Refactoring*
+- [ ] Simple Cache Management
+- [ ] Redis Session
 
 ### Fase III
 
@@ -36,19 +38,21 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [ ] Perjalanan Dinas
 - [ ] Penilaian Karyawan
 - [ ] Plugin/Module System
+- [ ] Upload using File System, S3, and Others
 
 ### Fase IV
 
-- [ ] Perbaikan Arsitektur
+- [ ] Perbaikan Arsitektur (Decouple Component)
 - [ ] Mapping Entity Menggunakan XML
 - [ ] Perbaikan API
 - [ ] Perbaikan Tampilan
 - [ ] Translating Menu, Label, etc
-- [ ] Simple Cache Management
 - [ ] Optimasi Search Query
 
 ### Fase V
 
+- [ ] Search Engine (Elasticsearch?)
+- [ ] Email Notification
 - [ ] Dokumentasi
 - [ ] Unit Test
 - [ ] Pre rilis

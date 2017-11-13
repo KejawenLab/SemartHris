@@ -77,6 +77,10 @@ class SalaryProcessor implements ProcessorInterface
         $takeHomePay = 0;
         $benefits = $this->benefitRepository->findByEmployee($employee);
         foreach ($benefits as $benefit) {
+            if ($benefit->getComponent() && !$benefit->getComponent()->isFixed()) {
+                continue;
+            }
+
             $benefitValue = $this->encryptor->decrypt($benefit->getBenefitValue(), $benefit->getBenefitKey());
             $takeHomePay += $benefitValue;
 
@@ -90,7 +94,7 @@ class SalaryProcessor implements ProcessorInterface
         $allowances = $this->allowanceRepository->findByEmployeeAndDate($employee, $date);
         foreach ($allowances as $allowance) {
             $benefitValue = $this->encryptor->decrypt($allowance->getBenefitValue(), $allowance->getBenefitKey());
-            if ($allowance->getComponent()->getState() === StateType::STATE_PLUS) {
+            if ($allowance->getComponent() && $allowance->getComponent()->getState() === StateType::STATE_PLUS) {
                 $takeHomePay += $benefitValue;
             } else {
                 $takeHomePay -= $benefitValue;

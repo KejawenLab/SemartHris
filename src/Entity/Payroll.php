@@ -31,7 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @Encrypt(properties="benefitValue", keyStore="benefitKey")
+ * @Encrypt(properties="takeHomePay", keyStore="takeHomePayKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */

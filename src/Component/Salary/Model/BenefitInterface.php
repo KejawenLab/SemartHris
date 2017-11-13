@@ -43,4 +43,9 @@ interface BenefitInterface
      * @param null|string $value
      */
     public function setBenefitValue(?string $value): void;
+
+    /**
+     * @return null|string
+     */
+    public function getBenefitKey(): ? string;
 }

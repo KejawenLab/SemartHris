@@ -159,12 +159,29 @@ services:
             - 'KejawenLab\Application\SemartHris\Entity\AttendanceSummary'
         tags:
             { name: 'semarthris.payroll_processor' }
+        lazy: true
+
+    KejawenLab\Application\SemartHris\Component\Salary\Processor\SalaryProcessor:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor'
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryAllowanceRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository'
+        tags:
+            { name: 'semarthris.payroll_processor' }
 
     KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor:
         lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcessor'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository'
+
+    KejawenLab\Application\SemartHris\Component\Salary\Service\ValidateBenefit:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
 
     KejawenLab\Application\SemartHris\Component\Setting\Setting:
         lazy: true

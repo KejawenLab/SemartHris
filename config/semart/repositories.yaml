@@ -105,3 +105,15 @@ services:
         lazy: true
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance']]
+
+    KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit']]
+
+    KejawenLab\Application\SemartHris\Repository\PayrollRepository:
+        lazy: true
+        arguments:
+            - 'KejawenLab\Application\SemartHris\Entity\PayrollDetail'
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Payroll']]

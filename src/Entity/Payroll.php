@@ -11,6 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
+use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -29,6 +30,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity({"employee", "period"})
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
+ *
+ * @Encrypt(properties="benefitValue", keyStore="benefitKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
@@ -74,6 +77,22 @@ class Payroll implements PayrollInterface
     private $period;
 
     /**
+     * @Groups({"read", "write"})
+     *
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @var string
+     */
+    private $takeHomePay;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    private $takeHomePayKey;
+
+    /**
      * @return string
      */
     public function getId(): string
@@ -111,5 +130,37 @@ class Payroll implements PayrollInterface
     public function setPeriod(?PayrollPeriodInterface $period): void
     {
         $this->period = $period;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getTakeHomePay(): ? string
+    {
+        return $this->takeHomePay;
+    }
+
+    /**
+     * @param string $takeHomePay
+     */
+    public function setTakeHomePay(string $takeHomePay): void
+    {
+        $this->takeHomePay = $takeHomePay;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getTakeHomePayKey(): ? string
+    {
+        return $this->takeHomePayKey;
+    }
+
+    /**
+     * @param string $takeHomePayKey
+     */
+    public function setTakeHomePayKey(string $takeHomePayKey): void
+    {
+        $this->takeHomePayKey = $takeHomePayKey;
     }
 }

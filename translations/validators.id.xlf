@@ -18,6 +18,10 @@
                 <source>semarthris.field_required</source>
                 <target>Field ini wajib diisi</target>
             </trans-unit>
+            <trans-unit id="semarthris.benefit.employee_has_payroll">
+                <source>semarthris.benefit.employee_has_payroll</source>
+                <target>Karyawan telah memiliki payroll. Gunakan menu perubahan gaji/tunjangan untuk merubah setting gaji.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

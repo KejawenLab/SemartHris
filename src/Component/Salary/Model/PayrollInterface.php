@@ -33,4 +33,19 @@ interface PayrollInterface
      * @param EmployeeInterface|null $employee
      */
     public function setEmployee(?EmployeeInterface $employee): void;
+
+    /**
+     * @return null|string
+     */
+    public function getTakeHomePay(): ? string;
+
+    /**
+     * @param string $takeHomePay
+     */
+    public function setTakeHomePay(string $takeHomePay): void;
+
+    /**
+     * @return null|string
+     */
+    public function getTakeHomePayKey(): ? string;
 }

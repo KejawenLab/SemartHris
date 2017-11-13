@@ -22,7 +22,7 @@ easy_admin:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryBenefitController'
-            disabled_actions: ['show']
+            disabled_actions: ['show', 'edit', 'delete']
             templates:
                 new: 'app/payroll/new.html.twig'
             new:

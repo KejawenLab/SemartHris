@@ -14,20 +14,7 @@ interface AllowanceRepositoryInterface
      * @param EmployeeInterface  $employee
      * @param \DateTimeInterface $date
      *
-     * @return AllowanceInterface|null
+     * @return AllowanceInterface[]
      */
-    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? AllowanceInterface;
-
-    /**
-     * @param EmployeeInterface  $employee
-     * @param \DateTimeInterface $date
-     *
-     * @return AllowanceInterface
-     */
-    public function createNew(EmployeeInterface $employee, \DateTimeInterface $date): AllowanceInterface;
-
-    /**
-     * @param AllowanceInterface $allowance
-     */
-    public function update(AllowanceInterface $allowance): void;
+    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): array;
 }

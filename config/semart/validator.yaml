@@ -5,3 +5,10 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Contract\Service\CheckContract'
         tags:
             { name: 'validator.constraint_validator' }
+
+    KejawenLab\Application\SemartHris\Validator\SalaryBenefitValidator:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Salary\Service\ValidateBenefit'
+        tags:
+            { name: 'validator.constraint_validator' }

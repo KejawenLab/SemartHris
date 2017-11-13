@@ -17,44 +17,15 @@ class SalaryAllowanceRepository extends Repository implements AllowanceRepositor
      * @param EmployeeInterface  $employee
      * @param \DateTimeInterface $date
      *
-     * @return AllowanceInterface|null
+     * @return AllowanceInterface[]
      */
-    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): ? AllowanceInterface
+    public function findByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $date): array
     {
-        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
+        return $this->entityManager->getRepository($this->entityClass)->findBy([
             'employee' => $employee,
             'year' => $date->format('Y'),
             'month' => $date->format('n'),
         ]);
-    }
-
-    /**
-     * @param EmployeeInterface  $employee
-     * @param \DateTimeInterface $date
-     *
-     * @return AllowanceInterface
-     */
-    public function createNew(EmployeeInterface $employee, \DateTimeInterface $date): AllowanceInterface
-    {
-        /** @var AllowanceInterface $entity */
-        $entity = new $this->entityClass();
-        $entity->setYear($date->format('Y'));
-        $entity->setMonth($date->format('n'));
-        $entity->setEmployee($employee->getCompany());
-
-        $this->update($entity);
-
-        return $entity;
-    }
-
-    /**
-     * @param AllowanceInterface $allowance
-     */
-    public function update(AllowanceInterface $allowance): void
-    {
-        $manager = $this->entityManager;
-        $manager->persist($allowance);
-        $manager->flush();
     }
 
     /**

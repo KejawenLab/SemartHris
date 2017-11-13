@@ -12,6 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use KejawenLab\Application\SemartHris\Component\Salary\Model\BenefitInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Configuration\Encrypt;
+use KejawenLab\Application\SemartHris\Validator\Constraint\ValidSalaryBenefit;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -29,6 +30,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  * )
  *
  * @UniqueEntity({"employee", "component"})
+ * @ValidSalaryBenefit()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *

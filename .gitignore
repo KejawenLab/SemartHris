@@ -1,12 +1,12 @@
 /.idea/
 /.DS_Store
 /uploads/images
-/uploads/templates/*
 !/uploads/templates/attendance.csv
 !/uploads/templates/overtime.csv
 /uploads/overtimes/*
 /uploads/attendances/*
-/database
+/database/*
+!/database/.gitkeep
 ###> symfony/framework-bundle ###
 .env
 /public/bundles/

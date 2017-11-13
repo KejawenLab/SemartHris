@@ -24,14 +24,39 @@
     page: app.request.query.get('page', 1)
 }) %}
 
-{% block new_action %}
-    <div class="button-action">
-        <a class="btn btn-primary process" href="#" type="button" title="{{ 'label.payroll.process_action' | trans({}, 'messages') }}">
-            <i class="fa fa-cogs"></i>
-            <span class="hidden-xs hidden-sm">{{ 'label.payroll.process_action' | trans({}, 'messages') }}</span>
-        </a>
+{% block search_action %}
+    <div class="form-action {{ _action.css_class|default('') }}">
+        <form method="get" action="{{ path('process_payroll') }}">
+            {% block search_form %}
+                <input type="hidden" name="action" value="search">
+                <input type="hidden" name="entity" value="{{ _request_parameters.entity }}">
+                <input type="hidden" name="sortField" value="{{ _entity_config.search.sort.field|default(_request_parameters.sortField) }}">
+                <input type="hidden" name="sortDirection" value="{{ _entity_config.search.sort.direction|default(_request_parameters.sortDirection) }}">
+                <input type="hidden" name="menuIndex" value="{{ _request_parameters.menuIndex }}">
+                <input type="hidden" name="submenuIndex" value="{{ _request_parameters.submenuIndex }}">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary process" type="button" title="{{ 'label.payroll.process_action' | trans({}, 'messages') }}">
+                            <i class="fa fa-cogs"></i>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                    </span>
+                    {% set employee = semarthris_create_employee(app.request.query.get('employeeId', '')) %}
+                    <select class="employee-search" name="employeeId">
+                        {% if employee is not null %}
+                            <option value="{{ employee.id }}">{{ employee.code ~ ' ' ~ employee.fullName }}</option>
+                        {% endif %}
+                    </select>
+                    <span class="input-group-btn">
+                        <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit">
+                            <i class="fa fa-television"></i> {{ 'label.payroll.filter_action' | trans({}, 'messages') }}
+                        </button>
+                    </span>
+                </div>
+            {% endblock %}
+        </form>
     </div>
-{% endblock new_action %}
+{% endblock search_action %}
 
 {% block main %}
     {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
@@ -164,7 +189,10 @@
             });
 
             $(document).on('click', '.process-payroll', function () {
-                var company = $('#company').val();
+                var employees = [];
+                $('.employee:checkbox:checked').each(function () {
+                    employees.push($(this).data('employee'));
+                });
                 var month = $('.month').val();
                 var year = $('.year').val();
 
@@ -172,7 +200,7 @@
                     url: Routing.generate('process_payroll'),
                     type: 'POST',
                     data: {
-                        company: company,
+                        employees: employees,
                         month: month,
                         year: year
                     },

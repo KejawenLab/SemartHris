@@ -32,6 +32,13 @@ interface EmployeeRepositoryInterface
     public function findSupervisorByJobLevel(string $jobLevelId): array;
 
     /**
+     * @param string $companyId
+     *
+     * @return array
+     */
+    public function findByCompany(string $companyId): array;
+
+    /**
      * @param string $code
      *
      * @return EmployeeInterface|null

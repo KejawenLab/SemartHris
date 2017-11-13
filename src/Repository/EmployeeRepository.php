@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeAddressInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
@@ -11,6 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepo
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
+use KejawenLab\Application\SemartHris\Entity\Company;
 use KejawenLab\Application\SemartHris\Entity\EmployeeAddress;
 use KejawenLab\Application\SemartHris\Entity\JobLevel;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -60,6 +62,32 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         $queryBuilder->addSelect('e.fullName');
         $queryBuilder->orWhere($queryBuilder->expr()->eq('e.jobLevel', $queryBuilder->expr()->literal($parentLevel->getId())));
         $queryBuilder->orWhere($queryBuilder->expr()->eq('e.jobLevel', $queryBuilder->expr()->literal($jobLevel->getId())));
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
+     * @param string $companyId
+     *
+     * @return array
+     */
+    public function findByCompany(string $companyId): array
+    {
+        $company = $this->entityManager->getRepository(Company::class)->find($companyId);
+        if (!$company) {
+            return [];
+        }
+
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'e');
+        $queryBuilder->select('e');
+        $queryBuilder->orWhere($queryBuilder->expr()->eq('e.company', $queryBuilder->expr()->literal($company->getId())));
+
+        /** @var CompanyInterface $parentCompany */
+        $parentCompany = $company->getParent();
+        if ($parentCompany) {
+            $queryBuilder->orWhere($queryBuilder->expr()->eq('e.company', $queryBuilder->expr()->literal($parentCompany->getId())));
+        }
 
         return $queryBuilder->getQuery()->getResult();
     }

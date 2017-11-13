@@ -4,7 +4,7 @@ easy_admin:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\PayrollPeriod'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
-            disabled_actions: ['show', 'new', 'edit', 'delete']
+            disabled_actions: ['show', 'search', 'edit', 'delete']
             templates:
                 list: 'app/payroll/list.html.twig'
             search:
@@ -31,6 +31,7 @@ easy_admin:
                 title: 'Setting Gaji'
             search:
                 title: 'Setting Gaji'
+                fields: ['employee']
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }

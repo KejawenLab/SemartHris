@@ -25,14 +25,14 @@ interface PayrollRepositoryInterface
      *
      * @return PayrollInterface
      */
-    public function createNew(EmployeeInterface $employee, PayrollPeriodInterface $period): PayrollInterface;
+    public function createPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): PayrollInterface;
 
     /**
      * @param PayrollInterface $payroll
      *
      * @return PayrollDetailInterface
      */
-    public function createDetail(PayrollInterface $payroll): PayrollDetailInterface;
+    public function createPayrollDetail(PayrollInterface $payroll): PayrollDetailInterface;
 
     /**
      * @param PayrollInterface $payroll

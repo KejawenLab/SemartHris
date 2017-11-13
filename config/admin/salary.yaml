@@ -67,7 +67,7 @@ easy_admin:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Tunjangan'
                 fields:
-                    - { property: 'year', label: 'Tahun' }
+                    - { property: 'year', label: 'Tahun', type: 'text' }
                     - { property: 'month', label: 'Bulan' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'component', label: 'Tunjangan' }
@@ -93,7 +93,7 @@ easy_admin:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Potongan'
                 fields:
-                    - { property: 'year', label: 'Tahun' }
+                    - { property: 'year', label: 'Tahun', type: 'text' }
                     - { property: 'month', label: 'Bulan' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'component', label: 'Potongan' }

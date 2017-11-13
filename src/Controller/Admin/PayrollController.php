@@ -31,14 +31,17 @@ class PayrollController extends AdminController
         $month = (int) $request->request->get('month', date('n'));
         $year = (int) $request->request->get('year', date('Y'));
         $employeeRepository = $this->container->get(EmployeeRepository::class);
-        if ($ids = $request->request->get('employees')) {
-            $employees = $employeeRepository->finds($ids);
-        } else {
+        $employees = $employeeRepository->findByCompany($request->request->get('company', ''));
+        if (empty($employees)) {
             $employees = $employeeRepository->findAll();
         }
 
         $processor = $this->container->get(PayrollProcessor::class);
         foreach ($employees as $employee) {
+            if ($employee->isResign()) {
+                continue;
+            }
+
             $processor->process($employee, \DateTime::createFromFormat('Y-n', sprintf('%s-%s', $year, $month)));
         }
 

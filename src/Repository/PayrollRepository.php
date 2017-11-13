@@ -47,12 +47,15 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
      *
      * @return PayrollInterface
      */
-    public function createNew(EmployeeInterface $employee, PayrollPeriodInterface $period): PayrollInterface
+    public function createPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): PayrollInterface
     {
-        /** @var PayrollInterface $payroll */
-        $payroll = new $this->entityClass();
-        $payroll->setEmployee($employee);
-        $payroll->setPeriod($period);
+        $payroll = $this->findPayroll($employee, $period);
+        if (!$payroll) {
+            /** @var PayrollInterface $payroll */
+            $payroll = new $this->entityClass();
+            $payroll->setEmployee($employee);
+            $payroll->setPeriod($period);
+        }
 
         return $payroll;
     }
@@ -62,11 +65,14 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
      *
      * @return PayrollDetailInterface
      */
-    public function createDetail(PayrollInterface $payroll): PayrollDetailInterface
+    public function createPayrollDetail(PayrollInterface $payroll): PayrollDetailInterface
     {
-        /** @var PayrollDetailInterface $payrollDetail */
-        $payrollDetail = new $this->detailClass();
-        $payrollDetail->setPayroll($payroll);
+        $payrollDetail = $this->findPayrollDetail($payroll);
+        if (!$payrollDetail) {
+            /** @var PayrollDetailInterface $payrollDetail */
+            $payrollDetail = new $this->detailClass();
+            $payrollDetail->setPayroll($payroll);
+        }
 
         return $payrollDetail;
     }
@@ -90,5 +96,31 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     public function update(): void
     {
         $this->entityManager->flush();
+    }
+
+    /**
+     * @param EmployeeInterface      $employee
+     * @param PayrollPeriodInterface $period
+     *
+     * @return PayrollInterface|null
+     */
+    private function findPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): ? PayrollInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
+            'employee' => $employee,
+            'period' => $period,
+        ]);
+    }
+
+    /**
+     * @param PayrollInterface $payroll
+     *
+     * @return PayrollDetailInterface|null
+     */
+    private function findPayrollDetail(PayrollInterface $payroll): ? PayrollDetailInterface
+    {
+        return $this->entityManager->getRepository($this->detailClass)->findOneBy([
+            'payroll' => $payroll,
+        ]);
     }
 }

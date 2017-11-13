@@ -192,7 +192,7 @@
             </trans-unit>
             <trans-unit id="semarthris.payroll.process_warning_content">
                 <source>semarthris.payroll.process_warning_content</source>
-                <target>Pastikan filter periode dan tanda centang pada tabel sudah benar!</target>
+                <target>Pastikan filter periode dan perusahaan sudah benar!</target>
             </trans-unit>
             <trans-unit id="semarthris.payroll.process_finish_content">
                 <source>semarthris.payroll.process_finish_content</source>
@@ -200,7 +200,7 @@
             </trans-unit>
             <trans-unit id="label.payroll.process_action">
                 <source>label.payroll.process_action</source>
-                <target>Proses penggajian</target>
+                <target>Proses Gaji</target>
             </trans-unit>
             <trans-unit id="label.payroll.filter_action">
                 <source>label.payroll.filter_action</source>

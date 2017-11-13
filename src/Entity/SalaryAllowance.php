@@ -82,7 +82,7 @@ class SalaryAllowance implements AllowanceInterface
      * @ORM\Column(type="smallint")
      *
      * @Assert\NotBlank()
-     * @Assert\Length(max="2")
+     * @Assert\Length(max="4")
      *
      * @var int
      */

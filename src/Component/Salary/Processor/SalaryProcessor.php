@@ -72,7 +72,7 @@ class SalaryProcessor implements ProcessorInterface
             throw new InvalidPayrollPeriodException($date);
         }
 
-        $payroll = $this->payrollRepository->createNew($employee, $payrollPeriod);
+        $payroll = $this->payrollRepository->createPayroll($employee, $payrollPeriod);
 
         $takeHomePay = 0;
         $benefits = $this->benefitRepository->findByEmployee($employee);
@@ -84,7 +84,7 @@ class SalaryProcessor implements ProcessorInterface
             $benefitValue = $this->encryptor->decrypt($benefit->getBenefitValue(), $benefit->getBenefitKey());
             $takeHomePay += $benefitValue;
 
-            $payrollDetail = $this->payrollRepository->createDetail($payroll);
+            $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll);
             $payrollDetail->setComponent($benefit->getComponent());
             $payrollDetail->setBenefitValue($benefitValue);
 
@@ -100,7 +100,7 @@ class SalaryProcessor implements ProcessorInterface
                 $takeHomePay -= $benefitValue;
             }
 
-            $payrollDetail = $this->payrollRepository->createDetail($payroll);
+            $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll);
             $payrollDetail->setComponent($allowance->getComponent());
             $payrollDetail->setBenefitValue($benefitValue);
 

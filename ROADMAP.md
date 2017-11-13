@@ -21,7 +21,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [X] Authorisasi dan Authentikasi
 - [X] Super Admin add extra field (is_deleted?)
 - [X] Restore Record when it is deleted
-- [ ] Penggajian
+- [X] Penggajian
 
 ### Fase II
 

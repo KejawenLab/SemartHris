@@ -25,6 +25,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 ### Fase II
 
+- [ ] Unit Test
 - [ ] Menejemen Cuti
 - [ ] PPH21
 - [ ] Relasi Karyawan (Keluarga, Keterampilan, dan lain sebagainya)
@@ -54,7 +55,6 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [ ] Search Engine (Elasticsearch?)
 - [ ] Email Notification
 - [ ] Dokumentasi
-- [ ] Unit Test
 - [ ] Pre rilis
 - [ ] Perbaikan dan pemantapan sebelum rilis
 - [ ] Rilis

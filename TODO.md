@@ -66,8 +66,9 @@
 - [X] Summary Absensi Prosesor
 - [X] Lembur Prosesor
 - [X] Tunjangan/Potongan Prosesor
+- [X] Payroll History
+- [ ] Payroll List Query Builder
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
-- [ ] Payroll History
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List
 - [ ] Prevent Remove Mutation When Job History is Exist

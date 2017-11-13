@@ -10,6 +10,7 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
+use KejawenLab\Application\SemartHris\Util\MonthUtil;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -166,5 +167,13 @@ class PayrollPeriod implements PayrollPeriodInterface
     public function setClosed(bool $closed): void
     {
         $this->closed = $closed;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return sprintf('%s - %s', MonthUtil::convertToText($this->month), $this->year);
     }
 }

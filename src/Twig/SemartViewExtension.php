@@ -2,6 +2,8 @@
 
 namespace KejawenLab\Application\SemartHris\Twig;
 
+use KejawenLab\Application\SemartHris\Util\MonthUtil;
+
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
@@ -23,23 +25,8 @@ class SemartViewExtension extends \Twig_Extension
      */
     public function createMonthOptions(): string
     {
-        $months = [
-            1 => 'Januari',
-            2 => 'Februari',
-            3 => 'Maret',
-            4 => 'April',
-            5 => 'Mei',
-            6 => 'Juni',
-            7 => 'Juli',
-            8 => 'Agustus',
-            9 => 'September',
-            10 => 'Oktober',
-            11 => 'November',
-            12 => 'Desember',
-        ];
-
         $options = '';
-        foreach ($months as $key => $month) {
+        foreach (MonthUtil::getMonths() as $key => $month) {
             $options .= sprintf('<option value="%d" %s>%s</option>', $key, date('n') == $key ? 'selected="selected"' : '', $month);
         }
 

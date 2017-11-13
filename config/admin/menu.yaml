@@ -43,6 +43,7 @@ easy_admin:
                   - { entity: 'Shiftment', label: 'Shift Kerja', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Workshift', label: 'Jadwal Kerja', icon: 'hand-o-right', params: { sortField: 'startDate', sortDirection: 'DESC' } }
                   - { entity: 'Attendance', label: 'Absensi', icon: 'hand-o-right', params: { sortField: 'attendanceDate', sortDirection: 'DESC' } }
+                  - { entity: 'AttendanceSummary', label: 'Riwayat Absensi', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Lembur'
               role: '%env(string:SEMART_SECURITY_OVERTIME_MENU)%'
               icon: 'list-alt'
@@ -62,7 +63,7 @@ easy_admin:
                   - { entity: 'SalaryAllowancePlus', label: 'Tunjangan', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC', state: 'p' } }
                   - { entity: 'SalaryAllowanceMinus', label: 'Potongan', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC', state: 'm' } }
                   - { entity: 'PayrollPeriod', label: 'Penggajian', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC' } }
-                  - { entity: 'AttendanceSummary', label: 'Riwayat Absensi', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Payroll', label: 'Riwayat Penggajian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
               role: '%env(string:SEMART_SECURITY_ADDRESS_MENU)%'
               icon: 'id-card-o'

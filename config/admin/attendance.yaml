@@ -133,3 +133,23 @@ easy_admin:
                     - { property: 'absent', label: 'Masuk?', , type: 'boolean', sortable: false, template: 'app/default/field_boolean_negation.html.twig' }
                     - { property: 'reason', label: 'Alasan', sortable: false }
                     - { property: 'description', label: 'Keterangan', sortable: false }
+
+        AttendanceSummary:
+            role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\AttendanceSummary'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
+            disabled_actions: ['show', 'new', 'edit', 'delete']
+            search:
+                title: 'Riwayat Absensi'
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Riwayat Absensi'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'year', label: 'Tahun', type: 'text' }
+                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'totalWorkday', label: 'Total Hari Kerja' }
+                    - { property: 'totalIn', label: 'Total Masuk' }
+                    - { property: 'totalLoyality', label: 'Total Loyalitas' }
+                    - { property: 'totalAbsent', label: 'Total Tidak Masuk' }
+                    - { property: 'totalOvertime', label: 'Total Lembur' }

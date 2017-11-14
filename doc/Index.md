@@ -1,4 +1,4 @@
-Table of ContentsHow to Use SemartHris
+Table of Contents How to Use SemartHris
 =================================
 
  1. Administrator

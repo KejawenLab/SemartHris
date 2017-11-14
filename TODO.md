@@ -70,7 +70,8 @@
 - [X] Perhitungan Lembur
 - [X] Validasi Proses Payroll harus melewati tanggal closing
 - [X] Payroll List Query Builder
-- [ ] Form Tunjangan dan Potongan
+- [X] Form Tunjangan dan Potongan
+- [ ] Filter Tunjangan dan Potongan List
 - [ ] Filter Payroll Period
 - [ ] Payroll Detail
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji

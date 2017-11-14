@@ -32,6 +32,9 @@ services:
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveTagsTextFieldSubscriber:
         lazy: true
 
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveComponentTextFieldSubscriber:
+        lazy: true
+
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveTypeTextFieldSubscriber:
         lazy: true
 

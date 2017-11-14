@@ -373,6 +373,44 @@ function employee_contract_autocomplete(locale, emptyText) {
     });
 }
 
+function salary_component_autocomplete(state, locale, emptyText) {
+    var componentSelect = $('.component-select');
+
+    $.ajax({
+        url: Routing.generate('salary_component'),
+        type: 'GET',
+        data: {
+            state: state
+        },
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var componentId = $('.component-id').val();
+            var options = '<option value="">' + emptyText + '</option>';
+
+            $.each(dataResponse['components'], function (idx, val) {
+                if (componentId === val.id) {
+                    options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
+                } else {
+                    options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                }
+            });
+
+            componentSelect.html(options);
+            componentSelect.select2({
+                theme: 'bootstrap',
+                language: locale
+            });
+        },
+        error: function () {
+            console.log('KO');
+        }
+    });
+
+    $(document).on('change', '.component-select', function () {
+        $('.component-id').val($(this).val());
+    });
+}
+
 function reason_autocomplete(locale, type, emptyText) {
     var reasonSelect = $('.reason-select');
 

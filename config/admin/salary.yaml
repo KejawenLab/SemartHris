@@ -44,7 +44,8 @@ easy_admin:
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
             disabled_actions: ['search']
             templates:
-                new: 'app/payroll/new.html.twig'
+                new: 'app/payroll/plus.html.twig'
+                edit: 'app/payroll/plus_edit.html.twig'
             new:
                 title: 'Tambah Tunjangan'
             edit:
@@ -58,7 +59,8 @@ easy_admin:
                     - { property: 'month', label: 'Bulan', type: 'KejawenLab\Application\SemartHris\Form\Type\MonthType', type_options: { attr: { class: 'static-select' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'employee', label: 'Karyawan' }
-                    - { property: 'component', label: 'Komponen Gaji' }
+                    - { property: 'component', type: 'hidden', type_options: { attr: { class: 'component-id' } } }
+                    - { property: 'component_text', label: 'Komponen', type: 'choice', type_options: { required: true, attr: { class: 'component-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { type: 'group', css_class: 'col-sm-12' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'text' }
             show:
@@ -79,7 +81,8 @@ easy_admin:
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
             disabled_actions: ['search']
             templates:
-                new: 'app/payroll/new.html.twig'
+                new: 'app/payroll/minus.html.twig'
+                edit: 'app/payroll/minus_edit.html.twig'
             new:
                 title: 'Tambah Potongan'
             edit:
@@ -87,6 +90,16 @@ easy_admin:
             search:
                 title: 'Potongan'
             form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'year', label: 'Tahun', type: 'KejawenLab\Application\SemartHris\Form\Type\YearType', type_options: { attr: { class: 'static-select' } } }
+                    - { property: 'month', label: 'Bulan', type: 'KejawenLab\Application\SemartHris\Form\Type\MonthType', type_options: { attr: { class: 'static-select' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'component', type: 'hidden', type_options: { attr: { class: 'component-id' } } }
+                    - { property: 'component_text', label: 'Komponen', type: 'choice', type_options: { required: true, attr: { class: 'component-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'benefitValue', label: 'Nilai', type: 'text' }
             show:
                 title: 'Detil Potongan'
             list:

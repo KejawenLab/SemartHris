@@ -39,6 +39,11 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
 
+    KejawenLab\Application\SemartHris\Form\DataTransformer\SalaryComponentTransformer:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
+
     KejawenLab\Application\SemartHris\Form\DataTransformer\TagTransformer:
         lazy: true
 

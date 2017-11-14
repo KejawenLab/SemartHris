@@ -62,6 +62,12 @@ services:
             - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber' ]
 
+    KejawenLab\Application\SemartHris\Form\Manipulator\SalaryAllowanceManipulator:
+        lazy: true
+        arguments:
+            - { component: '@KejawenLab\Application\SemartHris\Form\DataTransformer\SalaryComponentTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveComponentTextFieldSubscriber' ]
+
     KejawenLab\Application\SemartHris\Form\Manipulator\SalaryBenefitManipulator:
         lazy: true
         arguments:

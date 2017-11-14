@@ -28,7 +28,7 @@ class PayrollController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_PAYROLL_MENU));
 
         $month = (int) $request->request->get('month', date('n'));
         $year = (int) $request->request->get('year', date('Y'));

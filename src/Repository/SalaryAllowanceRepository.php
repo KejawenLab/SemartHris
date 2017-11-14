@@ -39,7 +39,7 @@ class SalaryAllowanceRepository extends Repository implements AllowanceRepositor
     public function createListQueryBuilder(Request $request, string $sortDirection = 'ASC', ?string $sortField, ?string $dqlFilter): QueryBuilder
     {
         $now = new \DateTime();
-        $state = $request->query->get('state', 'p');
+        $state = $request->query->get('state');
         $year = $request->query->get('year', $now->format('Y'));
         $month = $request->query->get('month', $now->format('n'));
 

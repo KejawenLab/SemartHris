@@ -157,11 +157,11 @@ class SalaryProcessor implements ProcessorInterface
      * @param EmployeeInterface  $employee
      * @param \DateTimeInterface $date
      * @param PayrollInterface   $payroll
-     * @param float              $takeHomePay
+     * @param float              $fixedSalary
      *
      * @return float
      */
-    public function processOvertime(EmployeeInterface $employee, \DateTimeInterface $date, PayrollInterface $payroll, float $takeHomePay): float
+    public function processOvertime(EmployeeInterface $employee, \DateTimeInterface $date, PayrollInterface $payroll, float $fixedSalary): float
     {
         if ($employee->isHaveOvertimeBenefit()) {
             $overtimeComponent = $this->componentRepository->findByCode(SettingUtil::get(SettingUtil::OVERTIME_COMPONENT_CODE));
@@ -172,8 +172,8 @@ class SalaryProcessor implements ProcessorInterface
             $attendanceSummary = $this->attendanceSummaryRepository->findByEmployeeAndDate($employee, $date);
             if ($attendanceSummary) {
                 // 1/173 * Pendapatan Tetap * Jam
-                $overtimeValue = (1 / 173) * $takeHomePay * $attendanceSummary->getTotalOvertime();
-                $takeHomePay += $overtimeValue;
+                $overtimeValue = (1 / 173) * $fixedSalary * $attendanceSummary->getTotalOvertime();
+                $fixedSalary += $overtimeValue;
 
                 $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll, $overtimeComponent);
                 $payrollDetail->setComponent($overtimeComponent);
@@ -183,6 +183,6 @@ class SalaryProcessor implements ProcessorInterface
             }
         }
 
-        return $takeHomePay;
+        return $fixedSalary;
     }
 }

@@ -3,9 +3,9 @@
 namespace KejawenLab\Application\SemartHris\Component\Salary\Service;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Processor\InvalidPayrollPeriodException;
 use KejawenLab\Application\SemartHris\Component\Salary\Processor\ProcessorInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollPeriodRepositoryInterface;
-use KejawenLab\Application\SemartHris\Component\Salary\Processor\InvalidPayrollPeriodException;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>

@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Component\Salary\Processor;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\AllowanceRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\AttendanceSummaryRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\BenefitRepositoryInterface;
@@ -93,11 +94,28 @@ class SalaryProcessor implements ProcessorInterface
 
         $payroll = $this->payrollRepository->createPayroll($employee, $payrollPeriod);
 
-        $takeHomePay = 0;
+        $takeHomePay = $this->processFixedBenefit($employee, $payroll);
+        $takeHomePay = $this->processOvertime($employee, $date, $payroll, $takeHomePay);
+        $takeHomePay += $this->processAllowance($employee, $date, $payroll);
+
+        $payroll->setTakeHomePay($takeHomePay);
+        $this->payrollRepository->store($payroll);
+        $this->payrollRepository->update();
+    }
+
+    /**
+     * @param EmployeeInterface $employee
+     * @param PayrollInterface  $payroll
+     *
+     * @return float
+     */
+    private function processFixedBenefit(EmployeeInterface $employee, PayrollInterface $payroll): float
+    {
+        $totalBenefit = 0;
         $benefits = $this->benefitRepository->findFixedByEmployee($employee);
         foreach ($benefits as $benefit) {
             $benefitValue = $this->encryptor->decrypt($benefit->getBenefitValue(), $benefit->getBenefitKey());
-            $takeHomePay += $benefitValue;
+            $totalBenefit += $benefitValue;
 
             $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll, $benefit->getComponent());
             $payrollDetail->setBenefitValue($benefitValue);
@@ -105,6 +123,47 @@ class SalaryProcessor implements ProcessorInterface
             $this->payrollRepository->storeDetail($payrollDetail);
         }
 
+        return (float) $totalBenefit;
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $date
+     * @param PayrollInterface   $payroll
+     *
+     * @return float
+     */
+    private function processAllowance(EmployeeInterface $employee, \DateTimeInterface $date, PayrollInterface $payroll): float
+    {
+        $totalAllowance = 0;
+        $allowances = $this->allowanceRepository->findByEmployeeAndDate($employee, $date);
+        foreach ($allowances as $allowance) {
+            $benefitValue = $this->encryptor->decrypt($allowance->getBenefitValue(), $allowance->getBenefitKey());
+            if ($allowance->getComponent() && $allowance->getComponent()->getState() === StateType::STATE_PLUS) {
+                $totalAllowance += $benefitValue;
+            } else {
+                $totalAllowance -= $benefitValue;
+            }
+
+            $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll, $allowance->getComponent());
+            $payrollDetail->setBenefitValue($benefitValue);
+
+            $this->payrollRepository->storeDetail($payrollDetail);
+        }
+
+        return (float) $totalAllowance;
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $date
+     * @param PayrollInterface   $payroll
+     * @param float              $takeHomePay
+     *
+     * @return float
+     */
+    public function processOvertime(EmployeeInterface $employee, \DateTimeInterface $date, PayrollInterface $payroll, float $takeHomePay): float
+    {
         if ($employee->isHaveOvertimeBenefit()) {
             $overtimeComponent = $this->componentRepository->findByCode(SettingUtil::get(SettingUtil::OVERTIME_COMPONENT_CODE));
             if (!$overtimeComponent) {
@@ -125,24 +184,6 @@ class SalaryProcessor implements ProcessorInterface
             }
         }
 
-        $allowances = $this->allowanceRepository->findByEmployeeAndDate($employee, $date);
-        foreach ($allowances as $allowance) {
-            $benefitValue = $this->encryptor->decrypt($allowance->getBenefitValue(), $allowance->getBenefitKey());
-            if ($allowance->getComponent() && $allowance->getComponent()->getState() === StateType::STATE_PLUS) {
-                $takeHomePay += $benefitValue;
-            } else {
-                $takeHomePay -= $benefitValue;
-            }
-
-            $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll, $allowance->getComponent());
-            $payrollDetail->setBenefitValue($benefitValue);
-
-            $this->payrollRepository->storeDetail($payrollDetail);
-        }
-
-        $payroll->setTakeHomePay($takeHomePay);
-
-        $this->payrollRepository->store($payroll);
-        $this->payrollRepository->update();
+        return $takeHomePay;
     }
 }

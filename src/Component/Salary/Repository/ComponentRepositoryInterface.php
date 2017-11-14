@@ -15,4 +15,11 @@ interface ComponentRepositoryInterface
      * @return ComponentInterface|null
      */
     public function find(string $id): ? ComponentInterface;
+
+    /**
+     * @param string $code
+     *
+     * @return ComponentInterface|null
+     */
+    public function findByCode(string $code): ? ComponentInterface;
 }

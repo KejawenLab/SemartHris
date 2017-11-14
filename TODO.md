@@ -67,7 +67,10 @@
 - [X] Lembur Prosesor
 - [X] Tunjangan/Potongan Prosesor
 - [X] Payroll History
+- [X] Perhitungan Lembur
+- [ ] Validasi Proses Payroll harus melewati tanggal closing
 - [ ] Payroll List Query Builder
+- [ ] Payroll Detail
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List

@@ -16,8 +16,14 @@ class SalaryBenefitRepository extends Repository implements BenefitRepositoryInt
      *
      * @return BenefitInterface[]
      */
-    public function findByEmployee(EmployeeInterface $employee): array
+    public function findFixedByEmployee(EmployeeInterface $employee): array
     {
-        return $this->entityManager->getRepository($this->entityClass)->findBy(['employee' => $employee]);
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'b');
+        $queryBuilder->select('b');
+        $queryBuilder->innerJoin('b.component', 'c');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('c.fixed', $queryBuilder->expr()->literal(true)));
+
+        return $queryBuilder->getQuery()->getResult();
     }
 }

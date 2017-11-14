@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollDetailInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
@@ -61,17 +62,19 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     }
 
     /**
-     * @param PayrollInterface $payroll
+     * @param PayrollInterface   $payroll
+     * @param ComponentInterface $component
      *
      * @return PayrollDetailInterface
      */
-    public function createPayrollDetail(PayrollInterface $payroll): PayrollDetailInterface
+    public function createPayrollDetail(PayrollInterface $payroll, ComponentInterface $component): PayrollDetailInterface
     {
-        $payrollDetail = $this->findPayrollDetail($payroll);
+        $payrollDetail = $this->findPayrollDetail($payroll, $component);
         if (!$payrollDetail) {
             /** @var PayrollDetailInterface $payrollDetail */
             $payrollDetail = new $this->detailClass();
             $payrollDetail->setPayroll($payroll);
+            $payrollDetail->setComponent($component);
         }
 
         return $payrollDetail;
@@ -113,14 +116,16 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     }
 
     /**
-     * @param PayrollInterface $payroll
+     * @param PayrollInterface   $payroll
+     * @param ComponentInterface $component
      *
      * @return PayrollDetailInterface|null
      */
-    private function findPayrollDetail(PayrollInterface $payroll): ? PayrollDetailInterface
+    private function findPayrollDetail(PayrollInterface $payroll, ComponentInterface $component): ? PayrollDetailInterface
     {
         return $this->entityManager->getRepository($this->detailClass)->findOneBy([
             'payroll' => $payroll,
+            'component' => $component,
         ]);
     }
 }

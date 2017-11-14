@@ -15,5 +15,5 @@ interface BenefitRepositoryInterface
      *
      * @return BenefitInterface[]
      */
-    public function findByEmployee(EmployeeInterface $employee): array;
+    public function findFixedByEmployee(EmployeeInterface $employee): array;
 }

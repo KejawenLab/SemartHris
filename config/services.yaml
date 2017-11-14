@@ -165,8 +165,10 @@ services:
         lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor'
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
             - '@KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository'
             - '@KejawenLab\Application\SemartHris\Repository\SalaryAllowanceRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository'
         tags:

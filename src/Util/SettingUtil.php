@@ -19,9 +19,10 @@ class SettingUtil
     const ATTENDANCE_UPLOAD_PATH = 'attendance_upload_path';
     const OVERTIME_INVALID_MESSAGE = 'overtime_invalid_message';
     const OVERTIME_UPLOAD_PATH = 'overtime_upload_path';
+    const OVERTIME_COMPONENT_CODE = 'overtime_benefit_code';
     const SECURITY_ATTENDANCE_MENU = 'security_attendance_menu';
-    const SECURITY_OVERTIME_MENU = 'security_overtime_menu';
     const SECURITY_PAYROLL_MENU = 'security_payroll_menu';
+    const SECURITY_OVERTIME_MENU = 'security_overtime_menu';
 
     public static function get(string $key)
     {

@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Component\Salary\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollDetailInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
@@ -28,11 +29,12 @@ interface PayrollRepositoryInterface
     public function createPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): PayrollInterface;
 
     /**
-     * @param PayrollInterface $payroll
+     * @param PayrollInterface   $payroll
+     * @param ComponentInterface $component
      *
      * @return PayrollDetailInterface
      */
-    public function createPayrollDetail(PayrollInterface $payroll): PayrollDetailInterface;
+    public function createPayrollDetail(PayrollInterface $payroll, ComponentInterface $component): PayrollDetailInterface;
 
     /**
      * @param PayrollInterface $payroll

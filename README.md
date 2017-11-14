@@ -113,8 +113,12 @@ Jika Anda menemukan bug/celah keamaan pada aplikasi ini, Anda dapat mengirimkan 
 
 ## Preview
 
-![SemartHris Profil Karyawan Preview](preview.png)
+![SemartHris Profil Karyawan Preview](preview/preview.png)
 
-![SemartHris Laporan Absensi Preview](preview2.png)
+![SemartHris Laporan Absensi Preview](preview/preview2.png)
 
-![SemartHris API Preview](api-preview.png)
+![SemartHris Detail Gaji](preview/penggajian3.png)
+
+![SemartHris API Preview](preview/api-preview.png)
+
+Butuh lebih banyak screenshot? silahkan cek folder [preview](preview)

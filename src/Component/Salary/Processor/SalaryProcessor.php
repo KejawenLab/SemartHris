@@ -94,8 +94,7 @@ class SalaryProcessor implements ProcessorInterface
 
         $payroll = $this->payrollRepository->createPayroll($employee, $payrollPeriod);
 
-        $takeHomePay = $this->processFixedBenefit($employee, $payroll);
-        $takeHomePay = $this->processOvertime($employee, $date, $payroll, $takeHomePay);
+        $takeHomePay = $this->processOvertime($employee, $date, $payroll, $this->processFixedBenefit($employee, $payroll));
         $takeHomePay += $this->processAllowance($employee, $date, $payroll);
 
         $payroll->setTakeHomePay($takeHomePay);

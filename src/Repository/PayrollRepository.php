@@ -2,12 +2,14 @@
 
 namespace KejawenLab\Application\SemartHris\Repository;
 
+use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollDetailInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollRepositoryInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -127,5 +129,46 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
             'payroll' => $payroll,
             'component' => $component,
         ]);
+    }
+
+    /**
+     * @param Request     $request
+     * @param string      $sortDirection
+     * @param null|string $sortField
+     * @param null|string $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    public function createListQueryBuilder(Request $request, string $sortDirection = 'ASC', ?string $sortField, ?string $dqlFilter): QueryBuilder
+    {
+        $now = new \DateTime();
+        $year = $request->query->get('year', $now->format('Y'));
+        $month = $request->query->get('month', $now->format('n'));
+
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('entity');
+        $queryBuilder->from($this->entityClass, 'entity');
+        $queryBuilder->innerJoin('entity.employee', 'employee');
+        $queryBuilder->innerJoin('entity.period', 'period');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('period.year', $queryBuilder->expr()->literal($year)));
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('period.month', $queryBuilder->expr()->literal($month)));
+
+        if ($company = $request->query->get('company')) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('employee.company', $queryBuilder->expr()->literal($company)));
+        }
+
+        if ($employee = $request->query->get('employeeId')) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('employee.id', $queryBuilder->expr()->literal($employee)));
+        }
+
+        if (!empty($dqlFilter)) {
+            $queryBuilder->andWhere($dqlFilter);
+        }
+
+        if (null !== $sortField) {
+            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
+        }
+
+        return $queryBuilder;
     }
 }

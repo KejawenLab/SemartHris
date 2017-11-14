@@ -45,9 +45,9 @@ class AttendanceExtension extends \Twig_Extension
      */
     public function getFunctions(): array
     {
-        return array(
-            new \Twig_SimpleFunction('semarthris_create_attendance_preview', array($this, 'createAttendancePreview')),
-        );
+        return [
+            new \Twig_SimpleFunction('semarthris_create_attendance_preview', [$this, 'createAttendancePreview']),
+        ];
     }
 
     /**

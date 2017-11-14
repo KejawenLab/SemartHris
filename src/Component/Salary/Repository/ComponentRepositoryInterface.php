@@ -22,4 +22,11 @@ interface ComponentRepositoryInterface
      * @return ComponentInterface|null
      */
     public function findByCode(string $code): ? ComponentInterface;
+
+    /**
+     * @param string $state
+     *
+     * @return ComponentInterface[]
+     */
+    public function findByState(string $state): array;
 }

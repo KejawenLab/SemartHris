@@ -52,7 +52,7 @@ easy_admin:
         Payroll:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\Payroll'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\PayrollController'
             disabled_actions: ['show', 'search', 'new', 'edit', 'delete']
             templates:
                 list: 'app/payroll/history.html.twig'

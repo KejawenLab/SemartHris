@@ -38,23 +38,23 @@ class OvertimeController extends AdminController
         $this->request = $request;
 
         if (null === $request->request->get('entity')) {
-            return $this->redirectToRoute('easyadmin', array(
+            return $this->redirectToRoute('easyadmin', [
                 'action' => 'list',
                 'sortField' => 'overtimeDate',
                 'sortDirection' => 'DESC',
                 'entity' => 'Overtime',
-            ));
+            ]);
         }
 
         /** @var UploadedFile $overtime */
         $overtime = $request->files->get('overtime');
         if (null === $overtime) {
-            return $this->redirectToRoute('easyadmin', array(
+            return $this->redirectToRoute('easyadmin', [
                 'action' => 'list',
                 'sortField' => 'overtimeDate',
                 'sortDirection' => 'DESC',
                 'entity' => 'Overtime',
-            ));
+            ]);
         }
 
         $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), SettingUtil::get(SettingUtil::UPDATE_DESTIONATION), SettingUtil::get(SettingUtil::OVERTIME_UPLOAD_PATH));
@@ -89,12 +89,12 @@ class OvertimeController extends AdminController
         $importer = $this->container->get(OvertimeImporter::class);
         $importer->import($processor->getRecords());
 
-        return $this->redirectToRoute('easyadmin', array(
+        return $this->redirectToRoute('easyadmin', [
             'action' => 'list',
             'sortField' => 'overtimeDate',
             'sortDirection' => 'DESC',
             'entity' => 'Overtime',
-        ));
+        ]);
     }
 
     /**

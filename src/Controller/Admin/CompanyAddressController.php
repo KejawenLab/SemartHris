@@ -33,12 +33,12 @@ class CompanyAddressController extends AdminController
             $session->set('companyCode', $company->getCode());
         }
 
-        return $this->redirectToRoute('easyadmin', array(
+        return $this->redirectToRoute('easyadmin', [
             'action' => 'list',
             'sortField' => 'defaultAddress',
             'sortDirection' => 'DESC',
             'entity' => 'CompanyAddress',
-        ));
+        ]);
     }
 
     /**

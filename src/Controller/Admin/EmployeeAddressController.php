@@ -32,12 +32,12 @@ class EmployeeAddressController extends AdminController
             $session->set('employeeId', $employee->getId());
         }
 
-        return $this->redirectToRoute('easyadmin', array(
+        return $this->redirectToRoute('easyadmin', [
             'action' => 'list',
             'sortField' => 'defaultAddress',
             'sortDirection' => 'DESC',
             'entity' => 'EmployeeAddress',
-        ));
+        ]);
     }
 
     /**

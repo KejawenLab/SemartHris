@@ -28,9 +28,9 @@ class EmployeeExtension extends \Twig_Extension
      */
     public function getFunctions(): array
     {
-        return array(
-            new \Twig_SimpleFunction('semarthris_create_employee', array($this, 'getEmployee')),
-        );
+        return [
+            new \Twig_SimpleFunction('semarthris_create_employee', [$this, 'getEmployee']),
+        ];
     }
 
     /**

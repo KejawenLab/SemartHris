@@ -35,10 +35,10 @@ class CompanyDepartmentController extends AdminController
         $session->set('companyId', $company->getId());
         $session->set('companyCode', $company->getCode());
 
-        return $this->redirectToRoute('easyadmin', array(
+        return $this->redirectToRoute('easyadmin', [
             'action' => 'list',
             'entity' => 'CompanyDepartment',
-        ));
+        ]);
     }
 
     /**
@@ -48,12 +48,12 @@ class CompanyDepartmentController extends AdminController
     {
         $session = $this->get('session');
         if (!$session->get('companyId')) {
-            return $this->redirectToRoute('easyadmin', array(
+            return $this->redirectToRoute('easyadmin', [
                 'action' => 'list',
                 'sortField' => 'name',
                 'sortDirection' => 'DESC',
                 'entity' => 'Company',
-            ));
+            ]);
         }
 
         return parent::listAction();

@@ -68,8 +68,10 @@
 - [X] Tunjangan/Potongan Prosesor
 - [X] Payroll History
 - [X] Perhitungan Lembur
-- [ ] Validasi Proses Payroll harus melewati tanggal closing
-- [ ] Payroll List Query Builder
+- [X] Validasi Proses Payroll harus melewati tanggal closing
+- [X] Payroll List Query Builder
+- [ ] Form Tunjangan dan Potongan
+- [ ] Filter Payroll Period
 - [ ] Payroll Detail
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
 - [ ] Security Per Action

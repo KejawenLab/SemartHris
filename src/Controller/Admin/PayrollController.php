@@ -2,8 +2,10 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
+use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
+use KejawenLab\Application\SemartHris\Repository\PayrollRepository;
 use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -46,5 +48,18 @@ class PayrollController extends AdminController
         }
 
         return new JsonResponse(['message' => 'OK']);
+    }
+
+    /**
+     * @param string $entityClass
+     * @param string $sortDirection
+     * @param null   $sortField
+     * @param null   $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
+    {
+        return $this->container->get(PayrollRepository::class)->createListQueryBuilder($this->request, $sortDirection, $sortField, $dqlFilter);
     }
 }

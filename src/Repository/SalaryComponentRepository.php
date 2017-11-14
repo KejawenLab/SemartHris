@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\ComponentRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Service\ValidateStateType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -28,5 +29,19 @@ class SalaryComponentRepository extends Repository implements ComponentRepositor
     public function findByCode(string $code): ? ComponentInterface
     {
         return $this->entityManager->getRepository($this->entityClass)->findOneBy(['code' => $code]);
+    }
+
+    /**
+     * @param string $state
+     *
+     * @return ComponentInterface[]
+     */
+    public function findByState(string $state): array
+    {
+        if (!ValidateStateType::isValidType($state)) {
+            return [];
+        }
+
+        return $this->entityManager->getRepository($this->entityClass)->findBy(['state' => $state]);
     }
 }

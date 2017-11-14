@@ -27,6 +27,12 @@ services:
         tags:
             - { name: 'twig.extension' }
 
+    KejawenLab\Application\SemartHris\Twig\SalaryComponentExtension:
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
+        tags:
+            - { name: 'twig.extension' }
+
     KejawenLab\Application\SemartHris\Twig\SemartViewExtension:
         tags:
             - { name: 'twig.extension' }

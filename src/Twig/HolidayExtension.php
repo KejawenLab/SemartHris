@@ -27,11 +27,11 @@ class HolidayExtension extends \Twig_Extension
      */
     public function getFunctions(): array
     {
-        return array(
-            new \Twig_SimpleFunction('semarthris_is_holiday', array($this, 'isHoliday')),
-            new \Twig_SimpleFunction('semarthris_holiday', array($this, 'getHoliday')),
-            new \Twig_SimpleFunction('semarthris_is_weekend_holiday', array($this, 'isWeekendHoliday')),
-        );
+        return [
+            new \Twig_SimpleFunction('semarthris_is_holiday', [$this, 'isHoliday']),
+            new \Twig_SimpleFunction('semarthris_holiday', [$this, 'getHoliday']),
+            new \Twig_SimpleFunction('semarthris_is_weekend_holiday', [$this, 'isWeekendHoliday']),
+        ];
     }
 
     /**

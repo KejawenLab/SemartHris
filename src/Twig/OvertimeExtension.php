@@ -45,9 +45,9 @@ class OvertimeExtension extends \Twig_Extension
      */
     public function getFunctions(): array
     {
-        return array(
-            new \Twig_SimpleFunction('semarthris_create_overtime_preview', array($this, 'createOvertimePreview')),
-        );
+        return [
+            new \Twig_SimpleFunction('semarthris_create_overtime_preview', [$this, 'createOvertimePreview']),
+        ];
     }
 
     /**

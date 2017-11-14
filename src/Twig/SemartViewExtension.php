@@ -14,10 +14,10 @@ class SemartViewExtension extends \Twig_Extension
      */
     public function getFunctions(): array
     {
-        return array(
-            new \Twig_SimpleFunction('semarthris_month_options', array($this, 'createMonthOptions')),
-            new \Twig_SimpleFunction('semarthris_year_options', array($this, 'createYearOptions')),
-        );
+        return [
+            new \Twig_SimpleFunction('semarthris_month_options', [$this, 'createMonthOptions']),
+            new \Twig_SimpleFunction('semarthris_year_options', [$this, 'createYearOptions']),
+        ];
     }
 
     /**

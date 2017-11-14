@@ -42,23 +42,23 @@ class AttendanceController extends AdminController
         $this->request = $request;
 
         if (null === $request->request->get('entity')) {
-            return $this->redirectToRoute('easyadmin', array(
+            return $this->redirectToRoute('easyadmin', [
                 'action' => 'list',
                 'sortField' => 'attendanceDate',
                 'sortDirection' => 'DESC',
                 'entity' => 'Attendance',
-            ));
+            ]);
         }
 
         /** @var UploadedFile $attendance */
         $attendance = $request->files->get('attendance');
         if (null === $attendance) {
-            return $this->redirectToRoute('easyadmin', array(
+            return $this->redirectToRoute('easyadmin', [
                 'action' => 'list',
                 'sortField' => 'attendanceDate',
                 'sortDirection' => 'DESC',
                 'entity' => 'Attendance',
-            ));
+            ]);
         }
 
         $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), SettingUtil::get(SettingUtil::UPDATE_DESTIONATION), SettingUtil::get(SettingUtil::ATTENDANCE_UPLOAD_PATH));
@@ -93,12 +93,12 @@ class AttendanceController extends AdminController
         $importer = $this->container->get(AttendanceImporter::class);
         $importer->import($processor->getRecords());
 
-        return $this->redirectToRoute('easyadmin', array(
+        return $this->redirectToRoute('easyadmin', [
             'action' => 'list',
             'sortField' => 'attendanceDate',
             'sortDirection' => 'DESC',
             'entity' => 'Attendance',
-        ));
+        ]);
     }
 
     /**
@@ -139,7 +139,7 @@ class AttendanceController extends AdminController
         $fields = $this->entity['list']['fields'];
         $paginator = $this->findAll($this->entity['class'], $this->request->query->get('page', 1), $this->config['list']['max_results'], $this->request->query->get('sortField'), $this->request->query->get('sortDirection'), $this->entity['list']['dql_filter']);
 
-        $this->dispatch(EasyAdminEvents::POST_LIST, array('paginator' => $paginator));
+        $this->dispatch(EasyAdminEvents::POST_LIST, ['paginator' => $paginator]);
 
         $output = [];
         /** @var AttendanceInterface[] $results */
@@ -149,12 +149,12 @@ class AttendanceController extends AdminController
         }
 
         if (!$results) {
-            return $this->render($this->entity['templates']['list'], array(
+            return $this->render($this->entity['templates']['list'], [
                 'paginator' => $paginator,
                 'results' => $output,
                 'fields' => $fields,
                 'delete_form_template' => $this->createDeleteForm($this->entity['name'], '__id__')->createView(),
-            ));
+            ]);
         }
 
         if ('DESC' === $this->request->query->get('sortDirection')) {
@@ -190,12 +190,12 @@ class AttendanceController extends AdminController
             }
         }
 
-        return $this->render($this->entity['templates']['list'], array(
+        return $this->render($this->entity['templates']['list'], [
             'paginator' => $paginator,
             'results' => $output,
             'fields' => $fields,
             'delete_form_template' => $this->createDeleteForm($this->entity['name'], '__id__')->createView(),
-        ));
+        ]);
     }
 
     /**

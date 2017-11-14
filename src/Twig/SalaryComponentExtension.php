@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Twig;
 
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\ComponentRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Service\ValidateStateType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -33,6 +34,16 @@ class SalaryComponentExtension extends \Twig_Extension
     }
 
     /**
+     * @return array
+     */
+    public function getFilters(): array
+    {
+        return [
+            new \Twig_SimpleFilter('semarthris_component_state', [$this, 'convertToStateText']),
+        ];
+    }
+
+    /**
      * @param string $state
      *
      * @return string
@@ -46,5 +57,15 @@ class SalaryComponentExtension extends \Twig_Extension
         }
 
         return $options;
+    }
+
+    /**
+     * @param string $state
+     *
+     * @return string
+     */
+    public function convertToStateText(string $state): string
+    {
+        return ValidateStateType::convertToText($state);
     }
 }

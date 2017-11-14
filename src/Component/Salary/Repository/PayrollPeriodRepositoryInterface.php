@@ -29,6 +29,11 @@ interface PayrollPeriodRepositoryInterface
     /**
      * @param PayrollPeriodInterface $payrollPeriod
      */
+    public function closeExcept(PayrollPeriodInterface $payrollPeriod): void;
+
+    /**
+     * @param PayrollPeriodInterface $payrollPeriod
+     */
     public function update(PayrollPeriodInterface $payrollPeriod): void;
 
     /**

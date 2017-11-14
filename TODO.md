@@ -71,9 +71,10 @@
 - [X] Validasi Proses Payroll harus melewati tanggal closing
 - [X] Payroll List Query Builder
 - [X] Form Tunjangan dan Potongan
-- [ ] Filter Tunjangan dan Potongan List
-- [ ] Filter Payroll Period
+- [X] Filter Tunjangan dan Potongan List
+- [X] Filter Payroll Period
 - [ ] Payroll Detail
+- [ ] Payroll Reopen
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List

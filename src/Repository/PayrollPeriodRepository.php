@@ -49,6 +49,20 @@ class PayrollPeriodRepository extends Repository implements PayrollPeriodReposit
     /**
      * @param PayrollPeriodInterface $payrollPeriod
      */
+    public function closeExcept(PayrollPeriodInterface $payrollPeriod): void
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'o');
+        $queryBuilder->update();
+        $queryBuilder->set('o.closed', $queryBuilder->expr()->literal(true));
+        $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($payrollPeriod->getId())));
+
+        $queryBuilder->getQuery()->execute();
+    }
+
+    /**
+     * @param PayrollPeriodInterface $payrollPeriod
+     */
     public function update(PayrollPeriodInterface $payrollPeriod): void
     {
         $manager = $this->entityManager;

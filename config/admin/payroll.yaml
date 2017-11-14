@@ -16,7 +16,7 @@ easy_admin:
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'year', label: 'Tahun', type: 'text' }
                     - { property: 'month', label: 'Bulan', type: 'text', template: 'app/default/field_month.html.twig' }
-                    - { property: 'closed', label: 'Ditutup?' }
+                    - { property: 'closed', label: 'Aktif?', template: 'app/default/field_boolean_negation.html.twig' }
 
         SalaryBenefit:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
@@ -61,7 +61,25 @@ easy_admin:
             list:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Riwayat Penggajian'
+                actions:
+                    - { name: 'payroll_detail', type: 'route', icon: 'search', label: false, title: 'Detil Penggajian' }
                 fields:
-                    - { property: 'period', label: 'Periode' }
+                    - { property: 'period.year', label: 'Tahun' }
+                    - { property: 'period.month', label: 'Bulan', template: 'app/default/field_month.html.twig' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'takeHomePay', label: 'Total Gaji', type: 'float', template: 'app/default/field_currency.html.twig' }
+
+        PayrollDetail:
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\PayrollDetail'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
+            disabled_actions: ['show', 'search', 'new', 'edit', 'delete']
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Detil Penggajian'
+                fields:
+                    - { property: 'payroll.period.year', label: 'Tahun' }
+                    - { property: 'payroll.period.month', label: 'Bulan', template: 'app/default/field_month.html.twig' }
+                    - { property: 'payroll.employee', label: 'Karyawan' }
+                    - { property: 'component.state', label: 'Tipe', template: 'app/default/benefit_state.html.twig' }
+                    - { property: 'benefitValue', label: 'Total', type: 'float', template: 'app/default/field_currency.html.twig' }

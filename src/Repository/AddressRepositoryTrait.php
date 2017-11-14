@@ -19,7 +19,6 @@ trait AddressRepositoryTrait
     public function unsetDefaultExcept(AddressInterface $address): void
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
-        $queryBuilder->select('o');
         $queryBuilder->from($this->getEntityClass(), 'o');
         $queryBuilder->update();
         $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));

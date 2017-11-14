@@ -46,11 +46,20 @@ class SalaryAllowanceRepository extends Repository implements AllowanceRepositor
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('entity');
         $queryBuilder->from($this->entityClass, 'entity');
+        $queryBuilder->innerJoin('entity.employee', 'employee');
         $queryBuilder->innerJoin('entity.component', 'component');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('component.fixed', $queryBuilder->expr()->literal(false)));
         $queryBuilder->andWhere($queryBuilder->expr()->eq('component.state', $queryBuilder->expr()->literal($state)));
         $queryBuilder->andWhere($queryBuilder->expr()->eq('entity.year', $queryBuilder->expr()->literal($year)));
         $queryBuilder->andWhere($queryBuilder->expr()->eq('entity.month', $queryBuilder->expr()->literal($month)));
+
+        if ($company = $request->query->get('company')) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('employee.company', $queryBuilder->expr()->literal($company)));
+        }
+
+        if ($employee = $request->query->get('employeeId')) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('employee.id', $queryBuilder->expr()->literal($employee)));
+        }
 
         if (!empty($dqlFilter)) {
             $queryBuilder->andWhere($dqlFilter);

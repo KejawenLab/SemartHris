@@ -104,34 +104,6 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     }
 
     /**
-     * @param EmployeeInterface      $employee
-     * @param PayrollPeriodInterface $period
-     *
-     * @return PayrollInterface|null
-     */
-    private function findPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): ? PayrollInterface
-    {
-        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
-            'employee' => $employee,
-            'period' => $period,
-        ]);
-    }
-
-    /**
-     * @param PayrollInterface   $payroll
-     * @param ComponentInterface $component
-     *
-     * @return PayrollDetailInterface|null
-     */
-    private function findPayrollDetail(PayrollInterface $payroll, ComponentInterface $component): ? PayrollDetailInterface
-    {
-        return $this->entityManager->getRepository($this->detailClass)->findOneBy([
-            'payroll' => $payroll,
-            'component' => $component,
-        ]);
-    }
-
-    /**
      * @param Request     $request
      * @param string      $sortDirection
      * @param null|string $sortField
@@ -170,5 +142,33 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
         }
 
         return $queryBuilder;
+    }
+
+    /**
+     * @param EmployeeInterface      $employee
+     * @param PayrollPeriodInterface $period
+     *
+     * @return PayrollInterface|null
+     */
+    private function findPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): ? PayrollInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
+            'employee' => $employee,
+            'period' => $period,
+        ]);
+    }
+
+    /**
+     * @param PayrollInterface   $payroll
+     * @param ComponentInterface $component
+     *
+     * @return PayrollDetailInterface|null
+     */
+    private function findPayrollDetail(PayrollInterface $payroll, ComponentInterface $component): ? PayrollDetailInterface
+    {
+        return $this->entityManager->getRepository($this->detailClass)->findOneBy([
+            'payroll' => $payroll,
+            'component' => $component,
+        ]);
     }
 }

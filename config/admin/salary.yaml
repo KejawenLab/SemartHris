@@ -42,10 +42,11 @@ easy_admin:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
-            disabled_actions: ['search']
+            disabled_actions: ['search', 'show']
             templates:
-                new: 'app/payroll/allowance.html.twig'
-                edit: 'app/payroll/allowance_edit.html.twig'
+                new: 'app/allowance/new.html.twig'
+                edit: 'app/allowance/edit.html.twig'
+                list: 'app/allowance/list.html.twig'
             new:
                 title: 'Tambah Tunjangan'
             edit:
@@ -70,7 +71,7 @@ easy_admin:
                 title: 'Tunjangan'
                 fields:
                     - { property: 'year', label: 'Tahun', type: 'text' }
-                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'month', label: 'Bulan', template: 'app/default/field_month.html.twig' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'component', label: 'Tunjangan' }
                     - { property: 'benefitValue', label: 'Nilai' }
@@ -79,10 +80,11 @@ easy_admin:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryAllowanceController'
-            disabled_actions: ['search']
+            disabled_actions: ['search', 'show']
             templates:
-                new: 'app/payroll/allowance.html.twig'
-                edit: 'app/payroll/allowance_edit.html.twig'
+                new: 'app/allowance/new.html.twig'
+                edit: 'app/allowance/edit.html.twig'
+                list: 'app/allowance/list.html.twig'
             new:
                 title: 'Tambah Potongan'
             edit:
@@ -107,7 +109,7 @@ easy_admin:
                 title: 'Potongan'
                 fields:
                     - { property: 'year', label: 'Tahun', type: 'text' }
-                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'month', label: 'Bulan', template: 'app/default/field_month.html.twig' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'component', label: 'Potongan' }
                     - { property: 'benefitValue', label: 'Nilai' }

@@ -21,6 +21,16 @@ class SemartViewExtension extends \Twig_Extension
     }
 
     /**
+     * @return array
+     */
+    public function getFilters(): array
+    {
+        return [
+            new \Twig_SimpleFilter('semarthris_month_text', [$this, 'convertToMonthText']),
+        ];
+    }
+
+    /**
      * @return string
      */
     public function createMonthOptions(): string
@@ -49,5 +59,15 @@ class SemartViewExtension extends \Twig_Extension
         }
 
         return $options;
+    }
+
+    /**
+     * @param int $month
+     *
+     * @return null|string
+     */
+    public function convertToMonthText(int $month): ? string
+    {
+        return MonthUtil::convertToText($month);
     }
 }

@@ -51,6 +51,21 @@ class PayrollController extends AdminController
     }
 
     /**
+     * @Route("/payroll/detail", name="payroll_detail")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function payrollDetailAction(Request $request)
+    {
+        return $this->redirectToRoute('easyadmin', [
+            'action' => 'list',
+            'entity' => 'PayrollDetail',
+        ]);
+    }
+
+    /**
      * @param string $entityClass
      * @param string $sortDirection
      * @param null   $sortField

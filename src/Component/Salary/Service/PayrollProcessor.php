@@ -66,13 +66,12 @@ class PayrollProcessor
             if ($prev->getMonth() !== $period->getMonth() - 1) {
                 throw new \InvalidArgumentException(sprintf('Previous period must be processed before processing it period.'));
             }
-
-            $prev->setClosed(true);
-            $this->payrollPeriodRepository->update($prev);
         }
 
         if ($period->isClosed()) {
             throw new InvalidPayrollPeriodException($date);
         }
+
+        $this->payrollPeriodRepository->closeExcept($period);
     }
 }

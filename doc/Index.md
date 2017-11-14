@@ -1,2 +1,5 @@
-﻿Step By Step How to Use SemartHris!
-====================================
+Table of ContentsHow to Use SemartHris
+=================================
+
+ 1. Administrator
+ 2. Master Data

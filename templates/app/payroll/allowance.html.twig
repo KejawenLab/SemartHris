@@ -22,7 +22,7 @@
 
             __positive();
             change_static_select(locale);
-            salary_component_autocomplete('m', locale, emptyText);
+            salary_component_autocomplete('{{ app.request.session.get('SALARY_ALLOWANCE_STATE') }}', locale, emptyText);
         });
     </script>
 {% endblock %}

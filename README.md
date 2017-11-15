@@ -46,7 +46,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Clone/Download repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
 - [X] Build image dengan [`docker-compose`](https://docs.docker.com/compose) dengan menjalankan `docker-compose build && docker-compose up` 
 - [X] Jalankan perintah `docker exec -it semarthris_db_1 psql -U semarthris`, bila perlu memasukkan password, masukkan `semarthris`
-- [X] Jalankan perintah `CREATE EXTENSION IF NOT EXISTS "uuid-ossp"` untuk mengaktifkan ekstensi UUID.
+- [X] Jalankan perintah `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";` untuk mengaktifkan ekstensi UUID.
 - [X] Jalankan perintah `docker-compose exec app bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `docker-compose exec app bin/console doctrine:fixtures:load -n` untuk *populate initial* data
 - [X] Buka halaman `<HOST>:8000/admin` untuk halaman admin
@@ -68,7 +68,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 ```
 - [X] Jalankan perintah `php bin/console doctrine:database:drop --force` untuk menghapus database lama (**optional**)
 - [X] Jalankan perintah `php bin/console doctrine:database:create` untuk membuat database
-- [X] Aktifkan ekstensi UUID dengan menjalankan perintah `CREATE EXTENSION IF NOT EXISTS "uuid-ossp"` pada Console DB/PgAdmin
+- [X] Aktifkan ekstensi UUID dengan menjalankan perintah `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";` pada Console DB/PgAdmin
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data
 - [X] Simpan username dan password yang ditampilkan untuk digunakan mengakses aplikasi

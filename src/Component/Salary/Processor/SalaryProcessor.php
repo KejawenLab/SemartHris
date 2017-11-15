@@ -138,7 +138,7 @@ class SalaryProcessor implements ProcessorInterface
         $allowances = $this->allowanceRepository->findByEmployeeAndDate($employee, $date);
         foreach ($allowances as $allowance) {
             $benefitValue = $this->encryptor->decrypt($allowance->getBenefitValue(), $allowance->getBenefitKey());
-            if ($allowance->getComponent() && $allowance->getComponent()->getState() === StateType::STATE_PLUS) {
+            if ($allowance->getComponent() && StateType::STATE_PLUS === $allowance->getComponent()->getState()) {
                 $totalAllowance += $benefitValue;
             } else {
                 $totalAllowance -= $benefitValue;

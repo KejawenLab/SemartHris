@@ -14,6 +14,19 @@
         <env name="APP_DEBUG" value="1" />
         <env name="APP_SECRET" value="s$cretf0rt3st" />
         <!-- define your env variables for the test env here -->
+
+        <!-- ###+ symfony/framework-bundle ### -->
+        <env name="APP_ENV" value="dev"/>
+        <env name="APP_DEBUG" value="1"/>
+        <env name="APP_SECRET" value="4efba7d5fc98633bc4bf412b0c531499"/>
+        <!-- ###- symfony/framework-bundle ### -->
+
+        <!-- ###+ doctrine/doctrine-bundle ### -->
+        <!-- Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url -->
+        <!-- For an SQLite database, use: "sqlite:///%kernel.project_dir%/var/data.db" -->
+        <!-- Set "serverVersion" to your server version to avoid edge-case exceptions and extra database calls -->
+        <env name="DATABASE_URL" value="mysql://db_user:db_password@127.0.0.1:3306/db_name?charset=utf8mb4&amp;serverVersion=5.7"/>
+        <!-- ###- doctrine/doctrine-bundle ### -->
     </php>
 
     <testsuites>

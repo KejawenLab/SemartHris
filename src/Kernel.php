@@ -62,7 +62,7 @@ class Kernel extends BaseKernel implements CompilerPassInterface
             $loader->load($confDir.'/packages/'.$this->environment.'/**/*'.self::CONFIG_EXTS, 'glob');
         }
         $loader->load($confDir.'/admin/*'.self::CONFIG_EXTS, 'glob');
-        $loader->load($confDir.'/semart/*'.self::CONFIG_EXTS, 'glob');
+        $loader->load($confDir.'/semarthris/*'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/services'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/services_'.$this->environment.self::CONFIG_EXTS, 'glob');
     }

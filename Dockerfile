@@ -94,7 +94,7 @@ COPY templates templates/
 COPY translations translations/
 COPY uploads uploads/
 COPY Makefile ./Makefile
-COPY .env.dist ./.env.dist
+COPY .env.dist ./.env
 
 RUN composer dump-autoload --optimize --classmap-authoritative
 

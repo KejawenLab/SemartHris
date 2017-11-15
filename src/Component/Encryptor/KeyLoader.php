@@ -23,14 +23,15 @@ class KeyLoader
     private $pharse;
 
     /**
-     * @param string $keyDir
-     * @param string $pharse
+     * @param string $privateKeyPath
+     * @param string $publicKeyPath
+     * @param string $passPharse
      */
-    public function __construct(string $keyDir, string $pharse)
+    public function __construct(string $privateKeyPath, string $publicKeyPath, string $passPharse)
     {
-        $this->publicKeyPath = sprintf('%s/public.pem', $keyDir);
-        $this->privateKeyPath = sprintf('%s/private.pem', $keyDir);
-        $this->pharse = $pharse;
+        $this->publicKeyPath = $privateKeyPath;
+        $this->privateKeyPath = $publicKeyPath;
+        $this->pharse = $passPharse;
     }
 
     /**

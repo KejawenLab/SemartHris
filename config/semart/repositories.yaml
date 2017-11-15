@@ -12,6 +12,11 @@ services:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\City']]
 
+    KejawenLab\Application\SemartHris\Repository\RegionRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Region']]
+
     KejawenLab\Application\SemartHris\Repository\DepartmentRepository:
         lazy: true
         calls:

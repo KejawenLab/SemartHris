@@ -97,7 +97,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      *
      * @return EmployeeInterface
      */
-    public function find(string $id): ? EmployeeInterface
+    public function find(?string $id): ? EmployeeInterface
     {
         return $this->doFind($id);
     }
@@ -140,7 +140,9 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         $queryBuilder->addSelect('e.fullName');
         $queryBuilder->orWhere($queryBuilder->expr()->like('e.code', ':search'));
         $queryBuilder->orWhere($queryBuilder->expr()->like('e.fullName', ':search'));
-        $queryBuilder->setParameter('search', sprintf('%%%s%%', $request->query->get('search')));
+        $queryBuilder->setParameter('search', sprintf('%%%s%%', StringUtil::uppercase($request->query->get('search'))));
+        $queryBuilder->andWhere($queryBuilder->expr()->isNull('e.resignDate'));
+        $queryBuilder->orWhere($queryBuilder->expr()->gte('e.resignDate', $queryBuilder->expr()->literal(date('Y-m-d 23:59:59'))));
 
         return $queryBuilder->getQuery()->getResult();
     }
@@ -199,10 +201,14 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function findByUsername(string $username): ? UserInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
-            'username' => $username,
-            'resignDate' => null,
-        ]);
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('e');
+        $queryBuilder->from($this->entityClass, 'e');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('e.username', $queryBuilder->expr()->literal($username)));
+        $queryBuilder->andWhere($queryBuilder->expr()->isNull('e.resignDate'));
+        $queryBuilder->orWhere($queryBuilder->expr()->gte('e.resignDate', $queryBuilder->expr()->literal(date('Y-m-d 23:59:59'))));
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
     /**

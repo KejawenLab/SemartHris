@@ -15,7 +15,7 @@ class JobLevelRepository extends Repository implements JobLevelRepositoryInterfa
      *
      * @return JobLevelInterface
      */
-    public function find(string $id): ? JobLevelInterface
+    public function find(?string $id): ? JobLevelInterface
     {
         return $this->doFind($id);
     }

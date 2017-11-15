@@ -33,7 +33,7 @@ class JobTitleRepository extends Repository implements JobTitleRepositoryInterfa
      *
      * @return JobTitleInterface
      */
-    public function find(string $id): ? JobTitleInterface
+    public function find(?string $id): ? JobTitleInterface
     {
         return $this->doFind($id);
     }

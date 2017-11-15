@@ -4,9 +4,12 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Repository\CityRepository;
+use KejawenLab\Application\SemartHris\Repository\RegionRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -28,6 +31,29 @@ class CityController extends AdminController
     }
 
     /**
+     * @Route("/city/filter", name="city_filter")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function filterByRegionAction(Request $request)
+    {
+        $region = $this->container->get(RegionRepository::class)->find($request->query->get('id'));
+        if (!$region) {
+            throw new AccessDeniedHttpException();
+        }
+
+        $session = $this->get('session');
+        $session->set('regionId', $region->getId());
+
+        return $this->redirectToRoute('easyadmin', [
+            'action' => 'list',
+            'entity' => 'City',
+        ]);
+    }
+
+    /**
      * @param string $entityClass
      * @param string $searchQuery
      * @param array  $searchableFields
@@ -39,6 +65,6 @@ class CityController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return CityRepository::createQueryBuilderForSearch($this->getDoctrine(), $searchQuery, $searchableFields, $sortField, $sortDirection, $dqlFilter);
+        return CityRepository::createQueryBuilderForSearch($this->request, $this->getDoctrine(), $searchQuery, $searchableFields, $sortField, $sortDirection, $dqlFilter);
     }
 }

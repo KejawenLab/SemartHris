@@ -17,7 +17,7 @@ class SalaryComponentRepository extends Repository implements ComponentRepositor
      *
      * @return null|ComponentInterface
      */
-    public function find(string $id): ? ComponentInterface
+    public function find(?string $id): ? ComponentInterface
     {
         return $this->doFind($id);
     }

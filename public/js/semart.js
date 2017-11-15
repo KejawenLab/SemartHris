@@ -312,7 +312,7 @@ function employee_search(locale) {
         minimumInputLength: 2,
         theme: 'bootstrap',
         language: locale,
-        tags: true,
+        cache: true,
         ajax: {
             url: Routing.generate('employee_search'),
             data: function (params) {
@@ -325,7 +325,39 @@ function employee_search(locale) {
                 $.each(data.employees, function (idx, val) {
                     results.push({
                         id: val.id,
-                        text: val.code + ' - ' +val.fullName
+                        text: val.code + ' - ' + val.fullName
+                    });
+                });
+
+                return {
+                    results: results
+                };
+            }
+        }
+    });
+}
+
+function region_search(locale) {
+    var regionSelect = $('.region-search');
+
+    regionSelect.select2({
+        minimumInputLength: 2,
+        theme: 'bootstrap',
+        language: locale,
+        cache: true,
+        ajax: {
+            url: Routing.generate('region_search'),
+            data: function (params) {
+                return {
+                    search: params.term.toUpperCase()
+                };
+            },
+            processResults: function (data) {
+                var results = [];
+                $.each(data.regions, function (idx, val) {
+                    results.push({
+                        id: val.id,
+                        text: val.code + ' - ' + val.name
                     });
                 });
 

@@ -14,7 +14,7 @@ interface ComponentRepositoryInterface
      *
      * @return ComponentInterface|null
      */
-    public function find(string $id): ? ComponentInterface;
+    public function find(?string $id): ? ComponentInterface;
 
     /**
      * @param string $code

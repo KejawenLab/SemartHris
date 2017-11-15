@@ -32,7 +32,7 @@ class ReasonRepository extends Repository implements ReasonRepositoryInterface
      *
      * @return ReasonInterface|null
      */
-    public function find(string $id): ? ReasonInterface
+    public function find(?string $id): ? ReasonInterface
     {
         return $this->doFind($id);
     }

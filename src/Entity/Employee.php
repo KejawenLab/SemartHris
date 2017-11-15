@@ -910,7 +910,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      */
     public function isResign(): bool
     {
-        $now = new \DateTime();
+        $now = \DateTime::createFromFormat('Y-m-d 00:00:00', date('Y-m-d'));
         if (!$this->getResignDate()) {
             return false;
         }

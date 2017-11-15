@@ -16,7 +16,7 @@ class ContractRepository extends Repository implements ContractRepositoryInterfa
      *
      * @return ContractInterface|null
      */
-    public function find(string $id): ? ContractInterface
+    public function find(?string $id): ? ContractInterface
     {
         return $this->doFind($id);
     }

@@ -16,7 +16,7 @@ class DepartmentRepository extends Repository implements DepartmentRepositoryInt
      *
      * @return DepartmentInterface
      */
-    public function find(string $id): ? DepartmentInterface
+    public function find(?string $id): ? DepartmentInterface
     {
         return $this->doFind($id);
     }

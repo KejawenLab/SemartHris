@@ -7,17 +7,19 @@ services:
     app:
         build: .
         restart: always
+        env_file:
+            - ./.env
         environment:
             SYMFONY_ENV: dev
             VARNISH_CONFIG: /etc/varnish/default.vcl
             CACHE_SIZE: 512m
             VARNISHD_PARAMS: -p default_ttl=3600 -p default_grace=3600
             VARNISH_PORT: 80
-            SEMART_DB_DRIVER: mysql
+            SEMART_DB_DRIVER: pgsql
             SEMART_DB_USER: semarthris
             SEMART_DB_PASSWORD: semarthris
             SEMART_DB_HOST: db
-            SEMART_DB_PORT: 3306
+            SEMART_DB_PORT: 5432
             SEMART_DB_NAME: semarthris
         volumes:
             - ./uploads:/semarthris/uploads
@@ -27,13 +29,12 @@ services:
             - db
 
     db:
-        image: mariadb:latest
+        image: postgres:alpine
         restart: always
         environment:
-            MYSQL_USER: semarthris
-            MYSQL_PASSWORD: semarthris
-            MYSQL_DATABASE: semarthris
-            MYSQL_ROOT_PASSWORD: semarthris
+            POSTGRES_USER: semarthris
+            POSTGRES_PASSWORD: semarthris
+            POSTGRES_DB: semarthris
         volumes:
             - ./database:/var/lib/mysql
 

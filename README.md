@@ -9,7 +9,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 ## Minimum Requirement
 
 - [X] PHP versi 7.1.7 dan extension yang diperlukan selama instalasi menggunakan composer
-- [X] RDBMS (MySQL, MariaDB, PostgreSQL atau lainnya) yang disupport oleh [Doctrine](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html)
+- [X] PostgreSQL Database minimal versi 9.6
 - [X] Web Server (Apache, Nginx atau IIS)
 - [X] APCu extension (untuk Production)
 

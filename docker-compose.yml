@@ -2,13 +2,11 @@
 # This setting is used only in development environment
 # The infrastructure is already in production but the application need to be make sure
 ###
-version: '2'
+version: '3'
 services:
     app:
         build: .
         restart: always
-        env_file:
-            - ./.env
         environment:
             SYMFONY_ENV: dev
             VARNISH_CONFIG: /etc/varnish/default.vcl

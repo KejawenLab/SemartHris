@@ -76,7 +76,6 @@ WORKDIR /semarthris
 
 COPY composer.json ./
 COPY composer.lock ./
-COPY Makefile ./Makefile
 
 RUN mkdir -p \
         var/cache \
@@ -94,6 +93,8 @@ COPY src src/
 COPY templates templates/
 COPY translations translations/
 COPY uploads uploads/
+COPY Makefile ./Makefile
+COPY .env.dist ./.env.dist
 
 RUN composer dump-autoload --optimize --classmap-authoritative
 

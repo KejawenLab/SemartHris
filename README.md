@@ -13,7 +13,10 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Web Server (Apache, Nginx atau IIS)
 - [X] APCu extension (untuk Production)
 
-**NOTE**: Sistem ini dikembangkan menggunakan lingkungan pengembangan Linux, pengembang tidak menjamin jika sistem ini dapat berjalan dengan baik pada sistem operasi lain.
+**NOTE**: 
+
+- [X] Sistem ini dikembangkan menggunakan lingkungan pengembangan Linux, pengembang tidak menjamin jika sistem ini dapat berjalan dengan baik pada sistem operasi lain.
+- [X] Walaupun dapat berjalan DB Engine lain seperti MySQL, namun sistem ini hanya mensupport untuk database PostgreSQL.
 
 ## Fitur
 
@@ -42,6 +45,8 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 
 - [X] Clone/Download repository `git clone https://github.com/KejawenLab/SemartHris.git` dan pindah ke folder `SemartHris`
 - [X] Build image dengan [`docker-compose`](https://docs.docker.com/compose) dengan menjalankan `docker-compose build && docker-compose up` 
+- [X] Jalankan perintah `docker exec -it semarthris_db_1 psql -U semarthris`, bila perlu memasukkan password, masukkan `semarthris`
+- [X] Jalankan perintah `CREATE EXTENSION IF NOT EXISTS "uuid-ossp"` untuk mengaktifkan ekstensi UUID.
 - [X] Jalankan perintah `docker-compose exec app bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `docker-compose exec app bin/console doctrine:fixtures:load -n` untuk *populate initial* data
 - [X] Buka halaman `<HOST>:8000/admin` untuk halaman admin
@@ -54,15 +59,16 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Jalankan [Composer](https://getcomposer.org/download) Install/Update `composer update --prefer-dist -vvv`
 - [X] Setup koneksi database pada `.env`
 ```lang=bash
-  SEMART_DB_DRIVER="mysql"
-  SEMART_DB_USER="root"
-  SEMART_DB_PASSWORD="password"
-  SEMART_DB_HOST="127.0.0.1"
-  SEMART_DB_PORT="3306"
-  SEMART_DB_NAME="semarthris"
+    SEMART_DB_DRIVER="pgsql"
+    SEMART_DB_USER="semarthris"
+    SEMART_DB_PASSWORD="semarthris"
+    SEMART_DB_HOST="db"
+    SEMART_DB_PORT="5432"
+    SEMART_DB_NAME="semarthris"
 ```
 - [X] Jalankan perintah `php bin/console doctrine:database:drop --force` untuk menghapus database lama (**optional**)
 - [X] Jalankan perintah `php bin/console doctrine:database:create` untuk membuat database
+- [X] Aktifkan ekstensi UUID dengan menjalankan perintah `CREATE EXTENSION IF NOT EXISTS "uuid-ossp"` pada Console DB/PgAdmin
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data
 - [X] Simpan username dan password yang ditampilkan untuk digunakan mengakses aplikasi

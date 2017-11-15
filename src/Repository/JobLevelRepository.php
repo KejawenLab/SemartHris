@@ -17,6 +17,6 @@ class JobLevelRepository extends Repository implements JobLevelRepositoryInterfa
      */
     public function find(string $id): ? JobLevelInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 }

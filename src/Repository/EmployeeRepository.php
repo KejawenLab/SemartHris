@@ -99,7 +99,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function find(string $id): ? EmployeeInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**

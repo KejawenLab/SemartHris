@@ -34,7 +34,7 @@ class ReasonRepository extends Repository implements ReasonRepositoryInterface
      */
     public function find(string $id): ? ReasonInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**

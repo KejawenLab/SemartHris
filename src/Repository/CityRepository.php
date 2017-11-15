@@ -74,6 +74,6 @@ class CityRepository extends Repository implements CityRepositoryInterface
      */
     public function find(string $id): ? CityInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 }

@@ -18,7 +18,7 @@ class DepartmentRepository extends Repository implements DepartmentRepositoryInt
      */
     public function find(string $id): ? DepartmentInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**

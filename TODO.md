@@ -73,6 +73,7 @@
 - [X] Form Tunjangan dan Potongan
 - [X] Filter Tunjangan dan Potongan List
 - [X] Filter Payroll Period
+- [ ] Filter Propinsi di Kota
 - [ ] Payroll Detail
 - [ ] Payroll Reopen
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji

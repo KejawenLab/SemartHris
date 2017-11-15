@@ -35,6 +35,6 @@ class JobTitleRepository extends Repository implements JobTitleRepositoryInterfa
      */
     public function find(string $id): ? JobTitleInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 }

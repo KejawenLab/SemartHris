@@ -19,7 +19,7 @@ class SalaryComponentRepository extends Repository implements ComponentRepositor
      */
     public function find(string $id): ? ComponentInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**

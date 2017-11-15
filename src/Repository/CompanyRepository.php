@@ -43,7 +43,7 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
      */
     public function find(string $id): ? CompanyInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**

@@ -16,7 +16,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 **NOTE**: 
 
 - [X] Sistem ini dikembangkan menggunakan lingkungan pengembangan Linux, pengembang tidak menjamin jika sistem ini dapat berjalan dengan baik pada sistem operasi lain.
-- [X] Walaupun dapat berjalan DB Engine lain seperti MySQL, namun sistem ini hanya mensupport untuk database PostgreSQL.
+- [X] Walaupun dapat berjalan pada DB Engine lain seperti MySQL, namun sistem ini hanya mensupport untuk database PostgreSQL.
 
 ## Fitur
 

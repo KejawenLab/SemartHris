@@ -15,11 +15,6 @@ use KejawenLab\Application\SemartHris\Util\StringUtil;
 class AttendanceImporter
 {
     /**
-     * @var AttendanceCalculator
-     */
-    private $attendanceCalculator;
-
-    /**
      * @var EmployeeRepositoryInterface
      */
     private $employeeRepository;
@@ -40,20 +35,17 @@ class AttendanceImporter
     private $attendanceClass;
 
     /**
-     * @param AttendanceCalculator          $attendanceCalculator
      * @param EmployeeRepositoryInterface   $employeeRepository
      * @param ReasonRepositoryInterface     $reasonRepository
      * @param AttendanceRepositoryInterface $attendanceRepository
      * @param string                        $class
      */
     public function __construct(
-        AttendanceCalculator $attendanceCalculator,
         EmployeeRepositoryInterface $employeeRepository,
         ReasonRepositoryInterface $reasonRepository,
         AttendanceRepositoryInterface $attendanceRepository,
         string $class
     ) {
-        $this->attendanceCalculator = $attendanceCalculator;
         $this->employeeRepository = $employeeRepository;
         $this->reasonRepository = $reasonRepository;
         $this->attendanceRepository = $attendanceRepository;
@@ -72,18 +64,20 @@ class AttendanceImporter
                 continue;
             }
 
-            /* @var AttendanceInterface $object */
             if (!$employee = $this->employeeRepository->findByCode(StringUtil::sanitize($attendance['employee_code']))) {
                 continue;
             }
 
             $attendanceDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), StringUtil::sanitize($attendance['date']));
+            /* @var AttendanceInterface $object */
             $object = $this->attendanceRepository->findByEmployeeAndDate($employee, $attendanceDate);
             if (!$object) {
                 $object = new $this->attendanceClass();
                 $object->setAttendanceDate($attendanceDate);
                 $object->setEmployee($employee);
             }
+
+            $object->setLateIn(-1);
 
             if (!(isset($attendance['check_in']) && $attendance['check_in']) || !(isset($attendance['check_out']) && $attendance['check_out'])) {
                 $object->setAbsent(true);
@@ -96,7 +90,6 @@ class AttendanceImporter
                 $object->setCheckOut(\DateTime::createFromFormat('H:i', StringUtil::sanitize($attendance['check_out'])));
             }
 
-            $this->attendanceCalculator->calculate($object);
             $this->attendanceRepository->update($object);
         }
     }

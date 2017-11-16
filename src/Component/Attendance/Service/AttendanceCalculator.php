@@ -60,7 +60,7 @@ class AttendanceCalculator
      * @param AttendanceInterface $attendance
      * @param ShiftmentInterface  $shiftment
      */
-    public function doCalculate(AttendanceInterface $attendance, ShiftmentInterface $shiftment): void
+    private function doCalculate(AttendanceInterface $attendance, ShiftmentInterface $shiftment): void
     {
         /** @var \DateTime $startHour */
         $startHour = $shiftment->getStartHour();

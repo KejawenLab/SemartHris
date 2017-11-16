@@ -15,6 +15,10 @@
         <env name="APP_SECRET" value="s$cretf0rt3st" />
         <!-- define your env variables for the test env here -->
 
+        <!-- ###+ SEMARTHRIS ### -->
+        <env name="SEMART_DATE_FORMAT" value="d-m-Y"/>
+        <!-- ###- SEMARTHRIS ### -->
+
         <!-- ###+ symfony/framework-bundle ### -->
         <env name="APP_ENV" value="dev"/>
         <env name="APP_DEBUG" value="1"/>

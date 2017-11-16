@@ -48,6 +48,9 @@ class AttendanceProcessor
      */
     private $reasonCode;
 
+    /**
+     * @var int
+     */
     private $cutOffDate;
 
     /**

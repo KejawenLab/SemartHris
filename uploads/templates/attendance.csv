@@ -1,4 +1,4 @@
-date,employee_code,check_in,check_out,absent,reason_code
+date,employee_code,check_in,check_out,reason_code
 02-10-2017,MIS000001,08:00,17:00,,
 03-10-2017,MIS000001,08:00,17:00,,
 04-10-2017,MIS000001,08:00,17:00,,
@@ -18,6 +18,6 @@ date,employee_code,check_in,check_out,absent,reason_code
 24-10-2017,MIS000001,08:00,17:00,,
 25-10-2017,MIS000001,08:00,17:00,,
 26-10-2017,MIS000001,08:00,17:00,,
-27-10-2017,MIS000001,,,true,SKT
+27-10-2017,MIS000001,,,SKT
 30-10-2017,MIS000001,08:00,17:00,,
 31-10-2017,MIS000001,08:00,17:00,,

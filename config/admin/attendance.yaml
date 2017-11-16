@@ -137,8 +137,10 @@ easy_admin:
         AttendanceSummary:
             role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\AttendanceSummary'
-            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
-            disabled_actions: ['show', 'new', 'edit', 'delete']
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AttendanceSummaryController'
+            disabled_actions: ['search', 'show', 'new', 'edit', 'delete']
+            templates:
+                list: 'app/attendance/history.html.twig'
             search:
                 title: 'Riwayat Absensi'
             list:

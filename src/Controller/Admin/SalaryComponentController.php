@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -23,10 +24,23 @@ class SalaryComponentController extends AdminController
      *
      * @return JsonResponse
      */
-    public function processAction(Request $request)
+    public function findByStateAction(Request $request)
     {
         $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_PAYROLL_MENU));
 
         return new JsonResponse(['components' => $this->container->get(SalaryComponentRepository::class)->findByState($request->query->get('state', StateType::STATE_PLUS))]);
+    }
+
+    /**
+     * @Route("/salary-component/fixed", name="fixed_component", options={"expose"=true})
+     * @Method("GET")
+     *
+     * @return Response
+     */
+    public function findFixedAction()
+    {
+        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_PAYROLL_MENU));
+
+        return new JsonResponse(['components' => $this->container->get(SalaryComponentRepository::class)->findFixed()]);
     }
 }

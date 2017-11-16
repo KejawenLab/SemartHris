@@ -32,7 +32,10 @@ class Encryptor
      */
     public function encrypt($plain): string
     {
-        $this->key = $this->generateKey();
+        if (!$this->key) {
+            $this->key = $this->generateKey();
+        }
+
         $result = openssl_public_encrypt(sprintf('%s#%s', $this->key, $plain), $encryptedData, $this->keyLoader->getPublicKey());
         if (!$result) {
             return $plain;

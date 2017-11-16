@@ -185,6 +185,12 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
 
+    KejawenLab\Application\SemartHris\Component\Salary\Service\ChangeBenefit:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor'
+
     KejawenLab\Application\SemartHris\Component\Setting\Setting:
         lazy: true
         arguments:

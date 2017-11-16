@@ -37,28 +37,28 @@ class ExceptionSubscriber implements EventSubscriberInterface
      */
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
-        $exception = $event->getException();
-        if ($exception instanceof HttpExceptionInterface) {
-            return;
-        }
-
-        if ($event->getRequest()->isXmlHttpRequest()) {
-            return;
-        }
-
-        $this->logger->error(sprintf('Message: %s => Trace: %s', $exception->getMessage(), $exception->getTraceAsString()));
-
-        $response = new Response();
-        $response->setContent($this->serializer->serialize([
-            'file' => $exception->getFile(),
-            'message' => $exception->getMessage(),
-            'line' => $exception->getLine(),
-            'trace' => $exception->getTraceAsString(),
-        ], 'json'));
-        $response->setStatusCode(Response::HTTP_NOT_ACCEPTABLE);
-
-        $event->setResponse($response);
-        $event->stopPropagation();
+//        $exception = $event->getException();
+//        if ($exception instanceof HttpExceptionInterface) {
+//            return;
+//        }
+//
+//        if ($event->getRequest()->isXmlHttpRequest()) {
+//            return;
+//        }
+//
+//        $this->logger->error(sprintf('Message: %s => Trace: %s', $exception->getMessage(), $exception->getTraceAsString()));
+//
+//        $response = new Response();
+//        $response->setContent($this->serializer->serialize([
+//            'file' => $exception->getFile(),
+//            'message' => $exception->getMessage(),
+//            'line' => $exception->getLine(),
+//            'trace' => $exception->getTraceAsString(),
+//        ], 'json'));
+//        $response->setStatusCode(Response::HTTP_NOT_ACCEPTABLE);
+//
+//        $event->setResponse($response);
+//        $event->stopPropagation();
     }
 
     /**

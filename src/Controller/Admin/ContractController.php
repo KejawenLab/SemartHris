@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
+use KejawenLab\Application\SemartHris\Component\Contract\ContractType;
 use KejawenLab\Application\SemartHris\Form\Manipulator\ContractManipulator;
 use KejawenLab\Application\SemartHris\Repository\ContractRepository;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
@@ -37,6 +38,16 @@ class ContractController extends AdminController
         }
 
         return new JsonResponse(['tags' => $result]);
+    }
+
+    /**
+     * @Route("/contract/employee", name="contract_employee", options={"expose"=true})
+     *
+     * @return Response
+     */
+    public function findEmployeeContractAction()
+    {
+        return new JsonResponse(['contracts' => $this->container->get(ContractRepository::class)->findByType(ContractType::CONTRACT_EMPLOYEE)]);
     }
 
     /**

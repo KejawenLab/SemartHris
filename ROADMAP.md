@@ -56,5 +56,6 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [ ] Email Notification
 - [ ] Dokumentasi
 - [ ] Pre rilis
+- [ ] Installation Page
 - [ ] Perbaikan dan pemantapan sebelum rilis
 - [ ] Rilis

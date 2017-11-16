@@ -33,6 +33,7 @@ class SemartViewExtension extends \Twig_Extension
 
     /**
      * @param Request $request
+     *
      * @return string
      */
     public function createMonthOptions(Request $request): string
@@ -48,7 +49,7 @@ class SemartViewExtension extends \Twig_Extension
     }
 
     /**
-     * @param int $limit
+     * @param int     $limit
      * @param Request $request
      *
      * @return string

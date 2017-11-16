@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\KejawenLab\Application\SemartHris\Component\Attendance\Service;
+
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;

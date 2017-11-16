@@ -104,10 +104,10 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
     }
 
     /**
-     * @param null $sortField
-     * @param null $sortDirection
-     * @param null $dqlFilter
-     * @param bool $useCompanyFilter
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
+     * @param bool        $useCompanyFilter
      *
      * @return QueryBuilder
      */
@@ -133,11 +133,11 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
     }
 
     /**
-     * @param string $entityClass
-     * @param null   $sortField
-     * @param null   $sortDirection
-     * @param null   $dqlFilter
-     * @param bool   $useCompanyFilter
+     * @param string      $entityClass
+     * @param null|string $sortField
+     * @param string      $sortDirection
+     * @param null|string $dqlFilter
+     * @param bool        $useCompanyFilter
      *
      * @return QueryBuilder
      */

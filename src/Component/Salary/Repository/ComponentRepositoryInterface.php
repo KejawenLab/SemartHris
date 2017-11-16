@@ -24,6 +24,11 @@ interface ComponentRepositoryInterface
     public function findByCode(string $code): ? ComponentInterface;
 
     /**
+     * @return ComponentInterface[]
+     */
+    public function findFixed(): array;
+
+    /**
      * @param string $state
      *
      * @return ComponentInterface[]

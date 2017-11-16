@@ -130,7 +130,7 @@
             company_autocomplete(emptyText, '{{ app.request.query.get('company') }}');
             department_autocomplete(locale, emptyText);
 
-            employee_search(locale);
+            employee_search('{{ _select2_locale }}');
             $('.employee-search').change();
         });
     </script>

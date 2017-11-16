@@ -55,6 +55,13 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\ChangeBenefitSubscriber:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Salary\Service\ChangeBenefit'
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
     KejawenLab\Application\SemartHris\EventListener\EncryptorSubscriber:
         lazy: true
         arguments:

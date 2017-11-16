@@ -22,9 +22,10 @@ easy_admin:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryBenefitController'
-            disabled_actions: ['show', 'edit', 'delete']
+            disabled_actions: ['show', 'edit', 'delete', 'search']
             templates:
                 new: 'app/payroll/new.html.twig'
+                list: 'app/salary/list.html.twig'
             new:
                 title: 'Setting Gaji'
             edit:
@@ -48,6 +49,43 @@ easy_admin:
                     - { property: 'component', label: 'Komponen Gaji' }
                     - { property: 'component.fixed', label: 'Tetap?', type: 'boolean' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'float', template: 'app/default/field_currency.html.twig' }
+
+        SalaryBenefitHistory:
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\SalaryBenefitHistory'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\SalaryBenefitHistoryController'
+            disabled_actions: ['show', 'edit', 'delete', 'search']
+            templates:
+                new: 'app/salary/change_benefit.html.twig'
+                list: 'app/salary/list.html.twig'
+            new:
+                title: 'Perubahan Gaji'
+            edit:
+                title: 'Perubahan Gaji'
+            search:
+                title: 'Perubahan Gaji'
+                fields: ['employee']
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
+                    - { property: 'contract_text', label: 'Surat Keputusan', type: 'choice', type_options: { required: true, attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-6 new-row' }
+                    - { property: 'component', type: 'hidden', type_options: { attr: { class: 'component-id' } } }
+                    - { property: 'component_text', label: 'Komponen Gaji', type: 'choice', type_options: { required: true, attr: { class: 'component-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'newBenefitValue', label: 'Nilai', type: 'text', type_options: { attr: { class: 'positive' } } }
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Perubahan Gaji'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'component', label: 'Komponen Gaji' }
+                    - { property: 'component.fixed', label: 'Tetap?', type: 'boolean' }
+                    - { property: 'newbenefitValue', label: 'Nilai Baru', type: 'float', template: 'app/default/field_currency.html.twig' }
+                    - { property: 'oldbenefitValue', label: 'Nilai Lama', type: 'float', template: 'app/default/field_currency.html.twig' }
 
         Payroll:
             role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'

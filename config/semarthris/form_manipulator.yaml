@@ -50,6 +50,12 @@ services:
             - []
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveTypeTextFieldSubscriber' ]
 
+    KejawenLab\Application\SemartHris\Form\Manipulator\BenefitHistoryManipulator:
+        lazy: true
+        arguments:
+            - { contract: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ContractTransformer', component: '@KejawenLab\Application\SemartHris\Form\DataTransformer\SalaryComponentTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveContractTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveComponentTextFieldSubscriber' ]
+
     KejawenLab\Application\SemartHris\Form\Manipulator\UserManipulator:
         lazy: true
         arguments:

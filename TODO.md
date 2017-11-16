@@ -75,7 +75,7 @@
 - [X] Filter Payroll Period
 - [X] Filter Propinsi di Kota (Bug di select2 list kota)
 - [X] Payroll Detail
-- [ ] Filter Riwayat Absensi
+- [X] Filter Riwayat Absensi
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List

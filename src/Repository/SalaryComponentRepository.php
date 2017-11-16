@@ -33,6 +33,20 @@ class SalaryComponentRepository extends Repository implements ComponentRepositor
     }
 
     /**
+     * @return ComponentInterface[]
+     */
+    public function findFixed(): array
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'c');
+        $queryBuilder->select('c.id, c.code, c.name');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('c.fixed', $queryBuilder->expr()->literal(true)));
+        $queryBuilder->andWhere($queryBuilder->expr()->neq('c.code', $queryBuilder->expr()->literal(SettingUtil::get(SettingUtil::OVERTIME_COMPONENT_CODE))));
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
      * @param string $state
      *
      * @return ComponentInterface[]

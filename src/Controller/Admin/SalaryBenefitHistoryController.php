@@ -3,13 +3,13 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
-use KejawenLab\Application\SemartHris\Form\Manipulator\SalaryBenefitManipulator;
-use KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository;
+use KejawenLab\Application\SemartHris\Form\Manipulator\BenefitHistoryManipulator;
+use KejawenLab\Application\SemartHris\Repository\SalaryBenefitHistoryRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class SalaryBenefitController extends AdminController
+class SalaryBenefitHistoryController extends AdminController
 {
     /**
      * @param object $entity
@@ -21,7 +21,7 @@ class SalaryBenefitController extends AdminController
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
 
-        return $this->container->get(SalaryBenefitManipulator::class)->manipulate($builder, $entity);
+        return $this->container->get(BenefitHistoryManipulator::class)->manipulate($builder, $entity);
     }
 
     /**
@@ -34,6 +34,6 @@ class SalaryBenefitController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
-        return $this->container->get(SalaryBenefitRepository::class)->createListQueryBuilder($this->request, $sortDirection, $sortField, $dqlFilter);
+        return SalaryBenefitHistoryRepository::createListQueryBuilder($this->request, $this->getDoctrine(), $sortDirection, $sortField, $dqlFilter);
     }
 }

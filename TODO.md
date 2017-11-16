@@ -78,7 +78,8 @@
 - [X] Filter Riwayat Absensi
 - [X] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
 - [X] Validasi UUID pada Repository
-- [ ] Security Per Action
+- [X] Security Per Action
 - [ ] Created and Updated Log in List
+- [ ] Microcache Query
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

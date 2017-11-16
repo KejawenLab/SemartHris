@@ -57,7 +57,7 @@ abstract class Fixture extends Base
                         $value = $this->getReference(StringUtil::uppercase(str_replace('ref:', '', $value)));
                     }
 
-                    if (false !== strpos($value, 'date:')) {
+                    if (is_string($value) && false !== strpos($value, 'date:')) {
                         $value = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), str_replace('date:', '', $value));
                     }
 

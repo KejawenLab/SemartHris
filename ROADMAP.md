@@ -25,6 +25,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 ### Fase II
 
+- [ ] BPJS Kesehatan
 - [ ] Unit Test
 - [ ] Menejemen Cuti
 - [ ] PPH21

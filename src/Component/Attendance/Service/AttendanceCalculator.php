@@ -29,6 +29,10 @@ class AttendanceCalculator
      */
     public function calculate(AttendanceInterface $attendance): void
     {
+        if (-1 === $attendance->getLateIn()) {
+            $attendance->setLateIn(0);
+        }
+
         $workshift = $this->workshiftRepository->findByEmployeeAndDate($attendance->getEmployee(), $attendance->getAttendanceDate());
         if (!$workshift) {
             return;

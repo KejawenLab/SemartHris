@@ -73,9 +73,9 @@
 - [X] Form Tunjangan dan Potongan
 - [X] Filter Tunjangan dan Potongan List
 - [X] Filter Payroll Period
-- [ ] Filter Propinsi di Kota (Bug di select2 list kota)
-- [ ] Payroll Detail
-- [ ] Payroll Reopen
+- [X] Filter Propinsi di Kota (Bug di select2 list kota)
+- [X] Payroll Detail
+- [ ] Filter Riwayat Absensi
 - [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List

@@ -322,6 +322,7 @@ function employee_search(locale) {
             },
             processResults: function (data) {
                 var results = [];
+                console.log(data.employees);
                 $.each(data.employees, function (idx, val) {
                     results.push({
                         id: val.id,
@@ -354,6 +355,7 @@ function region_search(locale) {
             },
             processResults: function (data) {
                 var results = [];
+                console.log(data.regions);
                 $.each(data.regions, function (idx, val) {
                     results.push({
                         id: val.id,

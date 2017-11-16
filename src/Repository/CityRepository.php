@@ -29,7 +29,7 @@ class CityRepository extends Repository implements CityRepositoryInterface
      */
     public static function createQueryBuilderForSearch(Request $request, ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
-        $queryBuilder = self::createListBuilderForSearch($request, $managerRegistry, $sortField, $sortDirection, $dqlFilter);
+        $queryBuilder = self::createListQueryBuilder($request, $managerRegistry, $sortField, $sortDirection, $dqlFilter);
         $queryBuilder->orWhere($queryBuilder->expr()->like('entity.code', 'query'));
         $queryBuilder->orWhere($queryBuilder->expr()->like('entity.name', 'query'));
         $queryBuilder->setParameter('query', sprintf('%%%s%%', StringUtil::uppercase($searchQuery)));
@@ -46,7 +46,7 @@ class CityRepository extends Repository implements CityRepositoryInterface
      *
      * @return QueryBuilder
      */
-    public static function createListBuilderForSearch(Request $request, ManagerRegistry $managerRegistry, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
+    public static function createListQueryBuilder(Request $request, ManagerRegistry $managerRegistry, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(City::class);
@@ -54,7 +54,7 @@ class CityRepository extends Repository implements CityRepositoryInterface
         $queryBuilder->select('entity');
         $queryBuilder->from(City::class, 'entity');
 
-        $region = $request->query->get('regionId');
+        $region = $request->getSession()->get('regionId');
         if ($region) {
             $queryBuilder->andWhere($queryBuilder->expr()->eq('entity.region', $queryBuilder->expr()->literal($region)));
         }

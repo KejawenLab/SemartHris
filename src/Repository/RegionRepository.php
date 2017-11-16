@@ -31,6 +31,7 @@ class RegionRepository extends Repository implements RegionRepositoryInterface
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->from($this->entityClass, 'r');
+        $queryBuilder->addSelect('r.id');
         $queryBuilder->addSelect('r.code');
         $queryBuilder->addSelect('r.name');
         $queryBuilder->orWhere($queryBuilder->expr()->like('r.code', ':search'));

@@ -19,11 +19,10 @@
                     <div class="col-sm-7">
                         <form method="get" action="{{ path('city_filter') }}">
                             <div class="input-group">
-                                <select class="region-search static-select" name="id">
+                                <select class="region-search" name="id">
                                     {% if region is not null %}
                                         <option value="{{ region.id }}">{{ region.code ~ ' ' ~ region.name }}</option>
                                     {% endif %}
-                                    <option></option>
                                 </select>
                                 <span class="input-group-btn">
                                     <button class="btn" type="submit">
@@ -103,6 +102,9 @@
         $(document).ready(function() {
             region_search('{{ _select2_locale }}');
             $('.region-search').change();
+
+            employee_search('{{ _select2_locale }}');
+            $('.employee-search').change();
         });
     </script>
 {% endblock %}

@@ -29,8 +29,8 @@ class KeyLoader
      */
     public function __construct(string $privateKeyPath, string $publicKeyPath, string $passPharse)
     {
-        $this->publicKeyPath = $privateKeyPath;
-        $this->privateKeyPath = $publicKeyPath;
+        $this->privateKeyPath = $privateKeyPath;
+        $this->publicKeyPath = $publicKeyPath;
         $this->pharse = $passPharse;
     }
 

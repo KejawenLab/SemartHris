@@ -65,6 +65,10 @@ abstract class Fixture extends Base
                         $value = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), sprintf('%s-%s', str_replace('year:', '', $value), date('Y')));
                     }
 
+                    if (is_string($value) && false !== strpos($value, 'hour')) {
+                        $value = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::HOUR_FORMAT), str_replace('hour:', '', $value));
+                    }
+
                     $accessor->setValue($entity, $key, $value);
                 }
             }

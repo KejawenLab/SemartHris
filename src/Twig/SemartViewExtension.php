@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Twig;
 
 use KejawenLab\Application\SemartHris\Util\MonthUtil;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -31,13 +32,16 @@ class SemartViewExtension extends \Twig_Extension
     }
 
     /**
+     * @param Request $request
      * @return string
      */
-    public function createMonthOptions(): string
+    public function createMonthOptions(Request $request): string
     {
+        $selected = $request->query->get('month', date('n'));
+
         $options = '';
         foreach (MonthUtil::getMonths() as $key => $month) {
-            $options .= sprintf('<option value="%d" %s>%s</option>', $key, date('n') == $key ? 'selected="selected"' : '', $month);
+            $options .= sprintf('<option value="%d" %s>%s</option>', $key, $selected == $key ? 'selected="selected"' : '', $month);
         }
 
         return $options;
@@ -45,17 +49,19 @@ class SemartViewExtension extends \Twig_Extension
 
     /**
      * @param int $limit
+     * @param Request $request
      *
      * @return string
      */
-    public function createYearOptions($limit = 7): string
+    public function createYearOptions($limit = 7, Request $request): string
     {
         $yearNow = date('Y');
+        $selected = $request->query->get('year', $yearNow);
 
         $options = '';
         for ($i = 0; $i <= $limit; ++$i) {
             $year = $yearNow - $i;
-            $options .= sprintf('<option value="%d" %s>%s</option>', $year, $year == $yearNow ? 'selected="selected"' : '', $year);
+            $options .= sprintf('<option value="%d" %s>%s</option>', $year, $year == $selected ? 'selected="selected"' : '', $year);
         }
 
         return $options;

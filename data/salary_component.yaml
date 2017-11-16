@@ -1,0 +1,7 @@
+- { code: 'GP', state: 'p', name: 'GAJI POKOK', fixed: true, ref: 'gp' }
+- { code: 'TJ', state: 'p', name: 'TUNJANGAN JABATAN', fixed: true, ref: 'tj' }
+- { code: 'UM', state: 'p', name: 'UANG MAKAN', fixed: false, ref: 'um' }
+- { code: 'UT', state: 'p', name: 'UANG TRANSPORT', fixed: false, ref: 'ut' }
+- { code: 'OT', state: 'p', name: 'TUNJANGAN LEMBUR', fixed: false, ref: 'ot' }
+- { code: 'TBPJSTK', state: 'p', name: 'TUNJANGAN BPJS TK', fixed: true, ref: 'tbjpstk' }
+- { code: 'PL', state: 'm', name: 'POTONGAN LAIN-LAIN', fixed: false, ref: 'pl' }

@@ -52,6 +52,7 @@ class OvertimeCalculator
      */
     public function calculate(OvertimeInterface $overtime): void
     {
+        $overtime->setDescription(str_replace(sprintf('%s#', Kernel::SEMART_VERSION), '', $overtime->getDescription()));
         if (!$this->checker->allowToOvertime($overtime)) {
             $this->setInvalid($overtime);
 
@@ -74,8 +75,6 @@ class OvertimeCalculator
         $overtime->setShiftment($workshift->getShiftment());
         $this->calculator->setWorkdayPerWeek($this->workDay);
         $this->calculator->calculate($overtime);
-
-        $overtime->setDescription(str_replace(sprintf('%s#', Kernel::SEMART_VERSION), '', $overtime->getDescription()));
     }
 
     /**

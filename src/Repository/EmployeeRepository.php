@@ -16,6 +16,7 @@ use KejawenLab\Application\SemartHris\Entity\Company;
 use KejawenLab\Application\SemartHris\Entity\EmployeeAddress;
 use KejawenLab\Application\SemartHris\Entity\JobLevel;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Util\UuidUtil;
 use KejawenLab\Library\PetrukUsername\Repository\UsernameInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -73,6 +74,10 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function findByCompany(string $companyId): array
     {
+        if (!$companyId || !UuidUtil::isValid($companyId)) {
+            return [];
+        }
+
         $company = $this->entityManager->getRepository(Company::class)->find($companyId);
         if (!$company) {
             return [];

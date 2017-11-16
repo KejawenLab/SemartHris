@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Salary\Processor\InvalidPayrollPeriodException;
 use KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use KejawenLab\Application\SemartHris\Repository\PayrollRepository;
@@ -30,12 +31,17 @@ class PayrollController extends AdminController
     {
         $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_PAYROLL_MENU));
 
-        $month = (int) $request->request->get('month', date('n'));
-        $year = (int) $request->request->get('year', date('Y'));
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         $employees = $employeeRepository->findByCompany($request->request->get('company', ''));
         if (empty($employees)) {
             $employees = $employeeRepository->findAll();
+        }
+
+        $month = (int) $request->request->get('month', date('n'));
+        $year = (int) $request->request->get('year', date('Y'));
+        $period = \DateTime::createFromFormat('Y-n', sprintf('%s-%s', $year, $month));
+        if ($month > date('n')) {
+            throw new InvalidPayrollPeriodException($period);
         }
 
         $processor = $this->container->get(PayrollProcessor::class);
@@ -44,7 +50,7 @@ class PayrollController extends AdminController
                 continue;
             }
 
-            $processor->process($employee, \DateTime::createFromFormat('Y-n', sprintf('%s-%s', $year, $month)));
+            $processor->process($employee, $period);
         }
 
         return new JsonResponse(['message' => 'OK']);

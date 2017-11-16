@@ -11,5 +11,5 @@ class StateType
     const STATE_PLUS = 'p';
 
     const STATE_MINUS_TEXT = 'POTONGAN';
-    const STATE_PLUS_TEXT = 'TUNJANGAN';
+    const STATE_PLUS_TEXT = 'PEMASUKAN';
 }

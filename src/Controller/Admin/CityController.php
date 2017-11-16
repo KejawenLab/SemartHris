@@ -55,6 +55,19 @@ class CityController extends AdminController
 
     /**
      * @param string $entityClass
+     * @param null   $sortDirection
+     * @param null   $sortField
+     * @param null   $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    protected function createListQueryBuilder($entityClass, $sortDirection = null, $sortField = null, $dqlFilter = null)
+    {
+        return CityRepository::createListQueryBuilder($this->request, $this->getDoctrine(), $sortField, $sortDirection, $dqlFilter);
+    }
+
+    /**
+     * @param string $entityClass
      * @param string $searchQuery
      * @param array  $searchableFields
      * @param null   $sortField

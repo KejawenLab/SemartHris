@@ -42,16 +42,22 @@ class CheckContract
         $count = 0;
         $repositories = $this->contractableRepositoryFactory->getRepositories();
         foreach ($repositories as $repository) {
-            if ($exists = $repository->findByContract($contractable->getContract())) {
-                foreach ($exists as $exist) {
-                    if ($contractable->getId()) {
-                        if ($exist->getContract()->getId() !== $contractable->getContract()->getId()) {
-                            ++$count;
-                        }
-                    } else {
-                        if ($exist->getContract()->getId() === $contractable->getContract()->getId()) {
-                            ++$count;
-                        }
+            if (!$contractable->getContract()) {
+                continue;
+            }
+
+            if (!$exists = $repository->findByContract($contractable->getContract())) {
+                continue;
+            }
+
+            foreach ($exists as $exist) {
+                if ($contractable->getId()) {
+                    if ($exist->getContract()->getId() !== $contractable->getContract()->getId()) {
+                        ++$count;
+                    }
+                } else {
+                    if ($exist->getContract()->getId() === $contractable->getContract()->getId()) {
+                        ++$count;
                     }
                 }
             }

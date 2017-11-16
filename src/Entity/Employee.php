@@ -879,7 +879,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      */
     public function getRoles(): array
     {
-        return $this->roles ?? ['ROLE_USER'];
+        return $this->roles ?? [self::DEFAULT_ROLE];
     }
 
     /**

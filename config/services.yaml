@@ -201,7 +201,7 @@ services:
         arguments:
             - '%kernel.project_dir%%env(SEMART_PRIVATE_KEY_PATH)%'
             - '%kernel.project_dir%%env(SEMART_PUBLIC_KEY_PATH)%'
-            - !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_APP_CANONICAL
+            - !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_CANONICAL
 
     KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor:
         lazy: true

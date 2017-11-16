@@ -9,6 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\CityRepositoryInterface;
 use KejawenLab\Application\SemartHris\Entity\City;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Util\UuidUtil;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -77,6 +78,10 @@ class CityRepository extends Repository implements CityRepositoryInterface
      */
     public function findCityByRegion(string $regionId): array
     {
+        if (!$regionId || !UuidUtil::isValid($regionId)) {
+            return [];
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('o');
         $queryBuilder->from($this->entityClass, 'o');

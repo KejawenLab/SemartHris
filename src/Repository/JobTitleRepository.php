@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Repository\JobTitleRepositoryInterface;
+use KejawenLab\Application\SemartHris\Util\UuidUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -17,6 +18,10 @@ class JobTitleRepository extends Repository implements JobTitleRepositoryInterfa
      */
     public function findByJobLevel(string $jobLevelId): array
     {
+        if (!$jobLevelId || !UuidUtil::isValid($jobLevelId)) {
+            return [];
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('o');
         $queryBuilder->from($this->entityClass, 'o');

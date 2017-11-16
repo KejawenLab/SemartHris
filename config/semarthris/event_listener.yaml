@@ -12,7 +12,7 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Security\Service\PasswordSetter'
             - '@KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator'
-            - '%env(SEMART_APP_DEFAULT_PASSWORD)%'
+            - '%env(SEMART_DEFAULT_PASSWORD)%'
         tags:
             - { name: 'doctrine.event_subscriber' }
 

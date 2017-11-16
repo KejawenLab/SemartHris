@@ -29,6 +29,10 @@ class SalaryComponentRepository extends Repository implements ComponentRepositor
      */
     public function findByCode(string $code): ? ComponentInterface
     {
+        if (!$code) {
+            return null;
+        }
+
         return $this->entityManager->getRepository($this->entityClass)->findOneBy(['code' => $code]);
     }
 

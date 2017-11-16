@@ -28,5 +28,5 @@ interface ReasonRepositoryInterface
      *
      * @return ReasonInterface|null
      */
-    public function findByCode(string $code): ? ReasonInterface;
+    public function findAbsentReasonByCode(string $code): ? ReasonInterface;
 }

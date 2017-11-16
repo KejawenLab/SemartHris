@@ -78,7 +78,7 @@ abstract class Fixture extends Base
             if ($entity instanceof UserInterface) {
                 $this->output->writeln('<info>User baru telah dibuat!!!</info>');
                 $this->output->writeln(sprintf('<comment>Username: %s</comment>', $entity->getUsername()));
-                $this->output->writeln(sprintf('<comment>Password: %s</comment>', getenv('SEMART_APP_DEFAULT_PASSWORD')));
+                $this->output->writeln(sprintf('<comment>Password: %s</comment>', SettingUtil::get(SettingUtil::DEFAULT_PASSWORD)));
             }
         }
 

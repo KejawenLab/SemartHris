@@ -87,7 +87,7 @@ class AttendanceImporter
 
             if (!(isset($attendance['check_in']) && $attendance['check_in']) || !(isset($attendance['check_out']) && $attendance['check_out'])) {
                 $object->setAbsent(true);
-                if (isset($attendance['reason_code']) && $reason = $this->reasonRepository->findByCode($attendance['reason_code'])) {
+                if (isset($attendance['reason_code']) && $reason = $this->reasonRepository->findAbsentReasonByCode($attendance['reason_code'])) {
                     $object->setReason($reason);
                 }
             } else {

@@ -44,6 +44,10 @@ class ContractRepository extends Repository implements ContractRepositoryInterfa
      */
     public function findByType(string $type): array
     {
+        if (!$type) {
+            return [];
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('c.id, c.letterNumber, c.subject');
         $queryBuilder->from($this->entityClass, 'c');

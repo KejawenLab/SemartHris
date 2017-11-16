@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SalaryBenefitHistoryRepository
 {
+    use ContractableRepositoryTrait;
+
     /**
      * @param Request         $request
      * @param ManagerRegistry $managerRegistry

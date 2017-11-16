@@ -12,6 +12,7 @@ use KejawenLab\Application\SemartHris\Entity\Company;
 use KejawenLab\Application\SemartHris\Entity\CompanyAddress;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Util\UuidUtil;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
@@ -65,7 +66,11 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
      */
     public function findAddress(string $companyAddressId): ? CompanyAddressInterface
     {
-        return $this->entityManager->getRepository($this->getEntityClass())->find($companyAddressId);
+        if (!$companyAddressId || !UuidUtil::isValid($companyAddressId)) {
+            return null;
+        }
+
+        return $this->entityManager->getRepository($this->getAddressClass())->find($companyAddressId);
     }
 
     /**
@@ -113,7 +118,7 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
      */
     public function createAddressQueryBuilder(?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter, bool $useCompanyFilter = true)
     {
-        return $this->buildSearch($this->getEntityClass(), $sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
+        return $this->buildSearch($this->getAddressClass(), $sortField, $sortDirection, $dqlFilter, $useCompanyFilter);
     }
 
     /**
@@ -165,7 +170,7 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
     /**
      * @return string
      */
-    public function getEntityClass(): string
+    public function getAddressClass(): string
     {
         return CompanyAddress::class;
     }

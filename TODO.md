@@ -77,7 +77,7 @@
 - [X] Payroll Detail
 - [X] Filter Riwayat Absensi
 - [X] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
-- [ ] Validasi UUID pada Repository
+- [X] Validasi UUID pada Repository
 - [ ] Security Per Action
 - [ ] Created and Updated Log in List
 - [ ] Prevent Remove Mutation When Job History is Exist

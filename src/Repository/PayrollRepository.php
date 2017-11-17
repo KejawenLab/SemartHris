@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\CompanyPayrollCostInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollDetailInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
@@ -22,11 +23,18 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     private $detailClass;
 
     /**
-     * @param string $detailClass
+     * @var string
      */
-    public function __construct(string $detailClass)
+    private $companyCostClass;
+
+    /**
+     * @param string $detailClass
+     * @param string $companyCostClass
+     */
+    public function __construct(string $detailClass, string $companyCostClass)
     {
         $this->detailClass = $detailClass;
+        $this->companyCostClass = $companyCostClass;
     }
 
     /**
@@ -83,6 +91,25 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     }
 
     /**
+     * @param PayrollInterface   $payroll
+     * @param ComponentInterface $component
+     *
+     * @return CompanyPayrollCostInterface
+     */
+    public function createCompanyCost(PayrollInterface $payroll, ComponentInterface $component): CompanyPayrollCostInterface
+    {
+        $companyCost = $this->findCompanyCost($payroll, $component);
+        if (!$companyCost) {
+            /** @var CompanyPayrollCostInterface $companyCost */
+            $companyCost = new $this->companyCostClass();
+            $companyCost->setPayroll($payroll);
+            $companyCost->setComponent($component);
+        }
+
+        return $companyCost;
+    }
+
+    /**
      * @param PayrollInterface $payroll
      */
     public function store(PayrollInterface $payroll): void
@@ -96,6 +123,14 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     public function storeDetail(PayrollDetailInterface $payrollDetail): void
     {
         $this->entityManager->persist($payrollDetail);
+    }
+
+    /**
+     * @param CompanyPayrollCostInterface $companyCost
+     */
+    public function storeCompanyCost(CompanyPayrollCostInterface $companyCost): void
+    {
+        $this->entityManager->persist($companyCost);
     }
 
     public function update(): void
@@ -167,6 +202,20 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
     private function findPayrollDetail(PayrollInterface $payroll, ComponentInterface $component): ? PayrollDetailInterface
     {
         return $this->entityManager->getRepository($this->detailClass)->findOneBy([
+            'payroll' => $payroll,
+            'component' => $component,
+        ]);
+    }
+
+    /**
+     * @param PayrollInterface   $payroll
+     * @param ComponentInterface $component
+     *
+     * @return CompanyPayrollCostInterface|null
+     */
+    private function findCompanyCost(PayrollInterface $payroll, ComponentInterface $component): ? CompanyPayrollCostInterface
+    {
+        return $this->entityManager->getRepository($this->companyCostClass)->findOneBy([
             'payroll' => $payroll,
             'component' => $component,
         ]);

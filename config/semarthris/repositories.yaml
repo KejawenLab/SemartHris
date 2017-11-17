@@ -120,5 +120,6 @@ services:
         lazy: true
         arguments:
             - 'KejawenLab\Application\SemartHris\Entity\PayrollDetail'
+            - 'KejawenLab\Application\SemartHris\Entity\CompanyPayrollCost'
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Payroll']]

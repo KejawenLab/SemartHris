@@ -7,6 +7,7 @@ use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AttendanceRul
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\ContractableRepositoryFactoryPass;
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\OvertimeCalculatorPass;
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\PayrollProcessorPass;
+use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\SalaryProcessorPass;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -92,5 +93,6 @@ class Kernel extends BaseKernel implements CompilerPassInterface
         (new OvertimeCalculatorPass())->process($container);
         (new AttendanceRulePass())->process($container);
         (new PayrollProcessorPass())->process($container);
+        (new SalaryProcessorPass())->process($container);
     }
 }

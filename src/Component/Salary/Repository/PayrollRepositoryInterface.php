@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Component\Salary\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\CompanyPayrollCostInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\ComponentInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollDetailInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
@@ -37,6 +38,14 @@ interface PayrollRepositoryInterface
     public function createPayrollDetail(PayrollInterface $payroll, ComponentInterface $component): PayrollDetailInterface;
 
     /**
+     * @param PayrollInterface   $payroll
+     * @param ComponentInterface $component
+     *
+     * @return CompanyPayrollCostInterface
+     */
+    public function createCompanyCost(PayrollInterface $payroll, ComponentInterface $component): CompanyPayrollCostInterface;
+
+    /**
      * @param PayrollInterface $payroll
      */
     public function store(PayrollInterface $payroll): void;
@@ -45,6 +54,11 @@ interface PayrollRepositoryInterface
      * @param PayrollDetailInterface $payrollDetail
      */
     public function storeDetail(PayrollDetailInterface $payrollDetail): void;
+
+    /**
+     * @param CompanyPayrollCostInterface $companyCost
+     */
+    public function storeCompanyCost(CompanyPayrollCostInterface $companyCost): void;
 
     public function update(): void;
 }

@@ -81,6 +81,13 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\CompanyPayrollCostSubscriber:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Salary\Service\StoreAsCompanyCost'
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
     Gedmo\SoftDeleteable\SoftDeleteableListener:
         lazy: true
         calls:

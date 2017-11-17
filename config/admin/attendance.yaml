@@ -149,7 +149,7 @@ easy_admin:
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'year', label: 'Tahun', type: 'text' }
-                    - { property: 'month', label: 'Bulan' }
+                    - { property: 'month', label: 'Bulan', type: 'text', template: 'app/default/field_month.html.twig' }
                     - { property: 'totalWorkday', label: 'Total Hari Kerja' }
                     - { property: 'totalIn', label: 'Total Masuk' }
                     - { property: 'totalLoyality', label: 'Total Loyalitas' }

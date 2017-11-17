@@ -26,12 +26,13 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 ### Fase II
 
 - [ ] BPJS Kesehatan
-- [ ] Unit Test
+- [ ] BPJS Ketenagakerjaan
 - [ ] Menejemen Cuti
 - [ ] PPH21
 - [ ] Relasi Karyawan (Keluarga, Keterampilan, dan lain sebagainya)
 - [ ] Perbaikan Performa, dan *Refactoring*
 - [ ] Simple Cache Management
+- [ ] Unit Test
 - [ ] Redis Session
 
 ### Fase III

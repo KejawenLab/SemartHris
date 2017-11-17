@@ -80,6 +80,9 @@
 - [X] Validasi UUID pada Repository
 - [X] Security Per Action
 - [X] Microcache Query
+- [ ] BPJS Kesehatan
+- [ ] BPJS Ketenagakerjaan
+- [ ] PPH21
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist
 - [ ] Created and Updated Log in List

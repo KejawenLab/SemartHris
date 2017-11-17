@@ -34,7 +34,9 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Manajemen Jadwal Kerja
 - [X] Manajemen Absensi dengan fitur *rules*
 - [X] Manajemen Hari Libur
-- [X] Manajemen Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
+- [X] Manajemen dan Perhitungan Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
+- [X] Manajemen BPJS Kesehatan
+- [X] Manajemen dan Perhitungan BPJS Ketenagakerjaan (JKK, JKM, JHT dan JP) sesuai dengan [peraturan yang berlaku](http://www.pasienbpjs.com/2017/01/cara-menghitung-iuran-bpjs-ketenagakerjaan.html)
 - [X] Gaji dan Credential data **dienkripsi** dengan algoritma RSA
 - [X] Backend Site and API sekaligus
 - [X] Soft Delete (Data tidak benar-benar dihapus)

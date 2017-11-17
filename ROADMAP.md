@@ -25,8 +25,8 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 ### Fase II
 
-- [ ] BPJS Kesehatan
-- [ ] BPJS Ketenagakerjaan
+- [X] BPJS Kesehatan
+- [X] BPJS Ketenagakerjaan
 - [ ] Menejemen Cuti
 - [ ] PPH21
 - [ ] Relasi Karyawan (Keluarga, Keterampilan, dan lain sebagainya)

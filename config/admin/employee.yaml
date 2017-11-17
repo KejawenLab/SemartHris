@@ -30,29 +30,32 @@ easy_admin:
                     - { property: 'maritalStatus', label: 'Status Perkawinan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'BELUM MENIKAH': 's', MENIKAH: 'm', CERAI: 'd' } } }
                     - { property: 'email', label: 'Alamat Email' }
                     - { property: 'taxGroup', label: 'Kode Pajak', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', TK0: 'tk0', TK1: 'tk1', TK2: 'tk2', TK3: 'tk3', K0: 'k0', K1: 'k1', K2: 'k2', K3: 'k3', KI0: 'ki0', KI1: 'ki1', KI2: 'ki2', KI3: 'ki3' } } }
+                    - { property: 'taxGroup_text', label: 'Kode Pajak', type: 'text', type_options: { required: true, attr: { readonly: true } } }
                     - { property: 'haveOvertimeBenefit', label: 'Berhak Lembur?', type_options: { required: false } }
                     - { type: 'group', icon: 'id-card-o', label: 'Foto Profil', css_class: 'col-sm-6' }
                     - { property: 'imageFile', type: 'vich_image', type_options: { attr: { accept: '.jpg, .png, jpeg' } } }
                     - { type: 'group', icon: 'id-card-o', label: 'Informasi Perusahaan', css_class: 'col-sm-6' }
                     - { property: 'employeeStatus', label: 'Status Karyawan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KARYAWAN TETAP': 'p', 'KARYAWAN KONTRAK': 't', 'KARYAWAN OUTSOURCE': 'o', 'KARYAWAN MAGANG': 'i' } } }
-                    - { property: 'employee_status_text', label: 'Status Karyawan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'employee_status_text', label: 'Status Karyawan', type: 'text', type_options: { required: true, mapped: false, attr: { readonly: true } } }
                     - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
                     - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { required: true, attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
-                    - { property: 'contract_readonly', label: 'Kontrak Kerja', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'contract_readonly', label: 'Kontrak Kerja', type: 'text', type_options: { required: true, mapped: false, attr: { readonly: true } } }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
-                    - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'company_readonly', label: 'Perusahaan', type: 'text', type_options: { required: true, mapped: false, attr: { readonly: true } } }
                     - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
-                    - { property: 'department_readonly', label: 'Departemen', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'department_readonly', label: 'Departemen', type: 'text', type_options: { required: true, mapped: false, attr: { readonly: true } } }
                     - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { required: true, attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
-                    - { property: 'joblevel_readonly', label: 'Level Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'joblevel_readonly', label: 'Level Jabatan', type: 'text', type_options: { required: true, mapped: false, attr: { readonly: true } } }
                     - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
-                    - { property: 'jobtitle_readonly', label: 'Jabatan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'jobtitle_readonly', label: 'Jabatan', type: 'text', type_options: { required: true, mapped: false, attr: { readonly: true } } }
                     - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { required: true, attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
                     - { property: 'supervisor_readonly', label: 'Atasan Langsung', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
                     - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'supervisor_empty', label: 'Atasan Langsung', type: 'text', type_options: { attr: { readonly: true }, mapped: false } }
+                    - { property: 'riskRatio', label: 'Tingkat Resiko Kerja', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'RESIKO SANGAT TINGGI': 'vhr', 'RESIKO TINGGI': 'hr', 'RESIKO NORMAL': 'nr', 'RESIKO RENDAH': 'lr', 'RESIKO SANGAT RENDAH': 'vlr' } } }
+                    - { property: 'riskRatio_text', label: 'Tingkat Resiko Kerja', type: 'text', type_options: { required: true, attr: { readonly: true } } }
             show:
                 title: 'Detil Karyawan'
                 fields:

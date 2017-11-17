@@ -13,6 +13,12 @@ class RiskRatio
     const RISK_LOW = 'lr';
     const RISK_VERY_LOW = 'vlr';
 
+    const RISK_VERY_HIGH_TEXT = 'RESIKO SANGAT TINGGI';
+    const RISK_HIGH_TEXT = 'RESIKO TINGGI';
+    const RISK_NORMAL_TEXT = 'RESIKO NORMAL';
+    const RISK_LOW_TEXT = 'RESIKO RENDAH';
+    const RISK_VERY_LOW_TEXT = 'RESIKO SANGAT RENDAH';
+
     const RISK_VERY_HIGH_VALUE = 0.0174;
     const RISK_HIGH_VALUE = 0.0127;
     const RISK_NORMAL_VALUE = 0.0089;

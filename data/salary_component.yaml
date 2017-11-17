@@ -3,5 +3,12 @@
 - { code: 'UM', state: 'p', name: 'UANG MAKAN', fixed: false, ref: 'um' }
 - { code: 'UT', state: 'p', name: 'UANG TRANSPORT', fixed: false, ref: 'ut' }
 - { code: 'OT', state: 'p', name: 'TUNJANGAN LEMBUR', fixed: false, ref: 'ot' }
-- { code: 'TBPJSTK', state: 'p', name: 'TUNJANGAN BPJS TK', fixed: true, ref: 'tbjpstk' }
+- { code: 'JKK', state: 'p', name: 'TUNJANGAN BPJS JKK PERUSAHAAN', fixed: true, ref: 'jkk' }
+- { code: 'JKM', state: 'p', name: 'TUNJANGAN BPJS JKM PERUSAHAAN', fixed: true, ref: 'jkm' }
+- { code: 'JHTP', state: 'p', name: 'TUNJANGAN BPJS JTH', fixed: true, ref: 'jhtp' }
+- { code: 'JHTM', state: 'm', name: 'POTONGAN BPJS JTH', fixed: true, ref: 'jhtm' }
+- { code: 'JHTC', state: 'p', name: 'TUNJANGAN BPJS JTH PERUSAHAAN', fixed: true, ref: 'jhtc' }
+- { code: 'JPP', state: 'p', name: 'TUNJANGAN BPJS JP', fixed: true, ref: 'jpp' }
+- { code: 'JPM', state: 'm', name: 'POTONGAN BPJS JP', fixed: true, ref: 'jpm' }
+- { code: 'JPC', state: 'p', name: 'TUNJANGAN BPJS JP PERUSAHAAN', fixed: true, ref: 'jpc' }
 - { code: 'PL', state: 'm', name: 'POTONGAN LAIN-LAIN', fixed: false, ref: 'pl' }

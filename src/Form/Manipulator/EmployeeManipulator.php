@@ -120,6 +120,18 @@ class EmployeeManipulator extends FormManipulator implements FormManipulatorInte
             $formBuilder->get('supervisor_readonly')->setData($supervisorEntity);
         }
 
+        if ($entity->getRiskRatio()) {
+            $formBuilder->remove('riskRatio');
+        } else {
+            $formBuilder->remove('riskRatio_text');
+        }
+
+        if ($entity->getTaxGroup()) {
+            $formBuilder->remove('taxGroup');
+        } else {
+            $formBuilder->remove('taxGroup_text');
+        }
+
         return $formBuilder;
     }
 }

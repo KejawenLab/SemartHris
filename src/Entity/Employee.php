@@ -22,6 +22,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContrac
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateGender;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentityType;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateMaritalStatus;
+use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateRiskRatio;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
@@ -343,6 +344,9 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      * @Groups({"read", "write"})
      *
      * @ORM\Column(type="string", length=3)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Choice(callback="getRiskRatioChoices")
      *
      * @var string
      */
@@ -860,11 +864,20 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
         return $this->riskRatio ?? RiskRatio::RISK_VERY_LOW;
     }
 
+    public function getRiskRatioText(): string
+    {
+        return ValidateRiskRatio::convertToText($this->riskRatio);
+    }
+
     /**
      * @param string $riskRatio
      */
     public function setRiskRatio(string $riskRatio): void
     {
+        if (!ValidateRiskRatio::isValidType($riskRatio)) {
+            throw new \InvalidArgumentException(sprintf('"%s" is not valid risk ratio.', $riskRatio));
+        }
+
         $this->riskRatio = $riskRatio;
     }
 
@@ -996,6 +1009,14 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     public function getTaxGroupChoices(): array
     {
         return ValidateIndonesiaTaxType::getTypes();
+    }
+
+    /**
+     * @return array
+     */
+    public function getRiskRatioChoices(): array
+    {
+        return ValidateRiskRatio::getTypes();
     }
 
     /**

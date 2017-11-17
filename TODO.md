@@ -82,7 +82,7 @@
 - [X] Microcache Query
 - [X] BPJS Ketenagakerjaan
 - [X] BPJS Kesehatan (Tunjangan Tetap)
-- [ ] Listener untuk Tunjangan dan Potongan simpan ke Company Cost
+- [X] Listener untuk Tunjangan dan Potongan simpan ke Company Cost
 - [ ] PPH21
 - [ ] Pecah Salary Processor dan Tambahkan Result Cache pada Fixed Salary
 - [ ] Mini Accounting untuk Mencatat Pengeluaran Perusahaan untuk Gaji

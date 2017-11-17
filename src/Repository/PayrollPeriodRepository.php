@@ -71,13 +71,17 @@ class PayrollPeriodRepository extends Repository implements PayrollPeriodReposit
     }
 
     /**
+     * @param \DateTimeInterface $date
+     *
      * @return bool
      */
-    public function isEmpty(): bool
+    public function isEmptyOrNotEqueal(\DateTimeInterface $date): bool
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->from($this->entityClass, 'p');
         $queryBuilder->select('COUNT(1)');
+        $queryBuilder->andWhere($queryBuilder->expr()->neq('p.year', $queryBuilder->expr()->literal($date->format('Y'))));
+        $queryBuilder->andWhere($queryBuilder->expr()->neq('p.month', $queryBuilder->expr()->literal($date->format('n'))));
 
         $result = $queryBuilder->getQuery()->getSingleScalarResult();
         if (0 === $result) {

@@ -47,7 +47,7 @@ services:
     KejawenLab\Application\SemartHris\Form\Manipulator\ReasonManipulator:
         lazy: true
         arguments:
-            - []
+            - {}
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveTypeTextFieldSubscriber' ]
 
     KejawenLab\Application\SemartHris\Form\Manipulator\BenefitHistoryManipulator:
@@ -77,5 +77,5 @@ services:
     KejawenLab\Application\SemartHris\Form\Manipulator\SalaryBenefitManipulator:
         lazy: true
         arguments:
-            - []
-            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveBenefitValueFieldSubscriber' ]
+            - { component: '@KejawenLab\Application\SemartHris\Form\DataTransformer\SalaryComponentTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveBenefitValueFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveComponentTextFieldSubscriber' ]

@@ -13,6 +13,19 @@ use KejawenLab\Application\SemartHris\Util\SettingUtil;
 class SalaryComponentRepository extends Repository implements ComponentRepositoryInterface
 {
     /**
+     * @var array
+     */
+    private $excludes;
+
+    /**
+     * @param array $excludes
+     */
+    public function __construct(array $excludes)
+    {
+        $this->excludes = $excludes;
+    }
+
+    /**
      * @param string $id
      *
      * @return null|ComponentInterface
@@ -45,7 +58,8 @@ class SalaryComponentRepository extends Repository implements ComponentRepositor
         $queryBuilder->from($this->entityClass, 'c');
         $queryBuilder->select('c.id, c.code, c.name');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('c.fixed', $queryBuilder->expr()->literal(true)));
-        $queryBuilder->andWhere($queryBuilder->expr()->neq('c.code', $queryBuilder->expr()->literal(SettingUtil::get(SettingUtil::OVERTIME_COMPONENT_CODE))));
+        $queryBuilder->andWhere($queryBuilder->expr()->notIn('c.code', ':excludes'));
+        $queryBuilder->setParameter('excludes', $this->excludes);
 
         return $queryBuilder->getQuery()->getResult();
     }

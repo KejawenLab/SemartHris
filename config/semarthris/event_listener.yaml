@@ -88,27 +88,6 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
-    Gedmo\SoftDeleteable\SoftDeleteableListener:
-        lazy: true
-        calls:
-            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
-        tags:
-            - { name: 'doctrine.event_subscriber' }
-
-    Gedmo\Timestampable\TimestampableListener:
-        lazy: true
-        calls:
-            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
-        tags:
-            - { name: 'doctrine.event_subscriber' }
-
-    Gedmo\Blameable\BlameableListener:
-        lazy: true
-        calls:
-            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
-        tags:
-            - { name: 'doctrine.event_subscriber' }
-
     KejawenLab\Application\SemartHris\EventListener\ExceptionSubscriber:
         lazy: true
         arguments:

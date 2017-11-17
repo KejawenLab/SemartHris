@@ -16,6 +16,19 @@ use Symfony\Component\HttpFoundation\Request;
 class SalaryBenefitRepository extends Repository implements BenefitRepositoryInterface
 {
     /**
+     * @var array
+     */
+    private $excludes;
+
+    /**
+     * @param array $excludes
+     */
+    public function __construct(array $excludes)
+    {
+        $this->excludes = $excludes;
+    }
+
+    /**
      * @param EmployeeInterface $employee
      *
      * @return BenefitInterface[]
@@ -27,6 +40,8 @@ class SalaryBenefitRepository extends Repository implements BenefitRepositoryInt
         $queryBuilder->select('b');
         $queryBuilder->innerJoin('b.component', 'c');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('c.fixed', $queryBuilder->expr()->literal(true)));
+        $queryBuilder->andWhere($queryBuilder->expr()->notIn('c.code', ':excludes'));
+        $queryBuilder->setParameter('excludes', $this->excludes);
 
         return $queryBuilder->getQuery()->getResult();
     }

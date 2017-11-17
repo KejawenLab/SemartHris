@@ -93,6 +93,8 @@ services:
 
     KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository:
         lazy: true
+        arguments:
+            - ['%env(SEMART_PAYROLL_BPJS_JKK_CODE)%', '%env(SEMART_PAYROLL_BPJS_JKM_CODE)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_COMPANY)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_COMPANY)%']
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryComponent']]
 
@@ -113,6 +115,8 @@ services:
 
     KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository:
         lazy: true
+        arguments:
+            - ['%env(SEMART_PAYROLL_BPJS_JKK_CODE)%', '%env(SEMART_PAYROLL_BPJS_JKM_CODE)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_COMPANY)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_COMPANY)%']
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit']]
 

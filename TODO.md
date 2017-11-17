@@ -83,9 +83,11 @@
 - [X] BPJS Ketenagakerjaan
 - [X] BPJS Kesehatan (Tunjangan Tetap)
 - [X] Listener untuk Tunjangan dan Potongan simpan ke Company Cost
+- [X] Pecah Salary Processor dan Tambahkan Result Cache pada Fixed Salary
+- [ ] Company Cost Report
 - [ ] PPH21
-- [ ] Pecah Salary Processor dan Tambahkan Result Cache pada Fixed Salary
 - [ ] Mini Accounting untuk Mencatat Pengeluaran Perusahaan untuk Gaji
+- [ ] Perubahan Tax Group dan Risk Ratio
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist
 - [ ] Created and Updated Log in List

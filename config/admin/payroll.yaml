@@ -36,9 +36,10 @@ easy_admin:
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'component', label: 'Komponen Gaji' }
+                    - { property: 'component', type: 'hidden', type_options: { attr: { class: 'component-id' } } }
+                    - { property: 'component_text', label: 'Komponen Gaji', type: 'choice', type_options: { required: true, attr: { class: 'component-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { type: 'group', css_class: 'col-sm-12 new-row' }
                     - { property: 'benefitValue', label: 'Nilai', type: 'text', type_options: { attr: { class: 'positive' } } }
             list:
@@ -119,5 +120,6 @@ easy_admin:
                     - { property: 'payroll.period.year', label: 'Tahun' }
                     - { property: 'payroll.period.month', label: 'Bulan', template: 'app/default/field_month.html.twig' }
                     - { property: 'payroll.employee', label: 'Karyawan' }
+                    - { property: 'component.name', label: 'Komponen Gaji' }
                     - { property: 'component.state', label: 'Tipe', template: 'app/default/benefit_state.html.twig' }
                     - { property: 'benefitValue', label: 'Total', type: 'float', template: 'app/default/field_currency.html.twig' }

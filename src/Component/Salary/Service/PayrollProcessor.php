@@ -53,7 +53,7 @@ class PayrollProcessor
         $prevPeriod->sub(new \DateInterval('P1M'));
 
         $prev = $this->payrollPeriodRepository->findByEmployeeAndDate($employee, $prevPeriod);
-        if (!$prev && !$this->payrollPeriodRepository->isEmpty()) {
+        if (!$prev && !$this->payrollPeriodRepository->isEmptyOrNotEqueal($date)) {
             throw new \InvalidArgumentException(sprintf('Previous period must be processed before processing it period.'));
         }
 

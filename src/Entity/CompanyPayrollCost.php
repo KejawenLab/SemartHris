@@ -52,7 +52,7 @@ class CompanyPayrollCost implements CompanyPayrollCostInterface
     /**
      * @Groups({"write", "read"})
      *
-     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Payroll", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Application\SemartHris\Entity\Payroll", fetch="EAGER", cascade={"persist"})
      * @ORM\JoinColumn(name="payroll_id", referencedColumnName="id")
      *
      * @Assert\NotBlank()

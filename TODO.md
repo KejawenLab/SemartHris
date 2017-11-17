@@ -83,6 +83,8 @@
 - [ ] BPJS Kesehatan
 - [ ] BPJS Ketenagakerjaan
 - [ ] PPH21
+- [ ] Pecah Salary Processor dan Tambahkan Result Cache pada Fixed Salary
+- [ ] Mini Accounting untuk Mencatat Pengeluaran Perusahaan untuk Gaji
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist
 - [ ] Created and Updated Log in List

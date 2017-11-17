@@ -17,8 +17,10 @@ use KejawenLab\Application\SemartHris\Util\SettingUtil;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class SalaryProcessor implements ProcessorInterface
+class SalaryProcessor implements PayrollProcessorInterface
 {
+    const SEMARTHRIS_PAYROLL_PROCESSOR = 'semarthris.salary_processor';
+
     /**
      * @var Encryptor
      */

@@ -4,7 +4,7 @@ namespace KejawenLab\Application\SemartHris\Component\Salary\Service;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Processor\InvalidPayrollPeriodException;
-use KejawenLab\Application\SemartHris\Component\Salary\Processor\ProcessorInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcessorInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollPeriodRepositoryInterface;
 
 /**
@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollPeriodR
 class PayrollProcessor
 {
     /**
-     * @var ProcessorInterface
+     * @var PayrollProcessorInterface
      */
     private $payrollProcessor;
 
@@ -23,10 +23,10 @@ class PayrollProcessor
     private $payrollPeriodRepository;
 
     /**
-     * @param ProcessorInterface               $processor
+     * @param PayrollProcessorInterface        $processor
      * @param PayrollPeriodRepositoryInterface $repository
      */
-    public function __construct(ProcessorInterface $processor, PayrollPeriodRepositoryInterface $repository)
+    public function __construct(PayrollProcessorInterface $processor, PayrollPeriodRepositoryInterface $repository)
     {
         $this->payrollProcessor = $processor;
         $this->payrollPeriodRepository = $repository;

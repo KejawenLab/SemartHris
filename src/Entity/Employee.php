@@ -17,6 +17,7 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterfac
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
+use KejawenLab\Application\SemartHris\Component\Employee\RiskRatio;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateContractType;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateGender;
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateIdentityType;
@@ -337,6 +338,15 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      * @var bool
      */
     private $haveOvertimeBenefit;
+
+    /**
+     * @Groups({"read", "write"})
+     *
+     * @ORM\Column(type="string", length=3)
+     *
+     * @var string
+     */
+    private $riskRatio;
 
     /**
      * @Groups({"read"})
@@ -840,6 +850,22 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     public function setHaveOvertimeBenefit(bool $haveOvertimeBenefit): void
     {
         $this->haveOvertimeBenefit = $haveOvertimeBenefit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRiskRatio(): string
+    {
+        return $this->riskRatio ?? RiskRatio::RISK_VERY_LOW;
+    }
+
+    /**
+     * @param string $riskRatio
+     */
+    public function setRiskRatio(string $riskRatio): void
+    {
+        $this->riskRatio = $riskRatio;
     }
 
     /**

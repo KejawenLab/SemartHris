@@ -7,12 +7,12 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class PayrollProcessor implements ProcessorInterface
+class PayrollProcessor implements PayrollProcessorInterface
 {
     const SEMARTHRIS_PAYROLL_PROCESSOR = 'semarthris.payroll_processor';
 
     /**
-     * @var ProcessorInterface[]
+     * @var PayrollProcessorInterface[]
      */
     private $processors;
 
@@ -39,9 +39,9 @@ class PayrollProcessor implements ProcessorInterface
     }
 
     /**
-     * @param ProcessorInterface $processor
+     * @param PayrollProcessorInterface $processor
      */
-    private function addProcessor(ProcessorInterface $processor): void
+    private function addProcessor(PayrollProcessorInterface $processor): void
     {
         $this->processors[] = $processor;
     }

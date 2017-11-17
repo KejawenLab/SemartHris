@@ -408,6 +408,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     public function __construct()
     {
         $this->haveOvertimeBenefit = false;
+        $this->riskRatio = RiskRatio::RISK_VERY_LOW;
     }
 
     /**

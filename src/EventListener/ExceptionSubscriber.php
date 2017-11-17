@@ -42,7 +42,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if ($event->getRequest()->isXmlHttpRequest()) {
+        if (!$event->getRequest()->isXmlHttpRequest()) {
             return;
         }
 

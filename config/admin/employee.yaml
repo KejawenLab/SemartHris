@@ -65,7 +65,7 @@ easy_admin:
                     - { property: 'joinDate', label: 'Tanggal Masuk' }
                     - { property: 'employee_status_text', label: 'Status Karyawan' }
                     - { property: 'contract', label: 'No. Kontrak' }
-                    - { property: 'contract.endDate', label: 'Tanggal Akhir Kontrak' }
+                    - { property: 'contract.endDate', label: 'Tanggal Akhir Kontrak', type: 'date' }
                     - { property: 'company', label: 'Perusahaan' }
                     - { property: 'department', label: 'Departemen' }
                     - { property: 'jobLevel', label: 'Level Jabatan' }
@@ -88,6 +88,7 @@ easy_admin:
                     - { property: 'address.faxNumber', label: 'No. Fax'}
                     - { property: 'email', label: 'Alamat Email' }
                     - { property: 'resign', label: 'Resign?', type: 'boolean' }
+                    - { property: 'risk_ratio_text', label: 'Tingkat Resiko Kerja' }
             list:
                 role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
                 title: 'Karyawan'

@@ -79,7 +79,7 @@
 - [X] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
 - [X] Validasi UUID pada Repository
 - [X] Security Per Action
-- [ ] Created and Updated Log in List
-- [ ] Microcache Query
+- [X] Microcache Query
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist
+- [ ] Created and Updated Log in List

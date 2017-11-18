@@ -10,6 +10,9 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ */
 class ExceptionSubscriber implements EventSubscriberInterface
 {
     /**

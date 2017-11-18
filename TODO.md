@@ -86,8 +86,8 @@
 - [X] Pecah Salary Processor dan Tambahkan Result Cache pada Fixed Salary
 - [X] Company Cost Report
 - [X] Mini Accounting untuk Mencatat Pengeluaran Perusahaan untuk Gaji
+- [X] Change address default listener to doctrine listener to avoid double listener
 - [ ] PPH21
-- [ ] Change address default listener to doctrine listener to avoid double listener
 - [ ] Perubahan Tax Group dan Risk Ratio
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

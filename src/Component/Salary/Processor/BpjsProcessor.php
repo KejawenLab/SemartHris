@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Component\Salary\Processor;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
@@ -12,6 +14,8 @@ use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ *
+ * @see http://www.pasienbpjs.com/2017/01/cara-menghitung-iuran-bpjs-ketenagakerjaan.html
  */
 class BpjsProcessor implements SalaryProcessorInterface
 {

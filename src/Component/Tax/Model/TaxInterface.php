@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\Component\Salary\Model;
+namespace KejawenLab\Application\SemartHris\Component\Tax\Model;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
+use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-interface PayrollInterface
+interface TaxInterface
 {
     /**
      * @return string
@@ -39,15 +40,35 @@ interface PayrollInterface
     /**
      * @return null|string
      */
-    public function getTakeHomePay(): ? string;
+    public function getUntaxable(): ? string;
 
     /**
-     * @param string $takeHomePay
+     * @param string $untaxable
      */
-    public function setTakeHomePay(string $takeHomePay): void;
+    public function setUntaxable(string $untaxable): void;
 
     /**
      * @return null|string
      */
-    public function getTakeHomePayKey(): ? string;
+    public function getTaxable(): ? string;
+
+    /**
+     * @param string $taxable
+     */
+    public function setTaxable(string $taxable): void;
+
+    /**
+     * @return null|string
+     */
+    public function getTaxValue(): ? string;
+
+    /**
+     * @param string $taxValue
+     */
+    public function setTaxValue(string $taxValue): void;
+
+    /**
+     * @return null|string
+     */
+    public function getTaxKey(): ? string;
 }

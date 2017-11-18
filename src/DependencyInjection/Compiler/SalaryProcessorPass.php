@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\DependencyInjection\Compiler;
 
 use KejawenLab\Application\SemartHris\Component\Salary\Processor\SalaryProcessor;

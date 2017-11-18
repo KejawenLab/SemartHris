@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Component\Contract\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Contract\Model\ContractInterface;

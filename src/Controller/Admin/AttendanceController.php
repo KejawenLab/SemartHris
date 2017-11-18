@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;

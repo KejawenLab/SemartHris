@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Component\Address\Repository;
 
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;

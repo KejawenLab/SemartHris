@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Component\Attendance\Model;
 
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;

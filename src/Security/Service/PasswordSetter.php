@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Security\Service;
 
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;

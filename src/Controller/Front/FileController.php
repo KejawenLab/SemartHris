@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Controller\Front;
 
 use KejawenLab\Application\SemartHris\Util\FileUtil;

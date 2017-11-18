@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Component\Salary\Service;
 
 use KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor;

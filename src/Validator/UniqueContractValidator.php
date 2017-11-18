@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Validator;
 
 use KejawenLab\Application\SemartHris\Component\Contract\Model\Contractable;

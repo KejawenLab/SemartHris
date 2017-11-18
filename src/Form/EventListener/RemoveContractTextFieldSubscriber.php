@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Form\EventListener;
 
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractRepositoryInterface;

@@ -5792,16 +5792,16 @@
         },
         {
             "name": "phpunit/dbunit",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/dbunit.git",
-                "reference": "6b9cec80dca8694243aade33bceb425ccafbbd0d"
+                "reference": "403350339b6aca748ee0067d027d85621992e21f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/dbunit/zipball/6b9cec80dca8694243aade33bceb425ccafbbd0d",
-                "reference": "6b9cec80dca8694243aade33bceb425ccafbbd0d",
+                "url": "https://api.github.com/repos/sebastianbergmann/dbunit/zipball/403350339b6aca748ee0067d027d85621992e21f",
+                "reference": "403350339b6aca748ee0067d027d85621992e21f",
                 "shasum": ""
             },
             "require": {
@@ -5809,7 +5809,7 @@
                 "ext-simplexml": "*",
                 "php": "^7.0",
                 "phpunit/phpunit": "^6.0",
-                "symfony/yaml": "^3.0"
+                "symfony/yaml": "^3.0 || ^4.0"
             },
             "type": "library",
             "extra": {
@@ -5840,7 +5840,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-19T13:21:48+00:00"
+            "time": "2017-11-18T17:40:34+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

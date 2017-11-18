@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Form\DataTransformer;
 
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;

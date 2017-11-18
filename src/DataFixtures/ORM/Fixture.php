@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture as Base;

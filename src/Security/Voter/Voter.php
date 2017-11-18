@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Security\Voter;
 
 use KejawenLab\Application\SemartHris\Util\StringUtil;

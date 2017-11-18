@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Form\Manipulator;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

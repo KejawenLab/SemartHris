@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris;
 
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AddressRepositoryFactoryPass;

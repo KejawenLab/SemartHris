@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use KejawenLab\Application\SemartHris\Repository\DepartmentRepository;

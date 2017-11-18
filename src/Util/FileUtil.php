@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KejawenLab\Application\SemartHris\Util;
 
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;

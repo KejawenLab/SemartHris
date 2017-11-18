@@ -4,6 +4,7 @@ namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyAddressInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
@@ -71,6 +72,33 @@ class CompanyRepository extends Repository implements CompanyRepositoryInterface
         }
 
         return $this->entityManager->getRepository($this->getAddressClass())->find($companyAddressId);
+    }
+
+    /**
+     * @param AddressInterface $address
+     */
+    public function unsetDefaultExcept(AddressInterface $address): void
+    {/** @var CompanyAddressInterface $address */
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->getAddressClass(), 'o');
+        $queryBuilder->update();
+        $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));
+
+        $company = $address->getCompany();
+        if ($company && UuidUtil::isValid($company->getId())) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('o.company', $queryBuilder->expr()->literal($company->getId())));
+        }
+
+        if (UuidUtil::isValid($address->getId())) {
+            $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
+        }
+
+        $queryBuilder->getQuery()->execute();
+
+        $address->setDefaultAddress(true);
+        $this->entityManager->persist($address);
+        $this->entityManager->flush();
     }
 
     /**

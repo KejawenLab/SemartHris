@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryInterface;
@@ -99,6 +100,29 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         }
 
         return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
+     * @param AddressInterface $address
+     */
+    public function unsetDefaultExcept(AddressInterface $address): void
+    {/** @var EmployeeAddressInterface $address */
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->getAddressClass(), 'o');
+        $queryBuilder->update();
+        $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));
+
+        $employee = $address->getEmployee();
+        if ($employee && UuidUtil::isValid($employee->getId())) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('o.employee', $queryBuilder->expr()->literal($employee->getId())));
+        }
+
+        if (UuidUtil::isValid($address->getId())) {
+            $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
+        }
+
+        $queryBuilder->getQuery()->execute();
     }
 
     /**

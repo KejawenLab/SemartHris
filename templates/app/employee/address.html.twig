@@ -108,7 +108,7 @@
                 var toggleRequest = $.ajax({ type: "GET", url: toggleUrl, data: {} });
 
                 toggleRequest.done(function() {
-                    window.location.reload();
+                    window.location.reload(true);
                 });
 
                 toggleRequest.fail(function() {

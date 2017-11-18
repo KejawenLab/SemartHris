@@ -7,6 +7,7 @@ use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Util\UuidUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -23,7 +24,9 @@ trait AddressRepositoryTrait
         $queryBuilder->from($this->getAddressClass(), 'o');
         $queryBuilder->update();
         $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));
-        $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
+        if ($address->getId() && UuidUtil::isValid($address->getId())) {
+            $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
+        }
 
         $queryBuilder->getQuery()->execute();
     }

@@ -1,5 +1,5 @@
-{% if 'p' == item.component.state %}
-    <span class="pull-right">{{ currency_prefix ~ ' ' ~ value | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</span>
-{% else %}
+{% if item.component is defined and 'm' == item.component.state %}
     <span class="pull-right"><i>({{ currency_prefix ~ ' ' ~ value | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }})</i></span>
+{% else %}
+    <span class="pull-right">{{ currency_prefix ~ ' ' ~ value | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</span>
 {% endif %}

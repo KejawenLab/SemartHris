@@ -20,7 +20,7 @@ services:
             SEMART_DB_PORT: 5432
             SEMART_DB_NAME: semarthris
         volumes:
-            - ./uploads:/semarthris/uploads
+            - ./uploads:/semarthris/uploads:rw
         links:
             - db
         depends_on:
@@ -34,7 +34,7 @@ services:
             POSTGRES_PASSWORD: semarthris
             POSTGRES_DB: semarthris
         volumes:
-            - ./database:/var/lib/mysql
+            - ./database:/var/lib/postgresql/data:rw
 
     adminer:
         image: adminer

@@ -4,13 +4,7 @@ declare(strict_types=1);
 
 namespace KejawenLab\Application\SemartHris;
 
-use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AddressRepositoryFactoryPass;
-use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AttendanceRulePass;
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\CompilerPassFactory;
-use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\ContractableRepositoryFactoryPass;
-use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\OvertimeCalculatorPass;
-use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\PayrollProcessorPass;
-use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\SalaryProcessorPass;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

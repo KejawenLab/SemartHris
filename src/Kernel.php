@@ -6,6 +6,7 @@ namespace KejawenLab\Application\SemartHris;
 
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AddressRepositoryFactoryPass;
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\AttendanceRulePass;
+use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\CompilerPassFactory;
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\ContractableRepositoryFactoryPass;
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\OvertimeCalculatorPass;
 use KejawenLab\Application\SemartHris\DependencyInjection\Compiler\PayrollProcessorPass;
@@ -90,11 +91,6 @@ class Kernel extends BaseKernel implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        (new AddressRepositoryFactoryPass())->process($container);
-        (new ContractableRepositoryFactoryPass())->process($container);
-        (new OvertimeCalculatorPass())->process($container);
-        (new AttendanceRulePass())->process($container);
-        (new PayrollProcessorPass())->process($container);
-        (new SalaryProcessorPass())->process($container);
+        (new CompilerPassFactory($container))->compile();
     }
 }

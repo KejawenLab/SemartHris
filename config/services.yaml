@@ -133,6 +133,7 @@ services:
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\OvertimeRepository'
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
             - 'KejawenLab\Application\SemartHris\Entity\Overtime'
 
     KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeProcessor:
@@ -156,6 +157,7 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
             - '@KejawenLab\Application\SemartHris\Repository\OvertimeRepository'
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
             - '%env(int:SEMART_ATTENDANCE_CUT_OFF_DATE)%'
             - 'KejawenLab\Application\SemartHris\Entity\AttendanceSummary'
         tags:
@@ -191,6 +193,7 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
         tags:
             { name: 'semarthris.salary_processor' }
 

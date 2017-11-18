@@ -41,7 +41,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Laporan Penggajian
 - [X] Laporan Beban Gaji Perusahaan
 - [X] Backend Site and API sekaligus
-- [X] Soft Delete (Data tidak benar-benar dihapus)
+- [X] Soft Delete (data tidak benar-benar dihapus)
 - [X] Restore Deleted Record
 - [X] Pelacakan Data (CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, dan DeletedAt)
 

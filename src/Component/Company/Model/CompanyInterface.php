@@ -17,12 +17,12 @@ interface CompanyInterface extends Addressable
     /**
      * @return null|CompanyInterface
      */
-    public function getParent(): ? CompanyInterface;
+    public function getParent(): ? self;
 
     /**
      * @param CompanyInterface $company
      */
-    public function setParent(?CompanyInterface $company): void;
+    public function setParent(?self $company): void;
 
     /**
      * @return string

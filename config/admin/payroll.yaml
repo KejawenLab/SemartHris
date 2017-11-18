@@ -113,9 +113,29 @@ easy_admin:
             class: 'KejawenLab\Application\SemartHris\Entity\PayrollDetail'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\AdminController'
             disabled_actions: ['show', 'search', 'new', 'edit', 'delete']
+            templates:
+                list: 'app/payroll/detail.html.twig'
             list:
                 role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
                 title: 'Detil Penggajian'
+                fields:
+                    - { property: 'payroll.period.year', label: 'Tahun', type: 'text' }
+                    - { property: 'payroll.period.month', label: 'Bulan', type: 'text', template: 'app/default/field_month.html.twig' }
+                    - { property: 'payroll.employee', label: 'Karyawan', type: 'text' }
+                    - { property: 'component.name', label: 'Komponen Gaji', type: 'text' }
+                    - { property: 'component.state', label: 'Tipe', template: 'app/default/benefit_state.html.twig' }
+                    - { property: 'benefitValue', label: 'Total', type: 'float', template: 'app/default/field_currency.html.twig' }
+
+        CompanyCost:
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\CompanyPayrollCost'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CompanyPayrollCostController'
+            disabled_actions: ['show', 'search', 'new', 'edit', 'delete']
+            templates:
+                list: 'app/payroll/company_cost.html.twig'
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Beban Gaji Perusahaan'
                 fields:
                     - { property: 'payroll.period.year', label: 'Tahun', type: 'text' }
                     - { property: 'payroll.period.month', label: 'Bulan', type: 'text', template: 'app/default/field_month.html.twig' }

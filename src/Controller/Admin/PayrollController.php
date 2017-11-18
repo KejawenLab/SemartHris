@@ -67,6 +67,8 @@ class PayrollController extends AdminController
     {
         return $this->redirectToRoute('easyadmin', [
             'action' => 'list',
+            'sortField' => 'createdAt',
+            'sortDirection' => 'DESC',
             'entity' => 'PayrollDetail',
         ]);
     }

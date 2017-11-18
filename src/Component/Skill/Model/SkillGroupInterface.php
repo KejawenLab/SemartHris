@@ -15,12 +15,12 @@ interface SkillGroupInterface
     /**
      * @return null|SkillGroupInterface
      */
-    public function getParent(): ? SkillGroupInterface;
+    public function getParent(): ? self;
 
     /**
      * @param SkillGroupInterface|null $group
      */
-    public function setParent(?SkillGroupInterface $group): void;
+    public function setParent(?self $group): void;
 
     /**
      * @return string

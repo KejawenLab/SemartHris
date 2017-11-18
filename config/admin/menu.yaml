@@ -27,6 +27,7 @@ easy_admin:
                   - { entity: 'Department', label: 'Departemen', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'JobLevel', label: 'Level Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'JobTitle', label: 'Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'CompanyCost', label: 'Beban Gaji Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Karyawan'
               role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
               icon: 'user-md'

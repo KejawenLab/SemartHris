@@ -90,7 +90,7 @@ class SalaryBenefitRepository extends Repository implements BenefitRepositoryInt
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
+            $queryBuilder->orderBy(sprintf('entity.%s', $sortField), $sortDirection);
         }
 
         return $queryBuilder;

@@ -78,14 +78,14 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
                     - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
-                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, required: true, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'company', label: 'Perusahaan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
                     - { property: 'department', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
-                    - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'department_text', label: 'Departemen', type: 'choice', type_options: { attr: { class: 'department-select' }, required: true, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'jobLevel', label: 'Level Jabatan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'joblevel-select' } } }
                     - { property: 'jobTitle', type: 'hidden', type_options: { attr: { class: 'jobtitle-id' } } }
-                    - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'jobtitle_text', label: 'Jabatan', type: 'choice', type_options: { attr: { class: 'jobtitle-select' }, required: true, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'supervisor', type: 'hidden', type_options: { attr: { class: 'supervisor-id' }, required: false } }
                     - { property: 'supervisor_text', label: 'Atasan Langsung', type: 'choice', type_options: { attr: { class: 'supervisor-select' }, required: false, mapped: false, choices: { 'label.form.empty_value': '' } } }
             list:
@@ -131,7 +131,7 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
                     - { property: 'contract', type: 'hidden', type_options: { attr: { class: 'contract-id' } } }
-                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { property: 'contract_text', label: 'Kontrak Kerja', type: 'choice', type_options: { attr: { class: 'contract-select' }, required: true, mapped: false, choices: { 'label.form.empty_value': '' } } }
                     - { property: 'newCompany', label: 'Perusahaan Baru', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'company-select' } } }
                     - { property: 'newDepartment', type: 'hidden', type_options: { attr: { class: 'department-id' } } }
                     - { property: 'new_department_text', label: 'Departemen Baru', type: 'choice', type_options: { attr: { class: 'department-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }

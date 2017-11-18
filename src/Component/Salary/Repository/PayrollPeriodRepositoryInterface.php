@@ -37,7 +37,9 @@ interface PayrollPeriodRepositoryInterface
     public function update(PayrollPeriodInterface $payrollPeriod): void;
 
     /**
+     * @param \DateTimeInterface $date
+     *
      * @return bool
      */
-    public function isEmpty(): bool;
+    public function isEmptyOrNotEqueal(\DateTimeInterface $date): bool;
 }

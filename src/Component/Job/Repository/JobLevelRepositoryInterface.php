@@ -14,5 +14,5 @@ interface JobLevelRepositoryInterface
      *
      * @return JobLevelInterface
      */
-    public function find(string $id): ? JobLevelInterface;
+    public function find(?string $id): ? JobLevelInterface;
 }

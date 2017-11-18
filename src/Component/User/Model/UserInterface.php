@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface as SymfonyUser;
  */
 interface UserInterface extends UsernameInterface, SymfonyUser
 {
+    const DEFAULT_ROLE = 'ROLE_EMPLOYEE';
+
     /**
      * @param string $password
      */

@@ -18,7 +18,7 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'code', label: 'Kode Komponen Gaji' }
-                    - { property: 'state', label: 'Tipe', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'TUNJANGAN': 'p', 'POTONGAN': 'm' } } }
+                    - { property: 'state', label: 'Tipe', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'PEMASUKAN': 'p', 'POTONGAN': 'm' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'name', label: 'Komponen Gaji' }
                     - { property: 'fixed', label: 'Tetap?' }

@@ -25,10 +25,10 @@ interface JobLevelInterface
     /**
      * @return null|JobLevelInterface
      */
-    public function getParent(): ? JobLevelInterface;
+    public function getParent(): ? self;
 
     /**
      * @param JobLevelInterface|null $jobLevel
      */
-    public function setParent(?JobLevelInterface $jobLevel): void;
+    public function setParent(?self $jobLevel): void;
 }

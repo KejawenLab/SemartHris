@@ -15,7 +15,7 @@ interface EmployeeRepositoryInterface
      *
      * @return EmployeeInterface
      */
-    public function find(string $id): ? EmployeeInterface;
+    public function find(?string $id): ? EmployeeInterface;
 
     /**
      * @param array $ids

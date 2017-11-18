@@ -6,19 +6,19 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\AllowanceRepositoryInterface;
-use KejawenLab\Application\SemartHris\Component\Salary\Repository\AttendanceSummaryRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\BenefitRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\ComponentRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollPeriodRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\StateType;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class SalaryProcessor implements ProcessorInterface
+class SalaryProcessor implements PayrollProcessorInterface
 {
+    const SEMARTHRIS_SALARY_PROCESSOR = 'semarthris.salary_processor';
+
     /**
      * @var Encryptor
      */
@@ -40,11 +40,6 @@ class SalaryProcessor implements ProcessorInterface
     private $allowanceRepository;
 
     /**
-     * @var AttendanceSummaryRepositoryInterface
-     */
-    private $attendanceSummaryRepository;
-
-    /**
      * @var PayrollRepositoryInterface
      */
     private $payrollRepository;
@@ -55,30 +50,39 @@ class SalaryProcessor implements ProcessorInterface
     private $payrollPeriodRepository;
 
     /**
-     * @param Encryptor                            $encryptor
-     * @param ComponentRepositoryInterface         $componentRepository
-     * @param BenefitRepositoryInterface           $benefitRepository
-     * @param AllowanceRepositoryInterface         $allowanceRepository
-     * @param AttendanceSummaryRepositoryInterface $attendanceSummaryRepository
-     * @param PayrollRepositoryInterface           $payrollRepository
-     * @param PayrollPeriodRepositoryInterface     $payrollPeriodRepository
+     * @var SalaryProcessorInterface[]
+     */
+    private $processors;
+
+    /**
+     * @param Encryptor                        $encryptor
+     * @param ComponentRepositoryInterface     $componentRepository
+     * @param BenefitRepositoryInterface       $benefitRepository
+     * @param AllowanceRepositoryInterface     $allowanceRepository
+     * @param PayrollRepositoryInterface       $payrollRepository
+     * @param PayrollPeriodRepositoryInterface $payrollPeriodRepository
+     * @param SalaryProcessorInterface[]       $processors
      */
     public function __construct(
         Encryptor $encryptor,
         ComponentRepositoryInterface $componentRepository,
         BenefitRepositoryInterface $benefitRepository,
         AllowanceRepositoryInterface $allowanceRepository,
-        AttendanceSummaryRepositoryInterface $attendanceSummaryRepository,
         PayrollRepositoryInterface $payrollRepository,
-        PayrollPeriodRepositoryInterface $payrollPeriodRepository
+        PayrollPeriodRepositoryInterface $payrollPeriodRepository,
+        array $processors = []
     ) {
         $this->encryptor = $encryptor;
         $this->componentRepository = $componentRepository;
         $this->benefitRepository = $benefitRepository;
         $this->allowanceRepository = $allowanceRepository;
-        $this->attendanceSummaryRepository = $attendanceSummaryRepository;
         $this->payrollRepository = $payrollRepository;
         $this->payrollPeriodRepository = $payrollPeriodRepository;
+
+        $this->processors = [];
+        foreach ($processors as $processor) {
+            $this->addProcessor($processor);
+        }
     }
 
     /**
@@ -93,8 +97,12 @@ class SalaryProcessor implements ProcessorInterface
         }
 
         $payroll = $this->payrollRepository->createPayroll($employee, $payrollPeriod);
+        $fixedSalary = $this->processFixedBenefit($employee, $payroll);
 
-        $takeHomePay = $this->processOvertime($employee, $date, $payroll, $this->processFixedBenefit($employee, $payroll));
+        $takeHomePay = $fixedSalary;
+        foreach ($this->processors as $processor) {
+            $takeHomePay += $processor->process($payroll, $employee, $date, $fixedSalary);
+        }
         $takeHomePay += $this->processAllowance($employee, $date, $payroll);
 
         $payroll->setTakeHomePay($takeHomePay);
@@ -138,7 +146,7 @@ class SalaryProcessor implements ProcessorInterface
         $allowances = $this->allowanceRepository->findByEmployeeAndDate($employee, $date);
         foreach ($allowances as $allowance) {
             $benefitValue = $this->encryptor->decrypt($allowance->getBenefitValue(), $allowance->getBenefitKey());
-            if ($allowance->getComponent() && $allowance->getComponent()->getState() === StateType::STATE_PLUS) {
+            if ($allowance->getComponent() && StateType::STATE_PLUS === $allowance->getComponent()->getState()) {
                 $totalAllowance += $benefitValue;
             } else {
                 $totalAllowance -= $benefitValue;
@@ -154,35 +162,10 @@ class SalaryProcessor implements ProcessorInterface
     }
 
     /**
-     * @param EmployeeInterface  $employee
-     * @param \DateTimeInterface $date
-     * @param PayrollInterface   $payroll
-     * @param float              $fixedSalary
-     *
-     * @return float
+     * @param SalaryProcessorInterface $processor
      */
-    public function processOvertime(EmployeeInterface $employee, \DateTimeInterface $date, PayrollInterface $payroll, float $fixedSalary): float
+    private function addProcessor(SalaryProcessorInterface $processor): void
     {
-        if ($employee->isHaveOvertimeBenefit()) {
-            $overtimeComponent = $this->componentRepository->findByCode(SettingUtil::get(SettingUtil::OVERTIME_COMPONENT_CODE));
-            if (!$overtimeComponent) {
-                throw new \RuntimeException('Overtime benefit code is not valid.');
-            }
-
-            $attendanceSummary = $this->attendanceSummaryRepository->findByEmployeeAndDate($employee, $date);
-            if ($attendanceSummary) {
-                // 1/173 * Pendapatan Tetap * Jam
-                $overtimeValue = (1 / 173) * $fixedSalary * $attendanceSummary->getTotalOvertime();
-                $fixedSalary += $overtimeValue;
-
-                $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll, $overtimeComponent);
-                $payrollDetail->setComponent($overtimeComponent);
-                $payrollDetail->setBenefitValue($overtimeValue);
-
-                $this->payrollRepository->storeDetail($payrollDetail);
-            }
-        }
-
-        return $fixedSalary;
+        $this->processors[] = $processor;
     }
 }

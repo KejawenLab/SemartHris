@@ -1,0 +1,65 @@
+{% extends 'app/default/list.html.twig' %}
+
+{% block table_body %}
+    {% set total = 0 %}
+    {% set colspan = 6 %}
+    {% for item in paginator.currentPageResults %}
+        {% if 'p' == item.component.state %}
+            {% set total = total + item.benefitValue %}
+        {% else %}
+            {% set total = total - item.benefitValue %}
+        {% endif %}
+        {# the empty string concatenation is needed when the primary key is an object (e.g. an Uuid object) #}
+        {% set _item_id = '' ~ attribute(item, _entity_config.primary_key_field_name) %}
+        <tr data-id="{{ _item_id }}">
+            {% for field, metadata in fields %}
+                {% set isSortingField = metadata.property == app.request.get('sortField') %}
+                {% set _column_label =  (metadata.label ?: field|humanize)|trans(_trans_parameters)  %}
+
+                <td data-label="{{ _column_label }}" class="{{ isSortingField ? 'sorted' }} {{ metadata.dataType|lower }} {{ metadata.css_class }}">
+                    {% set data = easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) | trim %}
+                    {% if data == 'semarthris.invalid_data' %}
+                        <span class="label label-danger">{{ data | raw | trans({}, 'messages')}}</span>
+                    {% else %}
+                        {{ data | raw }}
+                    {% endif %}
+                </td>
+            {% endfor %}
+
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                {% if attribute(item, 'deleted') is defined and item.deleted == true %}
+                    <td>{{ include('@EasyAdmin/default/field_toggle.html.twig', { value: true, view: 'list', backend_config: _entity_config }) }}</td>
+                {% else %}
+                    <td>{{ include('@EasyAdmin/default/field_boolean.html.twig', { value: false }) }}</td>
+                {% endif %}
+            {% endif %}
+
+            {% if _list_item_actions|length > 0 %}
+                {% set _column_label =  'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') %}
+                <td data-label="{{ _column_label }}" class="actions">
+                    {% block item_actions %}
+                        {{ include('app/default/actions.html.twig', {
+                            actions: _list_item_actions,
+                            request_parameters: _request_parameters,
+                            translation_domain: _entity_config.translation_domain,
+                            trans_parameters: _trans_parameters,
+                            item_id: _item_id
+                        }, with_context = false) }}
+                    {% endblock item_actions %}
+                </td>
+            {% endif %}
+        </tr>
+    {% else %}
+        <tr>
+            <td class="no-results" colspan="{{ _list_item_actions | length > 0 ? fields | length + 1 + extraField : fields | length + extraField }}">
+                {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
+            </td>
+        </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="{{ colspan }}" class="no-results"><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ total | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <td>&nbsp;</td>
+        {% endif %}
+    </tr>
+{% endblock table_body %}

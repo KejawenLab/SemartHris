@@ -8,6 +8,9 @@ use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\CityRepositoryInterface;
 use KejawenLab\Application\SemartHris\Entity\City;
+use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Util\UuidUtil;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -15,6 +18,7 @@ use KejawenLab\Application\SemartHris\Entity\City;
 class CityRepository extends Repository implements CityRepositoryInterface
 {
     /**
+     * @param Request         $request
      * @param ManagerRegistry $managerRegistry
      * @param $searchQuery
      * @param array       $searchableFields
@@ -24,26 +28,44 @@ class CityRepository extends Repository implements CityRepositoryInterface
      *
      * @return QueryBuilder
      */
-    public static function createQueryBuilderForSearch(ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
+    public static function createQueryBuilderForSearch(Request $request, ManagerRegistry $managerRegistry, $searchQuery, array $searchableFields, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
+    {
+        $queryBuilder = self::createListQueryBuilder($request, $managerRegistry, $sortField, $sortDirection, $dqlFilter);
+        $queryBuilder->orWhere($queryBuilder->expr()->like('entity.code', 'query'));
+        $queryBuilder->orWhere($queryBuilder->expr()->like('entity.name', 'query'));
+        $queryBuilder->setParameter('query', sprintf('%%%s%%', StringUtil::uppercase($searchQuery)));
+
+        return $queryBuilder;
+    }
+
+    /**
+     * @param Request         $request
+     * @param ManagerRegistry $managerRegistry
+     * @param null|string     $sortField
+     * @param string          $sortDirection
+     * @param null|string     $dqlFilter
+     *
+     * @return QueryBuilder
+     */
+    public static function createListQueryBuilder(Request $request, ManagerRegistry $managerRegistry, ?string $sortField, string $sortDirection = 'ASC', ?string $dqlFilter)
     {
         /* @var EntityManagerInterface $entityManager */
         $entityManager = $managerRegistry->getManagerForClass(City::class);
         $queryBuilder = $entityManager->createQueryBuilder();
         $queryBuilder->select('entity');
         $queryBuilder->from(City::class, 'entity');
-        $queryBuilder->join('entity.region', 'region');
-        $queryBuilder->orWhere('LOWER(entity.code) LIKE :query');
-        $queryBuilder->orWhere('LOWER(entity.name) LIKE :query');
-        $queryBuilder->orWhere('LOWER(region.code) LIKE :query');
-        $queryBuilder->orWhere('LOWER(region.name) LIKE :query');
-        $queryBuilder->setParameter('query', '%'.strtolower($searchQuery).'%');
+
+        $region = $request->getSession()->get('regionId');
+        if ($region) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('entity.region', $queryBuilder->expr()->literal($region)));
+        }
 
         if (!empty($dqlFilter)) {
             $queryBuilder->andWhere($dqlFilter);
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
+            $queryBuilder->orderBy(sprintf('entity.%s', $sortField), $sortDirection);
         }
 
         return $queryBuilder;
@@ -56,6 +78,10 @@ class CityRepository extends Repository implements CityRepositoryInterface
      */
     public function findCityByRegion(string $regionId): array
     {
+        if (!$regionId || !UuidUtil::isValid($regionId)) {
+            return [];
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('o');
         $queryBuilder->from($this->entityClass, 'o');
@@ -72,8 +98,8 @@ class CityRepository extends Repository implements CityRepositoryInterface
      *
      * @return null|CityInterface
      */
-    public function find(string $id): ? CityInterface
+    public function find(?string $id): ? CityInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 }

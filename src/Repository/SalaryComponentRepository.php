@@ -13,13 +13,26 @@ use KejawenLab\Application\SemartHris\Util\SettingUtil;
 class SalaryComponentRepository extends Repository implements ComponentRepositoryInterface
 {
     /**
+     * @var array
+     */
+    private $excludes;
+
+    /**
+     * @param array $excludes
+     */
+    public function __construct(array $excludes)
+    {
+        $this->excludes = $excludes;
+    }
+
+    /**
      * @param string $id
      *
      * @return null|ComponentInterface
      */
-    public function find(string $id): ? ComponentInterface
+    public function find(?string $id): ? ComponentInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**
@@ -29,7 +42,26 @@ class SalaryComponentRepository extends Repository implements ComponentRepositor
      */
     public function findByCode(string $code): ? ComponentInterface
     {
+        if (!$code) {
+            return null;
+        }
+
         return $this->entityManager->getRepository($this->entityClass)->findOneBy(['code' => $code]);
+    }
+
+    /**
+     * @return ComponentInterface[]
+     */
+    public function findFixed(): array
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'c');
+        $queryBuilder->select('c.id, c.code, c.name');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('c.fixed', $queryBuilder->expr()->literal(true)));
+        $queryBuilder->andWhere($queryBuilder->expr()->notIn('c.code', ':excludes'));
+        $queryBuilder->setParameter('excludes', $this->excludes);
+
+        return $queryBuilder->getQuery()->getResult();
     }
 
     /**

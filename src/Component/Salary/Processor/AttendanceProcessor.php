@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Util\SettingUtil;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
-class AttendanceProcessor implements ProcessorInterface
+class AttendanceProcessor implements PayrollProcessorInterface
 {
     const CUT_OFF_LAST_DATE = -1;
 

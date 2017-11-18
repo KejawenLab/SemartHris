@@ -14,11 +14,11 @@ class SkillRepository
 {
     /**
      * @param ManagerRegistry $managerRegistry
-     * @param $searchQuery
-     * @param array $searchableFields
-     * @param null  $sortField
-     * @param null  $sortDirection
-     * @param null  $dqlFilter
+     * @param null|string     $searchQuery
+     * @param array           $searchableFields
+     * @param null|string     $sortField
+     * @param string          $sortDirection
+     * @param null|string     $dqlFilter
      *
      * @return QueryBuilder
      */

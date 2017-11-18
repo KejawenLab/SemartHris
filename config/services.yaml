@@ -64,7 +64,6 @@ services:
     KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceImporter:
         lazy: true
         arguments:
-            - '@KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
@@ -168,11 +167,29 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
             - '@KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository'
             - '@KejawenLab\Application\SemartHris\Repository\SalaryAllowanceRepository'
-            - '@KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository'
         tags:
             { name: 'semarthris.payroll_processor' }
+        lazy: true
+
+    KejawenLab\Application\SemartHris\Component\Salary\Processor\OvertimeProcessor:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
+        tags:
+            { name: 'semarthris.salary_processor' }
+        lazy: true
+
+    KejawenLab\Application\SemartHris\Component\Salary\Processor\BpjsProcessor:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
+        tags:
+            { name: 'semarthris.salary_processor' }
 
     KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor:
         lazy: true
@@ -185,6 +202,17 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
 
+    KejawenLab\Application\SemartHris\Component\Salary\Service\ChangeBenefit:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor'
+
+    KejawenLab\Application\SemartHris\Component\Salary\Service\StoreAsCompanyCost:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
+
     KejawenLab\Application\SemartHris\Component\Setting\Setting:
         lazy: true
         arguments:
@@ -193,8 +221,9 @@ services:
     KejawenLab\Application\SemartHris\Component\Encryptor\KeyLoader:
         lazy: true
         arguments:
-            - '%kernel.project_dir%%env(SEMART_CERTIFICATE_KEY_PATH)%'
-            - !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_APP_CANONICAL
+            - '%kernel.project_dir%%env(SEMART_PRIVATE_KEY_PATH)%'
+            - '%kernel.project_dir%%env(SEMART_PUBLIC_KEY_PATH)%'
+            - !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_CANONICAL
 
     KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor:
         lazy: true

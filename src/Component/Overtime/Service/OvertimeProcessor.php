@@ -90,7 +90,6 @@ class OvertimeProcessor
             return;
         }
 
-        //Triggering update
         $overtime->setDescription(sprintf('%s#%s', Kernel::SEMART_VERSION, $overtime->getDescription()));
         $this->overtimeRepository->update($overtime);
     }

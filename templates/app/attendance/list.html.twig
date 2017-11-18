@@ -83,9 +83,9 @@
                                 <div class="form-group">
                                     <label class="control-label" for="startDate">Pilih Tanggal</label>
                                     <div class="input-group input-daterange">
-                                        <input id="startDate" type="text" name="startDate" class="form-control startDate" required="required" value="{{ app.request.query.get('startDate') ?: date() | date('01-m-Y') }}">
+                                        <input type="text" name="startDate" class="form-control" required="required" value="{{ app.request.query.get('startDate') ?: date() | date('01-m-Y') }}">
                                         <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
-                                        <input id="endDate" type="text" name="endDate" class="form-control" required="required" value="{{ app.request.query.get('endDate') ?: date() | date('t-m-Y') }}">
+                                        <input type="text" name="endDate" class="form-control" required="required" value="{{ app.request.query.get('endDate') ?: date() | date('t-m-Y') }}">
                                         <span class="input-group-btn">
                                             <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit"><i class="fa fa-television"></i> {{ 'label.attendance.filter_action' | trans({}, 'messages') }}</button>
                                         </span>
@@ -334,6 +334,14 @@
                 window.location = '/files/templates/attendance.csv?force=1';
             });
 
+            $(document).on('change', 'input[name=startDate]', function () {
+                $('input[name=startDate]').val($(this).val());
+            });
+
+            $(document).on('change', 'input[name=endDate]', function () {
+                $('input[name=endDate]').val($(this).val());
+            });
+
             $(document).on('click', '.process-attendance', function () {
                 var employees = [];
                 $('.employee:checkbox:checked').each(function () {
@@ -348,7 +356,8 @@
                     type: 'POST',
                     data: {
                         employees: employees,
-                        month: month
+                        month: month,
+                        year: date.getFullYear()
                     },
                     beforeSend: function () {},
                     success: function () {

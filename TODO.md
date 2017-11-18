@@ -73,10 +73,22 @@
 - [X] Form Tunjangan dan Potongan
 - [X] Filter Tunjangan dan Potongan List
 - [X] Filter Payroll Period
-- [ ] Payroll Detail
-- [ ] Payroll Reopen
-- [ ] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
-- [ ] Security Per Action
-- [ ] Created and Updated Log in List
+- [X] Filter Propinsi di Kota (Bug di select2 list kota)
+- [X] Payroll Detail
+- [X] Filter Riwayat Absensi
+- [X] Benefit Harus Menggunakan Kontrak pada Perubahan Gaji
+- [X] Validasi UUID pada Repository
+- [X] Security Per Action
+- [X] Microcache Query
+- [X] BPJS Ketenagakerjaan
+- [X] BPJS Kesehatan (Tunjangan Tetap)
+- [X] Listener untuk Tunjangan dan Potongan simpan ke Company Cost
+- [X] Pecah Salary Processor dan Tambahkan Result Cache pada Fixed Salary
+- [X] Company Cost Report
+- [X] Mini Accounting untuk Mencatat Pengeluaran Perusahaan untuk Gaji
+- [X] Change address default listener to doctrine listener to avoid double listener
+- [ ] PPH21
+- [ ] Perubahan Tax Group dan Risk Ratio
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist
+- [ ] Created and Updated Log in List

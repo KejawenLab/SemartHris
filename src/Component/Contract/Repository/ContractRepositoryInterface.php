@@ -15,7 +15,7 @@ interface ContractRepositoryInterface
      *
      * @return ContractInterface|null
      */
-    public function find(string $id): ? ContractInterface;
+    public function find(?string $id): ? ContractInterface;
 
     /**
      * @param Request $request

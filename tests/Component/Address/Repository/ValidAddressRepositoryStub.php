@@ -35,7 +35,7 @@ class ValidAddressRepositoryStub implements AddressRepositoryInterface
     /**
      * @return string
      */
-    public function getEntityClass(): string
+    public function getAddressClass(): string
     {
         return self::class;
     }

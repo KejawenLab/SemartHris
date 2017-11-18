@@ -58,13 +58,12 @@
                                 <div class="form-group">
                                     <label class="control-label" for="year">Pilih Periode</label>
                                     <div class="input-group input-daterange">
-                                        <!-- Need to optimize -->
                                         <select id="month" name="month" class="form-control static-select month" required="required">
-                                            {{ semarthris_month_options() | raw }}
+                                            {{ semarthris_month_options(app.request) | raw }}
                                         </select>
                                         <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
                                         <select id="year" name="year" class="form-control static-select year" required="required">
-                                            {{  semarthris_year_options(6) | raw }}
+                                            {{  semarthris_year_options(6, app.request) | raw }}
                                         </select>
                                         <span class="input-group-btn">
                                             <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit">

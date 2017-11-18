@@ -101,9 +101,10 @@ class EncryptorSubscriber implements EventSubscriber
             if ($plain) {
                 $encrypted = $this->encryptor->$operation($plain, $this->propertyAccessor->getValue($entity, $this->encrypt->getKeyStore()));
                 $this->propertyAccessor->setValue($entity, $property, $encrypted);
-                $this->propertyAccessor->setValue($entity, $this->encrypt->getKeyStore(), $this->encryptor->getKey());
             }
         }
+
+        $this->propertyAccessor->setValue($entity, $this->encrypt->getKeyStore(), $this->encryptor->getKey());
     }
 
     /**

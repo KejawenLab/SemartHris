@@ -6,6 +6,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInterface;
 use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceImporter;
 use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceProcessor;
+use KejawenLab\Application\SemartHris\Component\Attendance\Service\InvalidAttendancePeriodException;
 use KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator;
 use KejawenLab\Application\SemartHris\Repository\AttendanceRepository;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
@@ -114,6 +115,12 @@ class AttendanceController extends AdminController
         $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_ATTENDANCE_MENU));
 
         $month = (int) $request->request->get('month', date('n'));
+        $year = (int) $request->request->get('year', date('Y'));
+        $period = \DateTime::createFromFormat('Y-n', sprintf('%s-%s', $year, $month));
+        if ($month > date('n')) {
+            throw new InvalidAttendancePeriodException($period);
+        }
+
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         if ($ids = $request->request->get('employees')) {
             $employees = $employeeRepository->finds($ids);
@@ -123,7 +130,7 @@ class AttendanceController extends AdminController
 
         $processor = $this->container->get(AttendanceProcessor::class);
         foreach ($employees as $employee) {
-            $processor->process($employee, \DateTime::createFromFormat('Y-n', sprintf('%s-%s', date('Y'), $month)));
+            $processor->process($employee, $period);
         }
 
         return new JsonResponse(['message' => 'OK']);

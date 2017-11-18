@@ -312,7 +312,7 @@ function employee_search(locale) {
         minimumInputLength: 2,
         theme: 'bootstrap',
         language: locale,
-        tags: true,
+        cache: true,
         ajax: {
             url: Routing.generate('employee_search'),
             data: function (params) {
@@ -325,7 +325,39 @@ function employee_search(locale) {
                 $.each(data.employees, function (idx, val) {
                     results.push({
                         id: val.id,
-                        text: val.code + ' - ' +val.fullName
+                        text: val.code + ' - ' + val.fullName
+                    });
+                });
+
+                return {
+                    results: results
+                };
+            }
+        }
+    });
+}
+
+function region_search(locale) {
+    var regionSelect = $('.region-search');
+
+    regionSelect.select2({
+        minimumInputLength: 2,
+        theme: 'bootstrap',
+        language: locale,
+        cache: true,
+        ajax: {
+            url: Routing.generate('region_search'),
+            data: function (params) {
+                return {
+                    search: params.term.toUpperCase()
+                };
+            },
+            processResults: function (data) {
+                var results = [];
+                $.each(data.regions, function (idx, val) {
+                    results.push({
+                        id: val.id,
+                        text: val.code + ' - ' + val.name
                     });
                 });
 
@@ -372,6 +404,43 @@ function employee_contract_autocomplete(locale, emptyText) {
         $('.contract-id').val($(this).val());
     });
 }
+
+function fixed_component_autocomplete(locale, emptyText) {
+    var componentSelect = $('.component-select');
+
+    $.ajax({
+        url: Routing.generate('fixed_component'),
+        type: 'GET',
+        data: {},
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var componentId = $('.component-id').val();
+            var options = '<option value="">' + emptyText + '</option>';
+
+            $.each(dataResponse['components'], function (idx, val) {
+                if (componentId === val.id) {
+                    options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
+                } else {
+                    options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+                }
+            });
+
+            componentSelect.html(options);
+            componentSelect.select2({
+                theme: 'bootstrap',
+                language: locale
+            });
+        },
+        error: function () {
+            console.log('KO');
+        }
+    });
+
+    $(document).on('change', '.component-select', function () {
+        $('.component-id').val($(this).val());
+    });
+}
+
 
 function salary_component_autocomplete(state, locale, emptyText) {
     var componentSelect = $('.component-select');

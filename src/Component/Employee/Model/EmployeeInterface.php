@@ -176,6 +176,11 @@ interface EmployeeInterface extends Addressable
     public function isHaveOvertimeBenefit(): bool;
 
     /**
+     * @return string
+     */
+    public function getRiskRatio(): ? string;
+
+    /**
      * @return bool
      */
     public function isResign(): bool;

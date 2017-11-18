@@ -21,5 +21,5 @@ interface JobTitleRepositoryInterface
      *
      * @return JobTitleInterface
      */
-    public function find(string $id): ? JobTitleInterface;
+    public function find(?string $id): ? JobTitleInterface;
 }

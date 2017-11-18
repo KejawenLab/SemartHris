@@ -6,7 +6,6 @@
 /uploads/overtimes/*
 /uploads/attendances/*
 /database/*
-!/database/.gitkeep
 ###> symfony/framework-bundle ###
 .env
 /public/bundles/

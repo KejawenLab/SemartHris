@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Repository;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractableRepositoryInterface;
@@ -16,6 +17,7 @@ use KejawenLab\Application\SemartHris\Entity\Company;
 use KejawenLab\Application\SemartHris\Entity\EmployeeAddress;
 use KejawenLab\Application\SemartHris\Entity\JobLevel;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
+use KejawenLab\Application\SemartHris\Util\UuidUtil;
 use KejawenLab\Library\PetrukUsername\Repository\UsernameInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -48,6 +50,10 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function findSupervisorByJobLevel(string $jobLevelId): array
     {
+        if (!$jobLevelId || !UuidUtil::isValid($jobLevelId)) {
+            return [];
+        }
+
         $jobLevel = $this->entityManager->getRepository(JobLevel::class)->find($jobLevelId);
         /** @var JobLevelInterface $parentLevel */
         $parentLevel = $jobLevel->getParent();
@@ -73,6 +79,10 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function findByCompany(string $companyId): array
     {
+        if (!$companyId || !UuidUtil::isValid($companyId)) {
+            return [];
+        }
+
         $company = $this->entityManager->getRepository(Company::class)->find($companyId);
         if (!$company) {
             return [];
@@ -93,13 +103,36 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     }
 
     /**
+     * @param AddressInterface $address
+     */
+    public function unsetDefaultExcept(AddressInterface $address): void
+    {/** @var EmployeeAddressInterface $address */
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->getAddressClass(), 'o');
+        $queryBuilder->update();
+        $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));
+
+        $employee = $address->getEmployee();
+        if ($employee && UuidUtil::isValid($employee->getId())) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('o.employee', $queryBuilder->expr()->literal($employee->getId())));
+        }
+
+        if (UuidUtil::isValid($address->getId())) {
+            $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
+        }
+
+        $queryBuilder->getQuery()->execute();
+    }
+
+    /**
      * @param string $id
      *
      * @return EmployeeInterface
      */
-    public function find(string $id): ? EmployeeInterface
+    public function find(?string $id): ? EmployeeInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**
@@ -109,6 +142,10 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function finds(array $ids = []): array
     {
+        if (empty($ids)) {
+            return [];
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->from($this->entityClass, 'o');
         $queryBuilder->select('o');
@@ -140,7 +177,9 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         $queryBuilder->addSelect('e.fullName');
         $queryBuilder->orWhere($queryBuilder->expr()->like('e.code', ':search'));
         $queryBuilder->orWhere($queryBuilder->expr()->like('e.fullName', ':search'));
-        $queryBuilder->setParameter('search', sprintf('%%%s%%', $request->query->get('search')));
+        $queryBuilder->setParameter('search', sprintf('%%%s%%', StringUtil::uppercase($request->query->get('search'))));
+        $queryBuilder->andWhere($queryBuilder->expr()->isNull('e.resignDate'));
+        $queryBuilder->orWhere($queryBuilder->expr()->gte('e.resignDate', $queryBuilder->expr()->literal(date('Y-m-d 23:59:59'))));
 
         return $queryBuilder->getQuery()->getResult();
     }
@@ -152,6 +191,10 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function findByCode(string $code): ? EmployeeInterface
     {
+        if (!$code) {
+            return null;
+        }
+
         return $this->entityManager->getRepository($this->entityClass)->findOneBy(['code' => StringUtil::uppercase($code)]);
     }
 
@@ -199,10 +242,18 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function findByUsername(string $username): ? UserInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
-            'username' => $username,
-            'resignDate' => null,
-        ]);
+        if (!$username) {
+            return null;
+        }
+
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('e');
+        $queryBuilder->from($this->entityClass, 'e');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('e.username', $queryBuilder->expr()->literal($username)));
+        $queryBuilder->andWhere($queryBuilder->expr()->isNull('e.resignDate'));
+        $queryBuilder->orWhere($queryBuilder->expr()->gte('e.resignDate', $queryBuilder->expr()->literal(date('Y-m-d 00:00:00'))));
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
     /**
@@ -212,7 +263,11 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function findAddress(string $employeeAddressId): ? EmployeeAddressInterface
     {
-        return $this->entityManager->getRepository($this->getEntityClass())->find($employeeAddressId);
+        if (!$employeeAddressId || !UuidUtil::isValid($employeeAddressId)) {
+            return null;
+        }
+
+        return $this->entityManager->getRepository($this->getAddressClass())->find($employeeAddressId);
     }
 
     /**
@@ -245,7 +300,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
+            $queryBuilder->orderBy(sprintf('entity.%s', $sortField), $sortDirection);
         }
 
         return $queryBuilder;
@@ -279,7 +334,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
      */
     public function createAddressQueryBuilder(?string $sortField, string $sortDirection = 'ASc', ?string $dqlFilter, bool $useEmployeeFilter = true)
     {
-        return $this->buildFilterableSearch($this->getEntityClass(), $sortField, $sortDirection, $dqlFilter, $useEmployeeFilter);
+        return $this->buildFilterableSearch($this->getAddressClass(), $sortField, $sortDirection, $dqlFilter, $useEmployeeFilter);
     }
 
     /**
@@ -322,7 +377,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
         }
 
         if (null !== $sortField) {
-            $queryBuilder->orderBy('entity.'.$sortField, $sortDirection);
+            $queryBuilder->orderBy(sprintf('entity.%s', $sortField), $sortDirection);
         }
 
         return $queryBuilder;
@@ -331,7 +386,7 @@ class EmployeeRepository extends Repository implements EmployeeRepositoryInterfa
     /**
      * @return string
      */
-    public function getEntityClass(): string
+    public function getAddressClass(): string
     {
         return EmployeeAddress::class;
     }

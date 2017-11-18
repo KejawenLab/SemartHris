@@ -38,10 +38,18 @@
                 <div class="box box-default">
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12">
+                            <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
                                     <label class="control-label" for="company">Pilih Perusahaan</label>
                                     <select id="company" name="company" class="static-select company-select">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="department">Pilih Department</label>
+                                    <input type="hidden" name="department" class="department-id" value="{{ app.request.query.get('department') }}">
+                                    <select id="department" name="department_text" class="department-select">
                                     </select>
                                 </div>
                             </div>
@@ -60,13 +68,12 @@
                                 <div class="form-group">
                                     <label class="control-label" for="year">Pilih Periode</label>
                                     <div class="input-group input-daterange">
-                                        <!-- Need to optimize -->
                                         <select id="month" name="month" class="form-control static-select month" required="required">
-                                            {{ semarthris_month_options() | raw }}
+                                            {{ semarthris_month_options(app.request) | raw }}
                                         </select>
                                         <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
                                         <select id="year" name="year" class="form-control static-select year" required="required">
-                                            {{  semarthris_year_options(6) | raw }}
+                                            {{  semarthris_year_options(6, app.request) | raw }}
                                         </select>
                                         <span class="input-group-btn">
                                             <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit">
@@ -120,8 +127,9 @@
 
             change_static_select(locale);
             company_autocomplete(emptyText, '{{ app.request.query.get('company') }}');
+            department_autocomplete(locale, emptyText);
 
-            employee_search('{{ _select2_locale }}');
+            employee_search(locale);
             $('.employee-search').change();
         });
     </script>

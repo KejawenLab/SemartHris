@@ -73,7 +73,7 @@ class AttendanceExtension extends \Twig_Extension
 
         if (!(isset($preview['check_in']) && $preview['check_in']) || !(isset($preview['check_out']) && $preview['check_out'])) {
             $attendance->setAbsent(true);
-            if (isset($preview['reason_code']) && $reason = $this->reasonRepository->findByCode($preview['reason_code'])) {
+            if (isset($preview['reason_code']) && $reason = $this->reasonRepository->findAbsentReasonByCode($preview['reason_code'])) {
                 $attendance->setReason($reason);
             }
         } else {

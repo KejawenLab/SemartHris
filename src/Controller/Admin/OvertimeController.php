@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
+use KejawenLab\Application\SemartHris\Component\Attendance\Service\InvalidAttendancePeriodException;
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeImporter;
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeProcessor;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
@@ -110,6 +111,12 @@ class OvertimeController extends AdminController
         $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
 
         $month = (int) $request->request->get('month', date('n'));
+        $year = (int) $request->request->get('year', date('Y'));
+        $period = \DateTime::createFromFormat('Y-n', sprintf('%s-%s', $year, $month));
+        if ($month > date('n')) {
+            throw new InvalidAttendancePeriodException($period);
+        }
+
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         if ($ids = $request->request->get('employees')) {
             $employees = $employeeRepository->finds($ids);
@@ -119,7 +126,7 @@ class OvertimeController extends AdminController
 
         $processor = $this->container->get(OvertimeProcessor::class);
         foreach ($employees as $employee) {
-            $processor->process($employee, \DateTime::createFromFormat('Y-n', sprintf('%s-%s', date('Y'), $month)));
+            $processor->process($employee, $period);
         }
 
         return new JsonResponse(['message' => 'OK']);

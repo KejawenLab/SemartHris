@@ -12,7 +12,7 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Security\Service\PasswordSetter'
             - '@KejawenLab\Application\SemartHris\Component\User\Service\UsernameGenerator'
-            - '%env(SEMART_APP_DEFAULT_PASSWORD)%'
+            - '%env(SEMART_DEFAULT_PASSWORD)%'
         tags:
             - { name: 'doctrine.event_subscriber' }
 
@@ -55,6 +55,13 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\ChangeBenefitSubscriber:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Salary\Service\ChangeBenefit'
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
     KejawenLab\Application\SemartHris\EventListener\EncryptorSubscriber:
         lazy: true
         arguments:
@@ -74,24 +81,10 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
-    Gedmo\SoftDeleteable\SoftDeleteableListener:
+    KejawenLab\Application\SemartHris\EventListener\CompanyPayrollCostSubscriber:
         lazy: true
-        calls:
-            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
-        tags:
-            - { name: 'doctrine.event_subscriber' }
-
-    Gedmo\Timestampable\TimestampableListener:
-        lazy: true
-        calls:
-            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
-        tags:
-            - { name: 'doctrine.event_subscriber' }
-
-    Gedmo\Blameable\BlameableListener:
-        lazy: true
-        calls:
-            - [ 'setAnnotationReader', [ '@annotation_reader' ] ]
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Salary\Service\StoreAsCompanyCost'
         tags:
             - { name: 'doctrine.event_subscriber' }
 

@@ -28,7 +28,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @UniqueEntity("code")
+ * @UniqueEntity("name")
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *

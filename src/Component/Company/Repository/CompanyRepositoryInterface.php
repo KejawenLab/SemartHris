@@ -14,7 +14,7 @@ interface CompanyRepositoryInterface
      *
      * @return CompanyInterface
      */
-    public function find(string $id): ? CompanyInterface;
+    public function find(?string $id): ? CompanyInterface;
 
     /**
      * @return CompanyInterface[]

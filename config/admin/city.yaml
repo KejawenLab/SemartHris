@@ -4,6 +4,8 @@ easy_admin:
             role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\City'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\CityController'
+            templates:
+                list: 'app/city/list.html.twig'
             new:
                 title: 'Tambah Kota'
             edit:

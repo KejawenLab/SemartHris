@@ -78,8 +78,8 @@
         </tr>
     {% else %}
         <tr>
-            <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 1 + extraField : fields | length + extraField }}">
-                {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
+            <td class="no-results" colspan="{{ _list_item_actions | length > 0 ? fields | length + 1 + extraField : fields | length + extraField }}">
+                {{ 'search.no_results' | trans(_trans_parameters, 'EasyAdminBundle') }}
             </td>
         </tr>
     {% endfor %}

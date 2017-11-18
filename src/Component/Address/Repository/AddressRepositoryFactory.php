@@ -44,6 +44,6 @@ class AddressRepositoryFactory
      */
     private function addRepository(AddressRepositoryInterface $addressRepository): void
     {
-        $this->repositories[$addressRepository->getEntityClass()] = $addressRepository;
+        $this->repositories[$addressRepository->getAddressClass()] = $addressRepository;
     }
 }

@@ -15,12 +15,12 @@ interface DepartmentInterface
     /**
      * @return null|DepartmentInterface
      */
-    public function getParent(): ? DepartmentInterface;
+    public function getParent(): ? self;
 
     /**
      * @param DepartmentInterface|null $department
      */
-    public function setParent(?DepartmentInterface $department): void;
+    public function setParent(?self $department): void;
 
     /**
      * @return string

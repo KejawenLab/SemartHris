@@ -17,7 +17,7 @@ easy_admin:
                   - { entity: 'Skill', label: 'Keahlian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Region', label: 'Propinsi', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'City', label: 'Kota', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
-                  - { entity: 'Contract', label: 'Kontrak', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Contract', label: 'Kontrak/Surat Keputusan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Holiday', label: 'Hari Libur', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Perusahaan'
               role: '%env(string:SEMART_SECURITY_COMPANY_MENU)%'
@@ -27,6 +27,7 @@ easy_admin:
                   - { entity: 'Department', label: 'Departemen', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'JobLevel', label: 'Level Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'JobTitle', label: 'Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'CompanyCost', label: 'Beban Gaji Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Karyawan'
               role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
               icon: 'user-md'
@@ -60,6 +61,7 @@ easy_admin:
               children:
                   - { entity: 'SalaryComponent', label: 'Komponen Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'SalaryBenefit', label: 'Setting Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'SalaryBenefitHistory', label: 'Perubahan Gaji', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'SalaryAllowancePlus', label: 'Tunjangan', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC', state: 'p' } }
                   - { entity: 'SalaryAllowanceMinus', label: 'Potongan', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC', state: 'm' } }
                   - { entity: 'PayrollPeriod', label: 'Penggajian', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC' } }

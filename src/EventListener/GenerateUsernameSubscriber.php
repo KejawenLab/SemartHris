@@ -79,7 +79,7 @@ class GenerateUsernameSubscriber implements EventSubscriber
             return;
         }
 
-        $role = ['ROLE_EMPLOYEE'];
+        $role = [UserInterface::DEFAULT_ROLE];
         if (0 === $this->userRepository->count()) {
             $role = ['ROLE_SUPER_ADMIN'];
         }

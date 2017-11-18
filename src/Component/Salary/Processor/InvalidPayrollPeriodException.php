@@ -11,6 +11,6 @@ class InvalidPayrollPeriodException extends \RuntimeException
 {
     public function __construct(\DateTimeInterface $date, $code = 0, Throwable $previous = null)
     {
-        parent::__construct(sprintf('Payroll with period %s month %s is not found or be closed', $date->format('Y'), $date->format('m')), $code, $previous);
+        parent::__construct(sprintf('Payroll with period %s month %s is not valid or be closed', $date->format('Y'), $date->format('m')), $code, $previous);
     }
 }

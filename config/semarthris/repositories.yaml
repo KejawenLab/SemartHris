@@ -12,6 +12,11 @@ services:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\City']]
 
+    KejawenLab\Application\SemartHris\Repository\RegionRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Region']]
+
     KejawenLab\Application\SemartHris\Repository\DepartmentRepository:
         lazy: true
         calls:
@@ -88,6 +93,8 @@ services:
 
     KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository:
         lazy: true
+        arguments:
+            - ['%env(SEMART_PAYROLL_BPJS_JKK_CODE)%', '%env(SEMART_PAYROLL_BPJS_JKM_CODE)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_COMPANY)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_COMPANY)%']
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryComponent']]
 
@@ -108,6 +115,8 @@ services:
 
     KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository:
         lazy: true
+        arguments:
+            - ['%env(SEMART_PAYROLL_BPJS_JKK_CODE)%', '%env(SEMART_PAYROLL_BPJS_JKM_CODE)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JHT_CODE_COMPANY)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_PLUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_MINUS)%', '%env(SEMART_PAYROLL_BPJS_JP_CODE_COMPANY)%']
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryBenefit']]
 
@@ -115,5 +124,6 @@ services:
         lazy: true
         arguments:
             - 'KejawenLab\Application\SemartHris\Entity\PayrollDetail'
+            - 'KejawenLab\Application\SemartHris\Entity\CompanyPayrollCost'
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Payroll']]

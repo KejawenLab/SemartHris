@@ -48,6 +48,9 @@ class AttendanceProcessor
      */
     private $reasonCode;
 
+    /**
+     * @var int
+     */
     private $cutOffDate;
 
     /**
@@ -158,10 +161,10 @@ class AttendanceProcessor
             $attendance->setEmployee($employee);
             $attendance->setAttendanceDate($date);
             $attendance->setShiftment($workshift ? $workshift->getShiftment() : null);
-            $attendance->setReason($this->reasonRepository->findByCode($this->reasonCode));
+            $attendance->setReason($this->reasonRepository->findAbsentReasonByCode($this->reasonCode));
             $attendance->setAbsent(true);
         }
-        $attendance->setLateIn(-1); //To triggering subscriber
+        $attendance->setLateIn(-1);
 
         $this->attendanceRepository->update($attendance);
     }

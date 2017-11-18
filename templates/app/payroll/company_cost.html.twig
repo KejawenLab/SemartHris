@@ -1,0 +1,172 @@
+{% extends 'app/default/list.html.twig' %}
+
+{% set _select2_locales = ['ar', 'az', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'is', 'it', 'ja', 'km', 'ko', 'lt', 'lv', 'mk', 'ms', 'nb', 'nl', 'pl', 'pt-BR', 'pt', 'ro', 'ru', 'sk', 'sr-Cyrl', 'sr', 'sv', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW'] %}
+{% set _app_language = app.request.locale|split('-')|first|split('_')|first %}
+{% set _select2_locale = app.request.locale in _select2_locales
+    ? app.request.locale
+    : _app_language in _select2_locales ? _app_language : 'en'
+%}
+
+{% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
+{% set startDate = app.request.query.get('startDate', date() | date('01-m-Y')) %}
+{%  set endDate = app.request.query.get('endDate', date() | date('t-m-Y')) %}
+{% set extraField = is_granted('ROLE_SUPER_ADMIN') ? 1 : 0 %}
+
+{% set _request_parameters = _request_parameters|default({})|merge({
+    action: app.request.query.get('action'),
+    entity: _entity_config.name,
+    menuIndex: app.request.query.get('menuIndex'),
+    submenuIndex: app.request.query.get('submenuIndex'),
+    sortField: app.request.query.get('sortField', ''),
+    startDate: startDate,
+    endDate: endDate,
+    sortDirection: app.request.query.get('sortDirection', 'DESC'),
+    page: app.request.query.get('page', 1)
+}) %}
+
+{% block main %}
+    {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
+
+    <div class="row">
+        <form method="get" action="{{ path('easyadmin') }}">
+            <input type="hidden" name="entity" value="{{ _request_parameters.entity }}">
+            <input type="hidden" name="sortField" value="{{ _entity_config.search.sort.field|default(_request_parameters.sortField) }}">
+            <input type="hidden" name="sortDirection" value="{{ _entity_config.search.sort.direction|default(_request_parameters.sortDirection) }}">
+            <input type="hidden" name="menuIndex" value="{{ _request_parameters.menuIndex }}">
+            <input type="hidden" name="submenuIndex" value="{{ _request_parameters.submenuIndex }}">
+            <div class="field-group col-xs-12 col-sm-12">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="company">Pilih Perusahaan</label>
+                                    <select id="company" name="company" class="static-select company-select">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="year">Pilih Periode</label>
+                                    <div class="input-group input-daterange">
+                                        <select id="month" name="month" class="form-control static-select month" required="required">
+                                            {{ semarthris_month_options(app.request) | raw }}
+                                        </select>
+                                        <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
+                                        <select id="year" name="year" class="form-control static-select year" required="required">
+                                            {{  semarthris_year_options(6, app.request) | raw }}
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit">
+                                                <i class="fa fa-television"></i> {{ 'label.payroll.filter_action' | trans({}, 'messages') }}
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            {% block table_head %}
+                {{ parent() }}
+            {% endblock table_head %}
+            </thead>
+
+            <tbody>
+            {% block table_body %}
+                {% set total = 0 %}
+                {% set colspan = 6 %}
+                {% for item in paginator.currentPageResults %}
+                    {% if 'p' == item.component.state %}
+                        {% set total = total + item.benefitValue %}
+                    {% else %}
+                        {% set total = total - item.benefitValue %}
+                    {% endif %}
+                    {# the empty string concatenation is needed when the primary key is an object (e.g. an Uuid object) #}
+                    {% set _item_id = '' ~ attribute(item, _entity_config.primary_key_field_name) %}
+                    <tr data-id="{{ _item_id }}">
+                        {% for field, metadata in fields %}
+                            {% set isSortingField = metadata.property == app.request.get('sortField') %}
+                            {% set _column_label =  (metadata.label ?: field|humanize)|trans(_trans_parameters)  %}
+
+                            <td data-label="{{ _column_label }}" class="{{ isSortingField ? 'sorted' }} {{ metadata.dataType|lower }} {{ metadata.css_class }}">
+                                {% set data = easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) | trim %}
+                                {% if data == 'semarthris.invalid_data' %}
+                                    <span class="label label-danger">{{ data | raw | trans({}, 'messages')}}</span>
+                                {% else %}
+                                    {{ data | raw }}
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            {% if attribute(item, 'deleted') is defined and item.deleted == true %}
+                                <td>{{ include('@EasyAdmin/default/field_toggle.html.twig', { value: true, view: 'list', backend_config: _entity_config }) }}</td>
+                            {% else %}
+                                <td>{{ include('@EasyAdmin/default/field_boolean.html.twig', { value: false }) }}</td>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if _list_item_actions|length > 0 %}
+                            {% set _column_label =  'list.row_actions'|trans(_trans_parameters, 'EasyAdminBundle') %}
+                            <td data-label="{{ _column_label }}" class="actions">
+                                {% block item_actions %}
+                                    {{ include('app/default/actions.html.twig', {
+                                        actions: _list_item_actions,
+                                        request_parameters: _request_parameters,
+                                        translation_domain: _entity_config.translation_domain,
+                                        trans_parameters: _trans_parameters,
+                                        item_id: _item_id
+                                    }, with_context = false) }}
+                                {% endblock item_actions %}
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="no-results" colspan="{{ _list_item_actions | length > 0 ? fields | length + 1 + extraField : fields | length + extraField }}">
+                            {{ 'search.no_results'|trans(_trans_parameters, 'EasyAdminBundle') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="{{ colspan }}" class="no-results"><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ total | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <td>&nbsp;</td>
+                    {% endif %}
+                </tr>
+            {% endblock table_body %}
+            </tbody>
+        </table>
+    </div>
+
+    {% block paginator %}
+        {{ parent() }}
+    {% endblock paginator %}
+{% endblock main %}
+
+{% block body_javascript %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-filestyle.min.js') }}"></script>
+    <script src="{{ asset('js/semart.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
+
+            company_autocomplete(emptyText, '{{ app.request.query.get('company') }}');
+            change_static_select('{{ _select2_locale }}');
+        });
+    </script>
+{% endblock %}

@@ -13,24 +13,10 @@ use KejawenLab\Application\SemartHris\Util\StringUtil;
  */
 trait AddressRepositoryTrait
 {
-    /**
-     * @param AddressInterface $address
-     */
-    public function unsetDefaultExcept(AddressInterface $address): void
-    {
-        $queryBuilder = $this->entityManager->createQueryBuilder();
-        $queryBuilder->from($this->getEntityClass(), 'o');
-        $queryBuilder->update();
-        $queryBuilder->set('o.defaultAddress', $queryBuilder->expr()->literal(false));
-        $queryBuilder->andWhere($queryBuilder->expr()->neq('o.id', $queryBuilder->expr()->literal($address->getId())));
-
-        $queryBuilder->getQuery()->execute();
-    }
-
     public function setRandomDefault(): AddressInterface
     {
         /** @var AddressInterface $other */
-        $other = $this->entityManager->getRepository($this->getEntityClass())->findOneBy(['defaultAddress' => false]);
+        $other = $this->entityManager->getRepository($this->getAddressClass())->findOneBy(['defaultAddress' => false]);
         if (!$other) {
             throw new EntityNotFoundException();
         }

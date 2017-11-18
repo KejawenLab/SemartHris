@@ -8,17 +8,17 @@ easy_admin:
                 new: 'app/contract/new.html.twig'
                 edit: 'app/contract/edit.html.twig'
             new:
-                title: 'Tambah Kontrak'
+                title: 'Tambah Kontrak/Surat Keputusan'
             edit:
-                title: 'Edit Kontrak'
+                title: 'Edit Kontrak/Surat Keputusan'
             search:
                 title: 'Kontrak'
                 fields: ['letterNumber', 'subject', 'tags']
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'type', label: 'Tipe Kontrak', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KONTRAK KARYAWAN': 'e', 'KONTRAK REKANAN/KLIEN': 'c' } } }
-                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'type', label: 'Tipe Kontrak/Surat Keputusan', type: 'choice', type_options: { attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'KONTRAK KARYAWAN': 'e', 'KONTRAK REKANAN/KLIEN': 'c' } } }
+                    - { property: 'letterNumber', label: 'No. Kontrak/Surat Keputusan' }
                     - { property: 'subject', label: 'Subyek' }
                     - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'startDate', label: 'Tanggal Awal', type_options: { widget: 'single_text', format: '%env(string:SEMART_DATE_FORMAT_INTL)%', attr: { class: 'date-picker' } } }
@@ -29,10 +29,10 @@ easy_admin:
                     - { property: 'tags', type: 'hidden', type_options: { attr: { class: 'tags-id' } } }
                     - { property: 'tags_text', label: 'Penanda', help: 'Tekan Enter untuk menambahkan tag', type: 'choice', type_options: { attr: { class: 'tags-select', multiple: 'multiple' }, mapped: false, placeholder: false } }
             show:
-                title: 'Detil Kontrak'
+                title: 'Detil Kontrak/Surat Keputusan'
                 fields:
-                    - { property: 'type_text', label: 'Tipe Kontrak' }
-                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'type_text', label: 'Tipe Kontrak/Surat Keputusan' }
+                    - { property: 'letterNumber', label: 'No. Kontrak/Surat Keputusan' }
                     - { property: 'subject', label: 'Subyek' }
                     - { property: 'startDate', label: 'Tanggal Awal' }
                     - { property: 'endDate', label: 'Tanggal Akhir' }
@@ -41,10 +41,10 @@ easy_admin:
                     - { property: 'tags', label: 'Penanda', template: 'app/default/field_array.html.twig' }
             list:
                 role: '%env(string:SEMART_SECURITY_MASTER_MENU)%'
-                title: 'Kontrak'
+                title: 'Kontrak/Surat Keputusan'
                 fields:
-                    - { property: 'type_text', label: 'Tipe Kontrak' }
-                    - { property: 'letterNumber', label: 'No. Kontrak' }
+                    - { property: 'type_text', label: 'Tipe Kontrak/Surat Keputusan' }
+                    - { property: 'letterNumber', label: 'No. Kontrak/Surat Keputusan' }
                     - { property: 'subject', label: 'Subyek' }
                     - { property: 'startDate', label: 'Tanggal Awal' }
                     - { property: 'endDate', label: 'Tanggal Akhir' }

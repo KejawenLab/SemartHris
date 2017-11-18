@@ -21,5 +21,5 @@ interface CityRepositoryInterface
      *
      * @return null|CityInterface
      */
-    public function find(string $id): ? CityInterface;
+    public function find(?string $id): ? CityInterface;
 }

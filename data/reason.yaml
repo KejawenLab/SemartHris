@@ -1,0 +1,3 @@
+- { code: 'ABS', type: 'a', name: 'TANPA KETERANGAN', ref: 'abs' }
+- { code: 'SKT', type: 'a', name: 'SAKIT SURAT DOKTER', ref: 'skt' }
+- { code: 'CT', type: 'l', name: 'CUTI TAHUNAN', ref: 'ct' }

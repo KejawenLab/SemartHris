@@ -21,5 +21,5 @@ interface DepartmentRepositoryInterface
      *
      * @return DepartmentInterface
      */
-    public function find(string $id): ? DepartmentInterface;
+    public function find(?string $id): ? DepartmentInterface;
 }

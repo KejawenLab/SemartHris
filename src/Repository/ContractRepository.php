@@ -16,9 +16,9 @@ class ContractRepository extends Repository implements ContractRepositoryInterfa
      *
      * @return ContractInterface|null
      */
-    public function find(string $id): ? ContractInterface
+    public function find(?string $id): ? ContractInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**
@@ -44,6 +44,10 @@ class ContractRepository extends Repository implements ContractRepositoryInterfa
      */
     public function findByType(string $type): array
     {
+        if (!$type) {
+            return [];
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('c.id, c.letterNumber, c.subject');
         $queryBuilder->from($this->entityClass, 'c');

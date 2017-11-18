@@ -19,6 +19,10 @@ class ReasonRepository extends Repository implements ReasonRepositoryInterface
      */
     public function findByType(string $type): array
     {
+        if (!$type) {
+            return [];
+        }
+
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('r.id, r.code, r.name');
         $queryBuilder->from($this->entityClass, 'r');
@@ -32,9 +36,9 @@ class ReasonRepository extends Repository implements ReasonRepositoryInterface
      *
      * @return ReasonInterface|null
      */
-    public function find(string $id): ? ReasonInterface
+    public function find(?string $id): ? ReasonInterface
     {
-        return $this->entityManager->getRepository($this->entityClass)->find($id);
+        return $this->doFind($id);
     }
 
     /**
@@ -42,8 +46,12 @@ class ReasonRepository extends Repository implements ReasonRepositoryInterface
      *
      * @return ReasonInterface|null
      */
-    public function findByCode(string $code): ? ReasonInterface
+    public function findAbsentReasonByCode(string $code): ? ReasonInterface
     {
+        if (!$code) {
+            return null;
+        }
+
         return $this->entityManager->getRepository($this->entityClass)->findOneBy(['code' => StringUtil::uppercase($code), 'type' => ReasonType::ABSENT_CODE]);
     }
 }

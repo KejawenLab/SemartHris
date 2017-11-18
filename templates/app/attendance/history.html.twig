@@ -1,0 +1,136 @@
+{% extends 'app/default/list.html.twig' %}
+
+{% set _select2_locales = ['ar', 'az', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'is', 'it', 'ja', 'km', 'ko', 'lt', 'lv', 'mk', 'ms', 'nb', 'nl', 'pl', 'pt-BR', 'pt', 'ro', 'ru', 'sk', 'sr-Cyrl', 'sr', 'sv', 'th', 'tr', 'uk', 'vi', 'zh-CN', 'zh-TW'] %}
+{% set _app_language = app.request.locale|split('-')|first|split('_')|first %}
+{% set _select2_locale = app.request.locale in _select2_locales
+    ? app.request.locale
+    : _app_language in _select2_locales ? _app_language : 'en'
+%}
+
+{% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
+{% set startDate = app.request.query.get('startDate', date() | date('01-m-Y')) %}
+{%  set endDate = app.request.query.get('endDate', date() | date('t-m-Y')) %}
+{% set extraField = is_granted('ROLE_SUPER_ADMIN') ? 1 : 0 %}
+
+{% set _request_parameters = _request_parameters|default({})|merge({
+    action: app.request.query.get('action'),
+    entity: _entity_config.name,
+    menuIndex: app.request.query.get('menuIndex'),
+    submenuIndex: app.request.query.get('submenuIndex'),
+    sortField: app.request.query.get('sortField', ''),
+    startDate: startDate,
+    endDate: endDate,
+    sortDirection: app.request.query.get('sortDirection', 'DESC'),
+    page: app.request.query.get('page', 1)
+}) %}
+
+{% block main %}
+    {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
+
+    <div class="row">
+        <form method="get" action="{{ path('easyadmin') }}">
+            <input type="hidden" name="entity" value="{{ _request_parameters.entity }}">
+            <input type="hidden" name="sortField" value="{{ _entity_config.search.sort.field|default(_request_parameters.sortField) }}">
+            <input type="hidden" name="sortDirection" value="{{ _entity_config.search.sort.direction|default(_request_parameters.sortDirection) }}">
+            <input type="hidden" name="menuIndex" value="{{ _request_parameters.menuIndex }}">
+            <input type="hidden" name="submenuIndex" value="{{ _request_parameters.submenuIndex }}">
+            <div class="field-group col-xs-12 col-sm-12">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="company">Pilih Perusahaan</label>
+                                    <select id="company" name="company" class="static-select company-select">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="department">Pilih Department</label>
+                                    <input type="hidden" name="department" class="department-id" value="{{ app.request.query.get('department') }}">
+                                    <select id="department" name="department_text" class="department-select">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 new-row">
+                                <div class="form-group">
+                                    <label class="control-label" for="employeeId">Pilih Karyawan</label>
+                                    {% set employee = semarthris_create_employee(app.request.query.get('employeeId', '')) %}
+                                    <select class="employee-search" name="employeeId">
+                                        {% if employee is not null %}
+                                            <option value="{{ employee.id }}">{{ employee.code ~ ' ' ~ employee.fullName }}</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="year">Pilih Periode</label>
+                                    <div class="input-group input-daterange">
+                                        <select id="month" name="month" class="form-control static-select month" required="required">
+                                            {{ semarthris_month_options(app.request) | raw }}
+                                        </select>
+                                        <span class="input-group-addon"><i class="fa fa-exchange" aria-hidden="true"></i></span>
+                                        <select id="year" name="year" class="form-control static-select year" required="required">
+                                            {{  semarthris_year_options(6, app.request) | raw }}
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit">
+                                                <i class="fa fa-television"></i> {{ 'label.payroll.filter_action' | trans({}, 'messages') }}
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            {% block table_head %}
+                {{ parent() }}
+            {% endblock table_head %}
+            </thead>
+
+            <tbody>
+            {% block table_body %}
+                {{ parent() }}
+            {% endblock table_body %}
+            </tbody>
+        </table>
+    </div>
+
+    {% block paginator %}
+        {{ parent() }}
+    {% endblock paginator %}
+{% endblock main %}
+
+{% block body_javascript %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-filestyle.min.js') }}"></script>
+    <script src="{{ asset('js/semart.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            var locale = '{{ _select2_locale }}';
+            var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
+
+            change_static_select(locale);
+            company_autocomplete(emptyText, '{{ app.request.query.get('company') }}');
+            department_autocomplete(locale, emptyText);
+
+            employee_search('{{ _select2_locale }}');
+            $('.employee-search').change();
+        });
+    </script>
+{% endblock %}

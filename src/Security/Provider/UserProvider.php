@@ -2,6 +2,7 @@
 
 namespace KejawenLab\Application\SemartHris\Security\Provider;
 
+use Doctrine\Common\Util\ClassUtils;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface as BaseUser;
 use KejawenLab\Application\SemartHris\Component\User\Repository\UserRepositoryInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -52,8 +53,9 @@ class UserProvider implements UserProviderInterface
      */
     public function refreshUser(UserInterface $user)
     {
-        if (!$this->supportsClass(get_class($user))) {
-            throw new UnsupportedUserException(sprintf('Object class "%s" is not supported', get_class($user)));
+        $realClass = ClassUtils::getRealClass(get_class($user));
+        if (!$this->supportsClass($realClass)) {
+            throw new UnsupportedUserException(sprintf('Object class "%s" is not supported', $realClass));
         }
 
         return $this->userRepository->findByUsername($user->getUsername());

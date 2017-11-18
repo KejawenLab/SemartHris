@@ -40,6 +40,6 @@ class EmployeeExtension extends \Twig_Extension
      */
     public function getEmployee(?string $id): ? EmployeeInterface
     {
-        return $this->repository->find((string) $id);
+        return $this->repository->find($id);
     }
 }

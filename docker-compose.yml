@@ -2,7 +2,7 @@
 # This setting is used only in development environment
 # The infrastructure is already in production but the application need to be make sure
 ###
-version: '2'
+version: '3'
 services:
     app:
         build: .
@@ -13,29 +13,28 @@ services:
             CACHE_SIZE: 512m
             VARNISHD_PARAMS: -p default_ttl=3600 -p default_grace=3600
             VARNISH_PORT: 80
-            SEMART_DB_DRIVER: mysql
+            SEMART_DB_DRIVER: pgsql
             SEMART_DB_USER: semarthris
             SEMART_DB_PASSWORD: semarthris
             SEMART_DB_HOST: db
-            SEMART_DB_PORT: 3306
+            SEMART_DB_PORT: 5432
             SEMART_DB_NAME: semarthris
         volumes:
-            - ./uploads:/semarthris/uploads
+            - ./uploads:/semarthris/uploads:rw
         links:
             - db
         depends_on:
             - db
 
     db:
-        image: mariadb:latest
+        image: postgres:alpine
         restart: always
         environment:
-            MYSQL_USER: semarthris
-            MYSQL_PASSWORD: semarthris
-            MYSQL_DATABASE: semarthris
-            MYSQL_ROOT_PASSWORD: semarthris
+            POSTGRES_USER: semarthris
+            POSTGRES_PASSWORD: semarthris
+            POSTGRES_DB: semarthris
         volumes:
-            - ./database:/var/lib/mysql
+            - ./database:/var/lib/postgresql/data:rw
 
     adminer:
         image: adminer

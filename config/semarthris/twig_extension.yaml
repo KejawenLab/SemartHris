@@ -3,6 +3,7 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Repository\ReasonRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
             - 'KejawenLab\Application\SemartHris\Entity\Attendance'
         tags:
             - { name: 'twig.extension' }
@@ -11,6 +12,7 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'
             - '@KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator'
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
             - 'KejawenLab\Application\SemartHris\Entity\Overtime'
         tags:
             - { name: 'twig.extension' }

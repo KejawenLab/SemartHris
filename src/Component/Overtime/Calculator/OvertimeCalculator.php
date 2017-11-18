@@ -35,6 +35,7 @@ class OvertimeCalculator extends Calculator implements OvertimeCalculatorInterfa
         foreach ($this->calculators as $calculator) {
             try {
                 $calculator->setWorkdayPerWeek($this->workday);
+                $calculator->setSetingg($this->setting);
                 $calculator->calculate($overtime);
             } catch (CalculatorException $exception) {
                 continue;

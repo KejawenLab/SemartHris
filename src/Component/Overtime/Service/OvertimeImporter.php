@@ -5,7 +5,8 @@ namespace KejawenLab\Application\SemartHris\Component\Overtime\Service;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Repository\OvertimeRepositoryInterface;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
@@ -29,6 +30,11 @@ class OvertimeImporter
     private $employeeRepository;
 
     /**
+     * @var Setting
+     */
+    private $setting;
+
+    /**
      * @var string
      */
     private $overtimeClass;
@@ -37,17 +43,20 @@ class OvertimeImporter
      * @param OvertimeCalculator          $overtimeCalculator
      * @param OvertimeRepositoryInterface $overtimeRepository
      * @param EmployeeRepositoryInterface $employeeRepository
+     * @param Setting                     $setting
      * @param string                      $class
      */
     public function __construct(
         OvertimeCalculator $overtimeCalculator,
         OvertimeRepositoryInterface $overtimeRepository,
         EmployeeRepositoryInterface $employeeRepository,
+        Setting $setting,
         string $class
     ) {
         $this->overtimeCalculator = $overtimeCalculator;
         $this->overtimeRepository = $overtimeRepository;
         $this->employeeRepository = $employeeRepository;
+        $this->setting = $setting;
         $this->overtimeClass = $class;
     }
 
@@ -68,7 +77,7 @@ class OvertimeImporter
                 continue;
             }
 
-            $overtimeDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), StringUtil::sanitize($overtime['date']));
+            $overtimeDate = \DateTime::createFromFormat($this->setting->get(SettingKey::DATE_FORMAT), StringUtil::sanitize($overtime['date']));
             $object = $this->overtimeRepository->findByEmployeeAndDate($employee, $overtimeDate);
             if (!$object) {
                 $object = new $this->overtimeClass();

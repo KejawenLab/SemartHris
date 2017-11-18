@@ -3,8 +3,9 @@
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use KejawenLab\Application\SemartHris\Component\Salary\StateType;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -26,7 +27,7 @@ class SalaryComponentController extends AdminController
      */
     public function findByStateAction(Request $request)
     {
-        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_PAYROLL_MENU));
+        $this->denyAccessUnlessGranted($this->container->get(Setting::class)->get(SettingKey::SECURITY_PAYROLL_MENU));
 
         return new JsonResponse(['components' => $this->container->get(SalaryComponentRepository::class)->findByState($request->query->get('state', StateType::STATE_PLUS))]);
     }
@@ -39,7 +40,7 @@ class SalaryComponentController extends AdminController
      */
     public function findFixedAction()
     {
-        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_PAYROLL_MENU));
+        $this->denyAccessUnlessGranted($this->container->get(Setting::class)->get(SettingKey::SECURITY_PAYROLL_MENU));
 
         return new JsonResponse(['components' => $this->container->get(SalaryComponentRepository::class)->findFixed()]);
     }

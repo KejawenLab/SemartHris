@@ -71,6 +71,8 @@ services:
 
     KejawenLab\Application\SemartHris\Repository\AttendanceRepository:
         lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Attendance']]
 
@@ -88,6 +90,8 @@ services:
 
     KejawenLab\Application\SemartHris\Repository\OvertimeRepository:
         lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Overtime']]
 

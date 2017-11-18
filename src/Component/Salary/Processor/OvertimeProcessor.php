@@ -7,7 +7,8 @@ use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\AttendanceSummaryRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\ComponentRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollRepositoryInterface;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -30,15 +31,26 @@ class OvertimeProcessor implements SalaryProcessorInterface
     private $payrollRepository;
 
     /**
+     * @var Setting
+     */
+    private $setting;
+
+    /**
      * @param ComponentRepositoryInterface         $componentRepository
      * @param AttendanceSummaryRepositoryInterface $attendanceSummaryRepository
      * @param PayrollRepositoryInterface           $payrollRepository
+     * @param Setting                              $setting
      */
-    public function __construct(ComponentRepositoryInterface $componentRepository, AttendanceSummaryRepositoryInterface $attendanceSummaryRepository, PayrollRepositoryInterface $payrollRepository)
-    {
+    public function __construct(
+        ComponentRepositoryInterface $componentRepository,
+        AttendanceSummaryRepositoryInterface $attendanceSummaryRepository,
+        PayrollRepositoryInterface $payrollRepository,
+        Setting $setting
+    ) {
         $this->componentRepository = $componentRepository;
         $this->attendanceSummaryRepository = $attendanceSummaryRepository;
         $this->payrollRepository = $payrollRepository;
+        $this->setting = $setting;
     }
 
     /**
@@ -53,7 +65,7 @@ class OvertimeProcessor implements SalaryProcessorInterface
     {
         $overtimeValue = 0.0;
         if ($employee->isHaveOvertimeBenefit()) {
-            $overtimeComponent = $this->componentRepository->findByCode(SettingUtil::get(SettingUtil::OVERTIME_COMPONENT_CODE));
+            $overtimeComponent = $this->componentRepository->findByCode($this->setting->get(SettingKey::OVERTIME_COMPONENT_CODE));
             if (!$overtimeComponent) {
                 throw new \RuntimeException('Overtime benefit code is not valid.');
             }

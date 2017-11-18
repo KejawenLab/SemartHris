@@ -3,7 +3,8 @@
 namespace KejawenLab\Application\SemartHris\Component\Overtime\Calculator;
 
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -16,11 +17,24 @@ abstract class Calculator implements OvertimeCalculatorInterface
     protected $workday;
 
     /**
+     * @var Setting
+     */
+    protected $setting;
+
+    /**
      * @param int $workday
      */
     public function setWorkdayPerWeek(int $workday): void
     {
         $this->workday = $workday;
+    }
+
+    /**
+     * @param Setting $setting
+     */
+    public function setSetingg(Setting $setting): void
+    {
+        $this->setting = $setting;
     }
 
     /**
@@ -32,18 +46,18 @@ abstract class Calculator implements OvertimeCalculatorInterface
     {
         /** @var \DateTime $endHour */
         $endHour = \DateTime::createFromFormat(
-            SettingUtil::get(SettingUtil::DATE_TIME_FORMAT),
+            $this->setting->get(SettingKey::DATE_TIME_FORMAT),
             sprintf('%s %s',
-                date(SettingUtil::get(SettingUtil::DATE_FORMAT)),
-                $overtime->getEndHour()->format(SettingUtil::get(SettingUtil::TIME_FORMAT))
+                date($this->setting->get(SettingKey::DATE_FORMAT)),
+                $overtime->getEndHour()->format($this->setting->get(SettingKey::TIME_FORMAT))
             )
         );
 
         $startHour = \DateTime::createFromFormat(
-            SettingUtil::get(SettingUtil::DATE_TIME_FORMAT),
+            $this->setting->get(SettingKey::DATE_TIME_FORMAT),
             sprintf('%s %s',
-                date(SettingUtil::get(SettingUtil::DATE_FORMAT)),
-                $overtime->getStartHour()->format(SettingUtil::get(SettingUtil::TIME_FORMAT))
+                date($this->setting->get(SettingKey::DATE_FORMAT)),
+                $overtime->getStartHour()->format($this->setting->get(SettingKey::TIME_FORMAT))
             )
         );
 

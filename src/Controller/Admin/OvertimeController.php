@@ -5,9 +5,10 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 use KejawenLab\Application\SemartHris\Component\Attendance\Service\InvalidAttendancePeriodException;
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeImporter;
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeProcessor;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use KejawenLab\Application\SemartHris\Repository\OvertimeRepository;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use League\Csv\Reader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -33,7 +34,7 @@ class OvertimeController extends AdminController
      */
     public function uploadOvertimeAction(Request $request): Response
     {
-        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
+        $this->denyAccessUnlessGranted($this->container->get(Setting::class)->get(SettingKey::SECURITY_OVERTIME_MENU));
 
         $this->initialize($request);
         $this->request = $request;
@@ -58,7 +59,8 @@ class OvertimeController extends AdminController
             ]);
         }
 
-        $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), SettingUtil::get(SettingUtil::UPDATE_DESTIONATION), SettingUtil::get(SettingUtil::OVERTIME_UPLOAD_PATH));
+        $setting = $this->container->get(Setting::class);
+        $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), $setting->get(SettingKey::UPDATE_DESTIONATION), $setting->get(SettingKey::OVERTIME_UPLOAD_PATH));
         $fileName = sprintf('%s.%s', (new \DateTime())->format('Y_m_d_H_i_s'), $overtime->guessExtension());
         $overtime->move($destination, $fileName);
 
@@ -81,7 +83,7 @@ class OvertimeController extends AdminController
      */
     public function processUploadAction(Request $request)
     {
-        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
+        $this->denyAccessUnlessGranted($this->container->get(Setting::class)->get(SettingKey::SECURITY_OVERTIME_MENU));
 
         /** @var Reader $processor */
         $processor = Reader::createFromPath($request->getSession()->get(self::OVERTIME_UPLOAD_SESSION));
@@ -108,7 +110,7 @@ class OvertimeController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_OVERTIME_MENU));
+        $this->denyAccessUnlessGranted($this->container->get(Setting::class)->get(SettingKey::SECURITY_OVERTIME_MENU));
 
         $month = (int) $request->request->get('month', date('n'));
         $year = (int) $request->request->get('year', date('Y'));
@@ -142,18 +144,19 @@ class OvertimeController extends AdminController
      */
     protected function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
+        $setting = $this->container->get(Setting::class);
         $startDate = $this->request->query->get('startDate', null);
         if (!$startDate) {
-            $startDate = date(SettingUtil::get(SettingUtil::FIRST_DATE_FORMAT));
+            $startDate = date($setting->get(SettingKey::FIRST_DATE_FORMAT));
         }
 
         $endDate = $this->request->query->get('endDate', null);
         if (!$endDate) {
-            $endDate = date(SettingUtil::get(SettingUtil::FIRST_DATE_FORMAT));
+            $endDate = date($setting->get(SettingKey::FIRST_DATE_FORMAT));
         }
 
-        $startDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $startDate);
-        $endDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), $endDate);
+        $startDate = \DateTime::createFromFormat($setting->get(SettingKey::DATE_FORMAT), $startDate);
+        $endDate = \DateTime::createFromFormat($setting->get(SettingKey::DATE_FORMAT), $endDate);
         $companyId = $this->request->query->get('company');
         $departmentId = $this->request->query->get('department');
         $shiftmentId = $this->request->query->get('shiftment');

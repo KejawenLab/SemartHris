@@ -8,6 +8,8 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Service\AttendanceImp
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -29,6 +31,11 @@ class AttendanceImporterTest extends TestCase
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
     private $attendanceRepository;
+
+    /**
+     * @var \PHPUnit_Framework_MockObject_MockObject
+     */
+    private $setting;
 
     /**
      * @var \ArrayIterator
@@ -76,36 +83,31 @@ class AttendanceImporterTest extends TestCase
         ]);
 
         $this->employeeRepository = $this->getMockBuilder(EmployeeRepositoryInterface::class)->getMock();
+        $employee = $this->getMockBuilder(EmployeeInterface::class)->getMock();
+        $this->employeeRepository->expects($this->atLeast(5))->method('findByCode')->willReturn($employee);
 
         $this->reasonRepository = $this->getMockBuilder(ReasonRepositoryInterface::class)->getMock();
+        $this->reasonRepository->expects($this->once())->method('findAbsentReasonByCode');
         $this->attendanceRepository = $this->getMockBuilder(AttendanceRepositoryInterface::class)->getMock();
+        $this->setting = $this->getMockBuilder(Setting::class)->disableOriginalConstructor()->getMock();
+        $this->setting->expects($this->atLeastOnce())->method('get')->withAnyParameters()->willReturn('d-m-Y');
     }
 
     public function testImportUseExistingAttendance()
     {
-        $employee = $this->getMockBuilder(EmployeeInterface::class)->getMock();
-        $this->employeeRepository->expects($this->atLeast(5))->method('findByCode')->willReturn($employee);
-
         $attendance = $this->getMockBuilder(AttendanceInterface::class)->getMock();
         $this->attendanceRepository->expects($this->atLeast(5))->method('findByEmployeeAndDate')->willReturn($attendance);
 
-        $this->reasonRepository->expects($this->once())->method('findAbsentReasonByCode');
-
-        $importer = new AttendanceImporter($this->employeeRepository, $this->reasonRepository, $this->attendanceRepository, AttendanceStub::class);
+        $importer = new AttendanceImporter($this->employeeRepository, $this->reasonRepository, $this->attendanceRepository, $this->setting, AttendanceStub::class);
 
         $importer->import($this->fakeData);
     }
 
     public function testImportUseNewAttendance()
     {
-        $employee = $this->getMockBuilder(EmployeeInterface::class)->getMock();
-        $this->employeeRepository->expects($this->atLeast(5))->method('findByCode')->willReturn($employee);
-
         $this->attendanceRepository->expects($this->atLeast(5))->method('findByEmployeeAndDate')->willReturn(null);
 
-        $this->reasonRepository->expects($this->once())->method('findAbsentReasonByCode');
-
-        $importer = new AttendanceImporter($this->employeeRepository, $this->reasonRepository, $this->attendanceRepository, AttendanceStub::class);
+        $importer = new AttendanceImporter($this->employeeRepository, $this->reasonRepository, $this->attendanceRepository, $this->setting, AttendanceStub::class);
 
         $importer->import($this->fakeData);
     }

@@ -6,7 +6,8 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Model\AttendanceInter
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\AttendanceRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
@@ -30,6 +31,11 @@ class AttendanceImporter
     private $attendanceRepository;
 
     /**
+     * @var Setting
+     */
+    private $setting;
+
+    /**
      * @var string
      */
     private $attendanceClass;
@@ -38,17 +44,20 @@ class AttendanceImporter
      * @param EmployeeRepositoryInterface   $employeeRepository
      * @param ReasonRepositoryInterface     $reasonRepository
      * @param AttendanceRepositoryInterface $attendanceRepository
+     * @param Setting                       $setting
      * @param string                        $class
      */
     public function __construct(
         EmployeeRepositoryInterface $employeeRepository,
         ReasonRepositoryInterface $reasonRepository,
         AttendanceRepositoryInterface $attendanceRepository,
+        Setting $setting,
         string $class
     ) {
         $this->employeeRepository = $employeeRepository;
         $this->reasonRepository = $reasonRepository;
         $this->attendanceRepository = $attendanceRepository;
+        $this->setting = $setting;
         $this->attendanceClass = $class;
     }
 
@@ -68,7 +77,7 @@ class AttendanceImporter
                 continue;
             }
 
-            $attendanceDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), StringUtil::sanitize($attendance['date']));
+            $attendanceDate = \DateTime::createFromFormat($this->setting->get(SettingKey::DATE_FORMAT), StringUtil::sanitize($attendance['date']));
             /* @var AttendanceInterface $object */
             $object = $this->attendanceRepository->findByEmployeeAndDate($employee, $attendanceDate);
             if (!$object) {

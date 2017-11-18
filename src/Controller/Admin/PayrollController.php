@@ -5,9 +5,10 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Salary\Processor\InvalidPayrollPeriodException;
 use KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use KejawenLab\Application\SemartHris\Repository\PayrollRepository;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -29,7 +30,7 @@ class PayrollController extends AdminController
      */
     public function processAction(Request $request)
     {
-        $this->denyAccessUnlessGranted(SettingUtil::get(SettingUtil::SECURITY_PAYROLL_MENU));
+        $this->denyAccessUnlessGranted($this->container->get(Setting::class)->get(SettingKey::SECURITY_PAYROLL_MENU));
 
         $employeeRepository = $this->container->get(EmployeeRepository::class);
         $employees = $employeeRepository->findByCompany($request->request->get('company', ''));

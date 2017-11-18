@@ -5,7 +5,8 @@ namespace KejawenLab\Application\SemartHris\Twig;
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalculator;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
@@ -24,6 +25,11 @@ class OvertimeExtension extends \Twig_Extension
     private $overtimeCalculator;
 
     /**
+     * @var Setting
+     */
+    private $setting;
+
+    /**
      * @var string
      */
     private $overtimeClass;
@@ -31,12 +37,18 @@ class OvertimeExtension extends \Twig_Extension
     /**
      * @param EmployeeRepositoryInterface $employeeRepository
      * @param OvertimeCalculator          $overtimeCalculator
+     * @param Setting                     $setting
      * @param string                      $overtimeClass
      */
-    public function __construct(EmployeeRepositoryInterface $employeeRepository, OvertimeCalculator $overtimeCalculator, string $overtimeClass)
-    {
+    public function __construct(
+        EmployeeRepositoryInterface $employeeRepository,
+        OvertimeCalculator $overtimeCalculator,
+        Setting $setting,
+        string $overtimeClass
+    ) {
         $this->employeeRepository = $employeeRepository;
         $this->overtimeCalculator = $overtimeCalculator;
+        $this->setting = $setting;
         $this->overtimeClass = $overtimeClass;
     }
 
@@ -66,7 +78,7 @@ class OvertimeExtension extends \Twig_Extension
             throw new \InvalidArgumentException();
         }
 
-        $overtimeDate = \DateTime::createFromFormat(SettingUtil::get(SettingUtil::DATE_FORMAT), StringUtil::sanitize($preview['date']));
+        $overtimeDate = \DateTime::createFromFormat($this->setting->get(SettingKey::DATE_FORMAT), StringUtil::sanitize($preview['date']));
         $overtime = new $this->overtimeClass();
         $overtime->setOvertimeDate($overtimeDate);
         $overtime->setEmployee($employee);

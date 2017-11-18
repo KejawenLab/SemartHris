@@ -6,13 +6,27 @@ use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 use KejawenLab\Application\SemartHris\Component\Overtime\Repository\OvertimeRepositoryInterface;
-use KejawenLab\Application\SemartHris\Util\SettingUtil;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
+use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
  */
 class OvertimeRepository extends Repository implements OvertimeRepositoryInterface
 {
+    /**
+     * @var Setting
+     */
+    private $setting;
+
+    /**
+     * @param Setting $setting
+     */
+    public function __construct(Setting $setting)
+    {
+        $this->setting = $setting;
+    }
+
     /**
      * @param \DateTimeInterface $startDate
      * @param \DateTimeInterface $endDate
@@ -92,8 +106,8 @@ class OvertimeRepository extends Repository implements OvertimeRepositoryInterfa
         $queryBuilder->from($this->entityClass, 'o');
         $queryBuilder->andWhere($queryBuilder->expr()->isNotNull('o.approvedBy'));
         $queryBuilder->andWhere($queryBuilder->expr()->eq('o.employee', $queryBuilder->expr()->literal($employee->getId())));
-        $queryBuilder->andWhere($queryBuilder->expr()->gte('o.overtimeDate', $queryBuilder->expr()->literal($from->format(SettingUtil::get(SettingUtil::DATE_QUERY_FORMAT)))));
-        $queryBuilder->andWhere($queryBuilder->expr()->lte('o.overtimeDate', $queryBuilder->expr()->literal($to->format(SettingUtil::get(SettingUtil::DATE_QUERY_FORMAT)))));
+        $queryBuilder->andWhere($queryBuilder->expr()->gte('o.overtimeDate', $queryBuilder->expr()->literal($from->format($this->setting->get(SettingKey::DATE_QUERY_FORMAT)))));
+        $queryBuilder->andWhere($queryBuilder->expr()->lte('o.overtimeDate', $queryBuilder->expr()->literal($to->format($this->setting->get(SettingKey::DATE_QUERY_FORMAT)))));
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }

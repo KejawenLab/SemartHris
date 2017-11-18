@@ -3,6 +3,7 @@
 namespace KejawenLab\Application\SemartHris\Component\Overtime\Calculator;
 
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
+use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -18,4 +19,9 @@ interface OvertimeCalculatorInterface
      * @param int $workday
      */
     public function setWorkdayPerWeek(int $workday): void;
+
+    /**
+     * @param Setting $setting
+     */
+    public function setSetingg(Setting $setting): void;
 }

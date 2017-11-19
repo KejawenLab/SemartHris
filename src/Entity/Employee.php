@@ -27,7 +27,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateMarital
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateRiskRatio;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
-use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateIndonesiaTaxType;
+use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateTaxGroup;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use KejawenLab\Application\SemartHris\Validator\Constraint\UniqueContract;
@@ -802,7 +802,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      */
     public function getTaxGroupText(): string
     {
-        return ValidateIndonesiaTaxType::convertToText($this->taxGroup);
+        return ValidateTaxGroup::convertToText($this->taxGroup);
     }
 
     /**
@@ -810,7 +810,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      */
     public function setTaxGroup(string $taxGroup): void
     {
-        if (!ValidateIndonesiaTaxType::isValidType($taxGroup)) {
+        if (!ValidateTaxGroup::isValidType($taxGroup)) {
             throw new \InvalidArgumentException(sprintf('"%s" is not valid tax type.', $taxGroup));
         }
 
@@ -1011,7 +1011,7 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
      */
     public function getTaxGroupChoices(): array
     {
-        return ValidateIndonesiaTaxType::getTypes();
+        return ValidateTaxGroup::getTypes();
     }
 
     /**

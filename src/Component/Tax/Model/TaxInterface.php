@@ -40,6 +40,16 @@ interface TaxInterface
     /**
      * @return null|string
      */
+    public function getTaxGroup(): ? string;
+
+    /**
+     * @param null|string $taxGroup
+     */
+    public function setTaxGroup(?string $taxGroup): void;
+
+    /**
+     * @return null|string
+     */
     public function getUntaxable(): ? string;
 
     /**
@@ -56,6 +66,16 @@ interface TaxInterface
      * @param string $taxable
      */
     public function setTaxable(string $taxable): void;
+
+    /**
+     * @return null|string
+     */
+    public function getTaxPercentage(): ? string;
+
+    /**
+     * @param string $untaxable
+     */
+    public function setTaxPercentage(string $untaxable): void;
 
     /**
      * @return null|string

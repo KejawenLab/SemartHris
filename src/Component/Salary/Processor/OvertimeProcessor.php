@@ -75,10 +75,11 @@ class OvertimeProcessor implements SalaryProcessorInterface
             $attendanceSummary = $this->attendanceSummaryRepository->findByEmployeeAndDate($employee, $date);
             if ($attendanceSummary) {
                 $overtimeValue = (1 / 173) * $fixedSalary * $attendanceSummary->getTotalOvertime();
+                $overtimeValue = round($overtimeValue, 0, PHP_ROUND_HALF_DOWN);
 
                 $payrollDetail = $this->payrollRepository->createPayrollDetail($payroll, $overtimeComponent);
                 $payrollDetail->setComponent($overtimeComponent);
-                $payrollDetail->setBenefitValue($overtimeValue);
+                $payrollDetail->setBenefitValue((string) $overtimeValue);
 
                 $this->payrollRepository->storeDetail($payrollDetail);
                 $this->payrollRepository->update();

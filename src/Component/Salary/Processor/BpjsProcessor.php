@@ -82,8 +82,9 @@ class BpjsProcessor implements SalaryProcessorInterface
         }
 
         $jkk = RiskRatioConverter::getValue($employee->getRiskRatio()) * $fixedSalary;
+        $jkk = round($jkk, 0, PHP_ROUND_HALF_DOWN);
         $companyCost = $this->payrollRepository->createCompanyCost($payroll, $jkkComponent);
-        $companyCost->setBenefitValue($jkk);
+        $companyCost->setBenefitValue((string) $jkk);
 
         $this->payrollRepository->storeCompanyCost($companyCost);
     }
@@ -101,9 +102,9 @@ class BpjsProcessor implements SalaryProcessorInterface
             throw new \RuntimeException('JKM benefit code is not valid.');
         }
 
-        $jkm = 0.003 * $fixedSalary;
+        $jkm = round(0.003 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
         $companyCost = $this->payrollRepository->createCompanyCost($payroll, $jkmComponent);
-        $companyCost->setBenefitValue($jkm);
+        $companyCost->setBenefitValue((string) $jkm);
 
         $this->payrollRepository->storeCompanyCost($companyCost);
     }
@@ -131,16 +132,16 @@ class BpjsProcessor implements SalaryProcessorInterface
             throw new \RuntimeException('JHT employee minus benefit code is not valid.');
         }
 
-        $jhtc = 0.037 * $fixedSalary;
+        $jhtc = round(0.037 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
         $companyCost = $this->payrollRepository->createCompanyCost($payroll, $jhtCompany);
-        $companyCost->setBenefitValue($jhtc);
+        $companyCost->setBenefitValue((string) $jhtc);
 
-        $jht = 0.02 * $fixedSalary;
+        $jht = round(0.02 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
         $plusJht = $this->payrollRepository->createPayrollDetail($payroll, $jhtEmployeePlus);
-        $plusJht->setBenefitValue($jht);
+        $plusJht->setBenefitValue((string) $jht);
 
         $minusJht = $this->payrollRepository->createPayrollDetail($payroll, $jhtEmployeeMinus);
-        $minusJht->setBenefitValue($jht);
+        $minusJht->setBenefitValue((string) $jht);
 
         $this->payrollRepository->storeCompanyCost($companyCost);
         $this->payrollRepository->storeDetail($plusJht);
@@ -170,16 +171,16 @@ class BpjsProcessor implements SalaryProcessorInterface
             throw new \RuntimeException('JP employee minus benefit code is not valid.');
         }
 
-        $jpc = 0.02 * $fixedSalary;
+        $jpc = round(0.02 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
         $companyCost = $this->payrollRepository->createCompanyCost($payroll, $jpCompany);
-        $companyCost->setBenefitValue($jpc);
+        $companyCost->setBenefitValue((string) $jpc);
 
-        $jp = 0.01 * $fixedSalary;
+        $jp = round(0.01 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
         $plusJp = $this->payrollRepository->createPayrollDetail($payroll, $jpEmployeePlus);
-        $plusJp->setBenefitValue($jp);
+        $plusJp->setBenefitValue((string) $jp);
 
         $minusJp = $this->payrollRepository->createPayrollDetail($payroll, $jpEmployeeMinus);
-        $minusJp->setBenefitValue($jp);
+        $minusJp->setBenefitValue((string) $jp);
 
         $this->payrollRepository->storeCompanyCost($companyCost);
         $this->payrollRepository->storeDetail($plusJp);

@@ -21,12 +21,7 @@ class ValidateContractType implements ValidateTypeInterface
     public static function isValidType(string $type): bool
     {
         $type = StringUtil::lowercase($type);
-        if (!in_array($type, [
-            ContractType::INTERSHIP,
-            ContractType::OUTSOURCE,
-            ContractType::PERMANENT,
-            ContractType::TEMPORARY,
-        ])) {
+        if (!in_array($type, self::getTypes())) {
             return false;
         }
 

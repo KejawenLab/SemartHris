@@ -107,7 +107,7 @@ class SalaryProcessor implements PayrollProcessorInterface
         }
         $takeHomePay += $this->processAllowance($employee, $date, $payroll);
 
-        $payroll->setTakeHomePay($takeHomePay);
+        $payroll->setTakeHomePay((string) $takeHomePay);
         $this->payrollRepository->store($payroll);
         $this->payrollRepository->update();
     }

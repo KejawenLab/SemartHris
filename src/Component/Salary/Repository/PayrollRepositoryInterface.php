@@ -27,6 +27,14 @@ interface PayrollRepositoryInterface
      * @param EmployeeInterface      $employee
      * @param PayrollPeriodInterface $period
      *
+     * @return PayrollInterface|null
+     */
+    public function findPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): ? PayrollInterface;
+
+    /**
+     * @param EmployeeInterface      $employee
+     * @param PayrollPeriodInterface $period
+     *
      * @return PayrollInterface
      */
     public function createPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): PayrollInterface;

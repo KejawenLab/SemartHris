@@ -21,13 +21,7 @@ class ValidateRiskRatio implements ValidateTypeInterface
     public static function isValidType(string $riskRatio): bool
     {
         $riskRatio = StringUtil::lowercase($riskRatio);
-        if (!in_array($riskRatio, [
-            RiskRatio::RISK_VERY_HIGH,
-            RiskRatio::RISK_HIGH,
-            RiskRatio::RISK_NORMAL,
-            RiskRatio::RISK_LOW,
-            RiskRatio::RISK_VERY_LOW,
-        ])) {
+        if (!in_array($riskRatio, self::getTypes())) {
             return false;
         }
 

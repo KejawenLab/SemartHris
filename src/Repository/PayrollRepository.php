@@ -58,6 +58,20 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
      * @param EmployeeInterface      $employee
      * @param PayrollPeriodInterface $period
      *
+     * @return PayrollInterface|null
+     */
+    public function findPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): ? PayrollInterface
+    {
+        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
+            'employee' => $employee,
+            'period' => $period,
+        ]);
+    }
+
+    /**
+     * @param EmployeeInterface      $employee
+     * @param PayrollPeriodInterface $period
+     *
      * @return PayrollInterface
      */
     public function createPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): PayrollInterface
@@ -179,20 +193,6 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
         }
 
         return $queryBuilder;
-    }
-
-    /**
-     * @param EmployeeInterface      $employee
-     * @param PayrollPeriodInterface $period
-     *
-     * @return PayrollInterface|null
-     */
-    private function findPayroll(EmployeeInterface $employee, PayrollPeriodInterface $period): ? PayrollInterface
-    {
-        return $this->entityManager->getRepository($this->entityClass)->findOneBy([
-            'employee' => $employee,
-            'period' => $period,
-        ]);
     }
 
     /**

@@ -95,8 +95,8 @@ class AttendanceProcessor implements PayrollProcessorInterface
         if (!$summary) {
             $summary = new $this->attendanceSummaryClass();
             $summary->setEmployee($employee);
-            $summary->setYear($date->format('Y'));
-            $summary->setMonth($date->format('n'));
+            $summary->setYear((int) $date->format('Y'));
+            $summary->setMonth((int) $date->format('n'));
         }
 
         if (self::CUT_OFF_LAST_DATE === $this->cutOffDate) {

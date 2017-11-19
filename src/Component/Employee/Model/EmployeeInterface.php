@@ -15,7 +15,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\IdentityType;
 use KejawenLab\Application\SemartHris\Component\Employee\MaritalStatus;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
-use KejawenLab\Application\SemartHris\Component\Tax\IndonesianTaxType;
+use KejawenLab\Application\SemartHris\Component\Tax\TaxGroup;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
@@ -168,7 +168,7 @@ interface EmployeeInterface extends Addressable
     /**
      * @return string
      *
-     * @see IndonesianTaxType
+     * @see TaxGroup
      */
     public function getTaxGroup(): string;
 

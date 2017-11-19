@@ -21,7 +21,7 @@ class ValidateMutationType implements ValidateTypeInterface
     public static function isValidType(string $type): bool
     {
         $type = StringUtil::lowercase($type);
-        if (!in_array($type, [MutationType::PROMOTION, MutationType::DEMOTION, MutationType::MUTATION])) {
+        if (!in_array($type, self::getTypes())) {
             return false;
         }
 
@@ -33,7 +33,11 @@ class ValidateMutationType implements ValidateTypeInterface
      */
     public static function getTypes(): array
     {
-        return [MutationType::PROMOTION, MutationType::DEMOTION, MutationType::MUTATION];
+        return [
+            MutationType::PROMOTION,
+            MutationType::DEMOTION,
+            MutationType::MUTATION,
+        ];
     }
 
     /**

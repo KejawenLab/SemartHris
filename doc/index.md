@@ -20,6 +20,7 @@ Cara penggunaan SemartHris dibagi dalam beberapa tahap berikut ini :
 	 - Departemen ( Tambah / Edit / Delete Departemen )
 	 - Level Jabatan ( Tambah / Edit / Delete Level Jabatan )
 	 - Jabatan ( Tambah / Edit / Delete Jabatan )
+	 - Beban Gaji Perusahaan (view pengeluaran gaji perusahaan)
  4. Karyawan
 	 - Profil Karyawan ( Tambah / Edit / Delete Karyawan )
 	 - Penempatan Karyawan  ( Tambah / Edit / Delete Penempatan Karyawan )

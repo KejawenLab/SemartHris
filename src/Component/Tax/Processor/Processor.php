@@ -21,6 +21,21 @@ abstract class Processor implements TaxProcessorInterface
     protected $payrollRepository;
 
     /**
+     * @var float
+     */
+    private $taxable = 0.0;
+
+    /**
+     * @var float
+     */
+    private $untaxable = 0.0;
+
+    /**
+     * @var float
+     */
+    private $taxPercentage = 0.0;
+
+    /**
      * @param PayrollRepositoryInterface $payrollRepository
      */
     public function setPayrollRepository(PayrollRepositoryInterface $payrollRepository): void
@@ -42,9 +57,31 @@ abstract class Processor implements TaxProcessorInterface
         }
 
         $takeHomePay = (float) $payroll->getTakeHomePay();
-        $taxable = (12 * $payroll->getTakeHomePay()) - TaxGroup::$PTKP[$employee->getTaxGroup()];
-        $percentage = TaxPercentage::getValue($takeHomePay);
+        $this->untaxable = (float) TaxGroup::$PTKP[$employee->getTaxGroup()];
+        $this->taxable = (12 * $takeHomePay) - $this->untaxable;
+        $this->taxPercentage = TaxPercentage::getValue($takeHomePay);
 
-        return round($taxable * $percentage / 12, 0, PHP_ROUND_HALF_DOWN);
+        return round($this->taxable * $this->taxPercentage / 12, 0, PHP_ROUND_HALF_DOWN);
+    }
+
+    public function getTaxableValue(): float
+    {
+        return $this->taxable;
+    }
+
+    /**
+     * @return float
+     */
+    public function getUntaxableValue(): float
+    {
+        return $this->untaxable;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTaxPercentage(): float
+    {
+        return $this->taxPercentage;
     }
 }

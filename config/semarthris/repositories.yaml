@@ -118,6 +118,11 @@ services:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryAllowance']]
 
+    KejawenLab\Application\SemartHris\Repository\TaxRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Tax']]
+
     KejawenLab\Application\SemartHris\Repository\SalaryBenefitRepository:
         lazy: true
         arguments:

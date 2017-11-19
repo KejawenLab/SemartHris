@@ -38,8 +38,8 @@ class PayrollPeriodRepository extends Repository implements PayrollPeriodReposit
     {
         /** @var PayrollPeriodInterface $entity */
         $entity = new $this->entityClass();
-        $entity->setYear($date->format('Y'));
-        $entity->setMonth($date->format('n'));
+        $entity->setYear((int) $date->format('Y'));
+        $entity->setMonth((int) $date->format('n'));
         $entity->setCompany($employee->getCompany());
         $entity->setClosed(false);
 

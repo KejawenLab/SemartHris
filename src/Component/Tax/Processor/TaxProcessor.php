@@ -13,6 +13,8 @@ use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollReposit
  */
 class TaxProcessor extends Processor
 {
+    const SEMARTHRIS_TAX_PROCESSOR = 'semarthris.tax_processor';
+
     /**
      * @var TaxProcessorInterface[]
      */

@@ -19,4 +19,19 @@ interface TaxProcessorInterface
      * @return float
      */
     public function process(EmployeeInterface $employee, PayrollPeriodInterface $period): float;
+
+    /**
+     * @return float
+     */
+    public function getTaxableValue(): float;
+
+    /**
+     * @return float
+     */
+    public function getUntaxableValue(): float;
+
+    /**
+     * @return float
+     */
+    public function getTaxPercentage(): float;
 }

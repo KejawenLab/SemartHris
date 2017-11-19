@@ -1,5 +1,34 @@
+- { code: '11', name: 'A C E H', ref: '11' }
+- { code: '12', name: 'SUMATERA UTARA', ref: '12' }
+- { code: '13', name: 'SUMATERA BARAT', ref: '13' }
+- { code: '14', name: 'R I A U', ref: '14' }
+- { code: '15', name: 'J A M B I', ref: '15' }
+- { code: '16', name: 'SUMATERA SELATAN', ref: '16' }
+- { code: '17', name: 'BENGKULU', ref: '17' }
+- { code: '18', name: 'LAMPUNG', ref: '18' }
+- { code: '19', name: 'KEPULAUAN BANGKA BELITUNG', ref: '19' }
+- { code: '21', name: 'KEPULAUAN RIAU', ref: '21' }
 - { code: '31', name: 'DKI JAKARTA', ref: '31' }
 - { code: '32', name: 'JAWA BARAT', ref: '32' }
 - { code: '33', name: 'JAWA TENGAH', ref: '33' }
-- { code: '35', name: 'JAWA TIMUR', ref: '35' }
 - { code: '34', name: 'DI YOGYAKARTA', ref: '34' }
+- { code: '35', name: 'JAWA TIMUR', ref: '35' }
+- { code: '36', name: 'B A N T E N', ref: '36' }
+- { code: '51', name: 'B A L I', ref: '51' }
+- { code: '52', name: 'NUSA TENGGARA BARAT', ref: '52' }
+- { code: '53', name: 'NUSA TENGGARA TIMUR', ref: '52' }
+- { code: '61', name: 'KALIMANTAN BARAT', ref: '61' }
+- { code: '62', name: 'KALIMANTAN TENGAH', ref: '62' }
+- { code: '63', name: 'KALIMANTAN SELATAN', ref: '63' }
+- { code: '64', name: 'KALIMANTAN TIMUR', ref: '64' }
+- { code: '65', name: 'KALIMANTAN UTARA', ref: '65' }
+- { code: '71', name: 'SULAWESI UTARA', ref: '71' }
+- { code: '72', name: 'SULAWESI TENGAH', ref: '72' }
+- { code: '73', name: 'SULAWESI SELATAN', ref: '73' }
+- { code: '74', name: 'SULAWESI TENGGARA', ref: '74' }
+- { code: '75', name: 'GORONTALO', ref: '75' }
+- { code: '76', name: 'SULAWESI BARAT', ref: '76' }
+- { code: '81', name: 'MALUKU', ref: '81' }
+- { code: '82', name: 'MALUKU UTARA', ref: '82' }
+- { code: '91', name: 'PAPUA', ref: '94' }
+- { code: '92', name: 'PAPUA BARAT', ref: '91' }

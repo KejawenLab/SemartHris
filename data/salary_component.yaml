@@ -11,4 +11,6 @@
 - { code: 'JPP', state: 'p', name: 'TUNJANGAN BPJS JP', fixed: true, ref: 'jpp' }
 - { code: 'JPM', state: 'm', name: 'POTONGAN BPJS JP', fixed: true, ref: 'jpm' }
 - { code: 'JPC', state: 'p', name: 'TUNJANGAN BPJS JP PERUSAHAAN', fixed: true, ref: 'jpc' }
+- { code: 'PPH21P', state: 'p', name: 'TUNJANGAN PAJAK PPH21', fixed: true, ref: 'pph21p' }
+- { code: 'PPH21M', state: 'm', name: 'POTONGAN PAJAK PPH21', fixed: true, ref: 'pph21m' }
 - { code: 'PL', state: 'm', name: 'POTONGAN LAIN-LAIN', fixed: false, ref: 'pl' }

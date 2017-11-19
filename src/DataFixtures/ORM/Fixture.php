@@ -57,7 +57,7 @@ abstract class Fixture extends Base
                 if (self::REF_KEY === $key) {
                     $this->setReference(StringUtil::uppercase(sprintf('%s#%s', $this->getReferenceKey(), $value)), $entity);
                 } else {
-                    if (false !== strpos($value, self::REF_KEY)) {
+                    if (is_string($value) && false !== strpos($value, self::REF_KEY)) {
                         $value = $this->getReference(StringUtil::uppercase(str_replace('ref:', '', $value)));
                     }
 

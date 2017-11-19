@@ -206,6 +206,22 @@
                 <source>label.payroll.filter_action</source>
                 <target>Filter</target>
             </trans-unit>
+            <trans-unit id="semarthris.tax.process_warning_content">
+                <source>semarthris.tax.process_warning_content</source>
+                <target>Proses PPH21 akan menyebabkan payroll pada bulan yang dipilih akan dikunci.</target>
+            </trans-unit>
+            <trans-unit id="semarthris.tax.process_finish_content">
+                <source>semarthris.tax.process_finish_content</source>
+                <target>PPH21 telah selesai diproses</target>
+            </trans-unit>
+            <trans-unit id="label.tax.process_action">
+                <source>label.tax.process_action</source>
+                <target>Proses PPH21</target>
+            </trans-unit>
+            <trans-unit id="label.tax.filter_action">
+                <source>label.tax.filter_action</source>
+                <target>Filter</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

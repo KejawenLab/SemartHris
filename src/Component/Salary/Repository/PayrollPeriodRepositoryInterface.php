@@ -44,4 +44,9 @@ interface PayrollPeriodRepositoryInterface
      * @return bool
      */
     public function isEmptyOrNotEqueal(\DateTimeInterface $date): bool;
+
+    /**
+     * @return bool
+     */
+    public function hasUnclosedPeriod(): bool;
 }

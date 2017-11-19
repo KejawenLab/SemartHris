@@ -5,6 +5,6 @@ semart:
 
 semart_admin:
     resource: ../src/Controller/Admin
-    prefix: /admin
+    prefix: /
     type: annotation
 

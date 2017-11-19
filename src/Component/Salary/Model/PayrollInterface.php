@@ -50,4 +50,6 @@ interface PayrollInterface
      * @return null|string
      */
     public function getTakeHomePayKey(): ? string;
+
+    public function close(): void;
 }

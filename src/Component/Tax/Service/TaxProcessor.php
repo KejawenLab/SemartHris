@@ -99,6 +99,9 @@ class TaxProcessor
         $taxMinusBenefit = $this->payrollRepository->createPayrollDetail($payroll, $taxPlus);
         $taxMinusBenefit->setBenefitValue($tax->getTaxValue());
 
+        $payroll->close();
+
+        $this->payrollRepository->store($payroll);
         $this->payrollRepository->storeDetail($taxPlusBenefit);
         $this->payrollRepository->storeDetail($taxMinusBenefit);
         $this->payrollRepository->update();

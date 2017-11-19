@@ -165,4 +165,9 @@ class Payroll implements PayrollInterface
     {
         $this->takeHomePayKey = $takeHomePayKey;
     }
+
+    public function close(): void
+    {
+        $this->period->setClosed(true);
+    }
 }

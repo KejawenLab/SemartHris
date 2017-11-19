@@ -24,6 +24,15 @@
     page: app.request.query.get('page', 1)
 }) %}
 
+{% block new_action %}
+    <div class="button-action">
+        <a class="btn btn-primary process" href="#" type="button" title="{{ 'label.tax.process_action' | trans({}, 'messages') }}">
+            <i class="fa fa-cogs"></i>
+            <span class="hidden-xs hidden-sm">{{ 'label.tax.process_action' | trans({}, 'messages') }}</span>
+        </a>
+    </div>
+{% endblock new_action %}
+
 {% block main %}
     {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
 
@@ -58,7 +67,7 @@
                                         </select>
                                         <span class="input-group-btn">
                                             <button name="filter" id="filter" class="btn btn-primary pull-right" type="submit">
-                                                <i class="fa fa-television"></i> {{ 'label.payroll.filter_action' | trans({}, 'messages') }}
+                                                <i class="fa fa-television"></i> {{ 'label.tax.filter_action' | trans({}, 'messages') }}
                                             </button>
                                         </span>
                                     </div>
@@ -136,7 +145,10 @@
                     </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="6" class="no-results"><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ total | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
+                    <td colspan="7" class="no-results"><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ total | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
+                    <td><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ total | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
+                    <td><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ total | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
+                    <td><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ total | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <td>&nbsp;</td>
                     {% endif %}
@@ -149,6 +161,41 @@
     {% block paginator %}
         {{ parent() }}
     {% endblock paginator %}
+
+    <div id="modal-process" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>{{ 'delete_modal.title'|trans({}, 'EasyAdminBundle') }}</h4>
+                    <p>{{ 'semarthris.tax.process_warning_content'|trans({}, 'messages') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn">
+                        {{ 'action.cancel'|trans({}, 'messages') }}
+                    </button>
+                    <button type="button" data-dismiss="modal" class="btn btn-danger process-tax">
+                        {{ 'label.tax.process_action' | trans({}, 'messages') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-after-process" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>{{ 'delete_modal.title'|trans({}, 'EasyAdminBundle') }}</h4>
+                    <p class="fail-message">{{ 'semarthris.tax.process_finish_content'|trans({}, 'messages') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary reload">
+                        {{ 'action.close'|trans({}, 'messages') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock main %}
 
 {% block body_javascript %}
@@ -162,10 +209,50 @@
 
     <script type="text/javascript">
         $(function() {
+            var locale = '{{ _select2_locale }}';
             var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
+            var btnFile = '{{ 'label.form.file_chooser' | trans({}, 'messages') }}';
 
+            $(document).on('click', '.process', function () {
+                $('#modal-process').modal();
+            });
+
+            $(document).on('click', '.process-tax', function () {
+                var company = $('#company').val();
+                var month = $('.month').val();
+                var year = $('.year').val();
+
+                $.ajax({
+                    url: Routing.generate('process_tax'),
+                    type: 'POST',
+                    data: {
+                        company: company,
+                        month: month,
+                        year: year
+                    },
+                    beforeSend: function () {},
+                    success: function () {
+                        $('#modal-after-process').modal();
+                    },
+                    error: function (r) {
+                        var response = JSON.parse(r.responseText);
+                        $('.fail-message').html(response.message);
+                        $('#modal-after-process').modal();
+                    }
+                });
+            });
+
+            $(document).on('click', '.reload', function() {
+                window.location.reload(true);
+            });
+
+            $(document).on('click', '.employee_checkall', function(){
+                $('.employee').prop('checked', this.checked);
+            });
+
+            change_static_select(locale);
+            date_range_picker(locale,  '{{ date_format_long }}');
             company_autocomplete(emptyText, '{{ app.request.query.get('company') }}');
-            change_static_select('{{ _select2_locale }}');
         });
     </script>
 {% endblock %}

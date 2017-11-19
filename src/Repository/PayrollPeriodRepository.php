@@ -92,4 +92,22 @@ class PayrollPeriodRepository extends Repository implements PayrollPeriodReposit
 
         return false;
     }
+
+    /**
+     * @return bool
+     */
+    public function hasUnclosedPeriod(): bool
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->from($this->entityClass, 'p');
+        $queryBuilder->select('COUNT(1)');
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('p.closed', $queryBuilder->expr()->literal(false)));
+
+        $result = $queryBuilder->getQuery()->getSingleScalarResult();
+        if (0 === $result) {
+            return false;
+        }
+
+        return true;
+    }
 }

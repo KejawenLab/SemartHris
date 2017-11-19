@@ -1,0 +1,23 @@
+easy_admin:
+    entities:
+        Tax:
+            role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\Tax'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\TaxController'
+            disabled_actions: ['show', 'search', 'edit', 'delete']
+            templates:
+                list: 'app/tax/list.html.twig'
+            list:
+                role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
+                title: 'Pajak PPH21'
+                fields:
+                    - { property: 'period.year', label: 'Tahun', type: 'text' }
+                    - { property: 'period.month', label: 'Bulan', type: 'text', template: 'app/default/field_month.html.twig' }
+                    - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'taxGroupText', label: 'Kode Pajak' }
+                    - { property: 'component.name', label: 'Komponen Gaji', type: 'text' }
+                    - { property: 'component.state', label: 'Tipe', template: 'app/default/benefit_state.html.twig' }
+                    - { property: 'taxPercentage', label: 'Persentase', type: 'float' }
+                    - { property: 'untaxable', label: 'PTKP', type: 'float', template: 'app/default/field_currency.html.twig' }
+                    - { property: 'taxable', label: 'PKP', type: 'float', template: 'app/default/field_currency.html.twig' }
+                    - { property: 'taxValue', label: 'Nilai', type: 'float', template: 'app/default/field_currency.html.twig' }

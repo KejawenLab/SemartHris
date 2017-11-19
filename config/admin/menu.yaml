@@ -66,6 +66,7 @@ easy_admin:
                   - { entity: 'SalaryAllowanceMinus', label: 'Potongan', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC', state: 'm' } }
                   - { entity: 'PayrollPeriod', label: 'Penggajian', icon: 'hand-o-right', params: { sortField: 'year', sortDirection: 'DESC' } }
                   - { entity: 'Payroll', label: 'Riwayat Penggajian', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Tax', label: 'Pajak PPH21', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Alamat'
               role: '%env(string:SEMART_SECURITY_ADDRESS_MENU)%'
               icon: 'id-card-o'

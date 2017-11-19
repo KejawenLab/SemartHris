@@ -1,18 +1,514 @@
-- { region: 'ref:region#31', code: '3172', name: 'KOTA JAKARTA UTARA', ref: '3172' }
-- { region: 'ref:region#31', code: '3171', name: 'KOTA JAKARTA PUSAT' }
-- { region: 'ref:region#31', code: '3173', name: 'KOTA JAKARTA BARAT' }
-- { region: 'ref:region#31', code: '3175', name: 'KOTA JAKARTA TIMUR' }
-- { region: 'ref:region#31', code: '3174', name: 'KOTA JAKARTA SELATAN' }
-- { region: 'ref:region#31', code: '3101', name: 'KOTA ADMINISTRASI KEPULAUAN SERIBU' }
-- { region: 'ref:region#32', code: '3271', name: 'KOTA BOGOR' }
-- { region: 'ref:region#32', code: '3201', name: 'KABUPATEN BOGOR' }
-- { region: 'ref:region#32', code: '3204', name: 'KOTA BANDUNG' }
-- { region: 'ref:region#32', code: '3272', name: 'KABUPATEN BANDUNG' }
-- { region: 'ref:region#32', code: '3275', name: 'KOTA BEKASI' }
-- { region: 'ref:region#32', code: '3216', name: 'KABUPATEN BEKASI' }
-- { region: 'ref:region#33', code: '3374', name: 'KOTA SEMARANG' }
-- { region: 'ref:region#33', code: '3322', name: 'KABUPATEN SEMARANG' }
-- { region: 'ref:region#33', code: '3326', name: 'KABUPATEN PEKALONGAN' }
-- { region: 'ref:region#33', code: '3376', name: 'KOTA TEGAL' }
-- { region: 'ref:region#33', code: '3328', name: 'KABUPATEN TEGAL' }
-- { region: 'ref:region#33', code: '3327', name: 'KABUPATEN PEMALANG' }
+- { region: 'ref:region#11', code: '11.01', name: 'Kabupaten Aceh Selatan' }
+- { region: 'ref:region#11', code: '11.02', name: 'Kabupaten Aceh Tenggara' }
+- { region: 'ref:region#11', code: '11.03', name: 'Kabupaten Aceh Timur' }
+- { region: 'ref:region#11', code: '11.04', name: 'Kabupaten Aceh Tengah' }
+- { region: 'ref:region#11', code: '11.05', name: 'Kabupaten Aceh Barat' }
+- { region: 'ref:region#11', code: '11.06', name: 'Kabupaten Aceh Besar' }
+- { region: 'ref:region#11', code: '11.07', name: 'Kabupaten Pidie' }
+- { region: 'ref:region#11', code: '11.08', name: 'Kabupaten Aceh Utara' }
+- { region: 'ref:region#11', code: '11.09', name: 'Kabupaten Simeulue' }
+- { region: 'ref:region#11', code: '11.10', name: 'Kabupaten Aceh Singkil' }
+- { region: 'ref:region#11', code: '11.11', name: 'Kabupaten Bireuen' }
+- { region: 'ref:region#11', code: '11.12', name: 'Kabupaten Aceh Barat Daya' }
+- { region: 'ref:region#11', code: '11.13', name: 'Kabupaten Gayo Lues' }
+- { region: 'ref:region#11', code: '11.14', name: 'Kabupaten Aceh Jaya' }
+- { region: 'ref:region#11', code: '11.15', name: 'Kabupaten Nagan Raya' }
+- { region: 'ref:region#11', code: '11.16', name: 'Kabupaten Aceh Tamiang' }
+- { region: 'ref:region#11', code: '11.17', name: 'Kabupaten Bener Meriah' }
+- { region: 'ref:region#11', code: '11.18', name: 'Kabupaten Pidie Jaya' }
+- { region: 'ref:region#11', code: '11.71', name: 'Kota Banda Aceh' }
+- { region: 'ref:region#11', code: '11.72', name: 'Kota Sabang' }
+- { region: 'ref:region#11', code: '11.73', name: 'Kota Lhokseumawe' }
+- { region: 'ref:region#11', code: '11.74', name: 'Kota Langsa' }
+- { region: 'ref:region#11', code: '11.75', name: 'Kota Subulussalam' }
+- { region: 'ref:region#12', code: '12.09', name: 'Kabupaten Asahan' }
+- { region: 'ref:region#12', code: '12.19', name: 'Kabupaten Batubara' }
+- { region: 'ref:region#12', code: '12.11', name: 'Kabupaten Dairi' }
+- { region: 'ref:region#12', code: '12.07', name: 'Kabupaten Deli Serdang' }
+- { region: 'ref:region#12', code: '12.16', name: 'Kabupaten Humbang Hasundutan' }
+- { region: 'ref:region#12', code: '12.06', name: 'Kabupaten Karo' }
+- { region: 'ref:region#12', code: '12.10', name: 'Kabupaten Labuhanbatu' }
+- { region: 'ref:region#12', code: '12.22', name: 'Kabupaten Labuhanbatu Selatan' }
+- { region: 'ref:region#12', code: '12.23', name: 'Kabupaten Labuhanbatu Utara' }
+- { region: 'ref:region#12', code: '12.05', name: 'Kabupaten Langkat' }
+- { region: 'ref:region#12', code: '12.13', name: 'Kabupaten Mandailing Natal' }
+- { region: 'ref:region#12', code: '12.04', name: 'Kabupaten Nias' }
+- { region: 'ref:region#12', code: '12.25', name: 'Kabupaten Nias Barat' }
+- { region: 'ref:region#12', code: '12.14', name: 'Kabupaten Nias Selatan' }
+- { region: 'ref:region#12', code: '12.24', name: 'Kabupaten Nias Utara' }
+- { region: 'ref:region#12', code: '12.21', name: 'Kabupaten Padang Lawas' }
+- { region: 'ref:region#12', code: '12.20', name: 'Kabupaten Padang Lawas Utara' }
+- { region: 'ref:region#12', code: '12.15', name: 'Kabupaten Pakpak Bharat' }
+- { region: 'ref:region#12', code: '12.17', name: 'Kabupaten Samosir' }
+- { region: 'ref:region#12', code: '12.18', name: 'Kabupaten Serdang Bedagai' }
+- { region: 'ref:region#12', code: '12.08', name: 'Kabupaten Simalungun' }
+- { region: 'ref:region#12', code: '12.03', name: 'Kabupaten Tapanuli Selatan' }
+- { region: 'ref:region#12', code: '12.01', name: 'Kabupaten Tapanuli Tengah' }
+- { region: 'ref:region#12', code: '12.02', name: 'Kabupaten Tapanuli Utara' }
+- { region: 'ref:region#12', code: '12.12', name: 'Kabupaten Toba Samosir' }
+- { region: 'ref:region#12', code: '12.75', name: 'Kota Binjai' }
+- { region: 'ref:region#12', code: '12.78', name: 'Kota Gunungsitoli' }
+- { region: 'ref:region#12', code: '12.71', name: 'Kota Medan' }
+- { region: 'ref:region#12', code: '12.77', name: 'Kota Padangsidempuan' }
+- { region: 'ref:region#12', code: '12.72', name: 'Kota Pematang Siantar' }
+- { region: 'ref:region#12', code: '12.73', name: 'Kota Sibolga' }
+- { region: 'ref:region#12', code: '12.74', name: 'Kota Tanjung Balai' }
+- { region: 'ref:region#12', code: '12.76', name: 'Kota Tebing Tinggi' }
+- { region: 'ref:region#13', code: '13.06', name: 'Kabupaten Agam' }
+- { region: 'ref:region#13', code: '13.10', name: 'Kabupaten Dharmasraya' }
+- { region: 'ref:region#13', code: '13.09', name: 'Kabupaten Kepulauan Mentawai' }
+- { region: 'ref:region#13', code: '13.07', name: 'Kabupaten Lima Puluh Kota' }
+- { region: 'ref:region#13', code: '13.05', name: 'Kabupaten Padang Pariaman' }
+- { region: 'ref:region#13', code: '13.08', name: 'Kabupaten Pasaman' }
+- { region: 'ref:region#13', code: '13.12', name: 'Kabupaten Pasaman Barat' }
+- { region: 'ref:region#13', code: '13.01', name: 'Kabupaten Pesisir Selatan' }
+- { region: 'ref:region#13', code: '13.03', name: 'Kabupaten Sijunjung' }
+- { region: 'ref:region#13', code: '13.02', name: 'Kabupaten Solok' }
+- { region: 'ref:region#13', code: '13.11', name: 'Kabupaten Solok Selatan' }
+- { region: 'ref:region#13', code: '13.04', name: 'Kabupaten Tanah Datar' }
+- { region: 'ref:region#13', code: '13.75', name: 'Kota Bukittinggi' }
+- { region: 'ref:region#13', code: '13.71', name: 'Kota Padang' }
+- { region: 'ref:region#13', code: '13.74', name: 'Kota Padangpanjang' }
+- { region: 'ref:region#13', code: '13.77', name: 'Kota Pariaman' }
+- { region: 'ref:region#13', code: '13.76', name: 'Kota Payakumbuh' }
+- { region: 'ref:region#13', code: '13.73', name: 'Kota Sawahlunto' }
+- { region: 'ref:region#13', code: '13.72', name: 'Kota Solok' }
+- { region: 'ref:region#14', code: '14.03', name: 'Kabupaten Bengkalis' }
+- { region: 'ref:region#14', code: '14.04', name: 'Kabupaten Indragiri Hilir' }
+- { region: 'ref:region#14', code: '14.02', name: 'Kabupaten Indragiri Hulu' }
+- { region: 'ref:region#14', code: '14.01', name: 'Kabupaten Kampar' }
+- { region: 'ref:region#14', code: '14.10', name: 'Kabupaten Kepulauan Meranti' }
+- { region: 'ref:region#14', code: '14.09', name: 'Kabupaten Kuantan Singingi' }
+- { region: 'ref:region#14', code: '14.05', name: 'Kabupaten Pelalawan' }
+- { region: 'ref:region#14', code: '14.07', name: 'Kabupaten Rokan Hilir' }
+- { region: 'ref:region#14', code: '14.06', name: 'Kabupaten Rokan Hulu' }
+- { region: 'ref:region#14', code: '14.08', name: 'Kabupaten Siak' }
+- { region: 'ref:region#14', code: '14.72', name: 'Kota Dumai' }
+- { region: 'ref:region#14', code: '14.71', name: 'Kota Pekanbaru' }
+- { region: 'ref:region#15', code: '15.01', name: 'Kabupaten Kerinci' }
+- { region: 'ref:region#15', code: '15.02', name: 'Kabupaten Merangin' }
+- { region: 'ref:region#15', code: '15.03', name: 'Kabupaten Sarolangun' }
+- { region: 'ref:region#15', code: '15.04', name: 'Kabupaten Batanghari' }
+- { region: 'ref:region#15', code: '15.05', name: 'Kabupaten Muaro Jambi' }
+- { region: 'ref:region#15', code: '15.06', name: 'Kabupaten Tanjung Jabung Barat' }
+- { region: 'ref:region#15', code: '15.07', name: 'Kabupaten Tanjung Jabung Timur' }
+- { region: 'ref:region#15', code: '15.08', name: 'Kabupaten Bungo' }
+- { region: 'ref:region#15', code: '15.09', name: 'Kabupaten Tebo' }
+- { region: 'ref:region#15', code: '15.71', name: 'Kota Jambi' }
+- { region: 'ref:region#15', code: '15.72', name: 'Kota Sungai Penuh' }
+- { region: 'ref:region#16', code: '16.07', name: 'Kabupaten Banyuasin' }
+- { region: 'ref:region#16', code: '16.11', name: 'Kabupaten Empat Lawang' }
+- { region: 'ref:region#16', code: '16.04', name: 'Kabupaten Lahat' }
+- { region: 'ref:region#16', code: '16.03', name: 'Kabupaten Muara Enim' }
+- { region: 'ref:region#16', code: '16.06', name: 'Kabupaten Musi Banyuasin' }
+- { region: 'ref:region#16', code: '16.05', name: 'Kabupaten Musi Rawas' }
+- { region: 'ref:region#16', code: '16.13', name: 'Kabupaten Musi Rawas Utara' }
+- { region: 'ref:region#16', code: '16.10', name: 'Kabupaten Ogan Ilir' }
+- { region: 'ref:region#16', code: '16.02', name: 'Kabupaten Ogan Komering Ilir' }
+- { region: 'ref:region#16', code: '16.01', name: 'Kabupaten Ogan Komering Ulu' }
+- { region: 'ref:region#16', code: '16.09', name: 'Kabupaten Ogan Komering Ulu Selatan' }
+- { region: 'ref:region#16', code: '16.08', name: 'Kabupaten Ogan Komering Ulu Timur' }
+- { region: 'ref:region#16', code: '16.12', name: 'Kabupaten Penukal Arab Lematang Ilir' }
+- { region: 'ref:region#16', code: '16.73', name: 'Kota Lubuk Linggau' }
+- { region: 'ref:region#16', code: '16.72', name: 'Kota Pagar Alam' }
+- { region: 'ref:region#16', code: '16.71', name: 'Kota Palembang' }
+- { region: 'ref:region#16', code: '16.74', name: 'Kota Prabumulih' }
+- { region: 'ref:region#17', code: '17.01', name: 'Kabupaten Bengkulu Selatan' }
+- { region: 'ref:region#17', code: '17.02', name: 'Kabupaten Rejang Lebong' }
+- { region: 'ref:region#17', code: '17.03', name: 'Kabupaten Bengkulu Utara' }
+- { region: 'ref:region#17', code: '17.04', name: 'Kabupaten Kaur' }
+- { region: 'ref:region#17', code: '17.05', name: 'Kabupaten Seluma' }
+- { region: 'ref:region#17', code: '17.06', name: 'Kabupaten Mukomuko' }
+- { region: 'ref:region#17', code: '17.07', name: 'Kabupaten Lebong' }
+- { region: 'ref:region#17', code: '17.08', name: 'Kabupaten Kepahiang' }
+- { region: 'ref:region#17', code: '17.09', name: 'Kabupaten Bengkulu Tengah' }
+- { region: 'ref:region#17', code: '17.71', name: 'Kota Bengkulu' }
+- { region: 'ref:region#18', code: '18.01', name: 'Kabupaten Lampung Selatan' }
+- { region: 'ref:region#18', code: '18.02', name: 'Kabupaten Lampung Tengah' }
+- { region: 'ref:region#18', code: '18.03', name: 'Kabupaten Lampung Utara' }
+- { region: 'ref:region#18', code: '18.04', name: 'Kabupaten Lampung Barat' }
+- { region: 'ref:region#18', code: '18.05', name: 'Kabupaten Tulang Bawang' }
+- { region: 'ref:region#18', code: '18.06', name: 'Kabupaten Tanggamus' }
+- { region: 'ref:region#18', code: '18.07', name: 'Kabupaten Lampung Timur' }
+- { region: 'ref:region#18', code: '18.08', name: 'Kabupaten Way Kanan' }
+- { region: 'ref:region#18', code: '18.09', name: 'Kabupaten Pesawaran' }
+- { region: 'ref:region#18', code: '18.10', name: 'Kabupaten Pringsewu' }
+- { region: 'ref:region#18', code: '18.11', name: 'Kabupaten Mesuji' }
+- { region: 'ref:region#18', code: '18.12', name: 'Kabupaten Tulang Bawang Barat' }
+- { region: 'ref:region#18', code: '18.13', name: 'Kabupaten Pesisir Barat' }
+- { region: 'ref:region#18', code: '18.71', name: 'Kota Bandar Lampung' }
+- { region: 'ref:region#18', code: '18.72', name: 'Kota Metro' }
+- { region: 'ref:region#19', code: '19.01', name: 'Kabupaten Bangka' }
+- { region: 'ref:region#19', code: '19.02', name: 'Kabupaten Belitung' }
+- { region: 'ref:region#19', code: '19.03', name: 'Kabupaten Bangka Selatan' }
+- { region: 'ref:region#19', code: '19.04', name: 'Kabupaten Bangka Tengah' }
+- { region: 'ref:region#19', code: '19.05', name: 'Kabupaten Bangka Barat' }
+- { region: 'ref:region#19', code: '19.06', name: 'Kabupaten Belitung Timur' }
+- { region: 'ref:region#19', code: '19.71', name: 'Kota Pangkalpinang' }
+- { region: 'ref:region#21', code: '21.01', name: 'Kabupaten Bintan' }
+- { region: 'ref:region#21', code: '21.02', name: 'Kabupaten Karimun' }
+- { region: 'ref:region#21', code: '21.03', name: 'Kabupaten Natuna' }
+- { region: 'ref:region#21', code: '21.04', name: 'Kabupaten Lingga' }
+- { region: 'ref:region#21', code: '21.05', name: 'Kabupaten Kepulauan Anambas' }
+- { region: 'ref:region#21', code: '21.71', name: 'Kota Batam' }
+- { region: 'ref:region#21', code: '21.72', name: 'Kota Tanjung Pinang' }
+- { region: 'ref:region#31', code: '31.72', name: 'Kota Administrasi Jakarta Utara', ref: '31.72' }
+- { region: 'ref:region#31', code: '31.01', name: 'Kabupaten Administrasi Kepulauan Seribu' }
+- { region: 'ref:region#31', code: '31.71', name: 'Kota Administrasi Jakarta Pusat' }
+- { region: 'ref:region#31', code: '31.73', name: 'Kota Administrasi Jakarta Barat' }
+- { region: 'ref:region#31', code: '31.74', name: 'Kota Administrasi Jakarta Selatan' }
+- { region: 'ref:region#31', code: '31.75', name: 'Kota Administrasi Jakarta Timur' }
+- { region: 'ref:region#32', code: '32.01', name: 'Kabupaten Bogor' }
+- { region: 'ref:region#32', code: '32.02', name: 'Kabupaten Sukabumi' }
+- { region: 'ref:region#32', code: '32.03', name: 'Kabupaten Cianjur' }
+- { region: 'ref:region#32', code: '32.04', name: 'Kabupaten Bandung' }
+- { region: 'ref:region#32', code: '32.05', name: 'Kabupaten Garut' }
+- { region: 'ref:region#32', code: '32.06', name: 'Kabupaten Tasikmalaya' }
+- { region: 'ref:region#32', code: '32.07', name: 'Kabupaten Ciamis' }
+- { region: 'ref:region#32', code: '32.08', name: 'Kabupaten Kuningan' }
+- { region: 'ref:region#32', code: '32.09', name: 'Kabupaten Cirebon' }
+- { region: 'ref:region#32', code: '32.10', name: 'Kabupaten Majalengka' }
+- { region: 'ref:region#32', code: '32.11', name: 'Kabupaten Sumedang' }
+- { region: 'ref:region#32', code: '32.12', name: 'Kabupaten Indramayu' }
+- { region: 'ref:region#32', code: '32.13', name: 'Kabupaten Subang' }
+- { region: 'ref:region#32', code: '32.14', name: 'Kabupaten Purwakarta' }
+- { region: 'ref:region#32', code: '32.15', name: 'Kabupaten Karawang' }
+- { region: 'ref:region#32', code: '32.16', name: 'Kabupaten Bekasi' }
+- { region: 'ref:region#32', code: '32.17', name: 'Kabupaten Bandung Barat' }
+- { region: 'ref:region#32', code: '32.18', name: 'Kabupaten Pangandaran' }
+- { region: 'ref:region#32', code: '32.71', name: 'Kota Bogor' }
+- { region: 'ref:region#32', code: '32.72', name: 'Kota Sukabumi' }
+- { region: 'ref:region#32', code: '32.73', name: 'Kota Bandung' }
+- { region: 'ref:region#32', code: '32.74', name: 'Kota Cirebon' }
+- { region: 'ref:region#32', code: '32.75', name: 'Kota Bekasi' }
+- { region: 'ref:region#32', code: '32.76', name: 'Kota Depok' }
+- { region: 'ref:region#32', code: '32.77', name: 'Kota Cimahi' }
+- { region: 'ref:region#32', code: '32.78', name: 'Kota Tasikmalaya' }
+- { region: 'ref:region#32', code: '32.79', name: 'Kota Banjar' }
+- { region: 'ref:region#33', code: '33.01', name: 'Kabupaten Cilacap' }
+- { region: 'ref:region#33', code: '33.02', name: 'Kabupaten Banyumas' }
+- { region: 'ref:region#33', code: '33.03', name: 'Kabupaten Purbalingga' }
+- { region: 'ref:region#33', code: '33.04', name: 'Kabupaten Banjarnegara' }
+- { region: 'ref:region#33', code: '33.05', name: 'Kabupaten Kebumen' }
+- { region: 'ref:region#33', code: '33.06', name: 'Kabupaten Purworejo' }
+- { region: 'ref:region#33', code: '33.07', name: 'Kabupaten Wonosobo' }
+- { region: 'ref:region#33', code: '33.08', name: 'Kabupaten Magelang' }
+- { region: 'ref:region#33', code: '33.09', name: 'Kabupaten Boyolali' }
+- { region: 'ref:region#33', code: '33.10', name: 'Kabupaten Klaten' }
+- { region: 'ref:region#33', code: '33.11', name: 'Kabupaten Sukoharjo' }
+- { region: 'ref:region#33', code: '33.12', name: 'Kabupaten Wonogiri' }
+- { region: 'ref:region#33', code: '33.13', name: 'Kabupaten Karanganyar' }
+- { region: 'ref:region#33', code: '33.14', name: 'Kabupaten Sragen' }
+- { region: 'ref:region#33', code: '33.15', name: 'Kabupaten Grobogan' }
+- { region: 'ref:region#33', code: '33.16', name: 'Kabupaten Blora' }
+- { region: 'ref:region#33', code: '33.17', name: 'Kabupaten Rembang' }
+- { region: 'ref:region#33', code: '33.18', name: 'Kabupaten Pati' }
+- { region: 'ref:region#33', code: '33.19', name: 'Kabupaten Kudus' }
+- { region: 'ref:region#33', code: '33.20', name: 'Kabupaten Jepara' }
+- { region: 'ref:region#33', code: '33.21', name: 'Kabupaten Demak' }
+- { region: 'ref:region#33', code: '33.22', name: 'Kabupaten Semarang' }
+- { region: 'ref:region#33', code: '33.23', name: 'Kabupaten Temanggung' }
+- { region: 'ref:region#33', code: '33.24', name: 'Kabupaten Kendal' }
+- { region: 'ref:region#33', code: '33.25', name: 'Kabupaten Batang' }
+- { region: 'ref:region#33', code: '33.26', name: 'Kabupaten Pekalongan' }
+- { region: 'ref:region#33', code: '33.27', name: 'Kabupaten Pemalang' }
+- { region: 'ref:region#33', code: '33.28', name: 'Kabupaten Tegal' }
+- { region: 'ref:region#33', code: '33.29', name: 'Kabupaten Brebes' }
+- { region: 'ref:region#33', code: '33.71', name: 'Kota Magelang' }
+- { region: 'ref:region#33', code: '33.72', name: 'Kota Surakarta' }
+- { region: 'ref:region#33', code: '33.73', name: 'Kota Salatiga' }
+- { region: 'ref:region#33', code: '33.74', name: 'Kota Semarang' }
+- { region: 'ref:region#33', code: '33.75', name: 'Kota Pekalongan' }
+- { region: 'ref:region#33', code: '33.76', name: 'Kota Tegal' }
+- { region: 'ref:region#34', code: '34.01', name: 'Kabupaten Kulon Progo' }
+- { region: 'ref:region#34', code: '34.02', name: 'Kabupaten Bantul' }
+- { region: 'ref:region#34', code: '34.03', name: 'Kabupaten Gunungkidul' }
+- { region: 'ref:region#34', code: '34.04', name: 'Kabupaten Sleman' }
+- { region: 'ref:region#34', code: '34.71', name: 'Kota Yogyakarta' }
+- { region: 'ref:region#35', code: '35.01', name: 'Kabupaten Pacitan' }
+- { region: 'ref:region#35', code: '35.02', name: 'Kabupaten Ponorogo' }
+- { region: 'ref:region#35', code: '35.03', name: 'Kabupaten Trenggalek' }
+- { region: 'ref:region#35', code: '35.04', name: 'Kabupaten Tulungagung' }
+- { region: 'ref:region#35', code: '35.05', name: 'Kabupaten Blitar' }
+- { region: 'ref:region#35', code: '35.06', name: 'Kabupaten Kediri' }
+- { region: 'ref:region#35', code: '35.07', name: 'Kabupaten Malang' }
+- { region: 'ref:region#35', code: '35.08', name: 'Kabupaten Lumajang' }
+- { region: 'ref:region#35', code: '35.09', name: 'Kabupaten Jember' }
+- { region: 'ref:region#35', code: '35.10', name: 'Kabupaten Banyuwangi' }
+- { region: 'ref:region#35', code: '35.11', name: 'Kabupaten Bondowoso' }
+- { region: 'ref:region#35', code: '35.12', name: 'Kabupaten Situbondo' }
+- { region: 'ref:region#35', code: '35.13', name: 'Kabupaten Probolinggo' }
+- { region: 'ref:region#35', code: '35.14', name: 'Kabupaten Pasuruan' }
+- { region: 'ref:region#35', code: '35.15', name: 'Kabupaten Sidoarjo' }
+- { region: 'ref:region#35', code: '35.16', name: 'Kabupaten Mojokerto' }
+- { region: 'ref:region#35', code: '35.17', name: 'Kabupaten Jombang' }
+- { region: 'ref:region#35', code: '35.18', name: 'Kabupaten Nganjuk' }
+- { region: 'ref:region#35', code: '35.19', name: 'Kabupaten Madiun' }
+- { region: 'ref:region#35', code: '35.20', name: 'Kabupaten Magetan' }
+- { region: 'ref:region#35', code: '35.21', name: 'Kabupaten Ngawi' }
+- { region: 'ref:region#35', code: '35.22', name: 'Kabupaten Bojonegoro' }
+- { region: 'ref:region#35', code: '35.23', name: 'Kabupaten Tuban' }
+- { region: 'ref:region#35', code: '35.24', name: 'Kabupaten Lamongan' }
+- { region: 'ref:region#35', code: '35.25', name: 'Kabupaten Gresik' }
+- { region: 'ref:region#35', code: '35.26', name: 'Kabupaten Bangkalan' }
+- { region: 'ref:region#35', code: '35.27', name: 'Kabupaten Sampang' }
+- { region: 'ref:region#35', code: '35.28', name: 'Kabupaten Pamekasan' }
+- { region: 'ref:region#35', code: '35.29', name: 'Kabupaten Sumenep' }
+- { region: 'ref:region#35', code: '35.71', name: 'Kota Kediri' }
+- { region: 'ref:region#35', code: '35.72', name: 'Kota Blitar' }
+- { region: 'ref:region#35', code: '35.73', name: 'Kota Malang' }
+- { region: 'ref:region#35', code: '35.74', name: 'Kota Probolinggo' }
+- { region: 'ref:region#35', code: '35.75', name: 'Kota Pasuruan' }
+- { region: 'ref:region#35', code: '35.76', name: 'Kota Mojokerto' }
+- { region: 'ref:region#35', code: '35.77', name: 'Kota Madiun' }
+- { region: 'ref:region#35', code: '35.78', name: 'Kota Surabaya' }
+- { region: 'ref:region#35', code: '35.79', name: 'Kota Batu' }
+- { region: 'ref:region#36', code: '36.01', name: 'Kabupaten Pandegelang' }
+- { region: 'ref:region#36', code: '36.02', name: 'Kabupaten Lebak' }
+- { region: 'ref:region#36', code: '36.03', name: 'Kabupaten Tangerang' }
+- { region: 'ref:region#36', code: '36.04', name: 'Kabupaten Serang' }
+- { region: 'ref:region#36', code: '36.71', name: 'Kota Tangerang' }
+- { region: 'ref:region#36', code: '36.72', name: 'Kota Cilegon' }
+- { region: 'ref:region#36', code: '36.73', name: 'Kota Serang' }
+- { region: 'ref:region#36', code: '36.74', name: 'Kota Tangerang Selatan' }
+- { region: 'ref:region#51', code: '51.01', name: 'Kabupaten Jembrana' }
+- { region: 'ref:region#51', code: '51.02', name: 'Kabupaten Tabanan' }
+- { region: 'ref:region#51', code: '51.03', name: 'Kabupaten Badung' }
+- { region: 'ref:region#51', code: '51.04', name: 'Kabupaten Gianyar' }
+- { region: 'ref:region#51', code: '51.05', name: 'Kabupaten Klungkung' }
+- { region: 'ref:region#51', code: '51.06', name: 'Kabupaten Bangli' }
+- { region: 'ref:region#51', code: '51.07', name: 'Kabupaten Karangasem' }
+- { region: 'ref:region#51', code: '51.08', name: 'Kabupaten Buleleng' }
+- { region: 'ref:region#51', code: '51.71', name: 'Kota Denpasar' }
+- { region: 'ref:region#52', code: '52.01', name: 'Kabupaten Lombok Barat' }
+- { region: 'ref:region#52', code: '52.02', name: 'Kabupaten Lombok Tengah' }
+- { region: 'ref:region#52', code: '52.03', name: 'Kabupaten Lombok Timur' }
+- { region: 'ref:region#52', code: '52.04', name: 'Kabupaten Sumbawa' }
+- { region: 'ref:region#52', code: '52.05', name: 'Kabupaten Dompu' }
+- { region: 'ref:region#52', code: '52.06', name: 'Kabupaten Bima' }
+- { region: 'ref:region#52', code: '52.07', name: 'Kabupaten Sumbawa Barat' }
+- { region: 'ref:region#52', code: '52.08', name: 'Kabupaten Lombok Utara' }
+- { region: 'ref:region#52', code: '52.71', name: 'Kota Mataram' }
+- { region: 'ref:region#52', code: '52.72', name: 'Kota Bima' }
+- { region: 'ref:region#53', code: '53.01', name: 'Kabupaten Kupang' }
+- { region: 'ref:region#53', code: '53.02', name: 'Kabupaten Timor Tengah Selatan' }
+- { region: 'ref:region#53', code: '53.03', name: 'Kabupaten Timor Tengah Utara' }
+- { region: 'ref:region#53', code: '53.04', name: 'Kabupaten Belu' }
+- { region: 'ref:region#53', code: '53.05', name: 'Kabupaten Alor' }
+- { region: 'ref:region#53', code: '53.06', name: 'Kabupaten Flores Timur' }
+- { region: 'ref:region#53', code: '53.07', name: 'Kabupaten Sikka' }
+- { region: 'ref:region#53', code: '53.08', name: 'Kabupaten Ende' }
+- { region: 'ref:region#53', code: '53.09', name: 'Kabupaten Ngada' }
+- { region: 'ref:region#53', code: '53.10', name: 'Kabupaten Manggarai' }
+- { region: 'ref:region#53', code: '53.11', name: 'Kabupaten Sumba Timur' }
+- { region: 'ref:region#53', code: '53.12', name: 'Kabupaten Sumba Barat' }
+- { region: 'ref:region#53', code: '53.13', name: 'Kabupaten Lembata' }
+- { region: 'ref:region#53', code: '53.14', name: 'Kabupaten Rote Ndao' }
+- { region: 'ref:region#53', code: '53.15', name: 'Kabupaten Manggarai Barat' }
+- { region: 'ref:region#53', code: '53.16', name: 'Kabupaten Nagekeo' }
+- { region: 'ref:region#53', code: '53.17', name: 'Kabupaten Sumba Tengah' }
+- { region: 'ref:region#53', code: '53.18', name: 'Kabupaten Sumba Barat Daya' }
+- { region: 'ref:region#53', code: '53.19', name: 'Kabupaten Manggarai Timur' }
+- { region: 'ref:region#53', code: '53.20', name: 'Kabupaten Sabu Raijua' }
+- { region: 'ref:region#53', code: '53.21', name: 'Kabupaten Malaka' }
+- { region: 'ref:region#53', code: '53.71', name: 'Kota Kupang' }
+- { region: 'ref:region#61', code: '61.01', name: 'Kabupaten Sambas' }
+- { region: 'ref:region#61', code: '61.02', name: 'Kabupaten Mempawah' }
+- { region: 'ref:region#61', code: '61.03', name: 'Kabupaten Sanggau' }
+- { region: 'ref:region#61', code: '61.04', name: 'Kabupaten Ketapang' }
+- { region: 'ref:region#61', code: '61.05', name: 'Kabupaten Sintang' }
+- { region: 'ref:region#61', code: '61.06', name: 'Kabupaten Kapuas Hulu' }
+- { region: 'ref:region#61', code: '61.07', name: 'Kabupaten Bengkayang' }
+- { region: 'ref:region#61', code: '61.08', name: 'Kabupaten Landak' }
+- { region: 'ref:region#61', code: '61.09', name: 'Kabupaten Sekadau' }
+- { region: 'ref:region#61', code: '61.10', name: 'Kabupaten Melawi' }
+- { region: 'ref:region#61', code: '61.11', name: 'Kabupaten Kayong Utara' }
+- { region: 'ref:region#61', code: '61.12', name: 'Kabupaten Kubu Raya' }
+- { region: 'ref:region#61', code: '61.71', name: 'Kota Pontianak' }
+- { region: 'ref:region#61', code: '61.72', name: 'Kota Singkawang' }
+- { region: 'ref:region#62', code: '62.01', name: 'Kabupaten Kotawaringin Barat' }
+- { region: 'ref:region#62', code: '62.02', name: 'Kabupaten Kotawaringin Timur' }
+- { region: 'ref:region#62', code: '62.03', name: 'Kabupaten Kapuas' }
+- { region: 'ref:region#62', code: '62.04', name: 'Kabupaten Barito Selatan' }
+- { region: 'ref:region#62', code: '62.05', name: 'Kabupaten Barito Utara' }
+- { region: 'ref:region#62', code: '62.06', name: 'Kabupaten Katingan' }
+- { region: 'ref:region#62', code: '62.07', name: 'Kabupaten Seruyan' }
+- { region: 'ref:region#62', code: '62.08', name: 'Kabupaten Sukamara' }
+- { region: 'ref:region#62', code: '62.09', name: 'Kabupaten Lamandau' }
+- { region: 'ref:region#62', code: '62.10', name: 'Kabupaten Gunung Mas' }
+- { region: 'ref:region#62', code: '62.11', name: 'Kabupaten Pulang Pisau' }
+- { region: 'ref:region#62', code: '62.12', name: 'Kabupaten Murung Raya' }
+- { region: 'ref:region#62', code: '62.13', name: 'Kabupaten Barito Timur' }
+- { region: 'ref:region#62', code: '62.71', name: 'Kota Palangka Raya' }
+- { region: 'ref:region#63', code: '63.01', name: 'Kabupaten Tanah Laut' }
+- { region: 'ref:region#63', code: '63.02', name: 'Kabupaten Kotabaru' }
+- { region: 'ref:region#63', code: '63.03', name: 'Kabupaten Banjar' }
+- { region: 'ref:region#63', code: '63.04', name: 'Kabupaten Barito Kuala' }
+- { region: 'ref:region#63', code: '63.05', name: 'Kabupaten Tapin' }
+- { region: 'ref:region#63', code: '63.06', name: 'Kabupaten Hulu Sungai Selatan' }
+- { region: 'ref:region#63', code: '63.07', name: 'Kabupaten Hulu Sungai Tengah' }
+- { region: 'ref:region#63', code: '63.08', name: 'Kabupaten Hulu Sungai Utara' }
+- { region: 'ref:region#63', code: '63.09', name: 'Kabupaten Tabalong' }
+- { region: 'ref:region#63', code: '63.10', name: 'Kabupaten Tanah Bumbu' }
+- { region: 'ref:region#63', code: '63.11', name: 'Kabupaten Balangan' }
+- { region: 'ref:region#63', code: '63.71', name: 'Kota Banjarmasin' }
+- { region: 'ref:region#63', code: '63.72', name: 'Kota Banjarbaru' }
+- { region: 'ref:region#64', code: '64.01', name: 'Kabupaten Paser' }
+- { region: 'ref:region#64', code: '64.02', name: 'Kabupaten Kutai Kartanegara' }
+- { region: 'ref:region#64', code: '64.03', name: 'Kabupaten Berau' }
+- { region: 'ref:region#64', code: '64.07', name: 'Kabupaten Kutai Barat' }
+- { region: 'ref:region#64', code: '64.08', name: 'Kabupaten Kutai Timur' }
+- { region: 'ref:region#64', code: '64.09', name: 'Kabupaten Penajam Paser Utara' }
+- { region: 'ref:region#64', code: '64.11', name: 'Kabupaten Mahakam Ulu' }
+- { region: 'ref:region#64', code: '64.71', name: 'Kota Balikpapan' }
+- { region: 'ref:region#64', code: '64.72', name: 'Kota Samarinda' }
+- { region: 'ref:region#64', code: '64.74', name: 'Kota Bontang' }
+- { region: 'ref:region#65', code: '65.01', name: 'Kabupaten Bulungan' }
+- { region: 'ref:region#65', code: '65.02', name: 'Kabupaten Malinau' }
+- { region: 'ref:region#65', code: '65.03', name: 'Kabupaten Nunukan' }
+- { region: 'ref:region#65', code: '65.04', name: 'Kabupaten Tana Tidung' }
+- { region: 'ref:region#65', code: '65.71', name: 'Kota Tarakan' }
+- { region: 'ref:region#71', code: '71.01', name: 'Kabupaten Bolaang Mongondow' }
+- { region: 'ref:region#71', code: '71.02', name: 'Kabupaten Minahasa' }
+- { region: 'ref:region#71', code: '71.03', name: 'Kabupaten Kepulauan Sangihe' }
+- { region: 'ref:region#71', code: '71.04', name: 'Kabupaten Kepulauan Talaud' }
+- { region: 'ref:region#71', code: '71.05', name: 'Kabupaten Minahasa Selatan' }
+- { region: 'ref:region#71', code: '71.06', name: 'Kabupaten Minahasa Utara' }
+- { region: 'ref:region#71', code: '71.07', name: 'Kabupaten Minahasa Tenggara' }
+- { region: 'ref:region#71', code: '71.08', name: 'Kabupaten Bolaang Mondondow Utara' }
+- { region: 'ref:region#71', code: '71.09', name: 'Kabupaten Kepulauan Siau Tagulandang Biaro' }
+- { region: 'ref:region#71', code: '71.10', name: 'Kabupaten Bolaang Mondondow Timur' }
+- { region: 'ref:region#71', code: '71.11', name: 'Kabupaten Bolaang Mondondow Selatan' }
+- { region: 'ref:region#71', code: '71.71', name: 'Kota Manado' }
+- { region: 'ref:region#71', code: '71.72', name: 'Kota Bitung' }
+- { region: 'ref:region#71', code: '71.73', name: 'Kota Tomohon' }
+- { region: 'ref:region#71', code: '71.74', name: 'Kota Kotamobagu' }
+- { region: 'ref:region#72', code: '72.01', name: 'Kabupaten Banggai' }
+- { region: 'ref:region#72', code: '72.07', name: 'Kabupaten Banggai Kepulauan' }
+- { region: 'ref:region#72', code: '72.11', name: 'Kabupaten Banggai Laut' }
+- { region: 'ref:region#72', code: '72.05', name: 'Kabupaten Buol' }
+- { region: 'ref:region#72', code: '72.03', name: 'Kabupaten Donggala' }
+- { region: 'ref:region#72', code: '72.06', name: 'Kabupaten Morowali' }
+- { region: 'ref:region#72', code: '72.12', name: 'Kabupaten Morowali Utara' }
+- { region: 'ref:region#72', code: '72.08', name: 'Kabupaten Parigi Moutong' }
+- { region: 'ref:region#72', code: '72.02', name: 'Kabupaten Poso' }
+- { region: 'ref:region#72', code: '72.09', name: 'Kabupaten Tojo Una-Una' }
+- { region: 'ref:region#72', code: '72.04', name: 'Kabupaten Tolitoli' }
+- { region: 'ref:region#72', code: '72.10', name: 'Kabupaten Sigi' }
+- { region: 'ref:region#72', code: '72.71', name: 'Kota Palu' }
+- { region: 'ref:region#73', code: '73.03', name: 'Kabupaten Bantaeng' }
+- { region: 'ref:region#73', code: '73.11', name: 'Kabupaten Barru' }
+- { region: 'ref:region#73', code: '73.08', name: 'Kabupaten Bone' }
+- { region: 'ref:region#73', code: '73.02', name: 'Kabupaten Bulukumba' }
+- { region: 'ref:region#73', code: '73.16', name: 'Kabupaten Enrekang' }
+- { region: 'ref:region#73', code: '73.06', name: 'Kabupaten Gowa' }
+- { region: 'ref:region#73', code: '73.04', name: 'Kabupaten Jeneponto' }
+- { region: 'ref:region#73', code: '73.01', name: 'Kabupaten Kepulauan Selayar' }
+- { region: 'ref:region#73', code: '73.17', name: 'Kabupaten Luwu' }
+- { region: 'ref:region#73', code: '73.24', name: 'Kabupaten Luwu Timur' }
+- { region: 'ref:region#73', code: '73.22', name: 'Kabupaten Luwu Utara' }
+- { region: 'ref:region#73', code: '73.09', name: 'Kabupaten Maros' }
+- { region: 'ref:region#73', code: '73.10', name: 'Kabupaten Pangkajene dan Kepulauan' }
+- { region: 'ref:region#73', code: '73.15', name: 'Kabupaten Pinrang' }
+- { region: 'ref:region#73', code: '73.14', name: 'Kabupaten Sidenreng Rappang' }
+- { region: 'ref:region#73', code: '73.07', name: 'Kabupaten Sinjai' }
+- { region: 'ref:region#73', code: '73.12', name: 'Kabupaten Soppeng' }
+- { region: 'ref:region#73', code: '73.05', name: 'Kabupaten Takalar' }
+- { region: 'ref:region#73', code: '73.18', name: 'Kabupaten Tana Toraja' }
+- { region: 'ref:region#73', code: '73.26', name: 'Kabupaten Toraja Utara' }
+- { region: 'ref:region#73', code: '73.13', name: 'Kabupaten Wajo' }
+- { region: 'ref:region#73', code: '73.71', name: 'Kota Makassar' }
+- { region: 'ref:region#73', code: '73.73', name: 'Kota Palopo' }
+- { region: 'ref:region#73', code: '73.72', name: 'Kota Parepare' }
+- { region: 'ref:region#74', code: '74.06', name: 'Kabupaten Bombana' }
+- { region: 'ref:region#74', code: '74.04', name: 'Kabupaten Buton' }
+- { region: 'ref:region#74', code: '74.15', name: 'Kabupaten Buton Selatan' }
+- { region: 'ref:region#74', code: '74.14', name: 'Kabupaten Buton Tengah' }
+- { region: 'ref:region#74', code: '74.10', name: 'Kabupaten Buton Utara' }
+- { region: 'ref:region#74', code: '74.01', name: 'Kabupaten Kolaka' }
+- { region: 'ref:region#74', code: '74.11', name: 'Kabupaten Kolaka Timur' }
+- { region: 'ref:region#74', code: '74.08', name: 'Kabupaten Kolaka Utara' }
+- { region: 'ref:region#74', code: '74.02', name: 'Kabupaten Konawe' }
+- { region: 'ref:region#74', code: '74.12', name: 'Kabupaten Konawe Kepulauan' }
+- { region: 'ref:region#74', code: '74.05', name: 'Kabupaten Konawe Selatan' }
+- { region: 'ref:region#74', code: '74.09', name: 'Kabupaten Konawe Utara' }
+- { region: 'ref:region#74', code: '74.03', name: 'Kabupaten Muna' }
+- { region: 'ref:region#74', code: '74.13', name: 'Kabupaten Muna Barat' }
+- { region: 'ref:region#74', code: '74.07', name: 'Kabupaten Wakatobi' }
+- { region: 'ref:region#74', code: '74.72', name: 'Kota Bau Bau' }
+- { region: 'ref:region#74', code: '74.71', name: 'Kota Kendari' }
+- { region: 'ref:region#75', code: '75.01', name: 'Kabupaten Gorontalo' }
+- { region: 'ref:region#75', code: '75.02', name: 'Kabupaten Boalemo' }
+- { region: 'ref:region#75', code: '75.03', name: 'Kabupaten Bone Bolango' }
+- { region: 'ref:region#75', code: '75.04', name: 'Kabupaten Pohuwato' }
+- { region: 'ref:region#75', code: '75.05', name: 'Kabupaten Gorontalo Utara' }
+- { region: 'ref:region#75', code: '75.71', name: 'Kota Gorontalo' }
+- { region: 'ref:region#76', code: '76.05', name: 'Kabupaten Majene' }
+- { region: 'ref:region#76', code: '76.03', name: 'Kabupaten Mamasa' }
+- { region: 'ref:region#76', code: '76.02', name: 'Kabupaten Mamuju' }
+- { region: 'ref:region#76', code: '76.06', name: 'Kabupaten Mamuju Tengah' }
+- { region: 'ref:region#76', code: '76.01', name: 'Kabupaten Mamuju Utara' }
+- { region: 'ref:region#76', code: '76.04', name: 'Kabupaten Polewali Mandar' }
+- { region: 'ref:region#81', code: '81.01', name: 'Kabupaten Maluku Tengah' }
+- { region: 'ref:region#81', code: '81.02', name: 'Kabupaten Maluku Tenggara' }
+- { region: 'ref:region#81', code: '81.03', name: 'Kabupaten Maluku Tenggara Barat' }
+- { region: 'ref:region#81', code: '81.04', name: 'Kabupaten Buru' }
+- { region: 'ref:region#81', code: '81.05', name: 'Kabupaten Seram Bagian Timur' }
+- { region: 'ref:region#81', code: '81.06', name: 'Kabupaten Seram Bagian Barat' }
+- { region: 'ref:region#81', code: '81.07', name: 'Kabupaten Kepulauan Aru' }
+- { region: 'ref:region#81', code: '81.08', name: 'Kabupaten Maluku Barat Daya' }
+- { region: 'ref:region#81', code: '81.09', name: 'Kabupaten Buru Selatan' }
+- { region: 'ref:region#81', code: '81.71', name: 'Kota Ambon' }
+- { region: 'ref:region#81', code: '81.72', name: 'Kota Tual' }
+- { region: 'ref:region#82', code: '82.01', name: 'Kabupaten Halmahera Barat' }
+- { region: 'ref:region#82', code: '82.02', name: 'Kabupaten Halmahera Tengah' }
+- { region: 'ref:region#82', code: '82.03', name: 'Kabupaten Halmahera Utara' }
+- { region: 'ref:region#82', code: '82.04', name: 'Kabupaten Halmahera Selatan' }
+- { region: 'ref:region#82', code: '82.05', name: 'Kabupaten Kepulauan Sula' }
+- { region: 'ref:region#82', code: '82.06', name: 'Kabupaten Halmahera Timur' }
+- { region: 'ref:region#82', code: '82.07', name: 'Kabupaten Pulau Morotai' }
+- { region: 'ref:region#82', code: '82.08', name: 'Kabupaten Pulau Taliabu' }
+- { region: 'ref:region#82', code: '82.71', name: 'Kota Ternate' }
+- { region: 'ref:region#82', code: '82.72', name: 'Kota Tidore Kepulauan' }
+- { region: 'ref:region#91', code: '91.01', name: 'Kabupaten Merauke' }
+- { region: 'ref:region#91', code: '91.02', name: 'Kabupaten Jayawijaya' }
+- { region: 'ref:region#91', code: '91.03', name: 'Kabupaten Jayapura' }
+- { region: 'ref:region#91', code: '91.04', name: 'Kabupaten Nabire' }
+- { region: 'ref:region#91', code: '91.05', name: 'Kabupaten Kepulauan Yapen' }
+- { region: 'ref:region#91', code: '91.06', name: 'Kabupaten Biak Numfor' }
+- { region: 'ref:region#91', code: '91.07', name: 'Kabupaten Puncak Jaya' }
+- { region: 'ref:region#91', code: '91.08', name: 'Kabupaten Paniai' }
+- { region: 'ref:region#91', code: '91.09', name: 'Kabupaten Mimika' }
+- { region: 'ref:region#91', code: '91.10', name: 'Kabupaten Sarmi' }
+- { region: 'ref:region#91', code: '91.11', name: 'Kabupaten Keerom' }
+- { region: 'ref:region#91', code: '91.12', name: 'Kabupaten Pegunungan Bintang' }
+- { region: 'ref:region#91', code: '91.13', name: 'Kabupaten Yahukimo' }
+- { region: 'ref:region#91', code: '91.14', name: 'Kabupaten Tolikara' }
+- { region: 'ref:region#91', code: '91.15', name: 'Kabupaten Waropen' }
+- { region: 'ref:region#91', code: '91.16', name: 'Kabupaten Boven Digoel' }
+- { region: 'ref:region#91', code: '91.17', name: 'Kabupaten Mappi' }
+- { region: 'ref:region#91', code: '91.18', name: 'Kabupaten Asmat' }
+- { region: 'ref:region#91', code: '91.19', name: 'Kabupaten Supiori' }
+- { region: 'ref:region#91', code: '91.20', name: 'Kabupaten Mamberamo Raya' }
+- { region: 'ref:region#91', code: '91.21', name: 'Kabupaten Mamberamo Tengah' }
+- { region: 'ref:region#91', code: '91.22', name: 'Kabupaten Yalimo' }
+- { region: 'ref:region#91', code: '91.23', name: 'Kabupaten Lanny Jaya' }
+- { region: 'ref:region#91', code: '91.24', name: 'Kabupaten Nduga' }
+- { region: 'ref:region#91', code: '91.25', name: 'Kabupaten Puncak' }
+- { region: 'ref:region#91', code: '91.26', name: 'Kabupaten Dogiyai' }
+- { region: 'ref:region#91', code: '91.27', name: 'Kabupaten Intan Jaya' }
+- { region: 'ref:region#91', code: '91.28', name: 'Kabupaten Deiyai' }
+- { region: 'ref:region#91', code: '91.71', name: 'Kota Jayapura' }
+- { region: 'ref:region#92', code: '92.03', name: 'Kabupaten Fakfak' }
+- { region: 'ref:region#92', code: '92.08', name: 'Kabupaten Kaimana' }
+- { region: 'ref:region#92', code: '92.02', name: 'Kabupaten Manokwari' }
+- { region: 'ref:region#92', code: '92.11', name: 'Kabupaten Manokwari Selatan' }
+- { region: 'ref:region#92', code: '92.10', name: 'Kabupaten Maybrat' }
+- { region: 'ref:region#92', code: '92.12', name: 'Kabupaten Pegunungan Arfak' }
+- { region: 'ref:region#92', code: '92.05', name: 'Kabupaten Raja Ampat' }
+- { region: 'ref:region#92', code: '92.01', name: 'Kabupaten Sorong' }
+- { region: 'ref:region#92', code: '92.04', name: 'Kabupaten Sorong Selatan' }
+- { region: 'ref:region#92', code: '92.09', name: 'Kabupaten Tambrauw' }
+- { region: 'ref:region#92', code: '92.06', name: 'Kabupaten Teluk Bintuni' }
+- { region: 'ref:region#92', code: '92.07', name: 'Kabupaten Teluk Wondama' }
+- { region: 'ref:region#92', code: '92.71', name: 'Kota Sorong' }

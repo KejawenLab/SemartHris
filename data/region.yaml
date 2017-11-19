@@ -16,7 +16,7 @@
 - { code: '36', name: 'B A N T E N', ref: '36' }
 - { code: '51', name: 'B A L I', ref: '51' }
 - { code: '52', name: 'NUSA TENGGARA BARAT', ref: '52' }
-- { code: '53', name: 'NUSA TENGGARA TIMUR', ref: '52' }
+- { code: '53', name: 'NUSA TENGGARA TIMUR', ref: '53' }
 - { code: '61', name: 'KALIMANTAN BARAT', ref: '61' }
 - { code: '62', name: 'KALIMANTAN TENGAH', ref: '62' }
 - { code: '63', name: 'KALIMANTAN SELATAN', ref: '63' }
@@ -30,5 +30,5 @@
 - { code: '76', name: 'SULAWESI BARAT', ref: '76' }
 - { code: '81', name: 'MALUKU', ref: '81' }
 - { code: '82', name: 'MALUKU UTARA', ref: '82' }
-- { code: '91', name: 'PAPUA', ref: '94' }
-- { code: '92', name: 'PAPUA BARAT', ref: '91' }
+- { code: '91', name: 'PAPUA', ref: '91' }
+- { code: '92', name: 'PAPUA BARAT', ref: '92' }

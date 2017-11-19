@@ -1,5 +1,5 @@
-- { code: 'DKI', name: 'DKI JAKARTA', ref: 'dki' }
-- { code: 'JABAR', name: 'JAWA BARAT', ref: 'jabar' }
-- { code: 'JATENG', name: 'JAWA TENGAH', ref: 'jateng' }
-- { code: 'JATIM', name: 'JAWA TIMUR', ref: 'jatim' }
-- { code: 'DIY', name: 'DI YOGYAKARTA', ref: 'diy' }
+- { code: '31', name: 'DKI JAKARTA', ref: '31' }
+- { code: '32', name: 'JAWA BARAT', ref: '32' }
+- { code: '33', name: 'JAWA TENGAH', ref: '33' }
+- { code: '35', name: 'JAWA TIMUR', ref: '35' }
+- { code: '34', name: 'DI YOGYAKARTA', ref: '34' }

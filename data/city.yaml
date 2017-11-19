@@ -1,18 +1,18 @@
-- { region: 'ref:region#DKI', code: 'JAKUT', name: 'KOTA JAKARTA UTARA', ref: 'jakut' }
-- { region: 'ref:region#DKI', code: 'JAKPUS', name: 'KOTA JAKARTA PUSAT' }
-- { region: 'ref:region#DKI', code: 'JAKBAR', name: 'KOTA JAKARTA BARAT' }
-- { region: 'ref:region#DKI', code: 'JAKTIM', name: 'KOTA JAKARTA TIMUR' }
-- { region: 'ref:region#DKI', code: 'JAKSEL', name: 'KOTA JAKARTA SELATAN' }
-- { region: 'ref:region#DKI', code: 'KEPSE', name: 'KOTA ADMINISTRASI KEPULAUAN SERIBU' }
-- { region: 'ref:region#JABAR', code: 'BGRKOT', name: 'KOTA BOGOR' }
-- { region: 'ref:region#JABAR', code: 'BGRKAB', name: 'KABUPATEN BOGOR' }
-- { region: 'ref:region#JABAR', code: 'BDGKOT', name: 'KOTA BANDUNG' }
-- { region: 'ref:region#JABAR', code: 'BDGKAB', name: 'KABUPATEN BANDUNG' }
-- { region: 'ref:region#JABAR', code: 'BKSKOT', name: 'KOTA BEKASI' }
-- { region: 'ref:region#JABAR', code: 'BKSKAB', name: 'KABUPATEN BEKASI' }
-- { region: 'ref:region#JATENG', code: 'SMGKOT', name: 'KOTA SEMARANG' }
-- { region: 'ref:region#JATENG', code: 'SMGKAB', name: 'KABUPATEN SEMARANG' }
-- { region: 'ref:region#JATENG', code: 'PKLKAB', name: 'KABUPATEN PEKALONGAN' }
-- { region: 'ref:region#JATENG', code: 'TGLKOT', name: 'KOTA TEGAL' }
-- { region: 'ref:region#JATENG', code: 'TGLKAB', name: 'KABUPATEN TEGAL' }
-- { region: 'ref:region#JATENG', code: 'PMLKAB', name: 'KABUPATEN PEMALANG' }
+- { region: 'ref:region#31', code: '3172', name: 'KOTA JAKARTA UTARA', ref: '3172' }
+- { region: 'ref:region#31', code: '3171', name: 'KOTA JAKARTA PUSAT' }
+- { region: 'ref:region#31', code: '3173', name: 'KOTA JAKARTA BARAT' }
+- { region: 'ref:region#31', code: '3175', name: 'KOTA JAKARTA TIMUR' }
+- { region: 'ref:region#31', code: '3174', name: 'KOTA JAKARTA SELATAN' }
+- { region: 'ref:region#31', code: '3101', name: 'KOTA ADMINISTRASI KEPULAUAN SERIBU' }
+- { region: 'ref:region#32', code: '3271', name: 'KOTA BOGOR' }
+- { region: 'ref:region#32', code: '3201', name: 'KABUPATEN BOGOR' }
+- { region: 'ref:region#32', code: '3204', name: 'KOTA BANDUNG' }
+- { region: 'ref:region#32', code: '3272', name: 'KABUPATEN BANDUNG' }
+- { region: 'ref:region#32', code: '3275', name: 'KOTA BEKASI' }
+- { region: 'ref:region#32', code: '3216', name: 'KABUPATEN BEKASI' }
+- { region: 'ref:region#33', code: '3374', name: 'KOTA SEMARANG' }
+- { region: 'ref:region#33', code: '3322', name: 'KABUPATEN SEMARANG' }
+- { region: 'ref:region#33', code: '3326', name: 'KABUPATEN PEKALONGAN' }
+- { region: 'ref:region#33', code: '3376', name: 'KOTA TEGAL' }
+- { region: 'ref:region#33', code: '3328', name: 'KABUPATEN TEGAL' }
+- { region: 'ref:region#33', code: '3327', name: 'KABUPATEN PEMALANG' }

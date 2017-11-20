@@ -93,7 +93,7 @@ class DotEnvProvider implements ProviderInterface
      */
     public function isExist(string $key): bool
     {
-        $env = array_flip($this->all());
+        $env = array_flip(array_keys($this->all()));
         if (in_array(SettingKey::getRealKey($key), $env)) {
             return true;
         }

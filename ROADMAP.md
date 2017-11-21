@@ -28,7 +28,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 - [X] BPJS Kesehatan
 - [X] BPJS Ketenagakerjaan
 - [ ] Menejemen Cuti
-- [ ] PPH21
+- [X] PPH21
 - [ ] Relasi Karyawan (Keluarga, Keterampilan, dan lain sebagainya)
 - [ ] Perbaikan Performa, dan *Refactoring*
 - [ ] Simple Cache Management

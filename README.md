@@ -37,6 +37,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Manajemen dan Perhitungan Lembur sesuai dengan [peraturan yang berlaku](https://gajimu.com/main/pekerjaan-yanglayak/kompensasi/upah-lembur)
 - [X] Manajemen BPJS Kesehatan
 - [X] Manajemen dan Perhitungan BPJS Ketenagakerjaan (JKK, JKM, JHT dan JP) sesuai dengan [peraturan yang berlaku](http://www.pasienbpjs.com/2017/01/cara-menghitung-iuran-bpjs-ketenagakerjaan.html)
+- [X] Pajak PPH21 sesuai [peraturan yang berlaku](https://www.online-pajak.com/id/cara-perhitungan-pph-21)
 - [X] Gaji dan Credential data **dienkripsi** dengan algoritma RSA
 - [X] Laporan Penggajian
 - [X] Laporan Beban Gaji Perusahaan

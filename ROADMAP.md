@@ -5,13 +5,13 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 ### Fase I
 
-- [X] Menejemen Perusahaan
-- [X] Menejemen Jabatan
-- [X] Menejemen Pendidikan
-- [X] Menejemen Alamat
-- [X] Menejemen Keahlian
+- [X] Manajemen Perusahaan
+- [X] Manajemen Jabatan
+- [X] Manajemen Pendidikan
+- [X] Manajemen Alamat
+- [X] Manajemen Keahlian
 - [X] Kontrak Kerja
-- [X] Menejemen Karyawan
+- [X] Manajemen Karyawan
 - [X] Promosi, Demosi, dan Mutasi Karyawan
 - [X] Penempatan Kerja
 - [X] Shift Kerja
@@ -27,7 +27,7 @@ Hal ini dilakukan agar SemartHRIS dikembangkan dengan tetap mengutamakan stabili
 
 - [X] BPJS Kesehatan
 - [X] BPJS Ketenagakerjaan
-- [ ] Menejemen Cuti
+- [ ] Manajemen Cuti
 - [X] PPH21
 - [ ] Relasi Karyawan (Keluarga, Keterampilan, dan lain sebagainya)
 - [ ] Perbaikan Performa, dan *Refactoring*

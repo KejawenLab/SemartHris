@@ -36,7 +36,7 @@ easy_admin:
                   - { entity: 'Placement', label: 'Penempatan Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'Mutation', label: 'Mutasi Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'CareerHistory', label: 'Riwayat Karir', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
-                  - { entity: 'TaxGroup', label: 'Perubahan Pajak/Resiko Kerja', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'TaxGroup', label: 'Perubahan Pajak', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Absensi'
               role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
               icon: 'clock-o'

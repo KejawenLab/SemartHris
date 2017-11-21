@@ -170,6 +170,16 @@ services:
         tags:
             { name: 'semarthris.tax_processor' }
 
+    KejawenLab\Application\SemartHris\Component\Tax\Service\TaxProcessor:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Tax\Processor\TaxProcessor'
+            - '@KejawenLab\Application\SemartHris\Repository\TaxRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
+            - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
+            - '@KejawenLab\Application\SemartHris\Component\Setting\Service\Setting'
+            - 'KejawenLab\Application\SemartHris\Entity\Tax'
+
     KejawenLab\Application\SemartHris\Component\Salary\Processor\AttendanceProcessor:
         lazy: true
         arguments:

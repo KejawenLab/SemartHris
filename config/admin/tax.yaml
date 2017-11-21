@@ -15,9 +15,7 @@ easy_admin:
                     - { property: 'period.month', label: 'Bulan', type: 'text', template: 'app/default/field_month.html.twig' }
                     - { property: 'employee', label: 'Karyawan' }
                     - { property: 'taxGroupText', label: 'Kode Pajak' }
-                    - { property: 'component.name', label: 'Komponen Gaji', type: 'text' }
-                    - { property: 'component.state', label: 'Tipe', template: 'app/default/benefit_state.html.twig' }
-                    - { property: 'taxPercentage', label: 'Persentase', type: 'float' }
+                    - { property: 'taxPercentage', label: 'Persentase', type: 'float', template: 'app/default/field_percentage.html.twig' }
                     - { property: 'untaxable', label: 'PTKP', type: 'float', template: 'app/default/field_currency.html.twig' }
                     - { property: 'taxable', label: 'PKP', type: 'float', template: 'app/default/field_currency.html.twig' }
                     - { property: 'taxValue', label: 'Nilai', type: 'float', template: 'app/default/field_currency.html.twig' }

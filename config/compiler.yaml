@@ -4,3 +4,4 @@
 - 'KejawenLab\Application\SemartHris\DependencyInjection\Compiler\OvertimeCalculatorPass'
 - 'KejawenLab\Application\SemartHris\DependencyInjection\Compiler\PayrollProcessorPass'
 - 'KejawenLab\Application\SemartHris\DependencyInjection\Compiler\SalaryProcessorPass'
+- 'KejawenLab\Application\SemartHris\DependencyInjection\Compiler\TaxProcessorPass'

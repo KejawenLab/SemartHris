@@ -44,9 +44,9 @@ class Setting
     /**
      * @param string $key
      *
-     * @return string
+     * @return null|string
      */
-    public function get(string $key): string
+    public function get(string $key): ? string
     {
         return $this->provider->get($key);
     }

@@ -79,13 +79,13 @@ class AttendanceCalculator
             $delta = $startHour->getTimestamp() - $checkIn->getTimestamp();
             $minutes = round($delta / 60);
 
-            $attendance->setEarlyIn($minutes);
+            $attendance->setEarlyIn((int) $minutes);
             $attendance->setLateIn(0);
         } else {
             $delta = $checkIn->getTimestamp() - $startHour->getTimestamp();
             $minutes = round($delta / 60);
 
-            $attendance->setLateIn($minutes);
+            $attendance->setLateIn((int) $minutes);
             $attendance->setEarlyIn(0);
         }
 
@@ -93,13 +93,13 @@ class AttendanceCalculator
             $delta = $checkOut->getTimestamp() - $endHour->getTimestamp();
             $minutes = round($delta / 60);
 
-            $attendance->setLateOut($minutes);
+            $attendance->setLateOut((int) $minutes);
             $attendance->setEarlyOut(0);
         } else {
             $delta = $endHour->getTimestamp() - $checkOut->getTimestamp();
             $minutes = round($delta / 60);
 
-            $attendance->setEarlyOut($minutes);
+            $attendance->setEarlyOut((int) $minutes);
             $attendance->setLateOut(0);
         }
     }

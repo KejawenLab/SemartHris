@@ -142,6 +142,6 @@ class AttendanceProcessor implements PayrollProcessorInterface
         $summary->setTotalLoyality($totalLoyality ?? 0);
 
         $totalOvertime = $this->overtimeRepository->getSummaryByEmployeeAndDate($summary->getEmployee(), $from, $to);
-        $summary->setTotalOvertime($totalOvertime['totalOvertime'] ?? 0);
+        $summary->setTotalOvertime((int) $totalOvertime['totalOvertime'] ?? 0);
     }
 }

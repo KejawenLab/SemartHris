@@ -48,7 +48,12 @@ class TaxProcessor extends Processor
                     $processor->setPayrollRepository($this->payrollRepository);
                 }
 
-                return $processor->process($employee, $period);
+                $taxValue = $processor->process($employee, $period);
+                $this->setTaxableValue($processor->getTaxableValue());
+                $this->setUntaxableValue($processor->getUntaxableValue());
+                $this->setTaxPercentage($processor->getTaxPercentage());
+
+                return $taxValue;
             } catch (TaxProcessorException $exception) {
                 continue;
             }

@@ -10,6 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
 use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\TaxProcessor;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
+use KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository;
 use KejawenLab\Application\SemartHris\Repository\TaxRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -48,12 +49,18 @@ class TaxController extends AdminController
         }
 
         $processor = $this->container->get(TaxProcessor::class);
+        $payrollPeriodRepository = $this->container->get(PayrollPeriodRepository::class);
         foreach ($employees as $employee) {
             if ($employee->isResign()) {
                 continue;
             }
 
-            $processor->process($employee, $period);
+            $payrollPeriod = $payrollPeriodRepository->findByEmployeeAndDate($employee, $period);
+            if (!$payrollPeriod || $payrollPeriod->isClosed()) {
+                throw new InvalidPayrollPeriodException($period);
+            }
+
+            $processor->process($employee, $payrollPeriod);
         }
 
         return new JsonResponse(['message' => 'OK']);

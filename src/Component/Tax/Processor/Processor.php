@@ -61,12 +61,23 @@ abstract class Processor implements TaxProcessorInterface
         $this->taxable = (12 * $takeHomePay) - $this->untaxable;
         $this->taxPercentage = TaxPercentage::getValue($takeHomePay);
 
-        return round($this->taxable * $this->taxPercentage / 12, 0, PHP_ROUND_HALF_DOWN);
+        return round(($this->taxable * $this->taxPercentage) / 12, 0, PHP_ROUND_HALF_DOWN);
     }
 
+    /**
+     * @return float
+     */
     public function getTaxableValue(): float
     {
         return $this->taxable;
+    }
+
+    /**
+     * @param float|null $taxable
+     */
+    public function setTaxableValue(?float $taxable): void
+    {
+        $this->taxable = $taxable;
     }
 
     /**
@@ -78,10 +89,26 @@ abstract class Processor implements TaxProcessorInterface
     }
 
     /**
+     * @param float|null $untaxable
+     */
+    public function setUntaxableValue(?float $untaxable): void
+    {
+        $this->untaxable = $untaxable;
+    }
+
+    /**
      * @return float
      */
     public function getTaxPercentage(): float
     {
         return $this->taxPercentage;
+    }
+
+    /**
+     * @param float|null $taxPercentage
+     */
+    public function setTaxPercentage(?float $taxPercentage): void
+    {
+        $this->taxPercentage = $taxPercentage;
     }
 }

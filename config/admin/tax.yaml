@@ -19,3 +19,35 @@ easy_admin:
                     - { property: 'untaxable', label: 'PTKP', type: 'float', template: 'app/default/field_currency.html.twig' }
                     - { property: 'taxable', label: 'PKP', type: 'float', template: 'app/default/field_currency.html.twig' }
                     - { property: 'taxValue', label: 'Nilai', type: 'float', template: 'app/default/field_currency.html.twig' }
+
+        TaxGroup:
+            role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\TaxGroupHistory'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\TaxGroupHistoryController'
+            templates:
+                list: 'app/city/list.html.twig'
+            new:
+                title: 'Tambah Kota'
+            edit:
+                title: 'Edit Kota'
+            search:
+                title: 'Kota'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-12' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'oldTaxGroup', label: 'Kode Pajak Lama' }
+                    - { property: 'newTaxGroup', label: 'Kode Pajak Baru' }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'oldRiskRatio', label: 'Kode Resiko Kerja Lama' }
+                    - { property: 'newRiskRatio', label: 'Kode Resiko Kerja Baru' }
+            show:
+                title: 'Detil Kota'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }
+            list:
+                role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
+                title: 'Kota'
+                fields:
+                    - { property: 'employee', label: 'Karyawan' }

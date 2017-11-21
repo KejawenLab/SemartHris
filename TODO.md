@@ -88,7 +88,9 @@
 - [X] Mini Accounting untuk Mencatat Pengeluaran Perusahaan untuk Gaji
 - [X] Change address default listener to doctrine listener to avoid double listener
 - [X] PPH21
-- [ ] Perubahan Tax Group dan Risk Ratio
+- [X] Perubahan Tax Group dan Risk Ratio
+- [ ] Validasi Tax Group dan Risk Ratio
+- [ ] Remove dependecy from UUID provided by database
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist
 - [ ] Created and Updated Log in List

@@ -81,13 +81,6 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
-    KejawenLab\Application\SemartHris\EventListener\CompanyPayrollCostSubscriber:
-        lazy: true
-        arguments:
-            - '@KejawenLab\Application\SemartHris\Component\Salary\Service\StoreAsCompanyCost'
-        tags:
-            - { name: 'doctrine.event_subscriber' }
-
     KejawenLab\Application\SemartHris\EventListener\ExceptionSubscriber:
         lazy: true
         arguments:

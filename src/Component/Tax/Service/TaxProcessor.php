@@ -76,12 +76,10 @@ class TaxProcessor
         }
 
         $tax = $this->taxRepository->createTax($employee, $period);
-        $tax->setTaxValue((string) $this->taxProcessor->process($employee, $period));
+        $tax->setTaxValue((string) $this->taxProcessor->process($payroll));
         $tax->setTaxable((string) $this->taxProcessor->getTaxableValue());
         $tax->setTaxPercentage((string) $this->taxProcessor->getTaxPercentage());
         $tax->setUntaxable((string) $this->taxProcessor->getUntaxableValue());
-
-        $this->taxRepository->update($tax);
 
         $taxPlus = $this->componentRepository->findByCode($this->setting->get(SettingKey::PPH21P_COMPONENT_CODE));
         if (!$taxPlus) {
@@ -96,11 +94,13 @@ class TaxProcessor
         $taxPlusBenefit = $this->payrollRepository->createPayrollDetail($payroll, $taxPlus);
         $taxPlusBenefit->setBenefitValue($tax->getTaxValue());
 
-        $taxMinusBenefit = $this->payrollRepository->createPayrollDetail($payroll, $taxPlus);
+        $taxMinusBenefit = $this->payrollRepository->createPayrollDetail($payroll, $taxMinus);
         $taxMinusBenefit->setBenefitValue($tax->getTaxValue());
 
-        $payroll->close();
+        $period->setClosed(true);
+        $payroll->setPeriod($period);
 
+        $this->taxRepository->update($tax);
         $this->payrollRepository->store($payroll);
         $this->payrollRepository->storeDetail($taxPlusBenefit);
         $this->payrollRepository->storeDetail($taxMinusBenefit);

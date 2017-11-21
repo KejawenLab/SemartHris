@@ -138,6 +138,10 @@ class PayrollRepository extends Repository implements PayrollRepositoryInterface
      */
     public function storeDetail(PayrollDetailInterface $payrollDetail): void
     {
+        $companyCost = $this->createCompanyCost($payrollDetail->getPayroll(), $payrollDetail->getComponent());
+        $companyCost->setBenefitValue($payrollDetail->getBenefitValue());
+        $this->storeCompanyCost($companyCost);
+
         $this->entityManager->persist($payrollDetail);
     }
 

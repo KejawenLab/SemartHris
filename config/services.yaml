@@ -155,21 +155,6 @@ services:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
 
-    KejawenLab\Application\SemartHris\Component\Tax\Processor\KGroupProcessor:
-        lazy: true
-        tags:
-            { name: 'semarthris.tax_processor' }
-
-    KejawenLab\Application\SemartHris\Component\Tax\Processor\KIGroupProcessor:
-        lazy: true
-        tags:
-            { name: 'semarthris.tax_processor' }
-
-    KejawenLab\Application\SemartHris\Component\Tax\Processor\TKGroupProcessor:
-        lazy: true
-        tags:
-            { name: 'semarthris.tax_processor' }
-
     KejawenLab\Application\SemartHris\Component\Tax\Service\TaxProcessor:
         lazy: true
         arguments:

@@ -62,7 +62,7 @@ class OvertimeController extends AdminController
         }
 
         $setting = $this->container->get(Setting::class);
-        $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), $setting->get(SettingKey::UPDATE_DESTIONATION), $setting->get(SettingKey::OVERTIME_UPLOAD_PATH));
+        $destination = sprintf('%s%s%s', $this->container->getParameter('kernel.project_dir'), $setting->get(SettingKey::UPLOAD_DESTINATION), $setting->get(SettingKey::OVERTIME_UPLOAD_PATH));
         $fileName = sprintf('%s.%s', (new \DateTime())->format('Y_m_d_H_i_s'), $overtime->guessExtension());
         $overtime->move($destination, $fileName);
 

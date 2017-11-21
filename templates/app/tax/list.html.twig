@@ -92,12 +92,10 @@
             {% block table_body %}
                 {% set untaxable = 0 %}
                 {% set taxable = 0 %}
-                {% set taxPercentage = 0 %}
                 {% set taxValue = 0 %}
                 {% for item in paginator.currentPageResults %}
                     {% set untaxable = untaxable + item.untaxable %}
                     {% set taxable = taxable + item.taxable %}
-                    {% set taxPercentage = taxPercentage + item.taxPercentage %}
                     {% set taxValue = taxValue + item.taxValue %}
                     {# the empty string concatenation is needed when the primary key is an object (e.g. an Uuid object) #}
                     {% set _item_id = '' ~ attribute(item, _entity_config.primary_key_field_name) %}
@@ -147,8 +145,7 @@
                     </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="5" class="no-results"><span class="pull-right"><b>{{ (taxPercentage * 100) ~ '%' }}</b></span></td>
-                    <td><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ untaxable | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
+                    <td colspan="6" class="no-results"><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ untaxable | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
                     <td><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ taxable | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
                     <td><span class="pull-right"><b>{{ currency_prefix ~ ' ' ~ taxValue | number_format(decimal_precision, decimal_point, thousand_separator) ~ currency_surfix }}</b></span></td>
                     {% if is_granted('ROLE_SUPER_ADMIN') %}

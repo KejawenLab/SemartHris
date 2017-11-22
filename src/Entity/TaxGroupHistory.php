@@ -43,6 +43,7 @@ class TaxGroupHistory implements TaxGroupHistoryInterface
      * @Groups({"read"})
      *
      * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
      *
      * @var string
@@ -105,17 +106,12 @@ class TaxGroupHistory implements TaxGroupHistoryInterface
      */
     private $newRiskRatio;
 
-    public function __construct()
-    {
-        $this->id = Uuid::uuid4()->toString();
-    }
-
     /**
      * @return string
      */
     public function getId(): string
     {
-        return $this->id;
+        return (string) $this->id;
     }
 
     /**

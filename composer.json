@@ -9,7 +9,6 @@
         "javiereguiluz/easyadmin-bundle": "~1.17",
         "kejawenlab/petruk-username": "~2.0",
         "league/csv": "~9.1",
-        "ramsey/uuid": "^3.7",
         "stof/doctrine-extensions-bundle": "~1.2",
         "symfony/dotenv": "~3.3",
         "symfony/framework-bundle": "~3.3",

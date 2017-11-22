@@ -460,8 +460,5 @@
     },
     "symfony/profiler-pack": {
         "version": "v1.0.2"
-    },
-    "ramsey/uuid": {
-        "version": "3.7.1"
     }
 }

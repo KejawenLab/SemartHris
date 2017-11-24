@@ -19,6 +19,8 @@
             $(document).on('change', '.employee-select', function () {
                 find_employee($(this).val());
             });
+
+            change_static_select('{{ _select2_locale }}');
         });
     </script>
 {% endblock %}

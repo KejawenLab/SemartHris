@@ -89,7 +89,7 @@
 - [X] Change address default listener to doctrine listener to avoid double listener
 - [X] PPH21
 - [X] Perubahan Tax Group dan Risk Ratio
-- [ ] Validasi Tax Group dan Risk Ratio
+- [ ] Validasi Tax Group dan Risk Ratio, Kalau Yang Baru Kosong, Pakai Yang Lama
 - [ ] Remove dependecy from UUID provided by database
 - [ ] Prevent Remove Mutation When Job History is Exist
 - [ ] Prevent Remove Placement When Job History is Exist

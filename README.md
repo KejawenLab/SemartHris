@@ -41,6 +41,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Gaji dan Credential data **dienkripsi** dengan algoritma RSA
 - [X] Laporan Penggajian
 - [X] Laporan Beban Gaji Perusahaan
+- [X] Historikal Data Karyawan (Jenjang Karir, Gaji, Tunjangan, dan Pajak)
 - [X] Backend Site and API sekaligus
 - [X] Soft Delete (data tidak benar-benar dihapus)
 - [X] Restore Deleted Record

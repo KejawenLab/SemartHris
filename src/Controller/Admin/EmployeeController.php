@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\QueryBuilder;
+use KejawenLab\Application\SemartHris\Entity\Employee;
 use KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeManipulator;
 use KejawenLab\Application\SemartHris\Repository\EmployeeRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -46,6 +47,24 @@ class EmployeeController extends AdminController
     }
 
     /**
+     * @Route("/employee/{id}/for-tax-change", name="employee_get_for_tax_change", options={"expose"=true})
+     *
+     * @param string $id
+     *
+     * @return Response
+     */
+    public function findEmployeeAction(string $id)
+    {
+        /** @var Employee $employee */
+        $employee = $this->container->get(EmployeeRepository::class)->find($id);
+
+        return new JsonResponse(['employee' => [
+            'tax_group' => $employee->getTaxGroupText(),
+            'risk_ratio' => $employee->getRiskRatioText(),
+        ]]);
+    }
+
+    /**
      * @param object $entity
      * @param string $view
      *
@@ -83,6 +102,6 @@ class EmployeeController extends AdminController
      */
     protected function createSearchQueryBuilder($entityClass, $searchQuery, array $searchableFields, $sortField = null, $sortDirection = null, $dqlFilter = null)
     {
-        return $this->container->get(EmployeeRepository::class)->createSearchQueryBuilder($searchQuery, $sortField, $sortDirection, $dqlFilter);
+        return $this->container->get(EmployeeRepository::class)->createSearchQueryBuilder($searchQuery, $sortField, (string) $sortDirection, $dqlFilter);
     }
 }

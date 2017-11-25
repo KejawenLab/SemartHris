@@ -55,7 +55,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Jalankan perintah `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";` untuk mengaktifkan ekstensi UUID.
 - [X] Jalankan perintah `docker-compose exec app bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `docker-compose exec app bin/console doctrine:fixtures:load -n` untuk *populate initial* data
-- [X] Buka halaman `<HOST>:8000/admin` untuk halaman admin
+- [X] Buka halaman `<HOST>:8000/` untuk halaman admin
 - [X] Buka halaman `<HOST>:8000/api` untuk halaman API
 - [X] Buka halaman `<HOST>:8080` untuk halaman Adminer
 
@@ -79,7 +79,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data
 - [X] Simpan username dan password yang ditampilkan untuk digunakan mengakses aplikasi
 - [X] Jalankan perintah `make serve` untuk mengaktifkan web server
-- [X] Buka halaman `<HOST>:<PORT>/admin` untuk halaman admin
+- [X] Buka halaman `<HOST>:<PORT>/` untuk halaman admin
 - [X] Buka halaman `<HOST>:<PORT>/api` untuk halaman API
 
 ## Unit Test

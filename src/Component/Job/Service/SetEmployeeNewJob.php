@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace KejawenLab\Application\SemartHris\Component\Job\Service;
 
+use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
 
 /**
@@ -16,6 +17,7 @@ class SetEmployeeNewJob
      */
     public static function setNewJob(MutationInterface $mutation): void
     {
+        /** @var Superviseable $employee */
         $employee = $mutation->getEmployee();
         $company = $mutation->getNewCompany() ?? $employee->getCompany();
         $department = $mutation->getNewDepartment() ?? $employee->getDepartment();

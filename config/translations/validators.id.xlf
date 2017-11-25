@@ -10,6 +10,10 @@
                 <source>semarthris.same_job</source>
                 <target>Karyawan tidak mengalami perubahan apapun</target>
             </trans-unit>
+            <trans-unit id="semarthris.same_tax">
+                <source>semarthris.same_tax</source>
+                <target>Tidak ada perubahan pajak sama sekali</target>
+            </trans-unit>
             <trans-unit id="semarthris.attendance.invalid_data">
                 <source>semarthris.attendance.invalid_data</source>
                 <target>Data absensi tidak valid</target>

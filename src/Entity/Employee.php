@@ -806,11 +806,11 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     }
 
     /**
-     * @param string $taxGroup
+     * @param null|string $taxGroup
      */
-    public function setTaxGroup(string $taxGroup): void
+    public function setTaxGroup(?string $taxGroup): void
     {
-        if (!ValidateTaxGroup::isValidType($taxGroup)) {
+        if (!ValidateTaxGroup::isValidType((string) $taxGroup)) {
             throw new \InvalidArgumentException(sprintf('"%s" is not valid tax type.', $taxGroup));
         }
 
@@ -873,11 +873,11 @@ class Employee implements Superviseable, Contractable, UserInterface, \Serializa
     }
 
     /**
-     * @param string $riskRatio
+     * @param null|string $riskRatio
      */
-    public function setRiskRatio(string $riskRatio): void
+    public function setRiskRatio(?string $riskRatio): void
     {
-        if (!ValidateRiskRatio::isValidType($riskRatio)) {
+        if (!ValidateRiskRatio::isValidType((string) $riskRatio)) {
             throw new \InvalidArgumentException(sprintf('"%s" is not valid risk ratio.', $riskRatio));
         }
 

@@ -31,6 +31,12 @@ services:
             - { newDepartment: '@KejawenLab\Application\SemartHris\Form\DataTransformer\DepartmentTransformer', newJobTitle: '@KejawenLab\Application\SemartHris\Form\DataTransformer\JobTitleTransformer', newSupervisor: '@KejawenLab\Application\SemartHris\Form\DataTransformer\EmployeeTransformer', contract: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ContractTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveDepartmentTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveJobTitleTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveSupervisorTextFieldSubscriber', '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveContractTextFieldSubscriber' ]
 
+    KejawenLab\Application\SemartHris\Form\Manipulator\TaxHistoryManipulator:
+        lazy: true
+        arguments:
+            - {}
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveEmptyTaxHistorySubscriber' ]
+
     KejawenLab\Application\SemartHris\Form\Manipulator\EmployeeAddressManipulator:
         lazy: true
         arguments:

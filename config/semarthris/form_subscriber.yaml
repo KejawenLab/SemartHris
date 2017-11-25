@@ -41,6 +41,9 @@ services:
     KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber:
         lazy: true
 
+    KejawenLab\Application\SemartHris\Form\EventListener\RemoveEmptyTaxHistorySubscriber:
+        lazy: true
+
     KejawenLab\Application\SemartHris\Form\EventListener\EncodePasswordSubscriber:
         lazy: true
         arguments:

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace KejawenLab\Application\SemartHris\Component\Job\Service;
 
+use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
 
 /**
@@ -19,6 +20,7 @@ class ValidateMutation
     public static function validate(MutationInterface $mutation): bool
     {
         $count = 0;
+        /** @var Superviseable $employee */
         $employee = $mutation->getEmployee();
 
         if (null === $mutation->getNewCompany() || $mutation->getNewCompany() === $employee->getCompany()) {

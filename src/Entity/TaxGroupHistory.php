@@ -14,6 +14,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use KejawenLab\Application\SemartHris\Component\Employee\Service\ValidateRiskRatio;
 use KejawenLab\Application\SemartHris\Component\Tax\Model\TaxGroupHistoryInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\Service\ValidateTaxGroup;
+use KejawenLab\Application\SemartHris\Validator\Constraint\ValidTaxHistory;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -28,6 +29,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "denormalization_context"={"groups"={"write"}}
  *     }
  * )
+ *
+ * @ValidTaxHistory()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
@@ -63,11 +66,9 @@ class TaxGroupHistory implements TaxGroupHistoryInterface
     private $employee;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\Column(type="string", length=3)
-     *
-     * @Assert\NotBlank()
      *
      * @var string
      */
@@ -76,20 +77,16 @@ class TaxGroupHistory implements TaxGroupHistoryInterface
     /**
      * @Groups({"write", "read"})
      *
-     * @ORM\Column(type="string", length=3)
-     *
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=3, nullable=true)
      *
      * @var string
      */
     private $newTaxGroup;
 
     /**
-     * @Groups({"write", "read"})
+     * @Groups({"read"})
      *
      * @ORM\Column(type="string", length=3)
-     *
-     * @Assert\NotBlank()
      *
      * @var string
      */
@@ -98,9 +95,7 @@ class TaxGroupHistory implements TaxGroupHistoryInterface
     /**
      * @Groups({"write", "read"})
      *
-     * @ORM\Column(type="string", length=3)
-     *
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=3, nullable=true)
      *
      * @var string
      */

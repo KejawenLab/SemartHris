@@ -13,6 +13,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\ContractType;
 use KejawenLab\Application\SemartHris\Component\Employee\Gender;
 use KejawenLab\Application\SemartHris\Component\Employee\IdentityType;
 use KejawenLab\Application\SemartHris\Component\Employee\MaritalStatus;
+use KejawenLab\Application\SemartHris\Component\Employee\RiskRatio;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobLevelInterface;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\TaxGroup;
@@ -173,14 +174,30 @@ interface EmployeeInterface extends Addressable
     public function getTaxGroup(): string;
 
     /**
+     * @param null|string $taxGroup
+     *
+     * @see TaxGroup
+     */
+    public function setTaxGroup(?string $taxGroup): void;
+
+    /**
      * @return bool
      */
     public function isHaveOvertimeBenefit(): bool;
 
     /**
      * @return string
+     *
+     * @see RiskRatio
      */
     public function getRiskRatio(): ? string;
+
+    /**
+     * @param null|string $riskRatio
+     *
+     * @see RiskRatio
+     */
+    public function setRiskRatio(?string $riskRatio): void;
 
     /**
      * @return bool

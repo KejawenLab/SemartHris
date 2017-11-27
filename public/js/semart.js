@@ -516,6 +516,25 @@ function reason_autocomplete(locale, type, emptyText) {
     });
 }
 
+function find_employee(id) {
+    $.ajax({
+        url: Routing.generate('employee_get_for_tax_change', { id: id }),
+        type: 'GET',
+        data: {},
+        beforeSend: function () {},
+        success: function (dataResponse) {
+            var employee = dataResponse['employee'];
+            if (null !== employee) {
+                $('.tax-group').val(employee.tax_group);
+                $('.risk-ratio').val(employee.risk_ratio);
+            }
+        },
+        error: function () {
+            console.log('KO');
+        }
+    });
+}
+
 function change_static_select(locale) {
     $('.static-select').select2({
         theme: 'bootstrap',

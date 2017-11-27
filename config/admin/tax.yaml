@@ -24,30 +24,37 @@ easy_admin:
             role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
             class: 'KejawenLab\Application\SemartHris\Entity\TaxGroupHistory'
             controller: 'KejawenLab\Application\SemartHris\Controller\Admin\TaxGroupHistoryController'
+            disabled_actions: ['search']
             templates:
-                list: 'app/city/list.html.twig'
+                new: 'app/tax/new.html.twig'
+                edit: 'app/tax/edit.html.twig'
+                list: 'app/tax/history.html.twig'
             new:
-                title: 'Tambah Kota'
+                title: 'Tambah Perubahan Pajak'
             edit:
-                title: 'Edit Kota'
+                title: 'Edit Perubahan Pajak'
             search:
-                title: 'Kota'
+                title: 'Perubahan Pajak'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12' }
-                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete', type_options: { attr: { class: 'employee-select' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'oldTaxGroup', label: 'Kode Pajak Lama' }
-                    - { property: 'newTaxGroup', label: 'Kode Pajak Baru' }
+                    - { property: 'oldTaxGroup', label: 'Kode Pajak Lama', type: 'text', type_options: { mapped: false, attr: { readonly: true, class: 'tax-group' } } }
+                    - { property: 'newTaxGroup', label: 'Kode Pajak Baru', type: 'choice', type_options: { required: false, attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', TK0: 'tk0', TK1: 'tk1', TK2: 'tk2', TK3: 'tk3', K0: 'k0', K1: 'k1', K2: 'k2', K3: 'k3', KI0: 'ki0', KI1: 'ki1', KI2: 'ki2', KI3: 'ki3' } } }
                     - { type: 'group', css_class: 'col-sm-6' }
-                    - { property: 'oldRiskRatio', label: 'Kode Resiko Kerja Lama' }
-                    - { property: 'newRiskRatio', label: 'Kode Resiko Kerja Baru' }
+                    - { property: 'oldRiskRatio', label: 'Kode Resiko Kerja Lama', type: 'text', type_options: { mapped: false, attr: { readonly: true, class: 'risk-ratio' } } }
+                    - { property: 'newRiskRatio', label: 'Kode Resiko Kerja Baru', type: 'choice', type_options: { required: false, attr: { class: 'static-select' }, choices: { 'label.form.empty_value': '', 'RESIKO SANGAT TINGGI': 'vhr', 'RESIKO TINGGI': 'hr', 'RESIKO NORMAL': 'nr', 'RESIKO RENDAH': 'lr', 'RESIKO SANGAT RENDAH': 'vlr' } } }
             show:
-                title: 'Detil Kota'
+                title: 'Detil Perubahan Pajak'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
             list:
                 role: '%env(string:SEMART_SECURITY_EMPLOYEE_MENU)%'
-                title: 'Kota'
+                title: 'Perubahan Pajak'
                 fields:
                     - { property: 'employee', label: 'Karyawan' }
+                    - { property: 'oldTaxGroup', label: 'Kode Pajak Lama' }
+                    - { property: 'newTaxGroup', label: 'Kode Pajak Bar' }
+                    - { property: 'oldRiskRatio', label: 'Kode Resiko Kerja Lama' }
+                    - { property: 'newRiskRatio', label: 'Kode Resiko Kerja Baru' }

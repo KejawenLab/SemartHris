@@ -33,6 +33,11 @@ services:
         tags:
             - { name: 'doctrine.event_subscriber' }
 
+    KejawenLab\Application\SemartHris\EventListener\SetOldTaxDataHistorySubscriber:
+        lazy: true
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
     KejawenLab\Application\SemartHris\EventListener\WorkshiftSlicerSubscriber:
         lazy: true
         arguments:

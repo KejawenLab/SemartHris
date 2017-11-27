@@ -16,14 +16,12 @@
 
     <script type="text/javascript">
         $(function() {
-            var locale = '{{ _select2_locale }}';
-            var emptyText = '{{ 'label.form.empty_value' | trans({}, 'messages') }}';
+            $(document).on('change', '.employee-select', function () {
+                find_employee($(this).val());
+            });
 
-            employee_contract_autocomplete(locale, emptyText);
-            department_autocomplete(locale, emptyText);
-            jobtitle_autocomplete(locale, emptyText);
-            supervisor_autocomplete(locale, emptyText);
-            change_static_select(locale);
+            $('.employee-select').change();
+            change_static_select('{{ _select2_locale }}');
         });
     </script>
 {% endblock %}

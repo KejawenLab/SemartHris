@@ -9,5 +9,4 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
  */
 class TaxGroupHistoryController extends AdminController
 {
-
 }

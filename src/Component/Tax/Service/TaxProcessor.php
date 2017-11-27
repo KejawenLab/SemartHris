@@ -81,18 +81,18 @@ class TaxProcessor
         $tax->setTaxPercentage((string) $this->taxProcessor->getTaxPercentage());
         $tax->setUntaxable((string) $this->taxProcessor->getUntaxableValue());
 
-        $taxPlus = $this->componentRepository->findByCode($this->setting->get(SettingKey::PPH21P_COMPONENT_CODE));
-        if (!$taxPlus) {
-            throw new \RuntimeException('Tax plus benefit code is not valid.');
+        $taxPlus = $this->componentRepository->findByCode((string) $this->setting->get(SettingKey::PPH21P_COMPONENT_CODE));
+        if ($taxPlus) {
+            $taxPlusBenefit = $this->payrollRepository->createPayrollDetail($payroll, $taxPlus);
+            $taxPlusBenefit->setBenefitValue($tax->getTaxValue());
+
+            $this->payrollRepository->storeDetail($taxPlusBenefit);
         }
 
         $taxMinus = $this->componentRepository->findByCode($this->setting->get(SettingKey::PPH21M_COMPONENT_CODE));
         if (!$taxMinus) {
             throw new \RuntimeException('Tax minus benefit code is not valid.');
         }
-
-        $taxPlusBenefit = $this->payrollRepository->createPayrollDetail($payroll, $taxPlus);
-        $taxPlusBenefit->setBenefitValue($tax->getTaxValue());
 
         $taxMinusBenefit = $this->payrollRepository->createPayrollDetail($payroll, $taxMinus);
         $taxMinusBenefit->setBenefitValue($tax->getTaxValue());
@@ -102,7 +102,6 @@ class TaxProcessor
 
         $this->taxRepository->update($tax);
         $this->payrollRepository->store($payroll);
-        $this->payrollRepository->storeDetail($taxPlusBenefit);
         $this->payrollRepository->storeDetail($taxMinusBenefit);
         $this->payrollRepository->update();
     }

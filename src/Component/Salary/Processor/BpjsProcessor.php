@@ -122,30 +122,29 @@ class BpjsProcessor implements SalaryProcessorInterface
             throw new \RuntimeException('JHT company benefit code is not valid.');
         }
 
-        $jhtEmployeePlus = $this->componentRepository->findByCode($this->setting->get(SettingKey::JHTP_COMPONENT_CODE));
-        if (!$jhtEmployeePlus) {
-            throw new \RuntimeException('JHT employee plus benefit code is not valid.');
-        }
-
-        $jhtEmployeeMinus = $this->componentRepository->findByCode($this->setting->get(SettingKey::JHTM_COMPONENT_CODE));
-        if (!$jhtEmployeeMinus) {
-            throw new \RuntimeException('JHT employee minus benefit code is not valid.');
-        }
-
         $jhtc = round(0.037 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
+        $jht = round(0.02 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
+
         $companyCost = $this->payrollRepository->createCompanyCost($payroll, $jhtCompany);
         $companyCost->setBenefitValue((string) $jhtc);
 
-        $jht = round(0.02 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
-        $plusJht = $this->payrollRepository->createPayrollDetail($payroll, $jhtEmployeePlus);
-        $plusJht->setBenefitValue((string) $jht);
-
-        $minusJht = $this->payrollRepository->createPayrollDetail($payroll, $jhtEmployeeMinus);
-        $minusJht->setBenefitValue((string) $jht);
-
         $this->payrollRepository->storeCompanyCost($companyCost);
-        $this->payrollRepository->storeDetail($plusJht);
-        $this->payrollRepository->storeDetail($minusJht);
+
+        $jhtEmployeePlus = $this->componentRepository->findByCode((string) $this->setting->get(SettingKey::JHTP_COMPONENT_CODE));
+        if ($jhtEmployeePlus) {
+            $plusJht = $this->payrollRepository->createPayrollDetail($payroll, $jhtEmployeePlus);
+            $plusJht->setBenefitValue((string) $jht);
+
+            $this->payrollRepository->storeDetail($plusJht);
+        }
+
+        $jhtEmployeeMinus = $this->componentRepository->findByCode((string) $this->setting->get(SettingKey::JHTM_COMPONENT_CODE));
+        if ($jhtEmployeeMinus) {
+            $minusJht = $this->payrollRepository->createPayrollDetail($payroll, $jhtEmployeeMinus);
+            $minusJht->setBenefitValue((string) $jht);
+
+            $this->payrollRepository->storeDetail($minusJht);
+        }
     }
 
     /**
@@ -161,29 +160,28 @@ class BpjsProcessor implements SalaryProcessorInterface
             throw new \RuntimeException('JP company benefit code is not valid.');
         }
 
-        $jpEmployeePlus = $this->componentRepository->findByCode($this->setting->get(SettingKey::JPP_COMPONENT_CODE));
-        if (!$jpEmployeePlus) {
-            throw new \RuntimeException('JP employee plus benefit code is not valid.');
-        }
-
-        $jpEmployeeMinus = $this->componentRepository->findByCode($this->setting->get(SettingKey::JPM_COMPONENT_CODE));
-        if (!$jpEmployeeMinus) {
-            throw new \RuntimeException('JP employee minus benefit code is not valid.');
-        }
-
         $jpc = round(0.02 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
+        $jp = round(0.01 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
+
         $companyCost = $this->payrollRepository->createCompanyCost($payroll, $jpCompany);
         $companyCost->setBenefitValue((string) $jpc);
 
-        $jp = round(0.01 * $fixedSalary, 0, PHP_ROUND_HALF_DOWN);
-        $plusJp = $this->payrollRepository->createPayrollDetail($payroll, $jpEmployeePlus);
-        $plusJp->setBenefitValue((string) $jp);
-
-        $minusJp = $this->payrollRepository->createPayrollDetail($payroll, $jpEmployeeMinus);
-        $minusJp->setBenefitValue((string) $jp);
-
         $this->payrollRepository->storeCompanyCost($companyCost);
-        $this->payrollRepository->storeDetail($plusJp);
-        $this->payrollRepository->storeDetail($minusJp);
+
+        $jpEmployeePlus = $this->componentRepository->findByCode((string) $this->setting->get(SettingKey::JPP_COMPONENT_CODE));
+        if ($jpEmployeePlus) {
+            $plusJp = $this->payrollRepository->createPayrollDetail($payroll, $jpEmployeePlus);
+            $plusJp->setBenefitValue((string) $jp);
+
+            $this->payrollRepository->storeDetail($plusJp);
+        }
+
+        $jpEmployeeMinus = $this->componentRepository->findByCode((string) $this->setting->get(SettingKey::JPM_COMPONENT_CODE));
+        if ($jpEmployeeMinus) {
+            $minusJp = $this->payrollRepository->createPayrollDetail($payroll, $jpEmployeeMinus);
+            $minusJp->setBenefitValue((string) $jp);
+
+            $this->payrollRepository->storeDetail($minusJp);
+        }
     }
 }

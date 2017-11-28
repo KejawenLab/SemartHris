@@ -11,8 +11,6 @@ use KejawenLab\Application\SemartHris\Form\Manipulator\TaxHistoryManipulator;
  */
 class TaxGroupHistoryController extends AdminController
 {
-<<<<<<< HEAD
-=======
     /**
      * @param object $entity
      * @param string $view
@@ -25,5 +23,4 @@ class TaxGroupHistoryController extends AdminController
 
         return $this->container->get(TaxHistoryManipulator::class)->manipulate($builder, $entity);
     }
->>>>>>> f984801a67db4a84a04f88dfa2b5968322d8cdc3
 }

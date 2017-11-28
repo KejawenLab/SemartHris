@@ -22,7 +22,7 @@ class FileUtil
     private $mimeType;
 
     /**
-     * @var string
+     * @var int
      */
     private $fileSize;
 
@@ -62,9 +62,9 @@ class FileUtil
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getFileSize(): string
+    public function getFileSize(): int
     {
         return $this->fileSize;
     }

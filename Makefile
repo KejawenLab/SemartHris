@@ -49,3 +49,20 @@ serve: ## Runs a local web server
 	@${MAKE} serve_as_sf
 .PHONY: sf_console serve serve_as_sf serve_as_php
 ###< symfony/framework-bundle ###
+
+OPENSSL := $(shell which openssl)
+
+gen-rsa: ## Generate new RSA key
+ifndef OPENSSL
+	@printf "Cannot generate new key. OpenSSL binary not found."
+else
+	@printf "Creating private key: ${SEMART_PRIVATE_KEY_PATH}\n"
+	@openssl genrsa -passout pass:${SEMART_PASSPHRASE_PATH} \
+		-out ${PWD}${SEMART_PRIVATE_KEY_PATH} -aes256 4096
+	@printf "Creating public key: ${SEMART_PUBLIC_KEY_PATH}\n"
+	@openssl rsa -pubout -passin pass:${SEMART_PASSPHRASE_PATH} \
+		-in ${PWD}${SEMART_PRIVATE_KEY_PATH} -out ${PWD}${SEMART_PUBLIC_KEY_PATH}
+	@printf "Updating key permission\n"
+	@chmod 400 ${PWD}${SEMART_PRIVATE_KEY_PATH} && \
+	chmod 444 ${PWD}${SEMART_PUBLIC_KEY_PATH}
+endif

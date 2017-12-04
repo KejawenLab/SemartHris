@@ -15,9 +15,9 @@ RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" >> /etc/ap
 RUN echo "deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" >> /etc/apt/sources.list.d/ondrej-php.list
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 4F4EA0AAE5267A6C
 RUN apt-get update
-RUN apt-get install php7.1 php7.1-cli php7.1-curl php7.1-intl php7.1-mbstring php7.1-xml php7.1-zip \
-    php7.1-bcmath php7.1-cli php7.1-fpm php7.1-imap php7.1-json php7.1-mcrypt php7.1-opcache php7.1-apcu php7.1-xmlrpc \
-    php7.1-bz2 php7.1-common php7.1-gd php7.1-ldap php7.1-pgsql php7.1-readline php7.1-soap php7.1-tidy php7.1-xsl php-apcu -y
+RUN apt-get install php7.2 php7.2-cli php7.2-curl php7.2-intl php7.2-mbstring php7.2-xml php7.2-zip \
+    php7.2-bcmath php7.2-cli php7.2-fpm php7.2-imap php7.2-json php7.2-mcrypt php7.2-opcache php7.2-apcu php7.2-xmlrpc \
+    php7.2-bz2 php7.2-common php7.2-gd php7.2-ldap php7.2-pgsql php7.2-readline php7.2-soap php7.2-tidy php7.2-xsl php-apcu -y
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN apt-get remove --purge -y software-properties-common python-software-properties && \
     apt-get autoremove -y && \
@@ -56,12 +56,12 @@ RUN chmod 777 /var/log/nginx/site.access.log
 RUN chmod 777 /var/log/nginx/site.error.log
 
 # PHP Configuration
-ADD docker/php/php.ini /etc/php/7.1/fpm/php.ini
-ADD docker/php/php.ini /etc/php/7.1/cli/php.ini
-ADD docker/php/php-fpm.conf /etc/php/7.1/fpm/php-fpm.conf
+ADD docker/php/php.ini /etc/php/7.2/fpm/php.ini
+ADD docker/php/php.ini /etc/php/7.2/cli/php.ini
+ADD docker/php/php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
 RUN mkdir /run/php
-RUN touch /run/php/php7.1-fpm.sock
-RUN chmod 777 /run/php/php7.1-fpm.sock
+RUN touch /run/php/php7.2-fpm.sock
+RUN chmod 777 /run/php/php7.2-fpm.sock
 
 # Varnish Configuration
 ADD docker/varnish/default.vcl /etc/varnish/default.vcl

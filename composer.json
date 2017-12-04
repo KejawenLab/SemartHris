@@ -10,12 +10,12 @@
         "kejawenlab/petruk-username": "~2.0",
         "league/csv": "~9.1",
         "stof/doctrine-extensions-bundle": "~1.2",
-        "symfony/dotenv": "~3.3",
-        "symfony/framework-bundle": "~3.3",
+        "symfony/dotenv": "~3.4",
+        "symfony/framework-bundle": "~3.4",
         "symfony/profiler-pack": "~1.0",
-        "symfony/proxy-manager-bridge": "~3.3",
-        "symfony/web-server-bundle": "~3.3",
-        "symfony/yaml": "~3.3",
+        "symfony/proxy-manager-bridge": "~3.4",
+        "symfony/web-server-bundle": "~3.4",
+        "symfony/yaml": "~3.4",
         "vich/uploader-bundle": "~1.6"
     },
     "require-dev": {
@@ -24,7 +24,7 @@
         "phpunit/php-invoker": "~1.1",
         "phpunit/phpunit": "~6.4",
         "symfony/flex": "~1.0",
-        "symfony/phpunit-bridge": "~3.3"
+        "symfony/phpunit-bridge": "~3.4"
     },
     "config": {
         "preferred-install": {
@@ -55,16 +55,10 @@
             "@auto-scripts"
         ]
     },
-    "conflict": {
-        "symfony/symfony": "*",
-        "symfony/twig-bundle": "<3.3",
-        "symfony/debug": "<3.3"
-    },
     "extra": {
         "symfony": {
             "id": "01BVZD4XBVC9W2SQTK5NK2173Q",
             "allow-contrib": true
         }
-    },
-    "minimum-stability": "beta"
+    }
 }

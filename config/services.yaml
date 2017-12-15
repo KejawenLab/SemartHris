@@ -4,6 +4,8 @@ parameters:
     locale: 'id'
 
 services:
+    _defaults:
+        public: true
     KejawenLab\Application\SemartHris\Util\FileUtil:
         lazy: true
         arguments:

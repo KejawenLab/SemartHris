@@ -1,4 +1,6 @@
 services:
+    _defaults:
+        public: true
     KejawenLab\Application\SemartHris\Twig\AttendanceExtension:
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\EmployeeRepository'

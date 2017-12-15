@@ -1,4 +1,6 @@
 services:
+    _defaults:
+        public: true
     KejawenLab\Application\SemartHris\Repository\CompanyRepository:
         lazy: true
         arguments:

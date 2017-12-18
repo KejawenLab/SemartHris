@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Service\SupervisorCheck
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SupervisorVoter extends Voter
 {

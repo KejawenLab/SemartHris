@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Library\PetrukUsername\UsernameFactory;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class UsernameGenerator
 {

@@ -12,7 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface PayrollRepositoryInterface
 {

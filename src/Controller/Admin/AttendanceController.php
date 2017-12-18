@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceController extends AdminController
 {

@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class TaxCalculatorPass implements CompilerPassInterface
 {

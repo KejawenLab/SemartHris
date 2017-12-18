@@ -38,7 +38,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Encrypt(properties={"untaxable", "taxable", "taxPercentage", "taxValue"}, keyStore="taxKey")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class Tax implements TaxInterface
 {

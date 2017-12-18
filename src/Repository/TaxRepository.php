@@ -12,7 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Tax\Repository\TaxRepositoryInte
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class TaxRepository extends Repository implements TaxRepositoryInterface
 {

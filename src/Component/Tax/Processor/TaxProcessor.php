@@ -11,7 +11,7 @@ use KejawenLab\Application\SemartHris\Component\Tax\Calculator\TaxCalculatorInte
 use KejawenLab\Application\SemartHris\Component\Tax\TaxGroup;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class TaxProcessor implements TaxProcessorInterface
 {

@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Company\Model;
 use KejawenLab\Application\SemartHris\Component\Address\Model\Addressable;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface CompanyInterface extends Addressable
 {

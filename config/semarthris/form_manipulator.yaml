@@ -76,6 +76,12 @@ services:
             - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber' ]
 
+    KejawenLab\Application\SemartHris\Form\Manipulator\LeaveManipulator:
+        lazy: true
+        arguments:
+            - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber' ]
+
     KejawenLab\Application\SemartHris\Form\Manipulator\SalaryAllowanceManipulator:
         lazy: true
         arguments:

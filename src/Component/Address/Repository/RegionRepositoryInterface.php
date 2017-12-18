@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface RegionRepositoryInterface
 {

@@ -63,7 +63,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @Vich\Uploadable()
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class Employee implements Superviseable, Contractable, UserInterface, \Serializable
 {

@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractRepo
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class ContractRepository extends Repository implements ContractRepositoryInterface
 {

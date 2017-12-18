@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Configuration\Encrypt;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class EncryptorSubscriber implements EventSubscriber
 {

@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Tax\Service;
 use KejawenLab\Application\SemartHris\Component\Tax\Model\TaxGroupHistoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SetOldTaxDataHistory
 {

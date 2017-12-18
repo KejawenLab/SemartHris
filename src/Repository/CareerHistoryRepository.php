@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Job\Model\CareerHistoryInterface
 use KejawenLab\Application\SemartHris\Component\Job\Repository\CareerHistoryRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class CareerHistoryRepository extends Repository implements CareerHistoryRepositoryInterface, ContractableRepositoryInterface
 {

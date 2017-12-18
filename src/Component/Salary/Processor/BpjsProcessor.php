@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
 use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  *
  * @see http://www.pasienbpjs.com/2017/01/cara-menghitung-iuran-bpjs-ketenagakerjaan.html
  */

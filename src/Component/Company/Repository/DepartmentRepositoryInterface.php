@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Company\Repository;
 use KejawenLab\Application\SemartHris\Component\Company\Model\DepartmentInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface DepartmentRepositoryInterface
 {

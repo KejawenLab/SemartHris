@@ -56,6 +56,7 @@ easy_admin:
               icon: 'envelope-o'
               children:
                   - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Leave', label: 'Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Penggajian'
               role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
               icon: 'money'

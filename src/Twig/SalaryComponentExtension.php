@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Repository\ComponentRepos
 use KejawenLab\Application\SemartHris\Component\Salary\Service\ValidateStateType;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SalaryComponentExtension extends \Twig_Extension
 {

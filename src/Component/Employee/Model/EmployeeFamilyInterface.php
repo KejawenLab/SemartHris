@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Education\Model\EducationTitleIn
 use KejawenLab\Application\SemartHris\Component\Employee\FamilyRelation;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface EmployeeFamilyInterface
 {

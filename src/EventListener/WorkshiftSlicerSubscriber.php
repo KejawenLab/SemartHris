@@ -12,7 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftR
 use KejawenLab\Application\SemartHris\Component\Attendance\Service\WorkshiftSlicer;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class WorkshiftSlicerSubscriber implements EventSubscriber
 {

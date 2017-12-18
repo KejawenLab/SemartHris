@@ -14,7 +14,7 @@ use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayReposi
 use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceProcessor
 {

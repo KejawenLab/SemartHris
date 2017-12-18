@@ -8,7 +8,7 @@ use Doctrine\ORM\QueryBuilder;
 use KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceSummaryController extends AdminController
 {

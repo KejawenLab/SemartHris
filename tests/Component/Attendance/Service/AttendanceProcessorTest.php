@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonReposito
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceProcessorTest extends TestCase
 {

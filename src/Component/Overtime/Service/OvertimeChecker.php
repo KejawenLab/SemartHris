@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Repository\Attendance
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class OvertimeChecker
 {

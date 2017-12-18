@@ -14,7 +14,7 @@ use KejawenLab\Application\SemartHris\Component\Tax\Processor\TaxProcessorInterf
 use KejawenLab\Application\SemartHris\Component\Tax\Repository\TaxRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class TaxProcessor
 {

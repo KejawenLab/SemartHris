@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceImporterTest extends TestCase
 {

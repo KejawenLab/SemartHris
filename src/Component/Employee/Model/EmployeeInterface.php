@@ -19,7 +19,7 @@ use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 use KejawenLab\Application\SemartHris\Component\Tax\TaxGroup;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface EmployeeInterface extends Addressable
 {

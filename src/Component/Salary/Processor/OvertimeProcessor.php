@@ -13,7 +13,7 @@ use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
 use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class OvertimeProcessor implements SalaryProcessorInterface
 {

@@ -11,7 +11,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Repository\AttendanceSumm
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceSummaryRepository extends Repository implements AttendanceSummaryRepositoryInterface
 {

@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Repository\OvertimeRepo
 use KejawenLab\Application\SemartHris\Kernel;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class OvertimeProcessor
 {

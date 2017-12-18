@@ -12,9 +12,9 @@ use KejawenLab\Application\SemartHris\Util\UuidUtil;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class SalaryBenefitHistoryRepository
+class SalaryBenefitHistoryRepository extends Repository
 {
     use ContractableRepositoryTrait;
 

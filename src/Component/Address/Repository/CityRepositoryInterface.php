@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Address\Repository;
 use KejawenLab\Application\SemartHris\Component\Address\Model\CityInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface CityRepositoryInterface
 {

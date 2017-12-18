@@ -10,6 +10,9 @@ use Doctrine\ORM\Events;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\BenefitHistoryInterface;
 use KejawenLab\Application\SemartHris\Component\Salary\Service\ChangeBenefit;
 
+/**
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
+ */
 class ChangeBenefitSubscriber implements EventSubscriber
 {
     /**

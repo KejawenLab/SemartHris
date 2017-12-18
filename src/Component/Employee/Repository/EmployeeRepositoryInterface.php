@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface EmployeeRepositoryInterface
 {

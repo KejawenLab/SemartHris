@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftR
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class WorkshiftRepository extends Repository implements WorkshiftRepositoryInterface
 {

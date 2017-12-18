@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\AddressInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\AddressRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class ValidAddressRepositoryStub implements AddressRepositoryInterface
 {

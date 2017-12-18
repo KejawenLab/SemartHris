@@ -35,7 +35,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class Attendance implements AttendanceInterface
 {
@@ -243,9 +243,9 @@ class Attendance implements AttendanceInterface
     }
 
     /**
-     * @param string $description
+     * @param null|string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }

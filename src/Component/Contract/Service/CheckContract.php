@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Contract\Repository\Contractable
 use KejawenLab\Application\SemartHris\Component\Contract\Repository\ContractRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class CheckContract
 {

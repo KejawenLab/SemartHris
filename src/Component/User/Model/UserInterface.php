@@ -8,7 +8,7 @@ use KejawenLab\Library\PetrukUsername\Repository\UsernameInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUser;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface UserInterface extends UsernameInterface, SymfonyUser
 {

@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Entity\Attendance;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceManipulator extends FormManipulator implements FormManipulatorInterface
 {

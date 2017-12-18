@@ -12,7 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Tax\Service\SetNewTaxDataHistory
 use KejawenLab\Application\SemartHris\Component\Tax\Service\SetOldTaxDataHistory;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SetOldTaxDataHistorySubscriber implements EventSubscriber
 {

@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Form\EventListener;
 use Symfony\Component\Form\FormEvent;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface FieldRemoverInterface
 {

@@ -35,7 +35,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Encrypt(properties="takeHomePay", keyStore="takeHomePayKey")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class Payroll implements PayrollInterface
 {

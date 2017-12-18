@@ -51,6 +51,8 @@ class Kernel extends BaseKernel implements CompilerPassInterface
     /**
      * @param ContainerBuilder $container
      * @param LoaderInterface  $loader
+     *
+     * @throws
      */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
@@ -67,6 +69,8 @@ class Kernel extends BaseKernel implements CompilerPassInterface
 
     /**
      * @param RouteCollectionBuilder $routes
+     *
+     * @throws
      */
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {

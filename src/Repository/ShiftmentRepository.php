@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentInterf
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\ShiftmentRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class ShiftmentRepository extends Repository implements ShiftmentRepositoryInterface
 {

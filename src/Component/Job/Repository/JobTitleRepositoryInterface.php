@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Job\Repository;
 use KejawenLab\Application\SemartHris\Component\Job\Model\JobTitleInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface JobTitleRepositoryInterface
 {

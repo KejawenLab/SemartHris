@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcesso
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollPeriodRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class PayrollProcessor
 {

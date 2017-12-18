@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use KejawenLab\Application\SemartHris\Component\Employee\Repository\EmployeeRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class EmployeeExtension extends \Twig_Extension
 {

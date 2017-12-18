@@ -257,3 +257,23 @@ services:
         lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Encryptor\KeyLoader'
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\FirstRateTaxCalculator:
+        lazy: true
+        tags:
+            { name: 'semarthris.tax_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\SecondRateTaxCalculator:
+        lazy: true
+        tags:
+            { name: 'semarthris.tax_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\ThirdRateTaxCalculator:
+        lazy: true
+        tags:
+            { name: 'semarthris.tax_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\FourthRateTaxCalculator:
+        lazy: true
+        tags:
+            { name: 'semarthris.tax_calculator' }

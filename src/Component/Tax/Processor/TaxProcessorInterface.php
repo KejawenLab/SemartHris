@@ -27,9 +27,4 @@ interface TaxProcessorInterface
      * @return float
      */
     public function getUntaxableValue(): float;
-
-    /**
-     * @return float
-     */
-    public function getTaxPercentage(): float;
 }

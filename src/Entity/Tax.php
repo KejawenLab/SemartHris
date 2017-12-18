@@ -117,15 +117,6 @@ class Tax implements TaxInterface
      *
      * @var string
      */
-    private $taxPercentage;
-
-    /**
-     * @Groups({"read"})
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     * @var string
-     */
     private $taxValue;
 
     /**
@@ -233,22 +224,6 @@ class Tax implements TaxInterface
     public function setTaxable(?string $taxable): void
     {
         $this->taxable = $taxable;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getTaxPercentage(): ? string
-    {
-        return $this->taxPercentage;
-    }
-
-    /**
-     * @param null|string $taxPercentage
-     */
-    public function setTaxPercentage(?string $taxPercentage): void
-    {
-        $this->taxPercentage = $taxPercentage;
     }
 
     /**

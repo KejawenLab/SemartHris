@@ -70,16 +70,6 @@ interface TaxInterface
     /**
      * @return null|string
      */
-    public function getTaxPercentage(): ? string;
-
-    /**
-     * @param string $untaxable
-     */
-    public function setTaxPercentage(string $untaxable): void;
-
-    /**
-     * @return null|string
-     */
     public function getTaxValue(): ? string;
 
     /**

@@ -31,6 +31,15 @@
         <!-- Set "serverVersion" to your server version to avoid edge-case exceptions and extra database calls -->
         <env name="DATABASE_URL" value="mysql://db_user:db_password@127.0.0.1:3306/db_name?charset=utf8mb4&amp;serverVersion=5.7"/>
         <!-- ###- doctrine/doctrine-bundle ### -->
+
+        <!-- ###+ nelmio/cors-bundle ### -->
+        <env name="CORS_ALLOW_ORIGIN" value="^https?://localhost:?[0-9]*$"/>
+        <!-- ###- nelmio/cors-bundle ### -->
+
+        <!-- ###+ snc/redis-bundle ### -->
+        <!-- passwords that contain special characters (@, %, :, +) must be urlencoded -->
+        <env name="REDIS_URL" value="redis://localhost"/>
+        <!-- ###- snc/redis-bundle ### -->
     </php>
 
     <testsuites>

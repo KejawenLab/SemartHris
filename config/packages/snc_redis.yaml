@@ -1,0 +1,15 @@
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: "%env(REDIS_URL)%"
+        session:
+            type: predis
+            alias: session
+            dsn: "%env(REDIS_URL)%"
+
+    session:
+        client: session
+        prefix: quiz
+        ttl: 7200

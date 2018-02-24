@@ -23,8 +23,10 @@ services:
             - ./uploads:/semarthris/uploads:rw
         links:
             - db
+            - session
         depends_on:
             - db
+            - session
 
     db:
         image: postgres:alpine
@@ -35,6 +37,9 @@ services:
             POSTGRES_DB: semarthris
         volumes:
             - ./database:/var/lib/postgresql/data:rw
+
+    session:
+        image: redis:alpine
 
     adminer:
         image: adminer

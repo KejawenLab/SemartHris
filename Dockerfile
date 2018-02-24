@@ -91,7 +91,6 @@ COPY data data/
 COPY public public/
 COPY src src/
 COPY templates templates/
-COPY Makefile ./Makefile
 COPY .env.dist ./.env.dist
 
 RUN composer dump-autoload --optimize --classmap-authoritative

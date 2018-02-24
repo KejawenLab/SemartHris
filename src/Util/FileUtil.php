@@ -42,15 +42,16 @@ class FileUtil
     public function getFile(string $path): string
     {
         $path = sprintf('%s/%s', $this->folderStorage, $path);
-        $file = file_get_contents($path);
-        if ($file) {
-            $this->mimeType = mime_content_type($path);
-            $this->fileSize = filesize($path);
-
-            return $file;
+        try {
+            $file = file_get_contents($path);
+        } catch (\Exception $e) {
+            throw new FileNotFoundException();
         }
 
-        throw new FileNotFoundException();
+        $this->mimeType = mime_content_type($path);
+        $this->fileSize = filesize($path);
+
+        return $file;
     }
 
     /**

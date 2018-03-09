@@ -1,7 +1,7 @@
 easy_admin:
     design:
         menu:
-            - { routed: 'dashboard_index', label: 'Dashboard', icon: 'tachometer', default: true }
+            - { route: 'dashboard_index', label: 'Dashboard', icon: 'tachometer', default: true }
             - label: 'Administrator'
               role: '%env(string:SEMART_SECURITY_USER_MENU)%'
               icon: 'shield'

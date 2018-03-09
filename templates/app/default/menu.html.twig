@@ -5,7 +5,7 @@
 {% import parent as helper %}
 
 {% block menu_item %}
-    {% if is_granted(item.role) %}
+    {% if item.role is defined and is_granted(item.role) %}
         <li class="{{ item.type == 'divider' ? 'header' }} {{ item.children is not empty ? 'treeview' }} {{ app.request.query.get('menuIndex')|default(-1) == loop.index0 ? 'active' }} {{ app.request.query.get('submenuIndex')|default(-1) != -1 ? 'submenu-active' }}">
             {{ helper.render_menu_item(item, _entity_config.translation_domain|default('messages')) }}
 

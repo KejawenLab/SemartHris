@@ -36,7 +36,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @Encrypt(properties={"untaxable", "taxable", "taxPercentage", "taxValue"}, keyStore="taxKey")
+ * @Encrypt(properties={"untaxable", "taxable", "taxValue"}, keyStore="taxKey")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */

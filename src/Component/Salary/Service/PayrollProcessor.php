@@ -35,8 +35,10 @@ class PayrollProcessor
     }
 
     /**
-     * @param EmployeeInterface  $employee
+     * @param EmployeeInterface $employee
      * @param \DateTimeInterface $date
+     *
+     * @throws \Exception
      */
     public function process(EmployeeInterface $employee, \DateTimeInterface $date): void
     {
@@ -45,8 +47,10 @@ class PayrollProcessor
     }
 
     /**
-     * @param EmployeeInterface  $employee
+     * @param EmployeeInterface $employee
      * @param \DateTimeInterface $date
+     *
+     * @throws \Exception
      */
     private function validate(EmployeeInterface $employee, \DateTimeInterface $date): void
     {

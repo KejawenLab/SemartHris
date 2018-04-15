@@ -151,14 +151,17 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcessor:
         lazy: true
+        shared: false
 
     KejawenLab\Application\SemartHris\Component\Tax\Processor\TaxProcessor:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
 
     KejawenLab\Application\SemartHris\Component\Tax\Service\TaxProcessor:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Tax\Processor\TaxProcessor'
             - '@KejawenLab\Application\SemartHris\Repository\TaxRepository'
@@ -169,6 +172,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Salary\Processor\AttendanceProcessor:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Salary\Service\WorkdayCalculator'
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
@@ -182,6 +186,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Salary\Processor\SalaryProcessor:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor'
             - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
@@ -194,6 +199,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Salary\Processor\OvertimeProcessor:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceSummaryRepository'
@@ -204,6 +210,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Salary\Processor\BpjsProcessor:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\SalaryComponentRepository'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
@@ -213,6 +220,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Salary\Service\PayrollProcessor:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcessor'
             - '@KejawenLab\Application\SemartHris\Repository\PayrollPeriodRepository'
@@ -230,6 +238,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Salary\Service\StoreAsCompanyCost:
         lazy: true
+        shared: false
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\PayrollRepository'
 
@@ -260,11 +269,13 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Tax\Calculator\FirstRateTaxCalculator:
         lazy: true
+        shared: false
         tags:
             { name: 'semarthris.tax_calculator' }
 
     KejawenLab\Application\SemartHris\Component\Tax\Calculator\SecondRateTaxCalculator:
         lazy: true
+        shared: false
         calls:
             - ['setPrevious', ['@KejawenLab\Application\SemartHris\Component\Tax\Calculator\FirstRateTaxCalculator']]
         tags:
@@ -272,6 +283,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Tax\Calculator\ThirdRateTaxCalculator:
         lazy: true
+        shared: false
         calls:
             - ['setPrevious', ['@KejawenLab\Application\SemartHris\Component\Tax\Calculator\SecondRateTaxCalculator']]
         tags:
@@ -279,6 +291,7 @@ services:
 
     KejawenLab\Application\SemartHris\Component\Tax\Calculator\FourthRateTaxCalculator:
         lazy: true
+        shared: false
         calls:
             - ['setPrevious', ['@KejawenLab\Application\SemartHris\Component\Tax\Calculator\ThirdRateTaxCalculator']]
         tags:

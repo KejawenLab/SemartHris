@@ -29,6 +29,8 @@ class PayrollController extends AdminController
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws \Exception
      */
     public function processAction(Request $request)
     {

@@ -49,12 +49,12 @@ class PayrollController extends AdminController
             throw new InvalidPayrollPeriodException($period);
         }
 
+        $processor = $this->container->get(PayrollProcessor::class);
         foreach ($employees as $employee) {
             if ($employee->isResign()) {
                 continue;
             }
 
-            $processor = $this->container->get(PayrollProcessor::class);
             $processor->process($employee, $period);
         }
 

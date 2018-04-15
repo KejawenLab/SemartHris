@@ -42,6 +42,7 @@ class SalaryBenefitRepository extends Repository implements BenefitRepositoryInt
         $queryBuilder->select('b');
         $queryBuilder->innerJoin('b.component', 'c');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('c.fixed', $queryBuilder->expr()->literal(true)));
+        $queryBuilder->andWhere($queryBuilder->expr()->eq('b.employee', $queryBuilder->expr()->literal($employee->getId())));
         $queryBuilder->andWhere($queryBuilder->expr()->notIn('c.code', ':excludes'));
         $queryBuilder->setParameter('excludes', $this->excludes);
 

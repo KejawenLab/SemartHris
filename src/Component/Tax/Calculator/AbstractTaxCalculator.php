@@ -21,20 +21,20 @@ abstract class AbstractTaxCalculator implements TaxCalculatorInterface
         $this->previous = $taxCalculator;
     }
 
-    public function calculate(float $ptkp): float
+    public function calculate(float $pkp): float
     {
         $previousValue = 0;
         if ($previous = $this->getPrevious()) {
-            $previousValue = $this->getPrevious()->calculate($previous->maxPtkp());
-            $ptkp -= $previous->maxPtkp();
+            $previousValue = $this->getPrevious()->calculate($previous->maxPkp());
+            $pkp -= $previous->maxPkp();
         }
 
-        return ($this->taxPercentage() * $ptkp) + $previousValue;
+        return ($this->taxPercentage() * $pkp) + $previousValue;
     }
 
-    public function isSupportPtkp(float $ptkp): bool
+    public function isSupportPkp(float $pkp): bool
     {
-        if ($ptkp < $this->maxPtkp() && $ptkp >= $this->minPtkp()) {
+        if ($pkp < $this->maxPkp() && $pkp >= $this->minPkp()) {
             return true;
         }
 

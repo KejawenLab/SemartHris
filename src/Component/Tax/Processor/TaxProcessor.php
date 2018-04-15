@@ -61,7 +61,7 @@ class TaxProcessor implements TaxProcessorInterface
         $this->taxable = (12 * $takeHomePay) - $this->untaxable;
 
         foreach ($this->calculators as $calculator) {
-            if ($calculator->isSupportPtkp($this->taxable)) {
+            if ($calculator->isSupportPkp($this->taxable)) {
                 return round($calculator->calculate($this->taxable) / 12, 0, PHP_ROUND_HALF_DOWN);
             }
         }

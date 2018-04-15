@@ -9,13 +9,13 @@ namespace KejawenLab\Application\SemartHris\Component\Tax\Calculator;
  */
 interface TaxCalculatorInterface
 {
-    public function calculate(float $ptkp): float;
+    public function calculate(float $pkp): float;
 
-    public function isSupportPtkp(float $ptkp): bool;
+    public function isSupportPkp(float $pkp): bool;
 
-    public function maxPtkp(): float;
+    public function maxPkp(): float;
 
-    public function minPtkp(): float;
+    public function minPkp(): float;
 
     public function getPrevious(): ? self;
 

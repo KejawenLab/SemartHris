@@ -9,12 +9,12 @@ namespace KejawenLab\Application\SemartHris\Component\Tax\Calculator;
  */
 class FourthRateTaxCalculator extends AbstractTaxCalculator
 {
-    public function maxPtkp(): float
+    public function maxPkp(): float
     {
         return 10000000000000;
     }
 
-    public function minPtkp(): float
+    public function minPkp(): float
     {
         return 500000000;
     }

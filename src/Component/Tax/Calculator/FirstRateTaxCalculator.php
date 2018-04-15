@@ -9,12 +9,12 @@ namespace KejawenLab\Application\SemartHris\Component\Tax\Calculator;
  */
 class FirstRateTaxCalculator extends AbstractTaxCalculator
 {
-    public function maxPtkp(): float
+    public function maxPkp(): float
     {
         return 50000000;
     }
 
-    public function minPtkp(): float
+    public function minPkp(): float
     {
         return 0;
     }

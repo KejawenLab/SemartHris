@@ -69,6 +69,9 @@
             "@auto-scripts"
         ]
     },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
     "extra": {
         "symfony": {
             "id": "01BVZD4XBVC9W2SQTK5NK2173Q",

@@ -41,7 +41,6 @@ class FileController extends Controller
                 $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', date('Y_m_d_H_i_s')));
             }
 
-            $response->sendHeaders();
             $response->setContent($file);
 
             return $response;

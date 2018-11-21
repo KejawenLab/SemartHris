@@ -17,6 +17,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return $this->redirectToRoute('easyadmin');
+        return $this->render('dashboard/index.html.twig');
     }
 }

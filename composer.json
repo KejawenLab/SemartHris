@@ -14,23 +14,23 @@
         "kejawenlab/petruk-username": "^2.0",
         "league/csv": "^9.1",
         "nelmio/cors-bundle": "^1.5",
-        "phpdocumentor/reflection-docblock": "^3.0 || ^4.0",
+        "phpdocumentor/reflection-docblock": "^4.2",
         "predis/predis": "^1.1",
         "snc/redis-bundle": "^2.0",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "symfony/asset": "^3.0 || ^4.0",
-        "symfony/dotenv": "^4.0",
-        "symfony/expression-language": "^3.0 || ^4.0",
-        "symfony/framework-bundle": "^4.0",
+        "symfony/asset": "^4.2",
+        "symfony/dotenv": "^4.2",
+        "symfony/expression-language": "^4.2",
+        "symfony/framework-bundle": "^4.2",
         "symfony/monolog-bundle": "^3.1",
-        "symfony/proxy-manager-bridge": "^4.0",
-        "symfony/security-bundle": "^3.0 || ^4.0",
-        "symfony/stopwatch": "^3.3|^4.0",
-        "symfony/twig-bundle": "^3.3|^4.0",
-        "symfony/validator": "^3.0 || ^4.0",
-        "symfony/web-profiler-bundle": "^3.3|^4.0",
-        "symfony/web-server-bundle": "^4.0",
-        "symfony/yaml": "^4.0",
+        "symfony/proxy-manager-bridge": "^4.2",
+        "symfony/security-bundle": "^4.2",
+        "symfony/stopwatch": "^4.2",
+        "symfony/twig-bundle": "^4.2",
+        "symfony/validator": "^4.2",
+        "symfony/web-profiler-bundle": "^4.2",
+        "symfony/web-server-bundle": "^4.2",
+        "symfony/yaml": "^4.2",
         "vich/uploader-bundle": "^1.6"
     },
     "require-dev": {
@@ -39,7 +39,7 @@
         "phpunit/php-invoker": "^1.1",
         "phpunit/phpunit": "^6.4",
         "symfony/flex": "^1.0",
-        "symfony/phpunit-bridge": "^4.0"
+        "symfony/phpunit-bridge": "^4.2"
     },
     "config": {
         "preferred-install": {
@@ -75,7 +75,8 @@
     "extra": {
         "symfony": {
             "id": "01BVZD4XBVC9W2SQTK5NK2173Q",
-            "allow-contrib": true
+            "allow-contrib": true,
+            "require": "4.2.*"
         }
     }
 }

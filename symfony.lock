@@ -53,6 +53,9 @@
             "ref": "f2c3a6246cb5f36176f870bdc2e5f5b3cf6c454c"
         }
     },
+    "doctrine/event-manager": {
+        "version": "v1.0.0"
+    },
     "doctrine/inflector": {
         "version": "v1.2.0"
     },
@@ -64,6 +67,12 @@
     },
     "doctrine/orm": {
         "version": "v2.5.12"
+    },
+    "doctrine/persistence": {
+        "version": "v1.1.0"
+    },
+    "doctrine/reflection": {
+        "version": "v1.0.0"
     },
     "friendsofsymfony/jsrouting-bundle": {
         "version": "1.6.3"
@@ -296,6 +305,9 @@
             "ref": "e7bbddb8dd603b2c3770cb10f163e692b4b414aa"
         }
     },
+    "symfony/contracts": {
+        "version": "v1.0.1"
+    },
     "symfony/debug": {
         "version": "v4.0.0-beta4"
     },
@@ -377,6 +389,9 @@
             "ref": "0a66a0097def4db1cd03bcb3d4a268440ae4cb47"
         }
     },
+    "symfony/polyfill-ctype": {
+        "version": "v1.10.0"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.6.0"
     },
@@ -422,6 +437,18 @@
             "ref": "85834af1496735f28d831489d12ab1921a875e0d"
         }
     },
+    "symfony/security-core": {
+        "version": "v4.2.0"
+    },
+    "symfony/security-csrf": {
+        "version": "v4.2.0"
+    },
+    "symfony/security-guard": {
+        "version": "v4.2.0"
+    },
+    "symfony/security-http": {
+        "version": "v4.2.0"
+    },
     "symfony/serializer": {
         "version": "v3.4.0-beta4"
     },
@@ -457,6 +484,9 @@
     },
     "symfony/var-dumper": {
         "version": "v4.0.0-beta4"
+    },
+    "symfony/var-exporter": {
+        "version": "v4.2.0"
     },
     "symfony/web-profiler-bundle": {
         "version": "3.3",

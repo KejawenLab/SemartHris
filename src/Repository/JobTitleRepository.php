@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Job\Repository\JobTitleRepositor
 use KejawenLab\Application\SemartHris\Util\UuidUtil;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class JobTitleRepository extends Repository implements JobTitleRepositoryInterface
 {

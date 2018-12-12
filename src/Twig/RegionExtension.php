@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Model\RegionInterface;
 use KejawenLab\Application\SemartHris\Component\Address\Repository\RegionRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class RegionExtension extends \Twig_Extension
 {

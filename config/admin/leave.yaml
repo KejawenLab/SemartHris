@@ -1,0 +1,41 @@
+easy_admin:
+    entities:
+        Leave:
+            role: '%env(string:SEMART_SECURITY_LEAVE_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\Leave'
+            controller: 'KejawenLab\Application\SemartHris\Controller\Admin\LeaveController'
+            disabled_actions: ['search']
+            templates:
+                new: 'app/leave/new.html.twig'
+                edit: 'app/leave/edit.html.twig'
+            new:
+                title: 'Tambah Cuti'
+            edit:
+                title: 'Edit Cuti'
+            search:
+                title: 'Cuti'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-3' }
+                    - { property: 'leaveDate', label: 'Tanggal', type_options:{ format: '%env(string:SEMART_DATE_FORMAT_INTL)%', attr: { class: 'date-picker' }, widget: 'single_text' } }
+                    - { type: 'group', css_class: 'col-sm-3' }
+                    - { property: 'amount', label: 'Jumlah Hari', type_options:{ attr: { class: 'positive' } } }
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'employee', label: 'Karyawan', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-4 new-row' }
+                    - { property: 'reason', type: 'hidden', type_options: { attr: { class: 'reason-id' } } }
+                    - { property: 'reason_readonly', label: 'Alasan', type: 'text', type_options: { mapped: false, attr: { readonly: true } } }
+                    - { property: 'reason_text', label: 'Alasan', type: 'choice', type_options: { attr: { class: 'reason-select' }, mapped: false, choices: { 'label.form.empty_value': '' } } }
+                    - { type: 'group', css_class: 'col-sm-8' }
+                    - { property: 'description', label: 'Keterangan' }
+            show:
+                title: 'Detil Cuti'
+            list:
+                role: '%env(string:SEMART_SECURITY_LEAVE_MENU)%'
+                title: 'Cuti'
+                fields:
+                    - { property: 'leaveDate', label: 'Tanggal' }
+                    - { property: 'amount', label: 'Jumlah Hari' }
+                    - { property: 'employee', label: 'Karyawan', sortable: false }
+                    - { property: 'reason', label: 'Alasan', sortable: false }
+                    - { property: 'description', label: 'Keterangan', sortable: false }

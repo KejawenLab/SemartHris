@@ -1,4 +1,6 @@
 services:
+    _defaults:
+        public: true
     KejawenLab\Application\SemartHris\EventListener\DefaultAddressCheckerSubscriber:
         lazy: true
         arguments:
@@ -83,6 +85,13 @@ services:
             - '@KejawenLab\Application\SemartHris\Repository\HolidayRepository'
             - '@Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface'
             - '%env(bool:SEMART_OVERTIME_AUTO_APPROVED)%'
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
+    KejawenLab\Application\SemartHris\EventListener\SetAbsentWhenLeaveIsSubmitedSubscriber:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Component\Leave\Service\SetAbsentWhenLeaveIsSubmited'
         tags:
             - { name: 'doctrine.event_subscriber' }
 

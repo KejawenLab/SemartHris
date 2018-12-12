@@ -1,4 +1,6 @@
 services:
+    _defaults:
+        public: true
     KejawenLab\Application\SemartHris\Repository\CompanyRepository:
         lazy: true
         arguments:
@@ -137,3 +139,8 @@ services:
             - 'KejawenLab\Application\SemartHris\Entity\CompanyPayrollCost'
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Payroll']]
+
+    KejawenLab\Application\SemartHris\Repository\SalaryBenefitHistoryRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\SalaryBenefitHistory']]

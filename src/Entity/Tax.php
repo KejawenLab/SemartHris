@@ -36,9 +36,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @Encrypt(properties={"untaxable", "taxable", "taxPercentage", "taxValue"}, keyStore="taxKey")
+ * @Encrypt(properties={"untaxable", "taxable", "taxValue"}, keyStore="taxKey")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class Tax implements TaxInterface
 {
@@ -109,15 +109,6 @@ class Tax implements TaxInterface
      * @var string
      */
     private $taxable;
-
-    /**
-     * @Groups({"read"})
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     * @var string
-     */
-    private $taxPercentage;
 
     /**
      * @Groups({"read"})
@@ -233,22 +224,6 @@ class Tax implements TaxInterface
     public function setTaxable(?string $taxable): void
     {
         $this->taxable = $taxable;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getTaxPercentage(): ? string
-    {
-        return $this->taxPercentage;
-    }
-
-    /**
-     * @param null|string $taxPercentage
-     */
-    public function setTaxPercentage(?string $taxPercentage): void
-    {
-        $this->taxPercentage = $taxPercentage;
     }
 
     /**

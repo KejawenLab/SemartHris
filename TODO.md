@@ -90,7 +90,8 @@
 - [X] PPH21
 - [X] Perubahan Tax Group dan Risk Ratio
 - [X] Validasi Tax Group dan Risk Ratio, Kalau Yang Baru Kosong, Pakai Yang Lama
-- [ ] Remove dependecy from UUID provided by database
-- [ ] Prevent Remove Mutation When Job History is Exist
-- [ ] Prevent Remove Placement When Job History is Exist
+- [X] Add Leave Entity
+- [X] Add Leave Listener
+- [ ] Add Leave Approval
+- [ ] Leave Filtering and Searching
 - [ ] Created and Updated Log in List

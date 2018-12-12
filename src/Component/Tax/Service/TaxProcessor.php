@@ -14,7 +14,7 @@ use KejawenLab\Application\SemartHris\Component\Tax\Processor\TaxProcessorInterf
 use KejawenLab\Application\SemartHris\Component\Tax\Repository\TaxRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class TaxProcessor
 {
@@ -78,7 +78,6 @@ class TaxProcessor
         $tax = $this->taxRepository->createTax($employee, $period);
         $tax->setTaxValue((string) $this->taxProcessor->process($payroll));
         $tax->setTaxable((string) $this->taxProcessor->getTaxableValue());
-        $tax->setTaxPercentage((string) $this->taxProcessor->getTaxPercentage());
         $tax->setUntaxable((string) $this->taxProcessor->getUntaxableValue());
 
         $taxPlus = $this->componentRepository->findByCode((string) $this->setting->get(SettingKey::PPH21P_COMPONENT_CODE));

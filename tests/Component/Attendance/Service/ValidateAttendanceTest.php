@@ -7,7 +7,7 @@ use KejawenLab\Application\SemartHris\Component\Reason\Model\ReasonInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class ValidateAttendanceTest extends TestCase
 {

@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Company\Model\CompanyInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class CompanyDepartmentManipulator extends FormManipulator implements FormManipulatorInterface
 {

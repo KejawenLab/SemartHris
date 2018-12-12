@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Controller\Admin;
 use KejawenLab\Application\SemartHris\Form\Manipulator\MutationManipulator;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class MutationController extends AdminController
 {

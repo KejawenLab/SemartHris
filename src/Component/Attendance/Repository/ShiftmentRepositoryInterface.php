@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Attendance\Repository;
 use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface ShiftmentRepositoryInterface
 {

@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Contract\Model;
 use KejawenLab\Application\SemartHris\Component\Contract\ContractType;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface ContractInterface
 {

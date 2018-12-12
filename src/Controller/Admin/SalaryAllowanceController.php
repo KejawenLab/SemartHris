@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Form\Manipulator\SalaryAllowanceManipulato
 use KejawenLab\Application\SemartHris\Repository\SalaryAllowanceRepository;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SalaryAllowanceController extends AdminController
 {

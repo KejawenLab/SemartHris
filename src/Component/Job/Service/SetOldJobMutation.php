@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
 use KejawenLab\Application\SemartHris\Component\Job\Model\MutationInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SetOldJobMutation
 {

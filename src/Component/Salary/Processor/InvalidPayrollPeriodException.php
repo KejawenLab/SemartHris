@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Salary\Processor;
 use Throwable;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class InvalidPayrollPeriodException extends \RuntimeException
 {

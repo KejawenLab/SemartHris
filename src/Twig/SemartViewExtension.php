@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Util\MonthUtil;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SemartViewExtension extends \Twig_Extension
 {

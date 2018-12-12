@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class RegionRepository extends Repository implements RegionRepositoryInterface
 {

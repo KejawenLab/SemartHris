@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Employee\Service;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\Superviseable;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SupervisorChecker
 {

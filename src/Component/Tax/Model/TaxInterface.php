@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface TaxInterface
 {
@@ -66,16 +66,6 @@ interface TaxInterface
      * @param string $taxable
      */
     public function setTaxable(string $taxable): void;
-
-    /**
-     * @return null|string
-     */
-    public function getTaxPercentage(): ? string;
-
-    /**
-     * @param string $untaxable
-     */
-    public function setTaxPercentage(string $untaxable): void;
 
     /**
      * @return null|string

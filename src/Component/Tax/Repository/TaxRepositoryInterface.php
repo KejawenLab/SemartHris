@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterf
 use KejawenLab\Application\SemartHris\Component\Tax\Model\TaxInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface TaxRepositoryInterface
 {

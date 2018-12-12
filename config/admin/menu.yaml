@@ -1,6 +1,7 @@
 easy_admin:
     design:
         menu:
+            - { route: 'dashboard_index', label: 'Dashboard', icon: 'tachometer' }
             - label: 'Administrator'
               role: '%env(string:SEMART_SECURITY_USER_MENU)%'
               icon: 'shield'
@@ -23,7 +24,7 @@ easy_admin:
               role: '%env(string:SEMART_SECURITY_COMPANY_MENU)%'
               icon: 'building'
               children:
-                  - { entity: 'Company', label: 'Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Company', label: 'Perusahaan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' }, default: true }
                   - { entity: 'Department', label: 'Departemen', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'JobLevel', label: 'Level Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'JobTitle', label: 'Jabatan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
@@ -56,6 +57,7 @@ easy_admin:
               icon: 'envelope-o'
               children:
                   - { entity: 'LeaveReason', label: 'Alasan Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Leave', label: 'Cuti', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Penggajian'
               role: '%env(string:SEMART_SECURITY_PAYROLL_MENU)%'
               icon: 'money'

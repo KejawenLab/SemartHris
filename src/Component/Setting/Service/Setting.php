@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Setting\Service;
 use KejawenLab\Application\SemartHris\Component\Setting\Provider\ProviderInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class Setting
 {

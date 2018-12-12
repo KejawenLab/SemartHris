@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class OvertimeController extends AdminController
 {
@@ -33,6 +33,8 @@ class OvertimeController extends AdminController
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws
      */
     public function uploadOvertimeAction(Request $request): Response
     {
@@ -50,7 +52,7 @@ class OvertimeController extends AdminController
             ]);
         }
 
-        /** @var UploadedFile $overtime */
+        /** @var UploadedFile|null $overtime */
         $overtime = $request->files->get('overtime');
         if (null === $overtime) {
             return $this->redirectToRoute('easyadmin', [
@@ -82,6 +84,8 @@ class OvertimeController extends AdminController
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws
      */
     public function processUploadAction(Request $request)
     {

@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
 use KejawenLab\Application\SemartHris\Util\UuidUtil;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class DepartmentRepository extends Repository implements DepartmentRepositoryInterface
 {

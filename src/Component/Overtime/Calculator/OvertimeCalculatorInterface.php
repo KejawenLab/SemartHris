@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface
 use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface OvertimeCalculatorInterface
 {

@@ -38,7 +38,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *
  * @Encrypt(properties="benefitValue", keyStore="benefitKey")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SalaryBenefit implements BenefitInterface
 {

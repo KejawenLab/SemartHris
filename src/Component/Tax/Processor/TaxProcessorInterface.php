@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Tax\Processor;
 use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 interface TaxProcessorInterface
 {
@@ -27,9 +27,4 @@ interface TaxProcessorInterface
      * @return float
      */
     public function getUntaxableValue(): float;
-
-    /**
-     * @return float
-     */
-    public function getTaxPercentage(): float;
 }

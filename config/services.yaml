@@ -4,6 +4,8 @@ parameters:
     locale: 'id'
 
 services:
+    _defaults:
+        public: true
     KejawenLab\Application\SemartHris\Util\FileUtil:
         lazy: true
         arguments:
@@ -249,9 +251,40 @@ services:
         arguments:
             - '%kernel.project_dir%%env(SEMART_PRIVATE_KEY_PATH)%'
             - '%kernel.project_dir%%env(SEMART_PUBLIC_KEY_PATH)%'
-            - !php/const:KejawenLab\Application\SemartHris\Kernel::SEMART_CANONICAL
+            - !php/const KejawenLab\Application\SemartHris\Kernel::SEMART_CANONICAL
 
     KejawenLab\Application\SemartHris\Component\Encryptor\Encryptor:
         lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Component\Encryptor\KeyLoader'
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\FirstRateTaxCalculator:
+        lazy: true
+        tags:
+            { name: 'semarthris.tax_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\SecondRateTaxCalculator:
+        lazy: true
+        calls:
+            - ['setPrevious', ['@KejawenLab\Application\SemartHris\Component\Tax\Calculator\FirstRateTaxCalculator']]
+        tags:
+            { name: 'semarthris.tax_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\ThirdRateTaxCalculator:
+        lazy: true
+        calls:
+            - ['setPrevious', ['@KejawenLab\Application\SemartHris\Component\Tax\Calculator\SecondRateTaxCalculator']]
+        tags:
+            { name: 'semarthris.tax_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Tax\Calculator\FourthRateTaxCalculator:
+        lazy: true
+        calls:
+            - ['setPrevious', ['@KejawenLab\Application\SemartHris\Component\Tax\Calculator\ThirdRateTaxCalculator']]
+        tags:
+            { name: 'semarthris.tax_calculator' }
+
+    KejawenLab\Application\SemartHris\Component\Leave\Service\SetAbsentWhenLeaveIsSubmited:
+        lazy: true
+        arguments:
+            - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'

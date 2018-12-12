@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Model\BenefitHistoryInter
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\BenefitRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class ChangeBenefit
 {

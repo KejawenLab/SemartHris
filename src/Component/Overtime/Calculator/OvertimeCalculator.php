@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Overtime\Calculator;
 use KejawenLab\Application\SemartHris\Component\Overtime\Model\OvertimeInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class OvertimeCalculator extends Calculator implements OvertimeCalculatorInterface
 {

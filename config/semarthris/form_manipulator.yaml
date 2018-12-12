@@ -1,4 +1,6 @@
 services:
+    _defaults:
+        public: true
     KejawenLab\Application\SemartHris\Form\Manipulator\CompanyAddressManipulator:
         lazy: true
         arguments:
@@ -69,6 +71,12 @@ services:
             - [ '@KejawenLab\Application\SemartHris\Form\EventListener\EncodePasswordSubscriber' ]
 
     KejawenLab\Application\SemartHris\Form\Manipulator\AttendanceManipulator:
+        lazy: true
+        arguments:
+            - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }
+            - [ '@KejawenLab\Application\SemartHris\Form\EventListener\RemoveReasonTextFieldSubscriber' ]
+
+    KejawenLab\Application\SemartHris\Form\Manipulator\LeaveManipulator:
         lazy: true
         arguments:
             - { reason: '@KejawenLab\Application\SemartHris\Form\DataTransformer\ReasonTransformer' }

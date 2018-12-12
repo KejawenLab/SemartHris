@@ -32,7 +32,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Encrypt(properties="benefitValue", keyStore="benefitKey")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class CompanyPayrollCost implements CompanyPayrollCostInterface
 {

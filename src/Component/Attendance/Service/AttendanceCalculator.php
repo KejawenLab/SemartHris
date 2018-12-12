@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Model\ShiftmentInterf
 use KejawenLab\Application\SemartHris\Component\Attendance\Repository\WorkshiftRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceCalculator
 {

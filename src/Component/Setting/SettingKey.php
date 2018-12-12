@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Component\Setting;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SettingKey
 {

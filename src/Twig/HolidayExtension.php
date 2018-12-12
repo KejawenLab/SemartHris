@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Twig;
 use KejawenLab\Application\SemartHris\Component\Holiday\Repository\HolidayRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class HolidayExtension extends \Twig_Extension
 {

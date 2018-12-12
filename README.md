@@ -1,3 +1,5 @@
+# PROYEK INI SUDAH TIDAK DIMAINTAIN LAGI DAN SEDANG DISIAPKAN PENGGANTINYA
+
 # SemartHris
 
 SemartHris adalah Enterprise Grade Human Resources Information System (HRIS) yang dapat digunakan untuk membantu memudahkan tugas HRD Perusahaan.
@@ -78,7 +80,7 @@ SemartHris belum dapat digunakan untuk produksi dan sedang dalam proses pengemba
 - [X] Jalankan perintah `php bin/console doctrine:schema:update --force` untuk membuat table yang dibutuhkan
 - [X] Jalankan perintah `php bin/console doctrine:fixtures:load` untuk *populate initial* data
 - [X] Simpan username dan password yang ditampilkan untuk digunakan mengakses aplikasi
-- [X] Jalankan perintah `make serve` untuk mengaktifkan web server
+- [X] Jalankan perintah `php bin/console server:run` untuk mengaktifkan web server
 - [X] Buka halaman `<HOST>:<PORT>/` untuk halaman admin
 - [X] Buka halaman `<HOST>:<PORT>/api` untuk halaman API
 

@@ -19,7 +19,7 @@ use KejawenLab\Application\SemartHris\Util\UuidUtil;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class CompanyRepository extends Repository implements CompanyRepositoryInterface, AddressRepositoryInterface
 {

@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollDetailInterf
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class StoreAsCompanyCost
 {

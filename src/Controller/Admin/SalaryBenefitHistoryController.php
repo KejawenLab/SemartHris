@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Form\Manipulator\BenefitHistoryManipulator
 use KejawenLab\Application\SemartHris\Repository\SalaryBenefitHistoryRepository;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SalaryBenefitHistoryController extends AdminController
 {

@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\Util;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class FileUtil
 {
@@ -42,15 +42,16 @@ class FileUtil
     public function getFile(string $path): string
     {
         $path = sprintf('%s/%s', $this->folderStorage, $path);
-        $file = file_get_contents($path);
-        if ($file) {
-            $this->mimeType = mime_content_type($path);
-            $this->fileSize = filesize($path);
-
-            return $file;
+        try {
+            $file = file_get_contents($path);
+        } catch (\Exception $e) {
+            throw new FileNotFoundException();
         }
 
-        throw new FileNotFoundException();
+        $this->mimeType = mime_content_type($path);
+        $this->fileSize = filesize($path);
+
+        return $file;
     }
 
     /**

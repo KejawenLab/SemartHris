@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Address\Service\DefaultAddressCh
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class DefaultAddressCheckerTest extends TestCase
 {

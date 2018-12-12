@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class WorkshiftSlicerTest extends TestCase
 {

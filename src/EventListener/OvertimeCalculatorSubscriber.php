@@ -14,7 +14,7 @@ use KejawenLab\Application\SemartHris\Component\Overtime\Service\OvertimeCalcula
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class OvertimeCalculatorSubscriber implements EventSubscriber
 {

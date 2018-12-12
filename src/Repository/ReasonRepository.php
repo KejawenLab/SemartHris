@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Reason\Repository\ReasonReposito
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class ReasonRepository extends Repository implements ReasonRepositoryInterface
 {

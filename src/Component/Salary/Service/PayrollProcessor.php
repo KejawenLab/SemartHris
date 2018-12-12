@@ -10,7 +10,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Processor\PayrollProcesso
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollPeriodRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class PayrollProcessor
 {
@@ -35,8 +35,10 @@ class PayrollProcessor
     }
 
     /**
-     * @param EmployeeInterface  $employee
+     * @param EmployeeInterface $employee
      * @param \DateTimeInterface $date
+     *
+     * @throws \Exception
      */
     public function process(EmployeeInterface $employee, \DateTimeInterface $date): void
     {
@@ -45,8 +47,10 @@ class PayrollProcessor
     }
 
     /**
-     * @param EmployeeInterface  $employee
+     * @param EmployeeInterface $employee
      * @param \DateTimeInterface $date
+     *
+     * @throws \Exception
      */
     private function validate(EmployeeInterface $employee, \DateTimeInterface $date): void
     {

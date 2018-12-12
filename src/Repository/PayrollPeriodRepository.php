@@ -9,7 +9,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Model\PayrollPeriodInterf
 use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollPeriodRepositoryInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class PayrollPeriodRepository extends Repository implements PayrollPeriodRepositoryInterface
 {

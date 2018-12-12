@@ -11,7 +11,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Repository\AllowanceRepos
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SalaryAllowanceRepository extends Repository implements AllowanceRepositoryInterface
 {

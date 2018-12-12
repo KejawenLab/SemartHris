@@ -27,7 +27,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceSummary implements AttendanceSummaryInterface
 {

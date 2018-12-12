@@ -7,7 +7,7 @@ namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
 use KejawenLab\Application\SemartHris\Entity\Company;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class CompanyFixtures extends Fixture
 {

@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use KejawenLab\Application\SemartHris\Util\UuidUtil;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 abstract class Repository
 {

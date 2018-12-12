@@ -15,7 +15,7 @@ use KejawenLab\Application\SemartHris\Component\Salary\Repository\PayrollReposit
 use KejawenLab\Application\SemartHris\Component\Salary\StateType;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class SalaryProcessor implements PayrollProcessorInterface
 {

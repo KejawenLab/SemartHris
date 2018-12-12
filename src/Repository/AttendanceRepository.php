@@ -12,7 +12,7 @@ use KejawenLab\Application\SemartHris\Component\Setting\Service\Setting;
 use KejawenLab\Application\SemartHris\Component\Setting\SettingKey;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AttendanceRepository extends Repository implements AttendanceRepositoryInterface
 {
@@ -106,10 +106,28 @@ class AttendanceRepository extends Repository implements AttendanceRepositoryInt
 
     /**
      * @param EmployeeInterface  $employee
+     * @param \DateTimeInterface $date
+     *
+     * @return AttendanceInterface
+     */
+    public function createNew(EmployeeInterface $employee, \DateTimeInterface $date): AttendanceInterface
+    {
+        /** @var AttendanceInterface $attendance */
+        $attendance = new $this->entityClass();
+        $attendance->setEmployee($employee);
+        $attendance->setAttendanceDate($date);
+
+        return $attendance;
+    }
+
+    /**
+     * @param EmployeeInterface  $employee
      * @param \DateTimeInterface $from
      * @param \DateTimeInterface $to
      *
      * @return array
+     *
+     * @throws
      */
     public function getSummaryByEmployeeAndDate(EmployeeInterface $employee, \DateTimeInterface $from, \DateTimeInterface $to): array
     {

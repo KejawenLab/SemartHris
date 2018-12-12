@@ -8,7 +8,7 @@ use KejawenLab\Application\SemartHris\Component\Attendance\Rule\RuleInterface;
 use KejawenLab\Application\SemartHris\Component\Employee\Model\EmployeeInterface;
 
 /**
- * @author Muhamad Surya Iksanudin <surya.iksanudin@kejawenlab.com>
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class ValidAttendanceRuleStub implements RuleInterface
 {

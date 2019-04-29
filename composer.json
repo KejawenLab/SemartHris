@@ -16,6 +16,7 @@
         "nelmio/cors-bundle": "^1.5",
         "phpdocumentor/reflection-docblock": "^4.2",
         "predis/predis": "^1.1",
+        "ramsey/uuid-doctrine": "^1.5",
         "sensio/framework-extra-bundle": "^5.3",
         "snc/redis-bundle": "^2.0",
         "stof/doctrine-extensions-bundle": "^1.2",

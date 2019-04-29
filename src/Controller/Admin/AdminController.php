@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace KejawenLab\Application\SemartHris\Controller\Admin;
 
 use Doctrine\ORM\EntityManagerInterface;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdmin;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
 use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class AdminController extends EasyAdmin
+class AdminController extends EasyAdminController
 {
     const DEFAULT_ROLE = 'ROLE_EMPLOYEE';
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';

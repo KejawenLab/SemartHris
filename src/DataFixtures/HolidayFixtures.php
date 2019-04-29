@@ -2,29 +2,21 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
-use KejawenLab\Application\SemartHris\Entity\City;
+use KejawenLab\Application\SemartHris\Entity\Holiday;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class CityFixtures extends Fixture
+class HolidayFixtures extends Fixture
 {
-    /**
-     * @return array
-     */
-    public function getDependencies()
-    {
-        return [RegionFixtures::class];
-    }
-
     /**
      * @return string
      */
     protected function getFixtureFilePath(): string
     {
-        return 'city.yaml';
+        return 'holiday.yaml';
     }
 
     /**
@@ -32,7 +24,7 @@ class CityFixtures extends Fixture
      */
     protected function createNew()
     {
-        return new City();
+        return new Holiday();
     }
 
     /**
@@ -40,6 +32,6 @@ class CityFixtures extends Fixture
      */
     protected function getReferenceKey(): string
     {
-        return 'city';
+        return 'holiday';
     }
 }

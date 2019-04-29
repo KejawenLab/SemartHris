@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
-use KejawenLab\Application\SemartHris\Entity\EducationalInstitute;
+use KejawenLab\Application\SemartHris\Entity\Contract;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class EducationalInstituteFixtures extends Fixture
+class ContractFixtures extends Fixture
 {
     /**
      * @return string
      */
     protected function getFixtureFilePath(): string
     {
-        return 'education_institute.yaml';
+        return 'contract.yaml';
     }
 
     /**
@@ -24,7 +24,7 @@ class EducationalInstituteFixtures extends Fixture
      */
     protected function createNew()
     {
-        return new EducationalInstitute();
+        return new Contract();
     }
 
     /**
@@ -32,6 +32,6 @@ class EducationalInstituteFixtures extends Fixture
      */
     protected function getReferenceKey(): string
     {
-        return 'educational_institute';
+        return 'contract';
     }
 }

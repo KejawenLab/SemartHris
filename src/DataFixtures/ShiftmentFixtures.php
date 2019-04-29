@@ -2,29 +2,21 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
-use KejawenLab\Application\SemartHris\Entity\JobTitle;
+use KejawenLab\Application\SemartHris\Entity\Shiftment;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class JobTitleFixtures extends Fixture
+class ShiftmentFixtures extends Fixture
 {
-    /**
-     * @return array
-     */
-    public function getDependencies()
-    {
-        return [JobLevelFixtures::class];
-    }
-
     /**
      * @return string
      */
     protected function getFixtureFilePath(): string
     {
-        return 'job_title.yaml';
+        return 'shiftment.yaml';
     }
 
     /**
@@ -32,7 +24,7 @@ class JobTitleFixtures extends Fixture
      */
     protected function createNew()
     {
-        return new JobTitle();
+        return new Shiftment();
     }
 
     /**
@@ -40,6 +32,6 @@ class JobTitleFixtures extends Fixture
      */
     protected function getReferenceKey(): string
     {
-        return 'job_title';
+        return 'shiftment';
     }
 }

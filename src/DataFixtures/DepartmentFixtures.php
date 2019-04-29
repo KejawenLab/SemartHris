@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
-use KejawenLab\Application\SemartHris\Entity\Reason;
+use KejawenLab\Application\SemartHris\Entity\Department;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class ReasonFixtures extends Fixture
+class DepartmentFixtures extends Fixture
 {
     /**
      * @return string
      */
     protected function getFixtureFilePath(): string
     {
-        return 'reason.yaml';
+        return 'department.yaml';
     }
 
     /**
@@ -24,7 +24,7 @@ class ReasonFixtures extends Fixture
      */
     protected function createNew()
     {
-        return new Reason();
+        return new Department();
     }
 
     /**
@@ -32,6 +32,6 @@ class ReasonFixtures extends Fixture
      */
     protected function getReferenceKey(): string
     {
-        return 'reason';
+        return 'department';
     }
 }

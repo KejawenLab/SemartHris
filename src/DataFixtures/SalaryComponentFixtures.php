@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
-use KejawenLab\Application\SemartHris\Entity\Contract;
+use KejawenLab\Application\SemartHris\Entity\SalaryComponent;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class ContractFixtures extends Fixture
+class SalaryComponentFixtures extends Fixture
 {
     /**
      * @return string
      */
     protected function getFixtureFilePath(): string
     {
-        return 'contract.yaml';
+        return 'salary_component.yaml';
     }
 
     /**
@@ -24,7 +24,7 @@ class ContractFixtures extends Fixture
      */
     protected function createNew()
     {
-        return new Contract();
+        return new SalaryComponent();
     }
 
     /**
@@ -32,6 +32,6 @@ class ContractFixtures extends Fixture
      */
     protected function getReferenceKey(): string
     {
-        return 'contract';
+        return 'salary_component';
     }
 }

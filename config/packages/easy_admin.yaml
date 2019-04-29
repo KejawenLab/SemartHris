@@ -1,20 +1,20 @@
 easy_admin:
-    site_name: '%env(string:SEMART_NAME)%'
-    formats:
-        date:     '%env(string:SEMART_DATE_FORMAT)%'
-        time:     '%env(string:SEMART_HOUR_FORMAT)%'
-        datetime: '%env(string:SEMART_DATE_TIME_FORMAT)%'
-    list:
-        max_results: 17
-        actions:
-            - { name: 'show', icon: 'search', label: false, title: 'action.show' }
-            - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-primary action-new', label: false, title: 'action.new' }
-            - { name: 'edit', icon: 'pencil', label: false, title: 'action.edit' }
-            - { name: 'delete', icon: 'close', label: false, title: 'action.delete' }
-    design:
-        brand_color: '#ac2925'
-        form_theme: 'vertical'
-        templates:
-            layout: 'app/default/layout.html.twig'
-            menu: 'app/default/menu.html.twig'
-            list: 'app/default/list.html.twig'
+  site_name: '%env(string:SEMART_NAME)%'
+  formats:
+    date:     '%env(string:SEMART_DATE_FORMAT)%'
+    time:     '%env(string:SEMART_HOUR_FORMAT)%'
+    datetime: '%env(string:SEMART_DATE_TIME_FORMAT)%'
+  list:
+    max_results: 17
+    actions:
+      - { name: 'show', icon: 'search', label: false, title: 'action.show' }
+      - { name: 'new', icon: 'plus-circle', css_class: 'btn btn-primary action-new', label: false, title: 'action.new' }
+      - { name: 'edit', icon: 'pencil', label: false, title: 'action.edit' }
+      - { name: 'delete', icon: 'close', label: false, title: 'action.delete' }
+  design:
+    brand_color: '#ac2925'
+    form_theme: 'vertical'
+    templates:
+      layout: 'app/default/layout.html.twig'
+      menu: 'app/default/menu.html.twig'
+      list: 'app/default/list.html.twig'

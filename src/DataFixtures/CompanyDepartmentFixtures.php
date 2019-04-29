@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use KejawenLab\Application\SemartHris\Entity\CompanyDepartment;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class CompanyDepartmentFixtures extends Fixture
+class CompanyDepartmentFixtures extends Fixture implements DependentFixtureInterface
 {
     /**
      * @return array

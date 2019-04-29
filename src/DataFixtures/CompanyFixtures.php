@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
 use KejawenLab\Application\SemartHris\Entity\Company;
 

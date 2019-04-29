@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Application\SemartHris\DataFixtures\ORM;
+namespace KejawenLab\Application\SemartHris\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture as Base;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -12,14 +12,18 @@ use KejawenLab\Application\SemartHris\Component\User\Model\UserInterface;
 use KejawenLab\Application\SemartHris\Util\StringUtil;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-abstract class Fixture extends Base
+abstract class Fixture extends Base implements ContainerAwareInterface
 {
+    use ContainerAwareTrait;
+
     const REF_KEY = 'ref';
 
     /**

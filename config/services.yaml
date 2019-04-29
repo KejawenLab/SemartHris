@@ -288,3 +288,7 @@ services:
         lazy: true
         arguments:
             - '@KejawenLab\Application\SemartHris\Repository\AttendanceRepository'
+
+    KejawenLab\Application\SemartHris\DataFixtures\:
+        resource: '../src/DataFixtures'
+        tags: ['doctrine.fixture.orm']

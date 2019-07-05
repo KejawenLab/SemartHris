@@ -1,13 +1,13 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 LABEL maintainer="Muhammad Surya Ihsanuddin<surya.kejawen@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/buaya.klas.or.id/g' /etc/apt/sources.list
+RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/kartolo.sby.datautama.net.id/g' /etc/apt/sources.list
 
 # Install Software
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install nginx-full supervisor vim varnish -y
+RUN apt-get install nginx-full supervisor vim -y
 RUN apt-get install software-properties-common python-software-properties build-essential -y
 RUN apt-get install curl ca-certificates -y
 RUN touch /etc/apt/sources.list.d/ondrej-php.list
@@ -62,9 +62,6 @@ ADD docker/php/php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
 RUN mkdir /run/php
 RUN touch /run/php/php7.2-fpm.sock
 RUN chmod 777 /run/php/php7.2-fpm.sock
-
-# Varnish Configuration
-ADD docker/varnish/default.vcl /etc/varnish/default.vcl
 
 # Setup Application
 ENV COMPOSER_ALLOW_SUPERUSER 1

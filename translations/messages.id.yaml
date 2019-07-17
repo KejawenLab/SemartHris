@@ -66,3 +66,5 @@ label:
         run: 'Jalankan'
         notice: 'Setiap query yang dijalankan tidak dapat dibatalkan. Harap lakukan dengan hati-hati.'
         total: 'Total Data'
+    education_institute:
+        name: 'Nama Kampus/Sekolah'

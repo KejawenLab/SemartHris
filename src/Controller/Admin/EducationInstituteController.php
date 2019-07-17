@@ -53,7 +53,7 @@ class EducationInstituteController extends AdminController
             ]);
         } else {
             $response = $this->render('education_institute/index.html.twig', [
-                'title' => 'EducationInstitute',
+                'title' => 'Institusi Pendidikan',
                 'educationInstitutes' => $educationinstitutes,
                 'cacheId' => $key,
             ]);

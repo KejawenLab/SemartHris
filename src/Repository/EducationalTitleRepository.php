@@ -13,18 +13,18 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use KejawenLab\Semart\Skeleton\Component\Contract\Education\EducationInstituteInterface;
-use KejawenLab\Semart\Skeleton\Component\Contract\Education\EducationInstituteRepositoryInterface;
-use KejawenLab\Semart\Skeleton\Entity\EducationInstitute;
+use KejawenLab\Semart\Skeleton\Component\Contract\Education\EducationalTitleInterface;
+use KejawenLab\Semart\Skeleton\Component\Contract\Education\EducationalTitleRepositoryInterface;
+use KejawenLab\Semart\Skeleton\Entity\EducationalTitle;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class EducationInstituteRepository extends Repository implements EducationInstituteRepositoryInterface
+class EducationalTitleRepository extends Repository implements EducationalTitleRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, EducationInstitute::class);
+        parent::__construct($registry, EducationalTitle::class);
     }
 
     public function findOneBy(array $criteria, array $orderBy = null): ?object
@@ -41,8 +41,8 @@ class EducationInstituteRepository extends Repository implements EducationInstit
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
-    public function findByName(string $name): ?EducationInstituteInterface
+    public function findByCode(string $code): ?EducationalTitleInterface
     {
-        return $this->findOneBy(['name' => $name]);
+        return $this->findOneBy(['code' => $code]);
     }
 }

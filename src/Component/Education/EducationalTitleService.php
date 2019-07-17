@@ -13,29 +13,29 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Component\Education;
 
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
-use KejawenLab\Semart\Skeleton\Entity\EducationInstitute;
-use KejawenLab\Semart\Skeleton\Repository\EducationInstituteRepository;
+use KejawenLab\Semart\Skeleton\Entity\EducationalTitle;
+use KejawenLab\Semart\Skeleton\Repository\EducationalTitleRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class EducationInstituteService implements ServiceInterface
+class EducationalTitleService implements ServiceInterface
 {
-    private $educationinstituteRepository;
+    private $educationaltitleRepository;
 
-    public function __construct(EducationInstituteRepository $educationinstituteRepository)
+    public function __construct(EducationalTitleRepository $educationaltitleRepository)
     {
-        $educationinstituteRepository->setCacheable(true);
-        $this->educationinstituteRepository = $educationinstituteRepository;
+        $educationaltitleRepository->setCacheable(true);
+        $this->educationaltitleRepository = $educationaltitleRepository;
     }
 
     /**
      * @param string $id
      *
-     * @return EducationInstitute|null
+     * @return EducationalTitle|null
      */
     public function get(string $id): ?object
     {
-        return $this->educationinstituteRepository->find($id);
+        return $this->educationaltitleRepository->find($id);
     }
 }

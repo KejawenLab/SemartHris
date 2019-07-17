@@ -1,0 +1,17 @@
+.treeview-menu > li {
+    margin-left: 20px;
+}
+
+.select2-container, .select2-drop, .select2-search, .select2-search input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100% !important;
+}
+.select2-container .select2-selection {
+    min-height: 33px !important;
+}
+
+.margin-b-7 {
+    margin-bottom: 7px !important;
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.3/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         bootstrap="vendor/autoload.php"
+>
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <env name="KERNEL_CLASS" value="KejawenLab\Semart\Skeleton\Kernel" />
+        <env name="APP_ENV" value="test" />
+        <env name="APP_DEBUG" value="1" />
+        <env name="APP_SECRET" value="s$cretf0rt3st" />
+        <env name="SHELL_VERBOSITY" value="-1" />
+        <!-- define your env variables for the test env here -->
+        <env name="DATABASE_DRIVER" value="pdo_mysql" />
+        <env name="DATABASE_SERVER_VERSION" value="10.1" />
+        <env name="DATABASE_CHARSET" value="utf8mb4" />
+        <env name="DATABASE_URL" value="mysql://root:aden@localhost:3306/semart_test" />
+        <env name="APPLICATION_TITLE" value="SEMART SKELETON" />
+        <env name="APPLICATION_TITLE_LONG" value="KEJAWENLAB APPLICATION SKELETON" />
+        <env name="APPLICATION_VERSION" value="1@dev" />
+
+        <!-- ###+ snc/redis-bundle ### -->
+        <!-- passwords that contain special characters (@, %, :, +) must be urlencoded -->
+        <env name="REDIS_URL" value="redis://localhost"/>
+        <!-- ###- snc/redis-bundle ### -->
+    </php>
+
+    <testsuites>
+        <testsuite name="Semart Tests Suite">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./src/</directory>
+            <exclude>
+                <directory>./src/Controller</directory>
+                <directory>./src/DataFixutes</directory>
+                <directory>./src/Contract</directory>
+                <file>./src/Application.php</file>
+                <file>./src/Kernel.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+    </listeners>
+</phpunit>

@@ -1,0 +1,35 @@
+{% set entityHumanize = entity | humanize %}
+{% set entityLowerize = entity | lower %}
+<?php
+
+declare(strict_types=1);
+
+namespace KejawenLab\Semart\Skeleton\{{ entityHumanize }};
+
+use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
+use KejawenLab\Semart\Skeleton\Entity\{{ entityHumanize }};
+use KejawenLab\Semart\Skeleton\Repository\{{ entityHumanize }}Repository;
+
+/**
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
+ */
+class {{ entityHumanize }}Service implements ServiceInterface
+{
+    private ${{ entityLowerize }}Repository;
+
+    public function __construct({{ entityHumanize }}Repository ${{ entityLowerize }}Repository)
+    {
+        ${{ entityLowerize }}Repository->setCacheable(true);
+        $this->{{ entityLowerize }}Repository = ${{ entityLowerize }}Repository;
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return {{ entityHumanize }}|null
+     */
+    public function get(string $id): ?object
+    {
+        return $this->{{ entityLowerize }}Repository->find($id);
+    }
+}

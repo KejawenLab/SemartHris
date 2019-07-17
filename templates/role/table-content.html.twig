@@ -1,0 +1,31 @@
+{% filter spaceless %}
+
+{% set startNumber = start_page_number() %}
+
+{% for key, data in roles %}
+    {% set menu = data.menu %}
+    {% set parent = menu.parent %}
+    <tr>
+        <td class="text-right">{{ (key + startNumber)  }}</td>
+        <td>
+            {% if parent is not null %}
+                {{ parent.name ~ ' > ' ~ menu.name }}
+            {% else %}
+                {{ menu.name }}
+            {% endif %}
+        </td>
+        <td class="text-center">
+            <input type="checkbox" class="role_addable" data-role-id="{{ data.id }}" {% if data.addable %}checked="checked"{% endif %} data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="danger">
+        </td>
+        <td class="text-center">
+            <input type="checkbox" class="role_editable" data-role-id="{{ data.id }}" {% if data.editable %}checked="checked"{% endif %} data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="danger">
+        </td>
+        <td class="text-center">
+            <input type="checkbox" class="role_viewable" data-role-id="{{ data.id }}" {% if data.viewable %}checked="checked"{% endif %} data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="danger">
+        </td>
+        <td class="text-center">
+            <input type="checkbox" class="role_deletable" data-role-id="{{ data.id }}" {% if data.deletable %}checked="checked"{% endif %} data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="danger">
+        </td>
+    </tr>
+{% endfor %}
+{% endfilter %}

@@ -1,0 +1,354 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}{% filter spaceless %}
+    <link rel="stylesheet" href="{{asset('lib/bootstrap-toggle/css/bootstrap-toggle.min.css')}}">
+{% endfilter %}{% endblock %}
+
+{% block title %}{% filter spaceless %}{{ title | upper }}{% endfilter %}{% endblock %}
+
+{% block page_title %}{% filter spaceless %}{{ title }}{% endfilter %}{% endblock %}
+
+{% block content %}{% filter spaceless %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{ 'label.crud.list_title' | trans }} {{ title }}</h3>
+                <div class="box-tools col-md-7 col-xs-7 col-sm-7 col-lg-7 pull-right">
+                    <div class="input-group">
+                        {% if is_granted('add', code_to_menu('GROUP')) %}
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-primary form-modal-action"><i class="fa fa-plus-circle"></i> {{ 'label.crud.add' | trans }}</button>
+                            </div>
+                        {% endif %}
+                        <input type="text" name="table_search" class="form-control pull-right query-string" placeholder="{{ 'label.crud.search_text' | trans }}">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-danger search-action"><i class="fa fa-search-plus"></i> {{ 'label.crud.search' | trans }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <table id="table-content" class="table table-responsive no-padding table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width: 49px;">No</th>
+                            <th class="text-center">{{ 'label.group.code' | trans }} <i data-sort="no" data-sort-field="code" class="fa fa-sort sortable pull-right"></i></th>
+                            <th class="text-center">{{ 'label.group.name' | trans }} <i data-sort="no" data-sort-field="name" class="fa fa-sort sortable pull-right"></i></th>
+                            <th class="text-center" style="width: 227px">{{ 'label.crud.action' | trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-content">
+                        {% include 'group/table-content.html.twig' %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box box-footer">
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 pull-left margin-r-5">
+                    <button type="button" class="btn btn-danger refresh"><i class="fa fa-refresh"></i> {{ 'label.crud.refresh' | trans }}</button>
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9 pull-right pagination-box">
+                    {% include 'group/pagination.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-default" id="form-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title form-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="semartForm" method="POST">
+                    <input type="hidden" id="id" value="">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.group.code' | trans }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="code" placeholder="{{ 'label.group.code' | trans }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.group.name' | trans }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" placeholder="{{ 'label.group.name' | trans }}">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn pull-left btn-warning" data-dismiss="modal">{{ 'label.crud.cancel' | trans }}</button>
+                <button type="button" class="btn btn-danger save">{{ 'label.crud.save' | trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'default/notification_modal.html.twig' %}
+
+<div class="modal modal-default" id="role-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">{{ 'label.crud.roles' | trans }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group margin-b-7">
+                    <input type="text" name="role_search" class="form-control pull-right menu-search" placeholder="{{ 'label.crud.search_text' | trans }}">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-danger menu-search-action"><i class="fa fa-search-plus"></i> {{ 'label.crud.search' | trans }}</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-hover table-responsive no-padding table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" style="vertical-align: middle; width: 49px;" class="text-center">No</th>
+                                <th rowspan="2" style="vertical-align: middle" class="text-center">{{ 'label.menu.name' | trans }}</th>
+                                <th colspan="4" style="vertical-align: middle" class="text-center">{{ 'label.crud.roles' | trans }}</th>
+                            </tr>
+                            <tr>
+                                <th class="text-center">{{ 'label.crud.add' | trans }}</th>
+                                <th class="text-center">{{ 'label.crud.edit' | trans }}</th>
+                                <th class="text-center">{{ 'label.crud.view' | trans }}</th>
+                                <th class="text-center">{{ 'label.crud.delete' | trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="roles-content"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfilter %}{% endblock %}
+
+{% block javascripts %}{% filter spaceless %}
+<script src="{{ asset('lib/bootstrap-toggle/js/bootstrap-toggle.min.js') }}"></script>
+<script>
+    $(window).ready(function () {
+        localStorage.setItem('csrf_token', '{{ csrf_token('APP_CSRF_TOKEN') }}');
+        localStorage.setItem('cache_id', '{{ cacheId }}');
+
+        $('.query-string').val('');
+
+        $('input[type="checkbox"]').bootstrapToggle();
+
+        $(document).on('click', '.form-modal-action', function () {
+            formReset();
+            $('.form-title').html('{{ 'label.crud.add_title' | trans({'%title%': title }) }}');
+            $('#form-modal').modal();
+        });
+
+        $(document).on('click', '.save', function () {
+            let id = $('#id').val();
+            let code = $('#code').val();
+            let name = $('#name').val();
+
+            $.post(Routing.generate('groups_save'), {
+                _csrf_token: localStorage.getItem('csrf_token'),
+                _cache_id: localStorage.getItem('cache_id'),
+                id: id,
+                code: code,
+                name: name
+            }, function (response) {
+                localStorage.setItem('csrf_token', response._csrf_token);
+                if ('OK' === response.status) {
+                    formReset();
+                    $('#form-modal').modal('hide');
+
+                    toastr['success']('{{ 'label.crud.save_message' | trans }}');
+
+                    refreshTable(Routing.generate('groups_index'), '{{ title }}');
+                } else {
+                    let listError = '<ul>';
+                    $.each(response.errors, function (key, value) {
+                        listError = listError + '<li>' + value + '</li>';
+                    });
+                    listError = listError + '</ul>';
+
+                    $('.error-body').html(listError);
+                    $('.error-modal').modal();
+                }
+            });
+        });
+
+        $(document).on('shown.bs.modal', '#form-modal', function (e) {
+            let relatedTarget = e.relatedTarget;
+            let id = $(relatedTarget).data('primary');
+            let container = $('body');
+
+            container.semartLoader();
+
+            if ('undefined' !== typeof id) {
+                $.get(Routing.generate('groups_detail', {id: id}), function (response) {
+                    let data = JSON.parse(response);
+                    $('#id').val(data.id);
+                    $('#code').val(data.code);
+                    $('#name').val(data.name);
+
+                    $('.form-title').html('{{ 'label.crud.edit_title' | trans({'%title%': title }) }}');
+
+                    container.trigger('destroy.semart.loader');
+                });
+            } else {
+                container.trigger('destroy.semart.loader');
+            }
+        });
+
+        $(document).on('click', '.delete', function () {
+            $('#primaryId').val($(this).data('primary'));
+            $('.delete-modal').modal();
+        });
+
+        $(document).on('shown.bs.modal', '#role-modal', function (e) {
+            let relatedTarget = e.relatedTarget;
+            let id = $(relatedTarget).data('primary');
+            let container = $('body');
+
+            localStorage.setItem('groupId', id);
+
+            container.semartLoader();
+
+            if ('undefined' !== typeof id) {
+                $.get(Routing.generate('user_roles'), {groupId: id}, function (response) {
+                    $('.roles-content').html(response['table']);
+
+                    $('input[type="checkbox"]').bootstrapToggle();
+
+                    container.trigger('destroy.semart.loader');
+                });
+            } else {
+                container.trigger('destroy.semart.loader');
+            }
+        });
+
+        $(document).on('click', '.menu-search-action', function () {
+            $.get(Routing.generate('user_roles'), {q: $('.menu-search').val(), groupId: localStorage.getItem('groupId')}, function (response) {
+                $('.roles-content').html(response['table']);
+
+                $('input[type="checkbox"]').bootstrapToggle();
+
+                $('.menu-search').val('');
+
+                $('.roles-modal').modal();
+            });
+        });
+
+        $(document).on('change', '.role_addable', function () {
+            let id = $(this).data('role-id');
+            let addable = false;
+
+            if ($(this).prop('checked')) {
+                addable = true;
+            }
+
+            saveRole({
+                _csrf_token: localStorage.getItem('csrf_token'),
+                id: id,
+                addable: addable
+            })
+        });
+
+        $(document).on('change', '.role_editable', function () {
+            let id = $(this).data('role-id');
+            let editable = false;
+
+            if ($(this).prop('checked')) {
+                editable = true;
+            }
+
+            saveRole({
+                _csrf_token: localStorage.getItem('csrf_token'),
+                id: id,
+                editable: editable
+            })
+        });
+
+        $(document).on('change', '.role_viewable', function () {
+            let id = $(this).data('role-id');
+            let viewable = false;
+
+            if ($(this).prop('checked')) {
+                viewable = true;
+            }
+
+            saveRole({
+                _csrf_token: localStorage.getItem('csrf_token'),
+                id: id,
+                viewable: viewable
+            })
+        });
+
+        $(document).on('change', '.role_deletable', function () {
+            let id = $(this).data('role-id');
+            let deletable = false;
+
+            if ($(this).prop('checked')) {
+                deletable = true;
+            }
+
+            saveRole({
+                _csrf_token: localStorage.getItem('csrf_token'),
+                id: id,
+                deletable: deletable
+            })
+        });
+
+        $(document).on('click', '.notif-delete', function () {
+            $('.delete-modal').modal('hide');
+            $.post(Routing.generate('groups_remove', {id: $('#primaryId').val()}), {_csrf_token: localStorage.getItem('csrf_token')}, function (response) {
+
+                toastr['success']('{{ 'label.crud.delete_message' | trans }}');
+
+                refreshTable(window.location.href, '{{ title }}');
+
+                localStorage.setItem('csrf_token', response._csrf_token);
+            });
+        });
+        
+        $(document).on('click', '.search-action', function () {
+            let params = getQueriesString();
+
+            params['q'] = $('.query-string').val();
+
+            refreshTable(Routing.generate('groups_index', params), '{{ title }}');
+        });
+
+        $(document).on('click', '.pagination-container a.btn-danger', function (e) {
+            e.preventDefault();
+            let url = jQuery(this).attr('href');
+
+            refreshTable(url, '{{ title }}');
+        });
+
+        function saveRole(options) {
+            let container = $('body');
+
+            container.semartLoader();
+
+            $.post(Routing.generate('roles_save'), options, function (response) {
+                if ('OK' === response.status) {
+                    localStorage.setItem('csrf_token', response._csrf_token);
+
+                    $.get(Routing.generate('user_roles', {q: $('.menu-search').val(), groupId: localStorage.getItem('groupId')}), {}, function (response) {
+                        $('.roles-content').html(response['table']);
+
+                        toastr['success']('{{ 'label.crud.roles_message' | trans }}');
+
+                        $('input[type="checkbox"]').bootstrapToggle();
+
+                        container.trigger('destroy.semart.loader');
+                    });
+                } else {
+                    container.trigger('destroy.semart.loader');
+                }
+            });
+        }
+    });
+</script>
+{% endfilter %}{% endblock %}

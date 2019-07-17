@@ -1,0 +1,22 @@
+{% filter spaceless %}
+
+{% set menu = code_to_menu('SETTING') %}
+
+{% set startNumber = start_page_number() %}
+
+{% for key, data in settings %}
+    <tr>
+        <td class="text-right">{{ (key + startNumber)  }}</td>
+        <td>{{ data.parameter }}</td>
+        <td>{{ data.value }}</td>
+        <td class="text-center">
+            {% if is_granted('edit', menu) and false == data.deleted %}
+                <button data-primary="{{ data.id }}" class="btn btn-xs btn-instagram edit margin-r-5"><i class="fa fa-edit"></i> {{ 'label.crud.edit' | trans }}</button>
+            {% endif %}
+            {% if is_granted('delete', menu) and false == data.deleted %}
+                <button data-primary="{{ data.id }}" class="btn btn-xs btn-warning delete"><i class="fa fa-remove"></i> {{ 'label.crud.delete' | trans }}</button>
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
+{% endfilter %}

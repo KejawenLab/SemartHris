@@ -1,0 +1,31 @@
+version: '2'
+services:
+    app:
+        build: .
+        environment:
+            NGINX_WEBROOT: /semart/public
+            APP_ENV: dev
+            APP_SECRET: 2a46d7812648fc10df43fa9431d5f75d
+            DATABASE_DRIVER: pdo_mysql
+            DATABASE_SERVER_VERSION: 5.7
+            DATABASE_CHARSET: utf8mb4
+            DATABASE_URL: mysql://root:aden@localhost:3306/semart
+            REDIS_URL: redis://session
+        links:
+            - session
+        depends_on:
+            - session
+
+    balancer:
+        image: dockercloud/haproxy:latest
+        ports:
+            - 8080:80
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        links:
+            - app
+        depends_on:
+            - app
+
+    session:
+        image: redis:alpine

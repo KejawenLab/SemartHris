@@ -1,0 +1,37 @@
+security:
+    encoders:
+        KejawenLab\Semart\Skeleton\Entity\User:
+            algorithm: argon2i
+
+    providers:
+        semart_provider:
+            id: KejawenLab\Semart\Skeleton\Security\Service\UserService
+
+    role_hierarchy:
+        ROLE_SEMART: [ROLE_USER, ROLE_SEMART]
+        ROLE_USER: ROLE_USER
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt))/
+            security: false
+        assets:
+            pattern: ^/(css|images|img|js|lib|fonts|bundles)/
+            security: false
+        main:
+            pattern: ^/
+            form_login:
+                provider: semart_provider
+                check_path: login_check
+                csrf_token_generator: security.csrf.token_manager
+                default_target_path: home_dashboard
+                always_use_default_target_path: true
+            logout:
+                path: logout
+                target: home_dashboard
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_USER }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -1,0 +1,8 @@
+#GLOBAL CONFIG
+- { parameter: 'PER_PAGE', value: 9 }
+- { parameter: 'CURRENCY_PREFIX', value: 'Rp.' }
+- { parameter: 'CURRENCY_SURFIX', value: '' }
+- { parameter: 'DECIMAL_PRECISION', value: 0 }
+- { parameter: 'DECIMAL_POINT', value: '.' }
+- { parameter: 'THOUSAND_SEPARATOR', value: ',' }
+- { parameter: 'UPLOAD_DIR', value: 'uploads' }

@@ -1,0 +1,36 @@
+parameters:
+    # Adds a fallback DATABASE_URL if the env var is not set.
+    # This allows you to run cache:warmup even if your
+    # environment variables are not available yet.
+    # You should not need to change this value.
+    env(DATABASE_URL): ''
+
+doctrine:
+    dbal:
+        # configure these for your database server
+        driver: '%env(resolve:DATABASE_DRIVER)%'
+        server_version: '%env(resolve:DATABASE_SERVER_VERSION)%'
+        charset: '%env(resolve:DATABASE_CHARSET)%'
+        default_table_options:
+            charset: '%env(resolve:DATABASE_CHARSET)%'
+            collate: '%env(resolve:DATABASE_CHARSET)%_unicode_ci'
+
+        url: '%env(resolve:DATABASE_URL)%'
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        metadata_cache_driver: array
+        query_cache_driver: array
+        result_cache_driver: array
+        filters:
+            semart_softdeletable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
+        mappings:
+            Semart:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'KejawenLab\Semart\Skeleton\Entity'
+                alias: Semart

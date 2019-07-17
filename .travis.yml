@@ -1,0 +1,36 @@
+language: php
+
+php:
+  - 7.2
+  - 7.3
+
+matrix:
+  fast_finish: true
+
+sudo: required
+dist: trusty
+group: edge
+
+addons:
+  mariadb: '10.0'
+
+services:
+  - mysql
+  - redis-server
+
+before_script:
+  - echo 'extension = redis.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - composer install --prefer-dist
+  - composer require --dev friendsofphp/php-cs-fixer
+  - composer require --dev php-coveralls/php-coveralls
+  - composer require --dev phpstan/phpstan
+  - mkdir -p build/logs
+
+script:
+  - vendor/bin/php-cs-fixer fix -v --diff --dry-run --format txt
+  - vendor/bin/phpstan analyze --level=max src/
+  - vendor/bin/phpunit -c phpunit.xml.travis.dist
+  - vendor/bin/php-coveralls -v --exclude-no-stmt
+
+notifications:
+  email: false

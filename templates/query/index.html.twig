@@ -1,0 +1,131 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}{% filter spaceless %}
+    <link rel="stylesheet" href="{{asset('lib/select2/css/select2.min.css')}}">
+{% endfilter %}{% endblock %}
+
+{% block title %}{% filter spaceless %}{{ title | upper }}{% endfilter %}{% endblock %}
+
+{% block page_title %}{% filter spaceless %}{{ title }}{% endfilter %}{% endblock %}
+
+{% block content %}{% filter spaceless %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{ 'label.query.title' | trans | upper }}</h3>
+                <div class="box-tools col-md-9 col-xs-9 col-sm-9 col-lg-9 pull-right">
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <select class="form-control select2-static" id="connection">
+                                <option value="">---{{ 'label.query.connection_option' | trans | upper }}---</option>
+                                {% for i, connection in connections %}
+                                    {% if 0 == connection %}
+                                        <option value="{{ connection }}" selected="selected">{{ connection | upper }}</option>
+                                    {% else %}
+                                        <option value="{{ connection }}">{{ connection | upper }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-7 pull-right">
+                            <select class="form-control select2-static" id="schemas">
+                                <option value="">---{{ 'label.query.schema_option' | trans | upper }}---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row margin-b-7">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 margin-b-7">
+                        <textarea id="query" class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="min-height: 277px;"></textarea>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                        <p class="text-danger pull-left"><span class="fa fa-warning"></span> {{ 'label.query.notice' | trans | upper }}</p>
+                        <button type="button" class="btn btn-success run-query pull-right"><i class="fa fa-arrow-circle-right"></i> {{ 'label.query.run' | trans }}</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="result" class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfilter %}{% endblock %}
+
+{% block javascripts %}{% filter spaceless %}
+<script src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
+<script>
+    $(window).ready(function () {
+        localStorage.setItem('csrf_token', '{{ csrf_token('APP_CSRF_TOKEN') }}');
+
+        $('.select2-static').select2();
+
+        listSchema($('#connection').val());
+
+        $(document).on('click', '.run-query', function () {
+            let connection = $('#connection').val();
+            let query = $.trim($('#query').val());
+
+            if ('' !== query) {
+                $.post(Routing.generate('queries_run'), {
+                    _csrf_token: localStorage.getItem('csrf_token'),
+                    s: query,
+                    c: connection,
+                }, function (response) {
+                    localStorage.setItem('csrf_token', response._csrf_token);
+                    $('#result').html(response.result);
+                });
+            }
+        });
+
+        $(document).on('change', '#connection', function () {
+            let connection = $(this).val();
+            listSchema(connection);
+        });
+
+        $(document).on('change', '#schemas', function () {
+            let query = $('#query');
+            let table = $(this).val();
+            let sql = query.val();
+
+            if ('' !== table) {
+                query.val(sql + ' ' + table);
+            }
+        });
+
+        $(document).on('keydown', '#query', function(e) {
+            if(9 === e.keyCode) {
+                let start = this.selectionStart;
+                let end = this.selectionEnd;
+                let $this = $(this);
+
+                $this.val($this.val().substring(0, start) + "\t" + $this.val().substring(end));
+
+                this.selectionStart = this.selectionEnd = start + 1;
+
+                return false;
+            }
+        });
+    });
+
+    function listSchema(connection) {
+        $.get(Routing.generate('queries_tables'), {
+            c: connection
+        }, function (response) {
+            if (response.status) {
+                let options = '<option value="" selected="selected">---{{ 'label.query.schema_option' | trans | upper }}---</option>';
+                $.each(response.result, function (k, v) {
+                    options = options + '<option value="' + v + '">' + v + '</option>';
+                });
+
+                $('#schemas').html(options);
+                $('.select2-static').select2();
+            }
+        });
+    }
+</script>
+{% endfilter %}{% endblock %}

@@ -1,0 +1,128 @@
+{% set entityHumanize = entity | humanize %}
+{% set entityLowerize = entity | lower %}
+{% set entityUnderscoreLowerize = entity | underscore | lower %}
+{% set entityUpper = entity | upper %}
+{% set entityPlural =  entity | pluralize %}
+{% set entityPluralLowerize = entityPlural | lower %}
+{% set entityPluralUnderscore = entityPlural | underscore %}
+{% set entityPluralDash = entityPlural | dash %}
+{% set entityPluralCamelCase = entityPlural | camelcase %}
+<?php
+
+declare(strict_types=1);
+
+namespace KejawenLab\Semart\Skeleton\Controller\Admin;
+
+use KejawenLab\Semart\Skeleton\Entity\{{ entityHumanize }};
+use KejawenLab\Semart\Skeleton\Pagination\Paginator;
+use KejawenLab\Semart\Skeleton\{{ entityHumanize}}\{{ entityHumanize}}Service;
+use KejawenLab\Semart\Skeleton\Request\RequestHandler;
+use KejawenLab\Semart\Skeleton\Security\Authorization\Permission;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+
+/**
+ * @Route("/{{ entityPluralDash }}")
+ *
+ * @Permission(menu="{{ entityUpper }}")
+ *
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
+ */
+class {{ entityHumanize }}Controller extends AdminController
+{
+    /**
+     * @Route("/", methods={"GET"}, name="{{ entityPluralUnderscore }}_index", options={"expose"=true})
+     *
+     * @Permission(actions=Permission::VIEW)
+     */
+    public function index(Request $request, Paginator $paginator)
+    {
+        $page = (int) $request->query->get('p', 1);
+        $sort = $request->query->get('s');
+        $direction = $request->query->get('d');
+        $key = md5(sprintf('%s:%s:%s:%s:%s', __CLASS__, __METHOD__, $page, $sort, $direction));
+        if (!$this->isCached($key)) {
+            ${{ entityPluralLowerize }} = $paginator->paginate({{ entityHumanize }}::class, $page);
+            $this->cache($key, ${{ entityPluralLowerize }});
+        } else {
+            ${{ entityPluralLowerize }} = $this->cache($key);
+        }
+
+        if ($request->isXmlHttpRequest()) {
+            $table = $this->renderView('{{ entityUnderscoreLowerize }}/table-content.html.twig', ['{{ entityPluralCamelCase }}' => ${{ entityPluralLowerize }}]);
+            $pagination = $this->renderView('{{ entityUnderscoreLowerize }}/pagination.html.twig', ['{{ entityPluralCamelCase }}' => ${{ entityPluralLowerize }}]);
+
+            $response = new JsonResponse([
+                'table' => $table,
+                'pagination' => $pagination,
+                '_cache_id' => $key,
+            ]);
+        } else {
+            $response = $this->render('{{ entityUnderscoreLowerize }}/index.html.twig', [
+                'title' => '{{ entityHumanize }}',
+                '{{ entityPluralCamelCase }}' => ${{ entityPluralLowerize }},
+                'cacheId' => $key,
+            ]);
+        }
+
+        return $response;
+    }
+
+    /**
+     * @Route("/{id}", methods={"GET"}, name="{{ entityPluralUnderscore }}_detail", options={"expose"=true})
+     *
+     * @Permission(actions=Permission::VIEW)
+     */
+    public function find(string $id, {{ entityHumanize }}Service $service, SerializerInterface $serializer)
+    {
+        ${{ entityLowerize }} = $service->get($id);
+        if (!${{ entityLowerize }}) {
+            throw new NotFoundHttpException();
+        }
+
+        return new JsonResponse($serializer->serialize(${{ entityLowerize }}, 'json', ['groups' => ['read']]));
+    }
+
+    /**
+     * @Route("/save", methods={"POST"}, name="{{ entityPluralUnderscore }}_save", options={"expose"=true})
+     *
+     * @Permission(actions={Permission::ADD, Permission::EDIT})
+     */
+    public function save(Request $request, {{ entityHumanize }}Service $service, RequestHandler $requestHandler)
+    {
+        $primary = $request->get('id');
+        if ($primary) {
+            ${{ entityLowerize }} = $service->get($primary);
+        } else {
+            ${{ entityLowerize }} = new {{ entityHumanize }}();
+        }
+
+        $requestHandler->handle($request, ${{ entityLowerize }});
+        if (!$requestHandler->isValid()) {
+            return new JsonResponse(['status' => 'KO', 'errors' => $requestHandler->getErrors()]);
+        }
+
+        $this->commit(${{ entityLowerize }});
+
+        return new JsonResponse(['status' => 'OK']);
+    }
+
+    /**
+     * @Route("/{id}/delete", methods={"POST"}, name="{{ entityPluralUnderscore }}_remove", options={"expose"=true})
+     *
+     * @Permission(actions=Permission::DELETE)
+     */
+    public function delete(string $id, {{ entityHumanize }}Service $service)
+    {
+        if (!${{ entityLowerize }} = $service->get($id)) {
+            throw new NotFoundHttpException();
+        }
+
+        $this->remove(${{ entityLowerize }});
+
+        return new JsonResponse(['status' => 'OK']);
+    }
+}

@@ -1,0 +1,7 @@
+- { parent: null, code: 'HOME', name: 'Home', menuOrder: 1, iconClass: 'home', routeName: 'home_dashboard', ref: 'home' }
+- { parent: null, code: 'ADMIN', name: 'Administrator', menuOrder: 2, iconClass: 'shield', routeName: '', ref: 'administrator' }
+- { parent: 'ref:menu#administrator', code: 'USER', menuOrder: 3, name: 'Pengguna', iconClass: 'users', routeName: 'users_index', ref: 'administrator_user' }
+- { parent: 'ref:menu#administrator', code: 'GROUP', menuOrder: 2, name: 'Grup', iconClass: 'address-book', routeName: 'groups_index', ref: 'administrator_group' }
+- { parent: 'ref:menu#administrator', code: 'MENU', menuOrder: 4, name: 'Menu', iconClass: 'bars', routeName: 'menus_index', ref: 'administrator_menu' }
+- { parent: 'ref:menu#administrator', code: 'SETTING', menuOrder: 5, name: 'Pengaturan', iconClass: 'cogs', routeName: 'settings_index', ref: 'administrator_setting' }
+- { parent: 'ref:menu#administrator', code: 'QUERY', menuOrder: 6, name: 'Query', iconClass: 'database', routeName: 'queries_runner', ref: 'administrator_query' }

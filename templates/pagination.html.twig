@@ -1,0 +1,35 @@
+{% filter spaceless %}
+    {%- if pageCount > 1 -%}
+        <div class="col-md-7 col-xl-7 col-xs-7 pull-right">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success">{{ 'label.crud.page_status' | trans }}: {{ current ~ '/' ~ pageCount }}</button>
+                <button class="btn btn-primary">{{ 'label.crud.total_records' | trans }}: {{ totalCount }}</button>
+            </div>
+            <div class="btn-group pull-right pagination-container margin-r-5">
+                {%- if first is defined and current != first -%}
+                    <a class="btn btn-danger" href="{{- path(route, query|merge({(pageParameterName): first})) -}}">&lt;&lt;</a>
+                {%- endif -%}
+
+                {%- if previous is defined -%}
+                    <a class="btn btn-danger" href="{{- path(route, query|merge({(pageParameterName): previous})) -}}">&lt;</a>
+                {%- endif -%}
+
+                {%- for page in pagesInRange -%}
+                    {%- if page != current -%}
+                        <a class="btn btn-danger" href="{{- path(route, query|merge({(pageParameterName): page})) -}}">{{- page -}}</a>
+                    {%- else -%}
+                        <a class="btn btn-default">{{- page -}} <span class="sr-only">(current)</span></a>
+                    {%- endif -%}
+                {%- endfor -%}
+
+                {%- if next is defined -%}
+                    <a class="btn btn-danger" href="{{- path(route, query|merge({(pageParameterName): next})) -}}">&gt;</a>
+                {%- endif -%}
+
+                {%- if last is defined and current != last -%}
+                    <a class="btn btn-danger" href="{{- path(route, query|merge({(pageParameterName): last})) -}}">&gt;&gt;</a>
+                {%- endif -%}
+            </div>
+        </div>
+    {%- endif -%}
+{% endfilter %}

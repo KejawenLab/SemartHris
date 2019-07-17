@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="SEMART SKELETON" />
+    <meta name="version" content="{{ version }}" />
+    <meta name="source" content="https://github.com/KejawenLab/SemartSkeleton" />
+    <meta name="author" content="MUHAMAD SURYA IKSANUDIN" />
+    <meta name="email" content="surya.kejawen@gmail.com" />
+    <title>{{ status_code }} - {{ status_text }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/error/style.css') }}" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>Oops!</h1>
+                <h2>{{ status_code }} - {{ status_text }}</h2>
+            </div>
+            <img src="{{ asset('img/logo.gif') }}" alt="{{ title }}" />
+            <h3>Aja Gumunan, Aja Getunan, Aja Kagetan, Aja Aleman</h3>
+            <a href="{{ path('home_dashboard') }}">{{ 'label.login.goto_homepage' | trans }}</a>
+        </div>
+    </div>
+</body>
+</html>

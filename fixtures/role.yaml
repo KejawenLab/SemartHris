@@ -1,0 +1,7 @@
+- { group: 'ref:group#group1', menu: 'ref:menu#home', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#administrator', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#administrator_user', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#administrator_group', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#administrator_menu', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#administrator_setting', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#administrator_query', addable: true, editable: true, viewable: true, deletable: true }

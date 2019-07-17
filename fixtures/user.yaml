@@ -1,0 +1,1 @@
+- { username: 'admin', fullName: 'Super Administrator', plainPassword: 'semartadmin', group: 'ref:group#group1' }

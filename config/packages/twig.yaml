@@ -1,0 +1,8 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        title: '%env(resolve:APPLICATION_TITLE)%'
+        title_long: '%env(resolve:APPLICATION_TITLE_LONG)%'
+        version: '%env(resolve:APPLICATION_VERSION)%'

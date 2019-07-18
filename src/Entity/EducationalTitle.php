@@ -17,7 +17,7 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use KejawenLab\Semart\Skeleton\Component\Contract\Education\EducationInstituteInterface;
+use KejawenLab\Semart\Skeleton\Component\Contract\Education\EducationalTitleInterface;
 use KejawenLab\Semart\Skeleton\Contract\Entity\CodeNameableTrait;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
 use KejawenLab\Semart\Skeleton\Query\Searchable;
@@ -37,7 +37,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class EducationalTitle implements EducationInstituteInterface
+class EducationalTitle implements EducationalTitleInterface
 {
     use BlameableEntity;
     use CodeNameableTrait;

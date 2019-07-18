@@ -68,3 +68,13 @@ label:
         total: 'Total Data'
     education_institute:
         name: 'Nama Kampus/Sekolah'
+    educational_title:
+        code: 'Singkatan Gelar'
+        name: 'Gelar'
+    skill_group:
+        parent: 'Grup Induk'
+        name: 'Grup Keahlian'
+    skill:
+        skill_group: 'Grup'
+        code: 'Kode Keahlian'
+        name: 'Keahlian'

@@ -1,0 +1,22 @@
+{% filter spaceless %}
+
+{% set menu = code_to_menu('SKILLGROUP') %}
+
+{% set startNumber = start_page_number() %}
+
+{% for key, data in skillGroups %}
+    <tr>
+        <td class="text-right">{{ (key + startNumber)  }}</td>
+        <td>{% if data.parent %}{{ data.parent.name }}{% else %}-{% endif %}</td>
+        <td>{{ data.name }}</td>
+        <td class="text-center">
+            {% if is_granted('edit', menu) and false == data.deleted %}
+                <button data-toggle="modal" data-target="#form-modal" data-primary="{{ data.id }}" data-tooltip="tooltip" title="Perbaharui Data" class="btn btn-xs btn-warning edit margin-r-5"><i class="fa fa-edit"></i> {{ 'label.crud.edit' | trans }}</button>
+            {% endif %}
+            {% if is_granted('delete', menu) and false == data.deleted %}
+                <button data-primary="{{ data.id }}" class="btn btn-xs btn-xs btn-danger delete" data-tooltip="tooltip" title="Hapus Data"><i class="fa fa-trash"></i> {{ 'label.crud.delete' | trans }}</button>
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
+{% endfilter %}

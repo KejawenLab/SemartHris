@@ -15,6 +15,6 @@ namespace KejawenLab\Semart\Skeleton\Component\Contract\Skill;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface GroupSkillInterface
+interface SkillGroupInterface
 {
 }

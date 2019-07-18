@@ -32,8 +32,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Menu
 {
-    use CodeNameableTrait;
     use BlameableEntity;
+    use CodeNameableTrait;
     use PrimaryableTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;

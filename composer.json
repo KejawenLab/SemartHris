@@ -5,34 +5,37 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-curl": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-redis": ">=4.2",
-        "doctrine/doctrine-bundle": "^1.6.10",
+        "doctrine/doctrine-bundle": "^1.11",
         "doctrine/inflector": "^1.3",
         "doctrine/orm": "^2.5.11",
-        "friendsofsymfony/jsrouting-bundle": "^2.2",
+        "friendsofsymfony/jsrouting-bundle": "^2.3",
         "kejawenlab/semart-collection": "dev-master",
-        "knplabs/knp-paginator-bundle": "^2.8",
+        "knplabs/knp-paginator-bundle": "^4.0",
         "phlak/twine": "^2.1",
         "ramsey/uuid-doctrine": "^1.4",
         "snc/redis-bundle": "^2.1",
         "stof/doctrine-extensions-bundle": "^1.3",
-        "symfony/asset": "^4.2",
-        "symfony/console": "^4.2",
-        "symfony/event-dispatcher": "^4.2",
+        "symfony/asset": "^4.3",
+        "symfony/console": "^4.3",
+        "symfony/event-dispatcher": "^4.3",
         "symfony/flex": "^1.0",
-        "symfony/form": "^4.2",
-        "symfony/framework-bundle": "^4.2",
+        "symfony/form": "^4.3",
+        "symfony/framework-bundle": "^4.3",
+        "symfony/http-client": "^4.3",
+        "symfony/intl": "^4.3",
         "symfony/monolog-bundle": "^3.3",
-        "symfony/security-bundle": "^4.2",
+        "symfony/security-bundle": "^4.3",
         "symfony/serializer-pack": "^1.0",
-        "symfony/templating": "^4.2",
-        "symfony/translation": "^4.2",
-        "symfony/validator": "^4.2",
-        "symfony/yaml": "^4.2"
+        "symfony/templating": "^4.3",
+        "symfony/translation": "^4.3",
+        "symfony/validator": "^4.3",
+        "symfony/yaml": "^4.3"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -45,13 +48,13 @@
         "symfony/symfony": "*"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.2",
         "phpunit/phpunit": "^7.3",
         "symfony/debug-pack": "^1.0",
-        "symfony/dotenv": "^4.2",
+        "symfony/dotenv": "^4.3",
         "symfony/phpunit-bridge": "^4.3",
         "symfony/profiler-pack": "^1.0",
-        "symfony/web-server-bundle": "^4.2"
+        "symfony/web-server-bundle": "^4.3"
     },
     "config": {
         "preferred-install": {
@@ -62,7 +65,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "4.2.*"
+            "require": "^4.3"
         }
     },
     "autoload": {

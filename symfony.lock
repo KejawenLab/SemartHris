@@ -188,9 +188,6 @@
     "psr/log": {
         "version": "1.1.0"
     },
-    "psr/simple-cache": {
-        "version": "1.0.1"
-    },
     "ramsey/uuid": {
         "version": "3.8.0"
     },
@@ -358,6 +355,9 @@
             "src/Kernel.php"
         ]
     },
+    "symfony/http-client": {
+        "version": "v4.3.2"
+    },
     "symfony/http-foundation": {
         "version": "v4.2.10"
     },
@@ -369,6 +369,9 @@
     },
     "symfony/intl": {
         "version": "v4.2.10"
+    },
+    "symfony/mime": {
+        "version": "v4.3.2"
     },
     "symfony/monolog-bridge": {
         "version": "v4.2.10"
@@ -409,10 +412,16 @@
     "symfony/polyfill-intl-icu": {
         "version": "v1.11.0"
     },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.11.0"
     },
     "symfony/polyfill-php72": {
+        "version": "v1.11.0"
+    },
+    "symfony/polyfill-php73": {
         "version": "v1.11.0"
     },
     "symfony/process": {

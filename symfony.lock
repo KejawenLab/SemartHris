@@ -110,6 +110,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "kejawenlab/nusantara": {
+        "version": "1.0.1"
+    },
     "kejawenlab/semart-collection": {
         "version": "dev-master"
     },
@@ -308,6 +311,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v4.2.10"
+    },
+    "symfony/dom-crawler": {
+        "version": "v4.3.2"
     },
     "symfony/dotenv": {
         "version": "v4.2.10"

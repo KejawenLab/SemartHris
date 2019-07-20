@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Controller\Admin;
 
+use KejawenLab\Semart\Skeleton\Component\Address\DistrictService;
 use KejawenLab\Semart\Skeleton\Component\Address\ProvinceService;
 use KejawenLab\Semart\Skeleton\Entity\Province;
 use KejawenLab\Semart\Skeleton\Pagination\Paginator;
@@ -115,5 +116,20 @@ class ProvinceController extends AdminController
         $this->remove($province);
 
         return new JsonResponse(['status' => 'OK']);
+    }
+
+    /**
+     * @Route("/{id}/districts", methods={"GET"}, name="provinces_districts", options={"expose"=true})
+     *
+     * @Permission(actions=Permission::DELETE)
+     */
+    public function districts(string $id, ProvinceService $service, DistrictService $districtService, SerializerInterface $serializer)
+    {
+        $province = $service->get($id);
+        if (!$province) {
+            throw new NotFoundHttpException();
+        }
+
+        return new JsonResponse($serializer->serialize($districtService->getByProvince($province), 'json', ['groups' => ['read']]));
     }
 }

@@ -14,12 +14,19 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">{{ 'label.crud.list_title' | trans }} {{ title }}</h3>
-                <div class="box-tools col-md-7 col-xs-7 col-sm-7 col-lg-7 pull-right">
-                    <div class="input-group">
-                        <input type="text" name="table_search" class="form-control pull-right query-string" placeholder="{{ 'label.crud.search_text' | trans }}">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-danger search-action"><i class="fa fa-search-plus"></i> {{ 'label.crud.search' | trans }}</button>
-                        </div>
+                <div class="box-tools col-md-10 col-xs-10 col-sm-10 col-lg-10 pull-right">
+                    <div class="col-sm-6">
+                        <select class="form-control select2-static" id="filter-province">
+                            <option value="">---PILIH {{ 'label.district.province' | trans | upper }}---</option>
+                            {% for i, data in provinces %}
+                                <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <select class="form-control select2-static" id="filter-district">
+                            <option value="">---PILIH {{ 'label.sub_district.district' | trans | upper }}---</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -72,6 +79,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="role" class="col-sm-2 control-label">{{ 'label.sub_district.district' | trans }}</label>
+                        <div class="col-sm-10">
+                            <select class="form-control select2-static" id="district">
+                                <option value="">---PILIH {{ 'label.sub_district.district' | trans | upper }}---</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">{{ 'label.sub_district.code' | trans }}</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="code" placeholder="{{ 'label.sub_district.code' | trans }}">
@@ -98,12 +113,14 @@
 
 {% block javascripts %}{% filter spaceless %}
 <script src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('js/semart.js') }}"></script>
 <script>
     $(window).ready(function () {
         localStorage.setItem('csrf_token', '{{ csrf_token('APP_CSRF_TOKEN') }}');
         localStorage.setItem('cache_id', '{{ cacheId }}');
 
         $('.query-string').val('');
+        $('.select2-static').select2();
 
         $(document).on('click', '.form-modal-action', function () {
             formReset();
@@ -147,20 +164,27 @@
         $(document).on('shown.bs.modal', '#form-modal', function (e) {
             let relatedTarget = e.relatedTarget;
             let id = $(relatedTarget).data('primary');
+            let provinceId = $(relatedTarget).data('province');
+            let districtId = $(relatedTarget).data('district');
             let container = $('body');
 
             container.semartLoader();
 
             if ('undefined' !== typeof id) {
-                $.get(Routing.generate('sub_districts_detail', {id: id}), function (response) {
-                    let data = JSON.parse(response);
-                    $('#id').val(data.id);
-                    $('#code').val(data.code);
-                    $('#name').val(data.name);
+                $('#province').val(provinceId);
+                province_autocomplete_district(provinceId, districtId, '#district', '--- PILIH {{ 'label.sub_district.district' | trans | upper }}---', function () {
+                    $.get(Routing.generate('sub_districts_detail', {id: id}), function (response) {
+                        let data = JSON.parse(response);
+                        $('#id').val(data.id);
+                        $('#code').val(data.code);
+                        $('#name').val(data.name);
 
-                    $('.form-title').html('{{ 'label.crud.edit_title' | trans({'%title%': title }) }}');
+                        $('.form-title').html('{{ 'label.crud.edit_title' | trans({'%title%': title }) }}');
 
-                    container.trigger('destroy.semart.loader');
+                        $('#province').trigger('change');
+
+                        container.trigger('destroy.semart.loader');
+                    });
                 });
             } else {
                 container.trigger('destroy.semart.loader');
@@ -184,12 +208,19 @@
             });
         });
 
-        $(document).on('click', '.search-action', function () {
-            let params = getQueriesString();
+        $(document).on('change', '#filter-province', function () {
+            let provinceId = $(this).val();
+            let districtId = $('#filter-district').val();
+            if ('' !== provinceId) {
+                province_autocomplete_district(provinceId, districtId, '#filter-district', '--- PILIH {{ 'label.sub_district.district' | trans | upper }}---');
+            }
+        });
 
-            params['q'] = $('.query-string').val();
-
-            refreshTable(Routing.generate('sub_districts_index', params), '{{ title }}');
+        $(document).on('change', '#filter-district', function () {
+            let filter = $(this).val();
+            if ('' !== filter) {
+                refreshTable(Routing.generate('sub_districts_index', {f: filter}), '{{ title }}');
+            }
         });
 
         $(document).on('click', '.pagination-container a.btn-danger', function (e) {

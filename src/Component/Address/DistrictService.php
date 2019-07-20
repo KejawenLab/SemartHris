@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Component\Address;
 
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictInterface;
+use KejawenLab\Semart\Skeleton\Component\Contract\Address\ProvinceInterface;
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
 use KejawenLab\Semart\Skeleton\Entity\District;
 use KejawenLab\Semart\Skeleton\Repository\DistrictRepository;
@@ -46,6 +47,14 @@ class DistrictService implements ServiceInterface
     public function getAll(): array
     {
         return $this->districtRepository->findAll();
+    }
+
+    /**
+     * @return District[]
+     */
+    public function getByProvince(ProvinceInterface $province): array
+    {
+        return $this->districtRepository->findBy(['province' => $province]);
     }
 
     public function commit(DistrictInterface $district, bool $flush = false): void

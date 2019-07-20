@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "affd678a1d1c439cfab7876f7f16b9d7",
+    "content-hash": "6bec29f0e2945376f70fda41ce910c3b",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2098,6 +2098,50 @@
                 "uuid"
             ],
             "time": "2018-08-11T21:01:22+00:00"
+        },
+        {
+            "name": "sensiolabs/ansi-to-html",
+            "version": "v1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/ansi-to-html.git",
+                "reference": "8b5d787dca714bd98dd770c078d76528320a8286"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/ansi-to-html/zipball/8b5d787dca714bd98dd770c078d76528320a8286",
+                "reference": "8b5d787dca714bd98dd770c078d76528320a8286",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "twig/twig": "Provides nice templating features"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "SensioLabs\\AnsiConverter": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "A library to convert a text with ANSI codes to HTML",
+            "time": "2017-05-02T00:53:29+00:00"
         },
         {
             "name": "snc/redis-bundle",
@@ -7384,8 +7428,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.2",
-        "ext-curl": "*",
         "ext-ctype": "*",
+        "ext-curl": "*",
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-pdo": "*",

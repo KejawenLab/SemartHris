@@ -41,6 +41,11 @@ class DistrictService implements ServiceInterface
         return $this->districtRepository->find($id);
     }
 
+    public function getByCode(string $code): ?District
+    {
+        return $this->districtRepository->findOneBy(['code' => $code]);
+    }
+
     /**
      * @return District[]
      */

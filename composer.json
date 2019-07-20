@@ -5,8 +5,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "ext-curl": "*",
         "ext-ctype": "*",
+        "ext-curl": "*",
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-pdo": "*",
@@ -20,6 +20,7 @@
         "knplabs/knp-paginator-bundle": "^4.0",
         "phlak/twine": "^2.1",
         "ramsey/uuid-doctrine": "^1.4",
+        "sensiolabs/ansi-to-html": "^1.1",
         "snc/redis-bundle": "^2.1",
         "stof/doctrine-extensions-bundle": "^1.3",
         "symfony/asset": "^4.3",

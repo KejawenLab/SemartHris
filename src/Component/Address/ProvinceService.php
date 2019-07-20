@@ -40,6 +40,11 @@ class ProvinceService implements ServiceInterface
         return $this->provinceRepository->find($id);
     }
 
+    public function getByCode(string $code): ?Province
+    {
+        return $this->provinceRepository->findOneBy(['code' => $code]);
+    }
+
     /**
      * @return Province[]
      */

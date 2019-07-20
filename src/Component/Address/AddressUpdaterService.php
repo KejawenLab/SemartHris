@@ -49,8 +49,11 @@ class AddressUpdaterService
         }
         Collection::collect($results)
             ->each(function ($value, $code) use (&$pidx, &$didx, &$sidx) {
-                $province = new Province();
-                $province->setCode((string) $code);
+                $province = $this->provinceService->getByCode((string) $code);
+                if (!$province) {
+                    $province = new Province();
+                    $province->setCode((string) $code);
+                }
                 $province->setName($value['name']);
 
                 if (0 === $pidx % 17) {
@@ -61,9 +64,12 @@ class AddressUpdaterService
 
                 Collection::collect($value['district'])
                     ->each(function ($value, $code) use ($province, &$didx, &$sidx) {
-                        $district = new District();
+                        $district = $this->districtService->getByCode((string) $code);
+                        if (!$district) {
+                            $district = new District();
+                            $district->setCode((string) $code);
+                        }
                         $district->setProvince($province);
-                        $district->setCode((string) $code);
                         $district->setName($value['name']);
 
                         if (0 === $didx % 17) {
@@ -74,9 +80,12 @@ class AddressUpdaterService
 
                         Collection::collect($value['sub_district'])
                             ->each(function ($value, $code) use ($district, &$sidx) {
-                                $subDistrict = new SubDistrict();
+                                $subDistrict = $this->subDistrictService->getByCode((string) $code);
+                                if (!$subDistrict) {
+                                    $subDistrict = new SubDistrict();
+                                    $subDistrict->setCode((string) $code);
+                                }
                                 $subDistrict->setDistrict($district);
-                                $subDistrict->setCode((string) $code);
                                 $subDistrict->setName($value['name']);
 
                                 if (0 === $sidx % 17) {

@@ -40,6 +40,11 @@ class SubDistrictService implements ServiceInterface
         return $this->subdistrictRepository->find($id);
     }
 
+    public function getByCode(string $code): ?SubDistrict
+    {
+        return $this->subdistrictRepository->findOneBy(['code' => $code]);
+    }
+
     public function commit(SubDistrictInterface $subDistrict, bool $flush = false): void
     {
         $this->subdistrictRepository->commit($subDistrict);

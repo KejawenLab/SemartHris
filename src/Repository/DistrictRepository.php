@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Entity\District;
 
@@ -30,5 +31,15 @@ class DistrictRepository extends Repository implements DistrictRepositoryInterfa
         $key = md5(sprintf('%s:%s:%s:%s:%s:%s', __CLASS__, __METHOD__, serialize($criteria), serialize($orderBy), $limit, $offset));
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
+    }
+
+    public function commit(DistrictInterface $district): void
+    {
+        $this->_em->persist($district);
+    }
+
+    public function flush(): void
+    {
+        $this->_em->flush();
     }
 }

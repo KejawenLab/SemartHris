@@ -15,11 +15,13 @@
             <div class="box-header">
                 <h3 class="box-title">{{ 'label.crud.list_title' | trans }} {{ title }}</h3>
                 <div class="box-tools col-md-7 col-xs-7 col-sm-7 col-lg-7 pull-right">
-                    <div class="input-group">
-                        <input type="text" name="table_search" class="form-control pull-right query-string" placeholder="{{ 'label.crud.search_text' | trans }}">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-danger search-action"><i class="fa fa-search-plus"></i> {{ 'label.crud.search' | trans }}</button>
-                        </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <select class="form-control select2-static" id="filter-province">
+                            <option value="">---FILTER {{ 'label.district.province' | trans | upper }}---</option>
+                            {% for i, data in provinces %}
+                                <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
             </div>
@@ -193,12 +195,10 @@
             });
         });
 
-        $(document).on('click', '.search-action', function () {
-            let params = getQueriesString();
+        $(document).on('change', '#filter-province', function () {
+            let filter = $(this).val();
 
-            params['q'] = $('.query-string').val();
-
-            refreshTable(Routing.generate('districts_index', params), '{{ title }}');
+            refreshTable(Routing.generate('districts_index', {f: filter}), '{{ title }}');
         });
 
         $(document).on('click', '.pagination-container a.btn-danger', function (e) {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use KejawenLab\Semart\Skeleton\Component\Contract\Address\ProvinceInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\ProvinceRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Entity\Province;
 
@@ -30,5 +31,15 @@ class ProvinceRepository extends Repository implements ProvinceRepositoryInterfa
         $key = md5(sprintf('%s:%s:%s:%s:%s:%s', __CLASS__, __METHOD__, serialize($criteria), serialize($orderBy), $limit, $offset));
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
+    }
+
+    public function commit(ProvinceInterface $province): void
+    {
+        $this->_em->persist($province);
+    }
+
+    public function flush(): void
+    {
+        $this->_em->flush();
     }
 }

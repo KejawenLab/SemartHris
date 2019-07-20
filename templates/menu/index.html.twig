@@ -21,9 +21,13 @@
                                 <button type="button" class="btn btn-primary form-modal-action"><i class="fa fa-plus-circle"></i> {{ 'label.crud.add' | trans }}</button>
                             </div>
                         {% endif %}
-                        <input type="text" name="table_search" class="form-control pull-right query-string" placeholder="{{ 'label.crud.search_text' | trans }}">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-danger search-action"><i class="fa fa-search-plus"></i> {{ 'label.crud.search' | trans }}</button>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <select class="form-control select2-static" id="filter-menu">
+                                <option value="">---FILTER {{ 'label.menu.parent' | trans | upper }}---</option>
+                                {% for i, data in parents %}
+                                    <option value="{{ data.id }}">{% if data.parent is not null %}{{ data.parent.name ~ ' > ' ~ data.name }}{% else %}{{ data.name }}{% endif %}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -243,12 +247,10 @@
             });
         });
         
-        $(document).on('click', '.search-action', function () {
-            let params = getQueriesString();
+        $(document).on('change', '#filter-menu', function () {
+            let filter = $(this).val();
 
-            params['q'] = $('.query-string').val();
-
-            refreshTable(Routing.generate('menus_index', params), '{{ title }}');
+            refreshTable(Routing.generate('menus_index', {f: filter}), '{{ title }}');
         });
 
         $(document).on('click', '.pagination-container a.btn-danger', function (e) {

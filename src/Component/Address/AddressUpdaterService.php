@@ -13,25 +13,82 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Component\Address;
 
 use KejawenLab\Nusantara\Nusantara;
+use KejawenLab\Semart\Collection\Collection;
+use KejawenLab\Semart\Skeleton\Entity\District;
+use KejawenLab\Semart\Skeleton\Entity\Province;
+use KejawenLab\Semart\Skeleton\Entity\SubDistrict;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
 class AddressUpdaterService
 {
-    private $province;
+    private $provinceService;
 
-    private $district;
+    private $districtService;
 
-    private $subDistrict;
+    private $subDistrictService;
 
-    public function __construct()
+    public function __construct(ProvinceService $provinceService, DistrictService $districtService, SubDistrictService $subDistrictService)
     {
+        $this->provinceService = $provinceService;
+        $this->districtService = $districtService;
+        $this->subDistrictService = $subDistrictService;
     }
 
-    public function update()
+    public function update(OutputInterface $output = null)
     {
+        $pidx = 0;
+        $didx = 0;
+        $sidx = 0;
         $nusantara = new Nusantara();
-        $results = $nusantara->fetch(Nusantara::SCOPE_KECAMATAN);
+        $results = $nusantara->fetch(Nusantara::SCOPE_KECAMATAN, $output);
+        if ($output) {
+            $output->writeln('<info>Menyimpan ke database (<comment>memerlukan waktu beberapa menit hingga beberapa jam tergantung koneksi ke database</comment>).</info>');
+        }
+        Collection::collect($results)
+            ->each(function ($value, $code) use (&$pidx, &$didx, &$sidx) {
+                $province = new Province();
+                $province->setCode((string) $code);
+                $province->setName($value['name']);
+
+                if (0 === $pidx % 17) {
+                    $this->provinceService->commit($province, true);
+                } else {
+                    $this->provinceService->commit($province);
+                }
+
+                Collection::collect($value['district'])
+                    ->each(function ($value, $code) use ($province, &$didx, &$sidx) {
+                        $district = new District();
+                        $district->setProvince($province);
+                        $district->setCode((string) $code);
+                        $district->setName($value['name']);
+
+                        if (0 === $didx % 17) {
+                            $this->districtService->commit($district, true);
+                        } else {
+                            $this->districtService->commit($district);
+                        }
+
+                        Collection::collect($value['sub_district'])
+                            ->each(function ($value, $code) use ($district, &$sidx) {
+                                $subDistrict = new SubDistrict();
+                                $subDistrict->setDistrict($district);
+                                $subDistrict->setCode((string) $code);
+                                $subDistrict->setName($value['name']);
+
+                                if (0 === $sidx % 17) {
+                                    $this->subDistrictService->commit($subDistrict, true);
+                                } else {
+                                    $this->subDistrictService->commit($subDistrict);
+                                }
+                            })
+                        ;
+                    })
+                ;
+            })
+        ;
     }
 }

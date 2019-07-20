@@ -19,4 +19,7 @@ use KejawenLab\Semart\Skeleton\Contract\Repository\CacheableRepositoryInterface;
  */
 interface ProvinceRepositoryInterface extends CacheableRepositoryInterface
 {
+    public function commit(ProvinceInterface $province): void;
+
+    public function flush(): void;
 }

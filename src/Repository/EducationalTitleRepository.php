@@ -40,9 +40,4 @@ class EducationalTitleRepository extends Repository implements EducationalTitleR
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
-
-    public function findByCode(string $code): ?EducationalTitleInterface
-    {
-        return $this->findOneBy(['code' => $code]);
-    }
 }

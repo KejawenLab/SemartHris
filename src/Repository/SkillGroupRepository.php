@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use KejawenLab\Semart\Skeleton\Component\Contract\Skill\SkillGroupRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Entity\SkillGroup;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class SkillGroupRepository extends Repository
+class SkillGroupRepository extends Repository implements SkillGroupRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {

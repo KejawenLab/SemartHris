@@ -1,0 +1,212 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}{% filter spaceless %}
+    <link rel="stylesheet" href="{{asset('lib/select2/css/select2.min.css')}}">
+{% endfilter %}{% endblock %}
+
+{% block title %}{% filter spaceless %}{{ title | upper }}{% endfilter %}{% endblock %}
+
+{% block page_title %}{% filter spaceless %}{{ title }}{% endfilter %}{% endblock %}
+
+{% block content %}{% filter spaceless %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{ 'label.crud.list_title' | trans }} {{ title }}</h3>
+                <div class="box-tools col-md-7 col-xs-7 col-sm-7 col-lg-7 pull-right">
+                    <div class="input-group">
+                        <input type="text" name="table_search" class="form-control pull-right query-string" placeholder="{{ 'label.crud.search_text' | trans }}">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-danger search-action"><i class="fa fa-search-plus"></i> {{ 'label.crud.search' | trans }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <table id="table-content" class="table table-responsive no-padding table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width: 49px;">No</th>
+                            <th class="text-center">{{ 'label.district.province' | trans }} <i data-sort="no" data-sort-field="province.name" class="fa fa-sort sortable pull-right"></i></th>
+                            <th class="text-center">{{ 'label.district.code' | trans }} <i data-sort="no" data-sort-field="code" class="fa fa-sort sortable pull-right"></i></th>
+                            <th class="text-center">{{ 'label.district.name' | trans }} <i data-sort="no" data-sort-field="name" class="fa fa-sort sortable pull-right"></i></th>
+                            <th class="text-center" style="width: 177px">{{ 'label.crud.action' | trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-content">
+                        {% include 'district/table-content.html.twig' %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box box-footer">
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 pull-left margin-r-5">
+                    <button type="button" class="btn btn-danger refresh"><i class="fa fa-refresh"></i> {{ 'label.crud.refresh' | trans }}</button>
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9 pull-right pagination-box">
+                    {% include 'district/pagination.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-default" id="form-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title form-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="semartForm" method="POST">
+                    <input type="hidden" id="id" value="">
+                    <div class="form-group">
+                        <label for="role" class="col-sm-2 control-label">{{ 'label.district.province' | trans }}</label>
+                        <div class="col-sm-10">
+                            <select class="form-control select2-static" id="province">
+                                <option value="">---PILIH {{ 'label.district.province' | trans | upper }}---</option>
+                                {% for i, data in provinces %}
+                                    <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.district.code' | trans }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="code" placeholder="{{ 'label.district.code' | trans }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.district.name' | trans }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" placeholder="{{ 'label.district.name' | trans }}">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn pull-left btn-warning" data-dismiss="modal">{{ 'label.crud.cancel' | trans }}</button>
+                <button type="button" class="btn btn-danger save">{{ 'label.crud.save' | trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'default/notification_modal.html.twig' %}
+{% endfilter %}{% endblock %}
+
+{% block javascripts %}{% filter spaceless %}
+<script src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
+<script>
+    $(window).ready(function () {
+        localStorage.setItem('csrf_token', '{{ csrf_token('APP_CSRF_TOKEN') }}');
+        localStorage.setItem('cache_id', '{{ cacheId }}');
+
+        $('.select2-static').select2();
+        $('.query-string').val('');
+
+        $(document).on('click', '.form-modal-action', function () {
+            formReset(function () {
+                $('.select2-static').trigger('change');
+            });
+            $('.form-title').html('{{ 'label.crud.add_title' | trans({'%title%': title }) }}');
+            $('#form-modal').modal();
+        });
+
+        $(document).on('click', '.save', function () {
+            let id = $('#id').val();
+            let province = $('#province').val();
+            let code = $('#code').val();
+            let name = $('#name').val();
+
+            $.post(Routing.generate('districts_save'), {
+                _csrf_token: localStorage.getItem('csrf_token'),
+                _cache_id: localStorage.getItem('cache_id'),
+                id: id,
+                province: province,
+                code: code,
+                name: name
+            }, function (response) {
+                localStorage.setItem('csrf_token', response._csrf_token);
+                if ('OK' === response.status) {
+                    formReset(function () {
+                        $('.select2-static').trigger('change');
+                    });
+                    $('#form-modal').modal('hide');
+
+                    toastr['success']('{{ 'label.crud.save_message' | trans }}');
+
+                    refreshTable(window.location.href, '{{ title }}');
+                } else {
+                    let listError = '<ul>';
+                    $.each(response.errors, function (key, value) {
+                        listError = listError + '<li>' + value + '</li>';
+                    });
+                    listError = listError + '</ul>';
+
+                    $('.error-body').html(listError);
+                    $('.error-modal').modal();
+                }
+            });
+        });
+
+        $(document).on('shown.bs.modal', '#form-modal', function (e) {
+            let relatedTarget = e.relatedTarget;
+            let id = $(relatedTarget).data('primary');
+            let container = $('body');
+
+            container.semartLoader();
+
+            if ('undefined' !== typeof id) {
+                $.get(Routing.generate('districts_detail', {id: id}), function (response) {
+                    let data = JSON.parse(response);
+                    $('#id').val(data.id);
+                    $('#province').val(data.province.id);
+                    $('#code').val(data.code);
+                    $('#name').val(data.name);
+
+                    $('.select2-static').trigger('change');
+
+                    $('.form-title').html('{{ 'label.crud.edit_title' | trans({'%title%': title }) }}');
+
+                    container.trigger('destroy.semart.loader');
+                });
+            } else {
+                container.trigger('destroy.semart.loader');
+            }
+        });
+
+        $(document).on('click', '.delete', function () {
+            $('#primaryId').val($(this).data('primary'));
+            $('.delete-modal').modal();
+        });
+
+        $(document).on('click', '.notif-delete', function () {
+            $('.delete-modal').modal('hide');
+            $.post(Routing.generate('districts_remove', {id: $('#primaryId').val()}), {_csrf_token: localStorage.getItem('csrf_token')}, function (response) {
+
+                toastr['success']('{{ 'label.crud.delete_message' | trans }}');
+
+                refreshTable(Routing.generate('districts_index'), '{{ title }}');
+
+                localStorage.setItem('csrf_token', response._csrf_token);
+            });
+        });
+
+        $(document).on('click', '.search-action', function () {
+            let params = getQueriesString();
+
+            params['q'] = $('.query-string').val();
+
+            refreshTable(Routing.generate('districts_index', params), '{{ title }}');
+        });
+
+        $(document).on('click', '.pagination-container a.btn-danger', function (e) {
+            e.preventDefault();
+            let url = jQuery(this).attr('href');
+
+            refreshTable(url, '{{ title }}');
+        });
+    });
+</script>
+{% endfilter %}{% endblock %}

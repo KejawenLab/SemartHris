@@ -78,3 +78,14 @@ label:
         skill_group: 'Grup'
         code: 'Kode Keahlian'
         name: 'Keahlian'
+    province:
+        code: 'Kode Propinsi'
+        name: 'Nama Propinsi'
+    district:
+        province: 'Nama Propinsi'
+        code: 'Kode Kabupaten'
+        name: 'Nama Kabupaten'
+    sub_district:
+        district: 'Nama Kabupaten'
+        code: 'Kode Kecamatan'
+        name: 'Nama Kecamatan'

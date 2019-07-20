@@ -1297,19 +1297,20 @@
         },
         {
             "name": "kejawenlab/nusantara",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KejawenLab/Nusantara.git",
-                "reference": "4a373690eb5fdccc1166c3cc257ec4b7eab7265b"
+                "reference": "a055b138a252a6f27635c7d6b3a2a0dabe4b3985"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KejawenLab/Nusantara/zipball/4a373690eb5fdccc1166c3cc257ec4b7eab7265b",
-                "reference": "4a373690eb5fdccc1166c3cc257ec4b7eab7265b",
+                "url": "https://api.github.com/repos/KejawenLab/Nusantara/zipball/a055b138a252a6f27635c7d6b3a2a0dabe4b3985",
+                "reference": "a055b138a252a6f27635c7d6b3a2a0dabe4b3985",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "php": "^7.2",
                 "symfony/dom-crawler": "^4.3",
                 "symfony/http-client": "^4.3"
@@ -1328,7 +1329,7 @@
                 "MIT"
             ],
             "description": "Nusantara adalah Script untuk mengambil data terbaru daerah di Indoensia mulai dari Propinsi hingga Desa/Kelurahan",
-            "time": "2019-07-18T16:11:57+00:00"
+            "time": "2019-07-20T03:27:25+00:00"
         },
         {
             "name": "kejawenlab/semart-collection",
@@ -3030,16 +3031,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.4.4",
+            "version": "v1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "4b5d25a5538e2dc37ff84645fe7498a9a04947b3"
+                "reference": "4467ab35c82edebac58fe58c22cea166a805eb1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/4b5d25a5538e2dc37ff84645fe7498a9a04947b3",
-                "reference": "4b5d25a5538e2dc37ff84645fe7498a9a04947b3",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/4467ab35c82edebac58fe58c22cea166a805eb1f",
+                "reference": "4467ab35c82edebac58fe58c22cea166a805eb1f",
                 "shasum": ""
             },
             "require": {
@@ -3075,7 +3076,7 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
-            "time": "2019-07-12T06:29:25+00:00"
+            "time": "2019-07-19T08:59:18+00:00"
         },
         {
             "name": "symfony/form",

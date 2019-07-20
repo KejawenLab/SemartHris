@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Semart\Skeleton\Component\Contract\Education;
+namespace KejawenLab\Semart\Skeleton\Component\Contract\Skill;
 
 use KejawenLab\Semart\Skeleton\Contract\Repository\CacheableRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface EducationInstituteRepositoryInterface extends CacheableRepositoryInterface
+interface SkillRepositoryInterface extends CacheableRepositoryInterface
 {
 }

@@ -46,12 +46,12 @@ class SkillGroup implements SkillGroupInterface
      **/
     private $parent;
 
-    public function getParent(): ?self
+    public function getParent(): ?SkillGroupInterface
     {
         return $this->parent;
     }
 
-    public function setParent(?self $parent): void
+    public function setParent(SkillGroupInterface $parent): void
     {
         $this->parent = $parent;
     }

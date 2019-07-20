@@ -10,13 +10,18 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Semart\Skeleton\Component\Contract\Education;
-
-use KejawenLab\Semart\Skeleton\Contract\Repository\CacheableRepositoryInterface;
+namespace KejawenLab\Semart\Skeleton\Component\Contract\Address;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface EducationInstituteRepositoryInterface extends CacheableRepositoryInterface
+interface SubDistrictInterface
 {
+    public function getDistrict(): ?DistrictInterface;
+
+    public function setDistrict(DistrictInterface $district);
+
+    public function getCode(): ?string;
+
+    public function getName(): ?string;
 }

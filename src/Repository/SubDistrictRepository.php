@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use KejawenLab\Semart\Skeleton\Component\Contract\Skill\SkillRepositoryInterface;
-use KejawenLab\Semart\Skeleton\Entity\Skill;
+use KejawenLab\Semart\Skeleton\Component\Contract\Address\SubDistrictRepositoryInterface;
+use KejawenLab\Semart\Skeleton\Entity\SubDistrict;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class SkillRepository extends Repository implements SkillRepositoryInterface
+class SubDistrictRepository extends Repository implements SubDistrictRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Skill::class);
+        parent::__construct($registry, SubDistrict::class);
     }
 
     public function findOneBy(array $criteria, array $orderBy = null): ?object

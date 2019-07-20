@@ -53,30 +53,14 @@ class SearchQuery implements EventSubscriberInterface
             ->flatten()
             ->map(function ($value) use ($queryBuilder, $expr, $event, $queryString) {
                 if (false !== strpos($value, '.')) {
-                    $fields = Collection::collect(explode('.', $value));
-                    $fields
-                        ->filter(function ($value) use ($event) {
-                            return \in_array($value, $event->getJoinFields());
-                        })
-                        ->each(function ($value, $key) use ($fields, $queryBuilder, $event) {
-                            $random = Application::APP_UNIQUE_NAME;
-                            $alias = $random[rand($key, \strlen($random) - 1)];
+                    $joins = explode('.', $value);
+                    $random = Application::APP_UNIQUE_NAME;
+                    $alias = $random[rand(0, \strlen($random) - 1)];
 
-                            if (0 === $key) {
-                                $queryBuilder->leftJoin(sprintf('%s.%s', $event->getJoinAlias('root'), $value), $alias);
-                            } else {
-                                $queryBuilder->leftJoin(sprintf('%s.%s', $fields->get($key - 1), $value), $alias);
-                            }
+                    $queryBuilder->leftJoin(sprintf('%s.%s', $event->getJoinAlias('root'), $joins[0]), $alias);
+                    $event->addJoinAlias($joins[0], $alias);
 
-                            $event->addJoinAlias($value, $alias);
-                        })
-                    ;
-
-                    $length = $fields->count();
-                    /** @var string $alias */
-                    $alias = $fields->get($length - 2);
-
-                    return $expr->like(sprintf('LOWER(%s.%s)', $event->getJoinAlias($alias), $fields->get($length - 1)), $expr->literal(sprintf('%%%s%%', Str::make($queryString)->lowercase())));
+                    return $expr->like(sprintf('LOWER(%s.%s)', $event->getJoinAlias($joins[0]), $joins[1]), $expr->literal(sprintf('%%%s%%', Str::make($queryString)->lowercase())));
                 } else {
                     return $expr->like(sprintf('LOWER(%s.%s)', $event->getJoinAlias('root'), $value), $expr->literal(sprintf('%%%s%%', Str::make($queryString)->lowercase())));
                 }

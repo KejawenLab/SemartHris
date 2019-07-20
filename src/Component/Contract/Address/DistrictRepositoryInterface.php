@@ -12,10 +12,11 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Component\Contract\Address;
 
+use KejawenLab\Semart\Skeleton\Contract\Repository\CacheableRepositoryInterface;
+
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface UpdaterInterface
+interface DistrictRepositoryInterface extends CacheableRepositoryInterface
 {
-    public function update(): void;
 }

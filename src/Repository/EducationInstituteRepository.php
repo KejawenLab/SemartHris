@@ -40,9 +40,4 @@ class EducationInstituteRepository extends Repository implements EducationInstit
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
-
-    public function findByName(string $name): ?EducationInstituteInterface
-    {
-        return $this->findOneBy(['name' => $name]);
-    }
 }

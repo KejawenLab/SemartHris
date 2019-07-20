@@ -17,4 +17,7 @@ namespace KejawenLab\Semart\Skeleton\Component\Contract\Skill;
  */
 interface SkillGroupInterface
 {
+    public function getParent(): ?self;
+
+    public function getName(): ?string;
 }

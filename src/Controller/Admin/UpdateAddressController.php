@@ -49,7 +49,7 @@ class UpdateAddressController
      */
     public function update(KernelInterface $kernel)
     {
-        ini_set('max_execution_time', '-1');
+        set_time_limit(0);
 
         $application = new Application($kernel);
         $application->setAutoExit(false);

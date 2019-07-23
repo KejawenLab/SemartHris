@@ -78,11 +78,11 @@ class CompanyController extends AdminController
     }
 
     /**
-     * @Route("/{id}", methods={"GET"}, name="companies_detail", options={"expose"=true})
+     * @Route("/{id}/edit", methods={"GET"}, name="companies_edit", options={"expose"=true})
      *
      * @Permission(actions=Permission::VIEW)
      */
-    public function find(string $id, CompanyService $service, ProvinceService $provinceService)
+    public function edit(string $id, CompanyService $service, ProvinceService $provinceService)
     {
         $company = $service->get($id);
         if (!$company) {
@@ -90,6 +90,26 @@ class CompanyController extends AdminController
         }
 
         return $this->render('company/form.html.twig', [
+            'title' => 'Perusahaan',
+            'provinces' => $provinceService->getAll(),
+            'company' => $company,
+            'cacheId' => 'invalid',//Just dummy key
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/view", methods={"GET"}, name="companies_detail", options={"expose"=true})
+     *
+     * @Permission(actions=Permission::VIEW)
+     */
+    public function detail(string $id, CompanyService $service, ProvinceService $provinceService)
+    {
+        $company = $service->get($id);
+        if (!$company) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->render('company/view.html.twig', [
             'title' => 'Perusahaan',
             'provinces' => $provinceService->getAll(),
             'company' => $company,

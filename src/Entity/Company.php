@@ -39,6 +39,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @Sortable({"code", "name"})
  *
  * @UniqueEntity(fields={"code"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
+ * @UniqueEntity(fields={"taxNumber"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
@@ -139,7 +140,7 @@ class Company implements CompanyInterface
     private $email;
 
     /**
-     * @ORM\Column(name="npwp", type="string", length=27)
+     * @ORM\Column(name="npwp", type="string", length=27, unique=true)
      *
      * @Assert\NotBlank()
      * @Assert\Length(max=27)

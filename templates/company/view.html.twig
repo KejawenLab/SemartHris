@@ -1,0 +1,122 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}{% filter spaceless %}
+    <link rel="stylesheet" href="{{asset('css/fileupload.css')}}">
+{% endfilter %}{% endblock %}
+
+{% block title %}{% filter spaceless %}{{ title | upper }}{% endfilter %}{% endblock %}
+
+{% block page_title %}{% filter spaceless %}{{ 'label.company.company_form' | trans }}{% endfilter %}{% endblock %}
+
+{% block content %}{% filter spaceless %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{ 'label.company.company_form' | trans }}</h3>
+            </div>
+            <div class="box-body">
+                <form class="form-horizontal" id="semartForm" method="POST">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <div class="avatar-upload">
+                                <div class="avatar-preview">
+                                    <div id="imagePreview" style="background-image: url({% if company and company.logoImage %}{{ path('get_files', {path: company.logoImage}) }}{% else %}{{ asset('img/logo.gif') }}{% endif %});">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.code' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="code" value="{{ company.code }}" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.birth_day' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control date-picker" id="birthDay" value="{{ company.birthday | date('d-m-Y') }}" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.name' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="name" value="{{ company.name }}" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.tax_number' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="taxNumber" value="{{ company.taxNumber }}" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="custom-fieldset">
+                                    <legend>Alamat</legend>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control" id="address" value="{{ company.address }}" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.province' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                {% set province = company.province %}
+                                                <input type="text" class="form-control" id="province" value="{{ province.code ~ ' - ' ~ province.name }}" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.sub_district' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                {% set subDistrict = company.subDistrict %}
+                                                <input type="text" class="form-control" id="subDistrict" value="{{ subDistrict.code ~ ' - ' ~ subDistrict.name }}" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.phone_number' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="phoneNumber" value="{{ company.phoneNumber }}" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.district' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                {% set district = company.district %}
+                                                <input type="text" class="form-control" id="district" value="{{ district.code ~ ' - ' ~ district.name }}" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.postal_code' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="postalCode" value="{{ company.postalCode }}" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.email' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="email" value="{{ company.email }}" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="box box-footer">
+                <a href="{{ path('companies_index') }}" class="btn pull-left btn-primary margin-r-5">{{ 'label.crud.back_to_list' | trans }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'default/notification_modal.html.twig' %}
+{% endfilter %}{% endblock %}

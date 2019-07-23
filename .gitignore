@@ -22,7 +22,8 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-
+# Uploads
+/uploads/
 
 # vuepress distribution
 .vuepress/dist

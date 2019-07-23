@@ -1,7 +1,17 @@
 - { group: 'ref:group#group1', menu: 'ref:menu#home', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#administrator', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#company', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#administrator_user', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#administrator_group', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#administrator_menu', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#administrator_setting', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#administrator_query', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master_education_institute', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master_educational_title', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master_skill_group', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master_skill', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master_province', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master_district', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#master_sub_district', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#company_company_group', addable: true, editable: true, viewable: true, deletable: true }

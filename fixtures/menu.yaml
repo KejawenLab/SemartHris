@@ -1,7 +1,17 @@
 - { parent: null, code: 'HOME', name: 'Home', menuOrder: 1, iconClass: 'home', routeName: 'home_dashboard', ref: 'home' }
 - { parent: null, code: 'ADMIN', name: 'Administrator', menuOrder: 2, iconClass: 'shield', routeName: '', ref: 'administrator' }
+- { parent: null, code: 'MASTER', name: 'Master', menuOrder: 3, iconClass: 'database', routeName: '', ref: 'master' }
+- { parent: null, code: 'PCOMPANY', name: 'Perusahaan', menuOrder: 4, iconClass: 'building', routeName: '', ref: 'company' }
 - { parent: 'ref:menu#administrator', code: 'USER', menuOrder: 3, name: 'Pengguna', iconClass: 'users', routeName: 'users_index', ref: 'administrator_user' }
 - { parent: 'ref:menu#administrator', code: 'GROUP', menuOrder: 2, name: 'Grup', iconClass: 'address-book', routeName: 'groups_index', ref: 'administrator_group' }
 - { parent: 'ref:menu#administrator', code: 'MENU', menuOrder: 4, name: 'Menu', iconClass: 'bars', routeName: 'menus_index', ref: 'administrator_menu' }
 - { parent: 'ref:menu#administrator', code: 'SETTING', menuOrder: 5, name: 'Pengaturan', iconClass: 'cogs', routeName: 'settings_index', ref: 'administrator_setting' }
 - { parent: 'ref:menu#administrator', code: 'QUERY', menuOrder: 6, name: 'Query', iconClass: 'database', routeName: 'queries_runner', ref: 'administrator_query' }
+- { parent: 'ref:menu#master', code: 'EDUCATIONINSTITUTE', menuOrder: 1, name: 'Institusi Pendidikan', iconClass: '', routeName: 'education_institutes_index', ref: 'master_education_institute' }
+- { parent: 'ref:menu#master', code: 'EDUCATIONALTITLE', menuOrder: 2, name: 'Gelar Pendidikan', iconClass: '', routeName: 'educational_titles_index', ref: 'master_educational_title' }
+- { parent: 'ref:menu#master', code: 'SKILLGROUP', menuOrder: 3, name: 'Grup Keahlian', iconClass: '', routeName: 'skill_groups_index', ref: 'master_skill_group' }
+- { parent: 'ref:menu#master', code: 'SKILL', menuOrder: 4, name: 'Keahlian', iconClass: '', routeName: 'skills_index', ref: 'master_skill' }
+- { parent: 'ref:menu#master', code: 'PROVINCE', menuOrder: 5, name: 'Propinsi', iconClass: '', routeName: 'provinces_index', ref: 'master_province' }
+- { parent: 'ref:menu#master', code: 'DISTRICT', menuOrder: 6, name: 'Kabupaten', iconClass: '', routeName: 'districts_index', ref: 'master_district' }
+- { parent: 'ref:menu#master', code: 'SUBDISTRICT', menuOrder: 7, name: 'Kecamatan', iconClass: '', routeName: 'sub_districts_index', ref: 'master_sub_district' }
+- { parent: 'ref:menu#company', code: 'COMPANYGROUP', menuOrder: 1, name: 'Grup Perusahaan', iconClass: '', routeName: 'company_groups_index', ref: 'company_company_group' }

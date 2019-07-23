@@ -89,3 +89,6 @@ label:
         district: 'Nama Kabupaten'
         code: 'Kode Kecamatan'
         name: 'Nama Kecamatan'
+    company_group:
+        code: 'Kode Grup Perusahaan'
+        name: 'Nama Grup Perusahaan'

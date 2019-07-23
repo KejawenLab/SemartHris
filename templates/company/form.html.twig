@@ -1,0 +1,247 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}{% filter spaceless %}
+    <link rel="stylesheet" href="{{asset('css/fileupload.css')}}">
+    <link rel="stylesheet" href="{{asset('lib/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('lib/bootstrap-datepicker/bootstrap.datepicker.min.css')}}">
+{% endfilter %}{% endblock %}
+
+{% block title %}{% filter spaceless %}{{ title | upper }}{% endfilter %}{% endblock %}
+
+{% block page_title %}{% filter spaceless %}{{ 'label.company.company_form' | trans }}{% endfilter %}{% endblock %}
+
+{% block content %}{% filter spaceless %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{ 'label.company.company_form' | trans }}</h3>
+            </div>
+            <div class="box-body">
+                <form class="form-horizontal" id="semartForm" method="POST">
+                    <input type="hidden" id="id" value="{% if company %}{{ company.id }}{% endif %}">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <input type="hidden" id="logoImage" value="{% if company %}{{ company.logoImage }}{% endif %}">
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                    <label for="imageUpload"></label>
+                                </div>
+                                <div class="avatar-preview">
+                                    <div id="imagePreview" style="background-image: url({% if company and company.logoImage %}{{ path('get_files', {path: company.logoImage}) }}{% else %}{{ asset('img/logo.gif') }}{% endif %});">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.code' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="code" placeholder="{{ 'label.company.code' | trans }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.birth_day' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control date-picker" id="birthDay" placeholder="{{ 'label.company.birth_day' | trans }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.name' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="name" placeholder="{{ 'label.company.name' | trans }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.tax_number' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="taxNumber" placeholder="{{ 'label.company.tax_number' | trans }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="custom-fieldset">
+                                    <legend>Alamat</legend>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control" id="address" placeholder="{{ 'label.company.address' | trans }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.province' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control select2-static" id="province">
+                                                    <option value="">---PILIH {{ 'label.company.province' | trans | upper }}---</option>
+                                                    {% for i, data in provinces %}
+                                                        <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.sub_district' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control select2-static" id="subDistrict">
+                                                    <option value="">---PILIH {{ 'label.company.sub_district' | trans | upper }}---</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.phone_number' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="phoneNumber" placeholder="{{ 'label.company.phone_number' | trans }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.district' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control select2-static" id="district">
+                                                    <option value="">---PILIH {{ 'label.company.district' | trans | upper }}---</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.postal_code' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="postalCode" placeholder="{{ 'label.company.postal_code' | trans }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.email' | trans }}</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="email" placeholder="{{ 'label.company.email' | trans }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="box box-footer">
+                <a href="{{ path('companies_index') }}" class="btn pull-left btn-warning margin-r-5">{{ 'label.crud.cancel' | trans }}</a>
+                <button type="button" class="btn btn-danger save">{{ 'label.crud.save' | trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'default/notification_modal.html.twig' %}
+{% endfilter %}{% endblock %}
+
+{% block javascripts %}{% filter spaceless %}
+<script src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('lib/bootstrap-datepicker/bootstrap.datepicker.min.js') }}"></script>
+<script src="{{ asset('js/semart.js') }}"></script>
+<script>
+    $(window).ready(function () {
+        localStorage.setItem('csrf_token', '{{ csrf_token('APP_CSRF_TOKEN') }}');
+        localStorage.setItem('cache_id', '{{ cacheId }}');
+
+        $('.select2-static').select2();
+        $('.date-picker').datepicker({
+            format: 'dd-mm-yyyy',
+            language: 'id',
+            todayBtn: true,
+            todayHighlight: true,
+            weekStart: 1,
+            autoclose: true
+        });
+
+        $(document).on('change', '#province', function () {
+            let provinceId = $(this).val();
+            if (provinceId !== '') {
+                let districtId = $('#district').val();
+                province_autocomplete_district(provinceId, districtId, '#district', '--- PILIH {{ 'label.company.district' | trans | upper }}---');
+            }
+        });
+
+        $(document).on('change', '#district', function () {
+            let districtId = $(this).val();
+            if (districtId !== '') {
+                let subDistrictId = $('#subDistrict').val();
+                district_autocomplete_sub_district(districtId, subDistrictId, '#subDistrict', '--- PILIH {{ 'label.company.sub_district' | trans | upper }}---');
+            }
+        });
+
+        $(document).on('click', '.save', function () {
+            let id = $('#id').val();
+            let code = $('#code').val();
+            let name = $('#name').val();
+            let logoImage = $('#profileImage').val();
+            let birthDay = $('#birthDay').val();
+            let taxNumber = $('#taxNumber').val();
+            let address = $('#address').val();
+            let subDistrict = $('#subDistrict').val();
+            let district = $('#district').val();
+            let province = $('#province').val();
+            let postalCode = $('#postalCode').val();
+            let email = $('#email').val();
+            let phoneNumber = $('#phoneNumber').val();
+
+            $.post(Routing.generate('companies_save'), {
+                _csrf_token: localStorage.getItem('csrf_token'),
+                _cache_id: localStorage.getItem('cache_id'),
+                id: id,
+                code: code,
+                name: name,
+                logoImage: logoImage,
+                birthDay: birthDay,
+                taxNumber: taxNumber,
+                address: address,
+                subDistrict: subDistrict,
+                district: district,
+                province: province,
+                postalCode: postalCode,
+                email: email,
+                phoneNumber: phoneNumber
+            }, function (response) {
+                localStorage.setItem('csrf_token', response._csrf_token);
+                if ('OK' === response.status) {
+                    window.location.href = '{{ path('companies_index') }}';
+                } else {
+                    let listError = '<ul>';
+                    $.each(response.errors, function (key, value) {
+                        listError = listError + '<li>' + value + '</li>';
+                    });
+                    listError = listError + '</ul>';
+
+                    $('.error-body').html(listError);
+                    $('.error-modal').modal();
+                }
+            });
+        });
+
+        $(document).on('change', '#imageUpload', function (e) {
+            let formData = new FormData();
+            let file = $(this)[0].files[0];
+
+            formData.append('logoImage', file);
+            formData.append('_csrf_token', localStorage.getItem('csrf_token'));
+
+            $.ajax({
+                url: Routing.generate('files_upload'),
+                type: 'POST',
+                data: formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    localStorage.setItem('csrf_token', response._csrf_token);
+
+                    $('#logoImage').val(response.files['logoImage']);
+                    $('#imagePreview').css('background-image', 'url(' + Routing.generate('get_files', {path: response.files['logoImage']}) + ')');
+                }
+            });
+        });
+    });
+</script>
+{% endfilter %}{% endblock %}

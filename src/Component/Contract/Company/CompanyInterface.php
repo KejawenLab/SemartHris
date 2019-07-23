@@ -25,9 +25,9 @@ interface CompanyInterface
 
     public function getName(): ?string;
 
-    public function getLogo(): ?string;
+    public function getLogoImage(): ?string;
 
-    public function getBirtDay(): ?\DateTime;
+    public function getBirthDay(): ?\DateTime;
 
     public function getAddress(): ?string;
 
@@ -36,6 +36,10 @@ interface CompanyInterface
     public function getDistrict(): ?DistrictInterface;
 
     public function getProvince(): ?ProvinceInterface;
+
+    public function getPostalCode(): ?string;
+
+    public function getPhoneNumber(): ?string;
 
     public function getEmail(): ?string;
 

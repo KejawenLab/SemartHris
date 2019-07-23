@@ -17,6 +17,7 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyGroupInterface;
 use KejawenLab\Semart\Skeleton\Contract\Entity\CodeNameableTrait;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
 use KejawenLab\Semart\Skeleton\Query\Searchable;
@@ -29,14 +30,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @Searchable({"province.name", "code", "name"})
- * @Sortable({"province.name", "code", "name"})
+ * @Searchable({"code", "name"})
+ * @Sortable({"code", "name"})
  *
  * @UniqueEntity(fields={"code"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class CompanyGroup
+class CompanyGroup implements CompanyGroupInterface
 {
     use BlameableEntity;
     use CodeNameableTrait;

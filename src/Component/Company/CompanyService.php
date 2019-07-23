@@ -13,29 +13,29 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Component\Company;
 
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
-use KejawenLab\Semart\Skeleton\Entity\CompanyGroup;
-use KejawenLab\Semart\Skeleton\Repository\CompanyGroupRepository;
+use KejawenLab\Semart\Skeleton\Entity\Company;
+use KejawenLab\Semart\Skeleton\Repository\CompanyRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class CompanyGroupService implements ServiceInterface
+class CompanyService implements ServiceInterface
 {
-    private $companygroupRepository;
+    private $companyRepository;
 
-    public function __construct(CompanyGroupRepository $companygroupRepository)
+    public function __construct(CompanyRepository $companyRepository)
     {
-        $companygroupRepository->setCacheable(true);
-        $this->companygroupRepository = $companygroupRepository;
+        $companyRepository->setCacheable(true);
+        $this->companyRepository = $companyRepository;
     }
 
     /**
      * @param string $id
      *
-     * @return CompanyGroup|null
+     * @return Company|null
      */
     public function get(string $id): ?object
     {
-        return $this->companygroupRepository->find($id);
+        return $this->companyRepository->find($id);
     }
 }

@@ -15,3 +15,4 @@
 - { group: 'ref:group#group1', menu: 'ref:menu#master_district', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#master_sub_district', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#company_company_group', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#company_company', addable: true, editable: true, viewable: true, deletable: true }

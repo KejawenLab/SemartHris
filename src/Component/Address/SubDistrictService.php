@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Component\Address;
 
+use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\SubDistrictInterface;
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
 use KejawenLab\Semart\Skeleton\Entity\SubDistrict;
@@ -43,6 +44,16 @@ class SubDistrictService implements ServiceInterface
     public function getByCode(string $code): ?SubDistrict
     {
         return $this->subdistrictRepository->findOneBy(['code' => $code]);
+    }
+
+    /**
+     * @param DistrictInterface $district
+     *
+     * @return SubDistrictInterface[]
+     */
+    public function getByDistrict(DistrictInterface $district): array
+    {
+        return $this->subdistrictRepository->findBy(['district' => $district]);
     }
 
     public function commit(SubDistrictInterface $subDistrict, bool $flush = false): void

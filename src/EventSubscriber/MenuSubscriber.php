@@ -23,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class MenuSubscriber implements EventSubscriberInterface
 {
     public function filterPagination(PaginationEvent $event) {
-        if ($event->getEntityClass() !== Menu::class) {
+        if (Menu::class !== $event->getEntityClass()) {
             return;
         }
 

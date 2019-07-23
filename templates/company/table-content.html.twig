@@ -1,0 +1,24 @@
+{% filter spaceless %}
+
+{% set menu = code_to_menu('COMPANY') %}
+
+{% set startNumber = start_page_number() %}
+
+{% for key, data in companies %}
+    <tr>
+        <td class="text-right">{{ (key + startNumber)  }}</td>
+        <td>{{ data.code }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.taxNumber }}</td>
+        <td>{{ data.email }}</td>
+        <td class="text-center">
+            {% if is_granted('edit', menu) and false == data.deleted %}
+                <a href="{{ path('companies_detail', {id: data.id}) }}" title="Perbaharui Data" class="btn btn-xs btn-warning edit margin-r-5"><i class="fa fa-edit"></i> {{ 'label.crud.edit' | trans }}</a>
+            {% endif %}
+            {% if is_granted('delete', menu) and false == data.deleted %}
+                <button data-primary="{{ data.id }}" class="btn btn-xs btn-xs btn-danger delete" data-tooltip="tooltip" title="Hapus Data"><i class="fa fa-trash"></i> {{ 'label.crud.delete' | trans }}</button>
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
+{% endfilter %}

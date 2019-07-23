@@ -15,3 +15,4 @@
 - { parent: 'ref:menu#master', code: 'DISTRICT', menuOrder: 6, name: 'Kabupaten', iconClass: '', routeName: 'districts_index', ref: 'master_district' }
 - { parent: 'ref:menu#master', code: 'SUBDISTRICT', menuOrder: 7, name: 'Kecamatan', iconClass: '', routeName: 'sub_districts_index', ref: 'master_sub_district' }
 - { parent: 'ref:menu#company', code: 'COMPANYGROUP', menuOrder: 1, name: 'Grup Perusahaan', iconClass: '', routeName: 'company_groups_index', ref: 'company_company_group' }
+- { parent: 'ref:menu#company', code: 'COMPANY', menuOrder: 2, name: 'Perusahaan', iconClass: '', routeName: 'companys_index', ref: 'company_company' }

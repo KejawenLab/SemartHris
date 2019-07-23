@@ -92,3 +92,17 @@ label:
     company_group:
         code: 'Kode Grup Perusahaan'
         name: 'Nama Grup Perusahaan'
+    company:
+        code: 'Kode Perusahaan'
+        name: 'Nama Perusahaan'
+        logo: 'Logo Perusahaan'
+        birth_day: 'Tanggal Berdiri'
+        address: 'Alamat'
+        sub_district: 'Kecamatan'
+        district: 'Kabupaten'
+        province: 'Propinsi'
+        postal_code: 'Kodepos'
+        phone_number: 'No. Telepon'
+        email: 'Email'
+        tax_number: 'NPWP'
+        company_form: 'Formulir Perusahaan'

@@ -10,7 +10,7 @@ use KejawenLab\Semart\Skeleton\Menu\MenuService;
 use KejawenLab\Semart\Skeleton\Security\Authorization\Permission;
 use KejawenLab\Semart\Skeleton\Security\Service\OwnershipService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -36,7 +36,7 @@ class AuthorizationSubscriber implements EventSubscriberInterface
         $this->authorizationChecker = $authorizationChecker;
     }
 
-    public function authorize(FilterControllerEvent $event)
+    public function authorize(ControllerEvent $event)
     {
         $controllerObject = $event->getController();
         if (!\is_array($controllerObject)) {

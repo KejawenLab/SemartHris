@@ -20,123 +20,138 @@
             <div class="box-body">
                 <form class="form-horizontal" id="semartForm" method="POST">
                     <input type="hidden" id="id" value="{% if company %}{{ company.id }}{% endif %}">
-                    <div class="row">
-                        <div class="col-md-2 col-sm-12">
-                            <input type="hidden" id="logoImage" value="{% if company %}{{ company.logoImage }}{% endif %}">
-                            <div class="avatar-upload">
-                                <div class="avatar-edit">
-                                    <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                    <label for="imageUpload"></label>
-                                </div>
-                                <div class="avatar-preview">
-                                    <div id="imagePreview" style="background-image: url({% if company and company.logoImage %}{{ path('get_files', {path: company.logoImage}) }}{% else %}{{ asset('img/logo.gif') }}{% endif %});">
-                                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        <input type="hidden" id="logoImage" value="{% if company %}{{ company.logoImage }}{% endif %}">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview" style="background-image: url({% if company and company.logoImage %}{{ path('get_files', {path: company.logoImage}) }}{% else %}{{ asset('img/logo.gif') }}{% endif %});">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-10 col-sm-12">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.code' | trans }}</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="code" placeholder="{{ 'label.company.code' | trans }}" value="{% if company %}{{ company.code }}{% endif %}">
-                                    </div>
+                    </div>
+                    <div class="col-md-10 col-sm-12">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">{{ 'label.company.company_group' | trans }}</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control select2-static" id="companyGroup">
+                                        <option value="">---PILIH {{ 'label.company.company_group' | trans | upper }}---</option>
+                                        {% for i, data in companyGroups %}
+                                            {% if company and company.companyGroup and company.companyGroup.id == data.id %}
+                                                <option value="{{ data.id }}" selected="selected">{{ data.code ~ ' - ' ~ data.name }}</option>
+                                            {% else %}
+                                                <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.birth_day' | trans }}</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control date-picker" id="birthDay" placeholder="{{ 'label.company.birth_day' | trans }}" value="{% if company %}{{ company.birthday | date('d-m-Y') }}{% endif %}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.name' | trans }}</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="name" placeholder="{{ 'label.company.name' | trans }}" value="{% if company %}{{ company.name }}{% endif %}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.tax_number' | trans }}</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="taxNumber" placeholder="{{ 'label.company.tax_number' | trans }}" value="{% if company %}{{ company.taxNumber }}{% endif %}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <fieldset class="custom-fieldset">
-                                    <legend>Alamat</legend>
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="address" placeholder="{{ 'label.company.address' | trans }}" value="{% if company %}{{ company.address }}{% endif %}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.province' | trans }}</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-control select2-static" id="province">
-                                                    <option value="">---PILIH {{ 'label.company.province' | trans | upper }}---</option>
-                                                    {% for i, data in provinces %}
-                                                        {% if company and company.province.id == data.id %}
-                                                            <option value="{{ data.id }}" selected="selected">{{ data.code ~ ' - ' ~ data.name }}</option>
-                                                        {% else %}
-                                                            <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.sub_district' | trans }}</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-control select2-static" id="subDistrict">
-                                                    {% if company %}
-                                                        {% set subDistrict = company.subDistrict %}
-                                                        <option value="{{ subDistrict.id }}" selected="selected">{{ subDistrict.code ~ ' - ' ~ subDistrict.name }}</option>
-                                                    {% else %}
-                                                        <option value="">---PILIH {{ 'label.company.sub_district' | trans | upper }}---</option>
-                                                    {% endif %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.phone_number' | trans }}</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="phoneNumber" placeholder="{{ 'label.company.phone_number' | trans }}" value="{% if company %}{{ company.phoneNumber }}{% endif %}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.district' | trans }}</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-control select2-static" id="district">
-                                                    {% if company %}
-                                                        {% set district = company.district %}
-                                                        <option value="{{ district.id }}" selected="selected">{{ district.code ~ ' - ' ~ district.name }}</option>
-                                                    {% else %}
-                                                        <option value="">---PILIH {{ 'label.company.district' | trans | upper }}---</option>
-                                                    {% endif %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.postal_code' | trans }}</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="postalCode" placeholder="{{ 'label.company.postal_code' | trans }}" value="{% if company %}{{ company.postalCode }}{% endif %}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="username" class="col-sm-3 control-label">{{ 'label.company.email' | trans }}</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="{{ 'label.company.email' | trans }}" value="{% if company %}{{ company.email }}{% endif %}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-4 control-label">{{ 'label.company.code' | trans }}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="code" placeholder="{{ 'label.company.code' | trans }}" value="{% if company %}{{ company.code }}{% endif %}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="col-sm-4 control-label">{{ 'label.company.birth_day' | trans }}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control date-picker" id="birthDay" placeholder="{{ 'label.company.birth_day' | trans }}" value="{% if company %}{{ company.birthday | date('d-m-Y') }}{% endif %}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="col-sm-4 control-label">{{ 'label.company.phone_number' | trans }}</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="phoneNumber" placeholder="{{ 'label.company.phone_number' | trans }}" value="{% if company %}{{ company.phoneNumber }}{% endif %}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-3 control-label">{{ 'label.company.name' | trans }}</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" placeholder="{{ 'label.company.name' | trans }}" value="{% if company %}{{ company.name }}{% endif %}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="col-sm-3 control-label">{{ 'label.company.tax_number' | trans }}</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="taxNumber" placeholder="{{ 'label.company.tax_number' | trans }}" value="{% if company %}{{ company.taxNumber }}{% endif %}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="col-sm-3 control-label">{{ 'label.company.email' | trans }}</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="email" placeholder="{{ 'label.company.email' | trans }}" value="{% if company %}{{ company.email }}{% endif %}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <fieldset class="custom-fieldset">
+                            <legend>Alamat</legend>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="address" placeholder="{{ 'label.company.address' | trans }}" value="{% if company %}{{ company.address }}{% endif %}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.province' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select2-static" id="province">
+                                            <option value="">---PILIH {{ 'label.company.province' | trans | upper }}---</option>
+                                            {% for i, data in provinces %}
+                                                {% if company and company.province.id == data.id %}
+                                                    <option value="{{ data.id }}" selected="selected">{{ data.code ~ ' - ' ~ data.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.sub_district' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select2-static" id="subDistrict">
+                                            {% if company %}
+                                                {% set subDistrict = company.subDistrict %}
+                                                <option value="{{ subDistrict.id }}" selected="selected">{{ subDistrict.code ~ ' - ' ~ subDistrict.name }}</option>
+                                            {% else %}
+                                                <option value="">---PILIH {{ 'label.company.sub_district' | trans | upper }}---</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.district' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select2-static" id="district">
+                                            {% if company %}
+                                                {% set district = company.district %}
+                                                <option value="{{ district.id }}" selected="selected">{{ district.code ~ ' - ' ~ district.name }}</option>
+                                            {% else %}
+                                                <option value="">---PILIH {{ 'label.company.district' | trans | upper }}---</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">{{ 'label.company.postal_code' | trans }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="postalCode" placeholder="{{ 'label.company.postal_code' | trans }}" value="{% if company %}{{ company.postalCode }}{% endif %}">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
                 </form>
             </div>
@@ -187,6 +202,7 @@
 
         $(document).on('click', '.save', function () {
             let id = $('#id').val();
+            let companyGroup = $('#companyGroup').val();
             let code = $('#code').val();
             let name = $('#name').val();
             let logoImage = $('#logoImage').val();
@@ -204,6 +220,7 @@
                 _csrf_token: localStorage.getItem('csrf_token'),
                 _cache_id: localStorage.getItem('cache_id'),
                 id: id,
+                companyGroup: companyGroup,
                 code: code,
                 name: name,
                 logoImage: logoImage,

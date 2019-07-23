@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Controller\Admin;
 
 use KejawenLab\Semart\Skeleton\Component\Address\ProvinceService;
+use KejawenLab\Semart\Skeleton\Component\Company\CompanyGroupService;
 use KejawenLab\Semart\Skeleton\Component\Company\CompanyService;
 use KejawenLab\Semart\Skeleton\Entity\Company;
 use KejawenLab\Semart\Skeleton\Pagination\Paginator;
@@ -68,11 +69,12 @@ class CompanyController extends AdminController
      *
      * @Permission(actions=Permission::ADD)
      */
-    public function create(ProvinceService $provinceService)
+    public function create(ProvinceService $provinceService, CompanyGroupService $companyGroupService)
     {
         return $this->render('company/form.html.twig', [
             'title' => 'Perusahaan',
             'provinces' => $provinceService->getAll(),
+            'companyGroups' => $companyGroupService->getAll(),
             'cacheId' => 'invalid',//Just dummy key
         ]);
     }
@@ -82,7 +84,7 @@ class CompanyController extends AdminController
      *
      * @Permission(actions=Permission::VIEW)
      */
-    public function edit(string $id, CompanyService $service, ProvinceService $provinceService)
+    public function edit(string $id, CompanyService $service, ProvinceService $provinceService, CompanyGroupService $companyGroupService)
     {
         $company = $service->get($id);
         if (!$company) {
@@ -92,6 +94,7 @@ class CompanyController extends AdminController
         return $this->render('company/form.html.twig', [
             'title' => 'Perusahaan',
             'provinces' => $provinceService->getAll(),
+            'companyGroups' => $companyGroupService->getAll(),
             'company' => $company,
             'cacheId' => 'invalid',//Just dummy key
         ]);

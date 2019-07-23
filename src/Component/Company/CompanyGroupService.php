@@ -38,4 +38,12 @@ class CompanyGroupService implements ServiceInterface
     {
         return $this->companygroupRepository->find($id);
     }
+
+    /**
+     * @return CompanyGroup[]
+     */
+    public function getAll(): array
+    {
+        return $this->companygroupRepository->findAll();
+    }
 }

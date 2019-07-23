@@ -20,6 +20,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\ProvinceInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\SubDistrictInterface;
+use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyGroupInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyInterface;
 use KejawenLab\Semart\Skeleton\Contract\Entity\CodeNameableTrait;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
@@ -50,6 +51,14 @@ class Company implements CompanyInterface
     use PrimaryableTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Semart\Skeleton\Entity\CompanyGroup", fetch="EAGER")
+     * @ORM\JoinColumn(name="perusahaan_grup_id", referencedColumnName="id")
+     *
+     * @Groups({"read"})
+     **/
+    private $companyGroup;
 
     /**
      * @ORM\Column(name="logo_perusahaan", type="string", length=255, nullable=true)
@@ -148,6 +157,16 @@ class Company implements CompanyInterface
      * @Groups({"read"})
      */
     private $taxNumber;
+
+    public function getCompanyGroup(): ?CompanyGroupInterface
+    {
+        return $this->companyGroup;
+    }
+
+    public function setCompanyGroup(CompanyGroupInterface $companyGroup): void
+    {
+        $this->companyGroup = $companyGroup;
+    }
 
     public function getLogoImage(): ?string
     {

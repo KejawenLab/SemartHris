@@ -94,6 +94,7 @@ label:
         code: 'Kode Grup Perusahaan'
         name: 'Nama Grup Perusahaan'
     company:
+        company_group: 'Grup Perusahaan'
         code: 'Kode Perusahaan'
         name: 'Nama Perusahaan'
         logo: 'Logo Perusahaan'

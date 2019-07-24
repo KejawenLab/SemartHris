@@ -14,19 +14,19 @@ use KejawenLab\Semart\Skeleton\Contract\Entity\NameableTrait;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
 use KejawenLab\Semart\Skeleton\Query\Searchable;
 use KejawenLab\Semart\Skeleton\Query\Sortable;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use KejawenLab\Semart\Skeleton\Validator\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Table(name="keahlian_grup", indexes={@ORM\Index(name="keahlian_grup_search_idx", columns={"nama"})})
- * @ORM\Entity(repositoryClass="KejawenLab\Semart\Skeleton\Repository\SkillGroupRepository")
+ * @ORM\Entity()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @Searchable({"parent.name", "name"})
  * @Sortable({"parent.name", "name"})
  *
- * @UniqueEntity(fields={"name"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
+ * @UniqueEntity(fields={"name"}, repositoryClass="KejawenLab\Semart\Skeleton\Repository\SkillGroupRepository")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */

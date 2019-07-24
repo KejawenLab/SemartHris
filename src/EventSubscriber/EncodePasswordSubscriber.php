@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\EventSubscriber;
 
-use KejawenLab\Semart\Skeleton\Application;
 use KejawenLab\Semart\Skeleton\Entity\User;
 use KejawenLab\Semart\Skeleton\Request\RequestEvent;
 use KejawenLab\Semart\Skeleton\Security\Service\PasswordEncoderService;
@@ -35,7 +34,7 @@ class EncodePasswordSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            Application::PRE_VALIDATION_EVENT => [['setPassword']],
+            RequestEvent::class => [['setPassword']],
         ];
     }
 }

@@ -37,6 +37,11 @@ class MenuRepository extends Repository
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
+    }
+
     public function findByCode(string $code): ?Menu
     {
         /** @var Menu|null $menu */
@@ -47,7 +52,7 @@ class MenuRepository extends Repository
 
     public function commit(Menu $menu): void
     {
-        $this->_em->persist($menu);
-        $this->_em->flush();
+        $this->manager->persist($menu);
+        $this->manager->flush();
     }
 }

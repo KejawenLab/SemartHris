@@ -31,3 +31,6 @@ services:
         KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface:
             tags:
                 - { name: 'semart.service' }
+        KejawenLab\Semart\Skeleton\Contract\Repository\RepositoryInterface:
+            tags:
+                - { name: 'semart.repository' }

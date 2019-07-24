@@ -23,20 +23,20 @@ use KejawenLab\Semart\Skeleton\Contract\Entity\CodeNameableTrait;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
 use KejawenLab\Semart\Skeleton\Query\Searchable;
 use KejawenLab\Semart\Skeleton\Query\Sortable;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use KejawenLab\Semart\Skeleton\Validator\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="alamat_kabupaten", indexes={@ORM\Index(name="alamat_kabupaten_search_idx", columns={"kode", "nama"})})
- * @ORM\Entity(repositoryClass="KejawenLab\Semart\Skeleton\Repository\DistrictRepository")
+ * @ORM\Entity()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @Searchable({"province.name", "code", "name"})
  * @Sortable({"province.name", "code", "name"})
  *
- * @UniqueEntity(fields={"code"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
+ * @UniqueEntity(fields={"code"}, repositoryClass="KejawenLab\Semart\Skeleton\Repository\DistrictRepository")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */

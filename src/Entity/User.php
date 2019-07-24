@@ -12,22 +12,22 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
 use KejawenLab\Semart\Skeleton\Query\Searchable;
 use KejawenLab\Semart\Skeleton\Query\Sortable;
+use KejawenLab\Semart\Skeleton\Validator\UniqueEntity;
 use PHLAK\Twine\Str;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="semart_pengguna", indexes={@ORM\Index(name="semart_pengguna_search_idx", columns={"nama_pengguna"})})
- * @ORM\Entity(repositoryClass="KejawenLab\Semart\Skeleton\Repository\UserRepository")
+ * @ORM\Entity()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @Searchable({"group.code", "group.name", "fullName", "username"})
  * @Sortable({"group.name", "fullName", "username"})
  *
- * @UniqueEntity(fields={"username"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
+ * @UniqueEntity(fields={"username"}, repositoryClass="KejawenLab\Semart\Skeleton\Repository\UserRepository")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */

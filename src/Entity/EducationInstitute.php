@@ -22,18 +22,18 @@ use KejawenLab\Semart\Skeleton\Contract\Entity\NameableTrait;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
 use KejawenLab\Semart\Skeleton\Query\Searchable;
 use KejawenLab\Semart\Skeleton\Query\Sortable;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use KejawenLab\Semart\Skeleton\Validator\UniqueEntity;
 
 /**
  * @ORM\Table(name="pendidikan_instansi", indexes={@ORM\Index(name="pendidikan_instansi_search_idx", columns={"nama"})})
- * @ORM\Entity(repositoryClass="KejawenLab\Semart\Skeleton\Repository\EducationInstituteRepository")
+ * @ORM\Entity()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @Searchable({"name"})
  * @Sortable({"name"})
  *
- * @UniqueEntity(fields={"name"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
+ * @UniqueEntity(fields={"name"}, repositoryClass="KejawenLab\Semart\Skeleton\Repository\EducationInstituteRepository")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */

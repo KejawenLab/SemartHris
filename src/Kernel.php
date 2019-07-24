@@ -4,6 +4,7 @@ namespace KejawenLab\Semart\Skeleton;
 
 use KejawenLab\Semart\Collection\Collection;
 use KejawenLab\Semart\Skeleton\Generator\GeneratorFactory;
+use KejawenLab\Semart\Skeleton\Repository\RepositoryFactory;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -64,7 +65,7 @@ class Kernel extends BaseKernel implements CompilerPassInterface
     {
         $generators = Collection::collect($container->findTaggedServiceIds(sprintf('%s.generator', Application::APP_UNIQUE_NAME)))
             ->keys()
-            ->map(function ($serviceId) {
+            ->map(static function ($serviceId) {
                 return new Reference($serviceId);
             })
             ->toArray()
@@ -74,12 +75,23 @@ class Kernel extends BaseKernel implements CompilerPassInterface
 
         $services = Collection::collect($container->findTaggedServiceIds(sprintf('%s.service', Application::APP_UNIQUE_NAME)))
             ->keys()
-            ->map(function ($serviceId) {
+            ->map(static function ($serviceId) {
                 return new Reference($serviceId);
             })
             ->toArray()
         ;
         $definition = $container->getDefinition(Application::class);
         $definition->addMethodCall('setServices', [$services]);
+
+        $repositories = Collection::collect($container->findTaggedServiceIds(sprintf('%s.repository', Application::APP_UNIQUE_NAME)))
+            ->keys()
+            ->map(static function ($serviceId) {
+                return new Reference($serviceId);
+            })
+            ->toArray()
+        ;
+
+        $definition = $container->getDefinition(RepositoryFactory::class);
+        $definition->addArgument($repositories);
     }
 }

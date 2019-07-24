@@ -13,10 +13,10 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Component\Address;
 
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictInterface;
+use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\ProvinceInterface;
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
 use KejawenLab\Semart\Skeleton\Entity\District;
-use KejawenLab\Semart\Skeleton\Repository\DistrictRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
@@ -25,7 +25,7 @@ class DistrictService implements ServiceInterface
 {
     private $districtRepository;
 
-    public function __construct(DistrictRepository $districtRepository)
+    public function __construct(DistrictRepositoryInterface $districtRepository)
     {
         $districtRepository->setCacheable(true);
         $this->districtRepository = $districtRepository;

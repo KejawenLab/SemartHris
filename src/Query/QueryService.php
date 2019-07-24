@@ -78,7 +78,7 @@ class QueryService
 
         return Collection::collect($schemaManager->listTables())
             ->merge($schemaManager->listViews())
-            ->map(function ($value) {
+            ->map(static function ($value) {
                 /* @var AbstractAsset $value */
                 return $value->getName();
             })

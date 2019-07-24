@@ -39,4 +39,9 @@ class EducationInstituteRepository extends Repository implements EducationInstit
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
+
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
+    }
 }

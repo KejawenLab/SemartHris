@@ -35,13 +35,18 @@ class RoleRepository extends Repository
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
+    }
+
     public function findRole(Group $group, Menu $menu): ?Role
     {
         $key = md5(sprintf('%s:%s:%s:%s', __CLASS__, __METHOD__, serialize($group), serialize($menu)));
 
         $role = $this->getItem($key);
         if (!$role) {
-            $queryBuilder = $this->createQueryBuilder('o');
+            $queryBuilder = $this->proxy->createQueryBuilder('o');
             $queryBuilder->leftJoin('o.group', 'g');
             $queryBuilder->leftJoin('o.menu', 'm');
             $queryBuilder->andWhere($queryBuilder->expr()->eq('g.id', $queryBuilder->expr()->literal($group->getId())));
@@ -61,7 +66,7 @@ class RoleRepository extends Repository
 
         $results = $this->getItem($key);
         if (!$results) {
-            $queryBuilder = $this->createQueryBuilder('o');
+            $queryBuilder = $this->proxy->createQueryBuilder('o');
             $queryBuilder->select('o');
             $queryBuilder->leftJoin('o.group', 'g');
             $queryBuilder->leftJoin('o.menu', 'm');
@@ -89,7 +94,7 @@ class RoleRepository extends Repository
 
         $results = $this->getItem($key);
         if (!$results) {
-            $queryBuilder = $this->createQueryBuilder('o');
+            $queryBuilder = $this->proxy->createQueryBuilder('o');
             $queryBuilder->select('o');
             $queryBuilder->leftJoin('o.group', 'g');
             $queryBuilder->leftJoin('o.menu', 'm');
@@ -117,7 +122,7 @@ class RoleRepository extends Repository
 
         $results = $this->getItem($key);
         if (!$results) {
-            $queryBuilder = $this->createQueryBuilder('o');
+            $queryBuilder = $this->proxy->createQueryBuilder('o');
             $queryBuilder->join('o.group', 'g');
             $queryBuilder->join('o.menu', 'm');
             $queryBuilder->leftJoin('m.parent', 'p');
@@ -136,17 +141,17 @@ class RoleRepository extends Repository
 
     public function persist(Role $role): void
     {
-        $this->_em->persist($role);
+        $this->manager->persist($role);
     }
 
     public function commit(): void
     {
-        $this->_em->flush();
+        $this->manager->flush();
     }
 
     private function filterMenu(array $roles): array
     {
-        return Collection::collect($roles)->map(function ($value) {
+        return Collection::collect($roles)->map(static function ($value) {
             /* @var Role $value */
             return $value->getMenu();
         })->toArray();

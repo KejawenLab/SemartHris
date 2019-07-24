@@ -33,13 +33,18 @@ class ProvinceRepository extends Repository implements ProvinceRepositoryInterfa
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
+    }
+
     public function commit(ProvinceInterface $province): void
     {
-        $this->_em->persist($province);
+        $this->manager->persist($province);
     }
 
     public function flush(): void
     {
-        $this->_em->flush();
+        $this->manager->flush();
     }
 }

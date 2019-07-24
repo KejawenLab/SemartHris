@@ -12,21 +12,21 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
 use KejawenLab\Semart\Skeleton\Query\Searchable;
 use KejawenLab\Semart\Skeleton\Query\Sortable;
+use KejawenLab\Semart\Skeleton\Validator\UniqueEntity;
 use PHLAK\Twine\Str;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="semart_setting", indexes={@ORM\Index(name="semart_setting_search_idx", columns={"parameter"})})
- * @ORM\Entity(repositoryClass="KejawenLab\Semart\Skeleton\Repository\SettingRepository")
+ * @ORM\Entity()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
  * @Searchable({"parameter", "value"})
  * @Sortable({"parameter", "value"})
  *
- * @UniqueEntity(fields={"parameter"}, repositoryMethod="findUniqueBy", message="label.crud.non_unique_or_deleted")
+ * @UniqueEntity(fields={"parameter"}, repositoryClass="KejawenLab\Semart\Skeleton\Repository\SettingRepository")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */

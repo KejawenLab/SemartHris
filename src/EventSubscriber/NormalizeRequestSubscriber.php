@@ -18,7 +18,7 @@ class NormalizeRequestSubscriber implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         Collection::collect($request->request->all())
-            ->each(function ($value, $key) use ($request) {
+            ->each(static function ($value, $key) use ($request) {
                 if ('false' === $value) {
                     $request->request->set($key, false);
                 }

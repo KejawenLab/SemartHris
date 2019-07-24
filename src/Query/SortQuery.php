@@ -35,7 +35,7 @@ class SortQuery implements EventSubscriberInterface
         }
 
         $sortable = Collection::collect($this->annotationReader->getClassAnnotations(new \ReflectionClass($event->getEntityClass())))
-            ->filter(function ($value) {
+            ->filter(static function ($value) {
                 if ($value instanceof Sortable) {
                     return true;
                 }
@@ -56,7 +56,7 @@ class SortQuery implements EventSubscriberInterface
             $fields = Collection::collect(explode('.', $sortField));
             $length = $fields->count();
 
-            $fields->each(function ($value, $key) use (&$sort, $length, $fields, $event, $queryBuilder) {
+            $fields->each(static function ($value, $key) use (&$sort, $length, $fields, $event, $queryBuilder) {
                 if ($key === $length - 1) {
                     return false;
                 }

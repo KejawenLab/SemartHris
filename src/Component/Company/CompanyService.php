@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Component\Company;
 
+use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
 use KejawenLab\Semart\Skeleton\Entity\Company;
-use KejawenLab\Semart\Skeleton\Repository\CompanyRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
@@ -23,7 +23,7 @@ class CompanyService implements ServiceInterface
 {
     private $companyRepository;
 
-    public function __construct(CompanyRepository $companyRepository)
+    public function __construct(CompanyRepositoryInterface $companyRepository)
     {
         $companyRepository->setCacheable(true);
         $this->companyRepository = $companyRepository;

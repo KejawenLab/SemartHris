@@ -39,19 +39,19 @@ class SearchQuery implements EventSubscriberInterface
         $queryBuilder = $event->getQueryBuilder();
         $expr = $queryBuilder->expr();
         $searchs = Collection::collect($this->annotationReader->getClassAnnotations(new \ReflectionClass($event->getEntityClass())))
-            ->filter(function ($value) {
+            ->filter(static function ($value) {
                 if (!$value instanceof Searchable) {
                     return false;
                 }
 
                 return true;
             })
-            ->map(function ($value) {
+            ->map(static function ($value) {
                 /* @var Searchable $value */
                 return $value->getFields();
             })
             ->flatten()
-            ->map(function ($value) use ($queryBuilder, $expr, $event, $queryString) {
+            ->map(static function ($value) use ($queryBuilder, $expr, $event, $queryString) {
                 if (false !== strpos($value, '.')) {
                     $joins = explode('.', $value);
                     $random = Application::APP_UNIQUE_NAME;

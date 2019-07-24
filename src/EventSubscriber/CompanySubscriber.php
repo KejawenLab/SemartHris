@@ -29,13 +29,15 @@ class CompanySubscriber implements EventSubscriberInterface
             return;
         }
 
-        $company->setBirthDay(\DateTime::createFromFormat('d-m-Y', $event->getRequest()->request->get('birthDay')));
+        $request = $event->getRequest();
+        $company->setBirthDay(\DateTime::createFromFormat('d-m-Y', $request->request->get('birthDay')));
+        $request->request->remove('birthDay');
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            Application::PRE_VALIDATION_EVENT => [['filterRequest']],
+            RequestEvent::class => [['filterRequest']],
         ];
     }
 }

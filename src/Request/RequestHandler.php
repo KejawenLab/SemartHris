@@ -47,7 +47,7 @@ class RequestHandler
     public function handle(Request $request, object $object)
     {
         $filterEvent = new RequestEvent($request, $object);
-        $this->eventDispatcher->dispatch(Application::REQUEST_EVENT, $filterEvent);
+        $this->eventDispatcher->dispatch($filterEvent);
 
         $reflection = new \ReflectionObject($object);
         if ($parent = $reflection->getParentClass()) {
@@ -65,7 +65,6 @@ class RequestHandler
             })
         ;
 
-        $this->eventDispatcher->dispatch(Application::PRE_VALIDATION_EVENT, $filterEvent);
         $this->validate($object, $reflection);
     }
 
@@ -97,7 +96,9 @@ class RequestHandler
             $this->propertyAccessor->setValue($object, $field, $value);
         } catch (\Exception $e) {
             $service = $this->application->getService(new \ReflectionObject($object), $field);
-            $this->propertyAccessor->setValue($object, $field, $service->get($value));
+            if ($service) {
+                $this->propertyAccessor->setValue($object, $field, $service->get($value));
+            }
         }
     }
 }

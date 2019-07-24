@@ -39,7 +39,7 @@ class RoleInitiationSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            Application::PRE_COMMIT_EVENT => [['initiate']],
+            EntityEvent::class => [['initiate']],
         ];
     }
 }

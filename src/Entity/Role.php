@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="semart_hak_akses")
- * @ORM\Entity(repositoryClass="KejawenLab\Semart\Skeleton\Repository\RoleRepository")
+ * @ORM\Entity()
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *

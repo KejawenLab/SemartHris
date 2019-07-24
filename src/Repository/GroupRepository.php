@@ -31,9 +31,14 @@ class GroupRepository extends Repository
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
+    }
+
     public function commit(Group $group): void
     {
-        $this->_em->persist($group);
-        $this->_em->flush();
+        $this->manager->persist($group);
+        $this->manager->flush();
     }
 }

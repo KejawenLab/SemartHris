@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyGroupRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Entity\CompanyGroup;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class CompanyGroupRepository extends Repository
+class CompanyGroupRepository extends Repository implements CompanyGroupRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -29,5 +30,10 @@ class CompanyGroupRepository extends Repository
         $key = md5(sprintf('%s:%s:%s:%s:%s:%s', __CLASS__, __METHOD__, serialize($criteria), serialize($orderBy), $limit, $offset));
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
+    }
+
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
     }
 }

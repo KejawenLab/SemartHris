@@ -33,13 +33,18 @@ class SubDistrictRepository extends Repository implements SubDistrictRepositoryI
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
+    }
+
     public function commit(SubDistrictInterface $subDistrict): void
     {
-        $this->_em->persist($subDistrict);
+        $this->manager->persist($subDistrict);
     }
 
     public function flush(): void
     {
-        $this->_em->flush();
+        $this->manager->flush();
     }
 }

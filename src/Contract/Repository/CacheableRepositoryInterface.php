@@ -7,7 +7,7 @@ namespace KejawenLab\Semart\Skeleton\Contract\Repository;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface CacheableRepositoryInterface
+interface CacheableRepositoryInterface extends RepositoryInterface
 {
     public function isCacheable(): bool;
 

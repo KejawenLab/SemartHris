@@ -23,10 +23,12 @@ class GeneratorFactory
 
     public function generate(\ReflectionClass $entityClass): void
     {
-        Collection::collect($this->generators)->each(function ($value) use ($entityClass) {
-            /* @var GeneratorInterface $value */
-            $value->generate($entityClass);
-        });
+        Collection::collect($this->generators)
+            ->each(static function ($value) use ($entityClass) {
+                /* @var GeneratorInterface $value */
+                $value->generate($entityClass);
+            })
+        ;
     }
 
     private function addGenerator(GeneratorInterface $generator)

@@ -39,7 +39,7 @@ class MenuSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            Application::PAGINATION_EVENT => [['filterPagination']],
+            PaginationEvent::class => [['filterPagination']],
         ];
     }
 }

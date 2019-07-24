@@ -75,6 +75,7 @@ class CompanyController extends AdminController
             'title' => 'Perusahaan',
             'provinces' => $provinceService->getAll(),
             'companyGroups' => $companyGroupService->getAll(),
+            'company' => null,
             'cacheId' => 'invalid',//Just dummy key
         ]);
     }

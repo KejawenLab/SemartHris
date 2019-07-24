@@ -14,9 +14,9 @@ namespace KejawenLab\Semart\Skeleton\Component\Address;
 
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\DistrictInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Address\SubDistrictInterface;
+use KejawenLab\Semart\Skeleton\Component\Contract\Address\SubDistrictRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
 use KejawenLab\Semart\Skeleton\Entity\SubDistrict;
-use KejawenLab\Semart\Skeleton\Repository\SubDistrictRepository;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
@@ -25,7 +25,7 @@ class SubDistrictService implements ServiceInterface
 {
     private $subdistrictRepository;
 
-    public function __construct(SubDistrictRepository $subdistrictRepository)
+    public function __construct(SubDistrictRepositoryInterface $subdistrictRepository)
     {
         $subdistrictRepository->setCacheable(true);
         $this->subdistrictRepository = $subdistrictRepository;

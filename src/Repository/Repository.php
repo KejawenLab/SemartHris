@@ -23,7 +23,7 @@ abstract class Repository implements CacheableRepositoryInterface
 
     protected $proxy;
 
-    /** @var EntityManager  */
+    /** @var EntityManager */
     protected $manager;
 
     public function __construct(ManagerRegistry $registry, string $entityClass)
@@ -63,6 +63,11 @@ abstract class Repository implements CacheableRepositoryInterface
         }
 
         return $this->findOneBy(array_merge($criteria));
+    }
+
+    public function findAll(): array
+    {
+        return $this->proxy->findAll();
     }
 
     public function isCacheable(): bool

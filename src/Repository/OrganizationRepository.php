@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use KejawenLab\Semart\Skeleton\Entity\Group;
+use KejawenLab\Semart\Skeleton\Entity\Organization;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class GroupRepository extends Repository
+class OrganizationRepository extends Repository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Group::class);
+        parent::__construct($registry, Organization::class);
     }
 
     public function findOneBy(array $criteria, array $orderBy = null): ?object
@@ -29,11 +29,5 @@ class GroupRepository extends Repository
         $key = md5(sprintf('%s:%s:%s:%s:%s:%s', __CLASS__, __METHOD__, serialize($criteria), serialize($orderBy), $limit, $offset));
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
-    }
-
-    public function commit(Group $group): void
-    {
-        $this->manager->persist($group);
-        $this->manager->flush();
     }
 }

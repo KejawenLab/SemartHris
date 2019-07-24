@@ -48,8 +48,8 @@ class UniqueEntityValidator extends ConstraintValidator
 
         foreach ($constraint->getFields() as $field) {
             $method = Inflector::camelize(sprintf('get_%s', $field));
-            if ($value->{$method}() === $object->{$method}()) {
-                $count++;
+            if ($value->{$method}() === $object->{$method}() && $value->getId() !== $object->getId()) {
+                ++$count;
             }
         }
 

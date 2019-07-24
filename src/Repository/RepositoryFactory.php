@@ -25,7 +25,7 @@ class RepositoryFactory
 
     public function getRepository(string $repositoryClass): ?RepositoryInterface
     {
-        if (!array_key_exists($repositoryClass, $this->repositories)) {
+        if (!\array_key_exists($repositoryClass, $this->repositories)) {
             return null;
         }
 
@@ -34,6 +34,6 @@ class RepositoryFactory
 
     private function addRepository(RepositoryInterface $repository): void
     {
-        $this->repositories[get_class($repository)] = $repository;
+        $this->repositories[\get_class($repository)] = $repository;
     }
 }

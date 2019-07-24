@@ -30,9 +30,4 @@ class SettingRepository extends Repository
 
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
-
-    public function findAll(): array
-    {
-        return $this->proxy->findAll();
-    }
 }

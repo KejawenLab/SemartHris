@@ -35,11 +35,6 @@ class RoleRepository extends Repository
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
-    public function findAll(): array
-    {
-        return $this->proxy->findAll();
-    }
-
     public function findRole(Group $group, Menu $menu): ?Role
     {
         $key = md5(sprintf('%s:%s:%s:%s', __CLASS__, __METHOD__, serialize($group), serialize($menu)));

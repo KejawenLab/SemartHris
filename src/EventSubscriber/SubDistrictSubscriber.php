@@ -21,8 +21,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class SubDistrictSubscriber implements EventSubscriberInterface
 {
-    public function filterPagination(PaginationEvent $event) {
-        if ($event->getEntityClass() !== SubDistrict::class) {
+    public function filterPagination(PaginationEvent $event)
+    {
+        if (SubDistrict::class !== $event->getEntityClass()) {
             return;
         }
 

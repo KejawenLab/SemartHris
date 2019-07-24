@@ -10,18 +10,13 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Semart\Skeleton\Component\Contract\Address;
+namespace KejawenLab\Semart\Skeleton\Component\Contract\Organization;
+
+use KejawenLab\Semart\Skeleton\Contract\Repository\CacheableRepositoryInterface;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface DistrictInterface
+interface OrganizationRepositoryInterface extends CacheableRepositoryInterface
 {
-    public function getProvince(): ?ProvinceInterface;
-
-    public function setProvince(ProvinceInterface $province): void;
-
-    public function getCode(): ?string;
-
-    public function getName(): ?string;
 }

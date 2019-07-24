@@ -17,5 +17,16 @@ namespace KejawenLab\Semart\Skeleton\Component\Contract\Organization;
  */
 interface OrganizationInterface
 {
+    public const LEVEL_DIVISION = 1;
+    public const LEVEL_DEPARTMENT = 2;
+    public const LEVEL_SECTION = 3;
+    public const LEVEL_SUB_SECTION = 4;
 
+    public function getParent(): ?self;
+
+    public function getLevel(): int;
+
+    public function getCode(): ?string;
+
+    public function getName(): ?string;
 }

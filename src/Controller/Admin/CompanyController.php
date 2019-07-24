@@ -75,7 +75,7 @@ class CompanyController extends AdminController
             'provinces' => $provinceService->getAll(),
             'companyGroups' => $companyGroupService->getAll(),
             'company' => null,
-            'cacheId' => 'invalid',//Just dummy key
+            'cacheId' => 'invalid', //Just dummy key
         ]);
     }
 
@@ -96,7 +96,7 @@ class CompanyController extends AdminController
             'provinces' => $provinceService->getAll(),
             'companyGroups' => $companyGroupService->getAll(),
             'company' => $company,
-            'cacheId' => 'invalid',//Just dummy key
+            'cacheId' => 'invalid', //Just dummy key
         ]);
     }
 
@@ -116,7 +116,7 @@ class CompanyController extends AdminController
             'title' => 'Perusahaan',
             'provinces' => $provinceService->getAll(),
             'company' => $company,
-            'cacheId' => 'invalid',//Just dummy key
+            'cacheId' => 'invalid', //Just dummy key
         ]);
     }
 

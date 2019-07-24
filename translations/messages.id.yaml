@@ -108,3 +108,7 @@ label:
         email: 'Email'
         tax_number: 'NPWP'
         company_form: 'Formulir Perusahaan'
+    organization:
+        parent: 'Organisasi Induk'
+        code: 'Kode Organisasi'
+        name: 'Nama Organisasi'

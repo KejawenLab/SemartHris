@@ -37,11 +37,6 @@ class MenuRepository extends Repository
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
-    public function findAll(): array
-    {
-        return $this->proxy->findAll();
-    }
-
     public function findByCode(string $code): ?Menu
     {
         /** @var Menu|null $menu */

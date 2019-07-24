@@ -16,3 +16,8 @@
 - { parent: 'ref:menu#master', code: 'SUBDISTRICT', menuOrder: 7, name: 'Kecamatan', iconClass: '', routeName: 'sub_districts_index', ref: 'master_sub_district' }
 - { parent: 'ref:menu#company', code: 'COMPANYGROUP', menuOrder: 1, name: 'Grup Perusahaan', iconClass: '', routeName: 'company_groups_index', ref: 'company_company_group' }
 - { parent: 'ref:menu#company', code: 'COMPANY', menuOrder: 2, name: 'Perusahaan', iconClass: '', routeName: 'companys_index', ref: 'company_company' }
+- { parent: 'ref:menu#company', code: 'ORGANIZATION', menuOrder: 3, name: 'Organisasi', iconClass: '', showable: false, routeName: 'organizations_index', ref: 'company_organization' }
+- { parent: 'ref:menu#company', code: 'DIVISION', menuOrder: 3, name: 'Divisi', iconClass: '', routeName: 'divisions_index', ref: 'company_division' }
+- { parent: 'ref:menu#company', code: 'DEPARTMENT', menuOrder: 4, name: 'Departemen', iconClass: '', routeName: 'departments_index', ref: 'company_department' }
+- { parent: 'ref:menu#company', code: 'SECTION', menuOrder: 5, name: 'Seksi', iconClass: '', routeName: 'sections_index', ref: 'company_section' }
+- { parent: 'ref:menu#company', code: 'SUBSECTION', menuOrder: 6, name: 'Sub Seksi', iconClass: '', routeName: 'sub_sections_index', ref: 'company_sub_section' }

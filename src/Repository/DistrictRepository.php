@@ -33,11 +33,6 @@ class DistrictRepository extends Repository implements DistrictRepositoryInterfa
         return $this->doFindBy($key, $criteria, $orderBy, $limit, $offset);
     }
 
-    public function findAll(): array
-    {
-        return $this->proxy->findAll();
-    }
-
     public function commit(DistrictInterface $district): void
     {
         $this->manager->persist($district);

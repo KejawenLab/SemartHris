@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\EventSubscriber;
 
-use KejawenLab\Semart\Skeleton\Application;
 use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyInterface;
 use KejawenLab\Semart\Skeleton\Request\RequestEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

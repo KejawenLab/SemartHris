@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\EventSubscriber;
 
-use KejawenLab\Semart\Skeleton\Application;
 use KejawenLab\Semart\Skeleton\Entity\District;
 use KejawenLab\Semart\Skeleton\Pagination\PaginationEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

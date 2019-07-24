@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Controller\Admin;
 
-use KejawenLab\Semart\Skeleton\Application;
 use KejawenLab\Semart\Skeleton\Cache\CacheHandler;
 use KejawenLab\Semart\Skeleton\Entity\EntityEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

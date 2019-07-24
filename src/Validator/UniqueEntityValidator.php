@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Validator;
 
 use Doctrine\Common\Inflector\Inflector;
-use KejawenLab\Semart\Collection\Collection;
 use KejawenLab\Semart\Skeleton\Repository\Repository;
 use KejawenLab\Semart\Skeleton\Repository\RepositoryFactory;
 use Symfony\Component\Validator\Constraint;

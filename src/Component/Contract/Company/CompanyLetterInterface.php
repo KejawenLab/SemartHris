@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Component\Contract\Company;
 
+use KejawenLab\Semart\Skeleton\Component\Contract\Employee\EmployeeInterface;
+
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
@@ -19,5 +21,21 @@ interface CompanyLetterInterface
 {
     public const CONTRACT = 'contract';
     public const MUTATION = 'mutasi';
-    public const DISMISSAL = 'pemecatan';
+    public const PROMOTION = 'promosi';
+
+    public function getLetterType(): ?string;
+
+    public function getLetterNumber(): ?string;
+
+    public function getTitle(): ?string;
+
+    public function getSubject(): ?EmployeeInterface;
+
+    public function getSignedDate(): ?\DateTime;
+
+    public function getStartDate(): ?\DateTime;
+
+    public function getEndDate(): ?\DateTime;
+
+    public function isUsed(): bool;
 }

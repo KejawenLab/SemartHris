@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use KejawenLab\Semart\Skeleton\Component\Contract\Company\JobTitleRepositoryInterface;
 use KejawenLab\Semart\Skeleton\Entity\JobTitle;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-class JobTitleRepository extends Repository
+class JobTitleRepository extends Repository implements JobTitleRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {

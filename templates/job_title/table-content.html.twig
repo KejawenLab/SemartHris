@@ -7,6 +7,8 @@
 {% for key, data in jobTitles %}
     <tr>
         <td class="text-right">{{ (key + startNumber)  }}</td>
+        <td>{% if data.parent is not null %}{{ data.parent.code ~ ' - ' ~ data.parent.name }}{% else %}-{% endif %}</td>
+        <td>{{ data.level | level_to_text }}</td>
         <td>{{ data.code }}</td>
         <td>{{ data.name }}</td>
         <td class="text-center">

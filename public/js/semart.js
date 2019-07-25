@@ -41,3 +41,25 @@ function district_autocomplete_sub_district(districtId, subDistrictId, subDistri
         }
     });
 }
+
+function level_autocomplete_supervisor(level, supervisorId, supervisorSelector, emptyText, callback) {
+    $.get(Routing.generate('job_titles_supervisor', {level: level}), function (response) {
+        let supervisors = JSON.parse(response);
+        let options = '<option value="">' + emptyText + '</option>';
+        $.each(supervisors, function (idx, val) {
+            if (supervisorId === val.id) {
+                options += '<option value="' + val.id + '" selected="selected">' + val.code + ' - ' + val.name + '</option>';
+            } else {
+                options += '<option value="' + val.id + '">' + val.code + ' - ' + val.name + '</option>';
+            }
+        });
+
+        let supervisorEl = $(supervisorSelector);
+        supervisorEl.html(options);
+        supervisorEl.select2();
+
+        if ('function' === typeof callback) {
+            callback();
+        }
+    });
+}

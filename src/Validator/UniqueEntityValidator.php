@@ -7,6 +7,7 @@ namespace KejawenLab\Semart\Skeleton\Validator;
 use Doctrine\Common\Inflector\Inflector;
 use KejawenLab\Semart\Skeleton\Repository\Repository;
 use KejawenLab\Semart\Skeleton\Repository\RepositoryFactory;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -46,9 +47,9 @@ class UniqueEntityValidator extends ConstraintValidator
             return;
         }
 
+        $propertyAccess = new PropertyAccessor();
         foreach ($constraint->getFields() as $field) {
-            $method = Inflector::camelize(sprintf('get_%s', $field));
-            if ($value->{$method}() === $object->{$method}() && $value->getId() !== $object->getId()) {
+            if ($propertyAccess->getValue($object, $field) === $propertyAccess->getValue($value, $field) && $value->getId() !== $object->getId()) {
                 ++$count;
             }
         }

@@ -15,7 +15,9 @@ namespace KejawenLab\Semart\Skeleton\Component\Contract\Company;
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface ContractInterface
+interface CompanyLetterInterface
 {
-
+    public const CONTRACT = 'contract';
+    public const MUTATION = 'mutasi';
+    public const DISMISSAL = 'pemecatan';
 }

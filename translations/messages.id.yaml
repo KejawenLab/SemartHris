@@ -109,6 +109,11 @@ label:
         tax_number: 'NPWP'
         company_form: 'Formulir Perusahaan'
     organization:
-        parent: 'Organisasi Induk'
+        parent: 'Induk Organisasi'
         code: 'Kode Organisasi'
         name: 'Nama Organisasi'
+    job_title:
+        parent: 'Atasan'
+        level: 'Level Jabatan'
+        code: 'Kode Jabatan'
+        name: 'Nama Jabatan'

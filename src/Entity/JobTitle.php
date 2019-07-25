@@ -9,6 +9,7 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use KejawenLab\Semart\Skeleton\Component\Company\Validator\ValidSupervisor;
 use KejawenLab\Semart\Skeleton\Component\Contract\Company\JobTitleInterface;
 use KejawenLab\Semart\Skeleton\Contract\Entity\CodeNameableTrait;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
@@ -27,6 +28,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @Searchable({"code", "name"})
  * @Sortable({"code", "name"})
  *
+ * @ValidSupervisor()
  * @UniqueEntity(fields={"code"}, repositoryClass="KejawenLab\Semart\Skeleton\Repository\JobTitleRepository")
  *
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>

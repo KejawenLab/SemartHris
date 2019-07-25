@@ -117,3 +117,4 @@ label:
         level: 'Level Jabatan'
         code: 'Kode Jabatan'
         name: 'Nama Jabatan'
+        must_has_supervisor: 'Jabatan dengan level %level% harus memiliki atasan'

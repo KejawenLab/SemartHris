@@ -21,3 +21,5 @@
 - { group: 'ref:group#group1', menu: 'ref:menu#company_department', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#company_section', addable: true, editable: true, viewable: true, deletable: true }
 - { group: 'ref:group#group1', menu: 'ref:menu#company_sub_section', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#company_job_title', addable: true, editable: true, viewable: true, deletable: true }
+- { group: 'ref:group#group1', menu: 'ref:menu#company_company_letter', addable: true, editable: true, viewable: true, deletable: true }

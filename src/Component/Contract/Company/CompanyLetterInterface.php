@@ -23,6 +23,8 @@ interface CompanyLetterInterface
     public const MUTATION = 'mutasi';
     public const PROMOTION = 'promosi';
 
+    public function getCompany(): ?CompanyInterface;
+
     public function getLetterType(): ?string;
 
     public function getLetterNumber(): ?string;

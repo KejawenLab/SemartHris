@@ -10,6 +10,9 @@
         <td>{{ data.code }}</td>
         <td>{{ data.name }}</td>
         <td class="text-center">
+            {% if is_granted('view', menu) and false == data.deleted %}
+                <button data-toggle="modal" data-target="#view-modal" data-primary="{{ data.id }}" data-tooltip="tooltip" title="Tampilkan Data" class="btn btn-xs btn-warning view margin-r-5"><i class="fa fa-search"></i> {{ 'label.crud.search' | trans }}</button>
+            {% endif %}
             {% if is_granted('edit', menu) and false == data.deleted %}
                 <button data-toggle="modal" data-target="#form-modal" data-primary="{{ data.id }}" data-tooltip="tooltip" title="Perbaharui Data" class="btn btn-xs btn-warning edit margin-r-5"><i class="fa fa-edit"></i> {{ 'label.crud.edit' | trans }}</button>
             {% endif %}

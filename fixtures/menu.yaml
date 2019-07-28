@@ -21,3 +21,5 @@
 - { parent: 'ref:menu#company', code: 'DEPARTMENT', menuOrder: 4, name: 'Departemen', iconClass: '', routeName: 'departments_index', ref: 'company_department' }
 - { parent: 'ref:menu#company', code: 'SECTION', menuOrder: 5, name: 'Seksi', iconClass: '', routeName: 'sections_index', ref: 'company_section' }
 - { parent: 'ref:menu#company', code: 'SUBSECTION', menuOrder: 6, name: 'Sub Seksi', iconClass: '', routeName: 'sub_sections_index', ref: 'company_sub_section' }
+- { parent: 'ref:menu#company', code: 'JOBTITLE', menuOrder: 7, name: 'Jabatan', iconClass: '', routeName: 'job_titles_index', ref: 'company_job_title' }
+- { parent: 'ref:menu#company', code: 'COMPANYLETTER', menuOrder: 8, name: 'Surat Perusahaan', iconClass: '', routeName: 'company_letters_index', ref: 'company_company_letter' }

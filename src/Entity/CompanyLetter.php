@@ -17,6 +17,7 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyLetterInterface;
 use KejawenLab\Semart\Skeleton\Component\Contract\Employee\EmployeeInterface;
 use KejawenLab\Semart\Skeleton\Contract\Entity\PrimaryableTrait;
@@ -32,8 +33,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  *
- * @Searchable({"letterNumber", "subject.fullName"})
- * @Sortable({"letterNumber", "subject.fullName"})
+ * @Searchable({"letterNumber", "company.name", "subject.fullName"})
+ * @Sortable({"letterNumber", "company.name"})
  *
  * @UniqueEntity(fields={"letterNumber"}, repositoryClass="KejawenLab\Semart\Skeleton\Repository\CompanyLetterRepository")
  *
@@ -45,6 +46,14 @@ class CompanyLetter implements CompanyLetterInterface
     use PrimaryableTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Semart\Skeleton\Entity\Company", fetch="EAGER")
+     * @ORM\JoinColumn(name="perusahaan_id", referencedColumnName="id")
+     *
+     * @Groups({"read"})
+     **/
+    private $company;
 
     /**
      * @ORM\Column(name="jenis_surat", type="string", length=9)
@@ -109,6 +118,16 @@ class CompanyLetter implements CompanyLetterInterface
      * @Groups({"read"})
      */
     private $endDate;
+
+    public function getCompany(): ?CompanyInterface
+    {
+        return $this->company;
+    }
+
+    public function setCompany(CompanyInterface $company): void
+    {
+        $this->company = $company;
+    }
 
     public function getLetterType(): ?string
     {

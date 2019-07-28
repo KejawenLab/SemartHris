@@ -53,7 +53,7 @@ class CompanyLetterController extends AdminController
             ]);
         } else {
             $response = $this->render('company_letter/index.html.twig', [
-                'title' => 'CompanyLetter',
+                'title' => 'Surat Perusahaan',
                 'companyLetters' => $companyletters,
                 'cacheId' => $key,
             ]);

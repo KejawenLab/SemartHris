@@ -118,3 +118,13 @@ label:
         code: 'Kode Jabatan'
         name: 'Nama Jabatan'
         must_has_supervisor: 'Jabatan dengan level %level% harus memiliki atasan'
+    company_letter:
+        company: 'Perusahaan'
+        letter_type: 'Jenis Surat'
+        letter_number: 'Nomer Surat'
+        title: 'Judul Surat'
+        subject: 'Penerima'
+        signed_date: 'Tgl. Tanda Tangan'
+        start_date: 'Tgl. Mulai'
+        end_date: 'Tgl. Akhir'
+        used: 'Sudah Digunakan'

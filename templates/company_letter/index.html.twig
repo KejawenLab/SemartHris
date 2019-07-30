@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}{% filter spaceless %}
+    <link rel="stylesheet" href="{{asset('lib/select2/css/select2.min.css')}}">
+{% endfilter %}{% endblock %}
+
 {% block title %}{% filter spaceless %}{{ title | upper }}{% endfilter %}{% endblock %}
 
 {% block page_title %}{% filter spaceless %}{{ title }}{% endfilter %}{% endblock %}
@@ -62,15 +66,37 @@
                 <form class="form-horizontal" id="semartForm" method="POST">
                     <input type="hidden" id="id" value="">
                     <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">{{ 'label.company_letter.code' | trans }}</label>
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.company_letter.company' | trans }}</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="code" placeholder="{{ 'label.company_letter.code' | trans }}">
+                            <select class="form-control select2-static" id="company">
+                                <option value="">---PILIH {{ 'label.company_letter.company' | trans | upper }}---</option>
+                                {% for i, data in companies %}
+                                    <option value="{{ data.id }}">{{ data.code ~ ' - ' ~ data.name }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">{{ 'label.company_letter.name' | trans }}</label>
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.company_letter.letter_type' | trans }}</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="{{ 'label.company_letter.name' | trans }}">
+                            <select class="form-control select2-static" id="letterType">
+                                <option value="">---PILIH {{ 'label.company_letter.letter_type' | trans | upper }}---</option>
+                                {% for i, v in letterTypes %}
+                                    <option value="{{ i }}">{{ v | upper }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.company_letter.letter_number' | trans }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="letterNumber" placeholder="{{ 'label.company_letter.letter_number' | trans }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">{{ 'label.company_letter.title' | trans }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="title" placeholder="{{ 'label.company_letter.title' | trans }}">
                         </div>
                     </div>
                 </form>
@@ -87,11 +113,13 @@
 {% endfilter %}{% endblock %}
 
 {% block javascripts %}{% filter spaceless %}
+<script src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
 <script>
     $(window).ready(function () {
         localStorage.setItem('csrf_token', '{{ csrf_token('APP_CSRF_TOKEN') }}');
         localStorage.setItem('cache_id', '{{ cacheId }}');
 
+        $('.select2-static').select2();
         $('.query-string').val('');
 
         $(document).on('click', '.form-modal-action', function () {

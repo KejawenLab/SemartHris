@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Component\Company;
 
+use KejawenLab\Semart\Skeleton\Component\Contract\Company\CompanyLetterInterface;
 use KejawenLab\Semart\Skeleton\Contract\Service\ServiceInterface;
 use KejawenLab\Semart\Skeleton\Entity\CompanyLetter;
 use KejawenLab\Semart\Skeleton\Repository\CompanyLetterRepository;
@@ -29,5 +30,14 @@ class CompanyLetterService implements ServiceInterface
     public function get(string $id): ?object
     {
         return $this->companyletterRepository->find($id);
+    }
+
+    public static function getTypes(): array
+    {
+        return [
+            CompanyLetterInterface::CONTRACT => CompanyLetterInterface::CONTRACT,
+            CompanyLetterInterface::MUTATION => CompanyLetterInterface::MUTATION,
+            CompanyLetterInterface::PROMOTION => CompanyLetterInterface::PROMOTION,
+        ];
     }
 }

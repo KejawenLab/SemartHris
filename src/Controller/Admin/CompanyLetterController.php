@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace KejawenLab\Semart\Skeleton\Controller\Admin;
 
 use KejawenLab\Semart\Skeleton\Component\Company\CompanyLetterService;
+use KejawenLab\Semart\Skeleton\Component\Company\CompanyService;
 use KejawenLab\Semart\Skeleton\Entity\CompanyLetter;
 use KejawenLab\Semart\Skeleton\Pagination\Paginator;
 use KejawenLab\Semart\Skeleton\Request\RequestHandler;
@@ -29,7 +30,7 @@ class CompanyLetterController extends AdminController
      *
      * @Permission(actions=Permission::VIEW)
      */
-    public function index(Request $request, Paginator $paginator)
+    public function index(Request $request, Paginator $paginator, CompanyService $companyService)
     {
         $page = (int) $request->query->get('p', 1);
         $sort = $request->query->get('s');
@@ -55,6 +56,8 @@ class CompanyLetterController extends AdminController
             $response = $this->render('company_letter/index.html.twig', [
                 'title' => 'Surat Perusahaan',
                 'companyLetters' => $companyletters,
+                'companies' => $companyService->getAll(),
+                'letterTypes' => CompanyLetterService::getTypes(),
                 'cacheId' => $key,
             ]);
         }

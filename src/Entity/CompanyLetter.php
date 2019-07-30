@@ -51,6 +51,8 @@ class CompanyLetter implements CompanyLetterInterface
      * @ORM\ManyToOne(targetEntity="KejawenLab\Semart\Skeleton\Entity\Company", fetch="EAGER")
      * @ORM\JoinColumn(name="perusahaan_id", referencedColumnName="id")
      *
+     * @Assert\NotBlank()
+     *
      * @Groups({"read"})
      **/
     private $company;
@@ -86,12 +88,11 @@ class CompanyLetter implements CompanyLetterInterface
     private $title;
 
     /**
-     * @ORM\Column(name="penerima", type="string", length=41, nullable=true)
-     *
-     * @Assert\Length(max=41)
+     * @ORM\ManyToOne(targetEntity="KejawenLab\Semart\Skeleton\Entity\Company", fetch="EAGER")
+     * @ORM\JoinColumn(name="penerima", referencedColumnName="id")
      *
      * @Groups({"read"})
-     */
+     **/
     private $subject;
 
     /**

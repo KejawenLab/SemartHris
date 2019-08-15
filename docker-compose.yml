@@ -6,10 +6,10 @@ services:
             NGINX_WEBROOT: /semart/public
             APP_ENV: dev
             APP_SECRET: 2a46d7812648fc10df43fa9431d5f75d
-            DATABASE_DRIVER: pdo_mysql
-            DATABASE_SERVER_VERSION: 5.7
-            DATABASE_CHARSET: utf8mb4
-            DATABASE_URL: mysql://root:aden@localhost:3306/semart
+            DATABASE_DRIVER: pdo_pgsql
+            DATABASE_SERVER_VERSION: 10.10
+            DATABASE_CHARSET: utf8
+            DATABASE_URL: pgsql://postgres:postgres@localhost:5432/semart
             REDIS_URL: redis://session
         links:
             - session

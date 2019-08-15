@@ -123,26 +123,36 @@
         $('.query-string').val('');
 
         $(document).on('click', '.form-modal-action', function () {
-            formReset();
+            formReset(function () {
+                $('.select2-static').trigger('change');
+            });
+
             $('.form-title').html('{{ 'label.crud.add_title' | trans({'%title%': title }) }}');
             $('#form-modal').modal();
         });
 
         $(document).on('click', '.save', function () {
             let id = $('#id').val();
-            let code = $('#code').val();
-            let name = $('#name').val();
+            let company = $('#company').val();
+            let letterType = $('#letterType').val();
+            let letterNumber = $('#letterNumber').val();
+            let title = $('#title').val();
 
             $.post(Routing.generate('company_letters_save'), {
                 _csrf_token: localStorage.getItem('csrf_token'),
                 _cache_id: localStorage.getItem('cache_id'),
                 id: id,
-                code: code,
-                name: name
+                company: company,
+                letterType: letterType,
+                letterNumber: letterNumber,
+                title: title
             }, function (response) {
                 localStorage.setItem('csrf_token', response._csrf_token);
                 if ('OK' === response.status) {
-                    formReset();
+                    formReset(function () {
+                        $('.select2-static').trigger('change');
+                    });
+
                     $('#form-modal').modal('hide');
 
                     toastr['success']('{{ 'label.crud.save_message' | trans }}');
@@ -172,8 +182,14 @@
                 $.get(Routing.generate('company_letters_detail', {id: id}), function (response) {
                     let data = JSON.parse(response);
                     $('#id').val(data.id);
-                    $('#code').val(data.code);
-                    $('#name').val(data.name);
+                    $('#company').val(data.company);
+                    $('#letterType').val(data.letterType);
+                    $('#letterNumber').val(data.letterNumber);
+                    $('#title').val(data.title);
+
+                    formReset(function () {
+                        $('.select2-static').trigger('change');
+                    });
 
                     $('.form-title').html('{{ 'label.crud.edit_title' | trans({'%title%': title }) }}');
 

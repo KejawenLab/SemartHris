@@ -10,7 +10,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-pdo": "*",
-        "ext-redis": ">=4.2",
+        "ext-redis": "*",
         "doctrine/doctrine-bundle": "^1.11",
         "doctrine/inflector": "^1.3",
         "doctrine/orm": "^2.5.11",

@@ -130,9 +130,7 @@ services:
 
 - Jalankan perintah `docker-compose up -d`
 
-- Masuk ke container `app` dengan perintah `docker-compose exec app bash`
-
-- Jalankan perintah `php bin/console semart:install` dari dalam container `app`
+- Jalankan perintah `docker-compose exec app php bin/console semart:install`
 
 - Buka browser pada alamat `http://localhost:8080`
 

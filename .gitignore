@@ -1,4 +1,5 @@
 /.idea
+/docker-compose.yml
 
 ###> symfony/framework-bundle ###
 /.env
@@ -14,7 +15,7 @@
 ###< phpunit/phpunit ###
 
 ###> symfony/phpunit-bridge ###
-.phpunit
+/.phpunit
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
@@ -26,4 +27,4 @@
 /uploads/
 
 # vuepress distribution
-.vuepress/dist
+/.vuepress/dist

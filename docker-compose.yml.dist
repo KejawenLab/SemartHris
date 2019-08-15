@@ -9,7 +9,7 @@ services:
             DATABASE_DRIVER: pdo_pgsql
             DATABASE_SERVER_VERSION: 10.10
             DATABASE_CHARSET: utf8
-            DATABASE_URL: pgsql://postgres:postgres@localhost:5432/semart
+            DATABASE_URL: pgsql://postgres:postgres@db:5432/semart
             REDIS_URL: redis://session
         links:
             - session

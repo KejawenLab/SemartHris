@@ -74,6 +74,7 @@ COPY src src/
 COPY templates templates/
 COPY translations translations/
 COPY fixtures fixtures/
+COPY .env ./
 
 RUN composer dump-autoload --optimize --classmap-authoritative
 

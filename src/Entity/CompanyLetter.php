@@ -96,25 +96,16 @@ class CompanyLetter implements CompanyLetterInterface
     private $subject;
 
     /**
-     * @ORM\Column(name="tanggal_tanda_tangan", type="date", nullable=true)
-     *
-     * @Groups({"read"})
-     */
-    private $signedDate;
-
-    /**
-     * @ORM\Column(name="tanggal_mulai", type="date")
+     * @ORM\Column(name="tanggal_berlaku", type="date")
      *
      * @Assert\NotBlank()
      *
      * @Groups({"read"})
      */
-    private $startDate;
+    private $dueDate;
 
     /**
-     * @ORM\Column(name="tanggal_akhir", type="date")
-     *
-     * @Assert\NotBlank()
+     * @ORM\Column(name="tanggal_akhir", type="date", nullable=true)
      *
      * @Groups({"read"})
      */
@@ -170,24 +161,14 @@ class CompanyLetter implements CompanyLetterInterface
         $this->subject = $subject;
     }
 
-    public function getSignedDate(): ?\DateTime
+    public function getDueDate(): ?\DateTime
     {
-        return $this->signedDate;
+        return $this->dueDate;
     }
 
-    public function setSignedDate(\DateTime $signedDate): void
+    public function setDueDate(\DateTime $dueDate): void
     {
-        $this->signedDate = $signedDate;
-    }
-
-    public function getStartDate(): ?\DateTime
-    {
-        return $this->startDate;
-    }
-
-    public function setStartDate(\DateTime $startDate): void
-    {
-        $this->startDate = $startDate;
+        $this->dueDate = $dueDate;
     }
 
     public function getEndDate(): ?\DateTime

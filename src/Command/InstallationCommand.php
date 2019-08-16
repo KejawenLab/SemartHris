@@ -49,6 +49,9 @@ class InstallationCommand extends Command
                 'command' => 'doctrine:fixtures:load',
         ] + $noInteraction), $output);
 
+        $updateAddress = $this->getApplication()->find(sprintf('%s:address:update', Application::APP_UNIQUE_NAME));
+        $updateAddress->run(new ArrayInput($noInteraction), $output);
+
         $output->writeln('<info>Semart Application Installation is finished</info>');
         $output->writeln('<comment>Run <info>php bin/console server:run</info> to start your server</comment>');
         $output->writeln('<comment>Login with username: <info>admin</info> and password: <info>semartadmin</info></comment>');

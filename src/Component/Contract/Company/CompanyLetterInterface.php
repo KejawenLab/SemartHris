@@ -33,9 +33,7 @@ interface CompanyLetterInterface
 
     public function getSubject(): ?EmployeeInterface;
 
-    public function getSignedDate(): ?\DateTime;
-
-    public function getStartDate(): ?\DateTime;
+    public function getDueDate(): ?\DateTime;
 
     public function getEndDate(): ?\DateTime;
 

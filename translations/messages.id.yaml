@@ -124,7 +124,6 @@ label:
         letter_number: 'Nomer Surat'
         title: 'Judul Surat'
         subject: 'Penerima'
-        signed_date: 'Tgl. Tanda Tangan'
-        start_date: 'Tgl. Mulai'
+        due_date: 'Tgl. Berlaku'
         end_date: 'Tgl. Akhir'
         used: 'Sudah Digunakan'

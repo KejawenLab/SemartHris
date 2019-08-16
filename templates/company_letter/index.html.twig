@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheets %}{% filter spaceless %}
+    <link rel="stylesheet" href="{{asset('lib/bootstrap-datepicker/bootstrap.datepicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('lib/select2/css/select2.min.css')}}">
 {% endfilter %}{% endblock %}
 
@@ -37,6 +38,8 @@
                             <th class="text-center">{{ 'label.company_letter.letter_type' | trans }} <i data-sort="no" data-sort-field="letterType" class="fa fa-sort sortable pull-right"></i></th>
                             <th class="text-center">{{ 'label.company_letter.letter_number' | trans }}</th>
                             <th class="text-center">{{ 'label.company_letter.title' | trans }}</th>
+                            <th class="text-center">{{ 'label.company_letter.due_date' | trans }}</th>
+                            <th class="text-center">{{ 'label.company_letter.end_date' | trans }}</th>
                             <th class="text-center" style="width: 177px">{{ 'label.crud.action' | trans }}</th>
                         </tr>
                     </thead>
@@ -99,6 +102,18 @@
                             <input type="text" class="form-control" id="title" placeholder="{{ 'label.company_letter.title' | trans }}">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-4 control-label">{{ 'label.company_letter.due_date' | trans }}</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control date-picker" id="dueDate" placeholder="{{ 'label.company_letter.due_date' | trans }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-4 control-label">{{ 'label.company_letter.end_date' | trans }}</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control date-picker" id="endDate" placeholder="{{ 'label.company_letter.end_date' | trans }}">
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -113,6 +128,7 @@
 {% endfilter %}{% endblock %}
 
 {% block javascripts %}{% filter spaceless %}
+<script src="{{ asset('lib/bootstrap-datepicker/bootstrap.datepicker.min.js') }}"></script>
 <script src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
 <script>
     $(window).ready(function () {
@@ -121,6 +137,14 @@
 
         $('.select2-static').select2();
         $('.query-string').val('');
+        $('.date-picker').datepicker({
+            format: 'dd-mm-yyyy',
+            language: 'id',
+            todayBtn: true,
+            todayHighlight: true,
+            weekStart: 1,
+            autoclose: true
+        });
 
         $(document).on('click', '.form-modal-action', function () {
             formReset(function () {

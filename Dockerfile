@@ -8,12 +8,8 @@ RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/kartolo.sby.datautama.net.id/
 # Install Software
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install nginx-full supervisor vim -y
-RUN apt-get install software-properties-common python-software-properties build-essential -y
+RUN apt-get install software-properties-common build-essential -y
 RUN apt-get install curl ca-certificates -y
-RUN touch /etc/apt/sources.list.d/ondrej-php.list
-RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" >> /etc/apt/sources.list.d/ondrej-php.list
-RUN echo "deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" >> /etc/apt/sources.list.d/ondrej-php.list
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 4F4EA0AAE5267A6C
 RUN apt-get update
 RUN apt-get install php7.2 php7.2-cli php7.2-curl php7.2-intl php7.2-mbstring php7.2-xml php7.2-zip \
     php7.2-bcmath php7.2-cli php7.2-fpm php7.2-imap php7.2-json php7.2-opcache php7.2-apcu php7.2-xmlrpc \

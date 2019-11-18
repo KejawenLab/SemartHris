@@ -1,0 +1,38 @@
+<?php
+/**
+ * This file is part of the Semart HRIS Application.
+ *
+ * (c) Muhamad Surya Iksanudin <surya.kejawen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace KejawenLab\Semart\Skeleton\Component\Contract\Util;
+
+/**
+ * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
+ */
+interface TypeInterface
+{
+    /**
+     * @param int|string $key
+     *
+     * @return string
+     */
+    public function converToValue($key): string;
+
+    /**
+     * @param string $value
+     *
+     * @return int|string|null
+     */
+    public function convertToKey(string $value);
+
+    /**
+     * @return array
+     */
+    public function getValues(): array;
+}

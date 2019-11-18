@@ -50,11 +50,14 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.2",
+        "easycorp/easy-log-handler": "^1.0.7",
         "phpunit/phpunit": "^7.3",
-        "symfony/debug-pack": "^1.0",
+        "symfony/debug-bundle": "*",
         "symfony/dotenv": "^4.3",
+        "symfony/monolog-bundle": "^3.0",
         "symfony/phpunit-bridge": "^4.3",
-        "symfony/profiler-pack": "^1.0",
+        "symfony/profiler-pack": "*",
+        "symfony/var-dumper": "*",
         "symfony/web-server-bundle": "^4.3"
     },
     "config": {

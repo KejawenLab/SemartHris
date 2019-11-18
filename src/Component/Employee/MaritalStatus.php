@@ -12,13 +12,12 @@ declare(strict_types=1);
 
 namespace KejawenLab\Semart\Skeleton\Component\Employee;
 
-use KejawenLab\Semart\Collection\Collection;
-use KejawenLab\Semart\Skeleton\Component\Contract\Util\TypeInterface;
+use KejawenLab\Semart\Skeleton\Component\Contract\Util\AbstractType;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-final class MaritalStatusType implements TypeInterface
+final class MaritalStatus extends AbstractType
 {
     public const SINGLE = 's';
     public const MARRIED = 'm';
@@ -27,26 +26,6 @@ final class MaritalStatusType implements TypeInterface
     public const SINGLE_TEXT = 'BELUM KAWIN';
     public const MARRIED_TEXT = 'KAWIN';
     public const DISVORCE_TEXT = 'CERAI';
-
-    /**
-     * @param int|string $key
-     *
-     * @return string
-     */
-    public function converToValue($key): string
-    {
-        return Collection::collect($this->getValues())->get($key);
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return int|string|null
-     */
-    public function convertToKey(string $value)
-    {
-        return Collection::collect($this->getValues())->flip()->get($value);
-    }
 
     /**
      * @return array

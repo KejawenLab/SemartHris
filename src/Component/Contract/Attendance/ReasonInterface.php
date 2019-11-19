@@ -10,12 +10,16 @@
 
 declare(strict_types=1);
 
-namespace KejawenLab\Semart\Skeleton\Component\Contract\Employee;
+namespace KejawenLab\Semart\Skeleton\Component\Contract\Attendance;
 
 /**
  * @author Muhamad Surya Iksanudin <surya.iksanudin@gmail.com>
  */
-interface EmployeeInterface
+interface ReasonInterface
 {
     public function getId(): string;
+
+    public function getCode(): string;
+
+    public function getName(): string;
 }

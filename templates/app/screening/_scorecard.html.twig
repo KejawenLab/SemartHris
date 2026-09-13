@@ -1,0 +1,41 @@
+{# Evidence scorecard. Expects `screening` entity. AI recommends, recruiter decides. #}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>Kartu Skor Screening</strong>
+        {{ semart_screening_badge(screening.outcome, 'outcome') }}
+    </div>
+    <div class="panel-body">
+        {% if screening.evidence is not empty %}
+            <table class="table table-condensed">
+                <thead>
+                    <tr><th>Kriteria</th><th>Bukti</th></tr>
+                </thead>
+                <tbody>
+                    {% for key, matched in screening.evidence %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>
+                                {% if matched %}
+                                    <span class="label label-success">Sesuai</span>
+                                {% else %}
+                                    <span class="label label-danger">Belum Sesuai</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        {% if screening.transcript %}
+            <pre>{{ screening.transcript }}</pre>
+        {% endif %}
+        <div class="btn-group" role="group" aria-label="Keputusan recruiter">
+            <button type="button" class="btn btn-success screening-decision" data-decision="interview">Lanjut Interview</button>
+            <button type="button" class="btn btn-warning screening-decision" data-decision="backup">Cadangan</button>
+            <button type="button" class="btn btn-danger screening-decision" data-decision="pass">Tolak</button>
+        </div>
+        {% if screening.recruiterDecision %}
+            <p class="text-muted"><small>Keputusan tersimpan: {{ screening.recruiterDecision }}</small></p>
+        {% endif %}
+    </div>
+</div>

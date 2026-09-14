@@ -1,0 +1,65 @@
+easy_admin:
+    entities:
+        ScreeningCandidate:
+            role: '%env(string:SEMART_SECURITY_SCREENING_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\ScreeningCandidate'
+            disabled_actions: ['delete']
+            new:
+                title: 'Tambah Kandidat'
+            edit:
+                title: 'Edit Kandidat'
+            search:
+                title: 'Kandidat'
+                fields: ['name', 'phone']
+            form:
+                fields:
+                    - { type: 'group', icon: 'user', label: 'Data Pelamar', css_class: 'col-sm-6' }
+                    - { property: 'name', label: 'Nama Lengkap' }
+                    - { property: 'phone', label: 'No. HP (E.164, cth +62812...)' }
+                    - { property: 'position', label: 'Posisi Dilamar' }
+                    - { property: 'location', label: 'Domisili' }
+                    - { property: 'experience', label: 'Pengalaman' }
+                    - { property: 'jobTitle', label: 'Jabatan Tujuan', type: 'easyadmin_autocomplete', type_options: { required: false } }
+                    - { property: 'status', label: 'Status', type: 'choice', type_options: { choices: { 'Siap Screening': 'ready', 'Antre': 'queued', 'Ditelepon': 'calling', 'Selesai': 'completed', 'Tidak Dijawab': 'not_answered', 'Gagal': 'failed' } } }
+            show:
+                title: 'Detil Kandidat'
+                fields:
+                    - { property: 'name', label: 'Nama Lengkap' }
+                    - { property: 'phone', label: 'No. HP' }
+                    - { property: 'position', label: 'Posisi Dilamar' }
+                    - { property: 'location', label: 'Domisili' }
+                    - { property: 'experience', label: 'Pengalaman' }
+                    - { property: 'jobTitle', label: 'Jabatan Tujuan' }
+                    - { property: 'status', label: 'Status' }
+            list:
+                role: '%env(string:SEMART_SECURITY_SCREENING_MENU)%'
+                title: 'Kandidat Screening'
+                fields:
+                    - { property: 'name', label: 'Nama' }
+                    - { property: 'phone', label: 'No. HP' }
+                    - { property: 'position', label: 'Posisi' }
+                    - { property: 'status', label: 'Status' }
+
+        Screening:
+            role: '%env(string:SEMART_SECURITY_SCREENING_MENU)%'
+            class: 'KejawenLab\Application\SemartHris\Entity\Screening'
+            disabled_actions: ['delete', 'new']
+            show:
+                title: 'Detil Hasil Screening'
+                fields:
+                    - { property: 'candidate', label: 'Kandidat' }
+                    - { property: 'outcome', label: 'Hasil' }
+                    - { property: 'durationSeconds', label: 'Durasi (detik)' }
+                    - { property: 'callRunId', label: 'Call Run ID' }
+                    - { property: 'recruiterDecision', label: 'Keputusan Recruiter' }
+                    - { property: 'completedAt', label: 'Selesai' }
+                    - { property: 'transcript', label: 'Transkrip' }
+            list:
+                role: '%env(string:SEMART_SECURITY_SCREENING_MENU)%'
+                title: 'Hasil Screening'
+                fields:
+                    - { property: 'candidate', label: 'Kandidat' }
+                    - { property: 'outcome', label: 'Hasil' }
+                    - { property: 'durationSeconds', label: 'Durasi' }
+                    - { property: 'recruiterDecision', label: 'Keputusan' }
+                    - { property: 'completedAt', label: 'Selesai' }

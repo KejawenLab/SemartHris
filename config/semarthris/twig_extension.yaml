@@ -43,6 +43,10 @@ services:
         tags:
             - { name: 'twig.extension' }
 
+    KejawenLab\Application\SemartHris\Twig\ScreeningExtension:
+        tags:
+            - { name: 'twig.extension' }
+
     KejawenLab\Application\SemartHris\Twig\SemartViewExtension:
         tags:
             - { name: 'twig.extension' }

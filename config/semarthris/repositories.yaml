@@ -140,6 +140,16 @@ services:
         calls:
             - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Payroll']]
 
+    KejawenLab\Application\SemartHris\Repository\ScreeningCandidateRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\ScreeningCandidate']]
+
+    KejawenLab\Application\SemartHris\Repository\ScreeningRepository:
+        lazy: true
+        calls:
+            - ['initialize', ['@Doctrine\ORM\EntityManagerInterface', 'KejawenLab\Application\SemartHris\Entity\Screening']]
+
     KejawenLab\Application\SemartHris\Repository\SalaryBenefitHistoryRepository:
         lazy: true
         calls:

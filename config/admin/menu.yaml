@@ -38,6 +38,12 @@ easy_admin:
                   - { entity: 'Mutation', label: 'Mutasi Karyawan', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'CareerHistory', label: 'Riwayat Karir', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
                   - { entity: 'TaxGroup', label: 'Perubahan Pajak', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+            - label: 'Rekrutmen'
+              role: '%env(string:SEMART_SECURITY_SCREENING_MENU)%'
+              icon: 'phone'
+              children:
+                  - { entity: 'ScreeningCandidate', label: 'Kandidat Screening', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
+                  - { entity: 'Screening', label: 'Hasil Screening', icon: 'hand-o-right', params: { sortField: 'createdAt', sortDirection: 'DESC' } }
             - label: 'Absensi'
               role: '%env(string:SEMART_SECURITY_ATTENDANCE_MENU)%'
               icon: 'clock-o'

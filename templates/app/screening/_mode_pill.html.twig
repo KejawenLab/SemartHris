@@ -1,0 +1,6 @@
+{# Mode pill for the screening dashboard. Expects `isLive` boolean. #}
+{% if isLive %}
+    <span class="label label-success">Live CALL-E</span>
+{% else %}
+    <span class="label label-warning">Sandbox Demo Mode</span>
+{% endif %}

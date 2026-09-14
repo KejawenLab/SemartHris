@@ -1,0 +1,21 @@
+{# Call confirmation modal. Full numbers render only here, lists stay masked. #}
+<div class="modal fade" id="screening-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="screening-confirm-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="screening-confirm-title">Mulai Panggilan Screening?</h4>
+            </div>
+            <div class="modal-body">
+                <p id="screening-confirm-summary">Memuat daftar kandidat...</p>
+                <ul id="screening-confirm-list" class="list-unstyled"></ul>
+                <p class="text-muted">
+                    <small id="screening-confirm-mode"></small>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="screening-confirm-submit">Mulai Panggil</button>
+            </div>
+        </div>
+    </div>
+</div>
